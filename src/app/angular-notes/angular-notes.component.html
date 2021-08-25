@@ -1,0 +1,48 @@
+
+<div>
+  <h1 class="CenterMe">Just some Angular notes</h1>
+  <h4 class="CenterMe">For detail explanations check my Medium articles, these are very summarized notes.</h4>
+  <br />
+
+
+  <div class="PaddedContents">
+
+    <code>String Interpolation</code><br />
+    <code ngNonBindable>{{theVariable}}</code><br />
+    <code>&lt; input #theInput type="text"/&gt; </code><br />
+    <code>&lt; button (click)="onClickButton1(theInput.value)"&gt; </code><br />
+    Type something in this input <input #theInput type="text" /> and <button (click)="onClickButton1(theInput.value)">send it</button> to the ts file  where it will change. Then display in the marked field below.<br />
+    <mark>{{theVariable}}</mark>
+
+    <hr class="hrClass" />
+
+    <code>Property Binding</code><br />
+    <code>[disabled]="theBoolVar"</code><br />
+    <code>[disabled]=true</code><br />
+    <code>&lt; (click)="onSwitchTheBoolVar()"&gt; Switch Bool&lt;/button&gt;</code><br />
+    Use [] for the html attributes and quotes to use a variable. No quotes to hardcode.  Click the button to choose between true and false and enable or disable the second button (which does nothing).
+    <button (click)="onSwitchTheBoolVar()">Switch Bool</button> &nbsp; <button [disabled]="theBoolVar">Will Go On/Off</button> &nbsp;<button [disabled]=true>Always Disabled</button><br />
+    For an event, use (click)="onSwitchTheBoolVar<mark>($event)</mark>" and <mark>event:any or event:Event</mark> in the ts file as the parameter received for the event, if you need access to the event info.
+
+    <hr class="hrClass" />
+
+    <code>2-way Binding</code><br />
+    <code ngNonBindable>&lt;input type="text"[(ngModel)]="theVariable"/&gt;</code><br />
+    <code ngNonBindable>app.module.ts -- import FormsModule from '@angular/forms'</code><br />
+    Use ngModel in the input field.  It will update the variable right away and from the ts code, which we link to the same variable for the display too, 
+    it will update right away.  Click the button to update the variable to something different.
+    <input type="text" [(ngModel)]="theVariable"/><br/><br/>
+    <mark>{{theVariable}}</mark><br/><br/>
+    <button (click)="onSetVariableToHello()">call onSetVariableToHello</button>
+    
+
+    <hr class="hrClass" />
+
+
+
+  </div>
+
+  
+
+
+</div> 
