@@ -1,10 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap:regular,bold,italic&subset=latin,latin-ext');
 
-code, kbd, pre, samp {
-  font-family: monospace,monospace;
-  font-size:.8vw;
-}
 
 .hrClass {
   border: none;
@@ -15,7 +11,7 @@ code, kbd, pre, samp {
 .main-body {
   color: navy;
   font-family: 'Arima Madurai', cursive;
-  font-size: 1.6vw;  
+  font-size: 1.5vw;  
 }
 .TopNav {
   height:6vh; 

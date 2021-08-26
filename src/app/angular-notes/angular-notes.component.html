@@ -38,11 +38,26 @@
 
     <hr class="hrClass" />
 
-
-
-  </div>
-
+    <code>Angular Directive</code><br />
+    <code ngNonBindable>*ngIf</code><br />
+    <code ngNonBindable>&lt;mark *ngIf="theBoolVar" &gt;</code><br />
+    The marked test below will show depending on a boolean variable on the ts file.  Change the value with the button.<br/>
+    <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
+    <mark *ngIf="theBoolVar">I go on and off</mark><br/><br/>
+    
+    <code ngNonBindable>*ngIf with else</code><br />    
+    <code ngNonBindable>&lt;mark *ngIf="theBoolVar; else onElse;" &gt;I go on and off&lt;/mark&gt;</code><br/>
+    <code ngNonBindable>&lt;ng-template #onElse&gt;I show up on else (false)&lt;/mark&gt;</code><br/>
+    The marked test below will show depending on a boolean variable on the ts file.  There is an ng-template for the else
+    that will show on false.  Change the value with the button.<br/>
+    <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
+    <mark *ngIf="theBoolVar; else onElse;" >I go on and off</mark><br/><br/>
+    <ng-template #onElse><mark >I show up on else (false)</mark></ng-template>
+    <hr class="hrClass" />
   
-
+  
+  
+  
+  </div>
 
 </div> 
