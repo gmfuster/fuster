@@ -53,9 +53,16 @@
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
     <mark *ngIf="theBoolVar; else onElse;" >I go on and off</mark><br/><br/>
     <ng-template #onElse><mark >I show up on else (false)</mark></ng-template>
+
     <hr class="hrClass" />
   
-  
+    <code>Angular Directive</code><br />
+    <code ngNonBindable>[ngStyle]="&lbrace;backgroundColor:theColor&rbrace;"</code><br />    
+    Click the button to get a random background color by changing theColor property. Could also have a method instead
+    of theColor in the span element.  <button (click)="onRandomColor()">Random Color</button><br/>
+    span element: <span [ngStyle]="{backgroundColor:theColor}">Hello!</span><br/>
+    
+    <hr class="hrClass" />
   
   
   </div>
