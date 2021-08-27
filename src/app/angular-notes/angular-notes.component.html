@@ -63,8 +63,24 @@
     span element: <span [ngStyle]="{backgroundColor:theColor}">Hello!</span><br/>
     
     <hr class="hrClass" />
+
+    <code>Angular Directive</code><br />
+    <code ngNonBindable>[ngClass]="&lbrace;redClass:theBoolVar&rbrace;"</code><br />    
+    Similar to the examples above, set ngClass to a class (redClass) to set the font to red based on the boolean value (when true). The redClass is in the css file.<br/>
+    <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
+    <span [ngClass]="{redClass: theBoolVar}">I'll be red when TheBoolVar is true</span>
   
-  
+    <hr class="hrClass" />
+
+    <code>Angular Directive</code><br />
+    <code ngNonBindable>&lt;input type="text" (keydown)="onValueChanged($event)"/&gt;</code><br/>
+    <code ngNonBindable>&lt;div*ngFor="let item of theNumArray;"&gt;</code><br />    
+    Enter a number from 1 to 5 <strong>(no validation so it will break)</strong> and the code will show that many lines.<br/>
+    <input type="text" (keydown)="onValueChanged($event)"/><br/><br/>
+    <div *ngFor = "let item of theNumArray;"> {{item}}</div>
+    <br/>
+
+    <hr class="hrClass" />
   </div>
 
 </div> 

@@ -10,6 +10,8 @@ export class AngularNotesComponent implements OnInit {
   theVariable :string =  "" ;
   theBoolVar: boolean = true;
   theColor: string = "aqua";
+  theNumVariable: Number = 0;
+  theNumArray: Number[] = []
 
   ngOnInit(){
     window.scroll(0,0);
@@ -50,5 +52,12 @@ export class AngularNotesComponent implements OnInit {
 
     }
       
+  }
+
+  onValueChanged(event:KeyboardEvent){
+    this.theNumArray = [];
+    for(let i = 1; i <= parseInt(event.key); i++){
+      this.theNumArray[i-1] = i;
+    }
   }
 }
