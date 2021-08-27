@@ -1,8 +1,20 @@
 
 <div [ngStyle]= "{ backgroundColor:myColor, border:'solid 2px deeppink'}">
+
+  <hr/>
+  <ng-content  select=".class1">   
+  </ng-content>  
+  <ng-content  select="[id=header2]">   
+  </ng-content>  
+  <ng-content  select="span">   
+  </ng-content>
+
+  <hr/>
+
   <p>I am some-child-component</p>
   <p>{{myText}}</p>
   <p>
     <button (click)="launchEvents($event)">On Child Component to Launch Events</button>
   </p>
+
 </div>     

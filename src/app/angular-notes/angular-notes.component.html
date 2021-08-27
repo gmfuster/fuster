@@ -2,6 +2,7 @@
 <div>
   <h1 class="CenterMe">Just some Angular notes</h1>
   <h4 class="CenterMe">For detail explanations check my Medium articles, these are very summarized notes.</h4>
+  <h4 class="CenterMe">Naming is not always accoding to standard but to what made it more clean (in my mind anyway).</h4>
   <br />
 
 
@@ -130,6 +131,36 @@
     {{someText1}}<br/>
     <em><u>Text from event 2:</u> </em><br/>
     {{someText2}}<br/>
+
+    <hr class="hrClass" />
+
+    <code><strong><u>ViewChild</u></strong></code><br />
+    This concept has too much to be included here, so instead, check out my article on Medium 
+    <a href="https://medium.com/nerd-for-tech/angular-viewchild-for-component-dom-element-element-of-component-and-directive-c23328ee1525"
+    target="_new">Angular — ViewChild for component, DOM element, element of component, and directive</a>
+
+    <hr class="hrClass" />
+
+    <code ngNonBindable><strong><u>ng-Content</u></strong></code><br />
+    <code><strong>In Parent Component:</strong></code><br/>
+    <code>&lt;h1 class="class1" [ngStyle]="&lbrace;backgroundColor:'skyblue'&rbrace;"&gt;Header 1 with class1 going to ng-content on child&lt;/h1&gt;</code><br/>
+    <code>&lt;h2 id="header2" [ngStyle]="&lbrace;backgroundColor:'teal'&rbrace;"&gt;Header 2 with header2 id going to ng-content on child&lt;/h2&gt;</code><br/>
+    <code>&lt;span [ngStyle]="&lbrace;backgroundColor:'lightyellow'&rbrace;"&gt;I am just inside a span element&lt;/h2&gt;</code><br/>
+    <code><strong>In Child Component:</strong></code><br/>
+    <code>&lt;ng-content  select=".class1"&gt;   </code><br/>
+    <code>&lt;ng-content  select="[id=header2]"&gt;   </code><br/>
+    <code>&lt;ng-content  select="span"&gt;   </code><br/>
+    I am going to have some ng-content elements in the some-child-component component.  Then I'll use that component here in the angular-notes component.
+    Each ng-content in the child will display a different way and it will choose what to put in that container based on some element, class, and id.
+    (ng-content cannot have content besides what's passed to it).<br/>
+    <some-child-component>
+      <h1 class="class1" [ngStyle]="{backgroundColor:'skyblue'}">Header 1 with class1 going to ng-content on child</h1>
+      <h2 id="header2" [ngStyle]="{backgroundColor:'teal'}">Header 2 with header2 id going to ng-content on child</h2>
+      <span [ngStyle]="{backgroundColor:'lightyellow'}">I am just inside a span element</span>
+    </some-child-component>
+
+
+
 
   </div>
 
