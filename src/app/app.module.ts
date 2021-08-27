@@ -13,6 +13,7 @@ import { AngularNotesComponent } from './angular-notes/angular-notes.component';
 import { HeaderImageComponent } from './header-image/header-image.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingDescriptionsComponent } from './landing-descriptions/landing-descriptions.component';
+import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
 
 @NgModule({
   declarations: [    
@@ -23,6 +24,7 @@ import { LandingDescriptionsComponent } from './landing-descriptions/landing-des
     HeaderImageComponent,
     LandingDescriptionsComponent,
     FooterComponent,
+    SomeChildComponentComponent
   ],
   imports: [
     BrowserModule,

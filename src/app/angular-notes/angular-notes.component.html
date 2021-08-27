@@ -7,7 +7,7 @@
 
   <div class="PaddedContents">
 
-    <code>String Interpolation</code><br />
+    <code><strong><u>String Interpolation</u></strong></code><br />
     <code ngNonBindable>{{theVariable}}</code><br />
     <code>&lt; input #theInput type="text"/&gt; </code><br />
     <code>&lt; button (click)="onClickButton1(theInput.value)"&gt; </code><br />
@@ -16,7 +16,7 @@
 
     <hr class="hrClass" />
 
-    <code>Property Binding</code><br />
+    <code><strong><u>Property Binding</u> </strong></code><br />
     <code>[disabled]="theBoolVar"</code><br />
     <code>[disabled]=true</code><br />
     <code>&lt; (click)="onSwitchTheBoolVar()"&gt; Switch Bool&lt;/button&gt;</code><br />
@@ -26,7 +26,7 @@
 
     <hr class="hrClass" />
 
-    <code>2-way Binding</code><br />
+    <code><strong><u>2-way Binding</u></strong> </code><br />
     <code ngNonBindable>&lt;input type="text"[(ngModel)]="theVariable"/&gt;</code><br />
     <code ngNonBindable>app.module.ts -- import FormsModule from '@angular/forms'</code><br />
     Use ngModel in the input field.  It will update the variable right away and from the ts code, which we link to the same variable for the display too, 
@@ -38,14 +38,14 @@
 
     <hr class="hrClass" />
 
-    <code>Angular Directive</code><br />
+    <code><strong><u>Angular Directive</u></strong></code><br />
     <code ngNonBindable>*ngIf</code><br />
     <code ngNonBindable>&lt;mark *ngIf="theBoolVar" &gt;</code><br />
     The marked test below will show depending on a boolean variable on the ts file.  Change the value with the button.<br/>
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
     <mark *ngIf="theBoolVar">I go on and off</mark><br/><br/>
     
-    <code ngNonBindable>*ngIf with else</code><br />    
+    <code ngNonBindable><strong><u>*ngIf with else</u></strong></code><br />    
     <code ngNonBindable>&lt;mark *ngIf="theBoolVar; else onElse;" &gt;I go on and off&lt;/mark&gt;</code><br/>
     <code ngNonBindable>&lt;ng-template #onElse&gt;I show up on else (false)&lt;/mark&gt;</code><br/>
     The marked test below will show depending on a boolean variable on the ts file.  There is an ng-template for the else
@@ -56,7 +56,7 @@
 
     <hr class="hrClass" />
   
-    <code>Angular Directive</code><br />
+    <code><strong><u>Angular Directive</u></strong></code><br />
     <code ngNonBindable>[ngStyle]="&lbrace;backgroundColor:theColor&rbrace;"</code><br />    
     Click the button to get a random background color by changing theColor property. Could also have a method instead
     of theColor in the span element.  <button (click)="onRandomColor()">Random Color</button><br/>
@@ -64,7 +64,7 @@
     
     <hr class="hrClass" />
 
-    <code>Angular Directive</code><br />
+    <code><strong><u>Angular Directive</u></strong></code><br />
     <code ngNonBindable>[ngClass]="&lbrace;redClass:theBoolVar&rbrace;"</code><br />    
     Similar to the examples above, set ngClass to a class (redClass) to set the font to red based on the boolean value (when true). The redClass is in the css file.<br/>
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
@@ -72,15 +72,51 @@
   
     <hr class="hrClass" />
 
-    <code>Angular Directive</code><br />
+    <code><strong><u>Angular Directive</u></strong></code><br />
     <code ngNonBindable>&lt;input type="text" (keydown)="onValueChanged($event)"/&gt;</code><br/>
     <code ngNonBindable>&lt;div*ngFor="let item of theNumArray;"&gt;</code><br />    
-    Enter a number from 1 to 5 <strong>(no validation so it will break)</strong> and the code will show that many lines.<br/>
+    Enter a number from 1 to 5 <strong>(no validation so it will break)</strong> and the code will show that many lines.<br/>  
+    You can also add let i = index in the ngFor to get the index of the iteration.<br/>
     <input type="text" (keydown)="onValueChanged($event)"/><br/><br/>
     <div *ngFor = "let item of theNumArray;"> {{item}}</div>
     <br/>
 
     <hr class="hrClass" />
+
+    <code><strong><u>Angular Directive</u></strong></code><br />
+    <code ngNonBindable>&lt;div [ngSwitch]="theColor" [ngStyle]= "&lbrace; border:'2px solid skyblue'&rbrace;"/&gt;</code><br/>
+    <code ngNonBindable>&lt;p *ngSwitchCase="'aqua'"/&gt;</code><br/>
+    The random color button above returns aqua, red, pink, yellow, green, and gray.  Have a switch for the theColor variable for each of those.<br/>
+    Notice the single quotes inside the "" on the case elements.  If numbers, don't include the single quotes.<br/>
+    <button (click)="onRandomColor()">Random Color</button><br/><br/>
+    <div [ngSwitch]="theColor" [ngStyle]="{border:'2px solid skyblue'}">
+      <p *ngSwitchCase="'aqua'">aqua</p>
+      <p *ngSwitchCase="'red'">red</p>
+      <p *ngSwitchCase="'yellow'">yellow</p>
+      <p *ngSwitchCase="'green'">green</p>
+      <p *ngSwitchCase="'gray'">gray</p>
+      <p *ngSwitchDefault>Default</p>
+    </div>
+
+    <hr class="hrClass" />
+
+    <code><strong><u>Get Data from Parent Component</u></strong></code><br />
+    <code ngNonBindable>&lt;some-child-component [myColor]= "theColor" [myTextAlias]="theColor"&gt;</code><br/>
+    <code>On child ts:</code><br />
+    <code>@Input() myColor :string="";</code><br />
+    <code>@Input('myTextAlias') myText :string="";</code><br />
+    <code>On child html, don't use the alias but the vble name for both</code><br />    
+    In this angular-notes component we have a theColor variable used above.  Using it here again, but this time, include also a child component
+    which will change its background based on the value we get.  It will also display the text sent to it as an alias.<br/>
+    <button (click)="onRandomColor()">Random Color</button><br/><br/>
+    <some-child-component [myColor]= "theColor" [myTextAlias]="theColor"></some-child-component>
+
+    <hr class="hrClass" />
+
+
+
+
+
   </div>
 
 </div> 
