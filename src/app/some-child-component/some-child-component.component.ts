@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'some-child-component',
@@ -9,5 +9,14 @@ import { Component, Input } from '@angular/core';
 export class SomeChildComponentComponent {
   @Input() myColor :string="";
   @Input('myTextAlias') myText :string="";
-  
+
+  @Output() eventOnChildComponentWithKnownObjReturn = new EventEmitter<{theName:string, theText:string}>();
+  @Output() eventOnChildComponentWithEventReturn = new EventEmitter<Event>();
+
+  launchEvents(event:Event){
+
+    this.eventOnChildComponentWithKnownObjReturn.emit({theName:"Child Name", theText:"Child Text Hello"});
+    this.eventOnChildComponentWithEventReturn.emit(event);
+  }
+
 }

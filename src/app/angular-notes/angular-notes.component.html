@@ -113,9 +113,23 @@
 
     <hr class="hrClass" />
 
-
-
-
+    <code><strong><u>Tell Parent of Change in Child</u></strong></code><br />
+    <code>&lt;some-child-component (eventOnChildComponentWithEventReturn)="onChildEvent1($event)" (eventOnChildComponentWithKnownObjReturn)="onChildEvent2($event)"&gt;</code><br/>
+    <code>On Child: &lt;button (click)="launchEvents($event)"&gt;</code><br/>
+    <code>On child ts: @Output() eventOnChildComponentWithKnownObjReturn = new EventEmitter&lt;&lbrace;theName:string, theText:string&rbrace;&gt;();</code><br/>
+    <code>On child ts: @Output() eventOnChildComponentWithEventReturn = new EventEmitter&lt;Event&gt;();</code><br/>
+    <code>On launchEvents: this.eventOnChildComponentWithKnownObjReturn.emit(&lbrace;theName:"Child Name", theText:"Child Text Hello"&rbrace;);
+      or just pass the event down to the eventOnChildComponentWithEventReturn
+    </code><br/>
+    <code>On parent ts events, have onChildEvent1(event:Event) or onChildEvent2(theEventObj:&lbrace;theName:string, theText:string&rbrace;)</code><br/>
+    The parent (this angular notes component) will be listening to events of the child component (some-child-component).<br/>
+    When adding EventEmitter, check your import statements.  Make sure it is imported from angular/core<br/>
+    You can get just event from the event on the child, or something specific<br/>
+    <some-child-component (eventOnChildComponentWithEventReturn)="onChildEvent1($event)" (eventOnChildComponentWithKnownObjReturn)="onChildEvent2($event)" ></some-child-component>
+    <em><u>Text from event 1:</u> </em><br/>
+    {{someText1}}<br/>
+    <em><u>Text from event 2:</u> </em><br/>
+    {{someText2}}<br/>
 
   </div>
 

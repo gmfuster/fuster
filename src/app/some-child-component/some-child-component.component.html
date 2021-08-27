@@ -1,6 +1,8 @@
 
-<div [ngStyle]= "{ backgroundColor:myColor}">
-
+<div [ngStyle]= "{ backgroundColor:myColor, border:'solid 2px deeppink'}">
+  <p>I am some-child-component</p>
   <p>{{myText}}</p>
-  
+  <p>
+    <button (click)="launchEvents($event)">On Child Component to Launch Events</button>
+  </p>
 </div>     

@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,6 +13,8 @@ export class AngularNotesComponent implements OnInit {
   theColor: string = "aqua";
   theNumVariable: Number = 0;
   theNumArray: Number[] = []
+  someText1:string = "";
+  someText2:string = "";
 
   ngOnInit(){
     window.scroll(0,0);
@@ -59,5 +62,15 @@ export class AngularNotesComponent implements OnInit {
     for(let i = 1; i <= parseInt(event.key); i++){
       this.theNumArray[i-1] = i;
     }
+  }
+
+  //using any so I can use this event for all events from child.
+  onChildEvent1(event:Event){    
+    this.someText1 = JSON.stringify(event.target);
+
+  }
+  onChildEvent2(theEventObj:{theName:string, theText:string}){    
+    this.someText2 = theEventObj.theName + "-" + theEventObj.theText;
+
   }
 }
