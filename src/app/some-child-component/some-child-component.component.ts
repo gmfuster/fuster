@@ -26,9 +26,9 @@ export class SomeChildComponentComponent implements AfterContentInit {
   }
 
   ngAfterContentInit(){    
-    console.log(this.header1vble);
-    console.log(this.header2vble);
-    console.log(this.spanvble);
+    //console.log(this.header1vble);
+    //console.log(this.header2vble);
+    //console.log(this.spanvble);
   }
 
 }

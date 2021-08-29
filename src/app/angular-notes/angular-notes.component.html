@@ -176,7 +176,8 @@
     Don't forget to import ContentChild from angular/core.<br/>
     Angular initializes the component first. It then raises the ngOnChanges, ngOnInit & ngDoCheck hooks. The projected components are initialized next. 
     And then Angular raises the AfterContentInit & AfterContentChecked hooks.  Then ContentChild is available.  That is the default.  We can use static as true to
-    change it(the query will be available once the view has been created, but before change detection runs).  Just displaying the ContentChild variables in the console.<br/>
+    change it(the query will be available once the view has been created, but before change detection runs).  
+    Just displaying the ContentChild variables in the console (though commented out).<br/>
     <some-child-component>
       <h1 class="class1" #header1 [ngStyle]="{backgroundColor:'skyblue'}">Header 1 with class1 going to ng-content on child</h1>
       <h2 id="header2" #header2 [ngStyle]="{backgroundColor:'teal'}">Header 2 with header2 id going to ng-content on child</h2>
@@ -185,8 +186,24 @@
 
     <hr class="hrClass" />
 
+    <code ><strong><u>Angular Directives and Your Own</u></strong></code><br />
+    <code>&lt;p appSomeDirectiveDirective appSomeDirectiveDirective2 fontColor="deeppink"&gt;</code><br/>
+    <code ><strong>In the directive ts file:</strong></code><br />
+    <code>@Directive(&lbrace; selector: '[appSomeDirectiveDirective2]' &rbrace;;)</code><br/>
+    <code>For directive 2:  @Input() fontColor :string = "green";</code><br/>
+    <code>ngOnInit for directive 1: this.theElementRef.nativeElement.style.backgroundColor='lightblue';</code><br/>
+    <code>ngOnInit for directive 2: this.theElementRef2.nativeElement.style.color = this.fontColor;</code><br/>
+    <code>similar in both directives: constructor(private theElementRef2:ElementRef) - reference it ins the ngOnInit</code>
+
+    Angular directives are cool but we can also create our own.  I'm going to use a component directive some-directive-directive.
+    The ts file for this directive is not a @Component but a @Directive.  <strong>Not using renderer in this example </strong>, will use it later for the same thing.
+    Remember to include the directive in the app.module.ts so it can be used.  I'll be using that directive in a p element here.  Like for components,
+    keep in mind you use the select name on the element where you will use it.<br/>
+    I have 2 directives in the same file, and one of them takes a fontColor<br/>
+    <p appSomeDirectiveDirective appSomeDirectiveDirective2 fontColor="deeppink">Some p element using the SomeDirectiveDirective.  </p>
 
 
+    <hr class="hrClass" />
 
 
   </div>

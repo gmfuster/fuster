@@ -14,6 +14,8 @@ import { HeaderImageComponent } from './header-image/header-image.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingDescriptionsComponent } from './landing-descriptions/landing-descriptions.component';
 import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
+import { SomeDirectiveDirective } from './some-directive-directive/some-directive-directive.directive';
+import { SomeDirectiveDirective2 } from './some-directive-directive/some-directive-directive.directive';
 
 @NgModule({
   declarations: [    
@@ -24,7 +26,9 @@ import { SomeChildComponentComponent } from './some-child-component/some-child-c
     HeaderImageComponent,
     LandingDescriptionsComponent,
     FooterComponent,
-    SomeChildComponentComponent
+    SomeChildComponentComponent,
+    SomeDirectiveDirective,
+    SomeDirectiveDirective2,
   ],
   imports: [
     BrowserModule,
