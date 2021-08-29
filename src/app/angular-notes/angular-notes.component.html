@@ -125,7 +125,7 @@
     <code>On parent ts events, have onChildEvent1(event:Event) or onChildEvent2(theEventObj:&lbrace;theName:string, theText:string&rbrace;)</code><br/>
     The parent (this angular notes component) will be listening to events of the child component (some-child-component).<br/>
     When adding EventEmitter, check your import statements.  Make sure it is imported from angular/core<br/>
-    You can get just event from the event on the child, or something specific<br/>
+    You can get just event from the event on the child, or something specific. Use void if the event returns nothing.<br/>
     <some-child-component (eventOnChildComponentWithEventReturn)="onChildEvent1($event)" (eventOnChildComponentWithKnownObjReturn)="onChildEvent2($event)" ></some-child-component>
     <em><u>Text from event 1:</u> </em><br/>
     {{someText1}}<br/>
@@ -141,7 +141,7 @@
 
     <hr class="hrClass" />
 
-    <code ngNonBindable><strong><u>ng-Content</u></strong></code><br />
+    <code ><strong><u>ng-Content</u></strong></code><br />
     <code><strong>In Parent Component:</strong></code><br/>
     <code>&lt;h1 class="class1" [ngStyle]="&lbrace;backgroundColor:'skyblue'&rbrace;"&gt;Header 1 with class1 going to ng-content on child&lt;/h1&gt;</code><br/>
     <code>&lt;h2 id="header2" [ngStyle]="&lbrace;backgroundColor:'teal'&rbrace;"&gt;Header 2 with header2 id going to ng-content on child&lt;/h2&gt;</code><br/>
@@ -158,6 +158,33 @@
       <h2 id="header2" [ngStyle]="{backgroundColor:'teal'}">Header 2 with header2 id going to ng-content on child</h2>
       <span [ngStyle]="{backgroundColor:'lightyellow'}">I am just inside a span element</span>
     </some-child-component>
+
+    <hr class="hrClass" />
+    <code ><strong><u>ContentChild for ng-Content</u></strong></code><br />
+    <code><strong>In Parent Component:</strong></code><br/>
+    <code>&lt;h1 class="class1" #header1 [ngStyle]="&lbrace;backgroundColor:'skyblue'&rbrace;"&gt;Header 1 with class1 going to ng-content on child&lt;/h1&gt;</code><br/>
+    <code>&lt;h2 id="header2" #header2 [ngStyle]="&lbrace;backgroundColor:'teal'&rbrace;"&gt;Header 2 with header2 id going to ng-content on child&lt;/h2&gt;</code><br/>
+    <code>&lt;span #span1 [ngStyle]="&lbrace;backgroundColor:'lightyellow'&rbrace;"&gt;I am just inside a span element&lt;/h2&gt;</code><br/>
+    <code><strong>In Child Component ts:</strong></code><br/>
+    <code>@ContentChild("header1",&lbrace;static:true&rbrace;) header1vble: ElementRef=&lbrace;&rbrace; as ElementRef;</code><br/>
+    <code>@ContentChild("header2",&lbrace;static:true&rbrace;) header2vble: ElementRef=&lbrace;&rbrace; as ElementRef;</code><br/>
+    <code>@ContentChild("span1",&lbrace;static:true&rbrace;,read:NgStyle) spanvble: NgStyle=&lbrace;&rbrace; as NgStyle;</code><br/>
+    You can't use ViewChild for content in an ng-content.  For that you need ContentChild. It returns the first element matching the selector.  
+    If the content DOM changes, and a new child matches the selector, the property will be updated.  Use ContentChild
+    in the component that has the ng-content to find content that has been projected there.  I am using the same child component as above, which has the ng-content.  
+    Set up as in above example except adding #header2 to the h2 element, #header1 to the h1, and #span to the span (that's how I'll access them).  
+    Don't forget to import ContentChild from angular/core.<br/>
+    Angular initializes the component first. It then raises the ngOnChanges, ngOnInit & ngDoCheck hooks. The projected components are initialized next. 
+    And then Angular raises the AfterContentInit & AfterContentChecked hooks.  Then ContentChild is available.  That is the default.  We can use static as true to
+    change it(the query will be available once the view has been created, but before change detection runs).  Just displaying the ContentChild variables in the console.<br/>
+    <some-child-component>
+      <h1 class="class1" #header1 [ngStyle]="{backgroundColor:'skyblue'}">Header 1 with class1 going to ng-content on child</h1>
+      <h2 id="header2" #header2 [ngStyle]="{backgroundColor:'teal'}">Header 2 with header2 id going to ng-content on child</h2>
+      <span #span1 [ngStyle]="{backgroundColor:'lightyellow'}">I am just inside a span element</span>
+    </some-child-component>
+
+    <hr class="hrClass" />
+
 
 
 
