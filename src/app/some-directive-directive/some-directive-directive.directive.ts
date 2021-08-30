@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Input, OnInit, Output} from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Output, Renderer2} from '@angular/core';
 
 @Directive({
   selector: '[appSomeDirectiveDirective]', 
@@ -27,5 +27,17 @@ export class SomeDirectiveDirective2 implements OnInit {
   }
   ngOnInit(){    
     this.theElementRef2.nativeElement.style.color = this.fontColor;
+  }
+}
+
+@Directive({ 
+  selector: '[appSomeDirectiveDirective3]'
+})
+
+export class SomeDirectiveDirective3 implements OnInit {  
+  constructor(private theElementRef3:ElementRef, private renderer:Renderer2){
+  }
+  ngOnInit(){            
+    this.renderer.setStyle(this.theElementRef3.nativeElement, 'background-color', 'green');
   }
 }
