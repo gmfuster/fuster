@@ -16,6 +16,10 @@ import { LandingDescriptionsComponent } from './landing-descriptions/landing-des
 import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
 import { SomeDirectiveDirective } from './some-directive-directive/some-directive-directive.directive';
 import { SomeDirectiveDirective2 } from './some-directive-directive/some-directive-directive.directive';
+import { SomeDirectiveDirective3 } from './some-directive-directive/some-directive-directive.directive';
+import { SomeDirectiveDirective4 } from './some-directive-directive/some-directive-directive.directive';
+import { SomeDirectiveDirective5 } from './some-directive-directive/some-directive-directive.directive';
+import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-directive-directive.directive';
 
 @NgModule({
   declarations: [    
@@ -29,6 +33,10 @@ import { SomeDirectiveDirective2 } from './some-directive-directive/some-directi
     SomeChildComponentComponent,
     SomeDirectiveDirective,
     SomeDirectiveDirective2,
+    SomeDirectiveDirective3,
+    SomeDirectiveDirective4,
+    SomeDirectiveDirective5,
+    appSomeDirectiveDirectiveSTR
   ],
   imports: [
     BrowserModule,
