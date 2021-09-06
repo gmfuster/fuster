@@ -1,52 +1,68 @@
-<nav class="navbar navbar-default navbar-fixed-top TopNav" style="background: skyblue;"  >
+<nav class="navbar navbar-default navbar-fixed-top TopNav" >
 
-  <div class="container-fluid">
+  <div class="container-fluid-nav"><!--class="container-fluid"-->
 
-    <div class="navbar-header">
+    <div class="navbar-header" style="background-color: skyblue; " >
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()' style="color:navy;">
         <span style="color:navy;" class="icon-bar"></span>
         <span style="color:navy;" class="icon-bar"></span>
         <span style="color:navy;" class="icon-bar"></span>
-      </button>
-      <!--
-  <a class='navbar-brand' [routerLink]='["/"]' style="padding:3px">
-    <img  style="height:5vh; border-radius:25%; margin-top:0px;" src="assets/images/jandmlaughingblue.svg" alt="Learning if Fun with Jon and His mom" />
-  </a>
-                 -->
+      </button>    
     </div>
 
-  <div  class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
-    <ul class="nav navbar-nav">
 
-      <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-        <a [routerLink]='["/"]' (click)='collapse()' style="color:navy; font-size:3vh; ">
-          <span class='glyphicon glyphicon-home'></span>
-        </a>
-      </li>
+    <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }' style="background-color: skyblue; width: 100%;">
 
-      <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-        <a [routerLink]='["/angular-notes"]' (click)='collapse()' style="color:navy; font-size:3vh; ">
-          Angular
-        </a>
-      </li>
+      <ul class="nav navbar-nav" >
+        <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+          <a [routerLink]='["/"]' (click)='collapse()' style="color:navy; font-size:2.5vh; ">
+            <span  class='glyphicon glyphicon-home'></span>
+          </a>
+        </li>        
 
-      <!--
-  <li [routerLinkActive]='["link-active"]'>
-    <a [routerLink]='["/games"]' (click)='collapse()' style="color:dodgerblue; font-size:3vh; ">Games</a>
-  </li>
+      </ul>    
+      <!--Angular-->
+      <ul class="nav navbar-nav" >
+        <li class="dropdown" appDropDown>    
+          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
+            <span style="color:navy; font-size:2.5vh; cursor: pointer;">Angular <span class='glyphicon caret'></span></span>
+          </a>
+          <ul class="dropdown-menu">                       
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
+                Angular 1
+              </a>
+            </li>
+            <li>
+              <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
+                Angular 2
+              </a>
+            </li>
+          </ul>                    
+        </li>
+      </ul>
+      <!--Math-->
+      <ul class="nav navbar-nav" >
+        <li class="dropdown" appDropDown>    
+          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
+            <span style="color:navy; font-size:2.5vh; cursor: pointer;">Math<span class='glyphicon caret'></span></span>
+          </a>
+          <ul class="dropdown-menu">                       
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
+                Probability
+              </a>
+            </li>
+            <li>
+              <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
+                Angular
+              </a>
+            </li>
+          </ul>                    
+        </li>
+      </ul>
 
-  <li [routerLinkActive]='["link-active"]'>
-    <a [routerLink]='["/math-k"]' (click)='collapse()'  style="color:navy; font-size:3vh; ">Math-K</a>
-  </li>
-       -->
-
-    </ul>
- 
-
-
-
-      <ul class="nav navbar-nav navbar-right" style="margin-right:2px;">
-
+      <ul class="nav navbar-nav navbar-right" style="margin-right:2px;">       
         <li>
           <a href="https://twitter.com/GMFuster" target="_new">
             <img alt="Twitter"
@@ -54,7 +70,6 @@
                  class="align-top" />
           </a>
         </li>
-
         <li>
           <a href="https://gmfuster.medium.com/" target="_new">
             <img alt="Medium"

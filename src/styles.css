@@ -79,7 +79,14 @@
   padding:6px;
   background-color: lightcyan;  
 }
-
+.markClassCardWholeBlue {
+  background-color: skyblue;
+  padding-left: 6px;
+  padding-right: 6px;
+  border: 3px skyblue solid;  
+  border-bottom: 0;  
+  text-align: center;
+}
 
 a:link {
   color: deeppink;

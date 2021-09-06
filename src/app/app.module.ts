@@ -20,6 +20,7 @@ import { SomeDirectiveDirective3 } from './some-directive-directive/some-directi
 import { SomeDirectiveDirective4 } from './some-directive-directive/some-directive-directive.directive';
 import { SomeDirectiveDirective5 } from './some-directive-directive/some-directive-directive.directive';
 import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-directive-directive.directive';
+import { DropdownDirective } from './shared/dropdown-directive';
 
 @NgModule({
   declarations: [    
@@ -36,7 +37,8 @@ import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-di
     SomeDirectiveDirective3,
     SomeDirectiveDirective4,
     SomeDirectiveDirective5,
-    appSomeDirectiveDirectiveSTR
+    appSomeDirectiveDirectiveSTR,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
