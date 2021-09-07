@@ -8,10 +8,15 @@
   color: deepskyblue;  
 }
 
+.formulaBackground{
+  background-color: paleturquoise;
+  padding:5px;
+}
+
 .main-body {
   color: navy;
   font-family: 'Arima Madurai', cursive;
-  font-size: 1.5vw;  
+  font-size: 1.6vw;  
 }
 .TopNav {
   height:6vh; 

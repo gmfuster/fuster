@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { AngularNotesComponent } from './angular-notes/angular-notes.component';
+import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { HeaderImageComponent } from './header-image/header-image.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingDescriptionsComponent } from './landing-descriptions/landing-descriptions.component';
@@ -28,6 +29,7 @@ import { DropdownDirective } from './shared/dropdown-directive';
     NavMenuComponent,
     HomeComponent,
     AngularNotesComponent,
+    ProbabilityNotesComponent,
     HeaderImageComponent,
     LandingDescriptionsComponent,
     FooterComponent,

@@ -1,3 +1,5 @@
+
+
 <nav class="navbar navbar-default navbar-fixed-top TopNav" >
 
   <div class="container-fluid-nav"><!--class="container-fluid"-->
@@ -19,10 +21,12 @@
             <span  class='glyphicon glyphicon-home'></span>
           </a>
         </li>        
-
       </ul>    
+
+      
       <!--Angular-->
-      <ul class="nav navbar-nav" >
+      <ul class="nav navbar-nav" >        
+        
         <li class="dropdown" appDropDown>    
           <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
             <span style="color:navy; font-size:2.5vh; cursor: pointer;">Angular <span class='glyphicon caret'></span></span>
@@ -32,12 +36,7 @@
               <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
                 Angular 1
               </a>
-            </li>
-            <li>
-              <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
-                Angular 2
-              </a>
-            </li>
+            </li>            
           </ul>                    
         </li>
       </ul>
@@ -49,19 +48,18 @@
           </a>
           <ul class="dropdown-menu">                       
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/probability-notes"]'  style="color:navy; font-size:2.5vh; ">
                 Probability
               </a>
             </li>
-            <li>
-              <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
-                Angular
-              </a>
-            </li>
+            
           </ul>                    
         </li>
       </ul>
 
+
+
+      <!--icons on right-->
       <ul class="nav navbar-nav navbar-right" style="margin-right:2px;">       
         <li>
           <a href="https://twitter.com/GMFuster" target="_new">
