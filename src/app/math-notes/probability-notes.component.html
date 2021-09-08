@@ -34,7 +34,7 @@
     <div class="container-fluid" >      
       <div class="row">
         <div class="col-sm-3">
-          <img class="leftImageStyle" src="assets\images\math\piechart2.svg" alt="pie chart with posibilities A, B, C, D" />
+          <img class="leftImageStyle" src="assets\images\math\piechart2.svg" alt="pie chart with posibilities A, A, C, D" />
         </div>
         <div class="col-sm-9">
           Similar as before, but now the A takes out more, so in reality we have A, A, C, D.<br/><br/>
@@ -54,8 +54,8 @@
     <div class="container-fluid" >      
       <div class="row">
         <div class="col-sm-3">
-          <img class="leftImageSmallStyle" src="assets\images\math\piechart2.svg" alt="pie chart with posibilities A, B, C, D" /><br/>
-          <img class="leftImageSmallStyle" src="assets\images\math\piechart2.svg" alt="pie chart with posibilities A, B, C, D" />
+          <img class="leftImageSmallStyle" src="assets\images\math\piechart2.svg" alt="pie chart with posibilities A, A, C, D" /><br/>
+          <img class="leftImageSmallStyle" src="assets\images\math\piechart2.svg" alt="pie chart with posibilities A, A, C, D" />
         </div>
         <div class="col-sm-9">
           The probability of 2 independent events happening at the same time is their product.<br/><br/>
@@ -73,7 +73,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__________________________________<br/>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# of trials we did<br/>
       </div><br/><br/>
-      If we have the experimental probability, we can calculate the expected outcome with n number of trials as:<br/>
+      If we have the theoretical probability, we can calculate the expected outcome with n number of trials as:<br/>
       <div class="formulaBackground">Expected Outcome = E(A) = P(A) * n;
     </div>
     <hr class="hrClassNoSideMargin" />
@@ -81,7 +81,7 @@
     <div class="container-fluid" >      
       <div class="row">
         <div class="col-sm-3">
-          <img class="leftImageStyle" src="assets\images\math\piechart2.svg" alt="pie chart with posibilities A, B, C, D" />
+          <img class="leftImageStyle" src="assets\images\math\piechart2.svg" alt="pie chart with posibilities A, A, C, D" />
         </div>
         <div class="col-sm-9">
           From before, we know the P(A) on this graph is .50;<br/>
@@ -95,11 +95,130 @@
 
             From the theoretical probability, we know <strong>theoretical P(A) = .5;</strong><br/>
             With the experimental trial, we will have P(A) = (Number of As) / (All) = {{numberOfAs}} / {{50}} = <strong>{{numberOfAs/50}} = Experimental P(A)</strong><br/>
-            Most of the time the experimental is very close to the theoretical, though I did a bunch and in one D came up the winner!
+            Most of the time the experimental is very close to the theoretical, though I did a bunch and in one D came up the winner!<br/>
+            In the results above, the E(A) for the 50 trials will be the number of times we got A (/50 * 50), so what would the expected outcome be
+            if instead of 50 trials we did 1000? <strong> P(A) * 1000 = {{(numberOfAs/50) * 1000}}</strong> As out of 1000.<br/>   
+            With the theoretical P(A) of .5 it should be half the time, 500.         
+        </div>
+      </div>
+    </div>  
+    <hr class="hrClassNoSideMargin" />
+
+
+    <div class="container-fluid" >      
+      <div class="row">
+        <div class="col-sm-3">
+          <img class="leftImageStyle" src="assets\images\math\piechart2WithPoints.svg" alt="pie chart with posibilities A, A, C, D with points" />
+        </div>
+        <div class="col-sm-9">
+               Ok I know the image is not perfect, but close enough.  Now we have points (numerical) on the graph, and the probabilities for each one are:<br/>
+               P(10 points) => 8/16 = .5;<br/>
+               P(20 points) => 5/16 = 0.3125;<br/>
+               P(40 points) => 3/16 = 0.1875;<br/><br/>
+               The expected outcome on 1 shot would be : E(X) = (10 points) * .5 + (20 points) * 0.3125 + (40 points) * 0.1875 = 5 + 6.25 + 7.5 = 18.75;<br/>
+               Which is not a real number but it's useful when giving the likely interval.
         </div>
     </div>
     <hr class="hrClassNoSideMargin" />
 
+
+    <div class="container-fluid" >      
+      <div class="row"><!--LEFT ROW MAIN GRID-->
+       
+        <div class="col-sm-5">
+          <table style="width:100%">           
+            <tr style="font-weight: bold; background-color: skyblue;">
+              <td style="width:14%"></td>
+              <td style="width:14%">1</td>
+              <td style="width:14%">2</td>
+              <td style="width:14%">3</td>
+              <td style="width:14%">4</td>
+              <td style="width:14%">5</td>
+              <td style="width:14%">6</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; background-color: skyblue;">1</td>
+              <td style="background-color: springgreen;">2</td>
+              <td style="background-color:thistle;">3</td>
+              <td style="background-color:yellow;">4</td>
+              <td style="background-color:aquamarine">5</td>
+              <td style="background-color:deeppink">6</td>
+              <td style="background-color:coral">7</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;background-color: skyblue;">2</td>
+              <td style="background-color:thistle;">3</td>
+              <td style="background-color:yellow;">4</td>
+              <td style="background-color:aquamarine">5</td>
+              <td style="background-color:deeppink">6</td>
+              <td style="background-color:coral">7</td>
+              <td style="background-color:dodgerblue">8</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;background-color: skyblue;">3</td>
+              <td style="background-color:yellow;">4</td>
+              <td style="background-color:aquamarine">5</td>
+              <td style="background-color:deeppink">6</td>
+              <td style="background-color:coral">7</td>
+              <td style="background-color:dodgerblue">8</td>
+              <td style="background-color:lightgoldenrodyellow">9</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;background-color: skyblue;">4</td>
+              <td style="background-color:aquamarine">5</td>
+              <td style="background-color:deeppink">6</td>
+              <td style="background-color:coral">7</td>
+              <td style="background-color:dodgerblue">8</td>
+              <td style="background-color:lightgoldenrodyellow">9</td>
+              <td style="background-color:lightpink">10</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;background-color: skyblue;">5</td>
+              <td style="background-color:deeppink">6</td>
+              <td style="background-color:coral">7</td>
+              <td style="background-color:dodgerblue">8</td>
+              <td style="background-color:lightgoldenrodyellow">9</td>
+              <td style="background-color:lightpink">10</td>
+              <td style="background-color:mediumslateblue">11</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold;background-color: skyblue;">6</td>
+              <td style="background-color:coral">7</td>
+              <td style="background-color:dodgerblue">8</td>
+              <td style="background-color:lightgoldenrodyellow">9</td>
+              <td style="background-color:lightpink">10</td>
+              <td style="background-color:mediumslateblue">11</td>
+              <td style="background-color:mistyrose">12</td>
+            </tr>
+          </table>        
+        </div>
+
+
+        <div class="col-sm-7">
+               The table shows the possible outcomes of rolling 2 dice.  There are a total of 36 cells.  Some numbers appear only in one cell, some 
+               in multiple cells.  The probability of each outcome is:<br/>
+
+               <div class="formulaBackground">Number of cells containing the number / 36; </div><br/>
+               Using the expected numerical outcome formula E(n) = P(2) * 2 + P(3) * 3 ... + P(12) * 12 = 7, which is the one that shows up in the most cells.<br/>
+               The number of times each number appears is the <strong>Frequency</strong>.<br/>
+               The collection of the frequencies and the probability associated to the frequencies is the <strong>Probability Frequency Distribution.</strong>
+               These can be shown in different types of graphs.
+        </div>
+    </div>
+    <hr class="hrClassNoSideMargin" />
+
+    <div class="container-fluid" >      
+      <div class="row"><!--LEFT ROW MAIN GRID-->
+                       
+        <div class="col-sm-12">
+          An <strong>event</strong> is a certain outcome.  The <strong>complement</strong> of the event is everything the event is not.  If the event we want is getting 
+          a 6 on the roll of the dice, its complement is getting anything else that is not a 6.<br/>
+          The sume of all probabilities should add up to 1 (100%). If it is <strong>greater than 1</strong>, we have that some of the outcomes can happen at the same time.  If 
+          it is <strong>less than 1</strong>, we have missed something.<br/>
+          If the event is indicated with A, its complement is A', and A'' = A.  Also, <div class="formulaBackground"> P(A) = 1-P(A')</div>
+        </div>
+    </div>
+    <hr class="hrClassNoSideMargin" />
  
  
  
