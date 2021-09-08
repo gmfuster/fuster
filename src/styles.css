@@ -118,6 +118,12 @@ a:active {
   margin-left: 3vw;
   margin-right: 3vw;
 }
+.hrClassNoSideMargin {
+  border: none;
+  height: 4px;
+  background: skyblue;
+  margin-bottom: 50px;
+}
 /*
 mark {
   color: navy !important;

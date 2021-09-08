@@ -19,7 +19,7 @@
           In the image the possible outcomes are A, B, C, D.  What is the probability of getting an A?<br/><br/>
           
           <div class="formulaBackground">
-            p(A) = # of preferred outcomes (1)<br/>
+            P(A) = # of preferred outcomes (1)<br/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__________________________________<br/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# of all possible outcomes (4)<br/>
           </div>
@@ -29,7 +29,7 @@
         </div>
     </div>
 
-    <hr class="hrClass" />
+    <hr class="hrClassNoSideMargin" />
 
     <div class="container-fluid" >      
       <div class="row">
@@ -40,7 +40,7 @@
           Similar as before, but now the A takes out more, so in reality we have A, A, C, D.<br/><br/>
           
           <div class="formulaBackground">
-            p(A) = # of preferred outcomes (2)<br/>
+            P(A) = # of preferred outcomes (2)<br/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__________________________________<br/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# of all possible outcomes (4)<br/>
         </div>
@@ -49,7 +49,7 @@
         </div>
     </div>
  
-    <hr class="hrClass" />
+    <hr class="hrClassNoSideMargin" />
 
     <div class="container-fluid" >      
       <div class="row">
@@ -63,7 +63,40 @@
           But how about if we had one graph of each above, and we were saying the probaility of A on the second one (A,A,C,D) and B on the A,B,C,D?  Coming later.
         </div>
     </div>
-    <hr class="hrClass" />
+    <hr class="hrClassNoSideMargin" />
+
+    <div  >      
+      Sometimes we cannot calculate theoretical (above) probabilities and have to go with the experimental ones.  
+      In this case, we can calculate the probabilityof A with:<br/>
+      <div class="formulaBackground">
+        P(A) = # of trials where we got what we wanted <br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__________________________________<br/>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# of trials we did<br/>
+      </div><br/><br/>
+      If we have the experimental probability, we can calculate the expected outcome with n number of trials as:<br/>
+      <div class="formulaBackground">Expected Outcome = E(A) = P(A) * n;
+    </div>
+    <hr class="hrClassNoSideMargin" />
+
+    <div class="container-fluid" >      
+      <div class="row">
+        <div class="col-sm-3">
+          <img class="leftImageStyle" src="assets\images\math\piechart2.svg" alt="pie chart with posibilities A, B, C, D" />
+        </div>
+        <div class="col-sm-9">
+          From before, we know the P(A) on this graph is .50;<br/>
+          Click on this <button (click)="onClickGetAACDtrials()">button</button> to create a pretend experimental trials with n = 50.  It will get a random number between 1 and 4 and will assign
+          A for 1 and 2, C for 3, and D for 4.
+          
+          <div class="formulaBackground">
+            P(A) = # of preferred outcomes (2)<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__________________________________<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# of all possible outcomes (4)<br/>
+        </div>
+          <br/>
+          So the P(A)= 2/4 =.50; 
+        </div>
+    </div>
 
  
  
