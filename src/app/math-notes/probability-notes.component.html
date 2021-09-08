@@ -86,17 +86,19 @@
         <div class="col-sm-9">
           From before, we know the P(A) on this graph is .50;<br/>
           Click on this <button (click)="onClickGetAACDtrials()">button</button> to create a pretend experimental trials with n = 50.  It will get a random number between 1 and 4 and will assign
-          A for 1 and 2, C for 3, and D for 4.
-          
-          <div class="formulaBackground">
-            P(A) = # of preferred outcomes (2)<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;__________________________________<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;# of all possible outcomes (4)<br/>
-        </div>
-          <br/>
-          So the P(A)= 2/4 =.50; 
+          A for 1 and 2, C for 3, and D for 4.<br/><br/>
+          <div *ngIf="numberOfAs > 0 || numberOfCs > 0 || numberOfDs >0 ">
+            Results from "experiment": <br/>
+            Number of As: {{numberOfAs}}<br/>
+            Number of Cs: {{numberOfCs}}<br/>
+            Number of Ds: {{numberOfDs}}<br/><br/>
+
+            From the theoretical probability, we know <strong>theoretical P(A) = .5;</strong><br/>
+            With the experimental trial, we will have P(A) = (Number of As) / (All) = {{numberOfAs}} / {{50}} = <strong>{{numberOfAs/50}} = Experimental P(A)</strong><br/>
+            Most of the time the experimental is very close to the theoretical, though I did a bunch and in one D came up the winner!
         </div>
     </div>
+    <hr class="hrClassNoSideMargin" />
 
  
  

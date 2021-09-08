@@ -1,0 +1,1 @@
+export declare function getRandom1ToN(n:number):number;

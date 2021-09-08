@@ -30,7 +30,7 @@
               "src/styles.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": ["src/app/shared/sharedFunctions.js"]
+            "scripts": ["src/assets/sharedFunctions.js"]
           },
           "configurations": {
             "production": {
@@ -97,7 +97,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": ["src/app/shared/sharedFunctions.js"]
+            "scripts": ["src/assets/sharedFunctions.js"]
           }
         }
       }
