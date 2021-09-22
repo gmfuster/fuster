@@ -118,6 +118,15 @@ a:active {
   margin-left: 3vw;
   margin-right: 3vw;
 }
+.hrHeaderClass {
+  border: none;
+  height: 10px;
+  background: skyblue;  
+  margin-left: 3vw;
+  margin-right: 3vw;
+}
+
+
 .hrClassNoSideMargin {
   border: none;
   height: 4px;
