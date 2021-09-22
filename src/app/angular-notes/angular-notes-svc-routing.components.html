@@ -1,0 +1,74 @@
+<div>
+
+    <div class="PaddedContents">
+
+        <br/>
+        <h3 class="CenterMe">There is no @Service like there is @Component and @Directive</h3>
+        <h3 class="CenterMe">You can add a service to the [providers] in the app module and it will be available everywhere.</h3>
+        <h3  class="CenterMe">In Angular 6+, @Injectable(&lbrace;  providedIn: 'root' &rbrace;) export class MyService and it will be available everywhere.</h3><br/>
+
+        <code><strong><u>Call Function in Service</u></strong></code><br />     
+        <code>export class MathServices</code>   <br/>
+        <code>To use svc, in ts: import &lbrace; Injectable &rbrace; from "@angular/core"; </code><br/>
+        <code>import  &lbrace; MathServices &rbrace; from '../shared/forexamples.service';</code><br/>
+        <code>in ts using svc: providers: [MathServices]</code><br/>
+        <code>in ts using svc, before export: @Injectable()</code><br/>
+        <code>in ts using svc:  constructor (private mathServices:MathServices)</code><br/>
+        <code>to call: this.mathServices.getRandom1ToN(10)</code><br/>
+
+        I have a service MathServices that has a getRandom1ToN function.  Click the button to call that service function and show the number we get.
+        <button (click)="onClickMeClicked()">Click me</button>
+
+        <hr class="hrClass" />
+
+
+        <code><strong><u>Call Function in Service with @Injectable(&lbrace;  providedIn: 'root' &rbrace;)</u></strong></code><br />     
+        <code>Injectable(&lbrace;providedIn: 'root' &rbrace;) before export class StringServices</code>   <br/>
+        <code>In the svc, set function as public: public getAString() </code><br/>        
+        <code>in ts using svc:  constructor (private mathServices:MathServices, private stringServices:StringServices)</code><br/>        
+
+        I have a service StringServices created with the @Injectable(&lbrace;  providedIn: 'root' &rbrace;).  Click to call 
+        a function on that service.  What not indicated above is the same as before.<br/>
+        <button (click)="onClickMeClicked2()">Click me 2!</button><br/>
+
+        This offers an advantage: Services can be lazy loaded by Angular when needed.  Better performance.
+
+
+        <hr class="hrClass" />
+
+
+        <code><strong><u>Call Function in Service @NgModule</u></strong></code><br />     
+        <code>in app.module: import &lbrace; OtherServices &rbrace; from './shared/forexamples.service'; under ngModule</code><br/>
+        <code>function in the service should be public</code><br/>
+        <code>No need add to providers in component</code><br/>
+        <code>constructor (private mathServices:MathServices, private stringServices:StringServices, private otherServices:OtherServices)</code><br/>
+                        
+        Instead of on each component, import in the app module.  No need to add to providers in component.
+        
+        <button (click)="onClickMeClicked3()">Click me 3!</button><br/>
+        
+
+        <hr class="hrClass" />
+
+
+        <code><strong><u>Call method that emmits event and listen to it</u></strong></code><br />     
+        <code>in component, call service: this.otherServices.callMeToEmitEvent();    </code><br/>
+        <code>the service will: this.somethingHappened.emit(now.toString()); with somethingHappened = new EventEmitter&lt;string &gt;();</code><br/>
+        <code>in constructor of component: this.otherServices.somethingHappened.subscribe( 
+            (text:string) =>&lbrace; this.somethingHappenedText = text;&rbrace;
+        );</code><br/>
+        <code ngNonBindable>in html, &lt;span style="background-color: lightgreen;"&gt; &lbrace;&lbrace;somethingHappenedText&rbrace;&rbrace; &lt;/span&gt;</code><br/>
+                        
+        Clicking the button will call a service method that will return an event.  There will be code listening to that event from the service and it will set 
+        the span with a "I got Notified at " and the time.<br/>
+        
+        <button (click)="onClickMeClicked4()">Click me 4!</button><br/>
+        <span style="background-color: lightgreen;">{{somethingHappenedText}}</span>
+
+        <hr class="hrClass" />
+
+
+
+
+    </div>  
+</div>

@@ -22,6 +22,7 @@ import { SomeDirectiveDirective4 } from './some-directive-directive/some-directi
 import { SomeDirectiveDirective5 } from './some-directive-directive/some-directive-directive.directive';
 import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-directive-directive.directive';
 import { DropdownDirective } from './shared/dropdown-directive';
+import { OtherServices } from './shared/forexamples.service';
 
 @NgModule({
   declarations: [    
@@ -50,7 +51,7 @@ import { DropdownDirective } from './shared/dropdown-directive';
     FormsModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [OtherServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
