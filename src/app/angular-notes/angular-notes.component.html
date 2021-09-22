@@ -1,8 +1,10 @@
 
 <div>
-  <h1 class="CenterMe">Just some Angular notes - 1</h1>
+  <h2 class="CenterMe">Angular notes</h2>
   <h4 class="CenterMe">For detail explanations check my Medium articles, these are very summarized notes.</h4>
-  <h4 class="CenterMe">Naming is not always accoding to standard but I thought it was simpler.</h4>
+  <h4 class="CenterMe">Naming is not always according to standard but I thought it was simpler.</h4>
+  <h3 class="CenterMe"> <a href="https://medium.com/nerd-for-tech/angular-vs-react-compare-the-very-basics-776fd96fec23"
+    target="_new">Angular vs React - basics</a></h3>
   <br />
 
 
@@ -46,7 +48,7 @@
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
     <mark *ngIf="theBoolVar">I go on and off</mark><br/><br/>
     
-    <code ngNonBindable><strong><u>*ngIf with else</u></strong></code><br />    
+    <code ngNonBindable><u>*ngIf with else</u></code><br />    
     <code ngNonBindable>&lt;mark *ngIf="theBoolVar; else onElse;" &gt;I go on and off&lt;/mark&gt;</code><br/>
     <code ngNonBindable>&lt;ng-template #onElse&gt;I show up on else (false)&lt;/mark&gt;</code><br/>
     The marked test below will show depending on a boolean variable on the ts file.  There is an ng-template for the else

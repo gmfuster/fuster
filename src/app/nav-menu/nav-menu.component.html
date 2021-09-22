@@ -4,6 +4,7 @@
 
   <div class="container-fluid-nav"><!--class="container-fluid"-->
 
+    <!--
     <div class="navbar-header" style="background-color: skyblue; " >
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()' style="color:navy;">
         <span style="color:navy;" class="icon-bar"></span>
@@ -11,7 +12,7 @@
         <span style="color:navy;" class="icon-bar"></span>
       </button>    
     </div>
-
+-->
 
     <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }' style="background-color: skyblue; width: 100%;">
 
@@ -36,10 +37,11 @@
               <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
                 Angular 1
               </a>
-            </li>            
+            </li>           
           </ul>                    
         </li>
       </ul>
+
       <!--Math-->
       <ul class="nav navbar-nav" >
         <li class="dropdown" appDropDown>    
@@ -58,8 +60,8 @@
       </ul>
 
 
-
       <!--icons on right-->
+      <!--
       <ul class="nav navbar-nav navbar-right" style="margin-right:2px;">       
         <li>
           <a href="https://twitter.com/GMFuster" target="_new">
@@ -76,14 +78,13 @@
           </a>
         </li>
         <li>
-     <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_new">
-       <img alt="FreeCodeCamp translated articles"
+          <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_new">
+            <img alt="FreeCodeCamp translated articles"
             src="assets/images/fcc_primary_small.svg" style="width:35px; height:35px;"
             class="align-top" />
-     </a>
-   </li>
-      
-      </ul>
+          </a>
+        </li>      
+      </ul>-->
     </div>
 
   </div>
