@@ -59,8 +59,7 @@
         </div>
         <div class="col-sm-9">
           The probability of 2 independent events happening at the same time is their product.<br/><br/>
-          So to get A in one circle and C in another circle: <span class="formulaBackground"> P(A) * P(C) </span>= .5 * .25 = .125;<br/><br/>
-          But how about if we had one graph of each above, and we were saying the probaility of A on the second one (A,A,C,D) and B on the A,B,C,D?  Coming later.
+          So to get A in one circle and C in another circle: <span class="formulaBackground"> P(A) * P(C) </span>= .5 * .25 = .125;<br/><br/>        
         </div>
     </div>
     <hr class="hrClassNoSideMargin" />
@@ -96,7 +95,7 @@
             From the theoretical probability, we know <strong>theoretical P(A) = .5;</strong><br/>
             With the experimental trial, we will have P(A) = (Number of As) / (All) = {{numberOfAs}} / {{50}} = <strong>{{numberOfAs/50}} = Experimental P(A)</strong><br/>
             Most of the time the experimental is very close to the theoretical, though I did a bunch and in one D came up the winner!<br/>
-            In the results above, the E(A) for the 50 trials will be the number of times we got A (/50 * 50), so what would the expected outcome be
+            In the results above, the E(A) for the 50 trials will be (the number of times we got A /50) * 50), so what would the expected outcome be
             if instead of 50 trials we did 1000? <strong> P(A) * 1000 = {{(numberOfAs/50) * 1000}}</strong> As out of 1000.<br/>   
             With the theoretical P(A) of .5 it should be half the time, 500.         
         </div>
@@ -208,7 +207,7 @@
     <hr class="hrClassNoSideMargin" />
 
     <div class="container-fluid" >      
-      <div class="row"><!--LEFT ROW MAIN GRID-->
+      <div class="row"><!--LEFT ROW MAIN GRID  don't remember why I did it this way, todo-->
                        
         <div class="col-sm-12">
           An <strong>event</strong> is a certain outcome.  The <strong>complement</strong> of the event is everything the event is not.  If the event we want is getting 
@@ -219,6 +218,88 @@
         </div>
     </div>
     <hr class="hrClassNoSideMargin" />
+
+    <div class="container-fluid" >      
+      <div class="row">
+        <div class="col-sm-3">
+          <div style="background-color: lightgreen;  width:150px; ">1st</div>
+          <div style="background-color: lightpink; width:100px; ">2nd</div>
+          <div style="background-color: lightgrey;  width:50px; ">3rd</div>
+        </div>
+        <div class="col-sm-9">
+              <strong>Permutation:</strong> Number of ways in which we can arrange a set of elements.<br/>
+              We have 3 jumpers, whoever jumps the farthest wins.  There are 3 positions.  Only one jumper can be in position #1.  Only one can 
+              be in position #2 and only one can be in position #3.  The number of permutations we can have is:<br/>
+              <div class="formulaBackground">P(n)= n*(n-1)*(n-2)...*1 =  n! (factorial)</div><br/>
+              <div class="formulaBackground">0! = 1; Negative numbers do not have a factorial.</div>
+              <div class="formulaBackground">(n+1)! = n! * (n+1)</div>
+              <div class="formulaBackground">(n+k)! = n! * (n+1)*(n+2)*...(n+k)</div>
+              <div class="formulaBackground">(n-k)! = n! / ( (n-k+1)(n-k+2)...(n-k+k)   )</div>
+              <div class="formulaBackground">if n> k ==> n! / k! = (k+1)(k+2)...n</div><br/>
+              So in the jumpers example, we have n! = 3! = 3*2*1 = 6 possible ways that this could end up if our jumpers are A, B, C:<br/>
+
+              <div style="display:inline-block;">
+                <div style="background-color: lightgreen;  width:150px; ">A</div>
+                <div style="background-color: lightpink; width:100px; ">B</div>
+                <div style="background-color: lightgrey;  width:50px; ">C</div><br/>  
+              </div>
+              &nbsp;&nbsp;
+              <div style="display:inline-block;">
+                <div style="background-color: lightgreen;  width:150px; ">A</div>
+                <div style="background-color: lightpink; width:100px; ">C</div>
+                <div style="background-color: lightgrey;  width:50px; ">B</div><br/>
+              </div>
+              &nbsp;&nbsp;
+              <div style="display:inline-block;">
+                <div style="background-color: lightgreen;  width:150px; ">B</div>
+                <div style="background-color: lightpink; width:100px; ">A</div>
+                <div style="background-color: lightgrey;  width:50px; ">C</div><br/>
+              </div>  
+
+              <br/>
+              <div style="display:inline-block;">
+                <div style="background-color: lightgreen;  width:150px; ">B</div>
+                <div style="background-color: lightpink; width:100px; ">C</div>
+                <div style="background-color: lightgrey;  width:50px; ">A</div><br/>
+              </div>
+              &nbsp;&nbsp;
+              <div style="display:inline-block;">
+                <div style="background-color: lightgreen;  width:150px; ">C</div>
+                <div style="background-color: lightpink; width:100px; ">A</div>
+                <div style="background-color: lightgrey;  width:50px; ">B</div><br/>
+              </div>
+              &nbsp;&nbsp;
+              <div style="display:inline-block;">
+                <div style="background-color: lightgreen;  width:150px; ">C</div>
+                <div style="background-color: lightpink; width:100px; ">B</div>
+                <div style="background-color: lightgrey;  width:50px; ">A</div><br/>
+              </div>
+        </div>
+    </div>
+    <hr class="hrClassNoSideMargin" />
+
+
+
+
+    <div class="container-fluid" >      
+      <div class="row">
+        <div class="col-sm-3">
+          <div style="background-color: lightgreen;  width:150px; ">A, B, or C</div>
+          <div style="background-color: lightpink; width:150px; ">A, B, or C</div>          
+        </div>
+        <div class="col-sm-9">
+              <strong>Variation:</strong> Number of ways we can pick and arrange some elements of a given set.<br/>
+              Now we can have 2 spots, and in each spot we can have A, B, or C.  It is possible to have A,A, B,B etc ("duplicates).
+              In this case, we cannot use permutations (those will not have the same value twice).  To calculate the variations:<br/>
+              <div class="formulaBackground">
+                <img class="mainImageStyle" src="assets\images\math\formulas\variations1.svg" alt="pvariations formula" />
+              </div><br/>
+              So in our example, the positions to fill is 2, and the number of elements to arrange is 3 ==> 3 to the power of 2 = 9.
+              
+        </div>
+    </div>
+    <hr class="hrClassNoSideMargin" />
+
  
  
  

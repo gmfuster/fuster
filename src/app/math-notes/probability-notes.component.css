@@ -7,6 +7,10 @@
     height:8vw;
 }
 
+.mainImageStyle{
+    width:25vw;
+    height: 25vw;
+}
 table, th, td {
     border:1px solid deepskyblue;
   }
