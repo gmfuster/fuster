@@ -14,9 +14,10 @@
 }
 
 .main-body {
-  color: navy;
+  color:navy;
   font-family: 'Arima Madurai', cursive;
   font-size: 1.6vw;  
+  background-color: white;
 }
 .TopNav {
   height:6vh; 
