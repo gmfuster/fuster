@@ -63,6 +63,23 @@
         </li>
       </ul>
 
+      <!--C#-->
+      <ul class="nav navbar-nav" >
+        <li class="dropdown" appDropDown style="background-color:mediumspringgreen;">    
+          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
+            <span style="color:navy; font-size:2.5vh; cursor: pointer;">C#<span class='glyphicon caret'></span></span>
+          </a>
+          <ul class="dropdown-menu">                       
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/csharp-articles"]'  style="color:navy; font-size:2.5vh; ">
+                Lang. Articles
+              </a>
+            </li>
+            
+          </ul>                    
+        </li>
+      </ul>
+
 
       <!--icons on right-->
       <!--
