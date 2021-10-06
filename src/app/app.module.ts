@@ -21,6 +21,7 @@ import { SomeDirectiveDirective3 } from './some-directive-directive/some-directi
 import { SomeDirectiveDirective4 } from './some-directive-directive/some-directive-directive.directive';
 import { SomeDirectiveDirective5 } from './some-directive-directive/some-directive-directive.directive';
 import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-directive-directive.directive';
+import { ReadBackComponent } from './other-fun/read-back.component';
 import { DropdownDirective } from './shared/dropdown-directive';
 import { OtherServices } from './shared/forexamples.service';
 
@@ -41,7 +42,8 @@ import { OtherServices } from './shared/forexamples.service';
     SomeDirectiveDirective4,
     SomeDirectiveDirective5,
     appSomeDirectiveDirectiveSTR,
-    DropdownDirective
+    DropdownDirective,
+    ReadBackComponent
   ],
   imports: [
     BrowserModule,

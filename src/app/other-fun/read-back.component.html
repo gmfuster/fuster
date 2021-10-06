@@ -1,0 +1,22 @@
+
+ <div class="PaddedContents">
+
+  <div className="CenterMe" >
+    <br/>
+    <strong>Reading backwards is good for you!</strong><br/>
+    Direction is right to left and the letters are rotated. 
+    <br/>  
+    
+    <div *ngFor = "let item of titlesDescArray;"> 
+      <div class="reverse title" *ngIf="item.title != ''">{{item.title}}</div>
+      <div class="reverse desc" *ngIf="item.desc != ''">
+        {{item.desc}}
+      </div><br/>
+      <div class="showOriginal" *ngIf="item.title != ''">
+        {{item.title}}<br/>
+        {{item.desc}}
+      </div>
+      <br><br/>
+    </div>           
+</div>
+  </div>  

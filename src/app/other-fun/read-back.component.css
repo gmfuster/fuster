@@ -1,0 +1,13 @@
+.title{
+  background-color: rgb(189, 235, 233);
+}
+.desc{
+  background-color: lightyellow;
+}
+.reverse{
+  transform: scale(-1, 1);
+}
+.showOriginal{
+  background-color: mediumaquamarine;
+  font-size: 1vw;
+}

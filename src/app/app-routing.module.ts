@@ -6,6 +6,7 @@ import { AngularNotesComponent } from './angular-notes/angular-notes.component';
 import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-svc-routing.component';
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
+import { ReadBackComponent } from './other-fun/read-back.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -15,6 +16,8 @@ const routes: Routes = [
   { path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },
 
   { path: 'csharp-articles', component: CSharpArticlesComponent, pathMatch: 'full' },
+
+  { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
