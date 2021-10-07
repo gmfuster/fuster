@@ -3,7 +3,7 @@ import { Component , OnInit} from '@angular/core';
 @Component({
   selector: 'read-back',
   templateUrl: './read-back.component.html',
-  styleUrls: ['./read-back.component.css']
+  styleUrls: ['./other.component.css']
 })
 
 export class ReadBackComponent implements OnInit{

@@ -7,6 +7,7 @@ import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-s
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
 import { ReadBackComponent } from './other-fun/read-back.component';
+import {MemoryCardsComponent } from './other-fun/memory-cards.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'csharp-articles', component: CSharpArticlesComponent, pathMatch: 'full' },
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
+  { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
