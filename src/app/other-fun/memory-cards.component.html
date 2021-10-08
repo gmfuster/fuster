@@ -2,7 +2,7 @@
 
   <div className="CenterMe" >
 
-    <div style="position:relative; display:grid; width:100vw; height: 85vh; grid-template-columns: 80vw 20vw;"> 
+    <div style="position:relative; display:grid; width:90vw; height: 80vh; grid-template-columns: 75vw 15vw;margin:5px;"> 
               
       <div style="display:grid; grid-template-columns: repeat(6, 1fr); grid-template-rows: 20vh 20vh 20vh 20vh;">
         <div class="carImages"><img alt="car " width="100%" height="100%" src={{picturesShown[0]}} (click)="onImageClicked(0)" /></div>
@@ -35,14 +35,14 @@
       </div>
 
 
-      <div style="margin:2px">
+      <div style="margin:5px">
         If 2 players, each player takes 1 turn.<br/>     
-        <h2 style="color:rgb(12, 223, 223)">Playing: {{currentPlayer}}</h2>
-        <h2 style="color:deepskyblue">Player 1=</h2>
-        <h2 style="color:deepskyblue">{{player1Score}}</h2>
-        <h2 style="color:deeppink">Player 2=</h2>
-        <h2 style="color:deeppink">{{player1Score}}</h2>
-        <button className="buttonGeneral" click ="onPlayAgain()">Again</button>
+        <h2 style="color:rgb(12, 223, 223)"><u>Now Player: {{currentPlayer}}</u></h2>
+        <h3 style="color:deepskyblue">Score Player 1:</h3>
+        <h3 style="color:deepskyblue">{{player1Score}}</h3>
+        <h3 style="color:deeppink">Score Player 2:</h3>
+        <h3 style="color:deeppink">{{player2Score}}</h3>
+        <button className="buttonGeneral" (click) ="onPlayAgain()">Again</button>
       </div>
     </div>
   </div>    

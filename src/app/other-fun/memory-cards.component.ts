@@ -72,18 +72,20 @@ export class MemoryCardsComponent implements OnInit{
       }  
 
       //if two are up, count point if the same, or put back if not the same.
-      if(this.cardOneOpen.open && this.cardTwoOpen.open){        
-        if (this.picturesShown[this.cardOneOpen.n] === this.picturesShown[this.cardTwoOpen.n]){          
-          (this.currentPlayer = 1)? this.player1Score++ : this.player2Score ++;          
+      if(this.cardOneOpen.open && this.cardTwoOpen.open){   
+
+        if (this.picturesShown[this.cardOneOpen.n] === this.picturesShown[this.cardTwoOpen.n]){                        
+          (this.currentPlayer === 1)? this.player1Score++ : this.player2Score++;                    
         }else{                   
           setTimeout( () => {   
             this.picturesShown[this.cardOneOpen.n] = this.backImage;
             this.picturesShown[this.cardTwoOpen.n] = this.backImage;            
           }, 1000);
         }
+
         this.cardOneOpen.open = false;
-        this.cardTwoOpen.open = false;    
-        (this.currentPlayer = 1)? this.currentPlayer =2 : this.currentPlayer =1;      
+        this.cardTwoOpen.open = false;          
+        (this.currentPlayer === 1)? this.currentPlayer =2 : this.currentPlayer =1;      
       }
     }     
   }
