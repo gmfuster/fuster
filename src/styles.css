@@ -134,6 +134,41 @@ a:active {
   background: skyblue;
   margin-bottom: 50px;
 }
+
+
+.radio-toolbar {
+  margin: 10px;
+}
+
+.radio-toolbar input[type="radio"] {
+  opacity: 0;
+  position: fixed;
+  width: 0;  
+}
+
+.radio-toolbar label {
+    display: inline-block;    
+    background-color:white;
+    padding: 5px 25px;      
+    font-size: 1.5vw;
+    border: 2px solid deepskyblue;
+    border-radius: 25px;        
+    margin:5px;
+    box-shadow: 0 12px #999;    
+}
+
+.radio-toolbar label:hover {
+  background-color: deeppink;
+}
+
+
+.radio-toolbar input:checked + label {
+    background-color: aqua;
+    border-color:deepskyblue;    
+    box-shadow: 0 5px gray;
+}
+
+
 /*
 mark {
   color: navy !important;

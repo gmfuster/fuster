@@ -9,9 +9,11 @@ import { Component , OnInit} from '@angular/core';
 export class ReadBackComponent implements OnInit{
   url: string = "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml";
   titlesDescArray: {title:string, desc:string}[] = [];
+  option:string = "backwards";
+  
 
   ngOnInit(){
-    this.getRssFeed();
+    this.getRssFeed();    
   }
 
   async getRssFeed(){         

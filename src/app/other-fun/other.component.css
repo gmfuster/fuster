@@ -4,8 +4,12 @@
 .desc{
   background-color: lightyellow;
 }
+
 .reverse{
   transform: scale(-1, 1);
+}
+.upsideDown{
+  transform: rotate(-180deg);;
 }
 .showOriginal{
   background-color: mediumaquamarine;
@@ -15,4 +19,8 @@
 .carImages{
   border:2px solid navy;
   background-color:lightblue;  
+}
+
+.timesFont{
+  font-family: 'Times New Roman', Times, serif;
 }

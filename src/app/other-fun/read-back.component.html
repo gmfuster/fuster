@@ -3,13 +3,25 @@
 
   <div className="CenterMe" >
     <br/>
-    <strong>Reading backwards is good for you!</strong><br/>
+    <strong>Reading backwards or upsidedown is good for you!</strong><br/>
     Direction is right to left and the letters are rotated. 
     <br/>  
+
     
-    <div *ngFor = "let item of titlesDescArray;"> 
-      <div class="reverse title" *ngIf="item.title != ''">{{item.title}}</div>
-      <div class="reverse desc" *ngIf="item.desc != ''">
+    
+    <div class="radio-toolbar">  
+      <input type="radio" id="backwards" name="readingType" value="backwards" (click)="option='backwards'" [checked]="option==='backwards'"/>
+      <label for="backwards">Read Backwards</label>
+
+      <input type="radio" id="upsidedown" name="readingType" value="upsidedown" (click)="option='upsidedown'" [checked]="option==='upsidedown'" />
+      <label for="upsidedown">Read Upside Down</label>                  
+     
+    </div>
+    
+
+    <div *ngFor = "let item of titlesDescArray;" class="timesFont"> 
+      <div [ngClass]="option === 'backwards' ? 'reverse title' : 'upsideDown title' " *ngIf="item.title != ''">{{item.title}}</div>
+      <div [ngClass]="option === 'backwards' ? 'reverse desc' : 'upsideDown desc' " *ngIf="item.desc != ''">
         {{item.desc}}
       </div><br/>
       <div class="showOriginal" *ngIf="item.title != ''">
