@@ -1,6 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap:regular,bold,italic&subset=latin,latin-ext');
 
+.main-body {
+  /*color:navy;*/
+  color:rgb(183, 253, 253);
+  font-family: 'Arima Madurai', cursive;
+  font-size: 1.6vw;  
+  /*background-color: white;*/
+  background-color: rgb(48, 46, 46);
+}
+body button { 
+  background-color: deepskyblue;
+  border-color: deepskyblue;  
+  color: navy;
+  padding: 0.5vw;
+  border-width: 0px;
+  border-radius: 10px;
+  margin: 2px;
+}
+body button:disabled { 
+  background-color: lightgray;
+  border-color: lightgray;    
+}
 
 .hrClass {
   border: none;
@@ -13,12 +34,7 @@
   padding:5px;
 }
 
-.main-body {
-  color:navy;
-  font-family: 'Arima Madurai', cursive;
-  font-size: 1.6vw;  
-  background-color: white;
-}
+
 .TopNav {
   height:6vh; 
   width:100vw;
@@ -73,7 +89,7 @@
   }
 
 .markClassCardTabBlue {
-  background-color: skyblue;
+  /*background-color: skyblue;*/
   padding-left: 6px;
   padding-right: 6px;
   border: 3px skyblue solid;
@@ -83,10 +99,10 @@
 .markClassCardContentBlue {
   border: 3px skyblue solid;
   padding:6px;
-  background-color: lightcyan;  
+  /*background-color: lightcyan;  */
 }
 .markClassCardWholeBlue {
-  background-color: skyblue;
+  /*background-color: skyblue;*/
   padding-left: 6px;
   padding-right: 6px;
   border: 3px skyblue solid;  
@@ -95,22 +111,26 @@
 }
 
 a:link {
-  color:blue;
+  color:lightyellow;
   background-color: transparent;
   text-decoration: none;
 }
-
-a:visited {
-  color: blue;
-  background-color: transparent;
-  text-decoration: none;
-}
-
 a:active {
-  color: blue;
+  color: lightyellow;
   background-color: transparent;
   text-decoration: underline;
 }
+a:hover{  
+  background-color: lightyellow;
+}
+a:visited {
+  color: lightyellow;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+
 .hrClass {
   border: none;
   height: 4px;

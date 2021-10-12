@@ -110,6 +110,7 @@
     <code>On child html, don't use the alias but the vble name for both</code><br />    
     In this angular-notes component we have a theColor variable used above.  Using it here again, but this time, include also a child component
     which will change its background based on the value we get.  It will also display the text sent to it as an alias.<br/>
+    Disregard the button in the child component, it is not being listened to in this code.<br/>
     <button (click)="onRandomColor()">Random Color</button><br/><br/>
     <some-child-component [myColor]= "theColor" [myTextAlias]="theColor"></some-child-component>
 
