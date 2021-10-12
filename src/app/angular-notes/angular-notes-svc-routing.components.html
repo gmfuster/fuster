@@ -96,6 +96,13 @@
         <br/><br/>
         NOTE: If you are getting an error that it cannot find routerLink, make sure you introduced the component to the app.module.ts or Whatever
         module it should belong to.<br/>
+        Make sure you test all your links.  You don't want to end up using an absolute path when you need a relative path or viceversa.  <br/>
+        Use <code>[routerLinkActive]</code> set to a class to indicate what the link will look like when it is the active one (Angular will handle the how it knows)
+        .  To use the Bootstrap one, just set it to "active".<br/>
+        Use <code>[routerLinkActiveOptions]='&lbrace; exact: true &rbrace;'</code> to indicate for a link to be active it has to match the path exactly.
+        If you don't, you will always have the home link active because all your other paths will include /, which is the home one.<br/>
+        <br/>
+        Besides links, we can also navigate through buttons or in the code. <br/>
 
     </div>  
 </div>
