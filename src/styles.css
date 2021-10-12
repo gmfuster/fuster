@@ -168,10 +168,10 @@ a:visited {
 
 .radio-toolbar label {
     display: inline-block;    
-    background-color:white;
+    background-color:rgb(36, 156, 231);
     padding: 5px 25px;      
     font-size: 1.5vw;
-    border: 2px solid deepskyblue;
+    border: 2px solid rgb(36, 156, 231);
     border-radius: 25px;        
     margin:5px;
     box-shadow: 0 12px #999;    
@@ -183,8 +183,8 @@ a:visited {
 
 
 .radio-toolbar input:checked + label {
-    background-color: aqua;
-    border-color:deepskyblue;    
+    background-color: deeppink;
+    border-color:rgb(36, 156, 231);
     box-shadow: 0 5px gray;
 }
 
