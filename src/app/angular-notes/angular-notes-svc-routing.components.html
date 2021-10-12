@@ -41,7 +41,7 @@
         <hr class="hrClass" />
 
 
-        <code><strong><u>Call Function in Service @NgModule</u></strong></code><br />     
+        <code ngnonbindable><strong><u>Call Function in Service @NgModule</u></strong></code><br />     
         <code>in app.module: import &lbrace; OtherServices &rbrace; from './shared/forexamples.service'; under ngModule</code><br/>
         <code>function in the service should be public</code><br/>
         <code>No need add to providers in component</code><br/>
@@ -61,7 +61,7 @@
         <code>in constructor of component: this.otherServices.somethingHappened.subscribe( 
             (text:string) =>&lbrace; this.somethingHappenedText = text;&rbrace;
         );</code><br/>
-        <code ngNonBindable>in html, &lt;span style="background-color: lightgreen;"&gt; &lbrace;&lbrace;somethingHappenedText&rbrace;&rbrace; &lt;/span&gt;</code><br/>
+        <code >in html, &lt;span style="background-color: lightgreen;"&gt; &lbrace;&lbrace;somethingHappenedText&rbrace;&rbrace; &lt;/span&gt;</code><br/>
                         
         Clicking the button will call a service method that will return an event.  There will be code listening to that event from the service and it will set 
         the span with a "I got Notified at " and the time.<br/>
@@ -77,6 +77,25 @@
         <h2 class="CenterMe">Routing</h2>
         <hr class="hrHeaderClass"/>
 
+        When you create an Angular app with VSC, it will create the initial routing for you:<br/>
+        app.module.ts will have: <code ngNonBindable>import &lbrace; AppRoutingModule &rbrace; from './app-routing.module';</code><br/>
+        Which has: <code ngNonBindable>import &lbrace; RouterModule, Routes &rbrace; from '@angular/router';</code> and includes routes such as:<br/>
+        <code ngNonBindable>const routes: Routes = [  &lbrace; path: '', component: HomeComponent, pathMatch: 'full' &rbrace;,...</code><br/>
+        <code ngNonBindable>@NgModule( &lbrace; imports: [RouterModule.forRoot(routes)], exports: [RouterModule] &rbrace;)</code><br/>
+        <br/>
+        The forRoot is what registers the routes.  Without this, they will not work.<br/>
+        Whatever paths and components are indicated in the routes, they will be load it on <code ngNonBindable>&lt;router-outlet&gt;</code><br/>
+        Once we have the routes set up, we could use them in the href of a link and that would work, but that would refresh the whole 
+        page, which is not what we want when we are using Angular and its components.  Using the routes with href is like typing the 
+        address on the browser.<br/>
+        Instead use routerLink.  In the Home component, there is a link to read backwards, like this:
+        <code ngNonBindable>&lt;a [routerLink]='["/read-back"]' &gt;&lt;/a&gt;</code> <br/>
+        <a [routerLink]="['/read-back']"  >
+            Click it and come back
+        </a>
+        <br/><br/>
+        NOTE: If you are getting an error that it cannot find routerLink, make sure you introduced the component to the app.module.ts or Whatever
+        module it should belong to.<br/>
 
     </div>  
 </div>
