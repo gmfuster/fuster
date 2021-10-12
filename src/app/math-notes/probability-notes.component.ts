@@ -6,7 +6,7 @@ import { getRandom1ToN } from '../../assets/sharedFunctions';
 @Component({
   selector: 'probability-notes',
   templateUrl: './probability-notes.component.html',
-  styleUrls: ['.math-notes.component.css']
+  styleUrls: ['./math-notes.component.css']
 })
 
 export class ProbabilityNotesComponent implements OnInit {
