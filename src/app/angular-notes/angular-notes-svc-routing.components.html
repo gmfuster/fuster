@@ -103,6 +103,33 @@
         If you don't, you will always have the home link active because all your other paths will include /, which is the home one.<br/>
         <br/>
         Besides links, we can also navigate through buttons or in the code. <br/>
+        To use in a button on your code, import it in the ts file of the component, and add it to the constructor<br/>
+        <code>import &lbrace; Router &rbrace; from '@angular/router';</code><br/>
+        <code>constructor ( private router:Router)</code><br/>
+        <code> In the event code ==> this.router.navigate(["/read-back"]);</code><br/>
+        <button (click)="onClickToRouteSomewhereElse()">Click me to go somewhere else</button><br/>
+        Note: Keep in mind that the code in the ts file doesn't know where you currently are, like it would happen with the routerLink.<br/>
+        There is a way to get that information though, and that is by adding <code>ActivatedRoute</code> to the import, and then, we 
+        can pass this as a second parameter to navigate <code>&lbrace;relativeTo:this.route&rbrace;</code>. this.route will contain where we are at the time.
+        <br/><br/>
+
+        <code><strong><u>dynamic Paths</u></strong></code><br />   
+        <code>this.router.navigate(["/dynamic-notes/" + sendId]);  </code>
+        <code>import &lbrace; ActivatedRoute, Router &rbrace; from '@angular/router';</code><br/>
+        <code>constructor(private route:ActivatedRoute)</code><br/>
+        <code>this.id = Number(this.route.snapshot.params['id']); </code><br/>    
+        <code>path: 'dynamic-notes/:id'</code>    <br/>
+        We can have dynamic paths, which will look like like <code>path:"users/:id", component:userComponent</code>. The part after : is the part
+        that will be dynamic.<br/>
+        I have a component just to show the data from the path on the screen. It will just take the id from the path and display it.<br/>
+        <button (click)="onDynamicNotesClicked()">Go with no id (will def to 999)</button>  <br/>
+        <button (click)="onDynamicNotesClicked(50)">Go with no id=50</button>  <br/>
+        You can also type some other number on the url and you will see it.<br/>      
+        You can have more than one dynamic parameter in the path.  You will get each one with snapshot.params.<br/>
+        If you have the button requesting a different user on the same component where you are showing the data, the component will not reload
+        just because the parameter changed, so you may not see the data you expect on the page.  But you can subscribe to the params changing so you 
+        can update your variables when the path changes. <code>this.route.params.subscribe(params:Params => &lbrace; code to update your variables &rbrace;);</code>
+        <br/>
 
     </div>  
 </div>

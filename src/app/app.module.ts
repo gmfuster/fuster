@@ -11,6 +11,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { AngularNotesComponent } from './angular-notes/angular-notes.component';
 import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-svc-routing.component';
+import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { HeaderImageComponent } from './header-image/header-image.component';
 import { FooterComponent } from './footer/footer.component';
@@ -33,6 +34,7 @@ import { OtherServices } from './shared/forexamples.service';
     HomeComponent,
     AngularNotesComponent,
     AngularNotesSvcRoutingComponent,
+    DynamicNotesComponent,
     ProbabilityNotesComponent,
     HeaderImageComponent,
     LandingDescriptionsComponent,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MathServices, OtherServices, StringServices } from '../shared/forexamples.service';
 import { Injectable } from "@angular/core";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'angular-notes-svc-routing',
@@ -13,7 +14,7 @@ import { Injectable } from "@angular/core";
 export class AngularNotesSvcRoutingComponent implements OnInit {
     somethingHappenedText:string = "";
 
-    constructor (private mathServices:MathServices, private stringServices:StringServices, private otherServices:OtherServices){
+    constructor (private mathServices:MathServices, private stringServices:StringServices, private otherServices:OtherServices, private router:Router){
         this.otherServices.somethingHappened.subscribe( 
             (text:string) =>{ this.somethingHappenedText = text;}
         );
@@ -41,4 +42,14 @@ export class AngularNotesSvcRoutingComponent implements OnInit {
        this.otherServices.callMeToEmitEvent();        
     }
         
+    onClickToRouteSomewhereElse(){
+        this.router.navigate(["/read-back"]);
+    }
+    onDynamicNotesClicked(id?:number){
+        let sendId = 999;
+        if (id !== null && id !== undefined){
+            sendId=id;
+        }          
+        this.router.navigate(["/dynamic-notes/" + sendId]);    
+    }
 }
