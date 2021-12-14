@@ -14,7 +14,8 @@
     <code ngNonBindable>{{theVariable}}</code><br />
     <code>&lt; input #theInput type="text"/&gt; </code><br />
     <code>&lt; button (click)="onClickButton1(theInput.value)"&gt; </code><br />
-    Type something in this input <input #theInput type="text" /> and <button (click)="onClickButton1(theInput.value)">send it</button> to the ts file  where it will change. Then display in the marked field below.<br />
+    Type something in this input set as #theInput <input #theInput type="text" /> and send it with this button with (click)="onClickButton1(theInput.value)
+     <button (click)="onClickButton1(theInput.value)">send it</button>. It displays in the marked field below, which displays theVariable.<br />
     <mark>{{theVariable}}</mark>
 
     <hr class="hrClass" />

@@ -129,6 +129,9 @@ a:visited {
   text-decoration: none;
 }
 
+.main-body input{
+  color:darkcyan;  
+}
 
 
 .hrClass {

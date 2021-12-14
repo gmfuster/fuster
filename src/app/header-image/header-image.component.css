@@ -1,6 +1,7 @@
 
 .imageContainer {
-  position: relative;
+  position: relative;  
+  top:0px;
   text-align: center;
   color: white;
   width: 100%;

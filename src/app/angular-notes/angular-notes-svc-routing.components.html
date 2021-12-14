@@ -123,12 +123,19 @@
         that will be dynamic.<br/>
         I have a component just to show the data from the path on the screen. It will just take the id from the path and display it.<br/>
         <button (click)="onDynamicNotesClicked()">Go with no id (will def to 999)</button>  <br/>
-        <button (click)="onDynamicNotesClicked(50)">Go with no id=50</button>  <br/>
+        <button (click)="onDynamicNotesClicked(50)">Go with id as 50</button>  <br/>
         You can also type some other number on the url and you will see it.<br/>      
         You can have more than one dynamic parameter in the path.  You will get each one with snapshot.params.<br/>
         If you have the button requesting a different user on the same component where you are showing the data, the component will not reload
         just because the parameter changed, so you may not see the data you expect on the page.  But you can subscribe to the params changing so you 
         can update your variables when the path changes. <code>this.route.params.subscribe(params:Params => &lbrace; code to update your variables &rbrace;);</code>
+        <br/><br/>
+        
+        
+        
+        
+        
+        
         <br/>
 
     </div>  
