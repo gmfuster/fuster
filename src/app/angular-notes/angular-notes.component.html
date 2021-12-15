@@ -152,7 +152,13 @@
     <code><strong><u>ViewChild</u></strong></code><br />
     This concept has too much to be included here, so instead, check out my article on Medium 
     <a href="https://medium.com/nerd-for-tech/angular-viewchild-for-component-dom-element-element-of-component-and-directive-c23328ee1525"
-    target="_new">Angular — ViewChild for component, DOM element, element of component, and directive</a>
+    target="_new">Angular — ViewChild for component, DOM element, element of component, and directive</a><br/>
+    However, for a brief refresher of what this is about, check out the images:<br/>
+
+    <img width="100%" src="assets\images\misc\viewchild1.png" alt="viewchild1 content elements" /><br/><br/>
+    <img width="100%" src="assets\images\misc\viewchild2.png" alt="viewchild2 content elements" /><br/><br/>
+    <img width="100%" src="assets\images\misc\viewchild3.png" alt="viewchild3 content elements" /><br/><br/>
+    <img width="100%" src="assets\images\misc\viewchild4.png" alt="viewchild4 content elements" /><br/><br/>
 
     <hr class="hrClass" />
 
@@ -179,7 +185,7 @@
 
 
     <hr class="hrClass" />
-    <code ><strong><u>ContentChild for ng-Content</u></strong></code><br />
+    <code ><strong><u>ContentChild for ng-Content (can't use ViewChild)</u></strong></code><br />
     <code><strong>In Parent Component:</strong></code><br/>
     <code>&lt;h1 class="class1" #header1 [ngStyle]="&lbrace;backgroundColor:'skyblue'&rbrace;"&gt;Header 1 with class1 going to ng-content on child&lt;/h1&gt;</code><br/>
     <code>&lt;h2 id="header2" #header2 [ngStyle]="&lbrace;backgroundColor:'teal'&rbrace;"&gt;Header 2 with header2 id going to ng-content on child&lt;/h2&gt;</code><br/>
@@ -189,19 +195,23 @@
     <code>@ContentChild("header2",&lbrace;static:true&rbrace;) header2vble: ElementRef=&lbrace;&rbrace; as ElementRef;</code><br/>
     <code>@ContentChild("span1",&lbrace;static:true&rbrace;,read:NgStyle) spanvble: NgStyle=&lbrace;&rbrace; as NgStyle;</code><br/>
     You can't use ViewChild for content in an ng-content.  For that you need ContentChild. It returns the first element matching the selector.  
-    If the content DOM changes, and a new child matches the selector, the property will be updated.  Use ContentChild
-    in the component that has the ng-content to find content that has been projected there.  I am using the same child component as above, which has the ng-content.  
-    Set up as in above example except adding #header2 to the h2 element, #header1 to the h1, and #span to the span (that's how I'll access them).  
+    If the content DOM changes, and a new child matches the selector, the property will be updated.  <b><u>Use ContentChild
+    in the component that has the ng-content to find content that has been projected there.</u></b>  I am using the same child component as above, which has the ng-content.  
+    Set up as in the above example <b><u>except adding #header2 to the h2 element, #header1 to the h1, and #span to the span (that's how I'll access them).  </u></b>
     Don't forget to import ContentChild from angular/core.<br/>
     Angular initializes the component first. It then raises the ngOnChanges, ngOnInit & ngDoCheck hooks. The projected components are initialized next. 
     And then Angular raises the AfterContentInit & AfterContentChecked hooks.  Then ContentChild is available.  That is the default.  We can use static as true to
     change it(the query will be available once the view has been created, but before change detection runs).  
     Just displaying the ContentChild variables in the console (though commented out).<br/>
+    <img width="100%" src="assets\images\misc\contentchild1.png" alt="content child elements" /><br/><br/>
+
     <some-child-component>
       <h1 class="class1" #header1 [ngStyle]="{backgroundColor:'skyblue'}">Header 1 with class1 going to ng-content on child</h1>
       <h2 id="header2" #header2 [ngStyle]="{backgroundColor:'teal'}">Header 2 with header2 id going to ng-content on child</h2>
       <span #span1 [ngStyle]="{backgroundColor:'lightyellow'}">I am just inside a span element</span>
     </some-child-component>
+
+
 
     <hr class="hrClass" />
 
@@ -214,14 +224,19 @@
     <code>For directive 2:  @Input() fontColor :string = "green";</code><br/>
     <code>ngOnInit for directive 1: this.theElementRef.nativeElement.style.backgroundColor='lightblue';</code><br/>
     <code>ngOnInit for directive 2: this.theElementRef2.nativeElement.style.color = this.fontColor;</code><br/>
-    <code>similar in both directives: constructor(private theElementRef2:ElementRef) - reference it ins the ngOnInit</code>
+    <code>similar in both directives: constructor(private theElementRef2:ElementRef) - reference it ins the ngOnInit</code><br/>
 
     Angular directives are cool but we can also create our own.  I'm going to use a component directive some-directive-directive.
-    The ts file for this directive is not a @Component but a @Directive.  <strong>Not using renderer in this example </strong>, will use it later for the same thing.
+    <b><u>The ts file for this directive is not a @Component but a @Directive.</u></b> <strong> Not using renderer in this example </strong>, will use it later for the same thing.
     Remember to include the directive in the app.module.ts so it can be used.  I'll be using that directive in a p element here.  Like for components,
     keep in mind you use the select name on the element where you will use it.<br/>
     I have 2 directives in the same file, and one of them takes a fontColor<br/>
+
+    <img width="100%" src="assets\images\misc\yourdirective.png" alt="custom directive" /><br/><br/>
+
     <p appSomeDirectiveDirective appSomeDirectiveDirective2 [fontColor]="'deeppink'">Some p element using the SomeDirectiveDirective.  </p>
+
+
 
 
     <hr class="hrClass" />
@@ -234,6 +249,8 @@
     doing that. <br/>
     <p appSomeDirectiveDirective3>Some p element using the SomeDirectiveDirective3 with renderer2. </p>
 
+
+
     <hr class="hrClass" />
 
     <code ><strong><u>HostBinding to change the directive style</u></strong></code><br />
@@ -241,6 +258,7 @@
     <code>on ngOnInit: this.backColor = 'lightblue';</code><br />
     Going to use a 4th directive to make use of HostBinding to set the background.<br/>
     <p appSomeDirectiveDirective4>Some p element using the SomeDirectiveDirective4 with HostBinding. </p>
+
 
 
     <hr class="hrClass" />
@@ -251,18 +269,21 @@
     Using the paragraph with a 5th directive now, which will listen to the mouse events and change the color that way. Move the cursor on and off the p.<br/>
     <p appSomeDirectiveDirective5>Some p element using the SomeDirectiveDirective5 with HostBinding. </p>
 
+
+
     <hr class="hrClass" />
     <code ><strong><u>Your Own Structural Directive</u></strong></code><br />
     <code>constructor(private templateRef:TemplateRef&lt;any&gt;, private vcRef: ViewContainerRef)&lbrace;&rbrace;</code><br/>
     <code>&lt;div *appSomeDirectiveDirectiveSTR="theNumVariable"&gt; -- set in the input field</code><br/>
     <code>@Input() set appSomeDirectiveDirectiveSTR(number:Number) -- name of set has to match name of selector in directive</code><br/>
     <code>this.vcRef.clear();   </code><br/>
-    <code>in a for: this.vcRef.createEmbeddedView(this.templateRef);</code>
+    <code>in a for: this.vcRef.createEmbeddedView(this.templateRef);</code><br/>
     A structural directive is one that changes the structure of the DOM (like ngIf, ngFor, and we use them with *).
     <strong>TemplateRef</strong>: It represents an embedded template that can be used to instantiate embedded views.  
     <strong>ViewContainerRef:</strong> It represents a container where one or more views can be attached.<br/><br/>
-    Input a number here (again, no validation so just put a number) to see that number of times repeated.<br/>
-    <input [(ngModel)]="theNumVariable" type="text" /><br/>
+    Input a number here to see that number of times repeated.<br/>
+    <img width="100%" src="assets\images\misc\structuredirective.png" alt="structure directive" /><br/><br/>
+    <input [(ngModel)]="theNumVariable" type="number" /><br/>
     <div *appSomeDirectiveDirectiveSTR="theNumVariable">
       I am div 
     </div>
