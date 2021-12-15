@@ -6,36 +6,39 @@
   <h3 class="CenterMe"> <a href="https://medium.com/nerd-for-tech/angular-vs-react-compare-the-very-basics-776fd96fec23"
     target="_new">Check out Angular vs React - basics</a></h3>
   <br />
+  <h3 class="CenterMe">Input fields, in general, take only numbers. </h3>
 
 
   <div class="PaddedContents">
 
+
     <code><strong><u>String Interpolation</u></strong></code><br />
     <code ngNonBindable>{{theVariable}}</code><br />
-    <code>&lt; input #theInput type="text"/&gt; </code><br />
-    <code>&lt; button (click)="onClickButton1(theInput.value)"&gt; </code><br />
-    Type something in this input set as #theInput <input #theInput type="text" /> and send it with this button with (click)="onClickButton1(theInput.value)
+    <code>&lt; input #theInput type="number"/&gt; </code><br />
+    <code> &lt; button (click)="onClickButton1(theInput.value)"&gt; </code><br />
+    Type something in this input set as #theInput (only numbers) <input #theInput type="number" /> and send it with this button with (click)="onClickButton1(theInput.value)
      <button (click)="onClickButton1(theInput.value)">send it</button>. It displays in the marked field below, which displays theVariable.<br />
     <mark>{{theVariable}}</mark>
 
     <hr class="hrClass" />
 
     <code><strong><u>Property Binding</u> </strong></code><br />
-    <code>[disabled]="theBoolVar"</code><br />
-    <code>[disabled]=true</code><br />
-    <code>&lt; (click)="onSwitchTheBoolVar()"&gt; Switch Bool&lt;/button&gt;</code><br />
-    Use [] for the html attributes and quotes to use a variable. No quotes to hardcode.  Click the button to choose between true and false and enable or disable the second button (which does nothing).
+    <code>On second button: [disabled]="theBoolVar"</code><br />
+    <code>On button always disabled: [disabled]=true</code><br />
+    <code>On Switch Bool button: &lt; (click)="onSwitchTheBoolVar()"&gt; Switch Bool&lt;/button&gt;</code><br />
+    Use the syntax as [] for the html attributes and use quotes to use a variable for the attributes. Use no quotes assigned to the attribute to <b>hardcode</b> the value.  
+    Click the button to switch between true and false and enable or disable the second button (which does nothing).
     <button (click)="onSwitchTheBoolVar()">Switch Bool</button> &nbsp; <button [disabled]="theBoolVar">Will Go On/Off</button> &nbsp;<button [disabled]=true>Always Disabled</button><br />
-    For an event, use (click)="onSwitchTheBoolVar<mark>($event)</mark>" and <mark>event:any or event:Event</mark> in the ts file as the parameter received for the event, if you need access to the event info.
+    For an event, use (click)="onSwitchTheBoolVar<b>($event)</b>" and <b>event:any or event:Event</b> in the ts file as the parameter received for the event, if you need access to the event info.
 
     <hr class="hrClass" />
 
     <code><strong><u>2-way Binding</u></strong> </code><br />
-    <code ngNonBindable>&lt;input type="text"[(ngModel)]="theVariable"/&gt;</code><br />
+    <code ngNonBindable>&lt;input type="number"[(ngModel)]="theVariable"/&gt;</code><br />
     <code ngNonBindable>app.module.ts -- import FormsModule from '@angular/forms'</code><br />
     Use ngModel in the input field.  It will update the variable right away and from the ts code, which we link to the same variable for the display too, 
     it will update right away.  Click the button to update the variable to something different.
-    <input type="text" [(ngModel)]="theVariable"/><br/><br/>
+    <input type="number" [(ngModel)]="theVariable"/><br/><br/>
     <mark>{{theVariable}}</mark><br/><br/>
     <button (click)="onSetVariableToHello()">call onSetVariableToHello</button>
     
@@ -77,11 +80,12 @@
     <hr class="hrClass" />
 
     <code><strong><u>Angular Directive</u></strong></code><br />
-    <code ngNonBindable>&lt;input type="text" (keydown)="onValueChanged($event)"/&gt;</code><br/>
+    <code ngNonBindable>&lt;input type="number" (keydown)="onValueChanged($event)"/&gt;</code><br/>
     <code ngNonBindable>&lt;div*ngFor="let item of theNumArray;"&gt;</code><br />    
-    Enter a number from 1 to 5 <strong>(no validation so it will break)</strong> and the code will show that many lines.<br/>  
+    <code ngNonBindable>ts file : onValueChanged(event:KeyboardEvent)...for(let i = 1; i <= parseInt(event.key); i++) populate theNumArray</code><br />    
+    Enter a number from 1 to 5 (you can enter more too) and the code will show that many lines.<br/>  
     You can also add let i = index in the ngFor to get the index of the iteration.<br/>
-    <input type="text" (keydown)="onValueChanged($event)"/><br/><br/>
+    <input type="number" (keydown)="onValueChanged($event)"/><br/><br/>
     <div *ngFor = "let item of theNumArray;"> {{item}}</div>
     <br/>
 
@@ -89,9 +93,10 @@
 
     <code><strong><u>Angular Directive</u></strong></code><br />
     <code ngNonBindable>&lt;div [ngSwitch]="theColor" [ngStyle]= "&lbrace; border:'2px solid skyblue'&rbrace;"/&gt;</code><br/>
-    <code ngNonBindable>&lt;p *ngSwitchCase="'aqua'"/&gt;</code><br/>
+    <code ngNonBindable>&lt;p elements inside the div with the ngSwitch: *ngSwitchCase="'aqua'"/&gt;</code><br/>
     The random color button above returns aqua, red, pink, yellow, green, and gray.  Have a switch for the theColor variable for each of those.<br/>
-    Notice the single quotes inside the "" on the case elements.  If numbers, don't include the single quotes.<br/>
+    Notice the single quotes inside the "" on the case elements.  If numbers, don't include the single quotes.  The color is not changing, but the word will change 
+    to match the theColor value.<br/>
     <button (click)="onRandomColor()">Random Color</button><br/><br/>
     <div [ngSwitch]="theColor" [ngStyle]="{border:'2px solid skyblue'}">
       <p *ngSwitchCase="'aqua'">aqua</p>
@@ -101,19 +106,22 @@
       <p *ngSwitchCase="'gray'">gray</p>
       <p *ngSwitchDefault>Default</p>
     </div>
-
+    <br/>
     <hr class="hrClass" />
 
     <code><strong><u>Get Data from Parent Component</u></strong></code><br />
-    <code ngNonBindable>&lt;some-child-component [myColor]= "theColor" [myTextAlias]="theColor"&gt;</code><br/>
+    <code>button calls onRandomColor which assigns a color string to theColor:</code><br />
+    <code ngNonBindable>&lt;some-child-component [myColor]= "theColor" [myTextAlias]="theColor"&gt;  -- note this uses the alias name</code><br/>
     <code>On child ts:</code><br />
     <code>@Input() myColor :string="";</code><br />
-    <code>@Input('myTextAlias') myText :string="";</code><br />
-    <code>On child html, don't use the alias but the vble name for both</code><br />    
+    <code>@Input('myTextAlias') myText :string="";</code><br />    
+    <code>child component: [ngStyle] has backgroundColor:myColor</code><br/>
+    <code ngNonBindable>on child component: &lbrace;&lbrace; myText &rbrace;&rbrace; -- use the variable name, not the alias name </code>
     In this angular-notes component we have a theColor variable used above.  Using it here again, but this time, include also a child component
     which will change its background based on the value we get.  It will also display the text sent to it as an alias.<br/>
-    Disregard the button in the child component, it is not being listened to in this code.<br/>
+    (Disregard the button in the child component, it is not being listened to in this code).<br/>
     <button (click)="onRandomColor()">Random Color</button><br/><br/>
+    The child component takes in a myColor and a myTextAlias properties.  Both set to the variable.
     <some-child-component [myColor]= "theColor" [myTextAlias]="theColor"></some-child-component>
 
     <hr class="hrClass" />
@@ -128,8 +136,11 @@
     </code><br/>
     <code>On parent ts events, have onChildEvent1(event:Event) or onChildEvent2(theEventObj:&lbrace;theName:string, theText:string&rbrace;)</code><br/>
     The parent (this angular notes component) will be listening to events of the child component (some-child-component).<br/>
-    When adding EventEmitter, check your import statements.  Make sure it is imported from angular/core<br/>
-    You can get just event from the event on the child, or something specific. Use void if the event returns nothing.<br/>
+    When adding EventEmitter, check your import statements.  Make sure it is imported from angular/core.<br/>
+    You can get just event from the event on the child, or something specific. Use void if the event returns nothing.<br/><br/>
+
+    <img width="100%" src="assets\images\misc\parentlistenstochildevents.png" alt="parents listens to child events" /><br/><br/>
+
     <some-child-component (eventOnChildComponentWithEventReturn)="onChildEvent1($event)" (eventOnChildComponentWithKnownObjReturn)="onChildEvent2($event)" ></some-child-component>
     <em><u>Text from event 1:</u> </em><br/>
     {{someText1}}<br/>
@@ -156,12 +167,16 @@
     <code>&lt;ng-content  select="span"&gt;   </code><br/>
     I am going to have some ng-content elements in the some-child-component component.  Then I'll use that component here in the angular-notes component.
     Each ng-content in the child will display a different way and it will choose what to put in that container based on some element, class, and id.
-    (ng-content cannot have content besides what's passed to it).<br/>
+    <b>(ng-content cannot have content besides what's passed to it)</b>.<br/>
+    <img width="100%" src="assets\images\misc\ng-content.png" alt="ng content elements" /><br/><br/>
+
     <some-child-component>
-      <h1 class="class1" [ngStyle]="{backgroundColor:'skyblue'}">Header 1 with class1 going to ng-content on child</h1>
-      <h2 id="header2" [ngStyle]="{backgroundColor:'teal'}">Header 2 with header2 id going to ng-content on child</h2>
       <span [ngStyle]="{backgroundColor:'lightyellow'}">I am just inside a span element</span>
+      <h2 id="header2" [ngStyle]="{backgroundColor:'teal'}">Header 2 with header2 id going to ng-content on child</h2>  
+      <h1 class="class1" [ngStyle]="{backgroundColor:'skyblue'}">Header 1 with class1 going to ng-content on child</h1>         
     </some-child-component>
+
+
 
     <hr class="hrClass" />
     <code ><strong><u>ContentChild for ng-Content</u></strong></code><br />
