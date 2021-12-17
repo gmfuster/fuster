@@ -171,6 +171,30 @@
          <hr class="hrClass"/>
          <code><strong><u>Nested Routing</u></strong></code><br />   
 
+         I you end up with different routes that have the same at the beginning of the path, you may be better of changing them to have a main path, and 
+         then children paths (routes) under it. For example, if you have paths:<br/>         
+         &lbrace; path: 'commonpath', component: SomeComponent&rbrace;,<br/>
+         &lbrace; path: 'commonpath/:id', component: SomeComponentId&rbrace;,<br/>
+         &lbrace;path: 'commonpath/:id/edit', component: SomeComponentIdEdit&rbrace;,<br/>
+
+
+         You can split it up in a parent and its children, like this:<br/>
+         <code>
+         &lbrace; path: 'commonpath', component: SomeComponent, children: [<br/>
+            &nbsp;&lbrace; path: ':id', component: SomeComponentId&rbrace;,<br/>
+            &nbsp;&lbrace; path: ':id/edit', component: SomeComponentIdEdit&rbrace;,<br/>
+            ]&rbrace;
+        </code>
+        <br/>
+        When we have nested routes, we also need rested router-outlets.  In this case, the SomeComponent will load in the main router-outlet 
+        and this SomeComponent html should have another router-outlet where the child will load.<br/>
+        If you want to navigate to a child from SomeComponent, you could do it like this:<br/>
+        <code>this.router.navigate(['commonpath', someidvarintparentcomponent, 'edit']);</code><br/>
+        or<br/>
+        <code>this.router.navigate(['edit'] , &lbrace; this.route &rbrace;);</code><br/>
+        If we are using the queryParams from the parent in the navigation, we will lose them when we navigate.  To preserve them, do this :
+        <code>this.router.navigate(['edit'], &lbrace;relativeTo: this.route, <b>queryParamsHandting: 'preserved' </b>&rbrace; ) </code>
+
         <br/>
         <br/>
 
