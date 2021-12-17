@@ -5,14 +5,21 @@
         <br/>
         <h3 class="CenterMe">There is no @Service like there is @Component and @Directive</h3>
         <h3 class="CenterMe">You can add a service to the [providers] in the app module and it will be available everywhere.</h3>
-        <h3  class="CenterMe">In Angular 6+, @Injectable(&lbrace;  providedIn: 'root' &rbrace;) export class MyService and it will be available everywhere.</h3><br/>
+        <h3  class="CenterMe">In Angular 6+, @Injectable(&lbrace;  providedIn: 'root' &rbrace;), export class MyService and it will be available everywhere.</h3>
+
+        <span  id="services"></span>
+        <br/>
+        <!--<a  [routerLink]='["/angular-notes-svc-routing"]' fragment="routing" class="CenterMe">Jump To Routing</a>-->
+        <h3  class="CenterMe">
+            <a  href="/angular-notes-svc-routing/#routing">Jump To Routing</a>
+        </h3>
 
         <hr class="hrHeaderClass"/>
-        <h2 class="CenterMe">Services</h2>
+        <h2 class="CenterMe" >Services</h2>
         <hr class="hrHeaderClass"/>
 
         <code><strong><u>Call Function in Service</u></strong></code><br />     
-        <code>export class MathServices</code>   <br/>
+        <code>export class MathServices on the service file.</code>   <br/>
         <code>To use svc, in ts: import &lbrace; Injectable &rbrace; from "@angular/core"; </code><br/>
         <code>import  &lbrace; MathServices &rbrace; from '../shared/forexamples.service';</code><br/>
         <code>in ts using svc: providers: [MathServices]</code><br/>
@@ -64,7 +71,7 @@
         <code >in html, &lt;span style="background-color: lightgreen;"&gt; &lbrace;&lbrace;somethingHappenedText&rbrace;&rbrace; &lt;/span&gt;</code><br/>
                         
         Clicking the button will call a service method that will return an event.  There will be code listening to that event from the service and it will set 
-        the span with a "I got Notified at " and the time.<br/>
+        the span with date and time.<br/>
         
         <button (click)="onClickMeClicked4()">Click me 4!</button><br/>
         <span style="background-color: lightgreen;">{{somethingHappenedText}}</span>
@@ -72,10 +79,13 @@
         <hr class="hrClass" />
 
 
-
+        <br  id='routing'/><br />
         <hr class="hrHeaderClass"/>
-        <h2 class="CenterMe">Routing</h2>
+        <h2 class="CenterMe"  >Routing</h2>
         <hr class="hrHeaderClass"/>
+        <h3  class="CenterMe">
+            <a   href="/angular-notes-svc-routing/#services">Jump To Services</a><br/><br/>
+        </h3>
 
         When you create an Angular app with VSC, it will create the initial routing for you:<br/>
         app.module.ts will have: <code ngNonBindable>import &lbrace; AppRoutingModule &rbrace; from './app-routing.module';</code><br/>
@@ -84,7 +94,7 @@
         <code ngNonBindable>@NgModule( &lbrace; imports: [RouterModule.forRoot(routes)], exports: [RouterModule] &rbrace;)</code><br/>
         <br/>
         The forRoot is what registers the routes.  Without this, they will not work.<br/>
-        Whatever paths and components are indicated in the routes, they will be load it on <code ngNonBindable>&lt;router-outlet&gt;</code><br/>
+        Whatever paths and components are indicated in the routes, they will be loaded on <code ngNonBindable>&lt;router-outlet&gt;</code><br/>
         Once we have the routes set up, we could use them in the href of a link and that would work, but that would refresh the whole 
         page, which is not what we want when we are using Angular and its components.  Using the routes with href is like typing the 
         address on the browser.<br/>
@@ -94,7 +104,8 @@
             Click it and come back
         </a>
         <br/><br/>
-        NOTE: If you are getting an error that it cannot find routerLink, make sure you introduced the component to the app.module.ts or Whatever
+
+        NOTE: If you are getting an error that it cannot find routerLink, make sure you introduced the component to the app.module.ts or whatever
         module it should belong to.<br/>
         Make sure you test all your links.  You don't want to end up using an absolute path when you need a relative path or viceversa.  <br/>
         Use <code>[routerLinkActive]</code> set to a class to indicate what the link will look like when it is the active one (Angular will handle the how it knows)
@@ -110,8 +121,10 @@
         <button (click)="onClickToRouteSomewhereElse()">Click me to go somewhere else</button><br/>
         Note: Keep in mind that the code in the ts file doesn't know where you currently are, like it would happen with the routerLink.<br/>
         There is a way to get that information though, and that is by adding <code>ActivatedRoute</code> to the import, and then, we 
-        can pass this as a second parameter to navigate <code>&lbrace;relativeTo:this.route&rbrace;</code>. this.route will contain where we are at the time.
+        can pass this as a second parameter to navigate <code>&lbrace;relativeTo:this.route&rbrace;</code>. This.route will contain where we are at the time.
         <br/><br/>
+
+        <hr class="hrClass" />
 
         <code><strong><u>dynamic Paths</u></strong></code><br />   
         <code>this.router.navigate(["/dynamic-notes/" + sendId]);  </code>
@@ -128,14 +141,37 @@
         You can have more than one dynamic parameter in the path.  You will get each one with snapshot.params.<br/>
         If you have the button requesting a different user on the same component where you are showing the data, the component will not reload
         just because the parameter changed, so you may not see the data you expect on the page.  But you can subscribe to the params changing so you 
-        can update your variables when the path changes. <code>this.route.params.subscribe(params:Params => &lbrace; code to update your variables &rbrace;);</code>
+        can update your variables when the path changes. <code>this.route.params.subscribe(params:Params => &lbrace; code to update your variables &rbrace;);, access 
+            with params['whateverparameteryouused']
+        </code>
         <br/><br/>
+
+        <hr class="hrClass" />
+
+
         
+         <code><strong><u>dynamic Paths with dynamic part in the middle</u></strong></code><br />   
+         You could add something else after the dynamic element of the path, something like this: <code>... path: 'dynamic-notes/:id/<b>edit</b>', ...</code>
+         The link could be something like <code>[routerLink]='["/dynamic-notes",5, "edit" ]'</code><br/>
         
+         When you are using [routerLink] and you need to pass parameters with data (usually passed after the ? on the link), you can add 
+         <code>[queryParams]="&lbrace;param1:'value1', param2:'value2'&rbrace;"</code>.  Now param1 and param2 will show up in the link after the ?.  The 
+         parameters will be separated with &.  With this you can also add a fragment="Loading or whatever" and that will add #Loading or whatever at the end of the link. 
+
+         To do the same in code, you would use :<br/>
+         <code>this.router.navigate(["/dynamic-notes/" + sendId, "edit"], &lbrace; queryParams: &lbrace;param1:'value1', param2:'value2'&rbrace;, fragment:'loading'  &rbrace; ); </code>
+
+         <br/>
+
+         To get the parameters it is similar to other things fro the link: this.route.snapshot.queryParams, this.route.snapshot.fragment.  We can also subscribe to those.
         
-        
-        
-        
+
+         <br/>
+
+         <hr class="hrClass"/>
+         <code><strong><u>Nested Routing</u></strong></code><br />   
+
+        <br/>
         <br/>
 
     </div>  
