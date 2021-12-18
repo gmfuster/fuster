@@ -195,6 +195,18 @@
         If we are using the queryParams from the parent in the navigation, we will lose them when we navigate.  To preserve them, do this :
         <code>this.router.navigate(['edit'], &lbrace;relativeTo: this.route, <b>queryParamsHandting: 'preserved' </b>&rbrace; ) </code>
 
+
+        <hr class="hrClass"/>
+         <code><strong><u>Redirect</u></strong></code><br />   
+         You can redirect from one path to another one with something like &lbrace;path:'somepath or **', redirectTo:'some other path'&rbrace;
+         The ** means any unknown route, and it should be the last entry under the routes array.
+        <br/><br/>
+
+        
+        <hr class="hrClass"/>
+
+
+
         <br/>
         <br/>
 
