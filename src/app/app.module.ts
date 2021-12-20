@@ -13,6 +13,7 @@ import { AngularNotesComponent } from './angular-notes/angular-notes.component';
 import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-svc-routing.component';
 import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
+import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
 import { HeaderImageComponent } from './header-image/header-image.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingDescriptionsComponent } from './landing-descriptions/landing-descriptions.component';
@@ -34,6 +35,7 @@ import { OtherServices } from './shared/forexamples.service';
     HomeComponent,
     AngularNotesComponent,
     AngularNotesSvcRoutingComponent,
+    JavaScriptNotesComponent,
     DynamicNotesComponent,
     ProbabilityNotesComponent,
     HeaderImageComponent,
