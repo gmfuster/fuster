@@ -1,0 +1,32 @@
+
+<div>
+  <h2 class="CenterMe">JavaScript notes - Basics</h2>  
+  <h4 class="CenterMe">Naming is not always according to standard but I thought it was simpler.</h4>      
+
+  <div class="PaddedContents">
+
+
+    <code><strong><u>Scope (variables, hoisting, closures)</u></strong></code><br />
+    <code ngNonBindable>{{theVariable}}</code><br />
+    <code>&lt; input #theInput type="number"/&gt; </code><br />
+    <code> &lt; button (click)="onClickButton1(theInput.value)"&gt; </code><br />
+    
+    <hr class="hrClass" />
+
+    
+
+    <code><strong><u>2-way Binding</u></strong> </code><br />
+    <code ngNonBindable>&lt;input type="number"[(ngModel)]="theVariable"/&gt;</code><br />
+    <code ngNonBindable>app.module.ts -- import FormsModule from '@angular/forms'</code><br />
+    Use ngModel in the input field.  It will update the variable right away and from the ts code, which we link to the same variable for the display too, 
+    it will update right away.  Click the button to update the variable to something different.
+   
+    
+
+    <hr class="hrClass" />
+
+    
+
+  </div>
+
+</div> 
