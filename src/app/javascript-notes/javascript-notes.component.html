@@ -1,32 +1,107 @@
 
 <div>
+
   <h2 class="CenterMe">JavaScript notes - Basics</h2>  
   <h4 class="CenterMe">Naming is not always according to standard but I thought it was simpler.</h4>      
+  <h3 class="CenterMe">You can type the JavaScript code here to see how it works (it is nodejs but you can also choose JavaScript): <br/>
+  <a class="CenterMe" href="https://replit.com/languages/nodejs" target="_new">replit.com</a>
+  </h3>
 
+  <br/>
+
+  
   <div class="PaddedContents">
 
+    <!-------------------------------------------------------------->
+    <!--SCOPE-->
+    <!-------------------------------------------------------------->
+    <hr class="hrHeaderClass"/>
+        <h2 class="CenterMe" >Scope</h2>
+    <hr class="hrHeaderClass"/>
 
-    <code><strong><u>Scope (variables, hoisting, closures)</u></strong></code><br />
-    <code ngNonBindable>{{theVariable}}</code><br />
-    <code>&lt; input #theInput type="number"/&gt; </code><br />
-    <code> &lt; button (click)="onClickButton1(theInput.value)"&gt; </code><br />
+    <code><strong><u>Scope - variables</u></strong></code><br />
+    There are two types of scope in JavaScript: Global and Local.  You get global scope when you declare a variable outside of a block, or outside of 
+    a function.  Global scope on the browsert is the "window".<br/>
+    We can declare variables with var, let, const.  LET and CONST are the same as far as scope is concerned.<br/><br/>
+
+    <img width="100%" src="assets\images\js\varscope1.png" alt="var scope" /><br/><br/>
+
+    Similar code, but now we use LET which has block scope<br/><br/>
+
+    <img width="100%" src="assets\images\js\letscope1.png" alt="let scope" /><br/><br/>
+
+    How about if you use var, outside a function and inside a function (we already know there is no block scope)<br/><br/>
+
+    <img width="100%" src="assets\images\js\varscope2.png" alt="var scope outide func" /><br/><br/>
+
+    When working with JavaScript, 
+    make sure you declare the variables before you use them because if you forget to declare a variable and just assign it, you will be creating global variables. 
+    HOWEVER, you can stop that by declaring the code with "use strict"<br/>
+    <img width="100%" src="assets\images\js\globalbymistake.png" alt="global by  mistake" /><br/><br/>
+
+    Parameters passed to functions act as local variables to the function.
+
     
     <hr class="hrClass" />
 
-    
+    <code><strong><u>Scope - Hoisting</u></strong></code><br />
 
-    <code><strong><u>2-way Binding</u></strong> </code><br />
-    <code ngNonBindable>&lt;input type="number"[(ngModel)]="theVariable"/&gt;</code><br />
-    <code ngNonBindable>app.module.ts -- import FormsModule from '@angular/forms'</code><br />
-    Use ngModel in the input field.  It will update the variable right away and from the ts code, which we link to the same variable for the display too, 
-    it will update right away.  Click the button to update the variable to something different.
+    Hoisting means JavaScript moving variables or function declarations to the top of their context. 
+    This means that in JavaScript, functions and variables can be accessed before they have been declared.<br/>
+    Variables declared with var, are accessible before they are declared, variables declared with let (or const) are not. See the differences here:<br/><br/>
+
+    <img width="100%" src="assets\images\js\assignthendeclare.png" alt="assign then declare" /><br/><br/>
    
-    
+    JavaScript hoists the declarations but not the initializations.  That means, printing a variable to the console before it has been assigned will print undefined.
+
+    <br/>
 
     <hr class="hrClass" />
 
-    
+    <code><strong><u>Scope - Closures</u></strong></code><br />
+
+    JavaScript allows for functions inside functions (nested functions). 
+    When a function is defined within another function, the inner function has access to the variable scope of the outer function. 
+    This is what function closures are.
+
+    <img width="100%" src="assets\images\js\closures1.png" alt="closures 1" /><br/><br/>
+
+    The inner function has access to the parent function at the time of creation, not only while the parent function is running.  This will also work:<br/><br/>
+
+    <img width="100%" src="assets\images\js\closures2.png" alt="closures 2" /><br/><br/>
+
+
+    <!-------------------------------------------------------------->
+    <!--FUNCTIONS-->
+    <!-------------------------------------------------------------->    
+    <hr class="hrHeaderClass"/>
+      <h2 class="CenterMe" >Functions</h2>
+    <hr class="hrHeaderClass"/>
+    <br/>
+
+    JavaScript functions are objects.  <br/><br/>
+
+    <code><strong><u>Regular Functions</u></strong></code><br /><br/>
+
+    <img width="100%" src="assets\images\js\functions1.png" alt="functions 1" /><br/><br/>
+
+    <img width="100%" src="assets\images\js\functions2.png" alt="functions 2" /><br/><br/>
+
+    <img width="100%" src="assets\images\js\functions3.png" alt="functions 3" /><br/><br/>
+
+    <img width="100%" src="assets\images\js\functions4.png" alt="functions 4" /><br/><br/>
+
+    <img width="100%" src="assets\images\js\functions5.png" alt="functions 5" /><br/><br/>
+
+    A function can return a function.  (see example on scope section)<br/>
+
+    <code><strong><u>Arrow Functions</u></strong></code><br /><br/>
+
+    <img width="100%" src="assets\images\js\arrow1.png" alt="arrow 1" /><br/><br/>
+    <img width="100%" src="assets\images\js\arrow2.png" alt="arrow 2" /><br/><br/>
 
   </div>
+
+
 
 </div> 

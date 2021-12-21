@@ -74,6 +74,16 @@ body button:disabled {
   align-items: center;  
 }
 
+.ColumnMyContent {  
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;  
+}
+
+
 .buttonGeneral {
   background-color: skyblue;
   border-color: skyblue;
