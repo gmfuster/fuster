@@ -34,7 +34,7 @@
     <code><strong><u>Scope - variables</u></strong></code><br />
     There are two types of scope in JavaScript: Global and Local.  You get global scope when you declare a variable outside of a block, or outside of 
     a function.  Global scope on the browsert is the "window".<br/>
-    We can declare variables with var, let, const.  LET and CONST are the same as far as scope is concerned.<br/><br/>
+    We can declare variables with var, let, const.  LET and CONST are the same as far as scope is concerned.  Using "var"<br/><br/>
 
     <img width="100%" src="assets\images\js\varscope1.png" alt="var scope" /><br/><br/>
 
@@ -96,22 +96,49 @@
 
     <code><strong><u>Regular Functions</u></strong></code><br /><br/>
 
+    Because regular functions are objects, you can add a property to the function but just doing myFunc.myProp = "hey"<br/>
+
     <img width="100%" src="assets\images\js\functions1.png" alt="functions 1" /><br/><br/>
+
+    A function that doesn't return something will return undefined.<br/>
 
     <img width="100%" src="assets\images\js\functions2.png" alt="functions 2" /><br/><br/>
 
+    You can assign anonymous functions to a variable, then call them through that variable.<br/>
+
     <img width="100%" src="assets\images\js\functions3.png" alt="functions 3" /><br/><br/>
+
+    The "this" keyword from inside the function.<br/>
 
     <img width="100%" src="assets\images\js\functions4.png" alt="functions 4" /><br/><br/>
 
+    functions can be called before they are declared, because they are hoisted.<br/>
+
     <img width="100%" src="assets\images\js\functions5.png" alt="functions 5" /><br/><br/>
 
-    A function can return a function.  (see example on scope section)<br/>
+    A function can return a function.  (see example on scope section)<br/><br/>
 
     <code><strong><u>Arrow Functions</u></strong></code><br /><br/>
 
     <img width="100%" src="assets\images\js\arrow1.png" alt="arrow 1" /><br/><br/>
+
+    Arrow functions don't have their own "this" but the one from the parent. <br/>
+
     <img width="100%" src="assets\images\js\arrow2.png" alt="arrow 2" /><br/><br/>
+
+    Arrow functions don't have the "arguments" keyword.<br/>
+
+    <img width="100%" src="assets\images\js\arrow3.png" alt="arrow 3" /><br/><br/>
+
+
+
+    <code><strong><u>Default Parameters</u></strong></code><br /><br/>
+
+    You should put the default paramenters at the end of the parameters of the function.<br/>
+
+    <img width="100%" src="assets\images\js\defaultparams.png" alt="default params" /><br/><br/>
+
+
 
   </div>
 
