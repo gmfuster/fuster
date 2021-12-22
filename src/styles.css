@@ -34,6 +34,14 @@ body button:disabled {
   padding:5px;
 }
 
+.codeBlock{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2vw;
+  background-color: paleturquoise;
+  color:navy;
+  padding:8px;
+  border:deeppink solid 3px;
+}
 
 .TopNav {
   height:6vh; 
