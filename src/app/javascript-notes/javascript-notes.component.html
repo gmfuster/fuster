@@ -130,6 +130,13 @@
 
     <img width="100%" src="assets\images\js\arrow3.png" alt="arrow 3" /><br/><br/>
 
+    Arrow functions can never have duplicate named parameters, whether in strict or non-strict mode.<br/>
+
+    Regular functions created using function declarations or expressions are ‘constructible’ and ‘callable’.  
+    Being constructible means they can be used with the keyword “new”.  Arrow functions are not. <br/>
+
+    <img width="100%" src="assets\images\js\arrow4.png" alt="arrow 4" /><br/><br/>
+
 
 
     <code><strong><u>Default Parameters</u></strong></code><br /><br/>
@@ -194,12 +201,44 @@
     <div class="codeBlock">
       (function hey (a)&lbrace;<br/>
         console.log(a);<br/>
-    &rbrace;)("hi");<br/>
-
-    
-    
+    &rbrace;)("hi");<br/>        
     </div>
-    
+    <br/><br/>
+
+
+    <code><strong><u>call, apply, bind</u></strong></code><br /><br/>
+
+    call will call a function. You can call the function in an object, so it will use the data on another object, not the one with the function.<br/>
+
+    <img width="100%" src="assets\images\js\call.png" alt="call" /><br/><br/>
+
+    If the function takes parameters:<br/>
+
+    <img width="100%" src="assets\images\js\call2.png" alt="call with args" /><br/><br/>
+
+    Apply is similar to call, but for the arguments, we pass an array instead of comma delimmited.<br/>
+
+    <img width="100%" src="assets\images\js\apply.png" alt="apply with args" /><br/><br/>
+
+    Bind is similar to call/ apply but returns a new function without running it.  You cannot give an argument on calling it if you already gave it on binding.<br/>
+
+    <img width="100%" src="assets\images\js\bind.png" alt="bind with args" /><br/><br/>
+
+    You can provide the argument later if you don't provide it on binding:<br/>
+
+    <img width="100%" src="assets\images\js\bind2.png" alt="bind with args 2" /><br/><br/>
+
+    <code><strong><u>Higher Order Functions</u></strong></code><br /><br/>
+
+    In JavaScript functions can take other functions as arguments and they can return a function.  Those functions are called Higher Order Functions.
+    Examples of HOF are JS map, filter, reduce etc.<br/><br/>
+
+    <code><strong><u>New</u></strong></code><br /><br/>
+
+    Using the new with regular functions:<br/>
+    <img width="100%" src="assets\images\js\functionsnew.png" alt="functins with new" /><br/><br/>
+
+
   </div>
 
 
