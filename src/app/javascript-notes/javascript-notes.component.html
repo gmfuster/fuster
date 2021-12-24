@@ -288,8 +288,26 @@
     <img width="100%" src="assets\images\js\arrforeach.png" alt="array foreach" /><br/><br/>
 
 
+    <code><strong><u>map</u></strong></code><br /><br/>
+    This code will <mark>NOT</mark> populate the second array with what is expected, but it will create 5 undefined elements:<br/>
+    <div class="codeBlock">
+        var arr1 = [1,2,3,4,5];<br/>
+        var arr2 = [];<br/>
 
-
+         &nbsp; arr2 = arr1.map ((item) => &lbrace;<br/>
+         &nbsp;item * 2 ;<br/>
+        &rbrace;)    <br/>
+    </div>
+    Changing the above code to this (adding the return) will populate it:<br/>
+    <div class="codeBlock">
+      arr2 = arr1.map ((item) => &lbrace;<br/> 
+      &nbsp; return item * 2 ;<br/>
+     &rbrace;)<br/>
+    </div>  
+    Since the code really only has one line, we could do this and it implied the return:<br/>
+    <div class="codeBlock">
+      arr2 = arr1.map ( item => item * 2);
+    </div>
 
   </div>
 
