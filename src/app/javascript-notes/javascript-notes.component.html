@@ -19,6 +19,9 @@
     <p>
       <a  href="/javascript-notes/#functions">functions</a>
     </p>
+    <p>
+      <a  href="/javascript-notes/#arrays">Arrays</a>
+    </p>
   </div>
   
   <div class="PaddedContents">
@@ -237,6 +240,55 @@
 
     Using the new with regular functions:<br/>
     <img width="100%" src="assets\images\js\functionsnew.png" alt="functins with new" /><br/><br/>
+
+
+
+    <!-------------------------------------------------------------->
+    <!--Arrays-->
+    <!-------------------------------------------------------------->
+    <div id="arrays"></div><br/>
+    <hr class="hrHeaderClass" />
+        <h2 class="CenterMe" >Arrays</h2>
+    <hr class="hrHeaderClass"/>
+
+    Since functions are objects in JS, an array could contain functions.  Arrays are zero-based.  Ex: var cars = [“Saab”, “Volvo”]’;<br/>
+
+    <code><strong><u>forEach</u></strong></code><br /><br/>
+
+    forEach will go through every element in the array and perform a specific action to each item.
+   
+    The code inside the foreach will be performed, but look at this:<br/>
+    If we have:<br/>
+    <div class="codeBlock">
+      var arr1 = [1,2,3,4,5];
+    </div>
+    This code will perform the *2 but it won't go anywhere, arr2 will not be arr1*2:<br/>
+    <div class="codeBlock">
+      var arr2 = arr1.forEach( (item) => &lbrace; item *2;&rbrace; )<br/>    
+    </div>
+    This code returns but the arr3 is not changed either.<br/>
+    <div class="codeBlock">
+      var arr3 = arr1.forEach ( (item) => &lbrace;     <br/>
+        return item*2;<br/>
+        &rbrace;)    <br/>       
+    </div>
+    To get the new arrays to be *2 the arr1:<br/>
+    <div class="codeBlock">
+    var arr4 = [];<br/>
+    arr1.forEach ((item) => &lbrace; <br/>
+      <b>arr4.push(item * 2)    ;</b><br/>
+    &rbrace;)<br/>   
+    </div>  
+    <br/>
+    <code><strong><u>Array.prototype</u></strong></code><br /><br/>
+
+    Sometimes we can have variables that are like arrays but are not arrays. These almost arrays will not have all methods that are available to arrays.  
+    One example in older browser is forEach. But, if the structure is like arrays without being an array, we can also use forEach with Array.Prototype.<br/>
+
+    <img width="100%" src="assets\images\js\arrforeach.png" alt="array foreach" /><br/><br/>
+
+
+
 
 
   </div>
