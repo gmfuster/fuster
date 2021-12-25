@@ -309,6 +309,86 @@
       arr2 = arr1.map ( item => item * 2);
     </div>
 
+    <br/>
+    <code><strong><u>filter</u></strong></code><br /><br/>
+
+    It will return only the items from the array that satisfy a given condition.<br/>
+    <div class="codeBlock">
+      var arr1 = [1,2,3,4,5];<br/>
+      var arr2 = [];  <br/>
+
+      arr2 = arr1.filter(item => item>= 3); //will be 3,4,5<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>reduce</u></strong></code><br /><br/>
+
+
+    It reduces the array to a single value.  It uses a reducer function that we create and it applies it to every element on the array.<br/>
+
+    The reducer is super confusing, so here are a few examples because this is easier.  All the example use this array: <br/>
+    <div class="codeBlock">
+      var arr1 = [1,2,3,4];
+    </div>
+
+    See the image at the end if arrows help you.<br/>
+    The below example gives 5 as the original value (used when there is no previous value).<br/>
+    <div class="codeBlock">
+      <br/>
+      const reducer = (previousValue, currentValue) => previousValue + currentValue;<br/><br/>
+      //5+1 = 6<br/>
+      //6+2 = 8<br/>
+      //8+3 = 11<br/>
+      //11+4=15<br/>
+      console.log(arr1.reduce(reducer, 5)); --> will print 15<br/>
+    </div>
+
+    The next example has no initial value passed to it so the previousValue for the first element will be 0 but still using the same reducer.<br/>
+
+    <div class="codeBlock">
+    //1+0 = 1<br/>
+    //2+1=3<br/>
+    //3+2=6<br/>
+    //6+4=10<br/>
+    console.log(arr1.reduce(reducer)); --> will print 10<br/>
+    console.log("----------------------")<br/>
+    </div>  
+
+    The next one uses a different reducer.<br/>
+    <div class="codeBlock">
+      const reducer2 = (previousValue, currentValue) => previousValue * currentValue;<br/>
+      //2*1=2<br/>
+      //2*2=4<br/>
+      //4*3=12<br/>
+      //12*4=48<br/>
+      console.log(arr11.reduce(reducer2, 2)); --> will print 48<br/>
+      console.log("----------------------")<br/>
+    </div>  
+
+    The next one has yet a different reducer, with a +1 added to each element.<br/>
+
+    <div class="codeBlock">
+      const arr12 = [1, 2, 3, 4];<br/>
+      const reducer3 = (previousValue, currentValue) => (previousValue * currentValue) + 1;<br/>
+
+      //2*1 + 1 = 3<br/>
+      //3*2 + 1 = 7<br/>
+      //7*3 + 1 = 22<br/>
+      //22 * 4 + 1 = 89 --? will print 89<br/>      
+      console.log(arr11.reduce(reducer3, 2));
+    </div>
+    <br/>
+
+    <img width="100%" src="assets\images\js\reduce1.png" alt="reduce 1" /><br/><br/>
+
+    <img width="100%" src="assets\images\js\reduce2.png" alt="reduce 2" /><br/><br/>
+
+
+
+
+
+
+
   </div>
 
 
