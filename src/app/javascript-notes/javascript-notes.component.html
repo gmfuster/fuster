@@ -386,6 +386,106 @@
     We can also use reduceRight which is the same thing but it starts from the end.<br/>
 
 
+    <br/>
+    <code><strong><u>string to array</u></strong></code><br /><br/>
+
+    <div class="codeBlock">
+      let str = "I am a very cool string";<br/>
+      var arr = <b>str.split(" ")</b>;<br/>
+      console.log(arr); --> [ 'I', 'am', 'a', 'very', 'cool', 'string' ] <br/><br/>
+
+      let backtos = <b>arr.toString();</b><br/>
+      console.log(backtos); --> I,am,a,very,cool,string<br/><br/>
+
+      let str2 = "I am a very cool string";<br/>
+      var arr2 = str2.split("a");<br/>
+      console.log(arr2); --> [ 'I ', 'm ', ' very cool string' ]<br/>
+    </div>  
+
+    <br/>
+    <code><strong><u>pop</u></strong></code><br /><br/>
+    
+    <div class="codeBlock">
+    const arr1 = [1, 2, 3, 4];<br/>
+    arr1.pop();<br/>
+    console.log(arr1.toString()); //--> 1,2,3<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>push</u></strong></code><br /><br/>
+    
+    <div class="codeBlock">
+      const arr1 = [1, 2, 3, 4];<br/>
+      arr1.push(5);      <br/>
+      console.log(arr1.toString());//-->1,2,3,4,5<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>unshift</u></strong></code><br /><br/>
+    <div class="codeBlock">
+      const arr1 = [1, 2, 3, 4];<br/>
+      arr1.unshift(0);<br/>
+      console.log(arr1.toString());//--> 0,1,2,3,4<br/>
+    </div>  
+
+    <br/>
+    <code><strong><u>shift</u></strong></code><br /><br/>
+    <div class="codeBlock">
+      const arr1 = [1, 2, 3, 4];<br/>
+      arr1.shift();      <br/>
+      console.log(arr1.toString());//-->2,3,4<br/>
+    </div>  
+
+
+    <br/>
+    <code><strong><u>delete</u></strong></code><br /><br/>
+    <div class="codeBlock">
+      const arr1 = [1, 2, 3, 4];<br/>
+      delete arr1[0];<br/>
+      console.log(arr1);<br/>
+      //-->[ <1 empty item>, 2, 3, 4 ] <br/>
+    </div> 
+
+    <br/>
+    <code><strong><u>slice</u></strong></code><br /><br/>
+
+    The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end <b>(end not included) </b>
+    where start and end represent the index of items in that array. The original array will not be modified.<br/>
+    Like with other methods, you can use it in an array-like variable with Array.prototype.slice.call(arrayLikeVble)<br/>
+
+    <div class="codeBlock">
+      const arr1 = [1, 2, 3, 4];<br/><br/>
+
+      var arr2 = [];<br/>
+      arr2 = arr1.toString();<br/>
+      console.log(arr2);//1,2,3,4<br/><br/>
+
+      var arr2b = [];<br/>
+      arr2b = arr1.slice(2);<br/>
+      console.log(arr2b);//[3,4] (to the end)<br/><br/>
+
+      var arr2c = [];<br/>
+      arr2c = arr1.slice(1,2);<br/>
+      console.log(arr2c);//[2]<br/><br/>
+
+      const arr1d = [1, 2, 3, 4, 5, 6, 7, 8, 9];<br/>
+      var arr2d = [];<br/>
+      arr2d = arr1.slice(1,3);<br/>
+      console.log(arr2d);//[2,3]<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>splice</u></strong></code><br /><br/>
+    It removes a number of elements. <b>It modifies the array and returns a new array too. </b>
+	  The first argument is the index where we start removing.<br/>    
+
+    <img width="100%" src="assets\images\js\splice.png" alt="splice" /><br/><br/>
+
+    <img width="100%" src="assets\images\js\splice2.png" alt="splice 2" /><br/><br/>
+
+
+
+
 
 
 
