@@ -484,7 +484,82 @@
     <img width="100%" src="assets\images\js\splice2.png" alt="splice 2" /><br/><br/>
 
 
+    <br/>
+    <code><strong><u>concat</u></strong></code><br /><br/>
 
+    <div class="codeBlock">
+      var arr1 = [1, 2, 3, 4,5,6,7,8,9];<br/>
+      var arr2 = [10];<br/>
+      arr1 = arr1.concat(arr2);<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>sort</u></strong></code><br /><br/>
+    before the comparison the elements are converted to string, so strings is what's being compared (1,10, 11, 2, is sorted).<br/>
+    <div class="codeBlock">
+      var arr1 = [1, 2, 3, 9,8,7,6,5,4];<br/>
+      arr1 = arr1.sort();<br/>
+      console.log(arr1);<br/>
+    </div>
+    You can create your own compare function and use it in the sort to get the sort order you want.  The compare function will take a and b arguments and return:<br/>
+    &lt; 0 to mean a &lt; b. <br/>
+    &gt; 0 to mean a &gt; b. <br/>
+    <div class="codeBlock"> 
+      var arr1 = [1, 2, 3, 9,8,7,6,5,4, 10, 11, 15, 14, 13];<br/><br/>
+      //return &lt; 0 if a &lt; b and &gt; 0 if a &gt; b <br/>
+      //will sort 1,2,3,4...<br/>
+      function <b>compare</b>(a,b)&lbrace;<br/>
+          &nbsp; return a-b;<br/>
+      &rbrace;<br/><br/>
+      arr1 = arr1.sort(<b>compare</b>);<br/>
+      console.log(arr1);<br/>
+    </div>
+    
+
+    <br/>
+    <code><strong><u>reverse</u></strong></code><br /><br/>
+    reverse the array.
+    <div class="codeBlock"> 
+      var arr1 = [1, 2, 3, 4,5,6,7,8,9];<br/>
+      arr1 = arr1.reverse();<br/>
+    </div>  
+
+
+    <br/>
+    <code><strong><u>filter</u></strong></code><br /><br/>
+    <div class="codeBlock">
+      var arr1 = [1, 2, 3, 4,5,6,7,8,9];<br/>
+      var arr2 = [];<br/><br/>
+      
+      arr2 = arr1.filter( element => element > 4);<br/><br/>
+      
+      console.log(arr1);//unchanged<br/>
+      console.log(arr2);//5,6,7,8,9<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>every</u></strong></code><br /><br/>
+
+    tests whether all the elements pass a certain condition<br/>
+    <div class="codeBlock">
+      var arr1 = [1, 2, 3, 4,5,6,7,8,9];<br/>
+      var is = arr1.every( element => element > 4);<br/>
+      console.log(is);//false<br/>
+    </div>
+
+
+    <br/>
+    <code><strong><u>some</u></strong></code><br /><br/>
+
+    tests whether some the elements pass a certain condition<br/>
+    <div class="codeBlock">
+      var arr1 = [1, 2, 3, 4,5,6,7,8,9];<br/>
+      var is = arr1.some( element => element > 4);<br/>
+      console.log(is);//true<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>indexof</u></strong></code><br /><br/>
 
 
 
