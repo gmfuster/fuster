@@ -561,8 +561,111 @@
     <br/>
     <code><strong><u>indexof</u></strong></code><br /><br/>
 
+    <div class="codeBlock">
+      var arr1 = ["A", "B", "C", "D","E","F","G","H","I"];<br/>
+      var i = arr1.indexOf("C");<br/>
+      console.log(i);//2<br/><br/>
+
+      //If there are duplicates you can indicate the starting //point where indexOf should be looking.<br/>
+      var arr1 = ["A", "B", "C", "D","E","F","G","H","I", "A", "B","C", "D"];<br/><br/>
+
+      var i = arr1.indexOf("C", 4);<br/><br/>
+
+      console.log(i);//11<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>lastindexof</u></strong></code><br /><br/>
+    <div class="codeBlock">
+      var arr1 = ["A", "B", "C", "D","E","F","G","H","I", "A", "B","C", "D"];<br/><br/>
+
+      var i = arr1.lastIndexOf("C");<br/><br/>
+
+      console.log(i);//11<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>findindex</u></strong></code><br /><br/>
+
+    <div class="codeBlock">
+      var arr1 = [1, 2, 3, 4,5,6,2,5,4, 7, 8,1, 2];<br/><br/>
+      var i = arr1.findIndex(element => element > 3);<br/><br/>
+      console.log(i);//3<br/>
+    </div>
+    You can pass it a function like here:<br/>
 
 
+
+    <br/>
+    <code><strong><u>find</u></strong></code><br /><br/>
+    Finds the FIRST element that matches:<br/>
+    <div class="codeBlock">
+      var arr1 = [1, 2, 3, 4,5,6,2,5,4, 7, 8,1, 2];<br/><br/>
+
+      var i = arr1.find(element => element > 3);<br/><br/>
+
+      console.log(i);//4<br/>
+    </div>  
+    <img width="100%" src="assets\images\js\findindex.png" alt="findindex" /><br/><br/>
+
+
+    <br/>
+    <code><strong><u>includes</u></strong></code><br /><br/>
+
+    <div class="codeBlock">
+      var arr1 = [1, 2, 3, 4,5,6,2,5,4, 7, 8,1, 2];<br/><br/>
+
+      var i = arr1.includes(13);<br/><br/>
+
+      console.log(i);//false<br/><br/>
+
+      var arr1 = [1, 2, 3, 4, 5, 6, 7, 8,1, 2];<br/><br/>
+
+      var i = arr1.includes(8,7 );//start at index 7<br/><br/>
+      console.log(i);//true<br/>
+    </div>
+
+    <br/>
+    <code><strong><u>flat</u></strong></code><br /><br/>
+    <div class="codeBlock">
+      let ar = [1, [2,3], [4,5,6]]; <br/>
+      console.log(ar.flat());//[ 1, 2, 3, 4, 5, 6 ]<br/>
+    </div>  
+
+    <br/>
+    <code><strong><u>isArray</u></strong></code><br /><br/>
+    <div class="codeBlock">
+      var b = Array.isArray([1,2,3]);<br/>
+      console.log(b);//true
+    </div>  
+
+    <br/>
+    <code><strong><u>entries</u></strong></code><br /><br/>
+    <div class="codeBlock">
+      var fruits = ["Banana", "Orange", "Apple", "Mango"];<br/>
+      var f = fruits.entries(); <br/>
+      for (x of f) &lbrace;<br/>
+        &nbsp; console.log(x);<br/>
+      &rbrace;<br/>
+      //[0, "Banana"]<br/>
+      //[1, "Orange"]<br/>
+      //[2, "Apple"]<br/>
+      //[3, "Mango"]<br/>
+      </div>  
+
+      There is a similar <code><strong><u>keys</u></strong> </code> one.<br/>
+
+      <br/>
+      <code><strong><u>join</u></strong></code><br /><br/>
+      <div class="codeBlock">
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];<br/>
+        console.log(fruits.join())//Banana,Orange,Apple,Mango<br/><br/>
+        
+        var fruits = ["Banana", "Orange", "Apple", "Mango"];<br/>
+        console.log(fruits.join('-'))//Banana-Orange-Apple-Mango<br/>
+      </div>
+     
+      There are other array methods not included here.  This includes the most common ones.
 
   </div>
 
