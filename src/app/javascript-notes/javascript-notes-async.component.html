@@ -248,6 +248,59 @@
         <h2 class="CenterMe">Await</h2>
     <hr class="hrHeaderClass"/>
 
+    AWAIT is used to wait for a promise or a value if what we return is not a promise, but it will be turned into a promise.  
+    <b>AWAIT has to be called inside a async function.</b><br/>
+    If the Promise bein awaited is rejected, the await expression throws the rejected value.<br/>
+    <b>The await will wait for the promise it got to be resolved.</b>  If we return a value right away, it will not be waiting.  If the called
+    function waits and then returns something, the await will have moved on.  It expects a promise, then it waits for it to finish.  It doesn't wait 
+    for the promise to be returned after a while.
+
+    <div class="codeBlock">
+        function callMe()&lbrace;
+           &nbsp; console.log("returning promise with timeout");<br/>
+           &nbsp; return new Promise(function (resolve,reject) &lbrace;<br/>
+           &nbsp;&nbsp;   setTimeout(() => &lbrace;<br/>
+           &nbsp;&nbsp;     resolve(9);<br/>
+           &nbsp;   &rbrace;, 3000);<br/>
+           &nbsp;  &rbrace;);<br/>
+          &rbrace;<br/>
+          
+          async function iCallWait()&lbrace;<br/>
+          &nbsp;   let vble = await callMe()  ;  <br/>
+          &nbsp;   console.log("Hello, I got " + vble);<br/>
+          &nbsp;  &rbrace;<br/>
+          
+          iCallWait()<br/>
+    </div><br/>
+    <img width="100%" src="assets\images\js\await1.png" alt="await 1" /><br/><br/>
+
+    If the promise can reject, do a try-catch:<br/>
+
+    <div class="codeBlock">
+        async function iCallWait()&lbrace;<br/>
+        &nbsp; try&lbrace;<br/>
+        &nbsp; &nbsp;  let vble = await callMe()  ;  <br/>  
+        &nbsp; &nbsp;  console.log("Hello, I got " + vble);<br/>
+        &nbsp; &nbsp;   &rbrace;catch&lbrace;<br/>
+        &nbsp;     console.log("oh no");<br/>
+            &rbrace;  <br/>          
+    </div><br/>
+    Could also do this but less clear: <code><strong><u>var response = await callMe().catch((err) => &lbrace; console.error(err); &rbrace;);</u></strong></code><br/><br/>
+    You can also do: <code><strong><u>let response = await fetch(url); </u></strong></code> (in async function, try in browser's console, Calling fetch () returns a promise)<br/><br/>
+    If we call a function with await that just waits and then returns something, the wait will not wait (see explanation at top of section):<br/><br/>
+    <div class="codeBlock">
+        function callMe()&lbrace;<br/> 
+        &nbsp;setTimeout(() => &lbrace;<br/> 
+        &nbsp;&nbsp;  return 9;<br/> 
+        &nbsp;  &rbrace;, 3000);  <br/> 
+        &rbrace;
+    </div>
+
+
+
+
+
+
 
 
 
