@@ -93,6 +93,11 @@
               <a [routerLink]='["/javascript-notes"]'  style="color:navy; font-size:2.5vh; ">
                 Basics
               </a>
+            </li>  
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/javascript-notes-async"]'  style="color:navy; font-size:2.5vh; ">
+                Async
+              </a>
             </li>                
           </ul>                    
         </li>

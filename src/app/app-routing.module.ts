@@ -8,6 +8,7 @@ import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
 import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
+import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
 import { ReadBackComponent } from './other-fun/read-back.component';
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
 
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
   { path: 'javascript-notes', component: JavaScriptNotesComponent, pathMatch: 'full' }, //basics
+  { path: 'javascript-notes-async', component: JavaScriptNotesAsyncComponent, pathMatch: 'full' }, 
 
 ];
 
