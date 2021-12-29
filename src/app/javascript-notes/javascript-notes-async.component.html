@@ -165,7 +165,7 @@
     </div>  
 
 
-     <!-------------------------------------------------------------->
+    <!-------------------------------------------------------------->
     <!--chains-->
     <!-------------------------------------------------------------->
     <div id="chains"></div><br/>
@@ -173,8 +173,71 @@
         <h2 class="CenterMe">Chains</h2>
     <hr class="hrHeaderClass"/>
 
+    We can have then after then, such as then(...).then(...) etc. However, the resolve from the myPromise will only make it to the first then.
+    If than then doesn't return it, the following thens will not have it:
+
+    <img width="100%" src="assets\images\js\promisechain.png" alt="promise chain" /><br/><br/>
+    <br/>
+    But if the previous then returns, then:<br/>
+    <img width="100%" src="assets\images\js\promisechain2.png" alt="promise chain 2" /><br/><br/>
+
+    If we had more than one promise (let myPromise = new Promise), the then() can return one of the additional promises instead of just returning a string or whatever.<br/>
 
 
+
+
+    <!-------------------------------------------------------------->
+    <!--static functions-->
+    <!-------------------------------------------------------------->
+    <div id="chains"></div><br/>
+    <hr class="hrHeaderClass" />
+        <h2 class="CenterMe">Static functions</h2>
+    <hr class="hrHeaderClass"/>
+
+    JS has some static functions to deal with promises. This is just a brief summary.<br/>
+
+    <code><strong><u>all</u></strong></code><br />
+    <div class="codeBlock">
+        Promise.all([myPromise1, myPromise2]).then(<br/>
+            (values) => console.log("ALL DONE with " + values)<br/>
+          )<br/>
+    </div>  <br/>
+
+    <img width="100%" src="assets\images\js\promise_all.png" alt="promise all" /><br/><br/>
+    It is a good idea to have a catch with the Promise.all in case one of the promises fails.<br/>
+
+    <code><strong><u>allsettled</u></strong></code><br />
+    This will have the then happen, regardless of resolve or reject.  And values will have the status and result of the promises.
+
+    <code><strong><u>any</u></strong></code><br />
+
+    Promise.any[ list of promises] will wait for just one to finish.  Once that happens, the others are ignored.<br/>
+
+    <code><strong><u>race</u></strong></code><br />
+
+    Will happen with whatever promise finishes first, it doesn't matter if with resolve or reject.<br/>
+
+    <code><strong><u>resolve</u></strong></code><br />
+    the resolve will call the first function in the arguments.
+    <div class="codeBlock">
+        Promise.resolve("YAY").then(<br />
+         &nbsp;   ()=>console.log("pretend I'm a func called 4 resolve"),<br />
+         &nbsp;   ()=>console.log("pretend I'm a func called 4 reject")<br />
+          )<br />
+    </div>  <br/>
+
+    <img width="100%" src="assets\images\js\resolve.png" alt="resolve" /><br/><br/>
+
+
+    <code><strong><u>reject</u></strong></code><br />
+    similar to the resolve but it goes to the second function provided, the reject one.<br/>
+
+    <div class="codeBlock">
+        Promise.reject( new Error("Oops")).then(<br/>
+        &nbsp;  ()=>console.log("pretend I'm a func called 4 resolve"),<br/>
+        &nbsp;  ()=>console.log("pretend I'm a func called 4 reject")<br/>
+)
+    </div>
 
 
     </div>    
