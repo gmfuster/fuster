@@ -29,6 +29,10 @@ body button:disabled {
   color: deepskyblue;  
 }
 
+body b{
+  background-color:paleturquoise;
+  color:navy;
+}
 .formulaBackground{
   background-color: paleturquoise;
   padding:5px;
