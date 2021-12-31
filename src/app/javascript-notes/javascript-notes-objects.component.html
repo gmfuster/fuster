@@ -11,18 +11,22 @@
   
     <div style="position:fixed; left:12px; top: 10vh; width:8vw; ">
       <p>
-        <a  href="/javascript-notes-async/#create">Create Objs.</a>
+        <a  href="/javascript-notes-objects/#create">Create Objs.</a>
+    </p>
+      <p>
+         <a  href="/javascript-notes-objects/#object">Object</a>
+      </p>
       <p>        
-        <a  href="/javascript-notes-async/#reference">Reference Types</a>      
+        <a  href="/javascript-notes-objects/#reference">Reference Types</a>      
       </p>       
       <p>        
-        <a  href="/javascript-notes-async/#functions">Functions</a>      
+        <a  href="/javascript-notes-objects/#functions">Functions</a>      
       </p>  
       <p>
-        <a  href="/javascript-notes-async/#classes">Classes</a>
+        <a  href="/javascript-notes-objects/#classes">Classes</a>
       </p>
       <p>
-        <a  href="/javascript-notes-async/#styles">Styles</a>
+        <a  href="/javascript-notes-objects/#styles">Styles</a>
       </p>
     </div>
     
@@ -59,8 +63,79 @@
         console.log (num === 20); //false<br/>
       </div>
 
+      You can also create it directly, like this:<br/>
+      <div class="codeBlock">
+        //Create object this way<br/>
+        let someObject = &lbrace;<br/>
+           &nbsp;  property1:"prop1",<br/>
+           &nbsp;  property2: "prop2"<br/>
+        &rbrace;<br/>
+        console.log(typeof(someObject));//object<br/>
+        console.table(someObject);<br/>
+      </div>
+      This will not throw an error but undefined:  <div class="codeBlock">console.log(someObject.prop);//prop was not defined, shows undefined.</div> 
+      You can have functions in there:<br/>
 
-  
+      <div class="codeBlock">
+        const someObject = &lbrace;<br/>
+            &nbsp;  prop1:function () &lbrace;console.log("I am 1");&rbrace;,<br/>
+       }<br/>
+       someObject.prop1;//will not do anything (not calling the function)<br/>
+       <b>someObject.prop1();//prints "I am 1"</b><br/>
+       let aux = someObject.prop1; // assign the function<br/>
+       aux(); // prints "I am 1"<br/>
+      </div>
+      the name of the properties doesn't have to be hardcoded.  Here, the property name will be Jane:<br/>
+      <div class="codeBlock">
+        const propertyName = "Jane";<br/>
+        //use [] to use the variable name<br/>
+        const someObject = &lbrace;<br/>
+            &nbsp;  [propertyName]:"hello"<br/>
+        &rbrace;<br/>
+        console.table(someObject);<br/>
+      </div>
+      And you can also do this:<br/>
+
+    <div class="codeBlock">
+        const someObject = &lbrace;<br/>
+            &nbsp;  [2+2]:"hello"<br/>
+       &rbrace;<br/>
+       //access with [] notation.<br/>
+       console.log(someObject[4]); //prints "hello"<br/>
+       console.log(someObject[1+3]); // prints "hello"<br/>
+    </div>  
+    To add an additional property we just need to use it and it will be added.<br/>
+    <div class="codeBlock">
+        const someObject = &lbrace;<br/>
+            &nbsp;   p1:"hello"<br/>
+       &rbrace;<br/>
+       someObject.p2 = "hello 2"<br/>
+       console.table(someObject); <br/><br/>
+       
+       const someObject2 = &lbrace;<br/>
+        &nbsp;     p1:"hello 1",<br/>
+        &nbsp;    p2:"hello 2"<br/>
+       &rbrace;<br/>
+       delete someObject2.p2;<br/>
+       console.table(someObject2); <br/>
+    </div>
+    We could also have created the above objects with:<br/>
+    <div class="codeBlock">
+        const anotherObject = new Object();<br/>
+        anotherObject.p1 = "from new 1";<br/>
+        anotherObject.p2 = "from new 2";<br/>
+        console.table(anotherObject)<br/>
+    </div>
+
+    <!-------------------------------------------------------------->
+    <!--Object-->
+    <!-------------------------------------------------------------->
+    <div id="object"></div><br/>
+    <hr class="hrHeaderClass" />
+        <h2 class="CenterMe">Object</h2>
+    <hr class="hrHeaderClass"/>
+
+
     <!--<img width="100%" src="assets\images\js\promise1.png" alt="promise 1" /><br/><br/>-->
 
     
