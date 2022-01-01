@@ -135,17 +135,58 @@
         <h2 class="CenterMe">Object</h2>
     <hr class="hrHeaderClass"/>
 
+    With the Object type we get the “values”, “entries”, and “keys” methods as shown below.<br/>
+    <div class="codeBlock">
+        const someObject = &lbrace;<br/>
+            &nbsp;    p1:"hello 1",<br/>
+            &nbsp;    p2:"hello 2"<br/>
+       &rbrace;<br/>
+       console.log(Object.values(someObject));//[ 'hello 1', 'hello 2' ]<br/>
+       console.log(Object.keys(someObject));//[ 'p1', 'p2' ]<br/>
+       console.log(Object.entries(someObject));//[ [ 'p1', 'hello 1' ], [ 'p2', 'hello 2' ] ]<br/>
+    </div>
+    When you create an object as a constant, the object variable itself will be a constant but the properties will not be.<br/>
+    <div class="codeBlock">
+        const someObject = &lbrace;<br/>
+            &nbsp;  p1:"hello 1",<br/>
+            &nbsp;  p2:"hello 2"<br/>
+       &rbrace;<br/>
+       const someObject2 = &lrarr;<br/>
+        &nbsp;  p1:"hello 1",<br/>
+        &nbsp;  p2:"hello 2"<br/>
+       &rbrace;<br/>
+       someObject2.p1 = "modifed"//will change it<br/>
+       console.table(someObject2);<br/><br/>
+       
+       someObject = &lbrace;p1:"hey"&rbrace;;//error: assignment to constant<br/>
+    </div>
+
+    If you want the whole object to be a constant, you can do the following, which will not throw an error but will not change the property:<br/>
+    <div class="codeBlock">
+        const obj1 = Object.freeze(&lbrace;prop1: 'hey const 1', prop2: "hey const 2"&rbrace;);<br/>
+        obj1.prop1 = "CHANGED IT";<br/>
+        console.log(obj1.prop1);//prints "hey const 1"<br/>
+    </div>
+    We can also check whether an object has a property:<br/>
+    <div class="codeBlock">
+        const obj1 = &lbrace;<br/>
+            &nbsp;    p1 : "I am 1",<br/>
+            &nbsp;    p2 : "I am 2"<br/>
+       &rbrace;<br/>
+       console.log(obj1.hasOwnProperty("p3"));//false<br/>
+       console.log(obj1.hasOwnProperty("p1"));//true<br/>
+    </div>
+
 
     <!--<img width="100%" src="assets\images\js\promise1.png" alt="promise 1" /><br/><br/>-->
 
     
-
+ <!-------------------------------------------------------------->
+    <!--Reference-->
     <!-------------------------------------------------------------->
-    <!--catch finally-->
-    <!-------------------------------------------------------------->
-    <div id="catch"></div><br/>
+    <div id="reference"></div><br/>
     <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Catch-Finally</h2>
+        <h2 class="CenterMe">Reference Types</h2>
     <hr class="hrHeaderClass"/>
 
     
