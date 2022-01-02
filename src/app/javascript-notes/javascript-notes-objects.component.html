@@ -189,16 +189,94 @@
         <h2 class="CenterMe">Reference Types</h2>
     <hr class="hrHeaderClass"/>
 
-    
+    When we are assigning an object variable to another object variables, what the object is “saying” is “here, 
+    this is the the box where my data is, I’ll share it with you, if you change it you will change it for me too.”  That is not the case 
+    with primitives<br/>
+
+    <div class="codeBlock">
+        //create object and primitive<br/>
+        const obj1 = &lbrace; p:1&rbrace;;<br/>
+        const x = 1;<br/>
+        //assign them to new variables<br/>
+        const obj2 = obj1;<br/>
+        let y = x;<br/>
+        //change the recently created variables<br/>
+        obj2.p = 2;<br/>
+        y = 2;<br/>
+        //check the values of all<br/>
+        console.table(obj1);//p-2<br/>
+        console.table(obj2);//p-2<br/><br/>
+
+        console.log(x);//1<br/>
+        console.log(y);//2<br/>
+    </div>
+    <br/>
+    So if what we want is a copy that behaves like a copy for a primitive type, 
+    we need to do what we call a <b>deep cloning</b>. With deep cloning all the properties will get a new copy.<br/>
+    <div class="codeBlock">
+        const obj1 = &lbrace; p:1&rbrace;;<br/>
+        <b>const obj2 = JSON.parse(JSON.stringify(obj1));</b><br/>
+        obj2.p = 2;<br/>
+        console.table(obj1); //1<br/>
+        console.table(obj2); //2<br/>
+    </div>
+    <br/>
+    In <b>shallow cloning</b>, the primitive elements of the object will be copied, but the reference types will still share the memory location.
+    <div class="codeBlock">
+        let obj1 = &lbrace; p:1&rbrace;;<br/>
+        <b>let obj2 = Object.assign(&lbrace;&rbrace;,obj1);</b> // or &lbrace;...obj1&rbrace;;<br/>
+        obj2.p = 2;<br/>
+        console.log(obj1);//&lbrace; p: 1 &rbrace;<br/>
+        console.log(obj2);//&lbrace; p: 2&rbrace;<br/>
+    </div>
+    <br/>
+    Array (reference). Notice the difference between reassigning the property to a new array and changing the array itself.<br/>
+    Changing the array itself will affect both objects because we are changing the contents of the box where the array is located.<br/>
+    Assigning a new array to one of the objects is not sharing the same box anymore<br/>
+    <div class="codeBlock">
+        let obj1 = &lbrace; p:[1,2,3,4]&rbrace;;<br/>
+        let obj2 = Object.assign(&lbrace;&rbrace;,obj1);<br/>
+        let obj3 = Object.assign(&lbrace;&rbrace;,obj1);<br/>
+        obj2.p = [5,6];<br/>
+        obj3.p.push(1000);<br/>
+        console.log(obj1);<br/>
+        console.log(obj2);<br/>
+        console.log(obj3);<br/>
+        //the above will print:<br/>
+        // p: [ 1, 2, 3, 4, 1000 ] <br/>
+        // p: [ 5, 6 ] <br/>
+        // p: [ 1, 2, 3, 4, 1000 ] <br/>
+    </div>  
+    Object (reference):<br/>
+    <div class="codeBlock">
+        let obj1 = &lbrace; p:&lbrace;a:1, b:2, c:["a"]&rbrace; &rbrace;;<br/>
+        let obj2 = Object.assign(&lbrace;&rbrace;,obj1);<br/>
+        let obj3 = Object.assign(&lbrace;&rbrace;,obj1);<br/>
+        obj2.p = &lbrace;a:2, b:3, c: ["b"]&rbrace;;<br/><br/>
+
+        obj3.p.a = 3;//Notice this one will change for both<br/>
+        obj3.p.c.push("AAAAAAA");<br/><br/>
+
+        console.log(obj1);<br/>
+        console.log(obj2);<br/>
+        console.log(obj3);<br/>
+        //Will print<br/>
+        //&lbrace; p: &lbrace; a: 3, b: 2, c: [ 'a', 'AAAAAAA' ] &rbrace; &rbrace;<br/>
+        //&lbrace; p: &lbrace; a: 2, b: 3, c: [ 'b' ] &rbrace; &rbrace;<br/>
+        //&lbrace; p: &lbrace; a: 3, b: 2, c: [ 'a', 'AAAAAAA' ] &rbrace; &rbrace;<br/>
+    </div>
+
 
 
     <!-------------------------------------------------------------->
-    <!--chains-->
+    <!--functions-->
     <!-------------------------------------------------------------->
-    <div id="chains"></div><br/>
+    <div id="functions"></div><br/>
     <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Chains</h2>
+        <h2 class="CenterMe">Functions</h2>
     <hr class="hrHeaderClass"/>
+
+    
 
    
 
