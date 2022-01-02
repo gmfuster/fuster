@@ -328,39 +328,151 @@
     cartype.printMyInfo();<br/>
     </div>   
 
+    Don’t use arrow functions for this since arrow function will not get their own “this” and “this” will refer to the global scope. 
+    Even with regular functions, we can be surprised with what we get with “this”. See the example below.<br/>
 
+    <div class="codeBlock">
+        function Vehicle(typearg, yeararg)&lbrace; <br/>
+          &nbsp;  this.type = typearg;<br/>
+          &nbsp;   this.year = yeararg;<br/>
+       }<br/>
+       Vehicle.prototype.maxwheels = 6;<br/>
+       Vehicle.prototype.functionWithFunction = function () &lbrace;<br/>
+        &nbsp; console.log("111111111111111") ;<br/>
+        &nbsp;  console.log(this);<br/>
+        &nbsp; &nbsp;  function innerFunction() &lbrace;<br/>
+            &nbsp; &nbsp; &nbsp;    console.log("22222222222222222") ;<br/>
+            &nbsp; &nbsp; &nbsp;     console.log(this);<br/>
+          &rbrace;<br/>
+          &nbsp; &nbsp;  innerFunction();<br/>
+       &rbrace;<br/>
+       let cartype = new Vehicle("car", 2003);<br/>
+       cartype.functionWithFunction();<br/>
+       <b>//this for Vehicle refers to that object, this in the inner refers to the global this</b>
+    </div>  
+    If we need the inner function to access the same this as the Vehicle one:<br/>
+    <div class="codeBlock">
+        Vehicle.prototype.functionWithFunction = function () &lbrace;<br/>
+        &nbsp;    console.log("111111111111111") ;<br/>
+        &nbsp;    console.log(this);<br/>
+        &nbsp;    <b> const self = this;<br/></b>
+        &nbsp;     function innerFunction() &lbrace;<br/>
+        &nbsp;  &nbsp;        console.log("22222222222222222") ;<br/>
+        &nbsp;  &nbsp;          <b>console.log(self);</b><br/>
+             &rbrace;<br/>
+             &nbsp;      innerFunction();<br/>
+          &rbrace;
+    </div>
+    <br/>
+    So what if we want to have another object of type small vehicle that inherits from Vehicle? <br/>
+    <div class="codeBlock">
+        function Vehicle(typearg, yeararg)&lbrace;<br/>
+            &nbsp;  this.type = typearg;<br/>
+            &nbsp;  this.year = yeararg;<br/>
+       &rbrace;<br/>
+       Vehicle.prototype.printType = function () &lbrace;<br/>
+        &nbsp;   console.log(this.type);<br/>
+        &nbsp;   console.log(this.year);<br/>
+       &rbrace;<br/><br/>
 
+       //new constructor function inheriting from Vehicle<br/>
+       function SmallVehicle(wheels, type, year) &lbrace;<br/>
+        &nbsp;     Vehicle.call(this, type, year);<br/>
+        &nbsp;    this.wheels = wheels;<br/>
+       &rbrace;<br/><br/>
 
+       //need this part for the printType function<br/>
+       SmallVehicle.prototype = Object.create(Vehicle.prototype);<br/>
+       Object.defineProperty(SmallVehicle.prototype, 'constructor', &lbrace;<br/>
+        &nbsp;      value: SmallVehicle,<br/>
+        &nbsp;     enumerable: false,<br/>
+        &nbsp;      writable: true &rbrace;);<br/><br/>
+       
+       let small = new SmallVehicle(2, "small", 2006);<br/>
+       small.printType();<br/>
+    </div><br/>
+    We can add function specific to the prototype of SmallVehicle if needed<br/>
 
-
-
-
-   
+    <img width="100%" src="assets\images\js\objects1.png" alt="objects 1" /><br/><br/>
 
 
     <!-------------------------------------------------------------->
-    <!--static functions-->
+    <!--classes-->
     <!-------------------------------------------------------------->
-    <div id="static"></div><br/>
+    <div id="classes"></div><br/>
     <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Static functions</h2>
+        <h2 class="CenterMe">Classes</h2>
     <hr class="hrHeaderClass"/>
-
-    
-
-
-    <!-------------------------------------------------------------->
-    <!--Await-->
-    <!-------------------------------------------------------------->
-    <div id="await"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Await</h2>
-    <hr class="hrHeaderClass"/>
-
    
+    We don’t really have classes in JavaScript because under the hood they will be turned in to the constructor functions we have seen, 
+    but as far as coding goes, they look a lot like classes.  From the Vehicle examples above<br/>
+    Vehicle will look like this:<br/>
+    <div class="codeBlock">
+        class Vehicle&lbrace;<br/>
+            &nbsp; constructor(typearg, yeararg)&lbrace;<br/>
+                &nbsp;   &nbsp;   this.type = typearg;<br/>
+                &nbsp;   &nbsp;   this.year = yeararg;<br/>
+                &nbsp;  &rbrace;     <br/>
+                &nbsp; get theType()&lbrace; //getter<br/>
+                    &nbsp;   &nbsp;      return this.type;<br/>
+                    &nbsp; &rbrace;     <br/>
+                    &nbsp;  set theYear(year)&lbrace;  //setter<br/>
+                        &nbsp;   &nbsp;       this.year = year;<br/>
+                        &nbsp; &rbrace;     <br/>
+                        &nbsp;  printTypeYear ()&lbrace;  //Just a method<br/>
+                            &nbsp;   &nbsp;      console.log(this.type);<br/>
+                            &nbsp;   &nbsp;      console.log(this.year);<br/>
+                            &nbsp;  &rbrace;<br/>
+                            &nbsp;  static printSomething()&lbrace;<br/>
+                                &nbsp;   &nbsp;       console.log("printing something");<br/>
+                                &nbsp;  &rbrace;<br/>
+       &rbrace;<br/>
+    </div>
+    <br/>
+    And smallVehicle<br/>
+    <div class="codeBlock">
+        class SmallVehicle extends Vehicle&lbrace;<br/>
+            &nbsp;  constructor (wheels, type, year)&lbrace;<br/>
+                &nbsp; &nbsp;    super(type, year); //call super before using "this"<br/>
+                &nbsp; &nbsp;   this.wheels = wheels;<br/>
+                &nbsp;  &rbrace;<br/>
+       &rbrace;<br/>
+    </div>  
+    <br/>
+    To use:<br/>
+    <div class="codeBlock">
+        let small = new SmallVehicle(2, "small", 2006);<br/>
+        small.printTypeYear();<br/>
+        console.log(small.wheels);<br/>
+        small.theYear = 2011; //use the getter<br/>
+        small.printTypeYear();<br/>
+        SmallVehicle.printSomething(); //static method<br/>
+    </div>
+    Note: don’t put more code than you need in the constructor. The constructor will run every time you create a new object with new.<br/>
+    Note: You don’t have to use get and set in the names of the getter and setter methods, but it is is a good idea<br/>
 
+    <!-------------------------------------------------------------->
+    <!--styless-->
+    <!-------------------------------------------------------------->
+    <div id="styles"></div><br/>
+    <hr class="hrHeaderClass" />
+        <h2 class="CenterMe">Styles</h2>
+    <hr class="hrHeaderClass"/>
+    Because styles are also objects we can do this:<br/>
+    <div class="codeBlock">
+        var wordStyles = &lbrace;<br/>
+            width:"12vw",<br/>
+            heigth:"10vh",<br/>
+            fontSize:"8vh",<br/>
+            border:"3px solid navy"<br/>
+        &rbrace;<br/>
+        var wordStylesClick = Object.assign(&lbrace;&rbrace;, wordStyles, &lbrace;cursor:"pointer"&rbrace;); <br/><br/>
 
-
+        &lt;span style=&lbrace;wordStyles&rbrace;&gt;,,,,&lt;/span&gt;<br/>
+        &lt;span style=&lbrace;wordStylesClick&rbrace; onClick=&lbrace;this.next&rbrace;&gt;...&lt;/span&gt;<br/>
+    </div>
+    <br/>
+    <br/>
 
 
 
