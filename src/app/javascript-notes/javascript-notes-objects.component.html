@@ -275,8 +275,65 @@
     <hr class="hrHeaderClass" />
         <h2 class="CenterMe">Functions</h2>
     <hr class="hrHeaderClass"/>
+        
+    We ca use functions that we will use to create new objects. The standard is to name this functions starting with uppercase.  
+    The standard is to name this functions starting with uppercase.<br/>
 
-    
+    <div class="codeBlock">
+        function Vehicle(typearg, yeararg)&lbrace;<br/>
+         &nbsp;   this.type = typearg;<br/>
+         &nbsp;    this.year = yeararg;<br/>
+       &rbrace;<br/>
+       let cartype = new Vehicle("car", 2003);<br/><br/>
+       
+       console.log(Object.getPrototypeOf(cartype)); //Vehicle &lbrace;&rbrace;<br/>
+       console.log(cartype.type); //car<br/>
+       console.log(cartype instanceof Vehicle); //true<br/>
+       console.log(Vehicle.prototype); //Vehicle &lbrace;&rbrace;<br/>
+    </div>
+    <br/>
+    If we want the prototype to have a variable that will be shared among all instances of Vehicle (instead of each one having its own copy as in the 
+    ones used above) we can do this:
+    <div class="codeBlock">
+        function Vehicle(typearg, yeararg)&lbrace;<br/>
+            this.type = typearg;<br/>
+            this.year = yeararg;<br/>
+       &rbrace;<br/>
+       Vehicle.prototype.maxwheels = 6;<br/>
+       let cartype = new Vehicle("car", 2003);<br/>
+       console.table(Vehicle.prototype);//maxwheels = 6<br/>
+       console.table(cartype.maxwheels);//6<br/>
+    </div><br/>
+    The new cartype object has the property maxwheels as 6, but that property belongs to the prototype and it will be passed to all objects.<br/>
+    <div class="codeBlock">
+        console.log(cartype.hasOwnProperty("type")); //true<br/>
+        console.log(cartype.hasOwnProperty("maxwheels"));//false
+    </div>
+    Once the cartype has been created, changing the maxwheels to some other value will not change it for other objects that were or will be created.<br/><br/>
+
+    Note: You can also set the prototype to a whole new prototype with an assignment, but if you do that you need to include the constructor in it 
+    (constructor:Vehicle) because it will be removed by the assignment.<br/>
+
+    Just like you can add a property to the prototype you can also add a method.<br/>
+
+    <div class="codeBlock">
+     ... as before ...<br/><br/>
+
+    <b>Vehicle.prototype.printMyInfo = function () </b>&lbrace;<br/>
+         console.log(this.type);<br/>
+        console.log(this.year);<br/>
+        console.log(this.maxwheels);<br/>
+    &rbrace;<br/>
+    let cartype = new Vehicle("car", 2003);<br/>
+    cartype.printMyInfo();<br/>
+    </div>   
+
+
+
+
+
+
+
 
    
 
