@@ -22,6 +22,9 @@
     <p>
       <a  href="/javascript-notes/#arrays">Arrays</a>
     </p>
+    <p>
+      <a  href="/javascript-notes/#this">This</a>
+    </p>
   </div>
   
   <div class="PaddedContents">
@@ -666,6 +669,82 @@
       </div>
      
       There are other array methods not included here.  This includes the most common ones.
+
+
+    <!-------------------------------------------------------------->
+    <!--this-->
+    <!-------------------------------------------------------------->
+    <div id="this"></div><br/>
+    <hr class="hrHeaderClass" />
+        <h2 class="CenterMe" >This</h2>
+    <hr class="hrHeaderClass"/>
+
+    In most cases, the value of this is determined by how a function is called (runtime).  That means it may be different each 
+    time the function is called.<br/>
+
+    We can use bind() to set the value of this, regardless of how the function is called.<br/>
+
+    Arrow function do not provide their own this value.  They have the one of the closest non arrow function parent. <br/>
+
+    Outside of functions, this refers to the global object (window, global).  To get this, you can always use globalThis, both in JS and node.<br/>
+
+    <b>Inside a function, the value of this depends on how the function is called.</b><br/><br/>
+    Again.  <b>Inside a function, the value of this depends on how the function is called.</b><br/> <br/>
+
+    In a function that doesn't set this to anything else, this will be the global object.<br/>
+    <div class="codeBlock">
+      function f1() &lbrace;<br/>
+       &nbsp; console.log(this);<br/>
+      &rbrace;<br/><br/>
+      
+      f1()<br/>
+    </div>
+    <br/>
+
+    In strict mode, the value will be undefined.<br/>
+    <div class="codeBlock">
+      "use strict"<br/>
+      function f1() &lbrke;<br/>
+        &nbsp; console.log(this);<br/>
+      &rbrace;<br/><br/>
+
+      f1()<br/>
+    </div>
+    To set the value of this to a particular value when calling a function, use call(), or apply() (you can check them out under functions)<br/>
+
+    In a class, this will refer to the class itself (regular function or arrow functions).<br/>
+
+    <img width="100%" src="assets\images\js\this1.png" alt="this 1" /><br/><br/>
+
+    Derived constructors have no initial this binding, so super should be called before accessing this.<br/>
+
+    <img width="100%" src="assets\images\js\this2.png" alt="this 2" /><br/><br/>
+
+    Not calling super will give an error:
+
+    <img width="100%" src="assets\images\js\this3.png" alt="this 3" /><br/><br/>
+
+    You can change the this in a call by using call (or apply) to call it:<br/>
+
+    <img width="100%" src="assets\images\js\this4.png" alt="this 4" /><br/><br/>
+
+    Bind is similar to call/ apply but returns a new function without running it. See it under JavaScript-Basics-Functions<br/>
+    In arrow functions, this retains the value of the enclosing lexical context's this (see arrow functions).<br/>
+
+    When there are object inside object, the this will refer to the closest one to how the function is called.<br/>
+
+    <img width="100%" src="assets\images\js\this5.png" alt="this 5" /><br/><br/>
+
+    For even more examples please check the documentation (MDN docs). <br/>
+
+
+
+
+
+
+
+
+
 
   </div>
 
