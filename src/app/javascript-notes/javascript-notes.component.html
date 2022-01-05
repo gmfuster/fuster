@@ -25,6 +25,9 @@
     <p>
       <a  href="/javascript-notes/#this">This</a>
     </p>
+    <p>
+      <a  href="/javascript-notes/#misc">Misc.</a>
+    </p>
   </div>
   
   <div class="PaddedContents">
@@ -738,10 +741,141 @@
     For even more examples please check the documentation (MDN docs). <br/>
 
 
+    <!-------------------------------------------------------------->
+    <!--misc-->
+    <!-------------------------------------------------------------->
+    <div id="misc"></div><br/>
+    <hr class="hrHeaderClass" />
+        <h2 class="CenterMe" >Misc.</h2>
+    <hr class="hrHeaderClass"/>
+
+    <code><strong><u>Loop through properties</u></strong></code><br/><br/>
+    <div class="codeBlock">
+      for (var prop in obj) &lbrace;<br/>
+       &nbsp; if (Object.prototype.hasOwnProperty.call(obj, prop)) &lbrace;<br/>
+       &nbsp;&nbsp;// do stuff<br/>
+        &rbrace;<br/>
+      &rbrace;<br/>    
+    </div>
+  <br/>
+    <code><strong><u>Compare</u></strong></code><br/><br/>
+
+    === will not do type coertion while == does.  So, 1 == "1" is true, but 1 === "1" is false.<br/>
+
+    <code><strong><u>Strings</u></strong></code><br/><br/>
+
+    console.log(&grave;King of Pop? That is $&lbrace;name&rbrace; $&lbrace;lastn&rbrace;.&grave; );<br/>
+
+    <code><strong><u>Symbol</u></strong></code><br/><br/>
+
+    JS has a new symbol type.  The particular thing about them is that they are always unique even if they are created with the same values.   <br/>
 
 
+    <code><strong><u>arguments</u></strong></code><br/><br/>
+
+    <div class="codeBlock">
+      function hey (a,b,c)&lbrace;<br/>
+      &nbsp;  console.log(arguments);<br/>
+    &rbrace;<br/>
+    hey(1,2,3);//[Arguments] &lbrace; '0': 1, '1': 2, '2': 3 &rbrace;<br/>
+    </div>
 
 
+    <br/>
+    <div class="codeBlock">
+      function hey (...args)&lbrace;<br/>
+        &nbsp;  console.log(arguments);  <br/>
+    &rbrace;    <br/>
+    hey(1,2,3, 4);//[Arguments] &lbrace; '0': 1, '1': 2, '2': 3, '3': 4 &rbrace;<br/>
+    </div>
+    <br/>
+
+    <code><strong><u>undefined - null</u></strong></code><br/><br/>
+
+    they are not the same thing.  Null is a value, null.  Undefined is something else.
+
+    <br/>
+
+    <code><strong><u>==, ===, Object.is</u></strong></code><br/><br/>
+
+    console.log("1" == 1);//true<br/>
+    console.log("1" === 1);//false<br/>
+    console.log(+0 === -0);//true<br/>
+    console.log(Object.is(+0, -0));//false<br/>
+    <br/>
+
+    <code><strong><u>coalesce</u></strong></code><br/><br/>
+
+    let somevar = avar ?? “hello”;   &nbsp;  &nbsp; ==> Set the somevar to avar unless that is null or undefined, in that case, set it to “hello”<br/>
+
+
+    <code><strong><u>destructuring</u></strong></code><br/><br/>
+
+    <div class="codeBlock">
+      let obj1 = &lbrace;name:"Noel", age:32, phone:"555"&rbrace;;<br/>
+      const &lbrace;name, age, ext&rbrace; = obj1;<br/>
+      console.log(name) //Noel<br/>
+    </div>
+<br/>
+    <div class="codeBlock">
+      let obj1 = &lbrace;name:"Noel", age:32, phone:"555"&rbrace;;<br/>
+      const  &lbrace;name:username, age:userage, ext:userextension&rbrace; = obj1;<br/>
+      const  &lbrace;age:userage2, name:username2, ext:userextension2&rbrace; = obj1;<br/><br/>
+
+      console.log(username);//Noel<br/>
+      console.log(username2);//Noel<br/>
+      console.log(name);//name is not defined<br/>
+    </div>
+<br/>
+<div class="codeBlock">
+  let [a,b] = [1,2,3,4];<br/>
+  let [aa,bb,,,cc]= [1,2,3,4,5];//it knows where to put them<br/><br/>
+  
+  let aaa = 1; let bbb = 2;<br/>
+  [aaa,bbb] = [bbb,aaa]//switch values<br/><br/>
+  
+  console.log(a);//1 <br/>
+  console.log(b);//2<br/><br/>
+  
+  console.log(aa);//1<br/>
+  console.log(bb);//2<br/>
+  console.log(cc);//5<br/><br/>
+  
+  console.log(aaa);//2<br/>
+  console.log(bbb);//1<br/>
+</div>
+<br/>
+<div class="codeBlock">
+  let [a,b,...arr] = [1,2,3,4,5,6];<br/><br/>
+
+  console.log(a);//1<br/>
+  console.log(b);//2<br/>
+  console.log(arr[0]);//3<br/>
+  console.log(arr[1]);//4<br/>
+  console.log(arr[2]);//5<br/>
+  console.log(arr[3]);//6<br/>
+  console.log(arr[4]);//undefined<br/>
+</div>
+<br/>
+… can also be used to copy an array: […arr]  You can also use it combined:
+let sentence =  ["learning", ...fragment, "is"];
+<br/>
+<br/>
+<code><strong><u>callback func</u></strong></code><br/><br/>
+
+<div class="codeBlock">
+
+  Array.prototype.myMap = function(<b>callback</b>) &lbrace;<br/>
+    var newArray = [];<br/>
+    // Only change code below this line<br/>
+    for (let i = 0; i < this.length; i++)&lbrace;<br/>
+    &nbsp;  newArray.push(<b>callback(this[i])</b>);<br/>
+    &rbrace;<br/>
+    // Only change code above this line<br/>
+    return newArray;<br/>
+    &rbrace;;<br/>
+  
+</div>
 
 
 
