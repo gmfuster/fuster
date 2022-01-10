@@ -7,6 +7,7 @@ import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-s
 import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
+import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
 import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
 import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
 import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-notes-objects.component';
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },
 
   { path: 'csharp-articles', component: CSharpArticlesComponent, pathMatch: 'full' },
+  { path: 'csharp-basics', component: CSharpBasicsComponent, pathMatch: 'full' },
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },

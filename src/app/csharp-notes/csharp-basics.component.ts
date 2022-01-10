@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'csharp-articles',
-  templateUrl: './csharp-articles.component.html',
+  selector: 'csharp-basics',
+  templateUrl: './csharp-basics.component.html',
   styleUrls: [], //share the css file  
 })
 
-export class CSharpArticlesComponent implements OnInit {
+export class CSharpBasicsComponent implements OnInit {
     
     ngOnInit(){
         window.scroll(0,0);
