@@ -132,6 +132,15 @@ body b{
   text-align: center;
 }
 
+.markClassCardWholePink {
+  /*background-color: skyblue;*/
+  padding-left: 6px;
+  padding-right: 6px;
+  border: 6px deeppink solid;    
+  text-align: center;
+}
+
+
 a:link {
   color:lightyellow;
   background-color: transparent;
