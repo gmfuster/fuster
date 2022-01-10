@@ -13,27 +13,66 @@
                     
   
     <code><strong><u>null coalescing operator</u></strong></code><br /><br/>
-    <div class="codeBlock">
-        using System;<br /><br />
-
-        class Program &lbrace;<br />
-            &nbsp;static void Main(string[] args) &lbrace;<br />
-                &nbsp; &nbsp;    string theString = "hello";<br />
-                &nbsp; &nbsp;    string theOtherString = null;<br />
-                &nbsp; &nbsp;    Console.WriteLine(<b>theString ?? "Just Me"</b>); //hello<br />
-                &nbsp; &nbsp;    Console.WriteLine(theOtherString ?? "Just Me");//Just Me<br />
-        &rbrace;<br />
-        &rbrace;}
-    </div><br/><br/>
+    <pre>
+        <code >
+            class Program &lbrace;
+            &nbsp;static void Main(string[] args) &lbrace;
+                &nbsp; &nbsp;    string theString = "hello";
+                &nbsp; &nbsp;    string theOtherString = null;
+                &nbsp; &nbsp;    Console.WriteLine(<b>theString ?? "Just Me"</b>); //hello
+                &nbsp; &nbsp;    Console.WriteLine(theOtherString ?? "Just Me");//Just Me
+                &nbsp; &rbrace;
+             &rbrace;
+        </code>
+    </pre>
+   
 
     <code><strong><u>operator overloading</u></strong></code><br /><br/>
+    This example is silly but it's just to illustrate how this works.  We have a clas SomeObj, and it has a method for the + of objects of that class:<br/>
+    <pre>
+        <code >
+            ...
+            public static SomeObj operator +(SomeObj o1, SomeObj o2)
+            &lbrace;
+            &nbsp; SomeObj newO = new SomeObj("");
+            &nbsp;  newO.TheThing = o1.TheThing + "-" + o2.TheThing;
+            &nbsp;  return newO;
+            &rbrace;
+            //to use 
+            SomeObj obj1 = new SomeObj("hey");
+            SomeObj obj2 = new SomeObj("helloooo");
+            Console.WriteLine( (obj1 + obj2).TheThing);
+        </code>
+    </pre>  
+    <br/>
+    <img width="100%" src="assets\images\csharp\opoverloading1.png" alt="operator overloading" /><br/><br/>
+
+    <code><strong><u>keywords as variables</u></strong></code><br /><br/>
+    <pre>
+        <code>
+            using System;
+
+            &nbsp;class Program &lbrace;    
+
+                &nbsp;&nbsp;   static void Main(string[] args) &lbrace;
+                    &nbsp;&nbsp;  <b>string @if = "using if as a variable";</b>
+                    &nbsp;&nbsp;  Console.WriteLine (@if);
+                    &nbsp;  &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+
+    <code><strong><u>Ignore special chars</u></strong></code><br /><br/>
+
+    <pre>
+        <code>
+            Console.WriteLine(@"blah blah \n \\hey ");//will print that same string
+        </code>
+    </pre>
+
+
+
     
-
-
-
-
-
-    <img width="100%" src="assets\images\js\varscope1.png" alt="var scope" /><br/><br/>
 
 
 

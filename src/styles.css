@@ -46,6 +46,12 @@ body b{
   padding:8px;
   border:deeppink solid 3px;
 }
+body pre code{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2vw;  
+  color:navy;
+  padding:8px;  
+}
 
 .TopNav {
   height:6vh; 
