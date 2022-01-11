@@ -69,13 +69,77 @@
             Console.WriteLine(@"blah blah \n \\hey ");//will print that same string
         </code>
     </pre>
+    <br/>
+
+    <code><strong><u>format strings with variables</u></strong></code><br /><br/>
+    <pre>
+        <code>
+            string fillIt = "Michael";
+            <b>Console.WriteLine($"My name is &lbrace;fillIt&rbrace;");</b>
+            //the one below uses C so it will print with currency format:
+            decimal amount = 8.94m;
+            <b>Console.WriteLine($"My amount is &lbrace;amount:C&rbrace;");</b>//My amount is $8.94
+        </code>
+    </pre>
+    <br/>
+
+    <code><strong><u>params argument</u></strong></code><br /><br/>
+    the params argument has to be the last one <br/>
+    <pre>
+        <code>
+            class Program &lbrace;    
+
+            &nbsp;  public static void SomeMethod(Int32 i, string s, <b> params string[] words</b>)&lbrace;
+            &nbsp;  &nbsp;   Console.WriteLine(i);
+            &nbsp;  &nbsp;   Console.WriteLine(s);
+            &nbsp;  &nbsp;   Console.WriteLine(words.Length);
+                &rbrace;
+                  
+                static void Main(string[] args) &lbrace;
+                &nbsp;      SomeMethod(2, "hello",   "I","am","your","father");                  
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    Prints <br/>
+    <pre>
+        <samp>
+        2
+        hello
+        4
+        </samp>
+    </pre>
 
 
+    <code><strong><u>Default params</u></strong></code><br /><br/>
+
+    <pre>
+        <code>
+            public static void SomeMethod(Int32 i, string s, string def1 = "defaulted 1", string def2 = "defaulted 2")&lbrace;  
+            &nbsp;  Console.WriteLine(def1);
+            &nbsp;  Console.WriteLine(def2);
+            &rbrace;
+              
+            static void Main(string[] args) &lbrace;
+            &nbsp;   SomeMethod(2, "hello");
+            &nbsp;   SomeMethod(2, "hello", "for 1");
+              
+            &rbrace;
+        </code>
+    </pre>
+    Prints:<br/>
+    <pre>
+        <samp>
+            defaulted 1
+            defaulted 2
+            for 1
+            defaulted 2
+        </samp>
+    </pre>
+
+    <code><strong><u>Extension Methods</u></strong></code><br /><br/>
 
     
-
-
-
 
     
 </div>
