@@ -52,80 +52,107 @@
       <hr class="hrHeaderClass"/>
         
       We can create an object from a primitive type using New and the type.<br/>
-
-      <div class="codeBlock">
-        const num = 19;<br/>
-        console.log(typeof(num));//number<br/>
-        console.log (num === 19); //true<br/>
-        <br/>
-        const num2 = new Number(20);<br/>
-        console.log(typeof(num2)); //object<br/>
-        console.log (num === 20); //false<br/>
-      </div>
+    
+      <pre>
+        <code>
+            const num = 19;
+            console.log(typeof(num));//number
+            console.log (num === 19); //true
+            <br/>
+            const num2 = new Number(20);
+            console.log(typeof(num2)); //object
+            console.log (num === 20); //false
+        </code>
+      </pre>
+     
 
       You can also create it directly, like this:<br/>
-      <div class="codeBlock">
-        //Create object this way<br/>
-        let someObject = &lbrace;<br/>
-           &nbsp;  property1:"prop1",<br/>
-           &nbsp;  property2: "prop2"<br/>
-        &rbrace;<br/>
-        console.log(typeof(someObject));//object<br/>
-        console.table(someObject);<br/>
-      </div>
-      This will not throw an error but undefined:  <div class="codeBlock">console.log(someObject.prop);//prop was not defined, shows undefined.</div> 
+      <pre>
+          <code>
+            //Create object this way
+            let someObject = &lbrace;
+               &nbsp;  property1:"prop1",
+               &nbsp;  property2: "prop2"
+            &rbrace;
+            console.log(typeof(someObject));//object
+            console.table(someObject);
+          </code>
+      </pre>
+     
+      This will not throw an error but undefined:  
+      <pre>
+          <code>
+            console.log(someObject.prop);//prop was not defined, shows undefined.
+          </code>
+      </pre>
+    
       You can have functions in there:<br/>
 
-      <div class="codeBlock">
-        const someObject = &lbrace;<br/>
-            &nbsp;  prop1:function () &lbrace;console.log("I am 1");&rbrace;,<br/>
-       }<br/>
-       someObject.prop1;//will not do anything (not calling the function)<br/>
-       <b>someObject.prop1();//prints "I am 1"</b><br/>
-       let aux = someObject.prop1; // assign the function<br/>
-       aux(); // prints "I am 1"<br/>
-      </div>
+      <pre>
+          <code>
+            const someObject = &lbrace;
+            &nbsp;  prop1:function () &lbrace;console.log("I am 1");&rbrace;,
+            &rbrace;
+            someObject.prop1;//will not do anything (not calling the function)
+            <b>someObject.prop1();//prints "I am 1"</b>
+            let aux = someObject.prop1; // assign the function
+            aux(); // prints "I am 1"
+          </code>
+      </pre>
+      
       the name of the properties doesn't have to be hardcoded.  Here, the property name will be Jane:<br/>
-      <div class="codeBlock">
-        const propertyName = "Jane";<br/>
-        //use [] to use the variable name<br/>
-        const someObject = &lbrace;<br/>
-            &nbsp;  [propertyName]:"hello"<br/>
-        &rbrace;<br/>
-        console.table(someObject);<br/>
-      </div>
+      <pre>
+          <code>
+            const propertyName = "Jane";
+            //use [] to use the variable name
+            const someObject = &lbrace;
+                &nbsp;  [propertyName]:"hello"
+            &rbrace;
+            console.table(someObject);
+          </code>
+      </pre>
+      
       And you can also do this:<br/>
 
-    <div class="codeBlock">
-        const someObject = &lbrace;<br/>
-            &nbsp;  [2+2]:"hello"<br/>
-       &rbrace;<br/>
-       //access with [] notation.<br/>
-       console.log(someObject[4]); //prints "hello"<br/>
-       console.log(someObject[1+3]); // prints "hello"<br/>
-    </div>  
+      <pre>
+          <code>
+            const someObject = &lbrace;
+            &nbsp;  [2+2]:"hello"
+            &rbrace;
+            //access with [] notation.
+            console.log(someObject[4]); //prints "hello"
+            console.log(someObject[1+3]); // prints "hello"
+          </code>
+      </pre>
+    
     To add an additional property we just need to use it and it will be added.<br/>
-    <div class="codeBlock">
-        const someObject = &lbrace;<br/>
-            &nbsp;   p1:"hello"<br/>
-       &rbrace;<br/>
-       someObject.p2 = "hello 2"<br/>
-       console.table(someObject); <br/><br/>
+
+    <pre>
+        <code>
+            const someObject = &lbrace;
+            &nbsp;   p1:"hello"
+            &rbrace;
+            someObject.p2 = "hello 2"
+            console.table(someObject); <br/>
        
-       const someObject2 = &lbrace;<br/>
-        &nbsp;     p1:"hello 1",<br/>
-        &nbsp;    p2:"hello 2"<br/>
-       &rbrace;<br/>
-       delete someObject2.p2;<br/>
-       console.table(someObject2); <br/>
-    </div>
+            const someObject2 = &lbrace;
+             &nbsp;     p1:"hello 1",
+             &nbsp;    p2:"hello 2"
+             &rbrace;
+             delete someObject2.p2;
+             console.table(someObject2); 
+        </code>
+    </pre>
+    
     We could also have created the above objects with:<br/>
-    <div class="codeBlock">
-        const anotherObject = new Object();<br/>
-        anotherObject.p1 = "from new 1";<br/>
-        anotherObject.p2 = "from new 2";<br/>
-        console.table(anotherObject)<br/>
-    </div>
+    <pre>
+        <code>
+            const anotherObject = new Object();
+            anotherObject.p1 = "from new 1";
+            anotherObject.p2 = "from new 2";
+            console.table(anotherObject)
+        </code>
+    </pre>    
 
     <!-------------------------------------------------------------->
     <!--Object-->
@@ -136,50 +163,57 @@
     <hr class="hrHeaderClass"/>
 
     With the Object type we get the “values”, “entries”, and “keys” methods as shown below.<br/>
-    <div class="codeBlock">
-        const someObject = &lbrace;<br/>
-            &nbsp;    p1:"hello 1",<br/>
-            &nbsp;    p2:"hello 2"<br/>
-       &rbrace;<br/>
-       console.log(Object.values(someObject));//[ 'hello 1', 'hello 2' ]<br/>
-       console.log(Object.keys(someObject));//[ 'p1', 'p2' ]<br/>
-       console.log(Object.entries(someObject));//[ [ 'p1', 'hello 1' ], [ 'p2', 'hello 2' ] ]<br/>
-    </div>
+    <pre>
+        <code>
+            const someObject = &lbrace;
+            &nbsp;    p1:"hello 1",>
+            &nbsp;    p2:"hello 2"
+            &rbrace;
+            console.log(Object.values(someObject));//[ 'hello 1', 'hello 2' ]
+            console.log(Object.keys(someObject));//[ 'p1', 'p2' ]
+            console.log(Object.entries(someObject));//[ [ 'p1', 'hello 1' ], [ 'p2', 'hello 2' ] ]
+        </code>
+    </pre>
+   
     When you create an object as a constant, the object variable itself will be a constant but the properties will not be.<br/>
-    <div class="codeBlock">
-        const someObject = &lbrace;<br/>
-            &nbsp;  p1:"hello 1",<br/>
-            &nbsp;  p2:"hello 2"<br/>
-       &rbrace;<br/>
-       const someObject2 = &lrarr;<br/>
-        &nbsp;  p1:"hello 1",<br/>
-        &nbsp;  p2:"hello 2"<br/>
-       &rbrace;<br/>
-       someObject2.p1 = "modifed"//will change it<br/>
-       console.table(someObject2);<br/><br/>
+    <pre>
+        <code>
+            const someObject = &lbrace;
+            &nbsp;  p1:"hello 1",
+            &nbsp;  p2:"hello 2"
+            &rbrace;
+            const someObject2 = &lrarr;
+             &nbsp;  p1:"hello 1",
+             &nbsp;  p2:"hello 2"
+            &rbrace;
+            someObject2.p1 = "modifed"//will change it
+            console.table(someObject2);<br/>
        
-       someObject = &lbrace;p1:"hey"&rbrace;;//error: assignment to constant<br/>
-    </div>
+            someObject = &lbrace;p1:"hey"&rbrace;;//error: assignment to constant
+        </code>
+    </pre>
+    
 
     If you want the whole object to be a constant, you can do the following, which will not throw an error but will not change the property:<br/>
-    <div class="codeBlock">
-        const obj1 = Object.freeze(&lbrace;prop1: 'hey const 1', prop2: "hey const 2"&rbrace;);<br/>
-        obj1.prop1 = "CHANGED IT";<br/>
-        console.log(obj1.prop1);//prints "hey const 1"<br/>
-    </div>
+    <pre>
+        <code>
+            const obj1 = Object.freeze(&lbrace;prop1: 'hey const 1', prop2: "hey const 2"&rbrace;);
+            obj1.prop1 = "CHANGED IT";
+            console.log(obj1.prop1);//prints "hey const 1"
+        </code>
+    </pre>
+    
     We can also check whether an object has a property:<br/>
-    <div class="codeBlock">
-        const obj1 = &lbrace;<br/>
-            &nbsp;    p1 : "I am 1",<br/>
-            &nbsp;    p2 : "I am 2"<br/>
-       &rbrace;<br/>
-       console.log(obj1.hasOwnProperty("p3"));//false<br/>
-       console.log(obj1.hasOwnProperty("p1"));//true<br/>
-    </div>
-
-
-    <!--<img width="100%" src="assets\images\js\promise1.png" alt="promise 1" /><br/><br/>-->
-
+    <pre>
+        <code>
+            const obj1 = &lbrace;
+            &nbsp;    p1 : "I am 1",
+            &nbsp;    p2 : "I am 2"
+       &rbrace;
+       console.log(obj1.hasOwnProperty("p3"));//false
+       console.log(obj1.hasOwnProperty("p1"));//true
+        </code>
+    </pre>    
     
  <!-------------------------------------------------------------->
     <!--Reference-->
@@ -193,78 +227,93 @@
     this is the the box where my data is, I’ll share it with you, if you change it you will change it for me too.”  That is not the case 
     with primitives<br/>
 
-    <div class="codeBlock">
-        //create object and primitive<br/>
-        const obj1 = &lbrace; p:1&rbrace;;<br/>
-        const x = 1;<br/>
-        //assign them to new variables<br/>
-        const obj2 = obj1;<br/>
-        let y = x;<br/>
-        //change the recently created variables<br/>
-        obj2.p = 2;<br/>
-        y = 2;<br/>
-        //check the values of all<br/>
-        console.table(obj1);//p-2<br/>
-        console.table(obj2);//p-2<br/><br/>
-
-        console.log(x);//1<br/>
-        console.log(y);//2<br/>
-    </div>
+    <pre>
+        <code>
+            //create object and primitive
+            const obj1 = &lbrace; p:1&rbrace;;
+            const x = 1;
+            //assign them to new variables
+            const obj2 = obj1;
+            let y = x;
+            //change the recently created variables
+            obj2.p = 2;
+            y = 2;
+            //check the values of all
+            console.table(obj1);//p-2
+            console.table(obj2);//p-2<br/>
+    
+            console.log(x);//1
+            console.log(y);//2
+        </code>
+    </pre>
+  
     <br/>
     So if what we want is a copy that behaves like a copy for a primitive type, 
     we need to do what we call a <b>deep cloning</b>. With deep cloning all the properties will get a new copy.<br/>
-    <div class="codeBlock">
-        const obj1 = &lbrace; p:1&rbrace;;<br/>
-        <b>const obj2 = JSON.parse(JSON.stringify(obj1));</b><br/>
-        obj2.p = 2;<br/>
-        console.table(obj1); //1<br/>
-        console.table(obj2); //2<br/>
-    </div>
+    <pre>
+        <code>
+            const obj1 = &lbrace; p:1&rbrace;;
+            <b>const obj2 = JSON.parse(JSON.stringify(obj1));</b>
+            obj2.p = 2;
+            console.table(obj1); //1
+            console.table(obj2); //2
+        </code>
+    </pre>
+    
     <br/>
     In <b>shallow cloning</b>, the primitive elements of the object will be copied, but the reference types will still share the memory location.
-    <div class="codeBlock">
-        let obj1 = &lbrace; p:1&rbrace;;<br/>
-        <b>let obj2 = Object.assign(&lbrace;&rbrace;,obj1);</b> // or &lbrace;...obj1&rbrace;;<br/>
-        obj2.p = 2;<br/>
-        console.log(obj1);//&lbrace; p: 1 &rbrace;<br/>
-        console.log(obj2);//&lbrace; p: 2&rbrace;<br/>
-    </div>
+    <pre>
+        <code>
+            let obj1 = &lbrace; p:1&rbrace;;
+            <b>let obj2 = Object.assign(&lbrace;&rbrace;,obj1);</b> // or &lbrace;...obj1&rbrace;;
+            obj2.p = 2;
+            console.log(obj1);//&lbrace; p: 1 &rbrace;
+            console.log(obj2);//&lbrace; p: 2&rbrace;
+        </code>
+    </pre>
+    
     <br/>
     Array (reference). Notice the difference between reassigning the property to a new array and changing the array itself.<br/>
     Changing the array itself will affect both objects because we are changing the contents of the box where the array is located.<br/>
     Assigning a new array to one of the objects is not sharing the same box anymore<br/>
-    <div class="codeBlock">
-        let obj1 = &lbrace; p:[1,2,3,4]&rbrace;;<br/>
-        let obj2 = Object.assign(&lbrace;&rbrace;,obj1);<br/>
-        let obj3 = Object.assign(&lbrace;&rbrace;,obj1);<br/>
-        obj2.p = [5,6];<br/>
-        obj3.p.push(1000);<br/>
-        console.log(obj1);<br/>
-        console.log(obj2);<br/>
-        console.log(obj3);<br/>
-        //the above will print:<br/>
-        // p: [ 1, 2, 3, 4, 1000 ] <br/>
-        // p: [ 5, 6 ] <br/>
-        // p: [ 1, 2, 3, 4, 1000 ] <br/>
-    </div>  
+    <pre>
+        <code>
+            let obj1 = &lbrace; p:[1,2,3,4]&rbrace;;
+            let obj2 = Object.assign(&lbrace;&rbrace;,obj1);
+            let obj3 = Object.assign(&lbrace;&rbrace;,obj1);
+            obj2.p = [5,6];
+            obj3.p.push(1000);
+            console.log(obj1);
+            console.log(obj2);
+            console.log(obj3);
+            //the above will print:
+            // p: [ 1, 2, 3, 4, 1000 ] 
+            // p: [ 5, 6 ] 
+            // p: [ 1, 2, 3, 4, 1000 ] 
+        </code>
+    </pre>
+    
     Object (reference):<br/>
-    <div class="codeBlock">
-        let obj1 = &lbrace; p:&lbrace;a:1, b:2, c:["a"]&rbrace; &rbrace;;<br/>
-        let obj2 = Object.assign(&lbrace;&rbrace;,obj1);<br/>
-        let obj3 = Object.assign(&lbrace;&rbrace;,obj1);<br/>
-        obj2.p = &lbrace;a:2, b:3, c: ["b"]&rbrace;;<br/><br/>
-
-        obj3.p.a = 3;//Notice this one will change for both<br/>
-        obj3.p.c.push("AAAAAAA");<br/><br/>
-
-        console.log(obj1);<br/>
-        console.log(obj2);<br/>
-        console.log(obj3);<br/>
-        //Will print<br/>
-        //&lbrace; p: &lbrace; a: 3, b: 2, c: [ 'a', 'AAAAAAA' ] &rbrace; &rbrace;<br/>
-        //&lbrace; p: &lbrace; a: 2, b: 3, c: [ 'b' ] &rbrace; &rbrace;<br/>
-        //&lbrace; p: &lbrace; a: 3, b: 2, c: [ 'a', 'AAAAAAA' ] &rbrace; &rbrace;<br/>
-    </div>
+    <pre>
+        <code>
+            let obj1 = &lbrace; p:&lbrace;a:1, b:2, c:["a"]&rbrace; &rbrace;;
+            let obj2 = Object.assign(&lbrace;&rbrace;,obj1);
+            let obj3 = Object.assign(&lbrace;&rbrace;,obj1);
+            obj2.p = &lbrace;a:2, b:3, c: ["b"]&rbrace;;<br/>
+    
+            obj3.p.a = 3;//Notice this one will change for both
+            obj3.p.c.push("AAAAAAA");<br/>
+    
+            console.log(obj1);
+            console.log(obj2);
+            console.log(obj3);
+            //Will print
+            //&lbrace; p: &lbrace; a: 3, b: 2, c: [ 'a', 'AAAAAAA' ] &rbrace; &rbrace;
+            //&lbrace; p: &lbrace; a: 2, b: 3, c: [ 'b' ] &rbrace; &rbrace;
+            //&lbrace; p: &lbrace; a: 3, b: 2, c: [ 'a', 'AAAAAAA' ] &rbrace; &rbrace;
+        </code>
+    </pre>
+   
 
 
 
@@ -278,37 +327,45 @@
         
     We ca use functions that we will use to create new objects. The standard is to name this functions starting with uppercase.  
     The standard is to name this functions starting with uppercase.<br/>
-
-    <div class="codeBlock">
-        function Vehicle(typearg, yeararg)&lbrace;<br/>
-         &nbsp;   this.type = typearg;<br/>
-         &nbsp;    this.year = yeararg;<br/>
-       &rbrace;<br/>
-       let cartype = new Vehicle("car", 2003);<br/><br/>
-       
-       console.log(Object.getPrototypeOf(cartype)); //Vehicle &lbrace;&rbrace;<br/>
-       console.log(cartype.type); //car<br/>
-       console.log(cartype instanceof Vehicle); //true<br/>
-       console.log(Vehicle.prototype); //Vehicle &lbrace;&rbrace;<br/>
-    </div>
+    <pre>
+        <code>
+            function Vehicle(typearg, yeararg)&lbrace;
+            &nbsp;   this.type = typearg;
+            &nbsp;    this.year = yeararg;
+          &rbrace;
+          let cartype = new Vehicle("car", 2003);<br/>
+          
+          console.log(Object.getPrototypeOf(cartype)); //Vehicle &lbrace;&rbrace;
+          console.log(cartype.type); //car
+          console.log(cartype instanceof Vehicle); //true
+          console.log(Vehicle.prototype); //Vehicle &lbrace;&rbrace;
+        </code>
+    </pre>
+    
     <br/>
     If we want the prototype to have a variable that will be shared among all instances of Vehicle (instead of each one having its own copy as in the 
     ones used above) we can do this:
-    <div class="codeBlock">
-        function Vehicle(typearg, yeararg)&lbrace;<br/>
-            this.type = typearg;<br/>
-            this.year = yeararg;<br/>
-       &rbrace;<br/>
-       Vehicle.prototype.maxwheels = 6;<br/>
-       let cartype = new Vehicle("car", 2003);<br/>
-       console.table(Vehicle.prototype);//maxwheels = 6<br/>
-       console.table(cartype.maxwheels);//6<br/>
-    </div><br/>
+    <pre>
+        <code>
+            function Vehicle(typearg, yeararg)&lbrace;
+            this.type = typearg;
+            this.year = yeararg;
+             &rbrace;
+            Vehicle.prototype.maxwheels = 6;
+            let cartype = new Vehicle("car", 2003);
+            console.table(Vehicle.prototype);//maxwheels = 6
+            console.table(cartype.maxwheels);//6
+        </code>
+    </pre>
+    <br/>
     The new cartype object has the property maxwheels as 6, but that property belongs to the prototype and it will be passed to all objects.<br/>
-    <div class="codeBlock">
-        console.log(cartype.hasOwnProperty("type")); //true<br/>
-        console.log(cartype.hasOwnProperty("maxwheels"));//false
-    </div>
+    <pre>
+        <code>
+            console.log(cartype.hasOwnProperty("type")); //true
+            console.log(cartype.hasOwnProperty("maxwheels"));//false
+        </code>
+    </pre>
+    
     Once the cartype has been created, changing the maxwheels to some other value will not change it for other objects that were or will be created.<br/><br/>
 
     Note: You can also set the prototype to a whole new prototype with an assignment, but if you do that you need to include the constructor in it 
@@ -316,81 +373,94 @@
 
     Just like you can add a property to the prototype you can also add a method.<br/>
 
-    <div class="codeBlock">
-     ... as before ...<br/><br/>
+    <pre>
+        <code>
+            ... as before ...<br/>
 
-    <b>Vehicle.prototype.printMyInfo = function () </b>&lbrace;<br/>
-         console.log(this.type);<br/>
-        console.log(this.year);<br/>
-        console.log(this.maxwheels);<br/>
-    &rbrace;<br/>
-    let cartype = new Vehicle("car", 2003);<br/>
-    cartype.printMyInfo();<br/>
-    </div>   
+            <b>Vehicle.prototype.printMyInfo = function () </b>&lbrace;
+                 console.log(this.type);
+                console.log(this.year);
+                console.log(this.maxwheels);
+            &rbrace;
+            let cartype = new Vehicle("car", 2003);
+            cartype.printMyInfo();
+        </code>
+    </pre>
+      
 
     Don’t use arrow functions for this since arrow function will not get their own “this” and “this” will refer to the global scope. 
     Even with regular functions, we can be surprised with what we get with “this”. See the example below.<br/>
 
-    <div class="codeBlock">
-        function Vehicle(typearg, yeararg)&lbrace; <br/>
-          &nbsp;  this.type = typearg;<br/>
-          &nbsp;   this.year = yeararg;<br/>
-       }<br/>
-       Vehicle.prototype.maxwheels = 6;<br/>
-       Vehicle.prototype.functionWithFunction = function () &lbrace;<br/>
-        &nbsp; console.log("111111111111111") ;<br/>
-        &nbsp;  console.log(this);<br/>
-        &nbsp; &nbsp;  function innerFunction() &lbrace;<br/>
-            &nbsp; &nbsp; &nbsp;    console.log("22222222222222222") ;<br/>
-            &nbsp; &nbsp; &nbsp;     console.log(this);<br/>
-          &rbrace;<br/>
-          &nbsp; &nbsp;  innerFunction();<br/>
-       &rbrace;<br/>
-       let cartype = new Vehicle("car", 2003);<br/>
-       cartype.functionWithFunction();<br/>
-       <b>//this for Vehicle refers to that object, this in the inner refers to the global this</b>
-    </div>  
+    <pre>
+        <code>
+            function Vehicle(typearg, yeararg)&lbrace; 
+            &nbsp;  this.type = typearg;
+            &nbsp;   this.year = yeararg;
+         }
+         Vehicle.prototype.maxwheels = 6;
+         Vehicle.prototype.functionWithFunction = function () &lbrace;
+          &nbsp; console.log("111111111111111") ;
+          &nbsp;  console.log(this);
+          &nbsp; &nbsp;  function innerFunction() &lbrace;
+              &nbsp; &nbsp; &nbsp;    console.log("22222222222222222") ;
+              &nbsp; &nbsp; &nbsp;     console.log(this);
+            &rbrace;
+            &nbsp; &nbsp;  innerFunction();
+         &rbrace;
+         let cartype = new Vehicle("car", 2003);
+         cartype.functionWithFunction();
+         <b>//this for Vehicle refers to that object, this in the inner refers to the global this</b>
+        </code>
+    </pre>
+   
     If we need the inner function to access the same this as the Vehicle one:<br/>
-    <div class="codeBlock">
-        Vehicle.prototype.functionWithFunction = function () &lbrace;<br/>
-        &nbsp;    console.log("111111111111111") ;<br/>
-        &nbsp;    console.log(this);<br/>
-        &nbsp;    <b> const self = this;<br/></b>
-        &nbsp;     function innerFunction() &lbrace;<br/>
-        &nbsp;  &nbsp;        console.log("22222222222222222") ;<br/>
-        &nbsp;  &nbsp;          <b>console.log(self);</b><br/>
-             &rbrace;<br/>
-             &nbsp;      innerFunction();<br/>
-          &rbrace;
-    </div>
+    <pre>
+        <code>
+            Vehicle.prototype.functionWithFunction = function () &lbrace;
+            &nbsp;    console.log("111111111111111") ;
+            &nbsp;    console.log(this);
+            &nbsp;    <b> const self = this;</b>
+            &nbsp;     function innerFunction() &lbrace;
+            &nbsp;  &nbsp;        console.log("22222222222222222") ;
+            &nbsp;  &nbsp;          <b>console.log(self);</b>
+                 &rbrace;
+                 &nbsp;      innerFunction();
+              &rbrace;
+        </code>
+    </pre>
+    
     <br/>
     So what if we want to have another object of type small vehicle that inherits from Vehicle? <br/>
-    <div class="codeBlock">
-        function Vehicle(typearg, yeararg)&lbrace;<br/>
-            &nbsp;  this.type = typearg;<br/>
-            &nbsp;  this.year = yeararg;<br/>
+    <pre>
+        <code>
+            function Vehicle(typearg, yeararg)&lbrace;
+            &nbsp;  this.type = typearg;
+            &nbsp;  this.year = yeararg;
+       &rbrace;
+       Vehicle.prototype.printType = function () &lbrace;
+        &nbsp;   console.log(this.type);
+        &nbsp;   console.log(this.year);
        &rbrace;<br/>
-       Vehicle.prototype.printType = function () &lbrace;<br/>
-        &nbsp;   console.log(this.type);<br/>
-        &nbsp;   console.log(this.year);<br/>
-       &rbrace;<br/><br/>
 
-       //new constructor function inheriting from Vehicle<br/>
-       function SmallVehicle(wheels, type, year) &lbrace;<br/>
-        &nbsp;     Vehicle.call(this, type, year);<br/>
-        &nbsp;    this.wheels = wheels;<br/>
-       &rbrace;<br/><br/>
+       //new constructor function inheriting from Vehicle
+       function SmallVehicle(wheels, type, year) &lbrace;
+        &nbsp;     Vehicle.call(this, type, year);
+        &nbsp;    this.wheels = wheels;
+       &rbrace;<br/>
 
-       //need this part for the printType function<br/>
-       SmallVehicle.prototype = Object.create(Vehicle.prototype);<br/>
-       Object.defineProperty(SmallVehicle.prototype, 'constructor', &lbrace;<br/>
-        &nbsp;      value: SmallVehicle,<br/>
-        &nbsp;     enumerable: false,<br/>
-        &nbsp;      writable: true &rbrace;);<br/><br/>
+       //need this part for the printType function
+       SmallVehicle.prototype = Object.create(Vehicle.prototype);
+       Object.defineProperty(SmallVehicle.prototype, 'constructor', &lbrace;
+        &nbsp;      value: SmallVehicle,
+        &nbsp;     enumerable: false,
+        &nbsp;      writable: true &rbrace;);<br/>
        
-       let small = new SmallVehicle(2, "small", 2006);<br/>
-       small.printType();<br/>
-    </div><br/>
+       let small = new SmallVehicle(2, "small", 2006);
+       small.printType();
+        </code>
+    </pre>
+
+    <br/>
     We can add function specific to the prototype of SmallVehicle if needed<br/>
 
     <img width="100%" src="assets\images\js\objects1.png" alt="objects 1" /><br/><br/>
@@ -407,47 +477,56 @@
     We don’t really have classes in JavaScript because under the hood they will be turned in to the constructor functions we have seen, 
     but as far as coding goes, they look a lot like classes.  From the Vehicle examples above<br/>
     Vehicle will look like this:<br/>
-    <div class="codeBlock">
-        class Vehicle&lbrace;<br/>
-            &nbsp; constructor(typearg, yeararg)&lbrace;<br/>
-                &nbsp;   &nbsp;   this.type = typearg;<br/>
-                &nbsp;   &nbsp;   this.year = yeararg;<br/>
-                &nbsp;  &rbrace;     <br/>
-                &nbsp; get theType()&lbrace; //getter<br/>
-                    &nbsp;   &nbsp;      return this.type;<br/>
-                    &nbsp; &rbrace;     <br/>
-                    &nbsp;  set theYear(year)&lbrace;  //setter<br/>
-                        &nbsp;   &nbsp;       this.year = year;<br/>
-                        &nbsp; &rbrace;     <br/>
-                        &nbsp;  printTypeYear ()&lbrace;  //Just a method<br/>
-                            &nbsp;   &nbsp;      console.log(this.type);<br/>
-                            &nbsp;   &nbsp;      console.log(this.year);<br/>
-                            &nbsp;  &rbrace;<br/>
-                            &nbsp;  static printSomething()&lbrace;<br/>
-                                &nbsp;   &nbsp;       console.log("printing something");<br/>
-                                &nbsp;  &rbrace;<br/>
-       &rbrace;<br/>
-    </div>
+    <pre>
+        <code>
+            class Vehicle&lbrace;<br/>
+            &nbsp; constructor(typearg, yeararg)&lbrace;
+                &nbsp;   &nbsp;   this.type = typearg;
+                &nbsp;   &nbsp;   this.year = yeararg;
+                &nbsp;  &rbrace;     
+                &nbsp; get theType()&lbrace; //getter
+                    &nbsp;   &nbsp;      return this.type;
+                    &nbsp; &rbrace;     
+                    &nbsp;  set theYear(year)&lbrace;  //setter
+                        &nbsp;   &nbsp;       this.year = year;
+                        &nbsp; &rbrace;     
+                        &nbsp;  printTypeYear ()&lbrace;  //Just a method
+                            &nbsp;   &nbsp;      console.log(this.type);
+                            &nbsp;   &nbsp;      console.log(this.year);
+                            &nbsp;  &rbrace;
+                            &nbsp;  static printSomething()&lbrace;
+                                &nbsp;   &nbsp;       console.log("printing something");
+                                &nbsp;  &rbrace;
+                        &rbrace;
+        </code>
+    </pre>
+   
     <br/>
     And smallVehicle<br/>
-    <div class="codeBlock">
-        class SmallVehicle extends Vehicle&lbrace;<br/>
-            &nbsp;  constructor (wheels, type, year)&lbrace;<br/>
-                &nbsp; &nbsp;    super(type, year); //call super before using "this"<br/>
-                &nbsp; &nbsp;   this.wheels = wheels;<br/>
-                &nbsp;  &rbrace;<br/>
-       &rbrace;<br/>
-    </div>  
+    <pre>
+        <code>
+            class SmallVehicle extends Vehicle&lbrace;
+            &nbsp;  constructor (wheels, type, year)&lbrace;
+                &nbsp; &nbsp;    super(type, year); //call super before using "this"
+                &nbsp; &nbsp;   this.wheels = wheels;
+                &nbsp;  &rbrace;
+       &rbrace;
+        </code>
+    </pre>
+   
     <br/>
     To use:<br/>
-    <div class="codeBlock">
-        let small = new SmallVehicle(2, "small", 2006);<br/>
-        small.printTypeYear();<br/>
-        console.log(small.wheels);<br/>
-        small.theYear = 2011; //use the getter<br/>
-        small.printTypeYear();<br/>
-        SmallVehicle.printSomething(); //static method<br/>
-    </div>
+    <pre>
+        <code>
+            let small = new SmallVehicle(2, "small", 2006);
+            small.printTypeYear();
+            console.log(small.wheels);
+            small.theYear = 2011; //use the getter
+            small.printTypeYear();
+            SmallVehicle.printSomething(); //static method
+        </code>
+    </pre>
+    
     Note: don’t put more code than you need in the constructor. The constructor will run every time you create a new object with new.<br/>
     Note: You don’t have to use get and set in the names of the getter and setter methods, but it is is a good idea<br/>
 
@@ -459,18 +538,21 @@
         <h2 class="CenterMe">Styles</h2>
     <hr class="hrHeaderClass"/>
     Because styles are also objects we can do this:<br/>
-    <div class="codeBlock">
-        var wordStyles = &lbrace;<br/>
-            width:"12vw",<br/>
-            heigth:"10vh",<br/>
-            fontSize:"8vh",<br/>
-            border:"3px solid navy"<br/>
-        &rbrace;<br/>
-        var wordStylesClick = Object.assign(&lbrace;&rbrace;, wordStyles, &lbrace;cursor:"pointer"&rbrace;); <br/><br/>
+    <pre>
+        <code>
+            var wordStyles = &lbrace;
+            width:"12vw",
+            heigth:"10vh",
+            fontSize:"8vh",
+            border:"3px solid navy"
+        &rbrace;
+        var wordStylesClick = Object.assign(&lbrace;&rbrace;, wordStyles, &lbrace;cursor:"pointer"&rbrace;); <br/>
 
-        &lt;span style=&lbrace;wordStyles&rbrace;&gt;,,,,&lt;/span&gt;<br/>
-        &lt;span style=&lbrace;wordStylesClick&rbrace; onClick=&lbrace;this.next&rbrace;&gt;...&lt;/span&gt;<br/>
-    </div>
+        &lt;span style=&lbrace;wordStyles&rbrace;&gt;,,,,&lt;/span&gt;
+        &lt;span style=&lbrace;wordStylesClick&rbrace; onClick=&lbrace;this.next&rbrace;&gt;...&lt;/span&gt;
+        </code>
+    </pre>
+   
     <br/>
     <br/>
 

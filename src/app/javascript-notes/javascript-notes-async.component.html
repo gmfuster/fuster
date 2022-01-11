@@ -41,70 +41,88 @@
       The promise object returns properties: <b>state</b> (pending, fulfilled, rejected), <b>result</b> (undefined, value, error).<br/>
       A promise that is fulfilled or rejected is settled.<br/>
 
-      <div class="codeBlock">
-        let myPromise = new Promise ( function(resolve, reject)<br/>
-        &lbrace;<br/>
-          console.log("About to call func with setTimeOut");<br/>
-          setTimeout(<br/>
-            &nbsp;() => &lbrace;<br/>
-            &nbsp;&nbsp;console.log("Sending a resolve");<br/>
-            &nbsp;&nbsp;resolve("RESOLVED!!!");<br/>
-            &rbrace;, 3000)<br/>
-          console.log("Waiting for setTimeout to finish...");  <br/>
-        &rbrace;);<br/><br/>
-        
-        let consumePromise = () => &lbrace;<br/>
-        &nbsp; myPromise.then( <br/>
-        &nbsp;&nbsp;(resolve) => console.log(resolve) );<br/>
-        &rbrace;<br/><br/>
-        
-        consumePromise();<br/>
-      </div>
+      <pre>
+        <code>
+          let myPromise = new Promise ( function(resolve, reject)<
+          &lbrace;
+            console.log("About to call func with setTimeOut");
+            setTimeout(
+              &nbsp;() => &lbrace;
+              &nbsp;&nbsp;console.log("Sending a resolve");
+              &nbsp;&nbsp;resolve("RESOLVED!!!");
+              &rbrace;, 3000)
+            console.log("Waiting for setTimeout to finish...");  
+          &rbrace;);<br/>
+          
+          let consumePromise = () => &lbrace;
+          &nbsp; myPromise.then( 
+          &nbsp;&nbsp;(resolve) => console.log(resolve) );
+          &rbrace;<br/>
+          
+          consumePromise();
+        </code>
+      </pre>
+ 
 
 
   
     <img width="100%" src="assets\images\js\promise1.png" alt="promise 1" /><br/><br/>
 
-      The above example only has code for the resolve, if we wanted to have somewhere in the code to send the reject, it would look something like <br/>
-      <div class="codeBlock">
-          reject( new Error("Rejected!!!"));
-      </div>    
+      The above example only has code for the resolve, if we wanted to have somewhere in the code to send the reject, it would look something like <br/>      
+        <pre>
+          <code>
+            reject( new Error("Rejected!!!"));  
+          </code>
+        </pre>          
+      
       and then in the code inside the then() you do 
-      <div class="codeBlock">
-        myPromise.then( <br/>
-        (resolve) => console.log(resolve) ;<br/>
-        (reject) => console.log(reject) )<br/>
-    </div>
-    We could also do this.  Notice if the promise doesn't return a resolve, just use null in its place, don't just ignore it and leave it out.<br/>
-    <div class="codeBlock">
-        let myPromise = new Promise ( function(resolve, reject)<br/>
-        &lbrace;<br/>
-            &nbsp;console.log("About to call func with setTimeOut");<br/>
-            &nbsp;setTimeout(<br/>
-                &nbsp;() => &lbrace;<br/>
-                    &nbsp;&nbsp;   console.log("Sending a reject");<br/>
-                    &nbsp;&nbsp; reject(new Error("REJECTED!!!"));<br/>
-                    &nbsp;&rbrace;, 3000)<br/>
-                    &nbsp;console.log("Waiting for setTimeout to finish...");  <br/>
-        &rbrace;);<br/><br/>
 
-        let consumePromise = () => &lbrace;<br/>
-            &nbsp; myPromise.then( <br/>
-                &nbsp;&nbsp;  (null),<br/>
-                &nbsp;&nbsp; (reject) => console.log(reject));<br/>
-        &rbrace;
-        <br/><br/>
-        consumePromise();<br/>
-    </div><br/>
+        <pre>
+          <code>
+            myPromise.then( 
+            (resolve) => console.log(resolve) ;
+            (reject) => console.log(reject) )
+          </code>
+        </pre>
+            
+    We could also do this.  Notice if the promise doesn't return a resolve, just use null in its place, don't just ignore it and leave it out.<br/>
+    
+      <pre>
+        <code>
+          let myPromise = new Promise ( function(resolve, reject)
+          &lbrace
+              &nbsp;console.log("About to call func with setTimeOut");
+              &nbsp;setTimeout(
+                  &nbsp;() => &lbrace;
+                      &nbsp;&nbsp;   console.log("Sending a reject");
+                      &nbsp;&nbsp; reject(new Error("REJECTED!!!"));
+                      &nbsp;&rbrace;, 3000)
+                      &nbsp;console.log("Waiting for setTimeout to finish...");  
+          &rbrace;);<br/>
+  
+          let consumePromise = () => &lbrace;
+              &nbsp; myPromise.then( 
+                  &nbsp;&nbsp;  (null),
+                  &nbsp;&nbsp; (reject) => console.log(reject));
+          &rbrace;
+          <br/>
+          consumePromise();
+        </code>
+      </pre>
+       
+    <br/>
     <img width="100%" src="assets\images\js\promise2.png" alt="promise 2" /><br/><br/>
     The consumePromise doesn't have to name (resolve) and (reject) that way, you can name it whatever. Changing that part of the code to this also works:
-    <div class="codeBlock">
-        let consumePromise = () => &lbrace;<br/>
-        &nbsp; myPromise.then( <br/>
-        &nbsp; &nbsp; (null),<br/>
-        &nbsp; &nbsp; (rejectOHNO) => console.log(rejectOHNO));<br/>
-          &rbrace;<br/>
-    </div><br/>
+    <pre>
+      <code>
+        let consumePromise = () => &lbrace;
+        &nbsp; myPromise.then( 
+        &nbsp; &nbsp; (null),
+        &nbsp; &nbsp; (rejectOHNO) => console.log(rejectOHNO));
+          &rbrace;
+      </code>
+    </pre>
+    <br/>
     If instead of reject(new Error("REJECTED!!!") we do reject("REJECTED!!!"); it will still go to the reject but it won't display as an error, but as a string.<br/>
 
     <!-------------------------------------------------------------->
@@ -118,51 +136,63 @@
     <code><strong><u>catch</u></strong></code><br />
 
     We could also be catching an error this way:<br/>
-    <div class="codeBlock">
-        let consumePromise = () => &lbrace;<br/>
-           &nbsp; myPromise.catch(<br/>
-           &nbsp;&nbsp;(errorOHNO) => &lbrace;console.log(errorOHNO);&rbrace;<br/>
-           &nbsp;)<br/>
-          &rbrace;<br/>
-    </div>
+    <pre>
+      <code>
+        let consumePromise = () => &lbrace;
+        &nbsp; myPromise.catch(
+        &nbsp;&nbsp;(errorOHNO) => &lbrace;console.log(errorOHNO);&rbrace;
+        &nbsp;)
+       &rbrace;
+      </code>
+    </pre>
+    
     <br/>
     The catch will happen even if we don't send an Error, so having only reject( "REJECTED OH NO!"); will still go to the catch block.<br/>
     If we have both the reject and the catch, the catch will not happen:<br/>
-    <div class="codeBlock">
-        let consumePromise = () => &lbrace;<br/>
-        &nbsp;myPromise.then(<br/>
-        &nbsp; &nbsp; (resolve) => console.log("hello"),<br/>
-        &nbsp; &nbsp; (reject) => console.log("OH no!!" + reject)<br/>
-        &nbsp;  ).catch(<br/>
-        &nbsp; &nbsp;    (errorOHNO) => &lbrace;console.log("IN CATCH");&rbrace;<br/>
-        &nbsp;  )<br/>
-          &rbrace;<br/>
-    </div>
+    <pre>
+      <code>
+        let consumePromise = () => &lbrace;
+        &nbsp;myPromise.then(
+        &nbsp; &nbsp; (resolve) => console.log("hello"),
+        &nbsp; &nbsp; (reject) => console.log("OH no!!" + reject)
+        &nbsp;  ).catch(
+        &nbsp; &nbsp;    (errorOHNO) => &lbrace;console.log("IN CATCH");&rbrace;
+        &nbsp;  )
+          &rbrace;
+      </code>
+    </pre>
+    
     <br/>
     <img width="100%" src="assets\images\js\promise3.png" alt="promise 3" /><br/><br/>
 
     <code><strong><u>finally</u></strong></code><br />
     Finally always happen, no matter resolve or reject.<br/>
-    <div class="codeBlock">
-        let consumePromise = () => &lbrace;<br/>
-        &nbsp; myPromise.then(<br/>
-        &nbsp; &nbsp;  (resolve) => console.log("hello"),<br/>
-        &nbsp; &nbsp;  (reject) => console.log("OH no!!" + reject)<br/>
-        &nbsp; ).catch(<br/>
-        &nbsp; &nbsp;    (errorOHNO) => &lbrace;console.log("IN CATCH");&rbrace;<br/>
-        &nbsp;  ).finally(<br/>
-        &nbsp; &nbsp;     console.log("FINALLY!")<br/>
-        &nbsp;   )<br/>                    
-    </div>
+    <pre>
+      <code>
+        let consumePromise = () => &lbrace;
+        &nbsp; myPromise.then(
+        &nbsp; &nbsp;  (resolve) => console.log("hello"),
+        &nbsp; &nbsp;  (reject) => console.log("OH no!!" + reject)
+        &nbsp; ).catch(
+        &nbsp; &nbsp;    (errorOHNO) => &lbrace;console.log("IN CATCH");&rbrace;
+        &nbsp;  ).finally(
+        &nbsp; &nbsp;     console.log("FINALLY!")
+        &nbsp;   )
+      </code>
+    </pre>
+    
     But look what that prints:
-    <div class="codeBlock">
-        About to call func with setTimeOut<br/>
-        Waiting for setTimeout to finish...<br/>
-        <b>FINALLY!</b><br/>
-        Hint: hit control+c anytime to enter REPL.<br/>
-        Sending a reject<br/>
-        OH no!!Error: rejected!!!<br/>
-    </div>  
+    <pre>
+      <samp>
+        About to call func with setTimeOut
+        Waiting for setTimeout to finish...
+        <b>FINALLY!</b>
+        Hint: hit control+c anytime to enter REPL.
+        Sending a reject
+        OH no!!Error: rejected!!!
+      </samp>
+    </pre>
+    
 
 
     <!-------------------------------------------------------------->
@@ -197,11 +227,15 @@
     JS has some static functions to deal with promises. This is just a brief summary.<br/>
 
     <code><strong><u>all</u></strong></code><br />
-    <div class="codeBlock">
-        Promise.all([myPromise1, myPromise2]).then(<br/>
-            (values) => console.log("ALL DONE with " + values)<br/>
-          )<br/>
-    </div>  <br/>
+
+    <pre>
+      <code>
+        Promise.all([myPromise1, myPromise2]).then(
+        (values) => console.log("ALL DONE with " + values)
+      )
+      </code>
+    </pre>
+    <br/>
 
     <img width="100%" src="assets\images\js\promise_all.png" alt="promise all" /><br/><br/>
     It is a good idea to have a catch with the Promise.all in case one of the promises fails.<br/>
@@ -219,25 +253,30 @@
 
     <code><strong><u>resolve</u></strong></code><br />
     the resolve will call the first function in the arguments.
-    <div class="codeBlock">
-        Promise.resolve("YAY").then(<br />
-         &nbsp;   ()=>console.log("pretend I'm a func called 4 resolve"),<br />
-         &nbsp;   ()=>console.log("pretend I'm a func called 4 reject")<br />
-          )<br />
-    </div>  <br/>
+    <pre>
+      <code>
+        Promise.resolve("YAY").then(
+        &nbsp;   ()=>console.log("pretend I'm a func called 4 resolve"),
+        &nbsp;   ()=>console.log("pretend I'm a func called 4 reject")
+         )
+      </code>
+    </pre>
+    <br/>
 
     <img width="100%" src="assets\images\js\resolve.png" alt="resolve" /><br/><br/>
 
 
     <code><strong><u>reject</u></strong></code><br />
     similar to the resolve but it goes to the second function provided, the reject one.<br/>
-
-    <div class="codeBlock">
-        Promise.reject( new Error("Oops")).then(<br/>
-        &nbsp;  ()=>console.log("pretend I'm a func called 4 resolve"),<br/>
-        &nbsp;  ()=>console.log("pretend I'm a func called 4 reject")<br/>
-)
-    </div>
+    <pre>
+      <code>
+        Promise.reject( new Error("Oops")).then(
+        &nbsp;  ()=>console.log("pretend I'm a func called 4 resolve"),
+        &nbsp;  ()=>console.log("pretend I'm a func called 4 reject")
+        )
+      </code>
+    </pre>
+    
 
 
     <!-------------------------------------------------------------->
@@ -255,47 +294,55 @@
     function waits and then returns something, the await will have moved on.  It expects a promise, then it waits for it to finish.  It doesn't wait 
     for the promise to be returned after a while.
 
-    <div class="codeBlock">
+    <pre>
+      <code>
         function callMe()&lbrace;
-           &nbsp; console.log("returning promise with timeout");<br/>
-           &nbsp; return new Promise(function (resolve,reject) &lbrace;<br/>
-           &nbsp;&nbsp;   setTimeout(() => &lbrace;<br/>
-           &nbsp;&nbsp;     resolve(9);<br/>
-           &nbsp;   &rbrace;, 3000);<br/>
-           &nbsp;  &rbrace;);<br/>
-          &rbrace;<br/>
-          
-          async function iCallWait()&lbrace;<br/>
-          &nbsp;   let vble = await callMe()  ;  <br/>
-          &nbsp;   console.log("Hello, I got " + vble);<br/>
-          &nbsp;  &rbrace;<br/>
-          
-          iCallWait()<br/>
-    </div><br/>
+        &nbsp; console.log("returning promise with timeout");
+        &nbsp; return new Promise(function (resolve,reject) &lbrace;
+        &nbsp;&nbsp;   setTimeout(() => &lbrace;
+        &nbsp;&nbsp;     resolve(9);
+        &nbsp;   &rbrace;, 3000);
+        &nbsp;  &rbrace;);
+       &rbrace;<br/>
+       
+       async function iCallWait()&lbrace;
+       &nbsp;   let vble = await callMe()  ;  
+       &nbsp;   console.log("Hello, I got " + vble);
+       &nbsp;  &rbrace;<br/>
+       
+       iCallWait();
+      </code>
+    </pre>
+    <br/>
     <img width="100%" src="assets\images\js\await1.png" alt="await 1" /><br/><br/>
 
     If the promise can reject, do a try-catch:<br/>
 
-    <div class="codeBlock">
-        async function iCallWait()&lbrace;<br/>
-        &nbsp; try&lbrace;<br/>
-        &nbsp; &nbsp;  let vble = await callMe()  ;  <br/>  
-        &nbsp; &nbsp;  console.log("Hello, I got " + vble);<br/>
-        &nbsp; &nbsp;   &rbrace;catch&lbrace;<br/>
-        &nbsp;     console.log("oh no");<br/>
-            &rbrace;  <br/>          
-    </div><br/>
+    <pre>
+      <code>
+        async function iCallWait()&lbrace;
+        &nbsp; try&lbrace;
+        &nbsp; &nbsp;  let vble = await callMe()  ;  
+        &nbsp; &nbsp;  console.log("Hello, I got " + vble);
+        &nbsp; &nbsp;   &rbrace;catch&lbrace;
+        &nbsp;     console.log("oh no");
+            &rbrace;  
+      </code>
+    </pre>
+    <br/>
     Could also do this but less clear: <code><strong><u>var response = await callMe().catch((err) => &lbrace; console.error(err); &rbrace;);</u></strong></code><br/><br/>
     You can also do: <code><strong><u>let response = await fetch(url); </u></strong></code> (in async function, try in browser's console, Calling fetch () returns a promise)<br/><br/>
     If we call a function with await that just waits and then returns something, the wait will not wait (see explanation at top of section):<br/><br/>
-    <div class="codeBlock">
-        function callMe()&lbrace;<br/> 
-        &nbsp;setTimeout(() => &lbrace;<br/> 
-        &nbsp;&nbsp;  return 9;<br/> 
-        &nbsp;  &rbrace;, 3000);  <br/> 
+    <pre>
+      <code>
+        function callMe()&lbrace;
+        &nbsp;setTimeout(() => &lbrace;
+        &nbsp;&nbsp;  return 9;
+        &nbsp;  &rbrace;, 3000);  
         &rbrace;
-    </div>
-
+      </code>
+    </pre>
+    
 
 
 
