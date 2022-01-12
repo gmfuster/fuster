@@ -140,7 +140,89 @@
     <br/>
     <code><strong><u>Extension Methods</u></strong></code><br /><br/>
 
+    Extension methods have to be created, for a type, in a non-generic static class.  That is why I'm changing the class program to be static.  The 
+    use of this indicates the one that will be the string that has the method.<br/>
 
+    <pre>
+        <code>
+            using System;
+
+            public static class Program &lbrace;   
+            
+                public static bool LenGreaterThan6 (<b>this</b> string s)&lbrace;
+                &nbsp;return s.Length > 6;
+                &rbrace;
+                public static bool LenGreaterThanInput (<b>this</b> string   s, string input)&lbrace;
+                &nbsp;return s.Length > input.Length;
+                &rbrace;
+            
+                
+                static void Main(string[] args) &lbrace;
+                Console.WriteLine("IAm4".LenGreaterThan6());//false
+                Console.WriteLine("IAmMuchMoreThan4Or6".LenGreaterThan6());//true
+                Console.WriteLine("IAm4".LenGreaterThanInput("theInput"));//false
+                Console.WriteLine("IAm4".LenGreaterThanInput("I"));//true
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+
+
+    <br/>
+    <code><strong><u>Tuples</u></strong></code><br /><br/>
+
+    We have System.Tuple (reference, the data members are properties) and System.ValueTuple (value, the data members are fields).<br/>
+
+    For the System.tupple:<br/>
+    <pre>
+        <code>
+            using System;
+
+            public static class Program &lbrace;   
+
+                &nbsp;public class Test&lbrace;
+                &nbsp;&nbsp;public Tuple&lt;Int32&gt; intT = new Tuple&lt;Int32&gt;(100);
+                &nbsp;&nbsp;public Tuple&lt;Int32, string&gt; intStringT = new Tuple&lt;Int32, string&gt;(1,"hey");
+                &nbsp;&rbrace;;
+        
+                &nbsp;static void Main(string[] args) 
+                &nbsp;&nbsp;Test t = new Test();
+                &nbsp;&nbsp;Console.WriteLine(t.intT.Item1);//100
+                &nbsp;&nbsp;Console.WriteLine(t.intStringT.Item2);//hey
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    You could also create the tuple this way:<br/>
+    <code>
+        var intT = Tuple.Create&lt;Int32&gt;(101);
+    </code>
+
+    <br/><br/>
+    For the System.ValueTuple<br/>
+    <pre>
+        <code>
+            public (Int32, double) intT = (100, 4.5);//has to have more than 1 item.
+            public (Int32, string) intStringT = (1,"hey");
+            ...
+            Console.WriteLine(t.intT.Item1);//100
+            Console.WriteLine(t.intStringT.Item2);//hey
+        </code>
+    </pre>
+    You could also name the items:<br/>
+    <pre>
+        <code>
+            public (Int32 i , double d) intT = (100, 4.5);
+            public (Int32 i , string s) intStringT = (1,"hey");
+            ...
+            Console.WriteLine(t.intT.d);//4.5
+            Console.WriteLine(t.intStringT.s);//hey
+        </code>
+    </pre>
+    You can use == and != to compare these tuples, but it will compare the values, meaning, the names given to the fields will not matter.<br/>
+
+
+    <code><strong><u>Generics</u></strong></code><br /><br/>
 
     
 </div>

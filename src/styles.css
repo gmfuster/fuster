@@ -52,7 +52,19 @@ body pre code{
   color:navy;
   padding:8px;  
 }
-
+body code{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2vw;  
+  color:navy;
+  padding:8px;  
+}
+/*Use this for now for the headings of notes, maybe change to a class later*/
+body code strong u{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.8vw;    
+  color: orangered;  
+  padding:8px;  
+}
 .TopNav {
   height:6vh; 
   width:100vw;
