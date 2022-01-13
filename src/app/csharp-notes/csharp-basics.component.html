@@ -385,4 +385,103 @@
         </samp>
     </pre>
 
+
+    <code><strong><u>IComparer</u></strong></code><br /><br/>
+
+    
+    IComparable will help you in your sorting when you have control over the class you are sorting, 
+    so you can have the CompareTo the way you like it. However, it is possible that you have the ObjectForComparing objects, 
+    but instead of wanting the CompareTo in that class for your sort, now you want them sorting by some other way<br/>
+
+    You still have this class as before, but I have added TheNumber<br/>
+    <pre>
+        <code>
+            public class WillCompare:IComparable&lbrace;
+      
+                public string TheData &lbrace;get;set;&rbrace;
+                <b>public Int32 TheNumber &lbrace;get;set;&rbrace;</b>
+                public int CompareTo(object o)&lbrace;
+                  //same=0, o&gt; ret &gt;0, o&lt; ret &lt;0
+                  if (((WillCompare)o).TheData.Length == this.TheData.Length)&lbrace;
+                    return 0;
+                  &rbrace;else if (((WillCompare)o).TheData.Length &lt; this.TheData.Length)&lbrace;
+                  return 1;
+                  &rbrace;else return -1;
+                &rbrace;
+              &rbrace;
+        </code>
+    </pre>
+    We add another class, implementing IComparer, which we will use to compare the WillCompare objects, instead of using the objects own CompareTo.
+    We have to indicate what type of objects we will be using with this new class.  The Compare method here will just use the CompareTo of the Int32.<br/>
+    <pre>
+        <code>
+            public class WillCompare2:<b>IComparer&lt;WillCompare&gt;</b>&lbrace;
+                public int <b>Compare(WillCompare o1, WillCompare o2)</b>&lbrace;
+                  return o1.TheNumber.CompareTo(o2.TheNumber)  ;
+                &rbrace;
+              &rbrace;
+        </code>
+    </pre>
+    Now, to compare 2 WillCompare objects using this new Compare, and use it to sort the list, we would do this (I have changed all the strings 
+    to hello so they are all the same):<br/>
+    <pre>
+        <code>
+            static void Main(string[] args) &lbrace;     
+                WillCompare w1 = new WillCompare();
+                w1.TheData = "hello";
+                w1.TheNumber = 100;
+                WillCompare w2 = new WillCompare();
+                w2.TheData = "hello";
+                w2.TheNumber = 50;
+                WillCompare w3 = new WillCompare();
+                w3.TheData = "hello";
+                w3.TheNumber = 200;
+                
+                List&lt;WillCompare&gt; l = new List&lt;WillCompare&gt;();
+                l.Add(w1);
+                l.Add(w2);
+                l.Add(w3);
+
+                WillCompare2 c2 = new WillCompare2();
+                l.Sort(<b>c2</b>);
+             
+                Console.WriteLine(l[0].TheNumber);//50
+                Console.WriteLine(l[1].TheNumber);//100
+                Console.WriteLine(l[2].TheNumber);//200
+           }
+        </code>
+    </pre>
+    <code><strong><u>IEquitable</u></strong></code><br /><br/>
+
+    You know you can use equals to compare strings, and you want to have something similar for your class, with whatever criteria you want to use.<br/>
+    The class that will have the Equals is this one, and notice that we are indicating the object have to be equaled to a string (could have been the object type or 
+    anything else). Notice we consider the object equal to the string if the lengths match.<br/>
+    <pre>
+        <code>
+            public class WillEquate:<b>IEquatable&lt;string&gt;&lbrace;</b>
+      
+                public string TheData &lbrace;get;set;&rbrace; 
+                <b>public bool Equals(string s)&lbrace;</b>
+                  if (this.TheData.Length == s.Length)&lbrace;
+                    return true;
+                  &rbrace;
+                  return false;
+                &rbrace;
+              &rbrace;
+        </code>
+    </pre>
+    And this is how we would use it<br/>
+    <pre>
+        <code>
+            static void Main(string[] args) &lbrace;    
+                WillEquate w1 = new WillEquate();
+                w1.TheData = "five5";
+                string s = "hello";
+                string s2 = "hey";
+                Console.WriteLine(<b>w1.Equals(s)</b>);//true
+                Console.WriteLine(<b>w1.Equals(s2)</b>);//false
+            &rbrace;
+        </code>
+    </pre>
+
 </div>
