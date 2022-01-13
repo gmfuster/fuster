@@ -484,4 +484,23 @@
         </code>
     </pre>
 
+    <code><strong><u>IEqualityComparer</u></strong></code><br /><br/>
+
+    Similar to the IEquatable, but you create it in another class and the method will take 2 arguments to compare.<br/>
+    You create the class you will use to compare, and implement IEqualityComparer with whatever type you want to compare.  In the Equals, 
+    take as arguments the object types and choose how you want to check if they are equal.<br/>
+    To use it just create the objects you want to compare and the object for the class that will compare them.<br/>
+
+    <img width="100%" src="assets\images\csharp\IEqualityComparer1.png" alt="IEquialityComparer" /><br/><br/>
+
+    The above code is OK, but if you want the GetHashCode to work in accordance with the Equals, 
+    so for instance you don’t get duplicate keys in a Dictionary, it should look more like this (notice the new Equals):<br/>
+
+    <img width="100%" src="assets\images\csharp\IEqualityComparer2.png" alt="IEquialityComparer" /><br/><br/>
+
+
+    <code><strong><u>IEnumerable</u></strong></code><br /><br/>
+
+    
+
 </div>
