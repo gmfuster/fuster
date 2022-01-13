@@ -221,8 +221,168 @@
     </pre>
     You can use == and != to compare these tuples, but it will compare the values, meaning, the names given to the fields will not matter.<br/>
 
-
+    <br/>
     <code><strong><u>Generics</u></strong></code><br /><br/>
 
-    
+    <pre>
+        <code>
+            public static class Program &lbrace;   
+
+                public class <b>TestGen&lt;T&gt;</b>&lbrace;
+            
+                  public bool isItNull(<b>T theT</b>)&lbrace;
+                    return theT == null;
+                  &rbrace;
+                &rbrace;
+                  
+                static void Main(string[] args) &lbrace;    
+                  TestGen<b>&lt;string&gt;</b> t = new TestGen<b>&lt;string&gt;</b>();
+                  TestGen&lt;Int32?&gt; t2 = new TestGen&lt;Int32?&gt;();
+                  Console.WriteLine(t.isItNull("hello"));//false
+                  Console.WriteLine(t2.isItNull(3));//false
+                  Console.WriteLine(t2.isItNull(null));//true
+                &rbrace;            
+        </code>
+    </pre>
+    <pre>
+        <code>
+            public static class Program &lbrace;   
+
+                public class TestGen&lt;T&gt;&lbrace;
+            
+                 <b>public T Data &lbrace; get; set; &rbrace;</b>
+                &rbrace;
+                  
+                static void Main(string[] args) &lbrace;     
+                  TestGen&lt;string&gt; t = new TestGen&lt;string&gt;();
+                  t.Data = "hello";
+                  TestGen&lt;nt32?&gt; t2 = new TestGen&lt;Int32?&gt;();
+                  t2.Data = 48;
+                  Console.WriteLine(t.Data);//false
+                  Console.WriteLine(t2.Data);//false      
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    Trying this instead would have given an error because an Int32? is expected: <b>t2.Data = "48";</b><br/>
+    A generic class can be a base class to other generic or non-generic classes or abstract classes.<br/>
+    You can have more than one type for a generic class (T, U ...)<br/>
+
+    <br/>
+    <code><strong><u>InottifyPropertyChanged</u></strong></code><br /><br/>
+    When you need to know that a property changed.<br/>
+
+    <img width="100%" src="assets\images\csharp\INotifyPropertyChanged.png" alt="Notify property changed" /><br/><br/>
+
+    A similar example for copy paste:<br/>
+    <pre>
+        <code>
+            using System;
+            <b>using System.ComponentModel;</b>
+
+            public static class Program &lbrace;   
+
+                public class WillChangeProperty:<b>INotifyPropertyChanged</b>&lbrace;
+                
+                    <b>public event PropertyChangedEventHandler PropertyChanged;</b>
+                    private string _theData = "";
+                    public string TheData &lbrace;
+                        get&lbrace;
+                        return this._theData ;
+                        &rbrace;
+                        set&lbrace;
+                        this._theData = value;
+                        <b>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(this._theData));</b>
+                        &rbrace;            
+                    &rbrace;
+                    <b>public void WhatToDoOnChange(object sender, PropertyChangedEventArgs e)&lbrace;</b>
+                        Console.WriteLine("It changed!");
+                    &rbrace;
+                &rbrace;
+                
+                static void Main(string[] args) &rbrace;     
+                    WillChangeProperty w = new WillChangeProperty();
+                    <b>w.PropertyChanged += w.WhatToDoOnChange;</b>
+                    w.TheData = "Hello";
+                &rbrace;
+            &rbrace;
+
+        </code>
+    </pre>
+
+    <br/>
+    <br/>
+    <code><strong><u>IComparable</u></strong></code><br /><br/>
+
+    Implement it when you want to provide a method to compare your classes.<br/>
+    <img width="100%" src="assets\images\csharp\IComparable.png" alt="IComparable" /><br/><br/>
+
+    <pre>
+        <code>
+            public static class Program &&lbrace;;  
+
+                public class WillCompare:<b>IComparable</b>&lbrace;
+                  
+                  public string TheData &lbrace;get;set;&rbrace;
+                  <b>public int CompareTo(object o)</b>&lbrace;
+                    <b>//same=0, o&gt; ret &gt;0, o&lt; ret &lt;0</b>
+                    if (((WillCompare)o).TheData.Length == this.TheData.Length)&lbrace;
+                      return 0;
+                    &rbrace;else if (((WillCompare)o).TheData.Length > this.TheData.Length)&lbrace;
+                    return 1;
+                    &rbrace;else return -1;
+                  &rbrace;
+                &rbrace;
+                  
+                static void Main(string[] args) &lbrace;     
+                     WillCompare w1 = new WillCompare();
+                     w1.TheData = "hello";
+                     WillCompare w2 = new WillCompare();
+                     w2.TheData = "helloooo";
+                     Console.WriteLine(<b>w1.CompareTo(w2)</b>);//1
+                &rbrace;
+            &rbrace;
+            
+        </code>
+    </pre>
+    <br/>
+
+    Once you have the above, you can sort a list of objects and it will be sorted based on the CompareTo.<br/>
+    With the same code as above:<br/>
+    <pre>
+        <code>
+            static void Main(string[] args) &lbrace;     
+                WillCompare w1 = new WillCompare();
+                 w1.TheData = "hello";
+             WillCompare w2 = new WillCompare();
+                 w2.TheData = "helloooo";
+             WillCompare w3 = new WillCompare();
+                 w3.TheData = "hey";
+             List&lt;WillCompare&gt; l = new List&lt;WillCompare&gt;();
+             l.Add(w1);
+             l.Add(w2);
+             l.Add(w3);
+             l.Sort();
+             Console.WriteLine(l[0].TheData);//
+             Console.WriteLine(l[1].TheData);//
+             Console.WriteLine(l[2].TheData);//
+           &rbrace;
+        </code>
+    </pre>
+    <pre>
+        <samp>
+            helloooo
+            hello
+            hey
+        </samp>
+    </pre>
+    Change the way you do the CompareTo if you want the sorting to be this way:<br/>
+    <pre>
+        <samp>
+            hey
+            hello
+            helloooo
+        </samp>
+    </pre>
+
 </div>
