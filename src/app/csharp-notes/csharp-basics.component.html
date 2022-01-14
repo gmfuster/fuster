@@ -500,6 +500,88 @@
 
 
     <code><strong><u>IEnumerable</u></strong></code><br /><br/>
+    
+    You need to add this when you want to be able to iterate through a custom <b>collection</b><br/>
+    This is one way to do it:<br/>
+    <pre>
+        <code>
+            using System;
+            <b>using System.Collections;//Not Generic</b>
+            using System.Collections.Generic;//for List
+
+            public static class Program &lbrace;   
+
+                public class MyObject
+                &lbrace;
+                    public string TheColor &lbrace; get; set; &rbrace;       
+                &lbrace;
+                public class MyObjectList: <b>IEnumerable&lbrace;</b>
+      
+                    List&lt;MyObject&gt; myl = new List&lt;MyObject&gt;();
+                    public MyObjectList()&lbrace;
+                    myl.Add(new MyObject&lbrace;TheColor="red"&rbrace;);
+                    myl.Add(new MyObject&lbrace;TheColor="blue"&rbrace;);
+                    myl.Add(new MyObject&lbrace;TheColor="yellow"&rbrace;);
+                &rbrace;
+                public <b>IEnumerator&lbrace;MyObject&rbrace; GetEnumerator()&lbrace;</b>
+                    //could have used:
+                    //<b>return myl.GetEnumerator();</b>
+                    foreach (MyObject o in myl)&lbrace;
+                    <b>yield return o;</b>
+                &rbrace;
+            &rbrace;
+    
+            <b>IEnumerator IEnumerable.GetEnumerator()&lbrace;</b>
+                <b>return this.GetEnumerator();</b>
+            &rbrace;
+        &rbrace;
+         
+        static void Main(string[] args) &lbrace;     
+            MyObjectList list = new MyObjectList();
+            //foreach will be what GetEnumerator is returning.
+            <b>foreach(MyObject mo in list)&lbrace;</b>
+                Console.WriteLine(mo.TheColor);
+            &rbrace;
+            &rbrace;
+        &rbrace;
+
+        </code>
+    </pre>
+    In the code above we are just adding the objects to the list in the constructor, but in real code we will want to add them to the list from the 
+    code that will be using the list.  So instead of adding them on the constructor, we would do this in the MyObjectList<br/>
+    <pre>
+        <code>
+            public MyObject this[int index]&lbrace;
+                get &lbrace;return myl[index];&rbrace;
+                set &lbrace;myl.Insert(index, value);&rbrace;
+              &rbrace;
+        </code>
+    </pre>
+    And we will use this to create the list we are going to use<br/>
+    <pre>
+        <code>
+            MyObjectList list = new MyObjectList();
+            list[0] = new MyObject&lbrace;TheColor="red"&rbrace;;
+            list[1] = new MyObject&lbrace;TheColor="blue"&rbrace;;
+            list[2] =new MyObject&lbrace;TheColor="white"&rbrace;;
+        </code>
+    </pre>
+    We could also have done this, or whatever we want for the method and populating the list:<br/>
+    <pre>
+        <code>
+            public void Add (MyObject o)&lbrace;
+                myl.Add(o);
+              &rbrace;
+
+             //and then to use it
+             
+             MyObjectList list = new MyObjectList();
+            list.Add(new MyObject&lbrace;TheColor="red"&rbrace;);
+            //etc
+        </code>
+    </pre>
+
+    <code><strong><u>IEnumerator</u></strong></code><br /><br/>
 
     
 
