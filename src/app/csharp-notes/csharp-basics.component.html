@@ -582,7 +582,130 @@
     </pre>
 
     <code><strong><u>IEnumerator</u></strong></code><br /><br/>
+    IEnumerable and the use of foreach hide the complexity of the enumerator if you just use the enumerator of the list itself, like 
+    in the examples above. But you can use your own Enumerator.<br/>
+    Same example above but now using our own enumerator could look something like this.  Change the enumerator to be whatever you need it to be<br/>
+    <pre>
+        <code>
+            using System;
+            using System.Collections;//Not Generic
+            using System.Collections.Generic;//for List
+            
+            public static class Program &lbrace;   
+            
+                public class MyObject
+                &lbrace;
+                    public string TheColor &lbrace; get; set; &rbrace;       
+                &rbrace;
+                
+                public class MyObjectList: IEnumerable&lbrace;
+                            
+                    List&lt;MyObject&gt; myl = new List&lt;MyObject&gt;();
+            
+                    public void Add (MyObject o)&lbrace;
+                        myl.Add(o);
+                    &rbrace;
+            
+                    public IEnumerator&lt;MyObject&gt; GetEnumerator()&lbrace;        
+                        <b>return new SomeEnumerator(myl);</b>
+                    &rbrace;
+                            
+                    IEnumerator IEnumerable.GetEnumerator()&lbrace;
+                        return this.GetEnumerator();
+                    &rbrace;
+                &rbrace;
+            
+                <b>public class SomeEnumerator:IEnumerator&lt;MyObject&gt; &lbrace;</b>
+                    private int _index = -1;
+                    public int current =&gt; this._index;
+                    private List&lt;MyObject&gt; _l = null;
+                    //MyObject IEnumerator&&lt;MyObject&gt;.Current =&gt; this._l[this._index];
+                            
+                    public SomeEnumerator(List&lt;MyObject&gt; l)&lbrace;
+                        this._l = l;
+                    &rbrace;
+            
+                    public void Dispose()&lbrace;&rbrace;
+            
+                    public bool MoveNext()&lbrace;       
+                        this._index++;
+                        if (this._index &lt; this._l.Count)&lbrace;
+                            return true;        
+                         &rbrace;else return false;
+                    &rbrace;
+            
+                     public void Reset()&lbrace;
+                        this._index = -1;
+                    &rbrace;
 
-    
+                    MyObject IEnumerator&lt;MyObject&gt;.Current&lbrace;
+                
+                    <b>get &lbrace;     
+                        this._l[this._index].TheColor += " Custom";
+                        return this._l[this._index];
+                        &rbrace;</b>
+                    &rbrace;
 
+                    object IEnumerator.Current
+                        &lbrace;
+                            get
+                            &lbrace;          
+                                return this._l[this._index];  //has to be implemented but not really coming here
+                            &rbrace;
+                        &rbrace;
+                    &rbrace;
+                &rbrace;
+                                
+               static void Main(string[] args) &lbrace;     
+                    MyObjectList list = new MyObjectList();
+                    list.Add(new MyObject &lbrace;TheColor="red"&rbrace;);
+                    list.Add(new MyObject &lbrace;TheColor="blue"&rbrace;);
+                    list.Add(new MyObject &lbrace;TheColor="white"&rbrace;);
+                    foreach(MyObject mo in list)&lbrace;
+                        Console.WriteLine(mo.TheColor);
+                    &rbrace;
+                &rbrace;
+            &rbrace;
+
+        </code>
+    </pre>
+    Will add Custom to the items before returning, to print:
+    <pre>
+        <samp>
+            red Custom
+            blue Custom
+            white Custom 
+        </samp>
+    </pre>
+    Instead of the code above, we could also have returned the current item with these changes in the IEnumerator:<br/>
+    <pre>
+        <code>
+            public class SomeEnumerator:IEnumerator //without the &lt;MyObject&gt;
+
+            ...
+
+            MyObject Current&lbrace;
+
+                get&lbrace;       
+                  this._l[this._index].TheColor += " Custom";
+                  return this._l[this._index];
+                &rbrace;
+             &rbrace;
+             object IEnumerator.Current
+             &lbrace;
+                 get
+                 &lbrace;           
+                    return this.Current;                 
+                  &rbrace;
+             &rbrace;
+        </code>
+    </pre>
+    But that means using the Enumerator has to be changed too:
+    <pre>
+        <code>
+            public <b>IEnumerator</b> GetEnumerator()&lbrace;
+                return new SomeEnumerator(myl) ;
+            &rbrace;
+        </code>
+    </pre>
 </div>
