@@ -12,7 +12,7 @@
     <br/>
               
     <b>With delegates, you should always check them for null before calling them.  I have not here so it's less code, but you should always check for null.</b>
-  
+  <br/><br/>
     <code><strong><u>Regular Delegates</u></strong></code><br /><br/>
     
     This is a delegate:<br/>
@@ -232,6 +232,33 @@
         &rbrace;
        </code>
    </pre><br/>
+
+   <code><strong><u>Func</u></strong></code><br /><br/>
+
+   We saw how we can use Action for methods that don't return anything.  Similarly, we have this: <b>public delegate TResult Func&lt;in T,out TResult&gt;>(T arg);</b><br/>
+
+   Notice in here we are not creating a delegate, the Func is the delegate<br/>
+   <pre>
+       <code>
+        using System;
+
+        class Program &lbrace;    
+        
+            public static string Method1 (string s)&lbrace;
+              return s + " Changed.";             
+            &rbrace; 
+            public static string Method2 (string s)&lbrace;
+              return s + " AWESOME.";             
+            &rbrace;  
+           
+            static void Main(string[] args) &lbrace;            
+              <b>Func&lt;string, string&gt; selector = Method1;</b>
+              //Could add more as selector += Method2;but for return value doesn't make so much sense
+              Console.WriteLine (selector("How are you?:"));
+            &rbrace;
+        &rbrace;
+       </code>
+   </pre>
 
    <code><strong><u>Exceptions</u></strong></code><br /><br/>
    If we have a delegate with more than one subscriber, if one of the methods called throws an exception, the ones that are still waiting to be called will not be.
