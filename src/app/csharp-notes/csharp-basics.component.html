@@ -267,7 +267,14 @@
     Trying this instead would have given an error because an Int32? is expected: <b>t2.Data = "48";</b><br/>
     A generic class can be a base class to other generic or non-generic classes or abstract classes.<br/>
     You can have more than one type for a generic class (T, U ...)<br/>
-
+    You can also indicate what the T can be, with something like this<br/>
+    <pre>
+        <code>
+            public class TestGen&lt;T&gt; where T: WhateverClassOrType&lbrace;
+            public class TestGen&lt;T,U&gt; where T: WhateverClassOrType where U:WhateverClassOrType&lbrace;
+        </code>
+    </pre>
+    Above, we could also be using a class and an interface for each where.<br/>
     <br/>
     <code><strong><u>InottifyPropertyChanged</u></strong></code><br /><br/>
     When you need to know that a property changed.<br/>

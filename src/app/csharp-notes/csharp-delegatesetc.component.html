@@ -1,0 +1,180 @@
+<div class="PaddedContents">
+
+    <br/>
+    <h2 class="CenterMe">C# notes - Delegates, Actions, Events</h2>  
+    <h4 class="CenterMe">Naming is not always according to standard but I thought it was simpler.</h4>      
+    <h4 class="CenterMe">You can type the C# code  
+      <a class="CenterMe" href="https://replit.com/languages/csharp" target="_new">on replit.com</a> 
+      to see how it works <br/>
+   
+    </h4>
+  
+    <br/>
+              
+    <b>With delegates, you should always check them for null before calling them.  I have not here so it's less code, but you should always check for null.</b>
+  
+    <code><strong><u>Regular Delegates</u></strong></code><br /><br/>
+    
+    This is a delegate:<br/>
+    <img width="100%" src="assets\images\csharp\adelegate.png" alt="I am a delegate" /><br/><br/>
+
+    The delegate doesn’t care whether the methods are static or not so it will work well with both types<br/>
+
+    <pre>
+        <code>
+            using System;
+
+            class Program &lbrace;
+
+                <b>public delegate Decimal Calculation(int x, int y);</b>
+
+                public static <b>Decimal</b> Method1 (<b>int a, int b</b>)&lbrace;
+                    return  (Decimal)((a+b) * 1.5)  ;
+                &rbrace;
+                public static Decimal Method2 (int a, int b)&lbrace;
+                    return (Decimal)((a*b) * 0.5)  ;
+                &rbrace;
+                static void Main(string[] args) &lbrace;
+                    Calculation delegateCalcHandler = null;
+                    //have some code that decides what method to assign or whatever
+                    <b>delegateCalcHandler = Method1;</b>
+                    Console.WriteLine(delegateCalcHandler(1,2));
+                    delegateCalcHandler = Method2;  
+                    Console.WriteLine(delegateCalcHandler(1,2));
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    If we don't care about the storing what's returned somewhere, we can also have this<br/>
+
+    <pre>
+        <code>
+            using System;
+
+            class Program &lbrace;
+                public delegate void Calculation(int x, int y);
+
+                public static void Method1 (int a, int b)&lbrace;
+                    Console.WriteLine("Method 1: " + a + b);
+                &rbrace;
+                public static void Method2 (int a, int b)&lbrace;
+                    Console.WriteLine("Method 2: "+ a + b);
+                &rbrace;
+                static void Main(string[] args) &lbrace;
+                    Calculation delegateCalcHandler = null;
+                    
+                    <b>delegateCalcHandler = Method1;
+                    delegateCalcHandler += Method2;
+                    delegateCalcHandler(2,4);      </b>
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+
+    The above will call all the methods (1 and 2) but methods are not guaranteed to be called in the order they were added to the delegate.<br/>
+    Delegates are objects, so they can also be passed to other methods.<br/>
+    With the methods like above, now add this method<br/>
+    <pre>
+        <code>
+            private static void UsePassedDelegate(Calculation calc)
+            &lbrace;
+                Console.WriteLine("IN UsePassedDelegate");
+                calc(3, 2);
+            &rbrace;
+        </code>
+    </pre>
+
+    And then in the main method, to use it, we have this code<br/>
+    <pre>
+        <code>
+            Calculation delegateCalcHandler = null;
+        
+            delegateCalcHandler = Method1;
+            delegateCalcHandler += Method2;
+
+            <b>UsePassedDelegate(delegateCalcHandler);</b>
+        </code>
+    </pre>
+
+    Just like you can add methods to a delegate with the += notation, you can remove methods with -=
+
+    <br/>
+
+    <code><strong><u>Actions</u></strong></code><br /><br/>
+
+    When the methods we are using are returning void we can use the Action type provided by C#.  This also works for static and non-static methods<br/>
+    <pre>
+        <code>
+            using System;
+
+            class Program &lbrace;
+
+                public delegate void Calculation(int x, int y);
+
+                public static void Method1 (int a, int b)&lbrace;
+                    Console.WriteLine("Method 1: " + a + b);
+                &rbrace;
+                public static void Method1b (int a, int b)&lbrace;
+                    Console.WriteLine("Method 1b: " + a + b);
+                &rbrace;
+                public static void Method2 (string a, string b)&lbrace;
+                    Console.WriteLine("Method 2: "+ a + b);
+                &rbrace;
+ 
+                static void Main(string[] args) &lbrace;
+                    <b>Action&lt;int, int&gt; a1 = Method1;
+                    a1 += Method1b;
+                    Action&lt;string,string&gt; a2 = Method2;
+                    a1(1,2);
+                    a2("hey", "there");</b>
+                    &rbrace;
+                &rbrace;
+        </code>
+    </pre>
+    <b>When you create Action delegates in a class they are created as properties with set and get methods, so it’s possible for code outside the class to access them.
+    You can add the event keyword to them and then they are created as fields instead of properties. </b><br/><br/>
+
+    <code><strong><u>Actions with the Event keyword</u></strong></code><br /><br/>
+
+    When you create the Actions as Events in a class, 
+    they are created as fields not properties with get and set properties. Also, they are assigned a 
+    delegate on creation, so there is no need to check for null before calling it<br/>
+
+   <pre>
+       <code>
+        public class ForEventActions&lbrace;
+            event Action&lt;int, int&gt; a1 = delegate&lbrace;&rbrace;;
+            event Action&lt;string, string&gt; a2 = delegate&lbrace;&rbrace;;  
+     
+           public void CallMe()&lbrace;
+             a1= Method1;
+             a1 += Method1b;       
+             a1(1,2);
+             a2("hey", "there");
+            &rbrace;
+
+            ...
+
+            //in main:
+            ForEventActions fea = new ForEventActions();
+            fea.CallMe();
+       </code>
+   </pre>
+
+   Trying to do this in Main will give you an inaccessible error:<br/>
+   <pre>
+       <code>
+            ForEventActions fea = new ForEventActions();         
+            fea.a1 = Method1;//inaccessible error
+       </code>
+   </pre>
+
+   So far, you can use Action for your delegates when the delegate doesn't return anything.  And if you have them in a class and want those Actions 
+   to be inaccessible from outside the class (created as fields, as opposed to properties with get and set), use them with the event keyword as above.<br/>
+
+   Still is you are going to use events, use EventHandler instead of event Action<br/>
+
+   <code><strong><u>EventHandler</u></strong></code><br /><br/>
+
+   
+</div>
