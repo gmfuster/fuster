@@ -175,6 +175,70 @@
    Still is you are going to use events, use EventHandler instead of event Action<br/>
 
    <code><strong><u>EventHandler</u></strong></code><br /><br/>
+   This allows subscribers to be given data about the event.<br/>
+   If we are using EventHandlers, the methods we can use with them need to have the parameters <b>(Object sender, EventArgs e)</b><br/>
+   The example below is very simple to illustrate how it works<br/>
+   <pre>
+       <code>
+        using System;
 
-   
+        class Program &lbrace;
+            //doesn't have to be static, static here so we have less code
+            <b>public static EventHandler EventHandlerEvent = delegate&lbrace;&rbrace;;</b>
+        
+            public static void Method1 <b>(object sender, EventArgs e)</b>&lbrace;
+              Console.WriteLine("Method 1: " +sender.ToString() );
+            &rbrace;
+            
+            static void Main(string[] args) &lbrace;
+              <b>EventHandlerEvent  = Method1;</b>
+              string s = "Just something to pass as sender";
+              //just pass an object and empty args because they are required.
+              <b>EventHandlerEvent(s, EventArgs.Empty);</b>
+            &rbrace;
+        &rbrace;
+       </code>
+   </pre>
+   If we want to pass specific information to the EventHandler, we can have a class that inherits from EventArgs<br/>
+   <pre>
+       <code>
+        using System;
+
+        class Program &lbrace;
+            public static EventHandler<b>&lt;MyEventArgs&gt;</b> EventHandlerEvent = delegate&lbrace;&rbrace;;
+        
+            public static void Method1 (object sender, EventArgs e)&lbrace;
+                Console.WriteLine(sender.ToString() );
+                Console.WriteLine(e.ToString() );
+        
+                Console.WriteLine( ((MyEventArgs)e).Info );
+            &rbrace;      
+        
+            <b>public class MyEventArgs :EventArgs&lbrace;
+                public string Info &lbrace;get;&rbrace;
+                public MyEventArgs()
+                &rbrace;
+                  this.Info = "hello";  
+                &lbrace;             
+             &rbrace;
+            </b>
+            static void Main(string[] args) &lbrace;
+                <b>MyEventArgs mea = new MyEventArgs();</b>
+              
+                EventHandlerEvent  = Method1;
+                string s = "Just something to pass as sender";     
+                EventHandlerEvent(s, mea);
+            &rbrace;
+        &rbrace;
+       </code>
+   </pre><br/>
+
+   <code><strong><u>Exceptions</u></strong></code><br /><br/>
+   If we have a delegate with more than one subscriber, if one of the methods called throws an exception, the ones that are still waiting to be called will not be.
+   <b>Your methods should have TRY-CATCH blocks.</b>  Having them here will ensure all methods get called.<br/>
+
+   Another way would be to do something like this, but I think the try-catch makes more sense<br/>
+
+   <img width="100%" src="assets\images\csharp\delegateexceptions1.png" alt="Delegate exception with GetInvokationList" /><br/><br/>
+
 </div>
