@@ -58,7 +58,7 @@ body code{
   color:navy;
   padding:8px;  
 }
-/*Use this for now for the headings of notes, maybe change to a class later*/
+/*TODO Use this for now for the headings of notes, maybe change to a class later*/
 body code strong u{
   font-family: 'Times New Roman', Times, serif;
   font-size: 1.8vw;    
