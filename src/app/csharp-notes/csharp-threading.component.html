@@ -1,0 +1,268 @@
+<div class="PaddedContents">
+
+    <br/>
+    <h2 class="CenterMe">C# notes - Threading</h2>  
+    <h4 class="CenterMe">Naming is not always according to standard but I thought it was simpler.</h4>      
+    <h4 class="CenterMe">You can type the C# code  
+      <a class="CenterMe" href="https://replit.com/languages/csharp" target="_new">on replit.com</a> 
+      to see how it works <br/>
+   
+    </h4>
+  
+    <br/>
+        
+    <div style="position:fixed; left:12px; top: 10vh; width:8vw; ">
+        <p>
+          <a  href="/csharp-threading/#threads">Threads</a>
+        <p>
+        <p>
+            <a  href="/csharp-threading/#tasks">Tasks</a>
+        <p>
+       
+    </div>
+
+    <div class="PaddedContents">
+  
+        <div id="threads"></div><br/>
+        <hr class="hrHeaderClass" />
+            <h2 class="CenterMe" >Threads</h2>
+        <hr class="hrHeaderClass"/>
+                
+        
+        A Thread is an object that represents a process running in the Operating System.
+        <br/>
+        Threads run in the foreground by default.  They will be run to completion so an application will not end while it has threads running.  <br/>
+        Threads have a priority that can be changes as long as they are active.<br/>
+        Threads cannot deliver results to another thread.  They need to pass data with shared variables (can introduce sync issues).
+        <br/>
+        Exceptions have to be caught inside the thread.<br/>
+
+        <code><strong><u>Basics</u></strong></code><br /><br/>
+        <pre>
+            <code>
+                using System;
+                <b>using System.Threading;</b>
+
+                class Program &lbrace;      
+    
+                    static void Main(string[] args) &lbrace;           
+                        <b>Thread th = new Thread(() => &lbrace; Console.WriteLine("hello"); &rbrace;);</b>
+                        <b>th.Start();</b>
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+
+        <pre>
+            <code>
+                static void Main(string[] args) &lbrace;            
+                    Thread th = new Thread(() => &lbrace;
+                        <b>Thread.Sleep(3000);</b>
+                        Console.WriteLine("hello"); 
+                    &rbrace;);
+                    th.Start();
+                    <b>Console.WriteLine("Not In Thread");</b>
+                &rbrace;;
+            </code>
+        </pre>
+        Will print<br/>
+        <pre>
+            <samp>
+                Not In Thread
+                hello
+            </samp>
+        </pre>
+
+
+        <code><strong><u>Passing Data to Threads</u></strong></code><br /><br/>
+        If we need to pass data to a thread<br/>
+        Pass data to thread 1 - ParameterizedThreadStart - Would work the same if using calling a method instead of a anonymous one.<br/>
+        <pre>
+            <code>
+                static void Main(string[] args) &lbrace;
+
+                    //can also use a method name instead of the anonymous method in the example.
+                    <b>//ParameterizedThreadStart takes type object only.</b>
+                    <b>ParameterizedThreadStart p = new ParameterizedThreadStart((object s) => &lbrace;    </b>
+                    Console.WriteLine(s.ToString()); 
+                    &rbrace;);    
+                    Thread th = new Thread(<b>p</b>);
+                    th.Start(<b>"Hello"</b>);      
+                &rbrace;
+            </code>
+        </pre>
+        Pass data to thread 2<br/>
+        <pre>
+            <code>
+                static void Main(string[] args) &lbrace;  
+
+                    Thread th = new Thread((Data) => &lbrace;       
+                    Console.WriteLine(Data); 
+                    &rbrace;);    
+                    th.Start("This is it");                 
+                &rbrace;
+            </code>
+        </pre>
+        You can end a thread right away by calling it's Abort method.  This could leave resources hanging though.
+
+        <br/>
+        <code><strong><u>Wait on a thread</u></strong></code><br /><br/>
+        <b>We can wait for a thread<br/></b>
+        Like we saw before, this:
+        <pre>
+            <code>
+                static void Main(string[] args) &lbrace;            
+                    Thread th = new Thread(() => &lbrace;
+                        <b>Thread.Sleep(3000);</b>
+                        Console.WriteLine("hello"); 
+                    &rbrace;);
+                    th.Start();
+                    <b>Console.WriteLine("Not In Thread");</b>
+                &rbrace;;
+            </code>
+        </pre>
+        Will print<br/>
+        <pre>
+            <samp>
+                Not In Thread
+                hello
+            </samp>
+        </pre>
+
+        But this<br/>
+        <pre>
+            <code>
+                static void Main(string[] args) &lbrace;            
+                    Thread th = new Thread(() => &lbrace;
+                        Thread.Sleep(3000);
+                        Console.WriteLine("hello"); 
+                    &rbrace;);
+                    th.Start();
+                    <b>th.Join();</b>
+                    Console.WriteLine("Not In Thread");
+            &rbrace;
+            </code>
+        </pre>
+        Will print<br/>
+        <pre>
+            <code>
+                hello
+                Not In Thread
+            </code>
+        </pre>
+        Because the main thread is going to wait on the th thread before it continues<br/>
+        We can also have a thread waiting for another thread.<br/>
+        This<br/>
+        <pre>
+            <code>
+                static void Main(string[] args) &lbrace;            
+                    Thread th_1 = new Thread(() => &lbrace;
+                    <b>Thread.Sleep(3000);</b>
+                    Console.WriteLine("th_1"); 
+                    &rbrace;);
+                    Thread th_2 = new Thread(() => &lbrace;             
+                    Console.WriteLine("th_2"); <b>//no wait</b>
+                    &rbrace;);
+                    th_1.Start();
+                    th_2.Start();
+            &rbrace;
+            </code>
+        </pre>
+        Will print<br/>
+        <pre>
+            <samp>
+                th_2
+                th_1
+            </samp>
+        </pre>
+        But, if we wait:<br/>
+        <pre>
+            <code>
+                static void Main(string[] args) &lbrace;            
+                    Thread th_1 = new Thread(() => &lbrace;
+                        Thread.Sleep(3000);
+                    Console.WriteLine("th_1"); 
+                    &rbrace;);
+                    Thread th_2 = new Thread(() => &lbrace;             
+                    <b>th_1.Join(); </b>
+                    Console.WriteLine("th_2"); 
+                    &rbrace;);
+                    th_1.Start();
+                    th_2.Start();
+            &rbrace;
+            </code>
+        </pre>
+        Will print<br/>
+        <pre>
+            <samp>
+                th_1
+                th_2
+            </samp>
+        </pre>
+
+        <code><strong><u>TODO</u></strong></code><br /><br/>
+        TODO thread passing data to another thread.
+
+        <div id="tasks"></div><br/>
+        <hr class="hrHeaderClass" />
+            <h2 class="CenterMe" >Tasks</h2>
+        <hr class="hrHeaderClass"/>
+        
+        <code><strong><u>Tasks and Parallel.Invoke</u></strong></code><br /><br/>
+        A Task is an object that represents a job (method) that's going to be performed.
+        <br/>
+        Tasks are created as background processes, so they can be ended even before completion if the foreground processes 
+        complete (there is no code waiting for the tasks.)<br/>
+        Tasks cannot set a priority.<br/>
+        Tasks provide Exception Aggregation<br/><br/>
+        We can launch tasks with Action delegates or launching the methods themselves.  This can be anonymous methods or calling a regular method.
+        The code looks shorter with anonymous so I'm using that often, but it doesn't mean it's preferred.<br/>
+        <pre>
+            <code>
+                using System;
+                using System.Threading;
+                <b>using System.Threading.Tasks;</b>
+
+                class Program &lbrace;      
+
+                    static void Main(string[] args) &lbrace;            
+                        <b>Action task1</b> = new Action( () => &lbrace;
+                            Thread.Sleep(2000);
+                            Console.WriteLine("task1");
+                        &rbrace;);
+
+                        Action task2 = new Action( () => Console.WriteLine("task2"));
+
+                        <b>Parallel.Invoke (task1, task2);</b>
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+        Will print<br/>
+        <pre>
+            <samp>
+                task2
+                task1
+            </samp>
+        </pre>
+        We could have also done<br/>
+        <pre>
+            <code>
+                static void Main(string[] args) &lbrace;                 
+
+                    Parallel.Invoke ( 
+                      () => &lbrace; Thread.Sleep(2000); Console.WriteLine("task1");&rbrace;, 
+                      () => Console.WriteLine("task2"));
+                &rbrace;
+            </code>
+        </pre>
+        Invoke waits for all tasks to be done.<br/>
+        <code><strong><u>More Parallel</u></strong></code><br /><br/>
+        
+
+
+
+        <!--<img width="100%" src="assets\images\csharp\opoverloading1.png" alt="operator overloading" /><br/><br/>-->
+
+   </div>
+</div>
