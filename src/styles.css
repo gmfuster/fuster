@@ -52,6 +52,12 @@ body pre code{
   color:navy;
   padding:8px;  
 }
+body pre samp{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1vw;  
+  color:navy;
+  padding:8px;  
+}
 body code{
   font-family: 'Times New Roman', Times, serif;
   font-size: 1.2vw;  

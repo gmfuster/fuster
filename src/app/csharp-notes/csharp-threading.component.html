@@ -16,7 +16,7 @@
           <a  href="/csharp-threading/#threads">Threads</a>
         <p>
         <p>
-            <a  href="/csharp-threading/#tasks">Tasks</a>
+            <a  href="/csharp-threading/#tasks">Tasks and Parallel</a>
         <p>
        
     </div>
@@ -257,11 +257,119 @@
             </code>
         </pre>
         Invoke waits for all tasks to be done.<br/>
+
+
         <code><strong><u>More Parallel</u></strong></code><br /><br/>
-        
 
+        <pre>
+            <code>
+                using System;
+                using System.Collections.Generic;
+                using System.Threading.Tasks;
 
+                class Program &lbrace;
+                    static void Main(string[] args) &lbrace;
+                        List&lt;string&gt; l = new List&lt;string&gt;();
 
+                        l.Add("1");
+                        l.Add("2");
+                        l.Add("3");
+                        l.Add("4");
+                        l.Add("5");
+
+                        <b>Parallel.ForEach</b>(l, (item) => Console.WriteLine(item) );
+                    &rbrace;
+            &rbrace;
+            </code>
+        </pre>
+        The foreach doesn't guarantee the order of the items.  In the case above, I got this<br/>
+        <pre>
+            <samp>
+                1
+                5
+                4
+                2
+                3
+            </samp>
+        </pre>
+
+        Could do the same thing with a for. For the code above, instead of the foreach, this<br/>
+        <pre>
+            <code>
+                <b>//Notice that the 0 is inclusive, but the 2nd argument is EXCLUSIVE, so don't subtract 1.</b>
+                Parallel.For(0, <b>l.Count</b>, (i) => Console.WriteLine(i + "-" + l[i]) );
+            </code>
+        </pre>
+        Will print <br/>
+        <pre>
+            <samp>
+                0-1
+                4-5
+                3-4
+                1-2
+                2-3
+            </samp>
+        </pre>
+
+        We can also have a for and a condition to stop it<br/>
+        <pre>
+            <code>
+                ParallelLoopResult res =  Parallel.For(0, l.Count, 
+                                            (<b>int i, ParallelLoopState st</b>) => &lbrace;
+                                                Console.WriteLine(i + "-" + l[i]) ;
+                                                if (i == 2) &lbrace;st.Stop();&rbrace;
+                                            &rbrace;);
+                Console.WriteLine(res.ToString());                
+            </code>
+        </pre>
+        Prints<br/>
+        <pre>
+            <samp>
+                0-1
+                1-2
+                2-3
+                System.Threading.Tasks.ParallelLoopResult
+            </samp>
+        </pre>
+
+        Note:On replit where I'm doing this, if I don't get the ParallelLoopResult res = (if I don't check the result), then the loop is not stopping.<br/>
+        The ParallelLoopState can also be used with the foreach.<br/>
+
+        Can also use parallel programming with linq<br/>
+        <pre>
+            <code>
+                using System;
+                using System.Collections.Generic;
+                using System.Threading.Tasks;
+                <b>using System.Linq;</b>
+
+                class Program &lbrace;
+                    static void Main(string[] args) &lbrace;
+                        List&lt;string&gt; l = new List&lt;string&gt;();
+
+                        l.Add("1");
+                        l.Add("2");
+                        l.Add("3");
+                        l.Add("4");
+                        l.Add("5");
+
+                        <b>var res = from item in l.AsParallel()
+                        where (item == "2" || item == "4")
+                        select item;</b>
+
+                        foreach (string s in res)
+                            Console.WriteLine(s);
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+        prints<br/>
+        <pre>
+            <samp>
+                2
+                4
+            </samp>
+        </pre>
         <!--<img width="100%" src="assets\images\csharp\opoverloading1.png" alt="operator overloading" /><br/><br/>-->
 
    </div>
