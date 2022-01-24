@@ -18,7 +18,9 @@
         <p>
             <a  href="/csharp-threading/#tasks">Tasks and Parallel</a>
         <p>
-       
+            <p>
+                <a  href="/csharp-threading/#await">Await</a>
+            <p>
     </div>
 
     <div class="PaddedContents">
@@ -200,8 +202,127 @@
             </samp>
         </pre>
 
-        <code><strong><u>TODO</u></strong></code><br /><br/>
-        TODO thread passing data to another thread.
+        <code><strong><u>Data Between Threads</u></strong></code><br /><br/>
+        You don't really pass data from one thread to another thread.  But you can have data in a shared variable, and use lock to make sure it doesn't get messed up.
+        A very simple example would be something like this.  You can also have one thread wait on the other one, to make sure the data will be there.
+        The code is a bit silly but just focus on the highlighted parts<br/>
+        <pre>
+            <code>
+                using System;
+                using System.Threading;
+
+                class Program &lbrace;      
+
+                    public static string _something = string.Empty;
+                    public static <b>object _lock</b> = new object();
+                    
+                    static void Main(string[] args) &lbrace; 
+
+                        Thread th2 = new Thread(() => &lbrace; 
+                        <b>lock(_lock)&lbrace;
+                            _something = DateTime.Now.ToString();  
+                        &rbrace;</b>
+                        &rbrace;);
+                    
+                        Thread th1 = new Thread(() => &lbrace;     
+                        <b>th2.Join();</b>
+                        Console.WriteLine(_something); &rbrace;);
+                            
+                        th1.Start();
+                        th2.Start();
+                        
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+        Can also do something like this<br/>
+        <pre>
+            <code>
+                static void Main(string[] args) &lbrace;
+
+                    Thread th2 = new Thread(() => &lbrace;  
+                      <b>while (!_exit)&lbrace; //only while this is false</b>
+                        lock(_lock)&lbrace;  //<b>lock it      </b>  
+                          _something = DateTime.Now.ToString();  
+                        &rbrace;
+                      &rbrace;
+                     Console.WriteLine("th2 done with while");
+                    &rbrace;);
+                  
+                    Thread th1 = new Thread(() => &lbrace;
+                      Console.WriteLine("here:" + _something);      
+                      lock(_lock1)&lbrace;
+                        Console.WriteLine("Setting exit");
+                        <b>_exit = true; //set to false so th2 can finish</b>
+                      &rbrace;
+                    &rbrace;);
+                
+                    th2.Start();
+                    th1.Start();   
+                    th2.Join();//Have main wait for this to finish
+                    Console.WriteLine(_something);
+                  &rbrace;
+            </code>
+        </pre>
+        Could print<br/>
+        <pre>
+            <samp>
+                here:
+                Setting exit
+                th2 done with while
+                1/23/2022 9:42:04 PM
+            </samp>
+        </pre>
+
+        TODO revisit the lock, I thought maybe this would keep waiting:<br/>
+        <pre>
+            <code>
+                using System;
+            using System.Threading;
+
+            class Program&lbrace;    
+
+                public static string _something = string.Empty;
+                public static object _lock = new object();
+                public static object _lock1 = new object();
+                public static bool _exit = false;
+                
+                static void Main(string[] args) &lbrace; 
+
+                    Thread th2 = new Thread(() => &lbrace;  
+                    while (!_exit)&lbrace; //only while this is false
+                        lock(_lock)&lbrace;  //lock it        
+                        _something = DateTime.Now.ToString();  
+                        &rbrace;
+                    &rbrace;
+                    Console.WriteLine("th2 done with while");
+                    &rbrace;);
+                
+                    Thread th1 = new Thread(() => &lbrace;  
+                    lock(_lock)&lbrace;  //lock it 
+                        _something = "trying";      
+                    &rbrace;
+                    Thread.Sleep(1000);
+                    _exit = true; //set to false so th2 can finish      
+                    &rbrace;);
+
+                    th2.Start();
+                    th1.Start();   
+                    
+                    th2.Join();//Have main wait for this to finish
+                    th1.Join();
+                    Console.WriteLine(_something);
+                &rbrace;
+            &rbrace;
+            </code>
+        </pre>
+        Prints:<br/>
+        <pre>
+            <samp>
+                th2 done with while
+                1/23/2022 9:59:54 PM
+            </samp>
+        </pre>
 
         <div id="tasks"></div><br/>
         <hr class="hrHeaderClass" />
@@ -370,7 +491,59 @@
                 4
             </samp>
         </pre>
-        <!--<img width="100%" src="assets\images\csharp\opoverloading1.png" alt="operator overloading" /><br/><br/>-->
+
+        You can do <b>.AsParallel().AsOrdered()</b> to preserve the order.  That will process however and sort at the end. To process sequentially  use 
+        <b>AsSequential()</b><br/>
+        We can also start the iteration among the results before it has completed, if we do this:
+        res.ForAll(p => &lbrace; Console.WriteLine(p.Age); &rbrace;);<br/>
+
+        If any queries throw exceptions they will be thrown as an AggregateException at the end.<br/>
+
+        Remember to use <b>locks</b> for variables that are going to be used by different processes/threads. It is a good idea to use an object as the lock, don't use a string.<br/>        
+
+        We could also use Monitor.Enter and Monitor.Exit to enclose the code that needs to be thread safe.  If the code can throw an exception, 
+        have the code in a catch and the Monitor.Exit in the finally.  Using monitors instead of locks lets the program check whether the variable or whatever is going to be locked if  (Monitor.TryEnter(…)--> the if will have if it is available, the else if it is locked, so we can do something else in that case.
+
+        <br/>
+
+        We can wait for a task to be done :<br/>
+        <pre>
+            <code>
+                Task newTask = new Task(  () => &lbrace; Thread.Sleep(2000);   Console.WriteLine("I am the new task"); &rbrace;);
+
+                newTask.Start();
+                newTask.Wait();
+
+                Console.WriteLine("Done");
+
+            </code>
+        </pre>
+        A task can also return a result.  Use Run in that case.
+        <pre>
+            <code>
+                private void Tasks_Click(object sender, EventArgs e)
+                &lbrace;
+                    Task&lt;String&gt; newTask = Task.Run(  () => &lt; Thread.Sleep(2000);  return ("I am the new task"); &gt;);                            
+                    newTask.Wait();        
+                    Console.WriteLine(newTask.Result);                
+                &rbrace;
+            </code>
+        </pre>
+        You can also wait for a bunch of tasks: Task.WaitAll(array or list of tasks to wait on).<br/>
+        We can also continue one task with another one with ContinueWith<br/>TODO
+        
+        <img width="100%" src="assets\images\csharp\ContinueWith.png" alt="ContinueWith" /><br/><br/>
+        A parent task can create other child tasks, they can be attached or unattached.  If they are attached, the task will not complete until the children are done.
+        <br/>
+
+        <img width="100%" src="assets\images\csharp\taskattach.png" alt="attach" /><br/><br/>
+        When using Tasks and Threads we cannot update an element on a view because they run on different threads.  
+
+
+        <div id="await"></div><br/>
+        <hr class="hrHeaderClass" />
+            <h2 class="CenterMe" >Await</h2>
+        <hr class="hrHeaderClass"/>
 
    </div>
 </div>
