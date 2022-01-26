@@ -62,11 +62,18 @@
         </code>
     </pre>
 
-    <code><strong><u>Ignore special chars</u></strong></code><br /><br/>
+    <code><strong><u>Ignore/use special chars</u></strong></code><br /><br/>
 
     <pre>
         <code>
             Console.WriteLine(@"blah blah \n \\hey ");//will print that same string
+
+            Console.WriteLine("Hello tab coming up \t see?"); //will print a tab after up
+
+            Console.WriteLine("c:\totals"); // prints c:      otals
+
+            Console.WriteLine("c:\\totals"); // prints c:\totals
+            
         </code>
     </pre>
     <br/>
@@ -79,9 +86,40 @@
             //the one below uses C so it will print with currency format:
             decimal amount = 8.94m;
             <b>Console.WriteLine($"My amount is &lbrace;amount:C&rbrace;");</b>//My amount is $8.94
+
+            int i = 10;
+            int j = 20;
+
+            Console.WriteLine( format: "Number i is &lbrace;0&rbrace; and number 2 is &lbrace;1&rbrace;", 	arg0:i, arg1:j);
+            //prints Number i is 10 and number 2 is 20
+
+            private const string _name = "Michael";
+	        private const string _lname = "Jackson";
+	        private const string _fullName =  $"&lbrace;_name&rbrace;&lbrace;_lname&rbrace;"; // in console it would be Michael Jackson.
+
+            Console.WriteLine(String.Format("The current price is &lbrace;0&rbrace; per ounce.", 100));
+
+            //the -10 and the 6 indicate the alignment of the argument.
+		    //hardcoding the values here, instead of using variables for simplicity
+		    Console.WriteLine(   format: "&lbrace;0,-10&rbrace; &lbrace;1,6&rbrace;",   arg0: "Name",   arg1: "Count");
+		    Console.WriteLine(  format: "&lbrace;0, -10&rbrace; &lbrace;1, 6:N0&rbrace;",    arg0: "Bananas",    arg1: 5);
+		    Console.WriteLine(  format: "&lbrace;0, -10&rbrace; &lbrace;1, 6:N0&rbrace;",   arg0: "Apples",   arg1: 12);
         </code>
     </pre>
     <br/>
+    Use double instead of decimal when accuracy is not important, especially when comparing numbers.<br/>
+
+
+    <code><strong><u>Some little things</u></strong></code><br /><br/>
+    <pre>
+        <code>
+            int i = 10_123;
+            Console.WriteLine(i); //prints number 10123
+            Console.WriteLine( $"Number is &lbrace;i:C&rbrace;");//prints $10,123.00
+
+            
+        </code>
+    </pre>
 
     <code><strong><u>params argument</u></strong></code><br /><br/>
     the params argument has to be the last one <br/>
