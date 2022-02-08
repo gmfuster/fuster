@@ -1,5 +1,7 @@
 import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
+import { ForCanDeActivate } from '../shared/forCanActivate.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'angular-notes',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./angular-notes.component.css']
 })
 
-export class AngularNotesComponent implements OnInit {
+export class AngularNotesComponent implements OnInit, ForCanDeActivate {
   theVariable :string =  "" ;
   theBoolVar: boolean = true;
   theColor: string = "aqua";
@@ -72,5 +74,12 @@ export class AngularNotesComponent implements OnInit {
   onChildEvent2(theEventObj:{theName:string, theText:string}){    
     this.someText2 = theEventObj.theName + "-" + theEventObj.theText;
 
+  }
+
+  canDeactivate(): Promise<boolean> | Observable<boolean> | boolean
+  {
+    //logic to decide whether we can leave the route or not
+      alert("Can I deactivate? yes");
+      return true;
   }
 }

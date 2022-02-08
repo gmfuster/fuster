@@ -117,7 +117,33 @@
             Console.WriteLine(i); //prints number 10123
             Console.WriteLine( $"Number is &lbrace;i:C&rbrace;");//prints $10,123.00
 
-            
+            checked&lbrace;
+                //code that may result in an overflow, use the checked so we know if this happens, instead of it being ignored.
+            &rbrace;
+            //Also have the checked code inside a try catch so we can do something if the exception happens
+
+            string  Method1(int i)
+            &lbrace;
+                if (i == 1)
+                &lbrace;
+                    return "One";
+                &rbrace;else if (i == 2)
+                &lbrace;
+                    return "Two";
+                    &rbrace;
+                else
+                &lbrace;
+                    return "Something Else";
+                    &rbrace;
+                    &rbrace;
+
+            static string Method2(int i) =>
+                i switch
+                &lbrace;
+                    1 => "One", // what it will return
+                    2 =>"Two",
+                    _ => "Something Else"
+                    &rbrace;;
         </code>
     </pre>
 

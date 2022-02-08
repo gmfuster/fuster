@@ -15,12 +15,15 @@ import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-not
 import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-notes-objects.component';
 import { ReadBackComponent } from './other-fun/read-back.component';
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
+import { ForCanActivate } from './shared/forCanActivate.service';
+import { ForCanDeActivate } from './shared/forCanActivate.service';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes-svc-routing', component: AngularNotesSvcRoutingComponent, pathMatch: 'full' },  
   { path: 'dynamic-notes/:id', component: DynamicNotesComponent, pathMatch: 'full' },  
+  { path: 'angular-notes-noactivate', component: AngularNotesComponent, canActivate:[ForCanActivate], canDeactivate:[ForCanDeActivate], pathMatch: 'full' },  
 
   { path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },
 

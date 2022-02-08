@@ -27,6 +27,8 @@ import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-di
 import { ReadBackComponent } from './other-fun/read-back.component';
 import { DropdownDirective } from './shared/dropdown-directive';
 import { OtherServices } from './shared/forexamples.service';
+import { ForCanActivate } from './shared/forCanActivate.service';
+import { ForCanDeActivate } from './shared/forCanActivate.service';
 
 @NgModule({
   declarations: [    
@@ -60,7 +62,7 @@ import { OtherServices } from './shared/forexamples.service';
     ReactiveFormsModule,
     BrowserAnimationsModule
   ],
-  providers: [OtherServices],
+  providers: [OtherServices, ForCanActivate, ForCanDeActivate],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

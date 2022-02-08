@@ -202,7 +202,93 @@
          The ** means any unknown route, and it should be the last entry under the routes array.  With redirect, use the pathMatch:'full'
         <br/><br/>
 
-        
+        <hr class="hrClass"/>
+        <code><strong><u>CanActivate and CanActivateChild</u></strong></code><br />   
+        We can create a service and have it implement CanActivate.  The CanActivate will apply to whatever route we use it in and its children.<br/>
+        We could have this route that uses the service to see if we can go to that route:<br/>
+        <code>path: 'angular-notes-noactivate', component: ..., <b>canActivate:[ForCanActivate]</b>, pathMatch: 'full'</code><br/>
+        Remember to add the service to  app.module providers. (Make sure they are also added to the imports)<br/>
+        Just for the notes, the service is going to return false the whole time.  Which means, if we try to go to the route that has the CanActivate, it will not work<br/>
+
+        <pre>
+            <code>
+                import &lbrace;ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot&rbrace; from '@angular/router';
+
+                export class ForCanActivate implements CanActivate&lbrace;
+                    //could return Promise&lt;boolean&gt; if this is run asynchronously.  Could also return a boolean. Or Observable&lt;boolean&gt;
+                    canActivate(route:ActivatedRouteSnapshot, state:RouterStateSnapshot):boolean&lbrace;
+                        //could have other code here checking to see if the route can be activated or not
+                        //could be calling other services or whatever.
+                        return false;
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+        But what if what we want to protect are just the children and not the link itself?  You can also implement CanActivateChild on the 
+        same service we were using, and then have a similar function like this<br/>
+        <pre>
+            <code>
+                canActivateChild(route:ActivatedRouteSnapshot, state:RouterStateSnapshot):boolean&lbrace;
+                    //return whatever you need
+                    return false;
+                &rbrace;
+            </code>
+        </pre>
+
+        On the route, now it would be <code>path: 'angular-notes-noactivate', component: ..., <b>canActivateChid:[ForCanActivate]</b></code>
+
+
+        <hr class="hrClass"/>
+        <code><strong><u>CanDeactivate</u></strong></code><br />   
+        I am using the same path I used for the noactivate, but, to test the deactivate it has to be activated so I have to change the canActivate to return 
+        true instead of false.<br/>
+        In the service file, same one I used before, now we are doing this:<br/>
+        <pre>
+            <code>
+                export interface ForCanDeActivateInt &lbrace;
+                    //could be Promise&lt;boolean&gt; if this is run asyncronously.  Could also be a boolean. Or Observable&lt;boolean&gt;
+                    canDeactivate: () => boolean;    
+                &rbrace;
+                export class ForCanDeActivate implements CanDeactivate&lt;ForCanDeActivateInt&gt;&lbrace;
+                    //will be called when we try to deactivate a route
+                    canDeactivate(<b>component</b>:ForCanDeActivateInt, route:ActivatedRouteSnapshot,state:RouterStateSnapshot, nextState?:RouterStateSnapshot):Observable&lt;boolean&gt; 
+                            | boolean | Promise:&lt;boolean&gt;&lbrace;
+                                return <b>component.canDeactivate();</b>
+                            &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+        Because we are returning the component canDeactivate, we need to go to the ts file of the component for that route. It needs to implement ForCanDeActivate.<br/>
+        <pre>
+            <code>
+                export class AngularNotesComponent implements OnInit, <b>ForCanDeActivate </b>
+
+                ...
+
+                canDeactivate(): Promise&lt;boolean&gt; | Observable&lt;boolean&gt; | boolean
+                &lbrace;
+                    //logic to decide whether we can leave the route or not
+                    alert("Can I deactivate? yes");
+                    return true;
+                &rbrace;
+            </code>
+        </pre>
+        Now also import and set as provider in the app.module.ts<br/>
+        <pre>
+            <code>
+                providers: [OtherServices, ForCanActivate, ForCanDeActivate],
+            </code>
+        </pre>
+        And on the route itself:<br/>
+        <pre>
+            <code>
+                canDeactivate:[ForCanDeActivate]
+            </code>
+        </pre>
+        Now when we are on that route and we choose to go somewhere else, the canDeactivate in the ts file of the component will be called.  Depending on the 
+        return we will be able to leave the route or not.<br/>
+
+        <img width="100%" src="assets\images\angular\candeactivate.png" alt="can deactivate" /><br/><br/>
         <hr class="hrClass"/>
 
 
