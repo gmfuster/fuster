@@ -12,6 +12,15 @@
     <br/>
                     
   
+    <code><strong><u>Access Modifiers</u></strong></code><br /><br/>
+
+    <b>private: </b> Member is accessible only inside its type.<br/>
+    <b>internal: </b> Accessible inside the type and any type in the same assembly.<br/>
+    <b>protected: </b>Accessible inside the type, and types that inherit from it.<br/>
+    <b>public: </b>Accessible everywhere.<br/>
+    <b>internal protected: </b>Accessible inside the type, same assembly, and types that inherit from it. <br/>
+    <b>private protected: </b>Accesible inside the type, and any inherited type that is IN the same assembly.<br/>
+
     <code><strong><u>null coalescing operator</u></strong></code><br /><br/>
     <pre>
         <code >
@@ -651,6 +660,7 @@
             //etc
         </code>
     </pre>
+
 
     <code><strong><u>IEnumerator</u></strong></code><br /><br/>
     IEnumerable and the use of foreach hide the complexity of the enumerator if you just use the enumerator of the list itself, like 

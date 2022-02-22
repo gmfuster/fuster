@@ -31,7 +31,8 @@ body button:disabled {
 
 body b{
   background-color:paleturquoise;
-  color:navy;
+  color:navy;  
+  border-radius: 15%;
 }
 .formulaBackground{
   background-color: paleturquoise;

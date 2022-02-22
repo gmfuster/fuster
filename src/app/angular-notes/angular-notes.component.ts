@@ -79,7 +79,7 @@ export class AngularNotesComponent implements OnInit, ForCanDeActivate {
   canDeactivate(): Promise<boolean> | Observable<boolean> | boolean
   {
     //logic to decide whether we can leave the route or not
-      alert("Can I deactivate? yes");
+      //alert("Can I deactivate? yes");
       return true;
   }
 }
