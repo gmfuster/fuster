@@ -13,6 +13,7 @@ import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.compon
 import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
 import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
 import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-notes-objects.component';
+import { NodeNotesComponent } from './node-notes/node-notes.component';
 import { ReadBackComponent } from './other-fun/read-back.component';
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
 import { ForCanActivate } from './shared/forCanActivate.service';
@@ -34,9 +35,12 @@ const routes: Routes = [
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
+
   { path: 'javascript-notes', component: JavaScriptNotesComponent, pathMatch: 'full' }, //basics
   { path: 'javascript-notes-async', component: JavaScriptNotesAsyncComponent, pathMatch: 'full' }, 
   { path: 'javascript-notes-objects', component: JavaScriptNotesObjectsComponent, pathMatch: 'full' }, 
+
+  { path: 'node-notes', component: NodeNotesComponent, pathMatch: 'full' }, //basics
 
 ];
 

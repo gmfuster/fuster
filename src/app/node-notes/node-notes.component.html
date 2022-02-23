@@ -1,0 +1,108 @@
+
+<div class="PaddedContents">
+
+  <br/>
+  <h2 class="CenterMe">Node notes - Basics</h2>  
+  <h4 class="CenterMe">Naming is not always according to standard but I thought it was simpler.</h4>        
+  <br/>  
+  
+  <div class="PaddedContents">
+    
+    For the code here, you should have nodejs intalled and you should have a file where to put the code.  Then go to the folder and run the code with "node filename.js" 
+    on your command prompt (terminal window)<br/><br/>
+
+    When you install node, it come with some modules that you can use right away.  For example, to use the file system module, in your code, have 
+    <b>const fs = require('fs')</b><br/><br/>
+    Other core modules are: http, https, path, os.<br/><br/>
+
+    For http, we can create a server that will be listening to requests, and we can indicate what function to go to when a request is received.<br/><br/>
+
+    To use http, have <b>const http = require('http');</b><br/>
+
+    The function we want to call when a request is received, should be of this type <b>function whateverfunc(req, res)</b>.  Then create the server that will be listening 
+    for requests with <b>http.createServer(whateverfunc).</b><br/><br/>
+    You can also just do both the function and the creation together with an arrow function: <b>const server = http.createServer(  (req,res) => &lbrace;...&rbrace;);</b><br/>
+    <br/>
+    Once the server has been created and assigned to a variable, like server above, start with with <b>server.listen()</b>. We could also pass it an argument to 
+    specify the port it will be listening in.<br/><br/>
+    Below, just a bit of code to use as guide for this basic stuff<br/><br/>
+    <pre><code>
+      const http = require("http");
+
+      //create and start server.
+      const server = http.createServer(  (req,res) => &lbrace;
+
+        const url = req.url;<b>//get the request's url and do something depending on it</b>
+
+        <b>//prepare a response that will be sent back</b>
+        res.setHeader("Content-type", 'text/html');
+
+        //just use ifs to test this
+        if (url === "/")&lbrace;     
+            res.write("&lt;html&gt;");    
+            res.write("&lt;body&gt;");        
+            ...             
+        &rbrace; else if (url === "/users")&lbrace;       
+            //some  other write statements
+        &rbrace; else if (...some other checks)&lbrace;
+            const body = [];//maybe we don't get it all at once.
+            req.on("data", (chunk) => &lbrace;<b>//data coming from the request, we may be getting it in chunks</b>
+                const d = body.push(chunk);
+            &lbrace;);
+            req.on("end", () => &lbrace;<b>//when the req is done with the data.</b>
+                ...
+            &rbrace;)
+        &lbrace;
+        res.end();<b>//end the response.  After this, nothing else can be added to it.</b>
+      &lbrace;);
+
+
+
+      server.listen();<b>//start the server</b>
+    </code></pre>
+    but  how do you send the request?  Go to your web browser and use the right url, as localhost, with the right port if you specified it,
+    <br/>
+    Remember the default behaviour is to have to restart the server after changes are made.
+    <br/><br/>
+    If we have a lot of code, we may want to split it into different files.  You can import the file where you have what you want to use, something like 
+    <b>const fornode2 = require("./fornode2");</b>.  In this case, the fornode2 file has this:
+    <pre>
+      <code>
+        function f1func()&lbrace;
+          return "I am f1";
+        &rbrace;
+        function f2func()&lbrace;
+          return "I am f2";
+        &rbrace;
+      
+        <b>module.exports = &lbrace;f1: f1func&rbrace; //you could have module.exports = &lbrace;f1:f1func, f2: f2func&rbrace; and however many you need.
+        module.exports.f2 = f2func;</b>
+      </code>
+    </pre>
+    Then you can use them in another file, something like this:
+    <pre>
+      <code>
+        const fornode2 = require("./fornode2");
+        ...
+        res.write(fornode2.f1())
+        res.write("-")
+        res.write(fornode2.f2())
+      </code>
+    </pre>
+
+    If you are only exporting one function from the fornode2 file, then you can just use it with the reference to the file itself:
+    <pre>
+      <code>
+        module.exports = f1func; // in the fornode2 filename
+        ...
+        res.write(fornode2()) //in the file using it.
+      </code>
+    </pre>
+
+
+
+  </div>
+
+
+
+</div> 
