@@ -99,10 +99,26 @@
       </code>
     </pre>
 
+    You can do a <b>redirect</b> in a response with:
+    <pre>
+      <code>
+        res.statusCode = 302;
+        res.setHeader("Location", "/");
+        res.end;
+      </code>
+    </pre>
+
+    We can create a package.json file to our node project.  We can create it manually or with npm init (we can give a file name).  Once we have that, we can 
+    set "start": "node whateverourfilename.js" and then we can get it running with npm start.  Start is predifined so we can call it with npm start.  We could 
+    also have something else, like "start-server":"node whateverourfilename.js".  In this case we would run it with npm run start-server. 
+    <br/>
+    If we don't want to have to stop and start the server every time we have changes, we can install package nodemon. If you get this package, then in 
+    the "start" you can have "nodemon whateverourfilename.js".  <b>This will restart the server automatically when something changes.</b>
+
+    <br/>
+
 
 
   </div>
-
-
 
 </div> 
