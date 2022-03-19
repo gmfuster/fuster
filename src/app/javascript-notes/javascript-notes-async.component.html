@@ -35,8 +35,8 @@
       <hr class="hrHeaderClass" />
           <h2 class="CenterMe">Promises</h2>
       <hr class="hrHeaderClass"/>
-  
-      <code><strong><u>Basics</u></strong></code><br />
+      
+      <p class="HeadingSubTopic">Basics</p>
       Promises are objects.<br/>
       The promise object returns properties: <b>state</b> (pending, fulfilled, rejected), <b>result</b> (undefined, value, error).<br/>
       A promise that is fulfilled or rejected is settled.<br/>
@@ -133,7 +133,8 @@
         <h2 class="CenterMe">Catch-Finally</h2>
     <hr class="hrHeaderClass"/>
 
-    <code><strong><u>catch</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">catch</p>
 
     We could also be catching an error this way:<br/>
     <pre>
@@ -165,7 +166,8 @@
     <br/>
     <img width="100%" src="assets\images\js\promise3.png" alt="promise 3" /><br/><br/>
 
-    <code><strong><u>finally</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">finally</p>
     Finally always happen, no matter resolve or reject.<br/>
     <pre>
       <code>
@@ -226,7 +228,8 @@
 
     JS has some static functions to deal with promises. This is just a brief summary.<br/>
 
-    <code><strong><u>all</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">all</p>
 
     <pre>
       <code>
@@ -240,18 +243,21 @@
     <img width="100%" src="assets\images\js\promise_all.png" alt="promise all" /><br/><br/>
     It is a good idea to have a catch with the Promise.all in case one of the promises fails.<br/>
 
-    <code><strong><u>allsettled</u></strong></code><br />
+    <p class="HeadingSubTopic">allsettled</p>
     This will have the then happen, regardless of resolve or reject.  And values will have the status and result of the promises.
 
-    <code><strong><u>any</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">any</p>
 
     Promise.any[ list of promises] will wait for just one to finish.  Once that happens, the others are ignored.<br/>
 
-    <code><strong><u>race</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">race</p>
 
     Will happen with whatever promise finishes first, it doesn't matter if with resolve or reject.<br/>
 
-    <code><strong><u>resolve</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">resolve</p>
     the resolve will call the first function in the arguments.
     <pre>
       <code>
@@ -266,7 +272,8 @@
     <img width="100%" src="assets\images\js\resolve.png" alt="resolve" /><br/><br/>
 
 
-    <code><strong><u>reject</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">reject</p>
     similar to the resolve but it goes to the second function provided, the reject one.<br/>
     <pre>
       <code>
