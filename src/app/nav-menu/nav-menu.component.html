@@ -137,7 +137,12 @@
                 Basics
               </a>
             </li>                          
-          </ul>                    
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/node-notes-express"]'  style="color:navy; font-size:2.5vh; ">
+                Express
+              </a>
+            </li>                          
+          </ul>             
         </li>
       </ul>
 

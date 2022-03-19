@@ -248,7 +248,7 @@
 
     We have System.Tuple (reference, the data members are properties) and System.ValueTuple (value, the data members are fields).<br/>
 
-    For the System.tupple:<br/>
+    For the <b>System.tupple:</b><br/>
     <pre>
         <code>
             using System;
@@ -274,7 +274,7 @@
     </code>
 
     <br/><br/>
-    For the System.ValueTuple<br/>
+    For the <b>System.ValueTuple</b><br/>
     <pre>
         <code>
             public (Int32, double) intT = (100, 4.5);//has to have more than 1 item.
@@ -295,6 +295,39 @@
         </code>
     </pre>
     You can use == and != to compare these tuples, but it will compare the values, meaning, the names given to the fields will not matter.<br/>
+
+    We could also have this code:<br/>
+    <pre>
+        <code>
+            public (int, string) GiveATuple() //return the tuple (int, string)
+	        &lbrace;
+		       return (1, "one");
+	        &rbrace;
+            ...
+            (int, string) t = GiveATuple();
+            Console.WriteLine(t.Item1); //as before, we have Item1, Item2 etc		        
+        </code>
+    </pre>
+    Or we can also name what gets returned.  Notice we name the return, but also the return of the method itself.
+    <pre>
+        <code>
+            public (int <b>num</b>, string <b>str</b>) GiveATuple()	        
+            &lbrace;
+		        return (<b>num:</b> 1, <b>str:</b> "one");
+            &rbrace;
+            ...
+            var t = GiveATuple();
+            Console.WriteLine(t.<b>str</b>);	        
+        </code>
+    </pre>
+    <b>Deconstructing Tuples</b><br/>
+    Using the same GiveATuple() as above, we could also do:
+    <pre>
+        <code>
+            (int numero, string <b>cadena</b>)= GiveATuple();
+            Console.WriteLine(<b>cadena</b>);		
+        </code>
+    </pre>
 
     <br/>
     <code><strong><u>Generics</u></strong></code><br /><br/>
@@ -867,6 +900,8 @@
         </code>
     </pre>
     Keep in mind that the type you can use for the enum will depend on how many values you are going to need.<br/>
+
+
 
 
 </div>
