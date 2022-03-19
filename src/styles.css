@@ -72,6 +72,13 @@ body code strong u{
   color: orangered;  
   padding:8px;  
 }
+.HeadingSubTopic{  
+  font-size: 2vw;  
+  font-weight: bold;  
+  color:deepskyblue;  
+  text-decoration: underline solid 1vh;
+  padding:8px;  
+}
 .TopNav {
   height:6vh; 
   width:100vw;
