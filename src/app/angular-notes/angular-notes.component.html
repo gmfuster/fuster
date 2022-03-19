@@ -11,8 +11,8 @@
 
   <div class="PaddedContents">
 
-
-    <code><strong><u>String Interpolation</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">String Interpolation</p>   
     <code ngNonBindable>{{theVariable}}</code><br />
     <code>&lt; input #theInput type="number"/&gt; </code><br />
     <code> &lt; button (click)="onClickButton1(theInput.value)"&gt; </code><br />
@@ -21,8 +21,8 @@
     <mark>{{theVariable}}</mark>
 
     <hr class="hrClass" />
-
-    <code><strong><u>Property Binding</u> </strong></code><br />
+    
+    <p class="HeadingSubTopic">Property Binding</p>
     <code>On second button: [disabled]="theBoolVar"</code><br />
     <code>On button always disabled: [disabled]=true</code><br />
     <code>On Switch Bool button: &lt; (click)="onSwitchTheBoolVar()"&gt; Switch Bool&lt;/button&gt;</code><br />
@@ -32,8 +32,8 @@
     For an event, use (click)="onSwitchTheBoolVar<b>($event)</b>" and <b>event:any or event:Event</b> in the ts file as the parameter received for the event, if you need access to the event info.
 
     <hr class="hrClass" />
-
-    <code><strong><u>2-way Binding</u></strong> </code><br />
+    
+    <p class="HeadingSubTopic">2-way Binding</p>
     <code ngNonBindable>&lt;input type="number"[(ngModel)]="theVariable"/&gt;</code><br />
     <code ngNonBindable>app.module.ts -- import FormsModule from '@angular/forms'</code><br />
     Use ngModel in the input field.  It will update the variable right away and from the ts code, which we link to the same variable for the display too, 
@@ -44,8 +44,8 @@
     
 
     <hr class="hrClass" />
-
-    <code><strong><u>Angular Directive</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">Angular Directive</p>
     <code ngNonBindable>*ngIf</code><br />
     <code ngNonBindable>&lt;mark *ngIf="theBoolVar" &gt;</code><br />
     The marked test below will show depending on a boolean variable on the ts file.  Change the value with the button.<br/>
@@ -62,16 +62,16 @@
     <ng-template #onElse><mark >I show up on else (false)</mark></ng-template>
 
     <hr class="hrClass" />
-  
-    <code><strong><u>Angular Directive</u></strong></code><br />
+      
+    <p class="HeadingSubTopic">Angular Directive</p>
     <code ngNonBindable>[ngStyle]="&lbrace;backgroundColor:theColor&rbrace;"</code><br />    
     Click the button to get a random background color by changing theColor property. Could also have a method instead
     of theColor in the span element.  <button (click)="onRandomColor()">Random Color</button><br/>
     span element: <span [ngStyle]="{backgroundColor:theColor}">Hello!</span><br/>
     
     <hr class="hrClass" />
-
-    <code><strong><u>Angular Directive</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">Angular Directive</p>
     <code ngNonBindable>[ngClass]="&lbrace;redClass:theBoolVar&rbrace;"</code><br />    
     Similar to the examples above, set ngClass to a class (redClass) to set the font to red based on the boolean value (when true). The redClass is in the css file.<br/>
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
@@ -79,7 +79,7 @@
   
     <hr class="hrClass" />
 
-    <code><strong><u>Angular Directive</u></strong></code><br />
+    <p class="HeadingSubTopic">Angular Directive</p>
     <code ngNonBindable>&lt;input type="number" (keydown)="onValueChanged($event)"/&gt;</code><br/>
     <code ngNonBindable>&lt;div*ngFor="let item of theNumArray;"&gt;</code><br />    
     <code ngNonBindable>ts file : onValueChanged(event:KeyboardEvent)...for(let i = 1; i <= parseInt(event.key); i++) populate theNumArray</code><br />    
@@ -91,7 +91,7 @@
 
     <hr class="hrClass" />
 
-    <code><strong><u>Angular Directive</u></strong></code><br />
+    <p class="HeadingSubTopic">Angular Directive</p>
     <code ngNonBindable>&lt;div [ngSwitch]="theColor" [ngStyle]= "&lbrace; border:'2px solid skyblue'&rbrace;"/&gt;</code><br/>
     <code ngNonBindable>&lt;p elements inside the div with the ngSwitch: *ngSwitchCase="'aqua'"/&gt;</code><br/>
     The random color button above returns aqua, red, pink, yellow, green, and gray.  Have a switch for the theColor variable for each of those.<br/>
@@ -108,8 +108,8 @@
     </div>
     <br/>
     <hr class="hrClass" />
-
-    <code><strong><u>Get Data from Parent Component</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">Get Data from Parent Component</p>
     <code>button calls onRandomColor which assigns a color string to theColor:</code><br />
     <code ngNonBindable>&lt;some-child-component [myColor]= "theColor" [myTextAlias]="theColor"&gt;  -- note this uses the alias name</code><br/>
     <code>On child ts:</code><br />
@@ -125,8 +125,8 @@
     <some-child-component [myColor]= "theColor" [myTextAlias]="theColor"></some-child-component>
 
     <hr class="hrClass" />
-
-    <code><strong><u>Tell Parent of Change in Child</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">Tell Parent of Change in Child</p>
     <code>&lt;some-child-component (eventOnChildComponentWithEventReturn)="onChildEvent1($event)" (eventOnChildComponentWithKnownObjReturn)="onChildEvent2($event)"&gt;</code><br/>
     <code>On Child: &lt;button (click)="launchEvents($event)"&gt;</code><br/>
     <code>On child ts: @Output() eventOnChildComponentWithKnownObjReturn = new EventEmitter&lt;&lbrace;theName:string, theText:string&rbrace;&gt;();</code><br/>
@@ -149,7 +149,8 @@
 
     <hr class="hrClass" />
 
-    <code><strong><u>ViewChild</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">ViewChild</p>
     This concept has too much to be included here, so instead, check out my article on Medium 
     <a href="https://medium.com/nerd-for-tech/angular-viewchild-for-component-dom-element-element-of-component-and-directive-c23328ee1525"
     target="_new">Angular — ViewChild for component, DOM element, element of component, and directive</a><br/>
@@ -161,8 +162,8 @@
     <img width="100%" src="assets\images\misc\viewchild4.png" alt="viewchild4 content elements" /><br/><br/>
 
     <hr class="hrClass" />
-
-    <code ><strong><u>ng-Content</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">ng-Content</p>
     <code><strong>In Parent Component:</strong></code><br/>
     <code>&lt;h1 class="class1" [ngStyle]="&lbrace;backgroundColor:'skyblue'&rbrace;"&gt;Header 1 with class1 going to ng-content on child&lt;/h1&gt;</code><br/>
     <code>&lt;h2 id="header2" [ngStyle]="&lbrace;backgroundColor:'teal'&rbrace;"&gt;Header 2 with header2 id going to ng-content on child&lt;/h2&gt;</code><br/>
@@ -184,8 +185,8 @@
 
 
 
-    <hr class="hrClass" />
-    <code ><strong><u>ContentChild for ng-Content (can't use ViewChild)</u></strong></code><br />
+    <hr class="hrClass" />    
+    <p class="HeadingSubTopic">ContentChild for ng-Content (can't use ViewChild)</p>
     <code><strong>In Parent Component:</strong></code><br/>
     <code>&lt;h1 class="class1" #header1 [ngStyle]="&lbrace;backgroundColor:'skyblue'&rbrace;"&gt;Header 1 with class1 going to ng-content on child&lt;/h1&gt;</code><br/>
     <code>&lt;h2 id="header2" #header2 [ngStyle]="&lbrace;backgroundColor:'teal'&rbrace;"&gt;Header 2 with header2 id going to ng-content on child&lt;/h2&gt;</code><br/>
@@ -214,8 +215,8 @@
 
 
     <hr class="hrClass" />
-
-    <code ><strong><u>Angular Directives and Your Own</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">Angular Directives and Your Own</p>
     <code>&lt;p appSomeDirectiveDirective appSomeDirectiveDirective2 fontColor="deeppink"&gt;</code><br/>
     <code>OR</code>
     <code>&lt;p appSomeDirectiveDirective appSomeDirectiveDirective2 [fontColor]="'deeppink'"&gt;</code><br/>
@@ -240,8 +241,8 @@
 
 
     <hr class="hrClass" />
-
-    <code ><strong><u>Renderer</u></strong></code><br />
+    
+    <p class="HeadingSubTopic">Renderer</p>
     <code>&lt;p appSomeDirectiveDirective3>Some p element using the SomeDirectiveDirective3 with renderer2. </code>&gt;<br/>
     <code>constructor(private theElementRef3:ElementRef, private renderer:Renderer2)</code><br/>
     <code>this.renderer.setStyle(this.theElementRef3.nativeElement, 'background-color', 'green')</code><br/>
@@ -253,7 +254,7 @@
 
     <hr class="hrClass" />
 
-    <code ><strong><u>HostBinding to change the directive style</u></strong></code><br />
+    <p class="HeadingSubTopic">HostBinding to change the directive style</p>
     <code> @HostBinding('style.backgroundColor') backColor :string = 'transparent';</code><br />
     <code>on ngOnInit: this.backColor = 'lightblue';</code><br />
     Going to use a 4th directive to make use of HostBinding to set the background.<br/>
@@ -262,7 +263,7 @@
 
 
     <hr class="hrClass" />
-    <code ><strong><u>HostListener for Directive</u></strong></code><br />
+    <p class="HeadingSubTopic">HostListener for Directive</p>
     <code>@HostBinding('style.backgroundColor') backColor :string = 'transparent';</code><br/>
     <code>@HostListener('mouseenter') mouseE(eventData:Event)&lbrace; this.backColor = 'lightblue'; &rbrace;</code><br/>
     <code>@HostListener('mouseenter') mouseL(eventData:Event)&lbrace; this.backColor = 'lightpink'; &rbrace;</code><br/>
@@ -271,8 +272,8 @@
 
 
 
-    <hr class="hrClass" />
-    <code ><strong><u>Your Own Structural Directive</u></strong></code><br />
+    <hr class="hrClass" />    
+    <p class="HeadingSubTopic">Your Own Structural Directive</p>
     <code>constructor(private templateRef:TemplateRef&lt;any&gt;, private vcRef: ViewContainerRef)&lbrace;&rbrace;</code><br/>
     <code>&lt;div *appSomeDirectiveDirectiveSTR="theNumVariable"&gt; -- set in the input field</code><br/>
     <code>@Input() set appSomeDirectiveDirectiveSTR(number:Number) -- name of set has to match name of selector in directive</code><br/>
