@@ -11,8 +11,8 @@
   
     <br/>
                     
-  
-    <code><strong><u>Access Modifiers</u></strong></code><br /><br/>
+      
+    <p class="HeadingSubTopic">Access Modifiers</p>
 
     <b>private: </b> Member is accessible only inside its type.<br/>
     <b>internal: </b> Accessible inside the type and any type in the same assembly.<br/>
@@ -20,8 +20,8 @@
     <b>public: </b>Accessible everywhere.<br/>
     <b>internal protected: </b>Accessible inside the type, same assembly, and types that inherit from it. <br/>
     <b>private protected: </b>Accesible inside the type, and any inherited type that is IN the same assembly.<br/>
-
-    <code><strong><u>null coalescing operator</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">null coalescing operator</p>
     <pre>
         <code >
             class Program &lbrace;
@@ -35,8 +35,8 @@
         </code>
     </pre>
    
-
-    <code><strong><u>operator overloading</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">operator overloading</p>
     This example is silly but it's just to illustrate how this works.  We have a clas SomeObj, and it has a method for the + of objects of that class:<br/>
     <pre>
         <code >
@@ -55,8 +55,8 @@
     </pre>  
     <br/>
     <img width="100%" src="assets\images\csharp\opoverloading1.png" alt="operator overloading" /><br/><br/>
-
-    <code><strong><u>keywords as variables</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">keywords as variables</p>
     <pre>
         <code>
             using System;
@@ -70,8 +70,8 @@
             &rbrace;
         </code>
     </pre>
-
-    <code><strong><u>Ignore/use special chars</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">Ignore/use special chars</p>
 
     <pre>
         <code>
@@ -86,8 +86,8 @@
         </code>
     </pre>
     <br/>
-
-    <code><strong><u>format strings with variables</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">format strings with variables</p>
     <pre>
         <code>
             string fillIt = "Michael";
@@ -118,8 +118,8 @@
     <br/>
     Use double instead of decimal when accuracy is not important, especially when comparing numbers.<br/>
 
-
-    <code><strong><u>Some little things</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">Some little things</p>
     <pre>
         <code>
             int i = 10_123;
@@ -157,8 +157,8 @@
     </pre>
     C# has const and read only fields.  Const values have to be known at compile time, while read only fields can be set in the constructor.  Declare in the class, 
     set it in the constructor.
-
-    <code><strong><u>params argument</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">params argument</p>
     the params argument has to be the last one <br/>
     <pre>
         <code>
@@ -185,8 +185,8 @@
         </samp>
     </pre>
 
-
-    <code><strong><u>Default params</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">Default params</p>
 
     <pre>
         <code>
@@ -212,8 +212,8 @@
         </samp>
     </pre>
 
-    <br/>
-    <code><strong><u>Extension Methods</u></strong></code><br /><br/>
+    <br/>    
+    <p class="HeadingSubTopic">Extension Methods</p>
 
     Extension methods have to be created, for a type, in a non-generic static class.  That is why I'm changing the class program to be static.  The 
     use of this indicates the one that will be the string that has the method.<br/>
@@ -243,8 +243,8 @@
     </pre>
 
 
-    <br/>
-    <code><strong><u>Tuples</u></strong></code><br /><br/>
+    <br/>    
+    <p class="HeadingSubTopic">Tuples</p>
 
     We have System.Tuple (reference, the data members are properties) and System.ValueTuple (value, the data members are fields).<br/>
 
@@ -329,8 +329,8 @@
         </code>
     </pre>
 
-    <br/>
-    <code><strong><u>Generics</u></strong></code><br /><br/>
+    <br/>    
+    <p class="HeadingSubTopic">Generics</p>
 
     <pre>
         <code>
@@ -384,7 +384,8 @@
     </pre>
     Above, we could also be using a class and an interface for each where.<br/>
     <br/>
-    <code><strong><u>InottifyPropertyChanged</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">InottifyPropertyChanged</p>
     When you need to know that a property changed.<br/>
 
     <img width="100%" src="assets\images\csharp\INotifyPropertyChanged.png" alt="Notify property changed" /><br/><br/>
@@ -427,7 +428,8 @@
 
     <br/>
     <br/>
-    <code><strong><u>IComparable</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">IComparable</p>
 
     Implement it when you want to provide a method to compare your classes.<br/>
     <img width="100%" src="assets\images\csharp\IComparable.png" alt="IComparable" /><br/><br/>
@@ -500,8 +502,8 @@
         </samp>
     </pre>
 
-
-    <code><strong><u>IComparer</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">IComparer</p>
 
     
     IComparable will help you in your sorting when you have control over the class you are sorting, 
@@ -566,7 +568,8 @@
            }
         </code>
     </pre>
-    <code><strong><u>IEquitable</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">IEquitable</p>
 
     You know you can use equals to compare strings, and you want to have something similar for your class, with whatever criteria you want to use.<br/>
     The class that will have the Equals is this one, and notice that we are indicating the object have to be equaled to a string (could have been the object type or 
@@ -599,7 +602,8 @@
         </code>
     </pre>
 
-    <code><strong><u>IEqualityComparer</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">IEqualityComparer</p>
 
     Similar to the IEquatable, but you create it in another class and the method will take 2 arguments to compare.<br/>
     You create the class you will use to compare, and implement IEqualityComparer with whatever type you want to compare.  In the Equals, 
@@ -614,7 +618,8 @@
     <img width="100%" src="assets\images\csharp\IEqualityComparer2.png" alt="IEquialityComparer" /><br/><br/>
 
 
-    <code><strong><u>IEnumerable</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">IEnumerable</p>
     
     You need to add this when you want to be able to iterate through a custom <b>collection</b><br/>
     This is one way to do it:<br/>
@@ -697,7 +702,8 @@
     </pre>
 
 
-    <code><strong><u>IEnumerator</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">IEnumerator</p>
     IEnumerable and the use of foreach hide the complexity of the enumerator if you just use the enumerator of the list itself, like 
     in the examples above. But you can use your own Enumerator.<br/>
     Same example above but now using our own enumerator could look something like this.  Change the enumerator to be whatever you need it to be<br/>
@@ -825,7 +831,8 @@
         </code>
     </pre>
 
-    <code><strong><u>Enums</u></strong></code><br /><br/>
+    
+    <p class="HeadingSubTopic">Enums</p>
 
     Regular way to use an Enum<br/>
     <pre>
