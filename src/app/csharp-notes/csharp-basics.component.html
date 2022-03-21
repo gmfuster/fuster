@@ -156,7 +156,28 @@
         </code>
     </pre>
     C# has const and read only fields.  Const values have to be known at compile time, while read only fields can be set in the constructor.  Declare in the class, 
-    set it in the constructor.
+    set it in the constructor.<br/>
+    With c#11 we have a <b>required</b> keyword: public required string Email &lbrace; get; set; &rbrace;.  If we do this, when we instantiate the class with the fields 
+    marked as required, we will have to give values for them or we will get a compiler error.<br/><br/>
+    We can have properties that can be instatiated once but not afterwards, for that we use the <b>init</b> keyword:<br/>
+    <pre>
+        <code>
+            //have this property in class SomeClass.
+            public string someS &lbrace; get; <b>init;</b> &rbrace;
+            ...
+            //the 2 lines below will <b>not compile</b>
+            SomeClass theClass = new SomeClass();
+            theClass.someS = "hey";
+            ...
+            //but the below <b>will compile</b> and print hey, but it cannot be set again
+            SomeClass theClass = new()
+            &lbrace;
+                someS = "hey" //separate more with commas
+            &rbrace;;
+        </code>
+    </pre>
+
+
     
     <p class="HeadingSubTopic">params argument</p>
     the params argument has to be the last one <br/>
@@ -212,6 +233,8 @@
         </samp>
     </pre>
 
+    <p class="HeadingSubTopic">Default params</p>
+    Parameters can be passed by value (default), by reference (<b>ref</b>), and as an <b>out</b> parameter.
     <br/>    
     <p class="HeadingSubTopic">Extension Methods</p>
 
@@ -909,6 +932,7 @@
     Keep in mind that the type you can use for the enum will depend on how many values you are going to need.<br/>
 
 
+    <p class="HeadingSubTopic">Records</p>
 
 
 </div>
