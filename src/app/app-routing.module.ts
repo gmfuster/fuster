@@ -17,6 +17,7 @@ import { NodeNotesComponent } from './node-notes/node-notes.component';
 import { NodeNotesExpressComponent } from './node-notes/node-notes-express.component';
 import { ReadBackComponent } from './other-fun/read-back.component';
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
+import {MapItComponent } from './other-fun/map-it.component';
 import { ForCanActivate } from './shared/forCanActivate.service';
 import { ForCanDeActivate } from './shared/forCanActivate.service';
 
@@ -36,6 +37,7 @@ const routes: Routes = [
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
+  { path: 'map-it', component: MapItComponent, pathMatch: 'full' },
 
   { path: 'javascript-notes', component: JavaScriptNotesComponent, pathMatch: 'full' }, //basics
   { path: 'javascript-notes-async', component: JavaScriptNotesAsyncComponent, pathMatch: 'full' }, 
