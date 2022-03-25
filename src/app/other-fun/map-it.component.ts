@@ -7,9 +7,14 @@ import { Component , OnInit} from '@angular/core';
 })
 
 export class MapItComponent implements OnInit{      
-  mapSVGFile :string = "\\assets\\images\\Other\\worldmap.svg";  
-  mapSVG: string = "\\assets\\images\\Other\\worldmap.svg";  //TODO get the SVG and put it there, different ones with the different colors.
+  //mapSVGFile :string = "\\assets\\images\\Other\\worldmap_iraq.svg";  
+  mapSVG:string = "\\assets\\images\\Other\\worldmap_iraq.svg";  
   ngOnInit(){
-    window.scroll(0,0);        
+    window.scroll(0,0);     
+    /*
+    fetch(this.mapSVGFile).then(response => response.text())
+      .then(data => {  	  
+  	    this.mapSVG = data;
+    });   */
   }
 }  
