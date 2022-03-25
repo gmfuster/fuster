@@ -7,9 +7,9 @@ import { Component , OnInit} from '@angular/core';
 })
 
 export class MapItComponent implements OnInit{      
-  mapSVG :string = "\\assets\\images\\Other\\worldmap.svg";  
+  mapSVGFile :string = "\\assets\\images\\Other\\worldmap.svg";  
+  mapSVG: string = "\\assets\\images\\Other\\worldmap.svg";  //TODO get the SVG and put it there, different ones with the different colors.
   ngOnInit(){
-    window.scroll(0,0);
-        
-    }
-  }  
+    window.scroll(0,0);        
+  }
+}  

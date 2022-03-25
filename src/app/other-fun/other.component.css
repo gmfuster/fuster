@@ -27,3 +27,8 @@
 .timesFont{
   font-family: 'Times New Roman', Times, serif;
 }
+
+/*FOR THE MAP*/
+.mapSelected{
+  fill: lightseagreen;    
+}
