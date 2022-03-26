@@ -5,7 +5,7 @@
     The international community almost never means the international community.  Some examples.<br/><br/>
 
     <select class="dropDown" (change)="onEventChanged($event)"> 
-      <option  *ngFor="let event of listOfEvents;" [value]="event.title">{{event.title}}</option>
+      <option  *ngFor="let event of listOfEvents;" [value]="event.map">{{event.title}}</option>
     </select>   
     <br/>
     <div className="CenterMe" >      

@@ -8,7 +8,8 @@ import { Component , OnInit} from '@angular/core';
 
 export class MapItComponent implements OnInit{   
 
-  mapSVG:string = "\\assets\\images\\Other\\worldmap.svg";  
+  mapSVGPath:string = "\\assets\\images\\Other\\";  
+  mapSVG: string = "worldmap.svg"
   listOfEvents: {title:string, map:string}[] = [{title:"", map:"worldmap.svg"},{title:"Iraq War 2003", map:"worldmap_iraq.svg"} ]  
   selectedEvent :string = "";
   ngOnInit(){
@@ -16,8 +17,7 @@ export class MapItComponent implements OnInit{
     
   }
 
-  onEventChanged(e:any){
-    console.log(e.target.value)
-    //todo the real code
+  onEventChanged(e:any){    
+    this.mapSVG = this.mapSVGPath + e.target.value;
   }
 }  
