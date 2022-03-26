@@ -25,6 +25,7 @@ import { SomeDirectiveDirective4 } from './some-directive-directive/some-directi
 import { SomeDirectiveDirective5 } from './some-directive-directive/some-directive-directive.directive';
 import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-directive-directive.directive';
 import { ReadBackComponent } from './other-fun/read-back.component';
+import { MapItComponent } from './other-fun/map-it.component';
 import { DropdownDirective } from './shared/dropdown-directive';
 import { OtherServices } from './shared/forexamples.service';
 import { ForCanActivate } from './shared/forCanActivate.service';
@@ -51,7 +52,8 @@ import { ForCanDeActivate } from './shared/forCanActivate.service';
     SomeDirectiveDirective5,
     appSomeDirectiveDirectiveSTR,
     DropdownDirective,
-    ReadBackComponent
+    ReadBackComponent,
+    MapItComponent
   ],
   imports: [
     BrowserModule,

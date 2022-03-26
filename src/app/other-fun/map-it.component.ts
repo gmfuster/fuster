@@ -6,15 +6,18 @@ import { Component , OnInit} from '@angular/core';
   styleUrls: ['./other.component.css']
 })
 
-export class MapItComponent implements OnInit{      
-  //mapSVGFile :string = "\\assets\\images\\Other\\worldmap_iraq.svg";  
-  mapSVG:string = "\\assets\\images\\Other\\worldmap_iraq.svg";  
+export class MapItComponent implements OnInit{   
+
+  mapSVG:string = "\\assets\\images\\Other\\worldmap.svg";  
+  listOfEvents: {title:string, map:string}[] = [{title:"", map:"worldmap.svg"},{title:"Iraq War 2003", map:"worldmap_iraq.svg"} ]  
+  selectedEvent :string = "";
   ngOnInit(){
     window.scroll(0,0);     
-    /*
-    fetch(this.mapSVGFile).then(response => response.text())
-      .then(data => {  	  
-  	    this.mapSVG = data;
-    });   */
+    
+  }
+
+  onEventChanged(e:any){
+    console.log(e.target.value)
+    //todo the real code
   }
 }  
