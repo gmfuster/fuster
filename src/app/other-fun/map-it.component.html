@@ -7,7 +7,7 @@
     <select class="dropDown" (change)="onEventChanged($event)"> 
       <option  *ngFor="let event of listOfEvents;" [value]="event.map">{{event.title}}</option>
     </select>   
-    <br/>
+    <br/>    
     <div className="CenterMe" >      
       <img alt="World Map"
       src={{mapSVG}}  style="margin:6px; width:60vw"
