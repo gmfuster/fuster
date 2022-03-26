@@ -9,8 +9,10 @@ import { Component , OnInit} from '@angular/core';
 export class MapItComponent implements OnInit{   
 
   mapSVGPath:string = "\\assets\\images\\Other\\";  
-  mapSVG: string = "worldmap.svg"
-  listOfEvents: {title:string, map:string}[] = [{title:"", map:"worldmap.svg"},{title:"Iraq War 2003", map:"worldmap_iraq.svg"} ]  
+  mapSVG: string = this.mapSVGPath +"worldmap.svg"
+  listOfEvents: {title:string, map:string}[] = [{title:"", map:"worldmap.svg"},
+    {title:"Iraq War 2003", map:"worldmap_iraq.svg"},
+    {title:"Afghanistan War 2001", map:"worldmap_afghanistan.svg"} ]  
   selectedEvent :string = "";
   ngOnInit(){
     window.scroll(0,0);     
