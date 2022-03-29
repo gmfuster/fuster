@@ -199,7 +199,8 @@
         <hr class="hrClass"/>          
          <p class="HeadingSubTopic">Redirect</p>  
          You can redirect from one path to another one with something like &lbrace;path:'somepath or **', <b>redirectTo</b>:'some other path'&rbrace;
-         The ** means any unknown route, and it should be the last entry under the routes array.  With redirect, use the pathMatch:'full'
+         The ** means any unknown route, and it should be the last entry under the routes array.  With redirect, use the pathMatch:'full'<br/>
+
         <br/><br/>
 
         <hr class="hrClass"/>        
@@ -290,8 +291,31 @@
 
         <img width="100%" src="assets\images\angular\candeactivate.png" alt="can deactivate" /><br/><br/>
         <hr class="hrClass"/>
+    
+        <p class="HeadingSubTopic">Pass Static Data to not-found</p>   
+        This doesn't have to be for a not found page but using that to show it.  We have the ** to catch a route that doesn't exist, and we reroute it 
+        to the not found page with this. Notice the data part of it, because that will be send to the ts file for that page.
+        <pre>
+            <code>
+                &lbrace; path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:&lbrace;message:"I AM THE MESSAGE FROM not-found!!!!"&rbrace;&rbrace;,
+                &lbrace; path: '**', redirectTo:'not-found'&rbrace;,
+            </code>
+        </pre>
+        Then on the ts and html files for the NotFoundComponent:
+        <pre>
+            <code ngNonBindable>
+                constructor(private route:ActivatedRoute)&lbrace;&rbrace;
 
+                this.errorMessage = this.route.snapshot.data['message'];
 
+                //or use this if the data may change while we are here.
+                //this.route.data.subscribe(
+                // (data:Data) => this.errorMessage = data['message']);
+
+                &lt;h3&gt;&lbrace;&lbrace;errorMessage&rbrace;&rbrace;&lt;/h3&gt;
+            </code>
+        </pre>
+        <hr class="hrClass"/>
 
         <br/>
         <br/>

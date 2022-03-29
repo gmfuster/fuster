@@ -21,6 +21,7 @@ import {MemoryCardsComponent } from './other-fun/memory-cards.component';
 import {MapItComponent } from './other-fun/map-it.component';
 import { ForCanActivate } from './shared/forCanActivate.service';
 import { ForCanDeActivate } from './shared/forCanActivate.service';
+import {NotFoundComponent} from './other-fun/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -38,7 +39,7 @@ const routes: Routes = [
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
-  { path: 'map-it', component: MapItComponent, pathMatch: 'full' },
+  { path: 'map-it', component: MapItComponent, pathMatch: 'full' },  
 
   { path: 'javascript-notes', component: JavaScriptNotesComponent, pathMatch: 'full' }, //basics
   { path: 'javascript-notes-async', component: JavaScriptNotesAsyncComponent, pathMatch: 'full' }, 
@@ -46,6 +47,10 @@ const routes: Routes = [
 
   { path: 'node-notes', component: NodeNotesComponent, pathMatch: 'full' }, //basics
   { path: 'node-notes-express', component: NodeNotesExpressComponent, pathMatch: 'full' }, //Express
+
+
+  { path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:{message:"I AM THE MESSAGE FROM not-found!!!!"}},
+  { path: '**', redirectTo:'not-found'},
 
 ];
 

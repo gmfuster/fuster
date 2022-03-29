@@ -30,6 +30,7 @@ import { DropdownDirective } from './shared/dropdown-directive';
 import { OtherServices } from './shared/forexamples.service';
 import { ForCanActivate } from './shared/forCanActivate.service';
 import { ForCanDeActivate } from './shared/forCanActivate.service';
+import { NotFoundComponent } from './other-fun/not-found.component';
 
 @NgModule({
   declarations: [    
@@ -53,7 +54,8 @@ import { ForCanDeActivate } from './shared/forCanActivate.service';
     appSomeDirectiveDirectiveSTR,
     DropdownDirective,
     ReadBackComponent,
-    MapItComponent
+    MapItComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
