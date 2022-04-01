@@ -933,6 +933,82 @@
 
 
     <p class="HeadingSubTopic">Records</p>
+    Beginning with C#9 for a reference type, then with C#10 we can have <b>record class</b> for reference and <b>record struct</b> for value type.  Not 
+    indicating class or struct will make it by reference.<br/>
+    Records can be mutable (get and set) but they are usually used for immutable models.<br/>
+    Positional properties are immutable in a record class and a readonly record struct. They're mutable in a record struct.<br/>
+    <pre>
+        <code>
+            //reference because we are not saying struct (class by default)
+            //PersonA gets the values assigned with the contructor, based in the order.
+            public record PersonA(string FirstName, string LastName);
+            //PersonB, just create and then assign by name
+            public record PersonB
+            &lbrace;	
+                public string FirstName &lbrace; get; set; &rbrace; = default!;
+                public string LastName &lbrace; get; set; &rbrace; = default!;
+            &rbrace;;
+
+	        public void SomeMethod()
+	        &lbrace;
+		        PersonA persona = new("Nancy", "Davoli");
+		        PersonB personb = new();
+		        personb.FirstName = "Nancia";
+		        personb.LastName = "Davolia";
+		        Console.WriteLine(persona.ToString());
+		        Console.WriteLine(personb.ToString());
+	        &rbrace;
+        </code>
+    </pre>
+    You can also have it declared with the constructor but change the accessibility like this:
+    <pre>
+        <code>
+            public record PersonC(string FirstName, string LastName, string Id)
+            &lbrace;
+                internal string Id &lbrace; get; init; &rbrace; = Id
+            &rbrace;
+            ...
+            PersonC personc = new PersonC("Mark", "Knight", "1212");
+            Console.WriteLine(personc.ToString()); // prints Mark, Knight
+            Console.WriteLine(personc.Id); //prints 1212
+        </code>
+    </pre>
+    Regarding the printing of Mark and Knight above, but not 1212: Record types have a compiler-generated ToString method that displays 
+    the names and values of <b>public</b> properties and fields. <br/>
+    You could also just have a few properties with its constructor and other properties inside (not positional ones)<br/>
+    A positional record and a positional readonly record struct declare init-only properties. A positional record struct declares read-write properties. 
+    You can override either of those defaults<br/>
+    After initialization, you can't change the value of value-type properties or the reference of reference-type properties. 
+    However, the data that a reference-type property refers to can be changed.<br/>
+    For class types, two objects are equal if they refer to the same object in memory.<br/>
+    For struct types, two objects are equal if they are of the same type and store the same values.<br/>
+    For record types, including record struct and readonly record struct, two objects are equal if they are of the same type and store the same values.<br/>
+    <br/>
+    If you need to copy an instance with some modifications, you can use a with expression to achieve nondestructive mutation. A with expression makes a new record instance that is a copy of an existing record instance, with specified properties and fields modified.
+    <pre>
+        <code>
+            public record PersonA(string FirstName, string LastName);
+            ...
+            PersonA persona = new("Nancy", "Davoli");
+            PersonA persona2 = persona with &lbrace; FirstName = "John" &rbrace;;
+
+            //prints
+            //PersonA &lbrace; FirstName = Nancy, LastName = Davoli &rbrace;
+            //PersonA &lbrace; FirstName = John, LastName = Davoli &rbrace;
+        </code>
+    </pre>
+    The result of a with expression is a shallow copy, which means that for a reference property, 
+    only the reference to an instance is copied. Both the original record and the copy end up with a reference to the same instance.<br/>
+    A record can inherit from another record. However, a record can't inherit from a class, and a class can't inherit from a record.<br/>
+    <pre>
+        <code>
+            public record Teacher(string FirstName, string LastName, int Grade): Person(FirstName, LastName);
+        </code>
+    </pre>
+    For two record variables to be equal, the run-time type must be equal (not just the values, also the type).
+    
+    <p class="HeadingSubTopic">Switch Pattern Matches</p>
+    
 
 
 </div>
