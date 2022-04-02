@@ -1,34 +1,35 @@
 
+
  <div class="PaddedContents">
 
-  <div className="CenterMe" >
-    <br/>
-    <strong>Reading backwards or upsidedown is good for you!</strong><br/>
-    Direction is right to left and the letters are rotated. 
-    <br/>  
-
-    
-    
-    <div class="radio-toolbar">  
+  <div style="position:fixed; left:12px; top: 10vh; width:5vw; ">
+    <div class="radio-toolbar" >  
       <input type="radio" id="backwards" name="readingType" value="backwards" (click)="option='backwards'" [checked]="option==='backwards'"/>
-      <label for="backwards">Read Backwards</label>
-
+      <label for="backwards"> &leftarrow;</label>
+      <br/>
       <input type="radio" id="upsidedown" name="readingType" value="upsidedown" (click)="option='upsidedown'" [checked]="option==='upsidedown'" />
-      <label for="upsidedown">Read Upside Down</label>                  
-     
-    </div>
-    
+      <label for="upsidedown">&downarrow;</label>       
+    </div>  
+  </div>
 
-    <div *ngFor = "let item of titlesDescArray;" class="timesFont"> 
-      <div [ngClass]="option === 'backwards' ? 'reverse title' : 'upsideDown title' " *ngIf="item.title != ''">{{item.title}}</div>
-      <div [ngClass]="option === 'backwards' ? 'reverse desc' : 'upsideDown desc' " *ngIf="item.desc != ''">
-        {{item.desc}}
-      </div><br/>
-      <div class="showOriginal" *ngIf="item.title != ''">
-        {{item.title}}<br/>
-        {{item.desc}}
-      </div>
-      <br><br/>
-    </div>           
-</div>
-  </div>  
+  <div className="CenterMe" >          
+    <div class="PaddedContents">
+
+      <strong>Reading backwards or upsidedown is good for you!</strong><br/>
+      Direction is right to left and the letters are rotated. 
+      <br/>      
+
+      <div *ngFor = "let item of titlesDescArray;" class="timesFont"> 
+        <div [ngClass]="option === 'backwards' ? 'reverse title' : 'upsideDown title' " *ngIf="item.title != ''">{{item.title}}</div>
+        <div [ngClass]="option === 'backwards' ? 'reverse desc' : 'upsideDown desc' " *ngIf="item.desc != ''">
+          {{item.desc}}
+        </div><br/>
+        <div class="showOriginal" *ngIf="item.title != ''">
+          {{item.title}}<br/>
+          {{item.desc}}
+        </div>
+        <br><br/>
+      </div>     
+    </div>                 
+  </div>
+</div>  
