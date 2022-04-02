@@ -1184,5 +1184,20 @@
             &rbrace;;
         </code>
     </pre>
+    With C#9, for a when in the switch were you have more than one condition, you could do this:
+    <pre>
+        <code>
+            //from this
+            Developer dev when dev.YearOfBirth >= 1980 && dev.YearOfBirth &lt;= 1989 
 
+            //to this
+            Developer dev when dev.YearOfBirth <b>i</b> &gt;= 1980 <b>and</b> &lt;= 1989
+
+            //could also do
+            Developer &lbrace; YearOfBirth: &gt;= 1980 and &lt;= 1989 &rbrace; dev
+        </code>
+    </pre>
+    There is more than what is mentioned above, so check the documentation for more and for how to do it, or understand something you see.
+
+    
 </div>
