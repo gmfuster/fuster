@@ -1007,8 +1007,182 @@
     </pre>
     For two record variables to be equal, the run-time type must be equal (not just the values, also the type).
     
-    <p class="HeadingSubTopic">Switch Pattern Matches</p>
-    
+    <p class="HeadingSubTopic">Pattern Matches - Switch</p>
+    This is a bit of pattern matches with a focus on switch but not just that.<br/>
+    Imagine we have a class Fruit and a class Apple like this:
+    <pre>
+        <code>
+            public class Fruit
+            &lbrace;
+                public string? Name &lbrace; get; set; &rbrace;
+                public string? Color &lbrace; get; set; &rbrace;
+            &rbrace;
+            public class Apple:Fruit
+            &lbrace;
+                public string? Type &lbrace; get; set; &rbrace;
+            &rbrace;
+            ...
+            Fruit fruit = new Fruit();	
+            Apple apple = new Apple();
+            apple.Name = "Apple";
+            apple.Color = "Green";
+            apple.Type = "Fuji";
+            ...
+            fruit = apple;
+            //to check before we can assume that the fruit is an apple
+            <b>if (fruit.GetType() == typeof(Apple) && ((Apple)fruit).Type == "Fuji")</b>
+            &lbrace;
+                Console.WriteLine("the fruit is an Apple and it's a Fuji Apple");
+            &rbrace;
 
+            //We could also have done.
+            <b>if (fruit is Apple)</b>            
+        </code>
+    </pre>
+    Something else we can do, starting with C#7.<br/>
+    <pre>
+        <code>
+            Fruit fruit = new Fruit();	
+            
+            Apple apple = new Apple();
+            apple.Name = "Apple";
+            apple.Color = "Green";
+            apple.Type = "Fuji";
+
+            Apple apple2 = new Apple();
+            apple2.Name = "Apple";
+            apple2.Color = "Red";
+            apple2.Type = "Awesome";
+
+            fruit = apple;
+
+            switch (fruit)
+            &lbrace;
+                //theapple or wahtever you want, just something so we can reference inside de code.
+                <b>case Apple theapple:</b>
+                    Console.WriteLine(theapple.Name);
+                    Console.WriteLine(theapple.Color);
+                    Console.WriteLine(theapple.Type);
+                    break;
+                default:
+                    break;
+            &rbrace;
+
+            //the above will print Apple, Green, Fuji.
+            //if the fruit above was not assigned an Apply type, it would go to the default.
+        </code>
+    </pre>
+
+    Besides the type above, you can also match on some properties of the object<br/>
+    <pre>
+        <code>
+            Fruit fruit = new Fruit();
+
+            Apple apple = new Apple();
+            apple.Name = "Apple";
+            apple.Color = "Green";
+            apple.Type = "Fuji";
+
+            Apple apple2 = new Apple();
+            apple2.Name = "Apple";
+            apple2.Color = "Red";
+            apple2.Type = "Awesome";
+
+            fruit = apple;
+
+            switch (fruit)
+            &lbrace;
+                //theapple or wahtever you want, just something so we can reference inside de code.
+                //we are getting a warning because Color could be null, but just for what we are doing, we know it won't be.
+                //our fruit is set to the Green apple, so this will go to not the apple or not red.
+                <b>case Apple theapple when theapple.Color.Equals("Red"):</b>
+                    Console.WriteLine(theapple.Name);
+                    Console.WriteLine(theapple.Color);
+                    Console.WriteLine(theapple.Type);
+                    break;
+                default:
+                    Console.WriteLine("not the apple or not read");
+                    break;
+            &rbrace;
+        </code>
+    </pre>
+    With C#8 we also have a switch expression instead of the typical switch statement as above.  With the classes and assignments as above:<br/>
+    <pre>
+        <code>
+            var <b>theFruit</b> = fruit switch
+            &lbrace;
+                Apple <b>_ =></b> "This is an apple",
+                <b>_ =></b> "This is not an apple"
+            &rbrace;
+            Console.WriteLine(<b>theFruit</b>);
+        </code>
+    </pre>
+    We can also do something like this <br/>
+    <pre>
+        <code>
+            public class Fruit
+            &lbrace;
+                public string? Name &lbrace; get; set; &rbrace;
+                public string? Color &lbrace; get; set; &rbrace;
+                public FruitType? FruitType &lbrace; get; set; &rbrace;
+
+                //need to have this here to be able to use the switch this way
+                public void <b>Deconstruct</b>(out string? name, out string? color, out FruitType? ft)
+            &rbrace;
+
+            public class FruitType
+            &lbrace;
+                public string? TheType &lbrace; get; set; &rbrace;
+            &rbrace;
+
+            Fruit fruit = new Fruit();
+            fruit.Name = "Orange";
+            fruit.Color = "Orange";
+            fruit.FruitType = new FruitType();
+            fruit.FruitType.TheType = "Citric";
+
+            //need the Deconstruct method in the class to be able to do this.  Otherwise gets an error.
+            var result = fruit switch
+            &lbrace;
+                Fruit("Orange", "Orange", null) => "Orange with no type",
+                Fruit("Orange", "Orange", _) => "Orange",
+                _ => "Different"
+            &rbrace;
+            Console.WriteLine(result);//prints Orange
+            //If we don't have a FruitType we will get  "orange with no type"
+            //if the color was set to red, we would get Different.
+        </code>
+    </pre>>
+    We could also have something like this to check on the FruitType itself (note this doesn't cover all possible cases)
+    <pre>
+        <code>
+            var result = fruit switch
+            &lbrace;
+                &lbrace; FruitType: &lbrace; TheType: "Citric" &rbrace;&rbrace; => "Citric",
+                &lbrace; FruitType: null &rbrace; => "no type",		
+            &rbrace;
+
+            //add this so we won't get an exception for a case that is not covered.
+            _ => null,
+        </code>
+    </pre>
+    We can also use this on tuples, this example from the MS docs.
+    <pre>
+        <code>
+            var newState = (state, operation, key.IsValid) switch
+            &lbrace;
+              (State.Opened, Operation.Close, _)      => State.Closed,
+              (State.Opened, Operation.Open, _)       => throw new Exception(
+                "Can't open an opened door"),
+              (State.Opened, Operation.Lock, true)    => State.Locked,
+              (State.Locked, Operation.Open, true)    => State.Opened,
+              (State.Closed, Operation.Open, false)   => State.Locked,
+              (State.Closed, Operation.Lock, true)    => State.Locked,
+              (State.Closed, Operation.Close, _)      => throw new Exception(
+                "Can't close a closed door"),
+                  _ => state
+            &rbrace;;
+        </code>
+    </pre>
 
 </div>
