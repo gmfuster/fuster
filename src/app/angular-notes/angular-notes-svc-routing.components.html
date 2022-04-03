@@ -315,8 +315,49 @@
                 &lt;h3&gt;&lbrace;&lbrace;errorMessage&rbrace;&rbrace;&lt;/h3&gt;
             </code>
         </pre>
-        <hr class="hrClass"/>
 
+
+        <hr class="hrClass"/>
+        <p class="HeadingSubTopic">Resolve Dynamic Data</p>   
+        This is for when we need to get the data before to route somewhere.  We should create a new file, such as server-recolver.service.ts.  It should be 
+        similar to:
+        <pre>
+            <code>
+                import &lbrace;Resolve &rbrace; form '@angular/router'
+                
+                //it could resolve to a type, or an observable of the type, or a Promise of the type
+                //if you need to inject other services, use @injectable and the constructor to get it.
+                export class <b>ServerResolver</b> implements Resolve&lt;whatever type you will resolve &lt;
+
+                resolve(route:ActivatedRouteSnapshot, state:RouterStateSnapshot)&lbrace;;
+                    return whatever;
+                &rbrace;
+            </code>
+        </pre>
+        In the routing, before we had something like this:
+        <pre>
+            <code>
+                path:"users/:id", component:userComponent
+            </code>
+        </pre>
+        And now we can have this and when this route happens, the data coming from the ServerResolver will be stored in the server.  Then in the  component 
+        that will be loaded, in this case, userComponent, we will have code to get the data.
+        <pre>
+            <code>
+                path:"users/:id", component:userComponent, resolve: &lbrace;server:<b>ServerResolver</b>&rbrace;
+            </code>
+        </pre>
+        And then, the code in the userComponent to get the data we need:
+        <pre>
+            <code>
+                //on the ngOnInit (will need to import Data)
+                this.route.data.subscribe(
+                    (data:Data) => &lbrace;
+                        this.whateveryourvariableis = data['server'];//this server comes from the 'server' you used in the path.
+                    &rbrace;
+                )
+            </code>
+        </pre>
         <br/>
         <br/>
 
