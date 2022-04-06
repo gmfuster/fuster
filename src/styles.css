@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap:regular,bold,italic&subset=latin,latin-ext');
 
+
+
 .main-body {
   /*color:navy;*/
   color:rgb(183, 253, 253);
@@ -32,26 +34,34 @@ body button:disabled {
 body b{
   background-color:paleturquoise;
   color:navy;  
-  border-radius: 15%;
+  /*border-radius: 15%;*/
 }
 .formulaBackground{
   background-color: paleturquoise;
   padding:5px;
 }
 
-.codeBlock{
+/*.codeBlock{
   font-family: 'Times New Roman', Times, serif;
   font-size: 1.2vw;
   background-color: paleturquoise;
   color:navy;
   padding:8px;
   border:deeppink solid 3px;
-}
+}*/
 body pre code{
   font-family: 'Times New Roman', Times, serif;
   font-size: 1.2vw;  
   color:navy;
+  padding:8px;    
+  word-wrap: break-word;  
+}
+body code{
+  font-family: 'Times New Roman', Times, serif;  
+  font-size: 1.2vw;  
+  color:navy;
   padding:8px;  
+  word-wrap: break-word;
 }
 body pre samp{
   font-family: 'Times New Roman', Times, serif;
@@ -59,12 +69,7 @@ body pre samp{
   color:navy;
   padding:8px;  
 }
-body code{
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 1.2vw;  
-  color:navy;
-  padding:8px;  
-}
+
 /*TODO Use this for now for the headings of notes, maybe change to a class later*/
 body code strong u{
   font-family: 'Times New Roman', Times, serif;

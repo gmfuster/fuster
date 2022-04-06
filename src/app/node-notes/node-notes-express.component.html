@@ -7,9 +7,28 @@
   
   <div class="PaddedContents">
     
-    This is a package you can install to help you with your node project.<br/>
-    
+    This is a package you can install to help you with your node project. (npm install express, or npm install --save express<br/>
+    Once installed, you have a "express": "^4.17.3", under your dependencies in your packagage.json file.<br/>
+    Then use it with <b>const express = require('express');</b><br/>
+    Then you can do <b>const app = express();</b> and then create the server with it <b>const server = http.createServer(app);</b>
+    With the above we have a functioning server but we don't have how to respond to requests yet.<br/>
+    You would do something like this to add that:<br/>
+    <pre>
+      <code>
+        const app = express();
 
+        app.use( (req, res, next) => &lbrace;
+          console.log("hello") ;
+          next(); //it will move on to the next instruction below
+        &rbrace; );
+
+        app.use( (req, res, next) => &lbrace;
+          console.log("AFTER NEXT") ;    
+        &rbrace; );
+
+        const server = http.createServer(app);
+      </code>
+    </pre>
 
 
   </div>
