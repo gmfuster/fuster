@@ -1,14 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap:regular,bold,italic&subset=latin,latin-ext');
-
-
-
-.main-body {
-  /*color:navy;*/
+:root{
+  --main-code-background: rgb(192, 228, 250);
+}
+.main-body {  
   color:rgb(183, 253, 253);
   font-family: 'Arima Madurai', cursive;
-  font-size: 1.6vw;  
-  /*background-color: white;*/
+  font-size: 1.6vw;    
   background-color: rgb(48, 46, 46);
 }
 body button { 
@@ -24,57 +22,51 @@ body button:disabled {
   background-color: lightgray;
   border-color: lightgray;    
 }
-
 .hrClass {
   border: none;
   height: 1px;
   color: deepskyblue;  
 }
-
 body b{
-  background-color:paleturquoise;
+  background-color:lightyellow;
   color:navy;  
   /*border-radius: 15%;*/
 }
-.formulaBackground{
-  background-color: paleturquoise;
-  padding:5px;
+body pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  color: #333333;
+  word-break: break-all;
+  word-wrap: break-word;
+  /*background-color: #f5f5f5;*/
+  background-color: var(--main-code-background);
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-
-/*.codeBlock{
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 1.2vw;
-  background-color: paleturquoise;
-  color:navy;
-  padding:8px;
-  border:deeppink solid 3px;
-}*/
 body pre code{
   font-family: 'Times New Roman', Times, serif;
   font-size: 1.2vw;  
   color:navy;
-  padding:8px;    
-  word-wrap: break-word;  
+  padding:0px;    
+  background-color: transparent;
+  border-radius: 0;
+  white-space: pre-wrap;
 }
 body code{
   font-family: 'Times New Roman', Times, serif;  
   font-size: 1.2vw;  
   color:navy;
   padding:8px;  
-  word-wrap: break-word;
+  background-color: var(--main-code-background);
+  border-radius: 4px;
 }
 body pre samp{
   font-family: 'Times New Roman', Times, serif;
   font-size: 1vw;  
   color:navy;
-  padding:8px;  
-}
-
-/*TODO Use this for now for the headings of notes, maybe change to a class later*/
-body code strong u{
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 1.8vw;    
-  color: orangered;  
   padding:8px;  
 }
 .HeadingSubTopic{  
@@ -91,28 +83,12 @@ body code strong u{
 .TopMarginToDealWithNavBarImg {
   margin-top: 6vh;
 }
-/*the size below depends on the si*/
-.image75vhSize {  
-  height: 75vh;
-  width:75vh;
-}
-.image65vhSize {
-  height: 65vh;
-  width: 65vh;
-}
-
 .PaddedContents {
   padding-left: 8vw;
   padding-right: 8vw;
 }
 .CenterMe {
   text-align: center;
-}
-.CenterMyBorder {
-  border: solid 2px navy;
-  margin-left: 10vw;
-  margin-right: 10vw;
-  padding: 10px;
 }
 .CenterMyContent {  
   display: flex;
@@ -122,17 +98,6 @@ body code strong u{
   justify-content: center;
   align-items: center;  
 }
-
-.ColumnMyContent {  
-  display: flex;
-  flex-direction: row;
-  text-align: center;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;  
-}
-
-
 .buttonGeneral {
   background-color: skyblue;
   border-color: skyblue;
@@ -146,70 +111,55 @@ body code strong u{
   .buttonGeneral:focus {
     outline: none;
   }
-
-.markClassCardTabBlue {
-  /*background-color: skyblue;*/
-  padding-left: 6px;
-  padding-right: 6px;
-  border: 3px skyblue solid;
-  width: 25vw;
-  border-bottom: 0;  
-}
-.markClassCardContentBlue {
-  border: 3px skyblue solid;
-  padding:6px;
-  /*background-color: lightcyan;  */
-}
-.markClassCardWholeBlue {
-  /*background-color: skyblue;*/
-  padding-left: 6px;
-  padding-right: 6px;
-  border: 3px skyblue solid;  
-  border-bottom: 0;  
-  text-align: center;
-}
-
-.markClassCardWholePink {
-  /*background-color: skyblue;*/
-  padding-left: 6px;
-  padding-right: 6px;
-  border: 6px deeppink solid;    
-  text-align: center;
-}
-
-
-a:link {
-  color:lightyellow;
-  background-color: transparent;
-  text-decoration: none;
-}
-a:active {
-  color: lightyellow;
-  background-color: transparent;
-  text-decoration: underline;
-}
-a:hover{  
-  background-color: lightyellow;
-}
-a:visited {
-  color: lightyellow;
-  background-color: transparent;
-  text-decoration: none;
-}
-
-.main-body input{
-  color:darkcyan;  
-}
-
-
-.hrClass {
-  border: none;
-  height: 4px;
-  background: skyblue;
-  margin-bottom: 50px;
-  margin-left: 3vw;
-  margin-right: 3vw;
-}
+  .markClassCardContentBlue {
+    border: 3px skyblue solid;
+    padding:6px;
+    /*background-color: lightcyan;  */
+  }
+  .markClassCardWholeBlue {
+    /*background-color: skyblue;*/
+    padding-left: 6px;
+    padding-right: 6px;
+    border: 3px skyblue solid;  
+    border-bottom: 0;  
+    text-align: center;
+  }
+  .markClassCardWholePink {
+    /*background-color: skyblue;*/
+    padding-left: 6px;
+    padding-right: 6px;
+    border: 6px deeppink solid;    
+    text-align: center;
+  }
+  a:link {
+    color:lightyellow;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  a:active {
+    color: lightyellow;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+  a:hover{  
+    background-color: lightyellow;
+  }
+  a:visited {
+    color: lightyellow;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  .main-body input{
+    color:darkcyan;  
+  }
+  .hrClass {
+    border: none;
+    height: 4px;
+    background: skyblue;
+    margin-bottom: 50px;
+    margin-left: 3vw;
+    margin-right: 3vw;
+  }
 .hrHeaderClass {
   border: none;
   height: 10px;
@@ -217,26 +167,20 @@ a:visited {
   margin-left: 3vw;
   margin-right: 3vw;
 }
-
-
 .hrClassNoSideMargin {
   border: none;
   height: 4px;
   background: skyblue;
   margin-bottom: 50px;
 }
-
-
 .radio-toolbar {
   margin: 10px;
 }
-
 .radio-toolbar input[type="radio"] {
   opacity: 0;
   position: fixed;
   width: 0;  
 }
-
 .radio-toolbar label {
     display: inline-block;    
     background-color:rgb(36, 156, 231);
@@ -247,22 +191,34 @@ a:visited {
     margin:5px;
     box-shadow: 0 12px #999;    
 }
-
 .radio-toolbar label:hover {
   background-color: deeppink;
 }
-
-
 .radio-toolbar input:checked + label {
     background-color: deeppink;
     border-color:rgb(36, 156, 231);
     box-shadow: 0 5px gray;
 }
-
 .dropDown{
   color:navy;
 }
+.notesStrong{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.8vw;    
+  color: orangered;  
+  padding:8px;  
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
 /*
+.formulaBackground{
+  background-color: paleturquoise;
+  padding:5px;
+}
 mark {
   color: navy !important;
   background-color:skyblue !important;
@@ -273,4 +229,282 @@ mark {
   mark  a {
     text-decoration: none !important;
   }
+  .ColumnMyContent {  
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;  
+}
   */
+  
+.pre-scrollable {
+  max-height: 340px;
+  overflow-y: scroll;
+}
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.fade.in {
+  opacity: 1;
+}
+.collapse {
+  display: none;
+}
+.collapse.in {
+  display: block;
+}
+tr.collapse.in {
+  display: table-row;
+}
+tbody.collapse.in {
+  display: table-row-group;
+}
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  -webkit-transition-property: height, visibility;
+  -o-transition-property: height, visibility;
+  transition-property: height, visibility;
+  -webkit-transition-duration: 0.35s;
+  -o-transition-duration: 0.35s;
+  transition-duration: 0.35s;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+  transition-timing-function: ease;
+}
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  border-top: 4px solid \9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+.dropup,
+.dropdown {
+  position: relative;
+}
+.dropdown-toggle:focus {
+  outline: 0;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+}
+.dropdown-menu.pull-right {
+  right: 0;
+  left: auto;
+}
+.dropdown-menu .divider {
+  height: 1px;
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  color: #333333;
+  white-space: nowrap;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  color: #262626;
+  text-decoration: none;
+  background-color: #f5f5f5;
+}
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:hover,
+.dropdown-menu > .active > a:focus {
+  color: #fff;
+  text-decoration: none;
+  background-color: #337ab7;
+  outline: 0;
+}
+.dropdown-menu > .disabled > a,
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  color: #777777;
+}
+.dropdown-menu > .disabled > a:hover,
+.dropdown-menu > .disabled > a:focus {
+  text-decoration: none;
+  cursor: not-allowed;
+  background-color: transparent;
+  background-image: none;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.open > .dropdown-menu {
+  display: block;
+}
+.open > a {
+  outline: 0;
+}
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
+.dropdown-menu-left {
+  right: auto;
+  left: 0;
+}
+.dropdown-header {
+  display: block;
+  padding: 3px 20px;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #777777;
+  white-space: nowrap;
+}
+.dropdown-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 990;
+}
+.pull-right > .dropdown-menu {
+  right: 0;
+  left: auto;
+}
+.dropup .caret,
+.navbar-fixed-bottom .dropdown .caret {
+  content: "";
+  border-top: 0;
+  border-bottom: 4px dashed;
+  border-bottom: 4px solid \9;
+}
+.dropup .dropdown-menu,
+.navbar-fixed-bottom .dropdown .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  margin-bottom: 2px;
+}
+
+
+.clearfix:after,
+  .dl-horizontal dd:after,
+  .container:after,
+  .container-fluid:after,
+  .row:after,
+  .form-horizontal .form-group:after,
+  .btn-toolbar:after,
+  .btn-group-vertical > .btn-group:after,
+  .nav:after,
+  .navbar:after,
+  .navbar-header:after,
+  .navbar-collapse:after,
+  .pager:after,
+  .panel-body:after,
+  .modal-header:after,
+  .modal-footer:after {
+    clear: both;
+  }
+.clearfix:before,
+.clearfix:after,
+.dl-horizontal dd:before,
+.dl-horizontal dd:after,
+.container:before,
+.container:after,
+.container-fluid:before,
+.container-fluid:after,
+.row:before,
+.row:after,
+.form-horizontal .form-group:before,
+.form-horizontal .form-group:after,
+.btn-toolbar:before,
+.btn-toolbar:after,
+.btn-group-vertical > .btn-group:before,
+.btn-group-vertical > .btn-group:after,
+.nav:before,
+.nav:after,
+.navbar:before,
+.navbar:after,
+.navbar-header:before,
+.navbar-header:after,
+.navbar-collapse:before,
+.navbar-collapse:after,
+.pager:before,
+.pager:after,
+.panel-body:before,
+.panel-body:after,
+.modal-header:before,
+.modal-header:after,
+.modal-footer:before,
+.modal-footer:after {
+  display: table;
+  content: " ";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

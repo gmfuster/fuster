@@ -337,8 +337,8 @@
       </code>
     </pre>
     <br/>
-    Could also do this but less clear: <code><strong><u>var response = await callMe().catch((err) => &lbrace; console.error(err); &rbrace;);</u></strong></code><br/><br/>
-    You can also do: <code><strong><u>let response = await fetch(url); </u></strong></code> (in async function, try in browser's console, Calling fetch () returns a promise)<br/><br/>
+    Could also do this but less clear: <span class="notesStrong">var response = await callMe().catch((err) => &lbrace; console.error(err); &rbrace;);</span>><br/><br/>
+    You can also do: <span class="notesStrong">let response = await fetch(url); </span> (in async function, try in browser's console, Calling fetch () returns a promise)<br/><br/>
     If we call a function with await that just waits and then returns something, the wait will not wait (see explanation at top of section):<br/><br/>
     <pre>
       <code>
