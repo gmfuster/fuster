@@ -17,6 +17,7 @@ body button {
   border-width: 0px;
   border-radius: 10px;
   margin: 2px;
+  font-size: inherit;
 }
 body button:disabled { 
   background-color: lightgray;
@@ -141,8 +142,8 @@ body pre samp{
     background-color: transparent;
     text-decoration: underline;
   }
-  a:hover{  
-    background-color: lightyellow;
+  a:hover{      
+    background-color: deepskyblue;    
   }
   a:visited {
     color: lightyellow;
