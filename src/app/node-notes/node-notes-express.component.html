@@ -57,7 +57,107 @@
         app.listen(3000);
       </code>
     </pre>
+    Look also at this code which will not work OK.
+    <br/> <b>Some of the code here has the / path at the start, that is not the right way, it's just to see the examples</b><br/>
+    <pre>
+      <code>
+        const http = require("http");
+        const express = require('express');
 
+        const app = express();
+
+        //For localhost on the browser.  we will end up with "anything" in the console.  
+        //And the ANYTHING response in the browser. 
+        //if localhost/sayhi, we see "anything" in the console, then we see "sayhi" in the console, 
+        //but then we get a <b>"cannot set headers after they are sent to the client" error.</b>
+        //<b>Because we have the / path at the beginning it's going to math it even for localhost/sayhi</b>
+        app.use( "/", (req, res, next) => &lbrace;
+          console.log("anything");
+          res.send("&lt;h2&gt;ANYTHING!&lt;/h2&gt;");
+          next(); 
+        &rbrace; );
+
+
+        app.use( "/sayhi", (req, res, next) => &lbrace;
+          console.log("sayhi");
+          res.send("&lt;h2&gt;HI&lt;/h2&gt;");
+          next();
+        &rbrace; );
+
+        app.use("/sayhello", (req, res, next) => &lbrace;
+          console.log("sayhello");
+          res.send("&lt;h2&gt;HELLO!&lt;/h2&gt;");
+        &rbrace; );
+
+        app.listen(3000);
+      </code>
+    </pre>    
+    With the res.send on the / path commented out, by doing localhost/sayhi we get "anything" and "sayhi" in the console, and the HI in the browser.  So both 
+    the / and the sayhi paths will happen, but we don't have a send on the / path so this doesn't break.<br/><br/>
+
+    Now I want to try having 2 /sayhi ones, though only the second one will send a response.<br/>
+    <pre>
+      <code>
+        const http = require("http");
+        const express = require('express');
+
+        const app = express();       
+        
+        app.use( "/", (req, res, next) => &lbrace;
+          console.log("anything"); //NO SEND HERE        
+          next(); 
+        &rbrace; );
+
+
+        app.use( "/sayhi", (req, res, next) => &lbrace;
+          console.log("sayhi");
+          //NO SEND
+          next();
+        &rbrace; );
+
+        app.use( "/sayhi", (req, res, next) => &lbrace;
+          console.log("sayhi 2nd");
+          res.send("&lt;h2&gt;HI 2ND&lt;/h2&gt;");
+          next();
+        &rbrace; );
+
+        app.use("/sayhello", (req, res, next) => &lbrace;
+          console.log("sayhello");
+          res.send("&lt;h2&gt;HELLO!&lt;/h2&gt;");
+        &rbrace; );
+
+        app.listen(3000);
+      </code>
+    </pre>
+    In the above code, still doing localhost/sayhi,  the console will show:
+    <pre>
+      <samp>
+        anything
+        sayhi
+        sayhi 2nd
+      </samp>
+    </pre>
+    And the browser will have HI 2ND.  Doing localhost with the code above will print "anything" in the console and error GET on the browser.<br/>    
+  
+  
+    Similar to the above code but not having the next in the first sayhi:
+    <pre>
+      <code>
+       app.use( "/sayhi", (req, res, next) => &lbrace;
+         console.log("sayhi");        
+       &rbrace; );
+ 
+       app.use( "/sayhi", (req, res, next) => &lbrace;
+         console.log("sayhi2");
+         res.send("&lt;h2&gt;HI&lt;/h2&gt;");
+         next();
+       &rbrace; );
+      </code>
+    </pre>
+    The above code will print only one sayhi and will leave the browser hanging because we are not sending anything back after printing sayhi.
+    <br/><br/>
+    <b>It is best to leave the "/" path for the end.  The above was just to see what happens.  Put it as the last one!!</b>
+  
   </div>
-
+  
 </div> 
