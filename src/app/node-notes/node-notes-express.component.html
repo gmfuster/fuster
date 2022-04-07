@@ -8,7 +8,8 @@
   <div class="PaddedContents">
     
     This is a package you can install to help you with your node project. (npm install express, or npm install --save express<br/>
-    Once installed, you have a "express": "^4.17.3", under your dependencies in your packagage.json file.<br/>
+    Once installed, you have a "express": "^4.17.3", under your dependencies in your packagage.json file.  If your project doesn't have a packagage.json file, 
+    you can create one or copy it from somewhere else and clean it up, then run the install again and it will be updated.<br/>
     Then use it with <b>const express = require('express');</b><br/>
     Then you can do <b>const app = express();</b> and then create the server with it <b>const server = http.createServer(app);</b>
     With the above we have a functioning server but we don't have how to respond to requests yet.<br/>
@@ -29,7 +30,33 @@
         const server = http.createServer(app);
       </code>
     </pre>
+    Express will not send a default response. Instead of logging in the console (which shows in your server console not the browser), we could 
+    have done <code> res.send("&lt;h2&gt;Hello how are you&lt;/h2&gt;");</code> We get the default html/text but we can override it with res.setHeader.<br/>
+    Notice in the code above we have <code>const server = http.createServer(app); </code> and <code>server.listen(3000);</code><br/>
+    We can also do just this instead of those 2 above: <code>app.listen(3000);</code>
+    Remember that if we don't have a next() in the code, the next app.use is not going to happen, but, if we are using paths the code will be checked 
+    from top to bottom to see which use to use. <br/>
+    Bellow, entering localhost:3000/sayhi will return HI, localhost:3000/sayhello will return HELLO, and entering <b>nothing or anything else</b> will return ANYTHING.
+    <br/><br/>
+    <pre>
+      <code>
+        const app = express();
 
+        app.use(<b> "/sayhi"</b>, (req, res, next) => &lbrace;    
+          res.send("&lt;h2&gt;HI&lt;/h2&gt;");
+        &rbrace; );
+
+        app.use(<b>"/sayhello"</b>, (req, res, next) => &lbrace;
+          res.send("&lt;h2>HELLO!&lt;&gt;h2>");
+        &rbrace; );
+
+        app.use( <b>"/"</b>, (req, res, next) => &lbrace;
+          res.send("&lt;h2>ANYTHING!&lt;&gt;h2>");
+        &rbrace; );
+
+        app.listen(3000);
+      </code>
+    </pre>
 
   </div>
 
