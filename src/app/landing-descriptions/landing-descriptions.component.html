@@ -3,35 +3,76 @@
   <br /> 
   <div>
 
-    <div class="markClassCardWholePink">Better on a Computer! <br/>      
-    </div>
+    <!--<div class="markClassCardWholePink">Better on a Computer! <br/>      
+    </div>-->
    
     <br />
     
     <!--<div class="markClassCardWholeBlue">About</div>-->
-    <div>      
-      You can find some articles on <a href="https://gmfuster.medium.com/" target="_new">https://gmfuster.medium.com/</a> and some translations on <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_new">FreeCodeCamp Esp.</a><br/>
+    <div class="divsByRowCenter">  
+      <a href="https://gmfuster.medium.com/" target="_new" style="border:lightyellow solid 4px;">
+      <span style="height: 5vw; padding: 5px;">My Articles</span><br/>
+      <img alt="Medium"
+        src="assets/images/mediumLogo.png"
+        style="width:20vw; height:15vw; "
+        margin="5px"
+        class="rounded-circle d-inline-block align-top" />
+      </a>  
+
+      <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_new" style="border:lightyellow solid 4px;">
+        <span style="height: 5vw; padding: 5px;">My Translations</span><br/>
+        <img alt="freecodecamp"
+          src="assets/images/fcc_primary_small.svg"
+          style="width:20vw; height:15vw; "
+          margin="5px"
+          class="rounded-circle d-inline-block align-top" />
+        </a>  
+
+     <!-- <div style=" width:30vw; height: 20vw; margin:10px; border:deepskyblue solid 4px;">
+        My Articles<br/>
+        <a href="https://gmfuster.medium.com/" target="_new">https://gmfuster.medium.com/</a>
+      </div>
+      <div style="background-color:darkblue; width:30vw; height: 20vw; margin:10px; border:deepskyblue solid 4px;">3
+        My Translations<br/>
+        <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_new">FreeCodeCamp Esp.</a>
+      </div>-->
       <!--<b>Unrelated</b>, some Kindergarten activities at <a href="https://gmfuster.github.io/Bonico/#/" target="_new">https://gmfuster.github.io/Bonico/#/</a><br /><br /> -->
     </div>    
     
+    <br/><br/>
+
     <div class="markClassCardWholeBlue">Just for Fun</div>
-    <div class="markClassCardContentBlue">     
-      <!--<p style="border:3px solid deeppink; border-radius: 5px; width:100%; padding:3px; ">-->
-        <p>
-        <a [routerLink]='["/read-back"]'  >
-          Read backwards or Upside Down (from NYT feed because they did not require keys).
-        </a>
-      </p>      
-      <p>
-        <a [routerLink]='["/map-it"]'  >
-          See it on a map.
-        </a>
-      </p>
-      <p>
-        <a [routerLink]='["/memory-cards"]'  >
-          The old memory card game for 2 or 1.
-        </a>
-      </p>      
+    <div class="markClassCardContentBlue">  
+      <br/>
+      <div class="divsByRowCenter">  
+        <a [routerLink]='["/read-back"]' style="border:lightyellow solid 4px;">
+          <span style="height: 5vw; padding: 5px;">Read Like</span><br/>
+          <img alt="Read"
+            src="assets/images/readbackwards.svg"
+            style="width:20vw; height:15vw; "
+            margin="5px"
+            class="rounded-circle d-inline-block align-top" />
+          </a>  
+
+          <a [routerLink]='["/map-it"]' style="border:lightyellow solid 4px;">
+            <span style="height: 5vw; padding: 5px;">Some Maps</span><br/>
+            <img alt="Maps"
+              src="assets/images/seeitonmap.svg"
+              style="width:20vw; height:15vw; "
+              margin="5px"
+              class="rounded-circle d-inline-block align-top" />
+            </a>  
+
+            <a [routerLink]='["/memory-cards"]' style="border:lightyellow solid 4px;">
+              <span style="height: 5vw; padding: 5px;">Memory Card Game</span><br/>
+              <img alt="Memory Card Game"
+                src="assets/images/memorycardgame.svg"
+                style="width:20vw; height:15vw; "
+                margin="5px"
+                class="rounded-circle d-inline-block align-top" />
+              </a>                              
+      </div>     
+      <br/>
     </div>
     <br />
 

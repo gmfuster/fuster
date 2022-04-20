@@ -9,6 +9,18 @@
   font-size: 1.6vw;    
   background-color: rgb(48, 46, 46);
 }
+.divsByRow{  
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  flex-direction: row;  
+}
+.divsByRowCenter{  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-evenly;
+  flex-direction: row;  
+}
 body button { 
   background-color: deepskyblue;
   border-color: deepskyblue;  
