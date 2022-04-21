@@ -1,0 +1,456 @@
+<div class="PaddedContents">
+
+    <br/>
+    <h2 class="CenterMe">C# notes - Basics</h2>      
+    <h4 class="CenterMe">You can type the C# code  
+      <a class="CenterMe" href="https://replit.com/languages/csharp" target="_new">on replit.com</a> 
+      to see how it works <br/>   
+    </h4>
+    
+    <p class="HeadingSubTopic">InottifyPropertyChanged</p>
+    When you need to know that a property changed.<br/>
+
+    <img width="100%" src="assets\images\csharp\INotifyPropertyChanged.png" alt="Notify property changed" /><br/><br/>
+
+    A similar example for copy paste:<br/>
+    <pre>
+        <code>
+            using System;
+            <b>using System.ComponentModel;</b>
+
+            public static class Program &lbrace;   
+
+                public class WillChangeProperty:<b>INotifyPropertyChanged</b>&lbrace;
+                
+                    <b>public event PropertyChangedEventHandler PropertyChanged;</b>
+                    private string _theData = "";
+                    public string TheData &lbrace;
+                        get&lbrace;
+                        return this._theData ;
+                        &rbrace;
+                        set&lbrace;
+                        this._theData = value;
+                        <b>PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(this._theData));</b>
+                        &rbrace;            
+                    &rbrace;
+                    <b>public void WhatToDoOnChange(object sender, PropertyChangedEventArgs e)&lbrace;</b>
+                        Console.WriteLine("It changed!");
+                    &rbrace;
+                &rbrace;
+                
+                static void Main(string[] args) &rbrace;     
+                    WillChangeProperty w = new WillChangeProperty();
+                    <b>w.PropertyChanged += w.WhatToDoOnChange;</b>
+                    w.TheData = "Hello";
+                &rbrace;
+            &rbrace;
+
+        </code>
+    </pre>
+
+    <br/>
+    <br/>
+    
+    <p class="HeadingSubTopic">IComparable</p>
+
+    Implement it when you want to provide a method to compare your classes.<br/>
+    <img width="100%" src="assets\images\csharp\IComparable.png" alt="IComparable" /><br/><br/>
+
+    <pre>
+        <code>
+            public static class Program &&lbrace;;  
+
+                public class WillCompare:<b>IComparable</b>&lbrace;
+                
+                public string TheData &lbrace;get;set;&rbrace;
+                <b>public int CompareTo(object o)</b>&lbrace;
+                    <b>//same=0, o&gt; ret &gt;0, o&lt; ret &lt;0</b>
+                    if (((WillCompare)o).TheData.Length == this.TheData.Length)&lbrace;
+                    return 0;
+                    &rbrace;else if (((WillCompare)o).TheData.Length > this.TheData.Length)&lbrace;
+                    return 1;
+                    &rbrace;else return -1;
+                &rbrace;
+                &rbrace;
+                
+                static void Main(string[] args) &lbrace;     
+                    WillCompare w1 = new WillCompare();
+                    w1.TheData = "hello";
+                    WillCompare w2 = new WillCompare();
+                    w2.TheData = "helloooo";
+                    Console.WriteLine(<b>w1.CompareTo(w2)</b>);//1
+                &rbrace;
+            &rbrace;
+            
+        </code>
+    </pre>
+    <br/>
+
+    Once you have the above, you can sort a list of objects and it will be sorted based on the CompareTo.<br/>
+    With the same code as above:<br/>
+    <pre>
+        <code>
+            static void Main(string[] args) &lbrace;     
+                WillCompare w1 = new WillCompare();
+                w1.TheData = "hello";
+            WillCompare w2 = new WillCompare();
+                w2.TheData = "helloooo";
+            WillCompare w3 = new WillCompare();
+                w3.TheData = "hey";
+            List&lt;WillCompare&gt; l = new List&lt;WillCompare&gt;();
+            l.Add(w1);
+            l.Add(w2);
+            l.Add(w3);
+            l.Sort();
+            Console.WriteLine(l[0].TheData);//
+            Console.WriteLine(l[1].TheData);//
+            Console.WriteLine(l[2].TheData);//
+        &rbrace;
+        </code>
+    </pre>
+    <pre>
+        <samp>
+            helloooo
+            hello
+            hey
+        </samp>
+    </pre>
+    Change the way you do the CompareTo if you want the sorting to be this way:<br/>
+    <pre>
+        <samp>
+            hey
+            hello
+            helloooo
+        </samp>
+    </pre>
+
+    
+    <p class="HeadingSubTopic">IComparer</p>
+
+    
+    IComparable will help you in your sorting when you have control over the class you are sorting, 
+    so you can have the CompareTo the way you like it. However, it is possible that you have the ObjectForComparing objects, 
+    but instead of wanting the CompareTo in that class for your sort, now you want them sorting by some other way<br/>
+
+    You still have this class as before, but I have added TheNumber<br/>
+    <pre>
+        <code>
+            public class WillCompare:IComparable&lbrace;
+    
+                public string TheData &lbrace;get;set;&rbrace;
+                <b>public Int32 TheNumber &lbrace;get;set;&rbrace;</b>
+                public int CompareTo(object o)&lbrace;
+                //same=0, o&gt; ret &gt;0, o&lt; ret &lt;0
+                if (((WillCompare)o).TheData.Length == this.TheData.Length)&lbrace;
+                    return 0;
+                &rbrace;else if (((WillCompare)o).TheData.Length &lt; this.TheData.Length)&lbrace;
+                return 1;
+                &rbrace;else return -1;
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    We add another class, implementing IComparer, which we will use to compare the WillCompare objects, instead of using the objects own CompareTo.
+    We have to indicate what type of objects we will be using with this new class.  The Compare method here will just use the CompareTo of the Int32.<br/>
+    <pre>
+        <code>
+            public class WillCompare2:<b>IComparer&lt;WillCompare&gt;</b>&lbrace;
+                public int <b>Compare(WillCompare o1, WillCompare o2)</b>&lbrace;
+                return o1.TheNumber.CompareTo(o2.TheNumber)  ;
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    Now, to compare 2 WillCompare objects using this new Compare, and use it to sort the list, we would do this (I have changed all the strings 
+    to hello so they are all the same):<br/>
+    <pre>
+        <code>
+            static void Main(string[] args) &lbrace;     
+                WillCompare w1 = new WillCompare();
+                w1.TheData = "hello";
+                w1.TheNumber = 100;
+                WillCompare w2 = new WillCompare();
+                w2.TheData = "hello";
+                w2.TheNumber = 50;
+                WillCompare w3 = new WillCompare();
+                w3.TheData = "hello";
+                w3.TheNumber = 200;
+                
+                List&lt;WillCompare&gt; l = new List&lt;WillCompare&gt;();
+                l.Add(w1);
+                l.Add(w2);
+                l.Add(w3);
+
+                WillCompare2 c2 = new WillCompare2();
+                l.Sort(<b>c2</b>);
+            
+                Console.WriteLine(l[0].TheNumber);//50
+                Console.WriteLine(l[1].TheNumber);//100
+                Console.WriteLine(l[2].TheNumber);//200
+        }
+        </code>
+    </pre>
+    
+    <p class="HeadingSubTopic">IEquitable</p>
+
+    You know you can use equals to compare strings, and you want to have something similar for your class, with whatever criteria you want to use.<br/>
+    The class that will have the Equals is this one, and notice that we are indicating the object have to be equaled to a string (could have been the object type or 
+    anything else). Notice we consider the object equal to the string if the lengths match.<br/>
+    <pre>
+        <code>
+            public class WillEquate:<b>IEquatable&lt;string&gt;&lbrace;</b>
+    
+                public string TheData &lbrace;get;set;&rbrace; 
+                <b>public bool Equals(string s)&lbrace;</b>
+                if (this.TheData.Length == s.Length)&lbrace;
+                    return true;
+                &rbrace;
+                return false;
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    And this is how we would use it<br/>
+    <pre>
+        <code>
+            static void Main(string[] args) &lbrace;    
+                WillEquate w1 = new WillEquate();
+                w1.TheData = "five5";
+                string s = "hello";
+                string s2 = "hey";
+                Console.WriteLine(<b>w1.Equals(s)</b>);//true
+                Console.WriteLine(<b>w1.Equals(s2)</b>);//false
+            &rbrace;
+        </code>
+    </pre>
+
+    
+    <p class="HeadingSubTopic">IEqualityComparer</p>
+
+    Similar to the IEquatable, but you create it in another class and the method will take 2 arguments to compare.<br/>
+    You create the class you will use to compare, and implement IEqualityComparer with whatever type you want to compare.  In the Equals, 
+    take as arguments the object types and choose how you want to check if they are equal.<br/>
+    To use it just create the objects you want to compare and the object for the class that will compare them.<br/>
+
+    <img width="100%" src="assets\images\csharp\IEqualityComparer1.png" alt="IEquialityComparer" /><br/><br/>
+
+    The above code is OK, but if you want the GetHashCode to work in accordance with the Equals, 
+    so for instance you don’t get duplicate keys in a Dictionary, it should look more like this (notice the new Equals):<br/>
+
+    <img width="100%" src="assets\images\csharp\IEqualityComparer2.png" alt="IEquialityComparer" /><br/><br/>
+
+
+    
+    <p class="HeadingSubTopic">IEnumerable</p>
+    
+    You need to add this when you want to be able to iterate through a custom <b>collection</b><br/>
+    This is one way to do it:<br/>
+    <pre>
+        <code>
+            using System;
+            <b>using System.Collections;//Not Generic</b>
+            using System.Collections.Generic;//for List
+
+            public static class Program &lbrace;   
+
+                public class MyObject
+                &lbrace;
+                    public string TheColor &lbrace; get; set; &rbrace;       
+                &lbrace;
+                public class MyObjectList: <b>IEnumerable&lbrace;</b>
+    
+                    List&lt;MyObject&gt; myl = new List&lt;MyObject&gt;();
+                    public MyObjectList()&lbrace;
+                    myl.Add(new MyObject&lbrace;TheColor="red"&rbrace;);
+                    myl.Add(new MyObject&lbrace;TheColor="blue"&rbrace;);
+                    myl.Add(new MyObject&lbrace;TheColor="yellow"&rbrace;);
+                &rbrace;
+                public <b>IEnumerator&lbrace;MyObject&rbrace; GetEnumerator()&lbrace;</b>
+                    //could have used:
+                    //<b>return myl.GetEnumerator();</b>
+                    foreach (MyObject o in myl)&lbrace;
+                    <b>yield return o;</b>
+                &rbrace;
+            &rbrace;
+    
+            <b>IEnumerator IEnumerable.GetEnumerator()&lbrace;</b>
+                <b>return this.GetEnumerator();</b>
+            &rbrace;
+        &rbrace;
+        
+        static void Main(string[] args) &lbrace;     
+            MyObjectList list = new MyObjectList();
+            //foreach will be what GetEnumerator is returning.
+            <b>foreach(MyObject mo in list)&lbrace;</b>
+                Console.WriteLine(mo.TheColor);
+            &rbrace;
+            &rbrace;
+        &rbrace;
+
+        </code>
+    </pre>
+    In the code above we are just adding the objects to the list in the constructor, but in real code we will want to add them to the list from the 
+    code that will be using the list.  So instead of adding them on the constructor, we would do this in the MyObjectList<br/>
+    <pre>
+        <code>
+            public MyObject this[int index]&lbrace;
+                get &lbrace;return myl[index];&rbrace;
+                set &lbrace;myl.Insert(index, value);&rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    And we will use this to create the list we are going to use<br/>
+    <pre>
+        <code>
+            MyObjectList list = new MyObjectList();
+            list[0] = new MyObject&lbrace;TheColor="red"&rbrace;;
+            list[1] = new MyObject&lbrace;TheColor="blue"&rbrace;;
+            list[2] =new MyObject&lbrace;TheColor="white"&rbrace;;
+        </code>
+    </pre>
+    We could also have done this, or whatever we want for the method and populating the list:<br/>
+    <pre>
+        <code>
+            public void Add (MyObject o)&lbrace;
+                myl.Add(o);
+            &rbrace;
+
+            //and then to use it
+            
+            MyObjectList list = new MyObjectList();
+            list.Add(new MyObject&lbrace;TheColor="red"&rbrace;);
+            //etc
+        </code>
+    </pre>
+
+
+    
+    <p class="HeadingSubTopic">IEnumerator</p>
+    IEnumerable and the use of foreach hide the complexity of the enumerator if you just use the enumerator of the list itself, like 
+    in the examples above. But you can use your own Enumerator.<br/>
+    Same example above but now using our own enumerator could look something like this.  Change the enumerator to be whatever you need it to be<br/>
+    <pre>
+        <code>
+            using System;
+            using System.Collections;//Not Generic
+            using System.Collections.Generic;//for List
+            
+            public static class Program &lbrace;   
+            
+                public class MyObject
+                &lbrace;
+                    public string TheColor &lbrace; get; set; &rbrace;       
+                &rbrace;
+                
+                public class MyObjectList: IEnumerable&lbrace;
+                            
+                    List&lt;MyObject&gt; myl = new List&lt;MyObject&gt;();
+            
+                    public void Add (MyObject o)&lbrace;
+                        myl.Add(o);
+                    &rbrace;
+            
+                    public IEnumerator&lt;MyObject&gt; GetEnumerator()&lbrace;        
+                        <b>return new SomeEnumerator(myl);</b>
+                    &rbrace;
+                            
+                    IEnumerator IEnumerable.GetEnumerator()&lbrace;
+                        return this.GetEnumerator();
+                    &rbrace;
+                &rbrace;
+            
+                <b>public class SomeEnumerator:IEnumerator&lt;MyObject&gt; &lbrace;</b>
+                    private int _index = -1;
+                    public int current =&gt; this._index;
+                    private List&lt;MyObject&gt; _l = null;
+                    //MyObject IEnumerator&&lt;MyObject&gt;.Current =&gt; this._l[this._index];
+                            
+                    public SomeEnumerator(List&lt;MyObject&gt; l)&lbrace;
+                        this._l = l;
+                    &rbrace;
+            
+                    public void Dispose()&lbrace;&rbrace;
+            
+                    public bool MoveNext()&lbrace;       
+                        this._index++;
+                        if (this._index &lt; this._l.Count)&lbrace;
+                            return true;        
+                        &rbrace;else return false;
+                    &rbrace;
+            
+                    public void Reset()&lbrace;
+                        this._index = -1;
+                    &rbrace;
+
+                    MyObject IEnumerator&lt;MyObject&gt;.Current&lbrace;
+                
+                    <b>get &lbrace;     
+                        this._l[this._index].TheColor += " Custom";
+                        return this._l[this._index];
+                        &rbrace;</b>
+                    &rbrace;
+
+                    object IEnumerator.Current
+                        &lbrace;
+                            get
+                            &lbrace;          
+                                return this._l[this._index];  //has to be implemented but not really coming here
+                            &rbrace;
+                        &rbrace;
+                    &rbrace;
+                &rbrace;
+                                
+            static void Main(string[] args) &lbrace;     
+                    MyObjectList list = new MyObjectList();
+                    list.Add(new MyObject &lbrace;TheColor="red"&rbrace;);
+                    list.Add(new MyObject &lbrace;TheColor="blue"&rbrace;);
+                    list.Add(new MyObject &lbrace;TheColor="white"&rbrace;);
+                    foreach(MyObject mo in list)&lbrace;
+                        Console.WriteLine(mo.TheColor);
+                    &rbrace;
+                &rbrace;
+            &rbrace;
+
+        </code>
+    </pre>
+    Will add Custom to the items before returning, to print:
+    <pre>
+        <samp>
+            red Custom
+            blue Custom
+            white Custom 
+        </samp>
+    </pre>
+    Instead of the code above, we could also have returned the current item with these changes in the IEnumerator:<br/>
+    <pre>
+        <code>
+            public class SomeEnumerator:IEnumerator //without the &lt;MyObject&gt;
+
+            ...
+
+            MyObject Current&lbrace;
+
+                get&lbrace;       
+                this._l[this._index].TheColor += " Custom";
+                return this._l[this._index];
+                &rbrace;
+            &rbrace;
+            object IEnumerator.Current
+            &lbrace;
+                get
+                &lbrace;           
+                    return this.Current;                 
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    But that means using the Enumerator has to be changed too:
+    <pre>
+        <code>
+            public <b>IEnumerator</b> GetEnumerator()&lbrace;
+                return new SomeEnumerator(myl) ;
+            &rbrace;
+        </code>
+    </pre>
+    
+</div>
