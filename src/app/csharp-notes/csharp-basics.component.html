@@ -1058,7 +1058,7 @@
 
             switch (fruit)
             &lbrace;
-                //theapple or wahtever you want, just something so we can reference inside de code.
+                //theapple or whatever you want, just something so we can reference inside de code.
                 <b>case Apple theapple:</b>
                     Console.WriteLine(theapple.Name);
                     Console.WriteLine(theapple.Color);
@@ -1127,7 +1127,12 @@
                 public FruitType? FruitType &lbrace; get; set; &rbrace;
 
                 //need to have this here to be able to use the switch this way
-                public void <b>Deconstruct</b>(out string? name, out string? color, out FruitType? ft)
+                public void <b>Deconstruct(out string? name, out string? color, out FruitType? ft)</b>
+                &lbrace;
+                    name = Name;
+                    color = Color;
+                    ft = FruitType;
+                &rbrace;
             &rbrace;
 
             public class FruitType
@@ -1138,13 +1143,13 @@
             Fruit fruit = new Fruit();
             fruit.Name = "Orange";
             fruit.Color = "Orange";
-            fruit.FruitType = new FruitType();
+            <b>fruit.FruitType = new FruitType();</b>
             fruit.FruitType.TheType = "Citric";
 
             //need the Deconstruct method in the class to be able to do this.  Otherwise gets an error.
-            var result = fruit switch
+            <b>var result = fruit switch</b>
             &lbrace;
-                Fruit("Orange", "Orange", null) => "Orange with no type",
+                <b>Fruit("Orange", "Orange", null) => "Orange with no type",</b>
                 Fruit("Orange", "Orange", _) => "Orange",
                 _ => "Different"
             &rbrace;
@@ -1152,18 +1157,18 @@
             //If we don't have a FruitType we will get  "orange with no type"
             //if the color was set to red, we would get Different.
         </code>
-    </pre>>
-    We could also have something like this to check on the FruitType itself (note this doesn't cover all possible cases)
+    </pre>
+    We could also have something like this to check on the FruitType itself (note this doesn't cover all possible cases we can check for)
     <pre>
         <code>
             var result = fruit switch
             &lbrace;
-                &lbrace; FruitType: &lbrace; TheType: "Citric" &rbrace;&rbrace; => "Citric",
+                <b>&lbrace; FruitType: &lbrace; TheType: "Citric" &rbrace;&rbrace; => "Citric",</b>
                 &lbrace; FruitType: null &rbrace; => "no type",		
             &rbrace;
 
-            //add this so we won't get an exception for a case that is not covered.
-            _ => null,
+            <b>//add this so we won't get an exception for a case that is not covered.
+            _ => null,</b>
         </code>
     </pre>
     We can also use this on tuples, this example from the MS docs.
@@ -1197,7 +1202,39 @@
             Developer &lbrace; YearOfBirth: &gt;= 1980 and &lt;= 1989 &rbrace; dev
         </code>
     </pre>
+   
+    <br/>
+    Another example with c#8<br/>
+    <pre>
+        <code>
+            ...
+            Fruit fruit2 = new Fruit();
+            fruit2.Name = "Apple";
+            fruit2.price = 200;
+            
+            var result = <b>fruit2</b> switch
+            &lbrace;
+                <b>Fruit</b> f when f.price &lt;=100	<b>=&gt;</b> "Less than 100",
+                Fruit f when f.price &lt;= 200 =&gt; "Less than 200",
+                <b>Fruit =&gt;</b> "something else"
+            &rbrace;;
+            Console.WriteLine(result);// prints Less than 200
+        </code>
+    </pre>
+    The same thing with C#9, in the switch itself<br/>
+    <pre>
+        <code>
+            var result = fruit2 switch
+            &lbrace;
+                <b>Fruit f => f.price switch</b>
+                &lbrace;
+                    <b>&lt;= 100 =&gt; "Less than 100",</b>
+                    &lt;= 200 =&gt; "Less than 200",
+                    <b>_ =&gt;</b> "something else"
+                &rbrace;
+                //we could also have other types here checking for other things, inside of the same fruit2 switch (provided types are compatible)
+            &rbrace;;
+        </code>
+    </pre>
     There is more than what is mentioned above, so check the documentation for more and for how to do it, or understand something you see.
-
-
 </div>
