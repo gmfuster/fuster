@@ -349,6 +349,18 @@
     do something when there is a completion, we can add a third argument to our observer, with no arguments, like <br/>
     <b>this.whatever = myObservable.subscribe(value => console.log(value), error => &lbrace;whatever&rbrace;, () => &lbrace;whatever&rbrace; );</b><br/>
     An error will cancell the observable, that is not the same as a completion.
+    <br/><br/>
+    <b>Operators in the rxjs library:</b><br/>
+    You can import the available operators from "rxjs/operators".  map is one of the most commonly used ones.  You can use this operators inside the code 
+    of the observable you are creating. But you can also use them in your assignment of myObservable to this.whatever.  (so you can get the data with some 
+    changes through the operators). Use myObservable.pipe( and in here your operators). If you need various operators, you have them here separated my commans,
+    but remember to import the ones you want to use. They will execute on the data of the observable, in the order in which you put them in.<br/>
+    Check out more at <a href="https://rxjs.dev/guide/operators" target="_new">https://rxjs.dev/guide/operators</a>
+    <br/><br/>
+    Another interesting thing from rxjs is <a 
+    href="https://rxjs.dev/guide/subject#:~:text=What%20is%20a%20Subject%3F%20An%20RxJS%20Subject%20is,independent%20execution%20of%20the%20Observable%29%2C%20Subjects%20are%20multicast."
+    target="_new">
+    rxjs subjects</a>
 
 
 
