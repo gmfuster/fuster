@@ -290,7 +290,67 @@
     </div>
     <br/>
     <br/>
+
     <hr class="hrClass" />
+    <p class="HeadingSubTopic">Observables</p>
+    An Observable is a data source.  We can use it importing the RxJS package.  Your code can be the observer to this observable.  There 
+    are three types of data packages you can receive with these: data, errors, completions.  Observables are like a different approach to promises.<br/>
+    You can install the package with <b>npm install --save rxjs@6</b> or whatever version you want.  You can also install <b>npm install --save rxjs-compat</b>
+
+    <br/>
+    In previous code we have used this.route.params.subscribe.  params is an observable.  In general, you will not need to create your own observables, but just 
+    to know, a little bit here.<br/>
+    To create your own observables, which are not a part of JS or TypeScript, you need <b>package rxjs</b>.  One of the easiest ways is importing <b>"interval"</b> from 
+    the package.<br/>
+    <pre>
+      <code>
+        <b>import &lbrace;interval, subscription&rbrace; from 'rxjs';</b>
+
+        //in the ts file that's going to have this code, implement also from onDestroy so we can call to unsubscribe when we are no longer in this code. 
+
+        ngOnit()&lbrace;
+          //send value every second, we can subscribe like this
+          //interval(period:1000).subscribe(next:value => console.log(value));
+          //or we could also store the above line in a variable, say 
+          <b>this.whatever = interval(period:1000).subscribe(next:value => console.log(value));</b>
+        &rbrace;
+
+        //if we are storing the subscription as above, now we can unsubscribe when we are done.
+        <b>onDestroy()&lbrace;</b>
+          <b>this.whatever.unsubscribe;</b>
+        &rbrace;
+      </code>
+    </pre>
+    It is important to unsubscribe so we don't end up with a memory leak, or wasting resources.  When we are using the Angular observables, like the params one,
+    Angular will unsubscribe automatically so we don't have to do it.  interval fires a number every second or whatever interval we give.  What if instead of 
+    subscribing to the Angular params, or the rxjs interval above we want to <b>subscribe to our own Observable?</b><br/>
+    The subscribe and unsubscribe is going to be the same as above, but instead of interval(period:1000) we will use <b>myObservable.subscribe(...as above);</b>
+    So creating the myObservable (use setInterval and indicate how often and what value to send):<br/>
+    <pre>
+      <code>
+        const <b>myObservable</b> = Observable.create( //Observable has to be imported from rxjs
+          <b>observer</b> => &lbrace;
+            let <b>value</b> = 0;
+            <b>setInterval</b> ( handler: () =>
+              &lbrace;
+                observer.next(<b>value</b>);
+                value = value + 10;
+              &rbrace;  , timeout:1000
+            );
+          &rbrace;
+        )
+      </code>
+    </pre>
+    The observer above, in the myObservable code, could also be throwing an error with <b>observer.error(new Error(message:"some error"));</b><br/>
+    If we don't handle the possibility of an error when we are observing, the code will just break.  If we want to handle it, we can add another argument to the 
+    <b>this.whatever = interval(period:1000).subscribe(next:value => console.log(value));</b>.  It could be something like 
+    this.whatever = myObservable.subscribe(value => console.log(value), error => &lbrace;whatever&rbrace;);<br/>
+    Once the observable throws an error, it gets cancelled. We can also complete the observable in the code with <b>observer.complete()</b>  If we want to 
+    do something when there is a completion, we can add a third argument to our observer, with no arguments, like <br/>
+    <b>this.whatever = myObservable.subscribe(value => console.log(value), error => &lbrace;whatever&rbrace;, () => &lbrace;whatever&rbrace; );</b><br/>
+    An error will cancell the observable, that is not the same as a completion.
+
+
 
   </div>
 
