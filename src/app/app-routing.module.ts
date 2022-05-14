@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { HomeComponent } from './home/home.component';
 import { AngularNotesComponent } from './angular-notes/angular-notes.component';
 import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-svc-routing.component';
+import { AngularNotesFormsComponent } from './angular-notes/angular-notes-forms.component';
 import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes-svc-routing', component: AngularNotesSvcRoutingComponent, pathMatch: 'full' },  
+  { path: 'angular-notes-forms', component: AngularNotesFormsComponent, pathMatch: 'full' },  
   { path: 'dynamic-notes/:id', component: DynamicNotesComponent, pathMatch: 'full' },  
   { path: 'angular-notes-noactivate', component: AngularNotesComponent, canActivate:[ForCanActivate], canDeactivate:[ForCanDeActivate], pathMatch: 'full' },  
 
@@ -56,8 +58,10 @@ const routes: Routes = [
 
 ];
 
+const routerOptions :ExtraOptions ={ anchorScrolling:"enabled", scrollPositionRestoration:"enabled", onSameUrlNavigation: "reload"}
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes), CommonModule],
+  imports: [RouterModule.forRoot(routes,routerOptions ), CommonModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

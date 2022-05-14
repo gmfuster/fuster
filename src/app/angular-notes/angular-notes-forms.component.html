@@ -1,0 +1,47 @@
+
+<div>
+  <h2 class="CenterMe">Angular notes - Forms</h2>  
+  <h3 class="CenterMe">Input fields, in general, take only numbers. </h3>
+
+
+  <div class="PaddedContents">
+
+    To use forms, <b>import &lbrace; FormsModule, ReactiveFormsModule  &rbrace; from '@angular/forms';</b>  Also include them under the imports in the 
+    app.module.ts.<br/>  Angular will create a JavaScript representation of our form (which we indicate with the html form).  To tell Angular that one of 
+    the elements needs to be a control, we use ngModel and we need to set the name attribute (html attribute) to something. <b>&lt;input... ngModel name="someName"</b><br/>
+    In your Submit button, don't call your submit event in the ts file from the (click) of the button.  Instead, set the type of the button to submit and 
+    use the ngSubmit in your form html element.  <b>&lt;form (ngSubmit) = "onSubmit()"...</b>
+    
+    <p class="HeadingSubTopic">Some basic form</p>   
+    Just doing a little form here:<br/>
+    <pre>
+      <code>
+        &lt;form (ngSubmit)="onSubmit(f)" #f&gt;
+          &lt; input type="number" ngModel name="theNumber" /&gt;
+          &lt; button type="submit"&gt;Submit HTMLFormElement &lt; /button &gt;
+        &lt;/form &gt;
+      </code>
+    </pre>
+    <form (ngSubmit)="onSubmit(f)" #f>
+      <input type="number" ngModel name="theNumber"/>
+      <button type="submit">Submit HTMLFormElement</button>
+    </form>
+    You need to have the onSubmit(f) in the ts file.  (or onSubmit() if you don't need anything passed).  The way the function is above, the f 
+    being passed will be the html form.  <br/>
+    The form below is similar to the one above, except we have <b>(ngSubmit)="onSubmit(f2)" #f2="ngForm"</b>.  That means that what gets passed to onSubmit will 
+    be the JS object and not the HTMLFormElement.  This object is the representation Angular has for the form.  With the controls that we mark with ngModel being there.<br/>
+    <form (ngSubmit)="onSubmit(f2)" #f2="ngForm">
+      <input type="number" ngModel name="theNumber"/>
+      <button type="submit">Submit JS object</button>
+    </form>
+
+    <hr class="hrClass" />
+    
+    <p class="HeadingSubTopic">ViewChild</p>  
+
+    Another way to access the form from the ts file is the      
+    <a [routerLink]='["/angular-notes"]' fragment="viewchild">ViewChild</a> mentioned in the base notes.
+
+  </div>
+
+</div> 
