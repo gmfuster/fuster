@@ -1,5 +1,6 @@
 //import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 
 @Component({
@@ -9,12 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AngularNotesFormsComponent implements OnInit {
-  
+@ViewChild('f3') myForm : NgForm | undefined;
+@ViewChild('f4') myFormSecond : NgForm | undefined;
   ngOnInit(){
     window.scroll(0,0);
   }
   
   onSubmit(form:any){
     alert(form);
+  }
+  onSubmitNA(){
+    alert(this.myForm);
+    //console.log(this.myFormSecond);
   }
 }

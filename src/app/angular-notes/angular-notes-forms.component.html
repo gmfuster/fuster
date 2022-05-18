@@ -42,8 +42,67 @@
     Another way to access the form from the ts file is the   
     <a href="/angular-notes/#viewchild">ViewChild</a>
     <!--TODO figure out why this doesn't work and fix instead of just using the href above-->
-    <!--<a [routerLink]='["/angular-notes"]' fragment="viewchild">ViewChild</a>--> mentioned in the base notes.
+    <!--<a [routerLink]='["/angular-notes"]' fragment="viewchild">ViewChild</a>--> mentioned in the base notes.<br/>
+
+    For the form above, using viewchild would look like this:<br/>
+    <form (ngSubmit)="onSubmitNA()" #f3="ngForm">
+      <input type="number" ngModel name="theNumber"/>
+      <button type="submit">Submit with viewchild</button>
+    </form>
+    The form is similar to the above ones but notice the differences here:
+    <pre>
+      <code>
+        form (ngSubmit)="onSubmitNA<b>()</b>" #f3="ngForm"
+      </code>
+    </pre>
+    And in the ts file, to get the form:
+    <pre>
+      <code>
+        <b>@ViewChild('f3') myForm : NgForm | undefined; </b>
+        //it will be NgForm but need to say it could be undefined because not initializing it in constructor.
+        //then later in the onSubmitNA.
+        alert(this.myForm);
+      </code>
+    </pre>
+
+    <p class="HeadingSubTopic">Validation</p>  
+    In the form below we have the input number as <b>required</b>.  That means we can still submit it, but if we check it in the console we will see valid:false.<br/>
+    <b>Make sure you don't have the same id for different forms because then you will be using the first one found in the ts file.</b>  You could also have <b>
+      email</b> in a field.  If the email entered is not valid, the form will also be valid:false. Not only the form is not valid, whatever control is making it 
+      fail will also be invalid.  Inspecting the element in the browser will also include some information on the fields, including an ng-invalid when or ng-valid tags.
+
+  <form (ngSubmit)="onSubmitNA()" #f4="ngForm">
+    <input type="number" ngModel name="theNumber" required/>
+    <button type="submit">Submit with required</button>
+  </form>
+  Another form here checking the form for its validity.  If not valid (no number on required field, disable the button).
+  <form (ngSubmit)="onSubmitNA()" #f5="ngForm">
+    <input type="number" ngModel name="theNumber" required/>
+    <button type="submit" [disabled]="!f5.valid">Submit with required</button>
+  </form>
+  The above form looks like this<br/>
+  <pre>
+    <code>
+      &lt;form (ngSubmit)="onSubmitNA()" #f5="ngForm"&gt;
+      &lt;input type="number" ngModel name="theNumber" <b>required</b>/&gt;
+      &lt;button type="submit" <b>[disabled]="!f5.valid"</b>&gt;Submit with required&lt;/button&gt;
+    </code>
+  </pre>
+  Since Angular is going to add those ng-invalid labels to the invalid firms and form, we can take advantage of that by creating a css class with the same names.
+  For the forms here I have:
+  <pre>
+    <code>
+      input.ng-invalid&lbrace;
+        background-color: firebrick;
+    &rbrace;
+    </code>
+  </pre>
+  We could also have something like this <b>input.ng-invalid.ng-touched</b> and it won't be marked until the user has done something in the field and left it.
+
+  <p class="HeadingSubTopic">Validation Messages</p>  
+
 
   </div>
 
+  
 </div> 

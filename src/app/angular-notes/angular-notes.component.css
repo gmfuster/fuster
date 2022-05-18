@@ -1,3 +1,11 @@
 .redClass{
     color:red;
 }
+
+input.ng-invalid{
+    background-color: firebrick;
+}
+
+/*input.ng-invalid.ng-touched{
+    background-color: orange;
+}*/
