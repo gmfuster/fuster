@@ -9,6 +9,11 @@
   font-size: 1.6vw;    
   background-color: rgb(48, 46, 46);
 }
+.homeInit{
+  position: absolute;
+  top:0px;
+  width:100%;
+}
 .divsByRow{  
   display: flex;
   flex-wrap: wrap;
@@ -136,6 +141,7 @@ body pre samp{
     border: 3px skyblue solid;  
     border-bottom: 0;  
     text-align: center;
+    background-color: teal;
   }
   .markClassCardWholePink {
     /*background-color: skyblue;*/
