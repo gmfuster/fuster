@@ -65,6 +65,7 @@
       </code>
     </pre>
 
+    <hr class="hrClass" />
     <p class="HeadingSubTopic">Validation</p>  
     In the form below we have the input number as <b>required</b>.  That means we can still submit it, but if we check it in the console we will see valid:false.<br/>
     <b>Make sure you don't have the same id for different forms because then you will be using the first one found in the ts file.</b>  You could also have <b>
@@ -99,10 +100,33 @@
   </pre>
   We could also have something like this <b>input.ng-invalid.ng-touched</b> and it won't be marked until the user has done something in the field and left it.
 
+  <hr class="hrClass" />
   <p class="HeadingSubTopic">Validation Messages</p>  
+  This form shows a text if the value in the input is valid (a number)
+  <form (ngSubmit)="onSubmitNA()" #f5="ngForm">
+    <input type="number" ngModel name="theNumber" #theNumber= "ngModel" required/>
+    <button type="submit" [disabled]="!f5.valid">Submit with required</button>
+    <span *ngIf="theNumber.valid">Will show if value is valid.</span>
+  </form>
+  The form is like the previous one with some additions:<br/>
+  <pre>
+    <code>
+      ...
+      &lt;input type="number" ngModel name="theNumber" <b>#theNumber= "ngModel"</b> required/&gt;
+      ...
+      &lt;span <b>*ngIf="theNumber.valid"</b>&gt;Will show if value is valid.&lt;/span&gt;
+    </code>
+  </pre>
+  You could also use ! in the if if you want it to show when it is not valid.  Also, you could include theNumber.touched in the if if you want it to 
+  just happen once the user has changed something on it.  
+
+  <hr class="hrClass" />
+  <p class="HeadingSubTopic">Default Values</p>  
 
 
-  </div>
+
+</div>
+
 
   
 </div> 
