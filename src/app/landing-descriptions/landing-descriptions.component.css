@@ -6,15 +6,22 @@
   margin-left:6vw;
   margin-right:6vw;
 }
+
 .mainBanner{
-  width:100%;
-  background-color: skyblue;
-  color:navy;
+  width:100%;  
+  color:lightyellow;
+
+  background: rgba(39, 191, 245, 0.30);
+  backdrop-filter: blur( 5.5px );
+  -webkit-backdrop-filter: blur( 5.5px );    
+
+  border-radius: 10px;;
 }
 .mainParagraph{
   padding-left: 5%;
   padding-right: 5%;
-  font-size: 6vh;
+  font-size: 5vh;
   text-align: center;
 }
+
 

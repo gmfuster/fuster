@@ -84,8 +84,7 @@
     <code ngNonBindable>&lt;div*ngFor="let item of theNumArray;"&gt;</code><br />    
     <code ngNonBindable>ts file : onValueChanged(event:KeyboardEvent)...for(let i = 1; i <= parseInt(event.key); i++) populate theNumArray</code><br />    
     Enter a number from 1 to 5 (you can enter more too) and the code will show that many lines.<br/>  
-    You can also add let i = index in the ngFor to get the index of the iteration.<br/>
-    You can also use the 
+    You can also add let i = index in the ngFor to get the index of the iteration.<br/>    
     <input type="number" (keydown)="onValueChanged($event)" (input)="onValueChangedArrows($event)" [(ngModel)]="theArraySize"/><br/><br/>
     <div *ngFor = "let item of theNumArray;"> {{item}}</div>
     <br/>
@@ -95,9 +94,10 @@
     <p class="HeadingSubTopic">Angular Directive - ngSwitch</p>
     <code ngNonBindable>&lt;div [ngSwitch]="theColor" [ngStyle]= "&lbrace; border:'2px solid skyblue'&rbrace;"/&gt;</code><br/>
     <code ngNonBindable>&lt;p elements inside the div with the ngSwitch: *ngSwitchCase="'aqua'"/&gt;</code><br/>
-    The random color button above returns aqua, red, pink, yellow, green, and gray.  Have a switch for the theColor variable for each of those.<br/>
+    The random color button returns aqua, red, pink, yellow, green, and gray.  Have a switch for the theColor variable for each of those.<br/>
     Notice the single quotes inside the "" on the case elements.  If numbers, don't include the single quotes.  The color is not changing, but the word will change 
     to match the theColor value.<br/>
+    Have a ngSwitchDefault as the last case.<br/>
     <button (click)="onRandomColor()">Random Color</button><br/><br/>
     <div [ngSwitch]="theColor" [ngStyle]="{border:'2px solid skyblue'}">
       <p *ngSwitchCase="'aqua'">aqua</p>
@@ -117,7 +117,7 @@
     <code>@Input() myColor :string="";</code><br />
     <code>@Input('myTextAlias') myText :string="";</code><br />    
     <code>child component: [ngStyle] has backgroundColor:myColor</code><br/>
-    <code ngNonBindable>on child component: &lbrace;&lbrace; myText &rbrace;&rbrace; -- use the variable name, not the alias name </code>
+    <code ngNonBindable>on child component: &lbrace;&lbrace; myText &rbrace;&rbrace; -- use the variable name, not the alias name </code><br/>
     In this angular-notes component we have a theColor variable used above.  Using it here again, but this time, include also a child component
     which will change its background based on the value we get.  It will also display the text sent to it as an alias.<br/>
     (Disregard the button in the child component, it is not being listened to in this code).<br/>
