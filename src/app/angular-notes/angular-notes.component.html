@@ -13,11 +13,11 @@
 
     
     <p class="HeadingSubTopic">String Interpolation</p>   
-    <code ngNonBindable>{{theVariable}}</code><br />
-    <code>&lt; input #theInput type="number"/&gt; </code><br />
-    <code> &lt; button (click)="onClickButton1(theInput.value)"&gt; </code><br />
-    Type something in this input set as #theInput (only numbers) <input #theInput type="number" /> and send it with this button with (click)="onClickButton1(theInput.value)
-     <button (click)="onClickButton1(theInput.value)">send it</button>. It displays in the marked field below, which displays theVariable.<br />
+    <code ngNonBindable>{{someVariable}}</code><br />
+    <code>&lt; input #someInput type="number"/&gt; </code><br />
+    <code> &lt; button (click)="onClickButton1(someInput.value)"&gt; </code><br />
+    Type something in the <input #theInput type="number" /> and send it with the button that has the (click).
+     <button (click)="onClickButton1(theInput.value)">send it</button>. If you are setting someVariable in your code, you can use it with the brackets.<br />
     <mark>{{theVariable}}</mark>
 
     <hr class="hrClass" />
@@ -36,19 +36,19 @@
     <p class="HeadingSubTopic">2-way Binding</p>
     <code ngNonBindable>&lt;input type="number"[(ngModel)]="theVariable"/&gt;</code><br />
     <code ngNonBindable>app.module.ts -- import FormsModule from '@angular/forms'</code><br />
-    Use ngModel in the input field.  It will update the variable right away and from the ts code, which we link to the same variable for the display too, 
+    Use ngModel in the input field.  It will update the <b>variable right away</b> and from the ts code, which we link to the same variable for the display too, 
     it will update right away.  Click the button to update the variable to something different.
     <input type="number" [(ngModel)]="theVariable"/><br/><br/>
     <mark>{{theVariable}}</mark><br/><br/>
-    <button (click)="onSetVariableToHello()">call onSetVariableToHello</button>
+    <button (click)="onSetVariableToHello()">call to set variable to hello in the ts file</button>
     
 
     <hr class="hrClass" />
     
-    <p class="HeadingSubTopic">Angular Directive</p>
+    <p class="HeadingSubTopic">Angular Directive - ngIf</p>
     <code ngNonBindable>*ngIf</code><br />
     <code ngNonBindable>&lt;mark *ngIf="theBoolVar" &gt;</code><br />
-    The marked test below will show depending on a boolean variable on the ts file.  Change the value with the button.<br/>
+    The marked test below will show depending on a boolean variable on the ts file.  Change the value with the button. You can also use an expression.<br/>
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
     <mark *ngIf="theBoolVar">I go on and off</mark><br/><br/>
     
@@ -63,7 +63,7 @@
 
     <hr class="hrClass" />
       
-    <p class="HeadingSubTopic">Angular Directive</p>
+    <p class="HeadingSubTopic">Angular Directive - ngStyle</p>
     <code ngNonBindable>[ngStyle]="&lbrace;backgroundColor:theColor&rbrace;"</code><br />    
     Click the button to get a random background color by changing theColor property. Could also have a method instead
     of theColor in the span element.  <button (click)="onRandomColor()">Random Color</button><br/>
@@ -71,7 +71,7 @@
     
     <hr class="hrClass" />
     
-    <p class="HeadingSubTopic">Angular Directive</p>
+    <p class="HeadingSubTopic">Angular Directive - ngClass</p>
     <code ngNonBindable>[ngClass]="&lbrace;redClass:theBoolVar&rbrace;"</code><br />    
     Similar to the examples above, set ngClass to a class (redClass) to set the font to red based on the boolean value (when true). The redClass is in the css file.<br/>
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
@@ -79,19 +79,20 @@
   
     <hr class="hrClass" />
 
-    <p class="HeadingSubTopic">Angular Directive</p>
+    <p class="HeadingSubTopic">Angular Directive - ngFor</p>
     <code ngNonBindable>&lt;input type="number" (keydown)="onValueChanged($event)"/&gt;</code><br/>
     <code ngNonBindable>&lt;div*ngFor="let item of theNumArray;"&gt;</code><br />    
     <code ngNonBindable>ts file : onValueChanged(event:KeyboardEvent)...for(let i = 1; i <= parseInt(event.key); i++) populate theNumArray</code><br />    
     Enter a number from 1 to 5 (you can enter more too) and the code will show that many lines.<br/>  
     You can also add let i = index in the ngFor to get the index of the iteration.<br/>
-    <input type="number" (keydown)="onValueChanged($event)"/><br/><br/>
+    You can also use the 
+    <input type="number" (keydown)="onValueChanged($event)" (input)="onValueChangedArrows($event)" [(ngModel)]="theArraySize"/><br/><br/>
     <div *ngFor = "let item of theNumArray;"> {{item}}</div>
     <br/>
 
     <hr class="hrClass" />
 
-    <p class="HeadingSubTopic">Angular Directive</p>
+    <p class="HeadingSubTopic">Angular Directive - ngSwitch</p>
     <code ngNonBindable>&lt;div [ngSwitch]="theColor" [ngStyle]= "&lbrace; border:'2px solid skyblue'&rbrace;"/&gt;</code><br/>
     <code ngNonBindable>&lt;p elements inside the div with the ngSwitch: *ngSwitchCase="'aqua'"/&gt;</code><br/>
     The random color button above returns aqua, red, pink, yellow, green, and gray.  Have a switch for the theColor variable for each of those.<br/>

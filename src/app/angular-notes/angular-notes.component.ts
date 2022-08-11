@@ -14,7 +14,8 @@ export class AngularNotesComponent implements OnInit, ForCanDeActivate {
   theBoolVar: boolean = true;
   theColor: string = "aqua";
   theNumVariable: Number = 0;
-  theNumArray: Number[] = []
+  theNumArray: Number[] = []  
+  theArraySize:number = 0;
   someText1:string = "";
   someText2:string = "";
 
@@ -63,7 +64,13 @@ export class AngularNotesComponent implements OnInit, ForCanDeActivate {
     this.theNumArray = [];
     for(let i = 1; i <= parseInt(event.key); i++){
       this.theNumArray[i-1] = i;
-    }
+    }    
+  }
+  onValueChangedArrows(event:Event){
+    this.theNumArray = [];
+    for(let i = 1; i <= this.theArraySize; i++){
+      this.theNumArray[i-1] = i;
+    }    
   }
 
   //using any so I can use this event for all events from child.
