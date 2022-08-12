@@ -117,12 +117,11 @@
     <code>@Input() myColor :string="";</code><br />
     <code>@Input('myTextAlias') myText :string="";</code><br />    
     <code>child component: [ngStyle] has backgroundColor:myColor</code><br/>
-    <code ngNonBindable>on child component: &lbrace;&lbrace; myText &rbrace;&rbrace; -- use the variable name, not the alias name </code><br/>
-    In this angular-notes component we have a theColor variable used above.  Using it here again, but this time, include also a child component
-    which will change its background based on the value we get.  It will also display the text sent to it as an alias.<br/>
+    <code ngNonBindable>on child component html: &lbrace;&lbrace; myText &rbrace;&rbrace; -- use the variable name, not the alias name </code><br/>
+    In this angular-notes component we have a theColor variable used above (in this parent).  In this html file we have a child component as set above in the header.    
     (Disregard the button in the child component, it is not being listened to in this code).<br/>
-    <button (click)="onRandomColor()">Random Color</button><br/><br/>
-    The child component takes in a myColor and a myTextAlias properties.  Both set to the variable.
+    <button (click)="onRandomColor()">Random Color (in parent html)</button><br/><br/>
+    The child component takes in a myColor (vble in its ts file) and a myTextAlias properties (see it in the header code above).  Both are set to the variable.
     <some-child-component [myColor]= "theColor" [myTextAlias]="theColor"></some-child-component>
 
     <hr class="hrClass" />
