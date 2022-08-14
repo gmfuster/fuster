@@ -122,11 +122,88 @@
 
   <hr class="hrClass" />
   <p class="HeadingSubTopic">Default Values</p>  
+  We can now use ngModel with the brackets and set it to a hardcoded value or a variable from the ts file.
+  <form (ngSubmit)="onSubmitNA()">
+    <input type="number" [ngModel]=9 name="theNumber" #theNumber= "ngModel" required/>    
+  </form>
+  <pre>
+    <code>
+      input type="number" [ngModel]=9
+    </code>
+  </pre>
+
+
+  <hr class="hrClass" />
+  <p class="HeadingSubTopic">Grouping Form Controls</p>  
+  You can have a div around a few controls and have them be grouped when Angular converts the form to an object.  To do that you use <b>ngModelGroup</b>
+  <form (ngSubmit)="onSubmit6()" #f6="ngForm">
+    <div ngModelGroup="InputButtonGroup">
+      <input type="number" ngModel name="theNumber"/>
+      <input type="number" ngModel name="theNumber2"/>      
+    </div>
+    <button type="submit" name="theButton">Submit</button>
+  </form>
+  Notice below that the form has been changed to f6 now.
+  <pre>
+    <code>
+      &lt;form (ngSubmit)="onSubmit6()" #f6="ngForm"&gt;
+        &lt;div ngModelGroup="InputButtonGroup"&gt;
+          &lt;input type="number" ngModel name="theNumber"/&gt;
+          &lt;input type="number" ngModel name="theNumber2"/&gt;         
+          &lt;/div&gt;
+        &lt;button type="submit" name="theButton">Submit&lt;/button&gt;
+      &lt;/form&gt;      
+    </code>
+  </pre>
+  Now on the conlole you can see:<br/>
+  <pre>
+    <samp>
+      ngForm
+      ...
+      value:object
+      InputButtonGroup...
+    </samp>
+  </pre>
+  You will also have the group under controls in the ngForm.  That means you can access properties on it like you would other controls.
+  We could also now set the group as we did the form and pass that group to the ts file.
+  <form (ngSubmit)="onSubmitGroup()" #f6="ngForm">
+    <div ngModelGroup="InputButtonGroup" #InputButtonGroup="ngModelGroup">
+      <input type="number" ngModel name="theNumber"/>
+      <input type="number" ngModel name="theNumber2"/>      
+    </div>
+    <button type="submit" name="theButton">Submit</button>
+  </form>
+  <pre>
+    <code>
+      &lt;div ngModelGroup="InputButtonGroup" <b>#InputButtonGroup="ngModelGroup"</b>&gt;
+      ...
+      form (ngSubmit)="onSubmitGroup()
+      ...
+      //And in the ts us we have added the @ViewChild('InputButtonGroup') myFormGroup
+    </code>
+  </pre>
+
+  <hr class="hrClass" />
+  <p class="HeadingSubTopic">Radio Buttons</p>  
+  <div>
+    {{optionR}}  <br/>
+    <input type="radio" ngModel name="radio" value="1" (click)="optionR='1'"/>One
+    <input type="radio" ngModel name="radio" value="2" (click)="optionR='2'"/>Two        
+  </div>
+  <pre>
+    <code ngNonBindable>
+      &lbrace;&lbrace; optionR &rbrace;&rbrace; 
+    ...input type="radio" ngModel name="radio" value="1" (click)="optionR='1'"...
+    ...input type="radio" ngModel name="radio" value="2" (click)="optionR='2'"...
+    </code>
+  </pre> 
+
+
+
 
 
 
 </div>
-
 
   
 </div> 
