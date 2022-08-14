@@ -17,7 +17,8 @@ export class AngularNotesComponent implements OnInit, ForCanDeActivate {
   theNumArray: Number[] = []  
   theArraySize:number = 0;
   someText1:string = "";
-  someText2:string = "";
+  someText2:string = "";  
+  fontColor:string = "blue";
 
   ngOnInit(){
     window.scroll(0,0);

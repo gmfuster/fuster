@@ -43,6 +43,29 @@
     <button (click)="onSetVariableToHello()">call to set variable to hello in the ts file</button>
     
 
+    <hr class="hrClass" />    
+    <p class="HeadingSubTopic">Wait a minute!!</p>
+    What is with the [] or no [] or the () and the []?
+    <br/>
+    When we are using [] in the property we are binding to a variable in the ts file.
+    <pre>
+      <code>
+        &lt;p  style.color="fontColor"&gt;I'm not binding&lt;/p&gt;
+      </code> 
+    </pre>
+    Gives you: <p style.color="fontColor">I'm not binding</p>
+    <pre>
+      <code>
+        &lt;p  [style.color]="fontColor"&gt;I'm  binding&lt;/p&gt;
+      </code> 
+    </pre>
+    Get you (fontColor is set to blue in the ts file):
+    <p  [style.color]="fontColor">You can set my color in the component!</p>
+    For 2-way binding we use [(ngModel)]="whateverVariable" (FormsModule is required for this)<br/>
+    When binding to a property we can also bind to "!theProperty"
+
+
+
     <hr class="hrClass" />
     
     <p class="HeadingSubTopic">Angular Directive - ngIf</p>

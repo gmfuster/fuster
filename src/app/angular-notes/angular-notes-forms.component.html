@@ -11,7 +11,11 @@
     the elements needs to be a control, we use ngModel and we need to set the name attribute (html attribute) to something. <b>&lt;input... ngModel name="someName"</b><br/>
     In your Submit button, don't call your submit event in the ts file from the (click) of the button.  Instead, set the type of the button to submit and 
     use the ngSubmit in your form html element.  <b>&lt;form (ngSubmit) = "onSubmit()"...</b>
-    
+    <br/><br/>
+    <hr class="hrHeaderClass"/>
+    <h2 class="CenterMe" >Template Driven</h2>
+    <hr class="hrHeaderClass"/>
+
     <p class="HeadingSubTopic">Some basic form</p>   
     Just doing a little form here:<br/>
     <pre>
@@ -199,10 +203,15 @@
   </pre> 
 
 
+  <hr class="hrClass" />
+  Note: Once you have the form in your ts file (the #f we did in code above) you can access the controls in it with yourform.form. and the methods 
+  available.  You can use that to manipulate the values in the form.  You can also reset the values from reset() directly on yourform.
 
 
-
-
+  <br/><br/>
+  <hr class="hrHeaderClass"/>
+  <h2 class="CenterMe" >Reactive Forms</h2>
+  <hr class="hrHeaderClass"/>
 </div>
 
   
