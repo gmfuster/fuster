@@ -44,6 +44,8 @@ import { NotFoundComponent } from './other-fun/not-found.component';
 import { ReadBackComponent } from './other-fun/read-back.component';
 import { MapItComponent } from './other-fun/map-it.component';
 
+import { DoublesComponent } from './math-kids/doubles.component';
+
 @NgModule({
   declarations: [    
     AppComponent,
@@ -71,7 +73,8 @@ import { MapItComponent } from './other-fun/map-it.component';
     NotFoundComponent,
     CSharpThreadingComponent,
     JavaScriptNotesAsyncComponent,
-    JavaScriptNotesObjectsComponent
+    JavaScriptNotesObjectsComponent,
+    DoublesComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@
 
   <br /> <br/>
   <div >    
-    <div [ngStyle]="{paddingLeft:'4vw', paddingRight:'4vw', backgroundSize: '100% 100%', backgroundImage:'url(https://images.unsplash.com/photo-1576502200916-3808e07386a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFic3RyYWN0JTIwaG9yaXpvbnRhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60)'}">      
+    <div [ngStyle]="{paddingLeft:'4vw', paddingRight:'vw', backgroundSize: '100% 100%', backgroundImage:'url(https://images.unsplash.com/photo-1576502200916-3808e07386a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFic3RyYWN0JTIwaG9yaXpvbnRhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60)'}">      
       <br/>
       <div class="mainBanner" >  
         <p class="mainParagraph">
@@ -16,8 +16,11 @@
    
     <br />
   </div>
+
+
+
 <div class="DescriptionSectionText ">
-    <!--<div class="markClassCardWholeBlue">About</div>-->
+    <!--medium and fcc start-->
     <div class="divsByRowCenter">  
       <a href="https://gmfuster.medium.com/" target="_new" style="border:lightyellow solid 4px;">
       <span style="height: 5vw; padding: 5px;">My Articles</span><br/>
@@ -35,21 +38,27 @@
           style="width:20vw; height:15vw; "
           margin="5px"
           class="rounded-circle d-inline-block align-top" />
-        </a>  
-
-     <!-- <div style=" width:30vw; height: 20vw; margin:10px; border:deepskyblue solid 4px;">
-        My Articles<br/>
-        <a href="https://gmfuster.medium.com/" target="_new">https://gmfuster.medium.com/</a>
-      </div>
-      <div style="background-color:darkblue; width:30vw; height: 20vw; margin:10px; border:deepskyblue solid 4px;">3
-        My Translations<br/>
-        <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_new">FreeCodeCamp Esp.</a>
-      </div>-->
-      <!--<b>Unrelated</b>, some Kindergarten activities at <a href="https://gmfuster.github.io/Bonico/#/" target="_new">https://gmfuster.github.io/Bonico/#/</a><br /><br /> -->
+        </a>       
     </div>    
+    <!--medium and fcc End-->
     <br/><br/>
 
+    <!--KIDS MATH-->
+    <div class="markClassCardWholeBlue">Kids Math</div>
+    <div class="markClassCardContentBlue">     
+      <div style="position:relative;">
+        <div style="background:teal; margin:5vw; padding:4vh; border:5px double salmon; height:400px;">
+          <div style="display:flex; flex-direction:row; justify-content:flex-start;">
+            <a [routerLink]='["/doubles"]'  style="color:white; font-size:3vh; ">
+              Doubles
+            </a>
+          </div>
+        </div>        
+      </div>          
+    </div> 
+    <br/><br/>
 
+    <!--BOOKS START-->
     <div class="markClassCardWholeBlue">Books</div>
     <div class="markClassCardContentBlue">     
       <div style="position:relative;">
@@ -73,17 +82,19 @@
               <img style="height:50px; width:50px;" src='assets/images/clickme.svg' alt="click it" />
             </a>
           </div>
-
         </div>
         <br />
         <div style="position:absolute; bottom:0%;">
           <img style=" height:325px; width:85vw;" src='assets/images/wewrote.svg' alt="what we wrote" />
         </div>
         <br />
-      </div>
+      </div>    
+      <br/><br/>          
+      <br/><br/>
+    </div> 
+    <!-- BOOKS END-->
     <br/><br/>
-  </div> 
-  <br/><br/>
+    <!--Just For Fun-->
     <div class="markClassCardWholeBlue">Just for Fun</div>
     <div class="markClassCardContentBlue">  
       <br/>
@@ -117,14 +128,11 @@
          
       <br/>
     </div>
-    <br />
-
-    
-
-      <br/>
+    <br />  
+    <br/>
       
     </div>
-    <br /><br />
+    <br/><br/>
   </div>
   
 
