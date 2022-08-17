@@ -1,32 +1,69 @@
 
-<br/><br/>
+<br/>
 <div>
 
-  <h1 class="CenterMe">DOUBLES</h1>    
-  <hr class="hrClass"/>
+  <h1 class="CenterMe"><u>DOUBLES</u></h1>      
   
-  <div class="PaddedContents"> 
-    These are the doubles and you need to memorize them.<br/>
+  <div class="PaddedContents">          
+
     <div style="display:flex; flex-direction:row; justify-content:center;">
-      <span style="border:aqua 2px solid; padding: 5px; margin:5px">1 + 1 = 2 </span>
-      <span style="border:aqua 2px solid; padding: 5px;margin:5px">2 + 2 = 4 </span>
-      <span style="border:aqua 2px solid; padding: 5px;margin:5px">3 + 3 = 6 </span>
-      <span style="border:aqua 2px solid; padding: 5px;margin:5px">4 + 4 = 8 </span>
-      <span style="border:aqua 2px solid; padding: 5px;margin:5px">5 + 5 = 10 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(0,0)">0 + 0 = 0 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(1,1)">1 + 1 = 2 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(2,2)">2 + 2 = 4 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(3,3)">3 + 3 = 6 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(4,4)">4 + 4 = 8 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(5,5)">5 + 5 = 10 </span>
     </div>
     <div style="display:flex; flex-direction:row; justify-content:center;">
-      <span style="border:aqua 2px solid; padding: 5px; margin:5px">6 + 6 = 12 </span>
-      <span style="border:aqua 2px solid; padding: 5px;margin:5px">7 + 7 = 14 </span>
-      <span style="border:aqua 2px solid; padding: 5px;margin:5px">8 + 8 = 16 </span>
-      <span style="border:aqua 2px solid; padding: 5px;margin:5px">9 + 9 = 18 </span>
-      <span style="border:aqua 2px solid; padding: 5px;margin:5px">10 + 10 = 20 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(6,6)">6 + 6 = 12 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(7,7)">7 + 7 = 14 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(8,8)">8 + 8 = 16 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(9,9)">9 + 9 = 18 </span>
+      <span class="doubleButtonsLike" (click)="doubleClicked(10,10)">10 + 10 = 20 </span>
     </div>
-    <br/><br/>
+
+    <div style="display:flex; flex-direction:row; justify-content:center;">
+      <div style="display:flex; flex-direction:column; justify-content:center;">
+        <div style="display:flex; flex-direction:row; justify-content:center;">
+          <span class="digitForEquation">{{digit1}}</span>
+          <span class="digitForEquation">+</span>
+          <span class="digitForEquation" style="color:lightyellow">{{digit2}}</span>
+          <span class="digitForEquation">=</span>
+          <span class="digitForEquation" style="color:lightpink">{{digit1digit2}}</span>        
+        </div>
+        <div style="display:flex; flex-direction:row; justify-content:center;">
+          <span class="digitForEquation">{{digit1}}</span>
+          <span class="digitForEquation">+</span>
+          <span class="digitForEquation" style="color:lightyellow">{{digit2+1}}</span>
+          <span class="digitForEquation">=</span>
+          <span class="digitForEquation" style="color:lightpink">{{digit1digit2+1}}</span>        
+        </div>
+        <div style="display:flex; flex-direction:row; justify-content:center;">
+          <span class="digitForEquation">{{digit1}}</span>
+          <span class="digitForEquation">+</span>
+          <span class="digitForEquation" style="color:lightyellow">{{digit2+2}}</span>
+          <span class="digitForEquation">=</span>
+          <span class="digitForEquation" style="color:lightpink">{{digit1digit2+2}}</span>        
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; justify-content:center;">
+        <span class="digitForEquation">(double)</span>
+        <span class="digitForEquation">(+1 near double)</span>
+        <span class="digitForEquation">(+2 near double +2)</span>
+      </div>
+    </div>
+    
+    
+
+
+
+    
+    <!--
     Knowing the doubles, you can use them in the near doubles.  You have a near double when you add 1 or 2 to one of the numbers in the double.  For 
     <span style="border:aqua 2px solid; padding: 5px; margin:5px">2+2=4</span>, you can have the 
     near double <span style="border:aqua 2px solid; padding: 5px; margin:5px">2+3=5</span>.  That is the same as 
     <span style="border:aqua 2px solid; padding: 5px; margin:5px">2+2+1=5</span><br/><br/>
-
+    -->
 
   </div>
 
