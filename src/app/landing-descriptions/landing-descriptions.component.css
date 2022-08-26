@@ -7,19 +7,29 @@
   margin-right:6vw;
 }
 
-.mainBanner{
-  width:100%;  
-  color:lightyellow;
+.forBanner{
+  width:100vw;
+  height: 60vh;;
+  text-align: center;
+  background-color: darkcyan;
+  margin-top: 5px;
+  margin-bottom: 40px;
+}
 
-  background: rgba(39, 191, 245, 0.30);
+.mainBanner{
+  /*width:80vw;  
+  height: 30vh;*/
+  color:white;
+
+  /*background: rgba(39, 191, 245, 0.30);
   backdrop-filter: blur( 5.5px );
   -webkit-backdrop-filter: blur( 5.5px );    
 
-  border-radius: 10px;;
+  border-radius: 10px;;*/
 }
 .mainParagraph{
   
-  font-size: 5vh;
+  font-size: 3vw;
   text-align: center;
 }
 

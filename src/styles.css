@@ -8,6 +8,7 @@
   font-family: 'Arima Madurai', cursive;
   font-size: 1.6vw;    
   background-color: rgb(48, 46, 46);
+  margin:0;
 }
 .homeInit{
   position: absolute;

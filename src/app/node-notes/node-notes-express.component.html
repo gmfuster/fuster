@@ -28,14 +28,15 @@
         &rbrace; );
 
         const server = http.createServer(app);
+        server.listen(3000);
       </code>
     </pre>
     Express will not send a default response. Instead of logging in the console (which shows in your server console not the browser), we could 
     have done <code> res.send("&lt;h2&gt;Hello how are you&lt;/h2&gt;");</code> We get the default html/text but we can override it with res.setHeader.<br/>
     Notice in the code above we have <code>const server = http.createServer(app); </code> and <code>server.listen(3000);</code><br/>
     We can also do just this instead of those 2 above: <code>app.listen(3000);</code>
-    Remember that if we don't have a next() in the code, the next app.use is not going to happen, but, if we are using paths the code will be checked 
-    from top to bottom to see which use to use. <br/>
+    <b>Remember that if we don't have a next() in the code, the next app.use is not going to happen, but, if we are using paths the code will be checked 
+    from top to bottom to see which use to use. </b><br/>
     Bellow, entering localhost:3000/sayhi will return HI, localhost:3000/sayhello will return HELLO, and entering <b>nothing or anything else</b> will return ANYTHING.
     <br/><br/>
     <pre>
@@ -70,7 +71,7 @@
         //And the ANYTHING response in the browser. 
         //if localhost/sayhi, we see "anything" in the console, then we see "sayhi" in the console, 
         //but then we get a <b>"cannot set headers after they are sent to the client" error.</b>
-        //<b>Because we have the / path at the beginning it's going to math it even for localhost/sayhi</b>
+        //<b>Because we have the / path at the beginning it's going to match it even for localhost/sayhi</b>
         app.use( "/", (req, res, next) => &lbrace;
           console.log("anything");
           res.send("&lt;h2&gt;ANYTHING!&lt;/h2&gt;");
@@ -154,10 +155,59 @@
        &rbrace; );
       </code>
     </pre>
-    The above code will print only one sayhi and will leave the browser hanging because we are not sending anything back after printing sayhi.
+    The above code will print only sayhi and will leave the browser hanging because we are not sending anything back after printing sayhi 
+    (no next() after the first sayhi either so it's not going to the second sayhi).
     <br/><br/>
     <b>It is best to leave the "/" path for the end.  The above was just to see what happens.  Put it as the last one!!</b>
-  
+
+    <p class="HeadingSubTopic">Parsing Incoming Requests</p>
+
+    We can send html code in a response.  And with that we can send an action to be taking from that code.
+    <pre>
+      <code>
+        const http = require("http");        
+        const express = require('express');
+
+        const app = express();
+
+        app.use( "/", (req, res, next) => &lbrace;            
+          res.send("&lt;html&gt;&lt;form <b>action='hello' method='GET'</b>&gt;&lt;button&gt;here&lt;/button&gt;<&lt;form&gt;&lt;/html&gt;")
+          next(); 
+        &rbrace; );
+      </code>
+    </pre>
+    Then you can have an action for the hello, that redirects somewhere else.  In this case, clicking on the button will go to hello which will redirect to sayhi.
+    <pre>
+      <code>
+        app.use( "/", (req, res, next) => &lbrace;
+          next(); 
+        &rbrace; );
+
+        app.use( "/hey", (req,res, next) => &lbrace;
+          res.send('...form action="/hello" method="GET"... as above')
+        &rbrace;)
+
+        app.use( "/hello", (req, res, next) => &lbrace;
+          res.<b>redirect("sayhi");</b>
+        &rbrace; );
+
+        app.use( "/sayhi", (req, res, next) => &lbrace;
+          res.send("whatever");     
+        &rbrace; );
+      </code>
+    </pre>
+    req with express comes with a body, but, if we don't do any parsing to it, it's just undefined.<br/>
+    To parse there is an additional tool that can be installed:  <b>npm install --save body-parser</b>. You may not need to install it if the version 
+    of Express you are using already has it included.  Before use, include it with <b>const bodyParser = require("body-parser")</b><br/>
+    You may need different parsers depending on the type of body you are getting.  For the above, add this to the top of the file (before the app.use routing statements).
+    <b>app.use(bodyParser.urlencoded());</b><br/>
+    Once you have that, you can log req.body on your routing app.use and you will see the contents.
+
+    <p class="HeadingSubTopic">Differentiate between types of requests - methods GET POST etc</p>
+    If you have a route that is only for GET requests, you can use <b>app.get</b> instead of app.use (the rest is the same). Same thing for POST, use <b>use.post.</b>
+    
+
+
   </div>
   
 </div> 

@@ -212,6 +212,92 @@
   <hr class="hrHeaderClass"/>
   <h2 class="CenterMe" >Reactive Forms</h2>
   <hr class="hrHeaderClass"/>
+
+  The form is created in the code, or the controls of the form.<br/>
+  Angular provides tools to do that.  For example, FromGroups (import &lbrace;FormGroup &rbrace; from '@angular\forms' )<br/>
+  For this approach you don't need FormsModule in your app.module but you need to import and declare the ReactiveFormsModule.
+
+  <form [formGroup] = "myReactiveForm">
+    <input type="number" name="theNumber" formControlName = "number1"/><br/>
+    <input type="number" name="theNumber2" formControlName = "number2"/><br/>
+    <div>
+      <input type="radio"  formControlName = "radioButton" value="1"/>One
+      <input type="radio"  formControlName = "radioButton" value="2" />Two     
+  </div>
+  </form>
+
+  for the above form, in the ts side we can have code like this:
+  <pre>
+    <code>
+      myReactiveForm: FormGroup ; //do not just assign something here, do it in the ngOnInit. May have to assign an empty one in the constructor for it to compile
+      ...
+      his.myReactiveForm = new FormGroup(&lbrace;
+        "number1" : new FormControl(),
+        "number2" : new FormControl(),
+        "radioButton" : new FormControl('2')//give default value of 2 to the radio button
+      &rbrace;);
+
+      in the html, to link the elements to the controls:
+      input type="number" name="theNumber" <b>formControlName = "number1"</b>
+      input type="number" name="theNumber2" formControlName = "number2"
+      input type="radio"  <b>formControlName = "radioButton"</b> value="1"
+      input type="radio"  <b>formControlName = "radioButton"</b> value="2"
+
+      for the form tag itself, you also need to <b>[formGroup]</b> = "myReactiveForm"
+    </code>
+  </pre>
+
+  For submiting the form, we can still use (onSubmit) = "onSubmitOrWhatever()" but we don't need to pass a reference to the form itself (like we 
+  did with #f before) since we already have the form control in the ts code now.<br/>
+  For the validation, you can pass another argument to FormControl in the ts code ('whatever':new FormControl (null , <b>Validators.required</b>)).
+  Notice you don't add () after required.  And you will have to import Validators from @angular/forms.  You could also pass an array of validators instead of 
+  just one.<br/>
+  If we wanted to display a message depending on the validity of one of the controls in the form, it could be something like this:<br/>
+  <pre>
+    <code>
+      &lt;span&gt;*ngIf = "!myReactiveForm.get('number2').valid"...myReactiveForm.get('number2').touched...
+
+      //you could also check valid and touched for the whole myReactiveForm.
+    </code>
+  </pre>
+  <br/>
+  Like in template forms, you can also group controls here (a FormGroup taking as ar argument an object with 2 or more FormGroups.)  Now to find the control you 
+  want you need to give the path to the control that is inside the other control.  For example, if you have a FormGroup (AB) in the ts code with FormGroups A and B, in the 
+  html code you need to set the div holding the A and B with <b>formGroupName = "AB"</b>.  Now in the HTML code, you will <b>usemyReactiveForm.get(AB.A) or myReactiveForm.get(AB.B).</b>
+
+  <br/>
+  You can also access the controls as an array (that you have previously added as members of the FormArray,which you need to import too.). 
+  You can have a getControls method that returns 
+  <b>(&lbrace;FormArray&rbrace;this.myReactiveForm.get('whatevergroup')).controls.</b> You could have used <b>as FormArray</b> in the code too.
+
+  Then use them in the html code.
+
+  <br/>
+  In the HTML, for the div that willl hold the array elements, also use a <b>formArrayName="AB"</b> similar to like we did for formGroupName.
+
+  <br/>
+  Custom validations are also possible with reactive forms. To add a new validator create a new function that takes a FormControl as an argument. It should return
+  an object which has a key value pair, the key being a string and the value being a boolean. <b>IF VALIDATION IS SUCCESSFUL YOU MUST RETURN NULL OR NOTHING.  DO 
+  NOT RETURN THE OBJECT WITH false. </b>  To use your validation function, don't forget to include it in the array of validators in the new FormControl statement.
+  DO NOT EXECUTE THE FUNCTION WIHT THE ().  YOU ALSO HAVE TO BIND IT.
+  <pre>
+    <code>
+      //if you had a function like This
+      <b>myValidation(control:FormControl) : &lbrace;[s:string]:boolean &rbrace; ...
+      return &lbrace; 'isThisThinInvalid':true &rbrace;</b>
+      ....
+      //or if valid 
+      return null;
+
+
+      //you would have this in the creation of the control.
+      <b>this.myValidation.bind(this)</b>
+    </code>
+  </pre>
+
+
+
+
 </div>
 
   
