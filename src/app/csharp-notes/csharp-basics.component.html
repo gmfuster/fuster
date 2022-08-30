@@ -818,8 +818,57 @@
 
         <p class="HeadingSubTopic">Other</p>
 
+        <p class="HeadingSubTopic2">function inside function</p>
         You can have a method and have a local function inside that method (starting with C#7). That local function can be accessed only from within that method.
         It could be something like <b>int whateverMethod() function &lbrace;... &rbrace;</b>
+
+        <p class="HeadingSubTopic2">Index Type</p>
+        We can use this type to use as an index for arrays or whatever.  The cool thing is that you can use it to start counting from the end.  But, in that case 
+        it skips zero.
+        <pre>
+            <code>
+                string[] arrays = new string[] &lbrace;"zero", "one", "two", "three", "four", "five", "six"&rbrace;;
+
+                Console.WriteLine(arrays[4]); //prints four
+
+                <b>Index</b> i1 = new Index(3);
+                Console.WriteLine(arrays[i1]); // prints three
+
+                Index i2 = 1;
+                Console.WriteLine(arrays[i2]); // prints one
+
+                Index i3 = new <b>Index(value:4, fromEnd:true);</b>
+                Console.WriteLine(arrays[i3]); // prints three!!!!!!!!
+                Index i4 = new Index(value: 2, fromEnd: true);
+                Console.WriteLine(arrays[i4]); // prints five!!!!!!!!!!
+                Index i5 = <b>^2;</b> //another way to say from the end.
+                Console.WriteLine(arrays[i5]); // prints five!!!!!!!!!!
+            </code>
+        </pre>
+        <p class="HeadingSubTopic2">Ranges</p>
+        The Range type uses indexes to indicate its range.  We can use the ranges with spans to get parts of them.
+        <pre>
+            <code>
+                Range r1 = new <b>Range(start: new Index(2), end: new Index(4));</b>
+                Range r2 = <b>1..3;</b>
+                Range r3 = <b>Range.StartAt(4);</b>
+                Range r4 = <b>5..;</b>
+                Range r5 = <b>Range.EndAt(3);</b>
+                Range r6 = <b>..3;</b>
+
+                <b>ReadOnlySpan&lt;char&gt;</b> sp1 = "hello how are you?".<b>AsSpan();</b>
+                <b>//start at zero but exclude the char at the end of the range</b>
+                Console.WriteLine(<b>sp1[1..2]</b>.ToString()); //e
+                Console.WriteLine(sp1<b>[r1]</b>.ToString()); //ll
+                Console.WriteLine(sp1[r2].ToString());  //el
+                Console.WriteLine(sp1[r3].ToString()); //o how are you?
+                Console.WriteLine(sp1[r4].ToString()); // how are you?
+                Console.WriteLine(sp1[r5].ToString()); //hel
+                Console.WriteLine(sp1[r6].ToString());//hel
+            </code>
+        </pre>
+        <br/>
+
         
     <!--</div>  -->
 </div>

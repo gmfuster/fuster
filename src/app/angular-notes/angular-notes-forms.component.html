@@ -12,6 +12,14 @@
     In your Submit button, don't call your submit event in the ts file from the (click) of the button.  Instead, set the type of the button to submit and 
     use the ngSubmit in your form html element.  <b>&lt;form (ngSubmit) = "onSubmit()"...</b>
     <br/><br/>
+
+    <span  id="template"></span>
+    <br/>
+    <h3  class="CenterMe">
+      <!--<a  href="/angular-notes-svc-routing/#routing">Jump To Routing</a>-->
+      <a  [routerLink]='["/angular-notes-forms"]' fragment="reactive" >Jump To Reactive Forms</a>
+    </h3>
+
     <hr class="hrHeaderClass"/>
     <h2 class="CenterMe" >Template Driven</h2>
     <hr class="hrHeaderClass"/>
@@ -207,13 +215,22 @@
   Note: Once you have the form in your ts file (the #f we did in code above) you can access the controls in it with yourform.form. and the methods 
   available.  You can use that to manipulate the values in the form.  You can also reset the values from reset() directly on yourform.
 
-
   <br/><br/>
+  <br/>
+  <span  id="reactive"></span>
+  <br/>
+    <h3  class="CenterMe">
+      <!--<a  href="/angular-notes-svc-routing/#routing">Jump To Routing</a>-->
+      <a  [routerLink]='["/angular-notes-forms"]' fragment="template" >Jump To Template Forms</a>
+    </h3>
   <hr class="hrHeaderClass"/>
   <h2 class="CenterMe" >Reactive Forms</h2>
   <hr class="hrHeaderClass"/>
 
-  The form is created in the code, or the controls of the form.<br/>
+
+
+  <p class="HeadingSubTopic">The controls</p>   
+  Ehe controls for this form are created in the ts code.<br/>
   Angular provides tools to do that.  For example, FromGroups (import &lbrace;FormGroup &rbrace; from '@angular\forms' )<br/>
   For this approach you don't need FormsModule in your app.module but you need to import and declare the ReactiveFormsModule.
 
@@ -249,6 +266,9 @@
 
   For submiting the form, we can still use (onSubmit) = "onSubmitOrWhatever()" but we don't need to pass a reference to the form itself (like we 
   did with #f before) since we already have the form control in the ts code now.<br/>
+
+
+  <p class="HeadingSubTopic">Validation</p>   
   For the validation, you can pass another argument to FormControl in the ts code ('whatever':new FormControl (null , <b>Validators.required</b>)).
   Notice you don't add () after required.  And you will have to import Validators from @angular/forms.  You could also pass an array of validators instead of 
   just one.<br/>
@@ -261,6 +281,8 @@
     </code>
   </pre>
   <br/>
+
+  <p class="HeadingSubTopic">Group controls</p>   
   Like in template forms, you can also group controls here (a FormGroup taking as ar argument an object with 2 or more FormGroups.)  Now to find the control you 
   want you need to give the path to the control that is inside the other control.  For example, if you have a FormGroup (AB) in the ts code with FormGroups A and B, in the 
   html code you need to set the div holding the A and B with <b>formGroupName = "AB"</b>.  Now in the HTML code, you will <b>usemyReactiveForm.get(AB.A) or myReactiveForm.get(AB.B).</b>
@@ -273,8 +295,13 @@
   Then use them in the html code.
 
   <br/>
-  In the HTML, for the div that willl hold the array elements, also use a <b>formArrayName="AB"</b> similar to like we did for formGroupName.
+  In the HTML, for the div that will hold the array elements, also use a <b>formArrayName="AB"</b> similar to like we did for formGroupName.
 
+  <br/>
+
+  <p class="HeadingSubTopic">Check for Specific Errors</p>   
+  When we are checking if an element is valid (like myReactiveForm.get('number2').valid), we can also check for specific errors 
+  myReactiveForm.get('number2').errors['required'] (or any of the other Angular or custom errors).<br/>
   <br/>
   Custom validations are also possible with reactive forms. To add a new validator create a new function that takes a FormControl as an argument. It should return
   an object which has a key value pair, the key being a string and the value being a boolean. <b>IF VALIDATION IS SUCCESSFUL YOU MUST RETURN NULL OR NOTHING.  DO 
@@ -295,8 +322,23 @@
     </code>
   </pre>
 
+  <p class="HeadingSubTopic">Custom Async Validator</p>   
+  Sometimes we may need to do some validation in the server, so we need async validators.<br/>
+  In this case the function will still take as an argument a FormControl variable, but it will return a Promise&lt;any&gt; or an Observable  also of any.<br/>
+  For the observable, import it from rxjs/Observable.<br/>
+  A control with a regular validator, a custom one, and a custom async one would look something like this:
+  <pre>
+    <code>
+      this.myForm = new FormGroup(&lbrace;
+        ...bunch of controls
+         'someOtherControl': new FormControl(null, [Validators.required, Validators.myOwnVal],
+        this.someCustomAsyncVal)&rbrace;)
+    </code>
+  </pre>
 
-
+  <b>To react to changes in validation,</b> in the form itself (that you create with the FormGroup) you can listen to status changes and value changes. You can subscribe 
+  to those with <b>this.myForm.valueChanges.subscribe( value=> Console.log("whatever"))</b>.  <br/>
+  You can also use setValue here to change the controls (similar to with template forms).  Same for patchValue.
 
 </div>
 

@@ -95,6 +95,13 @@ body pre samp{
   text-decoration: underline solid 1vh;
   padding:8px;  
 }
+.HeadingSubTopic2{  
+  font-size: 1.5vw;  
+  font-weight: bold;  
+  color:lightyellow;
+  text-decoration: underline solid .5vh;
+  padding:8px;  
+}
 .TopNav {
   height:6vh; 
   width:100vw;
