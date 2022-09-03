@@ -45,6 +45,8 @@ import { ReadBackComponent } from './other-fun/read-back.component';
 import { MapItComponent } from './other-fun/map-it.component';
 
 import { DoublesComponent } from './math-kids/doubles.component';
+import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
+import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
 
 @NgModule({
   declarations: [    
@@ -74,7 +76,9 @@ import { DoublesComponent } from './math-kids/doubles.component';
     CSharpThreadingComponent,
     JavaScriptNotesAsyncComponent,
     JavaScriptNotesObjectsComponent,
-    DoublesComponent
+    DoublesComponent,
+    MyOwnPipePipe,
+    MyOwnPipeParamsPipe
   ],
   imports: [
     BrowserModule,

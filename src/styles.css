@@ -21,6 +21,11 @@
   align-content: flex-start;
   flex-direction: row;  
 }
+.divsByCol{  
+  display: flex;  
+  align-content:flex-start;
+  flex-direction: column;  
+}
 .divsByRowCenter{  
   display: flex;
   flex-wrap: wrap;

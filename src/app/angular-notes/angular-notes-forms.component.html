@@ -47,7 +47,7 @@
       <button type="submit">Submit JS object</button>
     </form>
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">ViewChild</p>  
 
@@ -77,7 +77,7 @@
       </code>
     </pre>
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
     <p class="HeadingSubTopic">Validation</p>  
     In the form below we have the input number as <b>required</b>.  That means we can still submit it, but if we check it in the console we will see valid:false.<br/>
     <b>Make sure you don't have the same id for different forms because then you will be using the first one found in the ts file.</b>  You could also have <b>
@@ -112,7 +112,7 @@
   </pre>
   We could also have something like this <b>input.ng-invalid.ng-touched</b> and it won't be marked until the user has done something in the field and left it.
 
-  <hr class="hrClass" />
+  <!--<hr class="hrClass" />-->
   <p class="HeadingSubTopic">Validation Messages</p>  
   This form shows a text if the value in the input is valid (a number)
   <form (ngSubmit)="onSubmitNA()" #f5="ngForm">
@@ -132,7 +132,7 @@
   You could also use ! in the if if you want it to show when it is not valid.  Also, you could include theNumber.touched in the if if you want it to 
   just happen once the user has changed something on it.  
 
-  <hr class="hrClass" />
+ <!--<hr class="hrClass" />-->
   <p class="HeadingSubTopic">Default Values</p>  
   We can now use ngModel with the brackets and set it to a hardcoded value or a variable from the ts file.
   <form (ngSubmit)="onSubmitNA()">
@@ -145,7 +145,7 @@
   </pre>
 
 
-  <hr class="hrClass" />
+  <!--<hr class="hrClass" />-->
   <p class="HeadingSubTopic">Grouping Form Controls</p>  
   You can have a div around a few controls and have them be grouped when Angular converts the form to an object.  To do that you use <b>ngModelGroup</b>
   <form (ngSubmit)="onSubmit6()" #f6="ngForm">
@@ -195,7 +195,7 @@
     </code>
   </pre>
 
-  <hr class="hrClass" />
+ <!--<hr class="hrClass" />-->
   <p class="HeadingSubTopic">Radio Buttons</p>  
   <div>
     {{optionR}}  <br/>
@@ -211,7 +211,7 @@
   </pre> 
 
 
-  <hr class="hrClass" />
+ <!--<hr class="hrClass" />-->
   Note: Once you have the form in your ts file (the #f we did in code above) you can access the controls in it with yourform.form. and the methods 
   available.  You can use that to manipulate the values in the form.  You can also reset the values from reset() directly on yourform.
 

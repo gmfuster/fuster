@@ -31,7 +31,7 @@
         I have a service MathServices that has a getRandom1ToN function.  Click the button to call that service function and show the number we get.
         <button (click)="onClickMeClicked()">Click me</button>
 
-        <hr class="hrClass" />
+       <!--<hr class="hrClass" />-->
 
         
         <p class="HeadingSubTopic">Call Function in Service with @Injectable(&lbrace;  providedIn: 'root' &rbrace;)</p>
@@ -46,7 +46,7 @@
         This offers an advantage: Services can be lazy loaded by Angular when needed.  Better performance.
 
 
-        <hr class="hrClass" />
+        <!--<hr class="hrClass" />-->
 
         
         <p class="HeadingSubTopic">Call Function in Service @NgModule</p>  
@@ -60,7 +60,7 @@
         <button (click)="onClickMeClicked3()">Click me 3!</button><br/>
         
 
-        <hr class="hrClass" />
+        <!--<hr class="hrClass" />-->
 
         
         <p class="HeadingSubTopic">Call method that emmits event and listen to it</p>  
@@ -77,7 +77,7 @@
         <button (click)="onClickMeClicked4()">Click me 4!</button><br/>
         <span style="background-color: lightgreen;">{{somethingHappenedText}}</span>
 
-        <hr class="hrClass" />
+        <!--<hr class="hrClass" />-->
 
 
         <br  id='routing'/><br />
@@ -126,7 +126,7 @@
         can pass this as a second parameter to navigate <code>&lbrace;relativeTo:this.route&rbrace;</code>. This.route will contain where we are at the time.
         <br/><br/>
 
-        <hr class="hrClass" />
+       <!--<hr class="hrClass" />-->
         
         <p class="HeadingSubTopic">dynamic Paths</p>  
         <code>this.router.navigate(["/dynamic-notes/" + sendId]);  </code>
@@ -148,7 +148,7 @@
         </code>
         <br/><br/>
 
-        <hr class="hrClass" />
+        <!--<hr class="hrClass" />-->
 
 
                  
@@ -170,7 +170,7 @@
 
          <br/>
 
-         <hr class="hrClass"/>          
+       <!--<hr class="hrClass" />-->     
          <p class="HeadingSubTopic">Nested Routing</p>  
 
          I you end up with different routes that have the same at the beginning of the path, you may be better of changing them to have a main path, and 
@@ -198,14 +198,14 @@
         <code>this.router.navigate(['edit'], &lbrace;relativeTo: this.route, <b>queryParamsHandting: 'preserved' </b>&rbrace; ) </code>
 
 
-        <hr class="hrClass"/>          
+       <!--<hr class="hrClass" />-->       
          <p class="HeadingSubTopic">Redirect</p>  
          You can redirect from one path to another one with something like &lbrace;path:'somepath or **', <b>redirectTo</b>:'some other path'&rbrace;
          The ** means any unknown route, and it should be the last entry under the routes array.  With redirect, use the pathMatch:'full'<br/>
 
         <br/><br/>
 
-        <hr class="hrClass"/>        
+       <!--<hr class="hrClass" />-->      
         <p class="HeadingSubTopic">CanActivate and CanActivateChild</p>  
         We can create a service and have it implement CanActivate.  The CanActivate will apply to whatever route we use it in and its children.<br/>
         We could have this route that uses the service to see if we can go to that route:<br/>
@@ -241,7 +241,7 @@
         On the route, now it would be <code>path: 'angular-notes-noactivate', component: ..., <b>canActivateChid:[ForCanActivate]</b></code>
 
 
-        <hr class="hrClass"/>        
+       <!--<hr class="hrClass" />-->       
         <p class="HeadingSubTopic">CanDeactivate</p>   
         I am using the same path I used for the noactivate, but, to test the deactivate it has to be activated so I have to change the canActivate to return 
         true instead of false.<br/>
@@ -292,7 +292,7 @@
         return we will be able to leave the route or not.<br/>
 
         <img width="100%" src="assets\images\angular\candeactivate.png" alt="can deactivate" /><br/><br/>
-        <hr class="hrClass"/>
+        <!--<hr class="hrClass" />-->
     
         <p class="HeadingSubTopic">Pass Static Data to not-found</p>   
         This doesn't have to be for a not found page but using that to show it.  We have the ** to catch a route that doesn't exist, and we reroute it 
@@ -319,7 +319,7 @@
         </pre>
 
 
-        <hr class="hrClass"/>
+       <!--<hr class="hrClass" />-->
         <p class="HeadingSubTopic">Resolve Dynamic Data</p>   
         This is for when we need to get the data before to route somewhere.  We should create a new file, such as server-recolver.service.ts.  It should be 
         similar to:

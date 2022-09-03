@@ -20,7 +20,7 @@
      <button (click)="onClickButton1(theInput.value)">send it</button>. If you are setting someVariable in your code, you can use it with the brackets.<br />
     <mark>{{theVariable}}</mark>
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">Property Binding</p>
     <code>On second button: [disabled]="theBoolVar"</code><br />
@@ -31,7 +31,7 @@
     <button (click)="onSwitchTheBoolVar()">Switch Bool</button> &nbsp; <button [disabled]="theBoolVar">Will Go On/Off</button> &nbsp;<button [disabled]=true>Always Disabled</button><br />
     For an event, use (click)="onSwitchTheBoolVar<b>($event)</b>" and <b>event:any or event:Event</b> in the ts file as the parameter received for the event, if you need access to the event info.
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">2-way Binding</p>
     <code ngNonBindable>&lt;input type="number"[(ngModel)]="theVariable"/&gt;</code><br />
@@ -43,7 +43,7 @@
     <button (click)="onSetVariableToHello()">call to set variable to hello in the ts file</button>
     
 
-    <hr class="hrClass" />    
+    <!--<hr class="hrClass" />-->  
     <p class="HeadingSubTopic">Wait a minute!!</p>
     What is with the [] or no [] or the () and the []?
     <br/>
@@ -64,9 +64,19 @@
     For 2-way binding we use [(ngModel)]="whateverVariable" (FormsModule is required for this)<br/>
     When binding to a property we can also bind to "!theProperty"
 
+    <br/>
+    See these fields (theBoolVar2 is false):<br/>
+    disabled=true<input type="number" disabled=true/><br/>
+    [disabled]=true<input type="number" [disabled]=true/><br/>
+    [disabled]="theBoolVar2"<input type="number" [disabled]="theBoolVar2"/><br/>
+    [disabled]=theBoolVar2<input type="number" [disabled]=theBoolVar2/><br/>
+    disabled=theBoolVar2<input type="number" disabled=theBoolVar2/><br/>
+    disabled="theBoolVar2"<input type="number" disabled="theBoolVar2"/><br/>
+    
 
 
-    <hr class="hrClass" />
+
+    <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">Angular Directive - ngIf</p>
     <code ngNonBindable>*ngIf</code><br />
@@ -84,7 +94,7 @@
     <mark *ngIf="theBoolVar; else onElse;" >I go on and off</mark><br/><br/>
     <ng-template #onElse><mark >I show up on else (false)</mark></ng-template>
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
       
     <p class="HeadingSubTopic">Angular Directive - ngStyle</p>
     <code ngNonBindable>[ngStyle]="&lbrace;backgroundColor:theColor&rbrace;"</code><br />    
@@ -92,7 +102,7 @@
     of theColor in the span element.  <button (click)="onRandomColor()">Random Color</button><br/>
     span element: <span [ngStyle]="{backgroundColor:theColor}">Hello!</span><br/>
     
-    <hr class="hrClass" />
+   <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">Angular Directive - ngClass</p>
     <code ngNonBindable>[ngClass]="&lbrace;redClass:theBoolVar&rbrace;"</code><br />    
@@ -100,7 +110,7 @@
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
     <span [ngClass]="{redClass: theBoolVar}">I'll be red when TheBoolVar is true</span>
   
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
 
     <p class="HeadingSubTopic">Angular Directive - ngFor</p>
     <code ngNonBindable>&lt;input type="number" (keydown)="onValueChanged($event)"/&gt;</code><br/>
@@ -112,7 +122,7 @@
     <div *ngFor = "let item of theNumArray;"> {{item}}</div>
     <br/>
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
 
     <p class="HeadingSubTopic">Angular Directive - ngSwitch</p>
     <code ngNonBindable>&lt;div [ngSwitch]="theColor" [ngStyle]= "&lbrace; border:'2px solid skyblue'&rbrace;"/&gt;</code><br/>
@@ -131,7 +141,7 @@
       <p *ngSwitchDefault>Default</p>
     </div>
     <br/>
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">Get Data from Parent Component</p>
     <code>button calls onRandomColor which assigns a color string to theColor:</code><br />
@@ -145,9 +155,9 @@
     (Disregard the button in the child component, it is not being listened to in this code).<br/>
     <button (click)="onRandomColor()">Random Color (in parent html)</button><br/><br/>
     The child component takes in a myColor (vble in its ts file) and a myTextAlias properties (see it in the header code above).  Both are set to the variable.
-    <some-child-component [myColor]= "theColor" [myTextAlias]="theColor"></some-child-component>
-
-    <hr class="hrClass" />
+    <some-child-component [myColor]= "theColor" [myTextAlias]="theColor"></some-child-component><br/><br/>
+    <img width="100%" src="assets\images\angular\childComp1.png" alt="child component parent data" /><br/><br/>
+    <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">Tell Parent of Change in Child</p>
     <code>&lt;some-child-component (eventOnChildComponentWithEventReturn)="onChildEvent1($event)" (eventOnChildComponentWithKnownObjReturn)="onChildEvent2($event)"&gt;</code><br/>
@@ -170,7 +180,7 @@
     <em><u>Text from event 2:</u> </em><br/>
     {{someText2}}<br/>
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
 
     <div id="viewchild" ></div><br/>
     <p class="HeadingSubTopic">ViewChild</p>
@@ -184,7 +194,7 @@
     <img width="100%" src="assets\images\misc\viewchild3.png" alt="viewchild3 content elements" /><br/><br/>
     <img width="100%" src="assets\images\misc\viewchild4.png" alt="viewchild4 content elements" /><br/><br/>
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">ng-Content</p>
     <code><strong>In Parent Component:</strong></code><br/>
@@ -208,7 +218,7 @@
 
 
 
-    <hr class="hrClass" />    
+   <!--<hr class="hrClass" />-->   
     <p class="HeadingSubTopic">ContentChild for ng-Content (can't use ViewChild)</p>
     <code><strong>In Parent Component:</strong></code><br/>
     <code>&lt;h1 class="class1" #header1 [ngStyle]="&lbrace;backgroundColor:'skyblue'&rbrace;"&gt;Header 1 with class1 going to ng-content on child&lt;/h1&gt;</code><br/>
@@ -237,7 +247,7 @@
 
 
 
-    <hr class="hrClass" />
+   <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">Angular Directives and Your Own</p>
     <code>&lt;p appSomeDirectiveDirective appSomeDirectiveDirective2 fontColor="deeppink"&gt;</code><br/>
@@ -263,7 +273,7 @@
 
 
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
     
     <p class="HeadingSubTopic">Renderer</p>
     <code>&lt;p appSomeDirectiveDirective3>Some p element using the SomeDirectiveDirective3 with renderer2. </code>&gt;<br/>
@@ -275,7 +285,7 @@
 
 
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
 
     <p class="HeadingSubTopic">HostBinding to change the directive style</p>
     <code> @HostBinding('style.backgroundColor') backColor :string = 'transparent';</code><br />
@@ -285,7 +295,7 @@
 
 
 
-    <hr class="hrClass" />
+    <!--<hr class="hrClass" />-->
     <p class="HeadingSubTopic">HostListener for Directive</p>
     <code>@HostBinding('style.backgroundColor') backColor :string = 'transparent';</code><br/>
     <code>@HostListener('mouseenter') mouseE(eventData:Event)&lbrace; this.backColor = 'lightblue'; &rbrace;</code><br/>
@@ -295,7 +305,7 @@
 
 
 
-    <hr class="hrClass" />    
+    <!--<hr class="hrClass" />-->   
     <p class="HeadingSubTopic">Your Own Structural Directive</p>
     <code>constructor(private templateRef:TemplateRef&lt;any&gt;, private vcRef: ViewContainerRef)&lbrace;&rbrace;</code><br/>
     <code>&lt;div *appSomeDirectiveDirectiveSTR="theNumVariable"&gt; -- set in the input field</code><br/>
@@ -306,15 +316,16 @@
     <strong>TemplateRef</strong>: It represents an embedded template that can be used to instantiate embedded views.  
     <strong>ViewContainerRef:</strong> It represents a container where one or more views can be attached.<br/><br/>
     Input a number here to see that number of times repeated.<br/>
-    <img width="100%" src="assets\images\misc\structuredirective.png" alt="structure directive" /><br/><br/>
     <input [(ngModel)]="theNumVariable" type="number" /><br/>
     <div *appSomeDirectiveDirectiveSTR="theNumVariable">
       I am div 
     </div>
+    <img width="100%" src="assets\images\misc\structuredirective.png" alt="structure directive" /><br/><br/>
+    
     <br/>
     <br/>
 
-    <hr class="hrClass" />
+   <!--<hr class="hrClass" />-->
     <p class="HeadingSubTopic">Observables</p>
     An Observable is a data source.  We can use it importing the RxJS package.  Your code can be the observer to this observable.  There 
     are three types of data packages you can receive with these: data, errors, completions.  Observables are like a different approach to promises.<br/>
@@ -376,7 +387,7 @@
     <b>Operators in the rxjs library:</b><br/>
     You can import the available operators from "rxjs/operators".  map is one of the most commonly used ones.  You can use this operators inside the code 
     of the observable you are creating. But you can also use them in your assignment of myObservable to this.whatever.  (so you can get the data with some 
-    changes through the operators). Use myObservable.pipe( and in here your operators). If you need various operators, you have them here separated my commans,
+    changes through the operators). Use myObservable.pipe( and in here your operators). If you need various operators, you have them here separated my commas,
     but remember to import the ones you want to use. They will execute on the data of the observable, in the order in which you put them in.<br/>
     Check out more at <a href="https://rxjs.dev/guide/operators" target="_new">https://rxjs.dev/guide/operators</a>
     <br/><br/>
@@ -385,7 +396,97 @@
     target="_new">
     rxjs subjects</a>
 
+    
+    <p class="HeadingSubTopic">Pipes</p>
 
+    A pipe transforms the output display, not the data, so it is part of the html. See some strings changed with the pipes<br/>
+    Using <span ngNonBindable> <b>&lbrace;&lbrace;someVariables | uppercase &rbrace;&rbrace; </b>(and similar for other pipes) </span> <br/>
+    <br/>
+
+    <div class="divsByCol">
+      <div class="divsByRow">
+        <div style="border: 3px skyblue solid; margin: 5px; padding: 5px;"><span >{{someStringForPipes | uppercase}}</span><span style="color:deeppink">(upperCase)</span>     </div>
+      </div>
+      <div class="divsByRow">
+        <div style="border: 3px skyblue solid; margin: 5px; padding: 5px;"><span > {{someStringForPipes | lowercase}}</span><span style="color:deeppink">(lowerCase)</span>     </div>
+      </div>
+      <div class="divsByRow">
+        <div  style="border: 3px skyblue solid; margin: 5px; padding: 5px;"><span> {{someDate | uppercase}}</span><span style="color:deeppink">(upperCase)</span>     </div>
+      </div>
+      <div class="divsByRow">
+        <div style="border: 3px skyblue solid; margin: 5px; padding: 5px;"><span > {{someDate | date}}</span><span style="color:deeppink">(date)</span>     </div>
+      </div>
+      <div class="divsByRow">
+        <div style="border: 3px skyblue solid; margin: 5px; padding: 5px;"><span >{{someDate | date:'fullDate'}}</span><span style="color:deeppink">(date:'fullDate')</span>     </div>
+      </div>
+      <div class="divsByRow">
+        <div style="border: 3px skyblue solid; margin: 5px; padding: 5px;"><span >{{someDate | date:'fullDate' | uppercase}}</span><span style="color:deeppink">(date:'fullDate' | uppercase)</span>     </div>
+      </div>
+    </div>
+    <br/>
+    Check out the documentation because there is a lot.  When using multiple pipes, the order may matter.<br/>
+    <br/>        
+    <div class = "HeadingSubTopic2">Custom Pipes</div>
+    You can create a class for your own custom pipe and you need to include it in the app.module declarations.
+    <div class="divsByRow">
+      <div style="border: 3px skyblue solid; margin: 5px; padding: 5px;"><span >{{someDate | date:'fullDate' | myOwnPipe}}</span><span style="color:deeppink">(date:'fullDate' | myOwnPipe)</span>     </div>
+    </div>
+    <br/>
+    <pre>
+      <code>
+        //in the ts file (existing one or create a new one for your pipes)
+        import &lbrace; Component, OnInit, PipeTransform , <b>Pipe</b> &rbrace; from '@angular/core';
+
+        @Pipe(&lbrace;
+          <b>name: 'myOwnPipe' //USE THIS NAME IN THE HTML</b>
+        &rbrace;)
+        export class MyOwnPipePipe implements PipeTransform&lbrace;
+          <b>transform(value:any)&lbrace; //Need this method</b> 
+            return "♫ " + value + " ♫";
+          &rbrace;
+        &rbrace;
+
+        //in the html as shown above.        
+      </code>
+    </pre>
+    You don't have to implement PipeTransform and if you have the method it will work, but it's just good practice.<br/>
+    <b>You need to include the class in your app.module declarations</b>
+    <br/>
+    <span >{{someDate | date:'fullDate' | myOwnPipeParam:3}}</span><span style="color:deeppink">(date:'fullDate' | myOwnPipeParam:3)</span>
+    <br/>
+    The above is for this:<br/>
+    <pre>
+      <code>
+        @Pipe(&lbrace;
+          name: 'myOwnPipeParam'
+        &rbrace;)
+        export class MyOwnPipeParamsPipe implements PipeTransform&lbrace;
+          transform(value:any, <b>num :number</b>)&lbrace;
+            var myS:string =  "♫ " + value + " ♫";
+            for (var i = 1; i<=num; i++)&lbrace;
+              console.log(myS);
+              myS += " ♫";
+            &rbrace;
+            return myS;
+          &rbrace;
+        &rbrace;
+      </code>
+    </pre>
+    If you have multiple parameters, just keep adding :param to the pipe.<br/>
+    You can use pipes to filter a list.  If you have an ngFor in your html, apply a custom pipe to it, and this custom pipe is just modifying the array used 
+    in the ngFor to display only what you want. Angular doesn't rerun the pipe every time the data changes though, so updates to the date will not be 
+    shown automatically by Angular.  If you really need the pipe to be rerun on data changes, you can add : <br/>
+    <pre>
+      <code>
+        @Pipe(&lbrace;
+          name: 'myOwnPipeParam',
+          <b>pure:false</b>
+         &rbrace;)
+      </code>
+    </pre>
+    <div class = "HeadingSubTopic2">Async Pipes</div>
+    If you have a variable that will be loaded asynchronously, use the async pipe with it and it will show the data in it (instead of [object] or whatever) 
+    once it's loaded
 
   </div>
 

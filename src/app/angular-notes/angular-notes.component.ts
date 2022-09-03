@@ -1,7 +1,8 @@
 //import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform ,Pipe} from '@angular/core';
 import { ForCanDeActivate } from '../shared/forCanActivate.service';
 import { Observable } from 'rxjs';
+import { stringify } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'angular-notes',
@@ -12,13 +13,16 @@ import { Observable } from 'rxjs';
 export class AngularNotesComponent implements OnInit, ForCanDeActivate {
   theVariable :string =  "" ;
   theBoolVar: boolean = true;
+  theBoolVar2: boolean = false;
   theColor: string = "aqua";
   theNumVariable: Number = 0;
   theNumArray: Number[] = []  
   theArraySize:number = 0;
   someText1:string = "";
   someText2:string = "";  
-  fontColor:string = "blue";
+  fontColor:string = "blue";  
+  someDate:string = Date();
+  someStringForPipes = "This file has less than 100 lines at this point " 
 
   ngOnInit(){
     window.scroll(0,0);
@@ -89,5 +93,31 @@ export class AngularNotesComponent implements OnInit, ForCanDeActivate {
     //logic to decide whether we can leave the route or not
       //alert("Can I deactivate? yes");
       return true;
+  }
+}
+
+
+
+//instead of specific file just add here since it's just for the example.
+@Pipe({
+  name: 'myOwnPipe'
+})
+export class MyOwnPipePipe implements PipeTransform{
+  transform(value:any){
+    return "♫ " + value + " ♫";
+  }
+}
+
+@Pipe({
+  name: 'myOwnPipeParam'
+})
+export class MyOwnPipeParamsPipe implements PipeTransform{
+  transform(value:any, num :number){
+    var myS:string =  "♫ " + value + " ♫";
+    for (var i = 1; i<=num; i++){
+      console.log(myS);
+      myS += " ♫";
+    }
+    return myS;
   }
 }
