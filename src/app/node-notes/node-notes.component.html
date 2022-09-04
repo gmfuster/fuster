@@ -48,7 +48,7 @@
             const body = [];//maybe we don't get it all at once.
             req.on("data", (chunk) => &lbrace;<b>//data coming from the request, we may be getting it in chunks</b>
                 const d = body.push(chunk);
-            &lbrace;);
+            &rbrace;);
             req.on("end", () => &lbrace;<b>//when the req is done with the data.</b>
                 ...
             &rbrace;)

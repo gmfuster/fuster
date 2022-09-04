@@ -160,6 +160,7 @@
     <br/><br/>
     <b>It is best to leave the "/" path for the end.  The above was just to see what happens.  Put it as the last one!!</b>
 
+    <b>Keep in mind when we do next() next() next() it still has to match the url provided to get in the app.use</b>
     <p class="HeadingSubTopic">Parsing Incoming Requests</p>
 
     We can send html code in a response.  And with that we can send an action to be taking from that code.
@@ -206,7 +207,35 @@
     <p class="HeadingSubTopic">Differentiate between types of requests - methods GET POST etc</p>
     If you have a route that is only for GET requests, you can use <b>app.get</b> instead of app.use (the rest is the same). Same thing for POST, use <b>use.post.</b>
     
+    <p class="HeadingSubTopic">Express - Paths</p>
 
+    With express we can move our routing to another file (routes or whatever you want to name it). To do that, in those new files import also Express (require('express'))
+    and then make use of its router <b>const router.express.Router()</b>.<br/>
+    Once you do that, you should have statements similar to the ones you have with app.use (or app.get and app.post) but instead of app.use you will use router.use.<br/>
+    <pre>
+      <code>
+        const express = require('express');
+
+        const router = express.Router();
+
+        router.use ( '/add', (req,res, next) => &lbrace;
+          res.send('whatever ');
+        &rbrace;);
+
+        //at the end
+        module.exports = router;
+      </code>
+    </pre>
+    Now you can import it in your main file <b>const routes = require ('./whateverpath/whateverfilewiththeroutes');</b> and then <b>app.use(routes)</b><br/>
+    You can also add something like this at the end (or redirect to a 404 page):
+    <pre>
+      <code>
+        app.use (   (req, res, next) => &lbrace;
+          res.send('&lt;h2&gt;oops, I don't know where that is&lt;/h2&gt;');
+        &rbrace;);
+        ///or could also send the code with res.status(404).send(...)
+      </code>
+    </pre>
 
   </div>
   
