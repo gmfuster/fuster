@@ -29,13 +29,14 @@
         <code>to call: this.mathServices.getRandom1ToN(10)</code><br/>
 
         I have a service MathServices that has a getRandom1ToN function.  Click the button to call that service function and show the number we get.
-        <button (click)="onClickMeClicked()">Click me</button>
+        <button (click)="onClickMeClicked()">Click me</button><br/>
+        <img width="100%" src="assets\images\angular\useMathService.png" alt="use math service" /><br/><br/>
 
        <!--<hr class="hrClass" />-->
 
         
-        <p class="HeadingSubTopic">Call Function in Service with @Injectable(&lbrace;  providedIn: 'root' &rbrace;)</p>
-        <code>Injectable(&lbrace;providedIn: 'root' &rbrace;) before export class StringServices</code>   <br/>
+        <p class="HeadingSubTopic">Call Function in Service with @Injectable(&lbrace;  providedIn: 'root' &rbrace;) </p>
+        <code>Injectable(&lbrace;providedIn: 'root' &rbrace;) before export class StringServices -- in service ts</code>   <br/>
         <code>In the svc, set function as public: public getAString() </code><br/>        
         <code>in ts using svc:  constructor (private mathServices:MathServices, private stringServices:StringServices)</code><br/>        
 
@@ -50,7 +51,8 @@
 
         
         <p class="HeadingSubTopic">Call Function in Service @NgModule</p>  
-        <code>in app.module: import &lbrace; OtherServices &rbrace; from './shared/forexamples.service'; under ngModule</code><br/>
+        <code>in app.module: import &lbrace; OtherServices &rbrace; from './shared/forexamples.service';</code><br/>
+        <code>Add to app.module providers under ngModule.</code><br/>
         <code>function in the service should be public</code><br/>
         <code>No need add to providers in component</code><br/>
         <code>constructor (private mathServices:MathServices, private stringServices:StringServices, private otherServices:OtherServices)</code><br/>
@@ -76,7 +78,7 @@
         
         <button (click)="onClickMeClicked4()">Click me 4!</button><br/>
         <span style="background-color: lightgreen;">{{somethingHappenedText}}</span>
-
+        <img width="100%" src="assets\images\angular\useEventService.png" alt="use event service" /><br/><br/>
         <!--<hr class="hrClass" />-->
 
 
@@ -188,14 +190,14 @@
             ]&rbrace;
         </code>
         <br/>
-        When we have nested routes, we also need rested router-outlets.  In this case, the SomeComponent will load in the main router-outlet 
+        <b>When we have nested routes, we also need rested router-outlets. </b> In this case, the SomeComponent will load in the main router-outlet 
         and this SomeComponent html should have another router-outlet where the child will load.<br/>
         If you want to navigate to a child from SomeComponent, you could do it like this:<br/>
         <code>this.router.navigate(['commonpath', someidvarintparentcomponent, 'edit']);</code><br/>
         or<br/>
         <code>this.router.navigate(['edit'] , &lbrace; this.route &rbrace;);</code><br/>
         If we are using the queryParams from the parent in the navigation, we will lose them when we navigate.  To preserve them, do this :
-        <code>this.router.navigate(['edit'], &lbrace;relativeTo: this.route, <b>queryParamsHandting: 'preserved' </b>&rbrace; ) </code>
+        <code>this.router.navigate(['edit'], &lbrace;relativeTo: this.route, <b>queryParamsHandling: 'preserved' </b>&rbrace; ) </code>
 
 
        <!--<hr class="hrClass" />-->       
@@ -325,11 +327,11 @@
         similar to:
         <pre>
             <code>
-                import &lbrace;Resolve &rbrace; form '@angular/router'
+                import &lbrace;Resolve &rbrace; from '@angular/router'
                 
                 //it could resolve to a type, or an observable of the type, or a Promise of the type
                 //if you need to inject other services, use @injectable and the constructor to get it.
-                export class <b>ServerResolver</b> implements Resolve&lt;whatever type you will resolve &lt;
+                export class <b>ServerResolver</b> implements Resolve&lt;whatever type you will resolve &gt;
 
                 resolve(route:ActivatedRouteSnapshot, state:RouterStateSnapshot)&lbrace;;
                     return whatever;

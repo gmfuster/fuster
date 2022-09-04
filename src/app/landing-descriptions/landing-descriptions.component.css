@@ -8,11 +8,12 @@
 }
 
 .forBanner{
-  width:100vw;
+  width:90vw;
   height: 60vh;;
   text-align: center;
   background-color: darkcyan;
-  margin-top: 5px;
+  border:salmon 5px double;
+  margin-top: 2.5vh;
   margin-bottom: 40px;
 }
 
