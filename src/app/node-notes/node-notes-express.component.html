@@ -237,6 +237,25 @@
       </code>
     </pre>
 
+    <p class="HeadingSubTopic2">Express - Filtering Paths</p>
+    It's possible to have the same path for 2 different statements, like if we have <b>app.get("/theFolder/thepath")</b> and 
+    <b>app.post("/theFolder/thepath")</b>.  If that is the case,
+    and we have those in a specific file <b>theFile</b>.  We can do this in the main file:
+    <pre>
+      <code>
+        //in main file (happens first)
+        <b>//only routes starting with thefolder will go into the routes in theFile.</b>
+        <b>//Also, we don't need to include "theFolder" in the paths in theFile because Express will remove it.</b>
+        <b>app.use("/thefolder", theFile); </b>
+      </code>
+    </pre>
+
+
+
+    <p class="HeadingSubTopic">Express - HTML</p>
+    
+
+
   </div>
   
 </div> 
