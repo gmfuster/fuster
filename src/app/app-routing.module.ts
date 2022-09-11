@@ -7,12 +7,14 @@ import { AngularNotesComponent } from './angular-notes/angular-notes.component';
 import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-svc-routing.component';
 import { AngularNotesFormsComponent } from './angular-notes/angular-notes-forms.component';
 import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
+import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.component';
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
 import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
 import { CSharpDelegatesetcComponent } from './csharp-notes/csharp-delegatesetc.component';
 import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.component';
 import { CSharpInterfacesComponent } from './csharp-notes/csharp-interfaces.component';
+import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
 import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
 import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
 import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-notes-objects.component';
@@ -34,6 +36,7 @@ const routes: Routes = [
   { path: 'angular-notes-forms', component: AngularNotesFormsComponent, pathMatch: 'full' },  
   { path: 'dynamic-notes/:id', component: DynamicNotesComponent, pathMatch: 'full' },  
   { path: 'angular-notes-noactivate', component: AngularNotesComponent, canActivate:[ForCanActivate], canDeactivate:[ForCanDeActivate], pathMatch: 'full' },  
+  { path: 'angular-notes-http', component: AngularNotesHttpComponent, pathMatch: 'full' },  
 
   { path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },
 
@@ -42,6 +45,7 @@ const routes: Routes = [
   { path: 'csharp-delegatesetc', component: CSharpDelegatesetcComponent, pathMatch: 'full' },
   { path: 'csharp-threading', component: CSharpThreadingComponent, pathMatch: 'full' },
   { path: 'csharp-interfaces', component: CSharpInterfacesComponent, pathMatch: 'full' },
+  { path: 'csharp-ef', component: CSharpEFComponent, pathMatch: 'full' },
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },

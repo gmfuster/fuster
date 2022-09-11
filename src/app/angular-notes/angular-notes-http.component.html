@@ -1,0 +1,54 @@
+
+<div>
+  <h2 class="CenterMe">Angular notes - Forms</h2>  
+  <h3 class="CenterMe">Input fields, in general, take only numbers. </h3>
+
+
+  <div class="PaddedContents">
+
+    <!--
+    <hr class="hrHeaderClass"/>
+    <h2 class="CenterMe" ></h2>
+    <hr class="hrHeaderClass"/>
+-->
+    <p class="HeadingSubTopic">Basics</p>   
+    Send the requests to a server (duh). Usually get data back as JSON.  Always hard to remember, GET, <b>POST, PUT,</b> DELETE.
+    <br/>
+    You can go to  <a href="https://firebase.google.com/" target="_new" style="text-decoration:none;" onMouseOver="this.style.backgroundColor='transparent';" >
+      https://firebase.google.com/</a> to simulate a server to send requests to.  Click on Go To Console (you will need a Google account, again duh).
+      You can create a test mode database if you start a new project.  You will get a URL where to send requests to.  You can also use nodejs to create a server
+      and call some pretend urls in your node code.
+
+      <br/>
+      To start, you need to go to your <b>app.module.ts</b> file and import <b>HttpClientModule from @angular\common\http.</b>  Remember 
+      to include it in your imports array under NgModule.<br/>
+      <br/>
+      Wherever you are going to use it, you will also have to <b>import HttpClient from angular/common/http.</b>  And remember to 
+      injected in your constructor (<b>constructor(private http : HttpClient)</b>)<br/>
+      If we sent an object with a request, Angular's HttpClient will automatically turn the data into JSON.<br/>
+      NOTE: I may have buttons here to test but they don't really work with any real server.  This is just for notes.<br/>
+      <button (click)="onSendAPostCliked()">Send a post</button><br/>
+      <b>If nobody is listening to the response Angular doesn't even send the request.</b><br/>
+      <pre>
+        <code>
+          constructor(private http : HttpClient)&lbrace;
+          &rbrace;
+
+          var test = &lbrace;
+            name:"Michael", 
+            lastname:"Jackson"
+          &rbrace;
+          this.http.post("http://someaddresshere/sendSomePost", test).subscribe( responseData => 
+          &lbrace;
+            console.log(responseData);
+          &rbrace;);
+        </code>
+      </pre>
+
+
+
+
+</div>
+
+  
+</div> 

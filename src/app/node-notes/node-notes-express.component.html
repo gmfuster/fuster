@@ -197,12 +197,16 @@
         &rbrace; );
       </code>
     </pre>
-    req with express comes with a body, but, if we don't do any parsing to it, it's just undefined.<br/>
+    req with express comes with a body, but, <b>if we don't do any parsing to it, it's just undefined.</b><br/>
     To parse there is an additional tool that can be installed:  <b>npm install --save body-parser</b>. You may not need to install it if the version 
     of Express you are using already has it included.  Before use, include it with <b>const bodyParser = require("body-parser")</b><br/>
     You may need different parsers depending on the type of body you are getting.  For the above, add this to the top of the file (before the app.use routing statements).
-    <b>app.use(bodyParser.urlencoded());</b><br/>
-    Once you have that, you can log req.body on your routing app.use and you will see the contents.
+    <b>app.use(bodyParser.urlencoded());</b>  Note that the urlencoded is used with request from forms.  You can also use the bodyParser without that urlencoded part.<br/>
+    Once you have that, you can log req.body on your routing app.use and you will see the contents. 
+    Note: You may get a "body-parser deprecated bodyParser: use individual json/urlencoded middlewares".  You can also do:
+    app.use(bodyParser.urlencoded(&lbrace;extended:false&rbrace;));<br/>
+    You can also just use the json parser from express: <b>app.use(express.json())</b>  Also has it for forms (app.use(express.urlencoded(&lbrace; extended: true &rbrace;));)
+    
 
     <p class="HeadingSubTopic">Differentiate between types of requests - methods GET POST etc</p>
     If you have a route that is only for GET requests, you can use <b>app.get</b> instead of app.use (the rest is the same). Same thing for POST, use <b>use.post.</b>

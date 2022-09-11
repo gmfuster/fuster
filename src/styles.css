@@ -129,6 +129,9 @@ body pre samp{
   justify-content: center;
   align-items: center;  
 }
+body button{
+  cursor: pointer;
+}
 .buttonGeneral {
   background-color: skyblue;
   border-color: skyblue;

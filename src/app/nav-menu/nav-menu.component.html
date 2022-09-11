@@ -44,6 +44,11 @@
               <a [routerLink]='["/angular-notes-forms"]'  style="color:navy; font-size:2.5vh; ">
                Forms
               </a>
+            </li>    
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-http"]'  style="color:navy; font-size:2.5vh; ">
+               HTTP
+              </a>
             </li>           
           </ul>                    
         </li>
@@ -80,6 +85,11 @@
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
               <a [routerLink]='["/csharp-threading"]'  style="color:navy; font-size:2.5vh; ">
                 Threading-Tasks
+              </a>
+            </li>
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/csharp-ef"]'  style="color:navy; font-size:2.5vh; ">
+                Entity Framework
               </a>
             </li>
           </ul>                    

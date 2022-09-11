@@ -17,6 +17,7 @@ import { AngularNotesComponent } from './angular-notes/angular-notes.component';
 import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-svc-routing.component';
 import { AngularNotesFormsComponent } from './angular-notes/angular-notes-forms.component';
 import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
+import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.component';
 
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 
@@ -25,6 +26,7 @@ import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-not
 import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-notes-objects.component';
 
 import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.component';
+import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
 
 import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
 import { SomeDirectiveDirective } from './some-directive-directive/some-directive-directive.directive';
@@ -56,6 +58,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     AngularNotesComponent,
     AngularNotesSvcRoutingComponent,
     AngularNotesFormsComponent,
+    AngularNotesHttpComponent,
     JavaScriptNotesComponent,
     DynamicNotesComponent,
     ProbabilityNotesComponent,
@@ -74,6 +77,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     MapItComponent,
     NotFoundComponent,
     CSharpThreadingComponent,
+    CSharpEFComponent,
     JavaScriptNotesAsyncComponent,
     JavaScriptNotesObjectsComponent,
     DoublesComponent,
