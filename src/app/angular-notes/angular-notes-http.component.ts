@@ -29,28 +29,7 @@ export class AngularNotesHttpComponent implements OnInit {
   }
   onSendAGetCliked(){    
     
-    this.http.get<ForSend[]>("http://localhost:3000/sendAGet", 
-      {
-        headers :new HttpHeaders( { 'content-type': 'application/json'}) ,
-        observe : 'body'
-      }).pipe(
-      map(  
-        (value ) => 
-          {                       
-            for (var v = 0; v < 4; v++ )
-            {            
-              //value[v].name += " changed it!";
-            }               
-            return value;      
-          }        
-        )
-      ).subscribe( responseData => 
-      {        
-        console.log(responseData);
-      },
-      error => {
-        alert("Oh my something happened");
-      });
+   
 
   }    
 
