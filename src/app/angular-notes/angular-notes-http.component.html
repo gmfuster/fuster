@@ -119,7 +119,7 @@
 
       <p class="HeadingSubTopic">More on requests</p>  
       You will need to have some variable that indicates whether you are loading or not, just so things are not displayed when they should not or something similar.
-      May also want to show a loading image when things are being loading.<br/>
+      May also want to show a loading image when things are being loading.<br/><br/>
       Usually you will have the function to make HTTP calls in a service that you can use in the component.<br/>
       When we are using a service, we can remove the subscribe from the code above (so we don't have it in the service file) and instead RETURN the observable 
       (the rest of the code before the .subscribe).  Instead, subscribe to the call to the method instead in the component itself.
@@ -176,7 +176,7 @@
           &rbrace;</b>);
         </code>
       </pre>
-      There is another way to handle errors using Subject from sxjs. (import it). With this we can subscribe to the error with the subscribe as in the code 
+      There is another way to handle errors using Subject from rxjs. (import it). With this we can subscribe to the error with the subscribe as in the code 
       above, but then we can fwd that if needed. It would be something like this:<br/>
       Create a new <b>error = new Subject&lt;string&gt;()</b>.  Then in the error we are getting from the buscription to the response from the http call:
       <pre>
