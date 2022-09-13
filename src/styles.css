@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap:regular,bold,italic&subset=latin,latin-ext');
 :root{
-  --main-code-background: rgb(192, 228, 250);
+  --main-code-background: rgb(192, 228, 250);  
 }
 .main-body {  
   color:rgb(183, 253, 253);
@@ -60,7 +60,7 @@ body pre {
   display: block;
   padding: 9.5px;
   margin: 0 0 10px;
-  font-size: 13px;
+  font-size: 1.4vw;  
   line-height: 1.42857143;
   color: #333333;
   word-break: break-all;
@@ -72,7 +72,7 @@ body pre {
 }
 body pre code{
   font-family: 'Times New Roman', Times, serif;
-  font-size: 1.2vw;  
+  font-size: 1.4vw;  
   color:navy;
   padding:0px;    
   background-color: transparent;
@@ -80,18 +80,16 @@ body pre code{
   white-space: pre-wrap;
 }
 body code{
-  font-family: 'Times New Roman', Times, serif;  
-  font-size: 1.2vw;  
+  font-family: 'Times New Roman', Times, serif;    
   color:navy;
   padding:8px;  
   background-color: var(--main-code-background);
   border-radius: 4px;
 }
 body pre samp{
-  font-family: 'Times New Roman', Times, serif;
-  font-size: 1vw;  
-  color:navy;
+  font-family: 'Times New Roman', Times, serif;    
   padding:8px;  
+  color:gray  
 }
 .HeadingSubTopic{  
   font-size: 3vw;  

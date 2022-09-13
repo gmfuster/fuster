@@ -11,8 +11,9 @@
     <h2 class="CenterMe" ></h2>
     <hr class="hrHeaderClass"/>
 -->
-    <p class="HeadingSubTopic">Basics</p>   
+    <p class="HeadingSubTopic">Get  Post Delete requests</p>   
     Send the requests to a server (duh). Usually get data back as JSON.  Always hard to remember, GET, <b>POST, PUT,</b> DELETE.
+    <p style="border: lightyellow solid 5px; padding:3px; background-color: lightpink; color: navy;">The PUT method replaces an existing resource with a new set of values.</p>
     <br/>
     You can go to  <a href="https://firebase.google.com/" target="_new" style="text-decoration:none;" onMouseOver="this.style.backgroundColor='transparent';" >
       https://firebase.google.com/</a> to simulate a server to send requests to.  Click on Go To Console (you will need a Google account, again duh).
@@ -42,9 +43,294 @@
           &lbrace;
             console.log(responseData);
           &rbrace;);
+
+          //could also do. 
+          var js = JSON.stringify(test)   ;
+          ...
+          const theHeader = &lbrace;'content-type': 'application/json'&rbrace;//more on headers later
+          ...
+          this.http.post("http://someaddresshere/sendAPost", js, &lbrace;headers:theHeader&rbrace;).subscribe(
         </code>
       </pre>
 
+      A GET request will be similar to the above but you don't need to send an object or string to the server, just the URL.<br/>
+      To deal with the data we get back from a GET call, you can do something in the function for the subscribe itself, but a cleaner way 
+      is to use rxjs.  You could import map or other operators from rxjs/operators. (RxJS map() operator is a transformation operator 
+      used to transform the items emitted by an Observable by applying a function to each item)<br/>
+      <button (click)="onSendAGetCliked()">Send a get</button><br/>
+      A bit silly example but we call a url that returns an array like 
+      [ &lbrace;name:"A"&rbrace;, &lbrace;name:"B"&rbrace;, &lbrace;name:"C"&rbrace;, &lbrace;name:"D"&rbrace;]   
+      and just change the content.  You can use JSON to convert and reconvert because of Angular not knowing the object is an array if you just try to use value.
+      But, there is a better way after this one.
+      <pre>
+        <code>
+          this.http.get("http://someaddresshere/sendAGet")<b>.pipe(</b>
+            <b>map(  </b>
+              (<b>value</b>) => 
+              &lbrace;
+                //do something with the value
+                <b>var valueString =  JSON.stringify(<b>value</b>)  ;              </b>
+                <b>var array = JSON.parse(valueString);           </b>
+                for (var v = 0; v &lt; 4; v++ )
+                &lbrace;
+                  array[v].name += " changed it!";
+                &rbrace;
+                return <b>array;  //don't forget to return so it passes down.</b>
+              &rbrace;
+            )
+        ).subscribe( responseData => 
+        &lbrace;
+          <b>//getting what was returned above.</b>
+          console.log(responseData);
+        &rbrace;);    
+        </code>
+      </pre>
+      <pre>
+        <code>
+          this.http.<b>get&lt;&lbrace;name:string&rbrace;[]&gt;</b>("http://someaddresshere/sendAGet").pipe(
+          map(  
+            (value ) => 
+            &lbrace;                         
+              for (var v = 0; v &lt; 4; v++ )
+              &lbrace;
+                //now Angular knows this is an array           
+                value[v].name += " changed it!";
+              &rbrace;               
+              return value;      
+            &rbrace;        
+            )
+          ).subscribe( responseData => 
+          &lbrace;        
+            console.log(responseData);
+          &rbrace;);
+
+          //We could have also declared an interface like that:
+          interface ForSend&lbrace;
+            name: string
+          &rbrace;
+
+          //and then
+          <b> get&lt;ForSend[]&gt;</b>
+        </code>
+      </pre>
+      A delete request will be like  this.http.<b>delete</b>("http://someaddresshere/sendADelete").  You can also subscribe to the delete.<br/>
+
+      
+
+      <p class="HeadingSubTopic">More on requests</p>  
+      You will need to have some variable that indicates whether you are loading or not, just so things are not displayed when they should not or something similar.
+      May also want to show a loading image when things are being loading.<br/>
+      Usually you will have the function to make HTTP calls in a service that you can use in the component.<br/>
+      When we are using a service, we can remove the subscribe from the code above (so we don't have it in the service file) and instead RETURN the observable 
+      (the rest of the code before the .subscribe).  Instead, subscribe to the call to the method instead in the component itself.
+      <pre>
+        <code>
+          //in the service:
+          <b>return</b> this.http.<b>get&lt;&lbrace;name:string&rbrace;[]&gt;</b>("http://someaddresshere/sendAGet").pipe(
+          map(  
+            (value ) => 
+            &lbrace;                         
+              for (var v = 0; v &lt; 4; v++ )
+              &lbrace;
+                //now Angular knows this is an array           
+                value[v].name += " changed it!";
+              &rbrace;               
+              return value;      
+            &rbrace;        
+            )
+          )
+
+          //in the component
+          this.whateverservice.whatevermethod(whatever parameters)..subscribe( responseData => 
+          &lbrace;        
+            console.log(responseData);
+          &rbrace;);
+        </code>
+      </pre>
+
+
+      <p class="HeadingSubTopic">Errors</p>  
+
+      You should handle a possible error in the API being called.
+      <pre>
+        <code>
+          this.http.<b>get&lt;&lbrace;name:string&rbrace;[]&gt;</b>("http://someaddresshere/sendAGet").pipe(
+          map(  
+            (value ) => 
+            &lbrace;                         
+              for (var v = 0; v &lt; 4; v++ )
+              &lbrace;
+                //now Angular knows this is an array           
+                value[v].name += " changed it!";
+              &rbrace;               
+              return value;      
+            &rbrace;        
+            )
+          ).subscribe( responseData => 
+          &lbrace;        
+            console.log(responseData);
+          &rbrace; <b>,      
+          error => &lbrace;
+              //do something if there was an error.
+              //you could display error.message;
+          &rbrace;</b>);
+        </code>
+      </pre>
+      There is another way to handle errors using Subject from sxjs. (import it). With this we can subscribe to the error with the subscribe as in the code 
+      above, but then we can fwd that if needed. It would be something like this:<br/>
+      Create a new <b>error = new Subject&lt;string&gt;()</b>.  Then in the error we are getting from the buscription to the response from the http call:
+      <pre>
+        <code>
+          , errorFromHttp =>
+          &lbrace;
+            this.error.next(errorFromHttp.message)
+          &rbrace;
+        </code>
+      </pre>
+      Then we can susbcribe to that Subject wherever. Assuming this is in some service:
+      <pre>
+        <code>
+            this.someService.error.subscribe( errormsg =&gt; &lbrace; do something&rbrace;)
+        </code>
+      </pre>
+      It is good practice to unsubscribe if no longer needed or when the component will be done.
+      <pre>
+        <code>
+          //so wherever we are subscribing to the Subject
+          private errorSub : Subscription; //import it from rxjs
+          this.errorSub = this.someService.error.subscribe( errormsg =&gt; &lbrace; do something&rbrace;)
+
+          //implement also OnDestroy in the component (import it from Angular core)
+          ngOnDestroy()&lbrace;
+            this.errorSub.unsubscribe();
+          &rbrace;
+        </code>
+      </pre>
+      'rxjs/operators' also has a catchError operator that you can use regardless of how you are handling errors.  Should be used with another observable of 
+      rxjs, <b>throwError</b>
+      <pre>
+        <code>
+          this.http.<b>get&lt;&lbrace;name:string&rbrace;[]&gt;</b>("http://someaddresshere/sendAGet").pipe(
+          map(  
+            (value ) => 
+            &lbrace;                         
+              for (var v = 0; v &lt; 4; v++ )
+              &lbrace;
+                //now Angular knows this is an array           
+                value[v].name += " changed it!";
+              &rbrace;               
+              return value;      
+            &rbrace;                    
+          )),
+          <b>catchError( res => &lbrace; whatever ; return throwError (res) &rbrace;)</b>
+        </code>
+      </pre>
+
+      <p class="HeadingSubTopic">Requests with more Details</p>  
+      <p class="HeadingSubTopic2">Headers</p>  
+      Angular also has a HttpHeaders that can be imported from angular/common/http.<br/>
+      <pre>
+        <code>
+          this.http.get&lt;ForSend[]&gt;("http://someUrl/sendAGet", 
+            <b>&lbrace;headers :new HttpHeaders( &lbrace; 'content-type': 'application/json', 'Custom-header': "hello"&rbrace;) &rbrace;)</b>.pipe(...
+        </code>
+      </pre>
+      <p class="HeadingSubTopic2">Query Params</p>  
+      You can also import HttpParams like you import HttpHeaders.  Also add them to the same object in the call.<br/>
+      <pre>
+        <code>
+          ...
+          &lbrace;
+            headers :new HttpHeaders( &lbrace; 'content-type': 'application/json'&rbrace;) ,
+            <b>params: new HttpParams().set("whateverTheAPISupports", "whatever")</b>
+          &rbrace;
+
+          //you will see this url
+          //http://someUrl/sendAGet<b>?whateverTheAPISupports=whatever</b>
+        </code>
+      </pre>
+      If you need to add more than one param, create the object with new HttpParams(), then do the set, then do append("somethingelse", "whatever");
+      However, you will have to set the variable each time, such as <b>myHttpParamsVar = myHttpParamsVar.append("somethingelse", "whatever");</b>.  Then use 
+      that myHttpParamsVar in your params for the call.
+
+      <p class="HeadingSubTopic2">Observing Responses</p>  
+      Just like we were including headers and params before, we can also include an observe to indicate what we want to get from the response.
+      For example, if we say this:
+      <pre>
+        <code>
+          headers :new HttpHeaders( &lbrace; 'content-type': 'application/json'&rbrace;) ,
+          <b>observe : 'response'</b>
+        </code>
+      </pre>
+      And console.log what we get back, we will see something like this:
+      <pre>
+        <samp>
+          HttpResponse &lbrace;headers: HttpHeaders, status: 200, statusText: 'OK', url: 'http://someUrl/sendAGet', ok: true, …&rbrace;
+          body
+            : 
+            Array(4)
+            0
+            : 
+            &lbrace;name: 'A'&rbrace;
+            1
+            : 
+            ...etc
+          [[Prototype]]
+          : 
+          Array(0)
+          headers
+          : 
+          HttpHeaders &lbrace;normalizedNames: Map(0), lazyUpdate: null, lazyInit: ƒ&rbrace;
+          ok
+          ...etc
+        </samp>
+      </pre>
+      But if instead of 'response' we use 'body'
+      <pre>
+        <samp>
+          (4) [&lbrace;…&rbrace;, &lbrace;…&rbrace;, &lbrace;…&rbrace;, &lbrace;…&rbrace;]
+          0
+          : 
+          &lbrace;name: 'A'&rbrace;
+          1
+          : 
+          &lbrace;name: 'B'&rbrace;
+          ...
+        </samp>
+      </pre>
+
+      Similar to the headers and the observe above, you can also set the <b>responseType :'json' </b> which is 'json' by default.
+
+      <p class="HeadingSubTopic2">Interceptors</p>  
+      These are useful when we have some of the things we have been setting up above (headers, observe...) and they are going to be used in all 
+      the requests.  You can create them in a specific file for them and it is good practice to have service.ts at the end of the name.
+      <b>export class YourInterceptor implements HttpInterceptor</b>  You need an intercept method that will look something like this:
+      <pre>
+        <code>
+          intercept(req : HttpRequest&lt;any&gt;, next: HttpHandler)&lbrace;
+            //will run right before the request happens
+            return next.handle(req); //this lets the result continue
+         &rbrace;         
+        </code>
+      </pre>
+      To be able to use this, go to your app.module and add <b>&lbrace;provide: HTTP_INTERCEPTORS, useClass: YourInterceptor, multi:true&rbrace;</b> to your array of providers.  You 
+      import it from angular/common/http<br/>. You will also need to import your class. Set multi so the existing ones are not replaced but instead yours is added.
+      <br/>
+      You have the req in your intercept, so you can check for things in that request and cancel it (don't do next).  You can also change the request by 
+      creating a new request (the original one is immutable) and then passing the new one with next.  For example you could add a header to the original 
+      request by setting it to <b>req.clone( &lbrace;headers: req.headers.append("something", "something")&rbrace;</b><br/>
+      <b>DO NOT FORGET to pass the new request to the next.handle()! :-)  </b><br/>
+      next.handle() gives you an observable (like the original request without Interceptors would be).  This means you can also intercept the response, something like this:
+      <pre>
+        <code>
+          //tap the response to take a look , or do any other operator, you can also modify it.
+          <b>return next.handle(req).pipe</b>(tap(event => &lbrace;
+            if (event.type === HttpEventType.Response) ...
+           &rbrace;
+         )
+        )
+        </code>
+      </pre>
 
 
 
