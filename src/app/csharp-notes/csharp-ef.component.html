@@ -10,9 +10,153 @@
                     
     <p class="HeadingSubTopic">Intro</p>
     You use EF to access data.  If you have a DB in place, you set it so it matches the structure of that DB.  Otherwise you can use to create the DB itself.<br/>
-    
+
+    <p class="HeadingSubTopic2">Connection string</p>
+    (Not including installation for SQL server or EF packages). You will need a class in your project to set your DatabaseProvider (SQLServer). You can have another class 
+    also for the Database itself.  This class should use <b>using Microsoft.EntityFrameworkCore;</b><br/>.  It should also inherit from DbContext. 
+    <b>public class Northwind : DbContext</b>  On that class you would have something like this (for SQLServer).
+    <pre>
+        <code>
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            &lbrace;
+                if (ForEF.DatabaseProvider == "SQLServer")
+                &lbrace;
+                    string connection = "Data source= YourServerName\\YourInstanceName;" + "Initial Catalog=Northwind;" + 
+                    "Integrated Security=true;" + "MultipleActiveResultSets=true;";
+                    optionsBuilder.UseSqlServer(connection);
+                &rbrace;			
+            &rbrace;
+        </code>
+    </pre>
+
+    <p class="HeadingSubTopic2">Entity Models</p>
+    <b>With Entity Framework, an entity class represents the structure of the table and an instance represents a row in the table.</b><br/>
+    When creating a model for a table in the DB, we can use <b>attributes</b> de give more details to the fields, such as:
+    <pre>
+        <code>
+            [required]
+            [StringLength(40)]
+            public string ProductName &lbrace;get;set;&rbrace;
+        </code>
+    </pre>
+    Instead of attributes, or with them, we can use Fluent API, for the above.  (more later)
+    <pre>
+        <code>
+            <b>//on OnModelCreating in Northwind.cs</b>
+            modelBuilder.Entity&lt;Product&gt;()
+                .Property(product => product.ProductName)
+                .IsRequired()
+                .HasMaxLength(40);
+        </code>
+    </pre>
+    There is also a .HasData where you can insert a default row if there is none.  For the classes that go with the table, you can have one class per table. 
+    These classes will be entity models.
+    If we have a table like this:
+    <pre>
+        <samp>
+            Categories:
+                CategoryId (PK, int, not null)
+                CategoryName (nvarchar(15), not null)
+                Description (ntext, null)
+                ...
+        </samp>
+    </pre>
+    We can start setting up the columns in its entity model class like:
+    <pre>
+        <code>
+            <b>public class Category</b>
+            &lbrace;
+		        public int CategoryId &lbrace; get; set; &rbrace;
+		        public string? CategoryName &lbrace; get; set; &rbrace;
+		        [Column(TypeName = "ntext")]
+		        public string? description &lbrace; get; set; &rbrace;
+
+        		public virtual ICollection&lt;Product&gt; Products &lbrace; get; set; &rbrace;
+
+		        public Category()
+		        &lbrace;
+                    //could also be a list
+                    this.Products = new HashSet&lt;Product&gt;();
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    If we want to name a property for a column with a name different than the name in the table:
+    <pre>
+        <code>
+            //UnitPrice is the name in the table.
+            [Column("UnitPrice", TypeName ="money")]
+            public decimal? cost &lbrace; get; set; &rbrace;
+        </code>
+    </pre>
+    For properties that relate different entities, we can do:
+    <pre>
+        <code>
+            public <b>virtual</b> ICollection&lt;Product&gt; Products &lbrace; get; set; &rbrace;
+        </code>
+    </pre>
+    That allows EF Core to inherit and override the properties to provide extra features (such as lazy loading). 
+    The Category class (entity model) matches the Category table in the DB and will be used to represent one row from the table. <br/>
+    You also need to take the project what tables to use.  Another example of how to set up columns.
     
 
+    <pre>
+        <code>
+            <b>public class Northwind : DbContext</b>
+            &lbrace;
+                public DbSet&lt;Category&gt;? Categories &lbrace; get; set; &rbrace;
+		
+
+	        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+                ...
+		        
+                protected override void <b>OnModelCreating (ModelBuilder modelBuilder)</b>
+	        &lbrace;
+			    <b>modelBuilder.Entity&lt;Category&gt;().Property(category =&gt; category.CategoryName).IsRequired().HasMaxLength(15);</b>
+	      &rbrace;
+                ...	
+        </code>
+    </pre>
+    You can also use a scaffolding tool to create the above. <b>gotnet tool install --global dotnet-ef -- version 6.0.0</b>
+    <br/>
+    EF 6 and above let you create preconvention models.  <b>In the same class Northwind:</b>
+    <pre>
+        <code>
+            protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
+            &lbrace;
+	            //apply this max to all string columns
+	            configurationBuilder.Properties<&lt;tring&gt;().HaveMaxLength(75);
+	            //or have a custom interface DoNotMap and make sure none of the properties implementing it are mapped
+	            configurationBuilder.IgnoreAny&lt;DoNotMap&gt;();
+            &rbrace;
+        </code>
+    </pre>
+
+    <p class="HeadingSubTopic2">Querying the DB</p>
+    Once the DbContext and the data provider are set up, we can start using them in our methods.<br/>
+    <pre>
+        <code>
+            <b>using (Northwind db = new Northwind())</b>
+            &lbrace;
+                //get categories that include their related products (gets categories and products for them)
+                <b>IQueryable&lt;Category&gt;? categories = db.Categories?.Include(c =&gt; c.Products);</b>
+                if (categories is null)
+                &lbrace;
+                    return;
+                &rbrace;
+                foreach(Category cat in categories)
+                &lbrace;
+                    Console.WriteLine(cat.CategoryName + "--" + cat.Products.Count);
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    Could also do something like this (cost is the name we gave to the UnitPrice column in Product)
+    <pre>
+        <code>
+            IQueryable&lt;Category&gt;? categories = db.Categories?.Include(c =&gt; c.Products.Where(p =&gt; p.cost &lt; 50));
+        </code>
+    </pre>
 
     </div>  
 </div>

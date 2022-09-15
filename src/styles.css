@@ -95,13 +95,13 @@ body pre samp{
   font-size: 3vw;  
   font-weight: bold;  
   color:lightpink;  
-  text-decoration: underline solid 1vh;
+  text-decoration: underline double 1.1vh;
   padding:8px;  
 }
 .HeadingSubTopic2{  
   font-size: 1.8vw;  
   font-weight: bold;  
-  color:lightyellow;
+  color:lightpink;
   text-decoration: underline solid .5vh;
   padding:8px;  
 }
