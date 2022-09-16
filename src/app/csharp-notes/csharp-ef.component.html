@@ -100,6 +100,7 @@
     You also need to take the project what tables to use.  Another example of how to set up columns.
     
 
+    <p class="HeadingSubTopic2">Setup columns to some properties, generally</p>
     <pre>
         <code>
             <b>public class Northwind : DbContext</b>
@@ -112,13 +113,17 @@
 		        
                 protected override void <b>OnModelCreating (ModelBuilder modelBuilder)</b>
 	        &lbrace;
-			    <b>modelBuilder.Entity&lt;Category&gt;().Property(category =&gt; category.CategoryName).IsRequired().HasMaxLength(15);</b>
+                <b>modelBuilder.Entity&lt;Category&gt;().Property(category =&gt; category.CategoryName).IsRequired().HasMaxLength(15);</b>
+                //do not bring back in queries if the price is >= 50
+                modelBuilder.Entity&lt;Product&gt;().<b>HasQueryFilter(p =&gt; p.cost &lt; 50);</b>;
 	      &rbrace;
                 ...	
         </code>
     </pre>
     You can also use a scaffolding tool to create the above. <b>gotnet tool install --global dotnet-ef -- version 6.0.0</b>
     <br/>
+
+    <p class="HeadingSubTopic2">preconventions</p>
     EF 6 and above let you create preconvention models.  <b>In the same class Northwind:</b>
     <pre>
         <code>
@@ -127,7 +132,7 @@
 	            //apply this max to all string columns
 	            configurationBuilder.Properties<&lt;tring&gt;().HaveMaxLength(75);
 	            //or have a custom interface DoNotMap and make sure none of the properties implementing it are mapped
-	            configurationBuilder.IgnoreAny&lt;DoNotMap&gt;();
+	            configurationBuilder.IgnoreAny&lt;DoNotMap&gt;();                
             &rbrace;
         </code>
     </pre>
@@ -155,8 +160,104 @@
     <pre>
         <code>
             IQueryable&lt;Category&gt;? categories = db.Categories?.Include(c =&gt; c.Products.Where(p =&gt; p.cost &lt; 50));
+
+            //you could also add a .OrderByDescending(pr => pr.cost) to the above.
         </code>
     </pre>
+    Could also <b>use Like </b>
+    <pre>
+        <code>
+            IQueryable&lt;Product&gt;? products = db.Products?.Where(p =&gt; EF.Functions.Like(p.ProductName, "Ch%"));
+        </code>
+    </pre>
+
+    <p class="HeadingSubTopic">Logging</p>
+
+    We can monitor the interaction between EF and the Database.  Create a file to have the <b>logging code:</b> (not really getting into this)
+    <pre>
+        <code>
+            using Microsoft.Extensions.Logging;
+            using static System.Console;
+
+            public class ConsoleLogger:ILogger
+            &lbrace;
+                public IDisposable BeginScope&lt;TState&gt;(TState state)
+                &lbrace;
+                    return null;
+                &rbrace;
+                public bool IsEnabled(LogLevel logLevel)
+                &lbrace;
+                    switch (logLevel)&lbrace;
+                        case LogLevel.Trace:
+                        case LogLevel.Information:
+                            return false;
+                        case LogLevel.Debug:
+                        case LogLevel.Warning:
+                        case LogLevel.Error:
+                        case LogLevel.Critical:
+                        default:
+                            return true;
+                    &rbrace;
+                &rbrace;
+                public void Log&lt;TState&gt;(LogLevel logLevel, EventId eventId, TState state, Exception? exception, 
+                    Func&lt;TState, Exception, string&gt; formatter)
+                &lbrace;
+                    if (state != null)&lbrace;
+                        Console.WriteLine(state);
+                    &rbrace;
+                    if (exception != null)&lbrace;
+                        Console.WriteLine(exception.Message);
+                    &rbrace;
+                &rbrace;
+            &rbrace;
+
+            public class ConsoleLoggerProvider : <b>ILoggerProvider</b>
+            &lbrace;
+                public ILogger CreateLogger(string CategoryName)
+                &lbrace;
+                    return new ConsoleLogger();
+                &lbrace;
+                public void Dispose() &lbrace; &rbrace;
+        </code>
+    </pre>
+
+    <p class="HeadingSubTopic">Loading Patterns</p>
+        Eager Loading: Load data early<br/>
+        Lazy Loading: Load before it is needed<br/>
+        Explicit Loading: load data manually<br/>
+
+        In the code above when we are getting categories and their products (we used INCLUDE for that), we are usin eager loading.<br/>
+        Lazy loading can automatically load missing related data.  The EntityFrameworkCore.proxis package has to be referenced.  Then you can go to 
+        the OnConfiguring method and add this, but note that you may end up with multiple hits on the DB.
+        <pre>
+            <code>
+                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+                ...
+                optionsBuilder.UseLazyLoadingProxies();
+            </code>
+        </pre>
+        For explicit loading, we need <b>using Microsoft.EntityFrameworkCore.ChangeTracking</b>. (so we can use CollectionEntry).
+        Set this if you are no longer doing lazy loading now <b>db.ChangeTracker.LazyLoadingEnabled = false;</b><br/>
+        This is a bit weird but just trying to make the steps clear as to the process.
+        <pre>
+            <code>
+                //just getting some category to use
+                IQueryable&lt;Category&gt;? cat = db.Categories?.Where(c =&gt; c.CategoryId == 5);
+                <b>Category c</b> = cat.FirstOrDefault();
+
+                //set the relationship
+                CollectionEntry&lt;Category, Product&gt; prods = db.Entry(<b>c</b>).Collection(c2 => c2.Products);
+                if (!prods.IsLoaded)
+                &lbrace;
+                    prods.Load();
+                &rbrace;
+                ...
+                foreach (Product p in c.Products)...
+            </code>
+        </pre>
+
+
+
 
     </div>  
 </div>

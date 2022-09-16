@@ -95,7 +95,7 @@ body pre samp{
   font-size: 3vw;  
   font-weight: bold;  
   color:lightpink;  
-  text-decoration: underline double 1.1vh;
+  text-decoration: overline underline solid 1.1vh;
   padding:8px;  
 }
 .HeadingSubTopic2{  
