@@ -171,7 +171,87 @@
         </code>
     </pre>
 
-    <p class="HeadingSubTopic">Logging</p>
+    <p class="HeadingSubTopic">Manipulating the Data</p>
+
+    <p class="HeadingSubTopic2">Inserting</p>
+
+    You can do multiple inserts , updates etc and save them all at the same time.  In the example, adding just one product and then saving.
+    <pre>
+        <code>
+            Product product = new Product();
+            product.ProductName = "New Product";
+            product.cost = 90;
+            product.CategoryId = 1;
+            <b>db.Products.Add(product);
+            int total = db.SaveChanges();//total will have the total number of records</b>
+        </code>
+    </pre>
+
+    <p class="HeadingSubTopic2">Updating</p>
+    <b>Remember to have all those operations inside the using using (Northwind db = new Northwind()) </b><br/>
+    <pre>
+        <code>
+            Product prodToUpdate = db.Products.First();
+            prodToUpdate.ProductName += " Updated";
+            int affected = db.SaveChanges();
+            Console.WriteLine(affected);//1
+        </code>
+    </pre>
+    <p class="HeadingSubTopic2">Delete</p>
+    Similar as the other ones, but you can remove one or RemoveRange to remove a range of products.
+    <p class="HeadingSubTopic2">Transactions</p>
+    SaveChanges will start a transaction.  It will only commit if all the changes succeed.<br/>
+    Transactions are ACID (Atomic, Consistent, Isolated, Durable). There are several isolation levels: ReadUncommitted, ReadCommitted,
+    RepeatableRead, Serializable, Snapshot.<br/>
+    You can control explicit transactions with Database of DBContext.  You need to import Microsoft.EntityFrameworkCore.Storage.
+
+    <pre>
+        <code>
+            <b>using (IDBContextTransaction t = db.Database.BeginTransaction())</b>
+            //...do whatever
+            //after SaveChanges
+            <b>t.commit();</b>
+        </code>
+    </pre>
+    <p class="HeadingSubTopic">Loading Patterns</p>
+        Eager Loading: Load data early<br/>
+        Lazy Loading: Load before it is needed<br/>
+        Explicit Loading: load data manually<br/>
+
+        In the code above when we are getting categories and their products (we used INCLUDE for that), we are usin eager loading.<br/>
+        Lazy loading can automatically load missing related data.  The EntityFrameworkCore.proxis package has to be referenced.  Then you can go to 
+        the OnConfiguring method and add this, but note that you may end up with multiple hits on the DB.
+        <pre>
+            <code>
+                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+                ...
+                optionsBuilder.UseLazyLoadingProxies();
+            </code>
+        </pre>
+        For explicit loading, we need <b>using Microsoft.EntityFrameworkCore.ChangeTracking</b>. (so we can use CollectionEntry).
+        Set this if you are no longer doing lazy loading now <b>db.ChangeTracker.LazyLoadingEnabled = false;</b><br/>
+        This is a bit weird but just trying to make the steps clear as to the process.
+        <pre>
+            <code>
+                //just getting some category to use
+                IQueryable&lt;Category&gt;? cat = db.Categories?.Where(c =&gt; c.CategoryId == 5);
+                <b>Category c</b> = cat.FirstOrDefault();
+
+                //set the relationship
+                CollectionEntry&lt;Category, Product&gt; prods = db.Entry(<b>c</b>).Collection(c2 => c2.Products);
+                if (!prods.IsLoaded)
+                &lbrace;
+                    prods.Load();
+                &rbrace;
+                ...
+                foreach (Product p in c.Products)...
+            </code>
+        </pre>
+
+
+
+
+        <p class="HeadingSubTopic">Logging</p>
 
     We can monitor the interaction between EF and the Database.  Create a file to have the <b>logging code:</b> (not really getting into this)
     <pre>
@@ -220,41 +300,6 @@
                 public void Dispose() &lbrace; &rbrace;
         </code>
     </pre>
-
-    <p class="HeadingSubTopic">Loading Patterns</p>
-        Eager Loading: Load data early<br/>
-        Lazy Loading: Load before it is needed<br/>
-        Explicit Loading: load data manually<br/>
-
-        In the code above when we are getting categories and their products (we used INCLUDE for that), we are usin eager loading.<br/>
-        Lazy loading can automatically load missing related data.  The EntityFrameworkCore.proxis package has to be referenced.  Then you can go to 
-        the OnConfiguring method and add this, but note that you may end up with multiple hits on the DB.
-        <pre>
-            <code>
-                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-                ...
-                optionsBuilder.UseLazyLoadingProxies();
-            </code>
-        </pre>
-        For explicit loading, we need <b>using Microsoft.EntityFrameworkCore.ChangeTracking</b>. (so we can use CollectionEntry).
-        Set this if you are no longer doing lazy loading now <b>db.ChangeTracker.LazyLoadingEnabled = false;</b><br/>
-        This is a bit weird but just trying to make the steps clear as to the process.
-        <pre>
-            <code>
-                //just getting some category to use
-                IQueryable&lt;Category&gt;? cat = db.Categories?.Where(c =&gt; c.CategoryId == 5);
-                <b>Category c</b> = cat.FirstOrDefault();
-
-                //set the relationship
-                CollectionEntry&lt;Category, Product&gt; prods = db.Entry(<b>c</b>).Collection(c2 => c2.Products);
-                if (!prods.IsLoaded)
-                &lbrace;
-                    prods.Load();
-                &rbrace;
-                ...
-                foreach (Product p in c.Products)...
-            </code>
-        </pre>
 
 
 
