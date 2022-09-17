@@ -35,8 +35,10 @@ import { SomeDirectiveDirective3 } from './some-directive-directive/some-directi
 import { SomeDirectiveDirective4 } from './some-directive-directive/some-directive-directive.directive';
 import { SomeDirectiveDirective5 } from './some-directive-directive/some-directive-directive.directive';
 import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-directive-directive.directive';
+import { LeftLinksComponent } from './shared/left-links.component';
 
 import { DropdownDirective } from './shared/dropdown-directive';
+import { HeadingSubTopicDirective } from './shared/directives';
 import { OtherServices } from './shared/forexamples.service';
 import { ForCanActivate } from './shared/forCanActivate.service';
 import { ForCanDeActivate } from './shared/forCanActivate.service';
@@ -82,7 +84,9 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     JavaScriptNotesObjectsComponent,
     DoublesComponent,
     MyOwnPipePipe,
-    MyOwnPipeParamsPipe
+    MyOwnPipeParamsPipe,
+    LeftLinksComponent,
+    HeadingSubTopicDirective
   ],
   imports: [
     BrowserModule,

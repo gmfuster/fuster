@@ -9,7 +9,7 @@
 
 .forBanner{
   width:90vw;
-  height: 60vh;;
+  /*height: 60vh;;*/
   text-align: center;
   background-color: darkcyan;
   border:salmon 5px double;
@@ -28,8 +28,7 @@
 
   border-radius: 10px;;*/
 }
-.mainParagraph{
-  
+.mainParagraph{  
   font-size: 3vw;
   text-align: center;
 }

@@ -1,52 +1,40 @@
 
-<div class="PaddedContents">
+<div class="PaddedContents" id="topElementForPage">
 
-  <br/>
-  <h2 class="CenterMe">JavaScript notes - Basics</h2>  
-  <h4 class="CenterMe">Naming is not always according to standard but I thought it was simpler.</h4>      
-  <h4 class="CenterMe">You can type the JavaScript code  
-    <a class="CenterMe" href="https://replit.com/languages/nodejs" target="_new">on replit.com</a> 
-    to see how it works (it is nodejs but you can also choose JavaScript): <br/>
- 
-  </h4>
+  <br/>    
+    
+    <h4 class="CenterMe PaddedContents">You can type the JavaScript code  
+      <a  href="https://replit.com/languages/nodejs" target="_new">on replit.com</a>     
+  </h4>  
 
-  <br/>
-
-  <div style="position:fixed; left:12px; top: 10vh; width:8vw; ">
-    <p>
-      <!--<a  href="/javascript-notes/#scope">Scope</a>-->
+  <div class="leftLinks" #HeadingsContainer>
+    <left-links [myHeadings]="myHeadings" [myName]="myName"></left-links> 
+    <!--<left-links ></left-links>-->
+    <p>      
       <a  [routerLink]='["/javascript-notes"]' fragment="scope" >Scope</a>
     <p>
-    <p>
-      <!--<a  href="/javascript-notes/#functions">functions</a>-->
+    <p>      
       <a  [routerLink]='["/javascript-notes"]' fragment="functions" >Functions</a>
     </p>
-    <p>
-      <!--<a  href="/javascript-notes/#arrays">Arrays</a>-->
+    <p>      
       <a  [routerLink]='["/javascript-notes"]' fragment="arrays" >Arrays</a>
     </p>
-    <p>
-      <!--<a  href="/javascript-notes/#this">This</a>-->
+    <p>      
       <a  [routerLink]='["/javascript-notes"]' fragment="this" >This</a>
     </p>
-    <p>
-      <!--<a  href="/javascript-notes/#misc">Misc.</a>-->
+    <p>      
       <a  [routerLink]='["/javascript-notes"]' fragment="misc" >Misc.</a>
     </p>
   </div>
   
-  <div class="PaddedContents">
+  <div class="PaddedContents" >
 
     <!-------------------------------------------------------------->
     <!--SCOPE-->
-    <!-------------------------------------------------------------->
-    <div id="scope"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe" >Scope</h2>
-    <hr class="hrHeaderClass"/>
+    <!-------------------------------------------------------------->        
+    <p class="HeadingSubTopic" id="scope">Scope</p>
 
-    
-    <p class="HeadingSubTopic">Scope - variables</p>
+    <p class="HeadingSubTopic2" >Scope - variables</p>
     There are two types of scope in JavaScript: Global and Local.  You get global scope when you declare a variable outside of a block, or outside of 
     a function.  Global scope on the browsert is the "window".<br/>
     We can declare variables with var, let, const.  LET and CONST are the same as far as scope is concerned.  Using "var"<br/><br/>
@@ -72,7 +60,7 @@
     <hr class="hrClass" />
 
     
-    <p class="HeadingSubTopic">Scope - Hoisting</p>
+    <p class="HeadingSubTopic2">Scope - Hoisting</p>
 
     Hoisting means JavaScript moving variables or function declarations to the top of their context. 
     This means that in JavaScript, functions and variables can be accessed before they have been declared.<br/>
@@ -87,7 +75,7 @@
     <hr class="hrClass" />
 
     
-    <p class="HeadingSubTopic">Scope - Closures</p>
+    <p class="HeadingSubTopic2">Scope - Closures</p>
 
     JavaScript allows for functions inside functions (nested functions). 
     When a function is defined within another function, the inner function has access to the variable scope of the outer function. 
@@ -102,17 +90,12 @@
 
     <!-------------------------------------------------------------->
     <!--FUNCTIONS-->
-    <!--------------------------------------------------------------> 
-    <div id="functions"></div>   <br/>
-    <hr class="hrHeaderClass" />
-      <h2 class="CenterMe" >Functions</h2>
-    <hr class="hrHeaderClass"/>
-    <br/>
-
+    <!-------------------------------------------------------------->     
     JavaScript functions are objects.  <br/><br/>
 
-    
-    <p class="HeadingSubTopic">Regular Functions</p>
+    <p class="HeadingSubTopic" id="functions">Functions</p>
+
+    <p class="HeadingSubTopic2">Regular Functions</p>
 
     Because regular functions are objects, you can add a property to the function but just doing myFunc.myProp = "hey"<br/>
 
@@ -137,7 +120,7 @@
     A function can return a function.  (see example on scope section)<br/><br/>
 
     
-    <p class="HeadingSubTopic">Arrow Functions</p>
+    <p class="HeadingSubTopic2">Arrow Functions</p>
 
     <img width="100%" src="assets\images\js\arrow1.png" alt="arrow 1" /><br/><br/>
 
@@ -158,7 +141,7 @@
 
 
     
-    <p class="HeadingSubTopic">Default Parameters</p>
+    <p class="HeadingSubTopic2">Default Parameters</p>
 
     You should put the default paramenters at the end of the parameters of the function.<br/>
 
@@ -173,7 +156,7 @@
 
 
     
-    <p class="HeadingSubTopic">Function Composition</p>
+    <p class="HeadingSubTopic2">Function Composition</p>
 
     Function composition is the process of combining two or more functions to produce a new function.  
     A composable function should have 1 input argument and 1 output value.
@@ -219,7 +202,7 @@
 
     <img width="100%" src="assets\images\js\composition2.png" alt="composition for 3 functions, one with 2 arguments" /><br/><br/>
     
-    <p class="HeadingSubTopic">IIFE (IMMIEDIATELY INVOKE FUNCTION EXPRESSION)</p>
+    <p class="HeadingSubTopic2">IIFE (IMMIEDIATELY INVOKE FUNCTION EXPRESSION)</p>
 
     Notice the function being inside () for this:<br/>
 
@@ -234,7 +217,7 @@
     <br/><br/>
 
     
-    <p class="HeadingSubTopic">call, apply, bind</p>
+    <p class="HeadingSubTopic2">call, apply, bind</p>
 
     call will call a function. You can call the function in an object, so it will use the data on another object, not the one with the function.<br/>
 
@@ -257,13 +240,13 @@
     <img width="100%" src="assets\images\js\bind2.png" alt="bind with args 2" /><br/><br/>
 
     
-    <p class="HeadingSubTopic">Higher Order Functions</p>
+    <p class="HeadingSubTopic2">Higher Order Functions</p>
 
     In JavaScript functions can take other functions as arguments and they can return a function.  Those functions are called Higher Order Functions.
     Examples of HOF are JS map, filter, reduce etc.<br/><br/>
 
     
-    <p class="HeadingSubTopic">New</p>
+    <p class="HeadingSubTopic2">New</p>
 
     Using the new with regular functions:<br/>
     <img width="100%" src="assets\images\js\functionsnew.png" alt="functins with new" /><br/><br/>
@@ -273,15 +256,12 @@
     <!-------------------------------------------------------------->
     <!--Arrays-->
     <!-------------------------------------------------------------->
-    <div id="arrays"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe" >Arrays</h2>
-    <hr class="hrHeaderClass"/>
 
+    <p class="HeadingSubTopic" id="arrays">Arrays</p>
     Since functions are objects in JS, an array could contain functions.  Arrays are zero-based.  Ex: var cars = [“Saab”, “Volvo”]’;<br/>
 
     
-    <p class="HeadingSubTopic">forEach</p>
+    <p class="HeadingSubTopic2">forEach</p>
 
     forEach will go through every element in the array and perform a specific action to each item.
    
@@ -320,7 +300,7 @@
     </pre>    
     <br/>
     
-    <p class="HeadingSubTopic">Array.prototype</p>
+    <p class="HeadingSubTopic2">Array.prototype</p>
 
     Sometimes we can have variables that are like arrays but are not arrays. These almost arrays will not have all methods that are available to arrays.  
     One example in older browser is forEach. But, if the structure is like arrays without being an array, we can also use forEach with Array.Prototype.<br/>
@@ -328,7 +308,7 @@
     <img width="100%" src="assets\images\js\arrforeach.png" alt="array foreach" /><br/><br/>
 
     
-    <p class="HeadingSubTopic">map</p>
+    <p class="HeadingSubTopic2">map</p>
     This code will <mark>NOT</mark> populate the second array with what is expected, but it will create 5 undefined elements:<br/>
     <pre>
       <code>
@@ -359,7 +339,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">filter</p>
+    <p class="HeadingSubTopic2">filter</p>
 
     It will return only the items from the array that satisfy a given condition.<br/>
     <pre>
@@ -374,7 +354,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">reduce</p>
+    <p class="HeadingSubTopic2">reduce</p>
 
 
     It reduces the array to a single value.  It uses a reducer function that we create and it applies it to every element on the array.<br/>
@@ -452,7 +432,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">string to array</p>
+    <p class="HeadingSubTopic2">string to array</p>
     <pre>
       <code>
         let str = "I am a very cool string";<br/>
@@ -471,7 +451,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">pop</p>
+    <p class="HeadingSubTopic2">pop</p>
     <pre>
       <code>
         const arr1 = [1, 2, 3, 4];<br/>
@@ -482,7 +462,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">push</p>
+    <p class="HeadingSubTopic2">push</p>
     
     <pre>
       <code>
@@ -495,7 +475,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">unshift</p>
+    <p class="HeadingSubTopic2">unshift</p>
     <pre>
       <code>
         const arr1 = [1, 2, 3, 4];<br/>
@@ -507,7 +487,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">shift</p>
+    <p class="HeadingSubTopic2">shift</p>
     <pre>
       <code>
         const arr1 = [1, 2, 3, 4];<br/>
@@ -520,7 +500,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">delete</p>
+    <p class="HeadingSubTopic2">delete</p>
     <pre>
       <code>
         const arr1 = [1, 2, 3, 4];<br/>
@@ -533,7 +513,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">slice</p>
+    <p class="HeadingSubTopic2">slice</p>
 
     The slice() method returns a shallow copy of a portion of an array into a new array object selected from start to end <b>(end not included) </b>
     where start and end represent the index of items in that array. The original array will not be modified.<br/>
@@ -565,7 +545,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">splice</p>
+    <p class="HeadingSubTopic2">splice</p>
     It removes a number of elements. <b>It modifies the array and returns a new array too. </b>
 	  The first argument is the index where we start removing.<br/>    
 
@@ -576,7 +556,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">concat</p>
+    <p class="HeadingSubTopic2">concat</p>
     <pre>
       <code>
         var arr1 = [1, 2, 3, 4,5,6,7,8,9];<br/>
@@ -588,7 +568,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">sort</p>
+    <p class="HeadingSubTopic2">sort</p>
     before the comparison the elements are converted to string, so strings is what's being compared (1,10, 11, 2, is sorted).<br/>
     <pre>
       <code>
@@ -616,7 +596,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">reverse</p>
+    <p class="HeadingSubTopic2">reverse</p>
     reverse the array.
     <pre>
       <code>
@@ -627,7 +607,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">filter</p>
+    <p class="HeadingSubTopic2">filter</p>
     <pre>
       <code>
         var arr1 = [1, 2, 3, 4,5,6,7,8,9];<br/>
@@ -643,7 +623,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">every</p>
+    <p class="HeadingSubTopic2">every</p>
 
     <pre>
       <code>
@@ -657,7 +637,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">some</p>
+    <p class="HeadingSubTopic2">some</p>
 
     tests whether some the elements pass a certain condition<br/>
     <pre>
@@ -670,7 +650,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">indexof</p>
+    <p class="HeadingSubTopic2">indexof</p>
     <pre>
       <code>
         var arr1 = ["A", "B", "C", "D","E","F","G","H","I"];<br/>
@@ -688,7 +668,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">lastindexof</p>
+    <p class="HeadingSubTopic2">lastindexof</p>
     <pre>
       <code>
         var arr1 = ["A", "B", "C", "D","E","F","G","H","I", "A", "B","C", "D"];<br/><br/>
@@ -702,7 +682,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">findindex</p>
+    <p class="HeadingSubTopic2">findindex</p>
     <pre>
       <code>
         var arr1 = [1, 2, 3, 4,5,6,2,5,4, 7, 8,1, 2];<br/><br/>
@@ -714,7 +694,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">find</p>
+    <p class="HeadingSubTopic2">find</p>
     Finds the FIRST element that matches:<br/>
     <pre>
       <code>
@@ -731,7 +711,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">includes</p>
+    <p class="HeadingSubTopic2">includes</p>
 
     <pre>
       <code>
@@ -751,7 +731,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">flat</p>
+    <p class="HeadingSubTopic2">flat</p>
     <pre>
       <code>
         let ar = [1, [2,3], [4,5,6]]; <br/>
@@ -762,7 +742,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">isArray</p>
+    <p class="HeadingSubTopic2">isArray</p>
     <pre>
       <code>
         var b = Array.isArray([1,2,3]);<br/>
@@ -773,7 +753,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic">entries</p>
+    <p class="HeadingSubTopic2">entries</p>
     <pre>
       <code>
         var fruits = ["Banana", "Orange", "Apple", "Mango"];<br/>
@@ -792,7 +772,7 @@
       There is a similar <span class="notesStrong">keys</span> one.<br/>
 
       <br/>      
-      <p class="HeadingSubTopic">join</p>
+      <p class="HeadingSubTopic2">join</p>
       <pre>
         <code>
           var fruits = ["Banana", "Orange", "Apple", "Mango"];<br/>
@@ -809,11 +789,8 @@
     <!-------------------------------------------------------------->
     <!--this-->
     <!-------------------------------------------------------------->
-    <div id="this"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe" >This</h2>
-    <hr class="hrHeaderClass"/>
 
+    <p class="HeadingSubTopic" id="this">This</p>
     In most cases, the value of this is determined by how a function is called (runtime).  That means it may be different each 
     time the function is called.<br/>
 
@@ -882,13 +859,10 @@
     <!-------------------------------------------------------------->
     <!--misc-->
     <!-------------------------------------------------------------->
-    <div id="misc"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe" >Misc.</h2>
-    <hr class="hrHeaderClass"/>
-
     
-    <p class="HeadingSubTopic">Loop through properties</p>
+
+    <p class="HeadingSubTopic" id="misc">Miscellaneous</p>
+    <p class="HeadingSubTopic2">Loop through properties</p>
     <pre>
       <code>
         for (var prop in obj) &lbrace;<br/>
@@ -901,23 +875,23 @@
    
   <br/>
     
-    <p class="HeadingSubTopic">Compare</p>
+    <p class="HeadingSubTopic2">Compare</p>
 
     === will not do type coertion while == does.  So, 1 == "1" is true, but 1 === "1" is false.<br/>
 
     
-    <p class="HeadingSubTopic">Strings</p>
+    <p class="HeadingSubTopic2">Strings</p>
 
     console.log(&grave;King of Pop? That is $&lbrace;name&rbrace; $&lbrace;lastn&rbrace;.&grave; );<br/>
 
     
-    <p class="HeadingSubTopic">Symbol</p>
+    <p class="HeadingSubTopic2">Symbol</p>
 
     JS has a new symbol type.  The particular thing about them is that they are always unique even if they are created with the same values.   <br/>
 
 
     
-    <p class="HeadingSubTopic">arguments</p>
+    <p class="HeadingSubTopic2">arguments</p>
     <pre>
       <code>
         function hey (a,b,c)&lbrace;<br/>
@@ -942,13 +916,13 @@
     <br/>
 
     
-    <p class="HeadingSubTopic">undefined - null</p>
+    <p class="HeadingSubTopic2">undefined - null</p>
 
     they are not the same thing.  Null is a value, null.  Undefined is something else.
 
     <br/>
     
-    <p class="HeadingSubTopic">==, ===, Object.is</p>
+    <p class="HeadingSubTopi2">==, ===, Object.is</p>
 
     console.log("1" == 1);//true<br/>
     console.log("1" === 1);//false<br/>
@@ -957,13 +931,13 @@
     <br/>
 
     
-    <p class="HeadingSubTopic">coalesce</p>
+    <p class="HeadingSubTopic2">coalesce</p>
 
     let somevar = avar ?? “hello”;   &nbsp;  &nbsp; ==> Set the somevar to avar unless that is null or undefined, in that case, set it to “hello”<br/>
 
 
     
-    <p class="HeadingSubTopic">destructuring</p>
+    <p class="HeadingSubTopic2">destructuring</p>
 
     <pre>
       <code>
@@ -1028,7 +1002,7 @@ let sentence =  ["learning", ...fragment, "is"];
 <br/>
 <br/>
 
-<p class="HeadingSubTopic">callback func</p>
+<p class="HeadingSubTopi2c">callback func</p>
 <pre>
   <code>
     Array.prototype.myMap = function(<b>callback</b>) &lbrace;<br/>
