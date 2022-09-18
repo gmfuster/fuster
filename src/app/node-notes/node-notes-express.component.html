@@ -1,12 +1,15 @@
 
 <div class="PaddedContents">
 
-  <br/>
-  <h2 class="CenterMe">Node notes - Express</h2>    
+  <div class="leftLinks" #HeadingsContainer>      
+    <left-links ></left-links>      
+  </div>  
+
   <br/>  
   
-  <div class="PaddedContents">
+  <div class="PaddedContents PaddedContentsTopics">
     
+    <p class="HeadingSubTopic" id="general">General</p>
     This is a package you can install to help you with your node project. (npm install express, or npm install --save express<br/>
     Once installed, you have a "express": "^4.17.3", under your dependencies in your packagage.json file.  If your project doesn't have a packagage.json file, 
     you can create one or copy it from somewhere else and clean it up, then run the install again and it will be updated.<br/>
@@ -161,7 +164,7 @@
     <b>It is best to leave the "/" path for the end.  The above was just to see what happens.  Put it as the last one!!</b>
 
     <b>Keep in mind when we do next() next() next() it still has to match the url provided to get in the app.use</b>
-    <p class="HeadingSubTopic">Parsing Incoming Requests</p>
+    <p class="HeadingSubTopic" id="Incoming-Req">Parsing Incoming Requests</p>
 
     We can send html code in a response.  And with that we can send an action to be taking from that code.
     <pre>
@@ -208,10 +211,10 @@
     You can also just use the json parser from express: <b>app.use(express.json())</b>  Also has it for forms (app.use(express.urlencoded(&lbrace; extended: true &rbrace;));)
     
 
-    <p class="HeadingSubTopic">Differentiate between types of requests - methods GET POST etc</p>
+    <p class="HeadingSubTopic" id="Request-Types">Differentiate between types of requests - methods GET POST etc</p>
     If you have a route that is only for GET requests, you can use <b>app.get</b> instead of app.use (the rest is the same). Same thing for POST, use <b>use.post.</b>
     
-    <p class="HeadingSubTopic">Express - Paths</p>
+    <p class="HeadingSubTopic" id="Paths">Express - Paths</p>
 
     With express we can move our routing to another file (routes or whatever you want to name it). To do that, in those new files import also Express (require('express'))
     and then make use of its router <b>const router.express.Router()</b>.<br/>
@@ -256,7 +259,7 @@
 
 
 
-    <p class="HeadingSubTopic">Express - HTML</p>
+    <p class="HeadingSubTopic" id="HTML">Express - HTML</p>
     
 
 

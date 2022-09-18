@@ -31,6 +31,10 @@ import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
 import { CSharpInterfacesComponent } from './csharp-notes/csharp-interfaces.component';
 import { CSharpDelegatesetcComponent } from './csharp-notes/csharp-delegatesetc.component';
 
+import { NodeNotesExpressComponent} from './node-notes/node-notes-express.component';
+import { NodeNotesComponent} from './node-notes/node-notes.component';
+
+
 import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
 import { SomeDirectiveDirective } from './some-directive-directive/some-directive-directive.directive';
 import { SomeDirectiveDirective2 } from './some-directive-directive/some-directive-directive.directive';
@@ -92,7 +96,9 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,
-    HeadingSubTopicDirective
+    HeadingSubTopicDirective,
+    NodeNotesExpressComponent,
+    NodeNotesComponent
   ],
   imports: [
     BrowserModule,
