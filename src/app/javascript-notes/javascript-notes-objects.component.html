@@ -1,43 +1,18 @@
-<div class="PaddedContents">
+<div class="PaddedContents ">
 
-    <br/>
-    <h2 class="CenterMe">JavaScript notes - Async</h2>       
-    <h4 class="CenterMe">You can type the JavaScript code  
-      <a class="CenterMe" href="https://replit.com/languages/nodejs" target="_new">on replit.com</a> 
-      to see how it works (it is nodejs but you can also choose JavaScript): <br/>   
-    </h4>
+    <br/>        
   
-    <br/>
-  
-    <div style="position:fixed; left:12px; top: 10vh; width:8vw; ">
-      <p>
-        <!--<a  href="/javascript-notes-objects/#create">Create Objs.</a>-->
-        <a  [routerLink]='["/javascript-notes-objects"]' fragment="create" >Create Objs.</a>
-    </p>
-      <p>
-         <!--<a  href="/javascript-notes-objects/#object">Object</a>-->
-         <a  [routerLink]='["/javascript-notes-objects"]' fragment="object" >Object</a>
-      </p>
-      <p>        
-        <!--<a  href="/javascript-notes-objects/#reference">Reference Types</a>     -->
-        <a  [routerLink]='["/javascript-notes-objects"]' fragment="reference" >Reference Types</a> 
-      </p>       
-      <p>        
-        <!--<a  href="/javascript-notes-objects/#functions">functions</a>      -->
-        <a  [routerLink]='["/javascript-notes-objects"]' fragment="functions" >Functions</a> 
-      </p>  
-      <p>
-        <!--<a  href="/javascript-notes-objects/#classes">Classes</a>-->
-        <a  [routerLink]='["/javascript-notes-objects"]' fragment="classes" >Classes</a> 
-      </p>
-      <p>
-        <!--<a  href="/javascript-notes-objects/#styles">Styles</a>-->
-        <a  [routerLink]='["/javascript-notes-objects"]' fragment="styles" >Styles</a> 
-      </p>
-    </div>
+    <div class="leftLinks" #HeadingsContainer>      
+        <left-links ></left-links>      
+    </div>        
     
-    <div class="PaddedContents">
+    <div class="PaddedContents PaddedContentsTopics">
 
+        <h4 class="CenterMe">You can type the JavaScript code  
+            <a class="CenterMe" href="https://replit.com/languages/nodejs" target="_new">on replit.com</a> 
+            to see how it works (it is nodejs but you can also choose JavaScript): <br/>   
+          </h4>
+          
         In JavaScript, everything is an object except primitive types. Even with primitive types, there is a way to create them as objects instead of just primitive types.
         <br/>
         In OOP we center the code around objects. OOP will provide encapsulation, abstraction, inheritance, and polymorphism.<br/>
@@ -52,11 +27,9 @@
       <!-------------------------------------------------------------->
       <!--Create Objects-->
       <!-------------------------------------------------------------->
-      <div id="create"></div><br/>
-      <hr class="hrHeaderClass" />
-          <h2 class="CenterMe">Create Objects</h2>
-      <hr class="hrHeaderClass"/>
-        
+    
+      <p class="HeadingSubTopic" id="create">Create Objects</p>
+      
       We can create an object from a primitive type using New and the type.<br/>
     
       <pre>
@@ -162,11 +135,9 @@
 
     <!-------------------------------------------------------------->
     <!--Object-->
-    <!-------------------------------------------------------------->
-    <div id="object"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Object</h2>
-    <hr class="hrHeaderClass"/>
+    <!-------------------------------------------------------------->    
+
+    <p class="HeadingSubTopic" id="object">Object</p>
 
     With the Object type we get the “values”, “entries”, and “keys” methods as shown below.<br/>
     <pre>
@@ -223,11 +194,9 @@
     
  <!-------------------------------------------------------------->
     <!--Reference-->
-    <!-------------------------------------------------------------->
-    <div id="reference"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Reference Types</h2>
-    <hr class="hrHeaderClass"/>
+    <!-------------------------------------------------------------->    
+
+    <p class="HeadingSubTopic" id="reference">Reference Types</p>
 
     When we are assigning an object variable to another object variables, what the object is “saying” is “here, 
     this is the the box where my data is, I’ll share it with you, if you change it you will change it for me too.”  That is not the case 
@@ -326,11 +295,8 @@
     <!-------------------------------------------------------------->
     <!--functions-->
     <!-------------------------------------------------------------->
-    <div id="functions"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Functions</h2>
-    <hr class="hrHeaderClass"/>
         
+    <p class="HeadingSubTopic" id="functions">Functions</p>
     We ca use functions that we will use to create new objects. The standard is to name this functions starting with uppercase.  
     The standard is to name this functions starting with uppercase.<br/>
     <pre>
@@ -475,11 +441,8 @@
     <!-------------------------------------------------------------->
     <!--classes-->
     <!-------------------------------------------------------------->
-    <div id="classes"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Classes</h2>
-    <hr class="hrHeaderClass"/>
    
+    <p class="HeadingSubTopic" id="classes">Classes</p>
     We don’t really have classes in JavaScript because under the hood they will be turned in to the constructor functions we have seen, 
     but as far as coding goes, they look a lot like classes.  From the Vehicle examples above<br/>
     Vehicle will look like this:<br/>
@@ -539,10 +502,9 @@
     <!-------------------------------------------------------------->
     <!--styless-->
     <!-------------------------------------------------------------->
-    <div id="styles"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Styles</h2>
-    <hr class="hrHeaderClass"/>
+    
+    <p class="HeadingSubTopic" id="styles">Styles</p>
+    
     Because styles are also objects we can do this:<br/>
     <pre>
         <code>

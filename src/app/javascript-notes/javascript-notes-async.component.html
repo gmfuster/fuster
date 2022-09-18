@@ -1,47 +1,22 @@
-<div class="PaddedContents">
-
-    <br/>
-    <h2 class="CenterMe">JavaScript notes - Async</h2>       
-    <h4 class="CenterMe">You can type the JavaScript code  
-      <a class="CenterMe" href="https://replit.com/languages/nodejs" target="_new">on replit.com</a> 
-      to see how it works (it is nodejs but you can also choose JavaScript): <br/>   
-    </h4>
+<div class="PaddedContents ">
   
-    <br/>
-  
-    <div style="position:fixed; left:12px; top: 10vh; width:8vw; ">
-      <p>
-        <!--<a  href="/javascript-notes-async/#promises">Promises</a>-->
-        <a  [routerLink]='["/javascript-notes-async"]' fragment="promises" >Promises</a>
-      <p>        
-        <!--<a  href="/javascript-notes-async/#catch">Catch-Finally</a>     -->
-        <a  [routerLink]='["/javascript-notes-async"]' fragment="catch" >Catch-Finally</a> 
-      </p>       
-      <p>        
-        <!--<a  href="/javascript-notes-async/#chains">Chains</a>      -->
-        <a  [routerLink]='["/javascript-notes-async"]' fragment="chains" >Chains</a> 
-      </p>  
-      <p>
-        <!--<a  href="/javascript-notes-async/#static">Static func.</a>-->
-        <a  [routerLink]='["/javascript-notes-async"]' fragment="static" >Static Func.</a> 
-      </p>
-      <p>
-        <!--<a  href="/javascript-notes-async/#await">Await</a>-->
-        <a  [routerLink]='["/javascript-notes-async"]' fragment="await" >Await</a> 
-      </p>
-    </div>
     
-    <div class="PaddedContents">
   
+    <div class="leftLinks" #HeadingsContainer>      
+      <left-links ></left-links>      
+    </div>      
+    
+    <div class="PaddedContents PaddedContentsTopics">
+      <h4 class="CenterMe">You can type the JavaScript code  
+        <a class="CenterMe" href="https://replit.com/languages/nodejs" target="_new">on replit.com</a> 
+        to see how it works (it is nodejs but you can also choose JavaScript): <br/>   
+      </h4>
       <!-------------------------------------------------------------->
       <!--Promises-->
-      <!-------------------------------------------------------------->
-      <div id="promises"></div><br/>
-      <hr class="hrHeaderClass" />
-          <h2 class="CenterMe">Promises</h2>
-      <hr class="hrHeaderClass"/>
+      <!-------------------------------------------------------------->     
       
-      <p class="HeadingSubTopic">Basics</p>
+      <p class="HeadingSubTopic" id="promises">Promises</p>
+      <p class="HeadingSubTopic2" id="promises">Basic</p>
       Promises are objects.<br/>
       The promise object returns properties: <b>state</b> (pending, fulfilled, rejected), <b>result</b> (undefined, value, error).<br/>
       A promise that is fulfilled or rejected is settled.<br/>
@@ -132,14 +107,10 @@
 
     <!-------------------------------------------------------------->
     <!--catch finally-->
-    <!-------------------------------------------------------------->
-    <div id="catch"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Catch-Finally</h2>
-    <hr class="hrHeaderClass"/>
-
+    <!-------------------------------------------------------------->   
     
-    <p class="HeadingSubTopic">catch</p>
+    <p class="HeadingSubTopic" id="catch">Try-Catch</p>
+    <p class="HeadingSubTopic2">catch</p>
 
     We could also be catching an error this way:<br/>
     <pre>
@@ -172,7 +143,7 @@
     <img width="100%" src="assets\images\js\promise3.png" alt="promise 3" /><br/><br/>
 
     
-    <p class="HeadingSubTopic">finally</p>
+    <p class="HeadingSubTopic2">finally</p>
     Finally always happen, no matter resolve or reject.<br/>
     <pre>
       <code>
@@ -205,11 +176,9 @@
     <!-------------------------------------------------------------->
     <!--chains-->
     <!-------------------------------------------------------------->
-    <div id="chains"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Chains</h2>
-    <hr class="hrHeaderClass"/>
+    <p class="HeadingSubTopic" id="chains">Chains</p>
 
+    
     We can have then after then, such as then(...).then(...) etc. However, the resolve from the myPromise will only make it to the first then.
     If than then doesn't return it, the following thens will not have it:
 
@@ -225,16 +194,13 @@
 
     <!-------------------------------------------------------------->
     <!--static functions-->
-    <!-------------------------------------------------------------->
-    <div id="static"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Static functions</h2>
-    <hr class="hrHeaderClass"/>
+    <!-------------------------------------------------------------->  
 
+    <p class="HeadingSubTopic" id="static">Static functions</p>
     JS has some static functions to deal with promises. This is just a brief summary.<br/>
 
     
-    <p class="HeadingSubTopic">all</p>
+    <p class="HeadingSubTopic2">all</p>
 
     <pre>
       <code>
@@ -248,21 +214,21 @@
     <img width="100%" src="assets\images\js\promise_all.png" alt="promise all" /><br/><br/>
     It is a good idea to have a catch with the Promise.all in case one of the promises fails.<br/>
 
-    <p class="HeadingSubTopic">allsettled</p>
+    <p class="HeadingSubTopic2">allsettled</p>
     This will have the then happen, regardless of resolve or reject.  And values will have the status and result of the promises.
 
     
-    <p class="HeadingSubTopic">any</p>
+    <p class="HeadingSubTopic2">any</p>
 
     Promise.any[ list of promises] will wait for just one to finish.  Once that happens, the others are ignored.<br/>
 
     
-    <p class="HeadingSubTopic">race</p>
+    <p class="HeadingSubTopic2">race</p>
 
     Will happen with whatever promise finishes first, it doesn't matter if with resolve or reject.<br/>
 
     
-    <p class="HeadingSubTopic">resolve</p>
+    <p class="HeadingSubTopic2">resolve</p>
     the resolve will call the first function in the arguments.
     <pre>
       <code>
@@ -278,7 +244,7 @@
 
 
     
-    <p class="HeadingSubTopic">reject</p>
+    <p class="HeadingSubTopic2">reject</p>
     similar to the resolve but it goes to the second function provided, the reject one.<br/>
     <pre>
       <code>
@@ -294,11 +260,9 @@
     <!-------------------------------------------------------------->
     <!--Await-->
     <!-------------------------------------------------------------->
-    <div id="await"></div><br/>
-    <hr class="hrHeaderClass" />
-        <h2 class="CenterMe">Await</h2>
-    <hr class="hrHeaderClass"/>
 
+    <p class="HeadingSubTopic2" id="await">Await</p>
+    
     AWAIT is used to wait for a promise or a value if what we return is not a promise, but it will be turned into a promise.  
     <b>AWAIT has to be called inside a async function.</b><br/>
     If the Promise bein awaited is rejected, the await expression throws the rejected value.<br/>

@@ -1,10 +1,11 @@
 
-<div>
-  <h2 class="CenterMe">Angular notes - Forms</h2>  
-  <h3 class="CenterMe">Input fields, in general, take only numbers. </h3>
+<div class="PaddedContents">
+  <br/><br/>
+  <div class="leftLinks" #HeadingsContainer>      
+    <left-links ></left-links>      
+  </div> 
 
-
-  <div class="PaddedContents">
+  <div class="PaddedContents PaddedContentsTopics">
 
     To use forms, <b>import &lbrace; FormsModule, ReactiveFormsModule  &rbrace; from '@angular/forms';</b>  Also include them under the imports in the 
     app.module.ts.<br/>  Angular will create a JavaScript representation of our form (which we indicate with the html form).  To tell Angular that one of 
@@ -15,8 +16,7 @@
 
     <span  id="template"></span>
     <br/>
-    <h3  class="CenterMe">
-      <!--<a  href="/angular-notes-svc-routing/#routing">Jump To Routing</a>-->
+    <h3  class="CenterMe">      
       <a  [routerLink]='["/angular-notes-forms"]' fragment="reactive" >Jump To Reactive Forms</a>
     </h3>
 
@@ -24,7 +24,7 @@
     <h2 class="CenterMe" >Template Driven</h2>
     <hr class="hrHeaderClass"/>
 
-    <p class="HeadingSubTopic">Some basic form</p>   
+    <p class="HeadingSubTopic" id="Basic-T">Basic Form (T)</p>   
     Just doing a little form here:<br/>
     <pre>
       <code>
@@ -46,10 +46,9 @@
       <input type="number" ngModel name="theNumber"/>
       <button type="submit">Submit JS object</button>
     </form>
-
-    <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">ViewChild</p>  
+    
+    <p class="HeadingSubTopic" id="ViewChild-T">ViewChild (T)</p>  
 
     Another way to access the form from the ts file is the   
     <a href="/angular-notes/#viewchild">ViewChild</a>
@@ -78,7 +77,7 @@
     </pre>
 
     <!--<hr class="hrClass" />-->
-    <p class="HeadingSubTopic">Validation</p>  
+    <p class="HeadingSubTopic" id="Validation-T">Validation (T)</p>  
     In the form below we have the input number as <b>required</b>.  That means we can still submit it, but if we check it in the console we will see valid:false.<br/>
     <b>Make sure you don't have the same id for different forms because then you will be using the first one found in the ts file.</b>  You could also have <b>
       email</b> in a field.  If the email entered is not valid, the form will also be valid:false. Not only the form is not valid, whatever control is making it 
@@ -113,7 +112,7 @@
   We could also have something like this <b>input.ng-invalid.ng-touched</b> and it won't be marked until the user has done something in the field and left it.
 
   <!--<hr class="hrClass" />-->
-  <p class="HeadingSubTopic">Validation Messages</p>  
+  <p class="HeadingSubTopic" id="ValidationMsg-T">Validation Messages (T)</p>  
   This form shows a text if the value in the input is valid (a number)
   <form (ngSubmit)="onSubmitNA()" #f5="ngForm">
     <input type="number" ngModel name="theNumber" #theNumber= "ngModel" required/>
@@ -133,7 +132,7 @@
   just happen once the user has changed something on it.  
 
  <!--<hr class="hrClass" />-->
-  <p class="HeadingSubTopic">Default Values</p>  
+  <p class="HeadingSubTopic" id="Defaults-T">Default Values (T)</p>  
   We can now use ngModel with the brackets and set it to a hardcoded value or a variable from the ts file.
   <form (ngSubmit)="onSubmitNA()">
     <input type="number" [ngModel]=9 name="theNumber" #theNumber= "ngModel" required/>    
@@ -146,7 +145,7 @@
 
 
   <!--<hr class="hrClass" />-->
-  <p class="HeadingSubTopic">Grouping Form Controls</p>  
+  <p class="HeadingSubTopic" id="Groups-T">Grouping Form Controls (T)</p>  
   You can have a div around a few controls and have them be grouped when Angular converts the form to an object.  To do that you use <b>ngModelGroup</b>
   <form (ngSubmit)="onSubmit6()" #f6="ngForm">
     <div ngModelGroup="InputButtonGroup">
@@ -196,7 +195,7 @@
   </pre>
 
  <!--<hr class="hrClass" />-->
-  <p class="HeadingSubTopic">Radio Buttons</p>  
+  <p class="HeadingSubTopic" id="Radio-Buttons-T">Radio Buttons (T)</p>  
   <div>
     {{optionR}}  <br/>
     <input type="radio" ngModel name="radio" value="1" (click)="optionR='1'"/>One
@@ -229,7 +228,7 @@
 
 
 
-  <p class="HeadingSubTopic">The controls</p>   
+  <p class="HeadingSubTopic" id="Controls-R">The controls (R)</p>   
   The controls for this form are created in the ts code.<br/>
   Angular provides tools to do that.  For example, FromGroups (import &lbrace;FormGroup &rbrace; from '@angular\forms' )<br/>
   For this approach you don't need FormsModule in your app.module but you need to import and declare the ReactiveFormsModule.
@@ -268,7 +267,7 @@
   did with #f before) since we already have the form control in the ts code now.<br/>
 
 
-  <p class="HeadingSubTopic">Validation</p>   
+  <p class="HeadingSubTopic" id="Validation-R">Validation (R)</p>   
   For the validation, you can pass another argument to FormControl in the ts code ('whatever':new FormControl (null , <b>Validators.required</b>)).
   Notice you don't add () after required.  And you will have to import Validators from @angular/forms.  You could also pass an array of validators instead of 
   just one.<br/>
@@ -282,7 +281,7 @@
   </pre>
   <br/>
 
-  <p class="HeadingSubTopic">Group controls</p>   
+  <p class="HeadingSubTopic" id="Groups-R">Group controls (R)</p>   
   Like in template forms, you can also group controls here (a FormGroup taking as ar argument an object with 2 or more FormGroups.)  Now to find the control you 
   want you need to give the path to the control that is inside the other control.  For example, if you have a FormGroup (AB) in the ts code with FormGroups A and B, in the 
   html code you need to set the div holding the A and B with <b>formGroupName = "AB"</b>.  Now in the HTML code, you will <b>usemyReactiveForm.get(AB.A) or myReactiveForm.get(AB.B).</b>
@@ -299,7 +298,7 @@
 
   <br/>
 
-  <p class="HeadingSubTopic">Check for Specific Errors</p>   
+  <p class="HeadingSubTopic" id="Errors-R">Check for Specific Errors (R)</p>   
   When we are checking if an element is valid (like myReactiveForm.get('number2').valid), we can also check for specific errors 
   myReactiveForm.get('number2').errors['required'] (or any of the other Angular or custom errors).<br/>
   <br/>
@@ -322,7 +321,7 @@
     </code>
   </pre>
 
-  <p class="HeadingSubTopic">Custom Async Validator</p>   
+  <p class="HeadingSubTopic" id="Async-Vals-R">Custom Async Validator (R)</p>   
   Sometimes we may need to do some validation in the server, so we need async validators.<br/>
   In this case the function will still take as an argument a FormControl variable, but it will return a Promise&lt;any&gt; or an Observable  also of any.<br/>
   For the observable, import it from rxjs/Observable.<br/>

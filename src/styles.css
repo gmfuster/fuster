@@ -113,8 +113,11 @@ body pre samp{
   margin-top: 6vh;
 }
 .PaddedContents {
-  padding-left: 5vw;
-  padding-right: 5vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
+.PaddedContentsTopics{  
+  padding-left: 15vw;
 }
 .CenterMe {
   text-align: center;
@@ -251,10 +254,11 @@ body button{
 .leftLinks{
   position:fixed;
   left:12px; 
-  width:8vw; 
+  width:15vw; 
   top: 10vh;
   margin-right: 6px;;
 }
+
 /*
 .formulaBackground{
   background-color: paleturquoise;

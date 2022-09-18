@@ -1,5 +1,5 @@
 
-import { Component, ElementRef, OnInit, ViewChild, ViewChildren, QueryList, ViewContainerRef, TemplateRef   } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ViewChildren,   QueryList  } from '@angular/core';
 import {HeadingSubTopicDirective} from '../shared/directives';
 import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
@@ -25,9 +25,9 @@ myName : string = "javascript-notes";
   constructor(private commonFuncs:CommonFuncs){}
 
   ngOnInit(){
-    window.scroll(0,0);       
-    //this.myName = "hello";    
+    window.scroll(0,0);              
   }
+
   ngAfterViewInit(){       
     this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);       
     //TODO I cannot get the child to see the contents when using ViewChildren so doing this for now.

@@ -1,7 +1,6 @@
 import { Component , OnInit} from '@angular/core';
 import { Input } from '@angular/core';
 import { ChangeDetectorRef } from '@angular/core';
-import { tick } from '@angular/core/testing';
 
 @Component({
   selector: 'left-links',
@@ -19,9 +18,13 @@ export class LeftLinksComponent implements OnInit{
   }
 
   getChangesFromParent(list : string[], name:string){  
-    this.myName = name;      
-    this.myHeadings = JSON.parse(JSON.stringify(list));    
+    this.myName = name;    
+    //TODO find a better way for this
+    this.myName = "/" + this.myName ;
+    //this.myHeadings = JSON.parse(JSON.stringify(list));    
+    this.myHeadings = list;
     this.ref.detectChanges();
+    console.log(this.myHeadings)
   }
 
 
