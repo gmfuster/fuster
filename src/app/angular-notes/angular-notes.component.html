@@ -1,16 +1,18 @@
 
-<div>
-  <h2 class="CenterMe">Angular notes - Basics</h2>    
-  <h4 class="CenterMe">When adding new components, remember you may have to restart for them to be found.</h4>
-  <h3 class="CenterMe"> <a href="https://medium.com/nerd-for-tech/angular-vs-react-compare-the-very-basics-776fd96fec23"
-    target="_new">Check out Angular vs React - basics</a></h3>  
-  <h3 class="CenterMe">Input fields, in general, take only numbers. </h3>
+<div class="PaddedContents">
+  
+  <div class="leftLinks" #HeadingsContainer>      
+    <left-links ></left-links>      
+  </div>     
 
 
-  <div class="PaddedContents">
-
+  <div class="PaddedContents PaddedContentsTopics">
+    <h4 class="CenterMe">When adding new components, remember you may have to restart for them to be found.</h4>
+    <h3 class="CenterMe"> <a href="https://medium.com/nerd-for-tech/angular-vs-react-compare-the-very-basics-776fd96fec23"
+      target="_new">Check out Angular vs React - basics</a></h3>  
+    <h3 class="CenterMe">Input fields, in general, take only numbers. </h3>
     
-    <p class="HeadingSubTopic">String Interpolation</p>   
+    <p class="HeadingSubTopic" id="String-Interpolation">String Interpolation</p>   
     <code ngNonBindable>{{someVariable}}</code><br />
     <code>&lt; input #someInput type="number"/&gt; </code><br />
     <code> &lt; button (click)="onClickButton1(someInput.value)"&gt; </code><br />
@@ -20,7 +22,7 @@
 
     <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">Property Binding</p>
+    <p class="HeadingSubTopic" id="Property-Binding">Property Binding</p>
     <code>On second button: [disabled]="theBoolVar"</code><br />
     <code>On button always disabled: [disabled]=true</code><br />
     <code>On Switch Bool button: &lt; (click)="onSwitchTheBoolVar()"&gt; Switch Bool&lt;/button&gt;</code><br />
@@ -31,7 +33,7 @@
 
     <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">2-way Binding</p>
+    <p class="HeadingSubTopic" id="2-Way-Binding">2-way Binding</p>
     <code ngNonBindable>&lt;input type="number"[(ngModel)]="theVariable"/&gt;</code><br />
     <code ngNonBindable>app.module.ts -- import FormsModule from '@angular/forms'</code><br />
     Use ngModel in the input field.  It will update the <b>variable right away</b> and from the ts code, which we link to the same variable for the display too, 
@@ -42,7 +44,7 @@
     
 
     <!--<hr class="hrClass" />-->  
-    <p class="HeadingSubTopic">Wait a minute!!</p>
+    <p class="HeadingSubTopic" id="Wait!">Wait a minute!!</p>
     What is with the [] or no [] or the () and the []?
     <br/>
     When we are using [] in the property we are binding to a variable in the ts file.
@@ -76,7 +78,7 @@
 
     <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">Angular Directive - ngIf</p>
+    <p class="HeadingSubTopic" id="ngIf">Angular Directive - ngIf</p>
     <code ngNonBindable>*ngIf</code><br />
     <code ngNonBindable>&lt;mark *ngIf="theBoolVar" &gt;</code><br />
     The marked test below will show depending on a boolean variable on the ts file.  Change the value with the button. You can also use an expression.<br/>
@@ -94,7 +96,7 @@
 
     <!--<hr class="hrClass" />-->
       
-    <p class="HeadingSubTopic">Angular Directive - ngStyle</p>
+    <p class="HeadingSubTopic" id="ngStyle">Angular Directive - ngStyle</p>
     <code ngNonBindable>[ngStyle]="&lbrace;backgroundColor:theColor&rbrace;"</code><br />    
     Click the button to get a random background color by changing theColor property. Could also have a method instead
     of theColor in the span element.  <button (click)="onRandomColor()">Random Color</button><br/>
@@ -102,7 +104,7 @@
     
    <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">Angular Directive - ngClass</p>
+    <p class="HeadingSubTopic" id="ngClass">Angular Directive - ngClass</p>
     <code ngNonBindable>[ngClass]="&lbrace;redClass:theBoolVar&rbrace;"</code><br />    
     Similar to the examples above, set ngClass to a class (redClass) to set the font to red based on the boolean value (when true). The redClass is in the css file.<br/>
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
@@ -110,7 +112,7 @@
   
     <!--<hr class="hrClass" />-->
 
-    <p class="HeadingSubTopic">Angular Directive - ngFor</p>
+    <p class="HeadingSubTopic" id="ngFor">Angular Directive - ngFor</p>
     <code ngNonBindable>&lt;input type="number" (keydown)="onValueChanged($event)"/&gt;</code><br/>
     <code ngNonBindable>&lt;div*ngFor="let item of theNumArray;"&gt;</code><br />    
     <code ngNonBindable>ts file : onValueChanged(event:KeyboardEvent)...for(let i = 1; i <= parseInt(event.key); i++) populate theNumArray</code><br />    
@@ -122,7 +124,7 @@
 
     <!--<hr class="hrClass" />-->
 
-    <p class="HeadingSubTopic">Angular Directive - ngSwitch</p>
+    <p class="HeadingSubTopic" id="ngSwitch">Angular Directive - ngSwitch</p>
     <code ngNonBindable>&lt;div [ngSwitch]="theColor" [ngStyle]= "&lbrace; border:'2px solid skyblue'&rbrace;"/&gt;</code><br/>
     <code ngNonBindable>&lt;p elements inside the div with the ngSwitch: *ngSwitchCase="'aqua'"/&gt;</code><br/>
     The random color button returns aqua, red, pink, yellow, green, and gray.  Have a switch for the theColor variable for each of those.<br/>
@@ -141,7 +143,7 @@
     <br/>
     <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">Get Data from Parent Component</p>
+    <p class="HeadingSubTopic" id="Data-From-Parent">Get Data from Parent Component</p>
     <code>button calls onRandomColor which assigns a color string to theColor:</code><br />
     <code ngNonBindable>&lt;some-child-component [myColor]= "theColor" [myTextAlias]="theColor"&gt;  -- note this uses the alias name</code><br/>
     <code>On child ts:</code><br />
@@ -157,7 +159,7 @@
     <img width="100%" src="assets\images\angular\childComp1.png" alt="child component parent data" /><br/><br/>
     <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">Tell Parent of Change in Child</p>
+    <p class="HeadingSubTopic" id= "NotifyParent">Tell Parent of Change in Child</p>
     <code>&lt;some-child-component (eventOnChildComponentWithEventReturn)="onChildEvent1($event)" (eventOnChildComponentWithKnownObjReturn)="onChildEvent2($event)"&gt;</code><br/>
     <code>On Child: &lt;button (click)="launchEvents($event)"&gt;</code><br/>
     <code>On child ts: @Output() eventOnChildComponentWithKnownObjReturn = new EventEmitter&lt;&lbrace;theName:string, theText:string&rbrace;&gt;();</code><br/>
@@ -181,7 +183,7 @@
     <!--<hr class="hrClass" />-->
 
     <div id="viewchild" ></div><br/>
-    <p class="HeadingSubTopic">ViewChild</p>
+    <p class="HeadingSubTopic" id="ViewChild">ViewChild</p>
     This concept has too much to be included here, so instead, check out my article on Medium 
     <a href="https://medium.com/nerd-for-tech/angular-viewchild-for-component-dom-element-element-of-component-and-directive-c23328ee1525"
     target="_new">Angular — ViewChild for component, DOM element, element of component, and directive</a><br/>
@@ -194,7 +196,7 @@
 
     <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">ng-Content</p>
+    <p class="HeadingSubTopic" id="ng-Content">ng-Content</p>
     <code><strong>In Parent Component:</strong></code><br/>
     <code>&lt;h1 class="class1" [ngStyle]="&lbrace;backgroundColor:'skyblue'&rbrace;"&gt;Header 1 with class1 going to ng-content on child&lt;/h1&gt;</code><br/>
     <code>&lt;h2 id="header2" [ngStyle]="&lbrace;backgroundColor:'teal'&rbrace;"&gt;Header 2 with header2 id going to ng-content on child&lt;/h2&gt;</code><br/>
@@ -217,7 +219,7 @@
 
 
    <!--<hr class="hrClass" />-->   
-    <p class="HeadingSubTopic">ContentChild for ng-Content (can't use ViewChild)</p>
+    <p class="HeadingSubTopic" id="ContentChild">ContentChild for ng-Content (can't use ViewChild)</p>
     <code><strong>In Parent Component:</strong></code><br/>
     <code>&lt;h1 class="class1" #header1 [ngStyle]="&lbrace;backgroundColor:'skyblue'&rbrace;"&gt;Header 1 with class1 going to ng-content on child&lt;/h1&gt;</code><br/>
     <code>&lt;h2 id="header2" #header2 [ngStyle]="&lbrace;backgroundColor:'teal'&rbrace;"&gt;Header 2 with header2 id going to ng-content on child&lt;/h2&gt;</code><br/>
@@ -247,7 +249,7 @@
 
    <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">Angular Directives and Your Own</p>
+    <p class="HeadingSubTopic" id="Custom-Directives">Angular Directives and Your Own</p>
     <code>&lt;p appSomeDirectiveDirective appSomeDirectiveDirective2 fontColor="deeppink"&gt;</code><br/>
     <code>OR</code>
     <code>&lt;p appSomeDirectiveDirective appSomeDirectiveDirective2 [fontColor]="'deeppink'"&gt;</code><br/>
@@ -273,7 +275,7 @@
 
     <!--<hr class="hrClass" />-->
     
-    <p class="HeadingSubTopic">Renderer</p>
+    <p class="HeadingSubTopic" id="Renderer">Renderer</p>
     <code>&lt;p appSomeDirectiveDirective3>Some p element using the SomeDirectiveDirective3 with renderer2. </code>&gt;<br/>
     <code>constructor(private theElementRef3:ElementRef, private renderer:Renderer2)</code><br/>
     <code>this.renderer.setStyle(this.theElementRef3.nativeElement, 'background-color', 'green')</code><br/>
@@ -285,7 +287,7 @@
 
     <!--<hr class="hrClass" />-->
 
-    <p class="HeadingSubTopic">HostBinding to change the directive style</p>
+    <p class="HeadingSubTopic" id="HostBinding">HostBinding to change the directive style</p>
     <code> @HostBinding('style.backgroundColor') backColor :string = 'transparent';</code><br />
     <code>on ngOnInit: this.backColor = 'lightblue';</code><br />
     Going to use a 4th directive to make use of HostBinding to set the background.<br/>
@@ -294,7 +296,7 @@
 
 
     <!--<hr class="hrClass" />-->
-    <p class="HeadingSubTopic">HostListener for Directive</p>
+    <p class="HeadingSubTopic" id="HostListener">HostListener for Directive</p>
     <code>@HostBinding('style.backgroundColor') backColor :string = 'transparent';</code><br/>
     <code>@HostListener('mouseenter') mouseE(eventData:Event)&lbrace; this.backColor = 'lightblue'; &rbrace;</code><br/>
     <code>@HostListener('mouseenter') mouseL(eventData:Event)&lbrace; this.backColor = 'lightpink'; &rbrace;</code><br/>
@@ -304,7 +306,7 @@
 
 
     <!--<hr class="hrClass" />-->   
-    <p class="HeadingSubTopic">Your Own Structural Directive</p>
+    <p class="HeadingSubTopic" id="Custom-Structural-Directive">Your Own Structural Directive</p>
     <code>constructor(private templateRef:TemplateRef&lt;any&gt;, private vcRef: ViewContainerRef)&lbrace;&rbrace;</code><br/>
     <code>&lt;div *appSomeDirectiveDirectiveSTR="theNumVariable"&gt; -- set in the input field</code><br/>
     <code>@Input() set appSomeDirectiveDirectiveSTR(number:Number) -- name of set has to match name of selector in directive</code><br/>
@@ -324,7 +326,7 @@
     <br/>
 
    <!--<hr class="hrClass" />-->
-    <p class="HeadingSubTopic">Observables</p>
+    <p class="HeadingSubTopic" id="Observables">Observables</p>
     An Observable is a data source.  We can use it importing the RxJS package.  Your code can be the observer to this observable.  There 
     are three types of data packages you can receive with these: data, errors, completions.  Observables are like a different approach to promises.<br/>
     You can install the package with <b>npm install --save rxjs@6</b> or whatever version you want.  You can also install <b>npm install --save rxjs-compat</b>
@@ -395,7 +397,7 @@
     rxjs subjects</a>
 
     
-    <p class="HeadingSubTopic">Pipes</p>
+    <p class="HeadingSubTopic" id="Pipes">Pipes</p>
 
     A pipe transforms the output display, not the data, so it is part of the html. See some strings changed with the pipes<br/>
     Using <span ngNonBindable> <b>&lbrace;&lbrace;someVariables | uppercase &rbrace;&rbrace; </b>(and similar for other pipes) </span> <br/>

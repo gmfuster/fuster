@@ -8,6 +8,7 @@ import { ChangeDetectorRef } from '@angular/core';
   styleUrls: []
 })
 
+//TODO check with different sizes and if we need to scroll
 export class LeftLinksComponent implements OnInit{   
 @Input() myHeadings : string[] = [];
 @Input() myName: string = "";

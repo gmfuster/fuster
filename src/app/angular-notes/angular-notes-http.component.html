@@ -1,17 +1,15 @@
 
-<div>
-  <h2 class="CenterMe">Angular notes - Forms</h2>  
-  <h3 class="CenterMe">Input fields, in general, take only numbers. </h3>
+<div class="PaddedContents ">
+  
+  <div class="leftLinks" #HeadingsContainer>      
+    <left-links ></left-links>      
+  </div> 
 
+  <div class="PaddedContents PaddedContentsTopics">
 
-  <div class="PaddedContents">
+   
+    <p class="HeadingSubTopic" id="Get-Post-Delete">Get  Post Delete requests</p>   
 
-    <!--
-    <hr class="hrHeaderClass"/>
-    <h2 class="CenterMe" ></h2>
-    <hr class="hrHeaderClass"/>
--->
-    <p class="HeadingSubTopic">Get  Post Delete requests</p>   
     Send the requests to a server (duh). Usually get data back as JSON.  Always hard to remember, GET, <b>POST, PUT,</b> DELETE.
     <p style="border: lightyellow solid 5px; padding:3px; background-color: lightpink; color: navy;">The PUT method replaces an existing resource with a new set of values.</p>
     <br/>
@@ -117,7 +115,7 @@
 
       
 
-      <p class="HeadingSubTopic">More on requests</p>  
+      <p class="HeadingSubTopic" id="More-Requests">More on requests</p>  
       You will need to have some variable that indicates whether you are loading or not, just so things are not displayed when they should not or something similar.
       May also want to show a loading image when things are being loading.<br/><br/>
       Usually you will have the function to make HTTP calls in a service that you can use in the component.<br/>
@@ -149,7 +147,7 @@
       </pre>
 
 
-      <p class="HeadingSubTopic">Errors</p>  
+      <p class="HeadingSubTopic" id="Errors">Errors</p>  
 
       You should handle a possible error in the API being called.
       <pre>
@@ -226,7 +224,7 @@
         </code>
       </pre>
 
-      <p class="HeadingSubTopic">Requests with more Details</p>  
+      <p class="HeadingSubTopic" id="Requests-Details">Requests with more Details</p>  
       <p class="HeadingSubTopic2">Headers</p>  
       Angular also has a HttpHeaders that can be imported from angular/common/http.<br/>
       <pre>

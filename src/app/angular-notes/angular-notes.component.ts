@@ -1,16 +1,23 @@
 //import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit, PipeTransform ,Pipe} from '@angular/core';
-import { ForCanDeActivate } from '../shared/forCanActivate.service';
+import { Component, OnInit, PipeTransform ,Pipe, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { Observable } from 'rxjs';
-import { stringify } from '@angular/compiler/src/util';
+import { ForCanDeActivate } from '../shared/forCanActivate.service';
+import {HeadingSubTopicDirective} from '../shared/directives';
+import {LeftLinksComponent} from  '../shared/left-links.component';
+import {CommonFuncs} from '../shared/commonFuncs.service'
 
 @Component({
   selector: 'angular-notes',
   templateUrl: './angular-notes.component.html',
-  styleUrls: ['./angular-notes.component.css']
+  styleUrls: ['./angular-notes.component.css'],
+  providers: [CommonFuncs]
 })
 
 export class AngularNotesComponent implements OnInit, ForCanDeActivate {
+@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
+myHeadings : string[] = [];
+myName : string = "angular-notes";
+@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
   theVariable :string =  "" ;
   theBoolVar: boolean = true;
   theBoolVar2: boolean = false;
@@ -24,9 +31,15 @@ export class AngularNotesComponent implements OnInit, ForCanDeActivate {
   someDate:string = Date();
   someStringForPipes = "This file has less than 100 lines at this point " 
 
+  constructor(private commonFuncs:CommonFuncs){}
+
   ngOnInit(){
     window.scroll(0,0);
   }
+  ngAfterViewInit(){       
+    this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
+    this.child.getChangesFromParent(this.myHeadings,this.myName )    
+  } 
   onClickButton1(s: string) {
     this.theVariable = s + "-" + "changed";
   }

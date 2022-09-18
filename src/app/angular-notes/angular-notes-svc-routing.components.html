@@ -1,6 +1,10 @@
-<div>
+<div class="PaddedContents">
 
-    <div class="PaddedContents">
+    <div class="leftLinks" #HeadingsContainer>      
+        <left-links ></left-links>      
+      </div>    
+
+    <div class="PaddedContents PaddedContentsTopics">
 
         <br/>
         <h3 class="CenterMe">There is no @Service like there is @Component and @Directive</h3>
@@ -19,7 +23,7 @@
         <h2 class="CenterMe" >Services</h2>
         <hr class="hrHeaderClass"/>
         
-        <p class="HeadingSubTopic">Call Function in Service</p>
+        <p class="HeadingSubTopic" id="Service-Function">Call Function in Service</p>
         <code>export class MathServices on the service file.</code>   <br/>
         <code>To use svc, in ts: import &lbrace; Injectable &rbrace; from "@angular/core"; </code><br/>
         <code>import  &lbrace; MathServices &rbrace; from '../shared/forexamples.service';</code><br/>
@@ -35,7 +39,7 @@
        <!--<hr class="hrClass" />-->
 
         
-        <p class="HeadingSubTopic">Call Function in Service with @Injectable(&lbrace;  providedIn: 'root' &rbrace;) </p>
+        <p class="HeadingSubTopic" id="Function-Service-Injectable">Call Function in Service with @Injectable(&lbrace;  providedIn: 'root' &rbrace;) </p>
         <code>Injectable(&lbrace;providedIn: 'root' &rbrace;) before export class StringServices -- in service ts</code>   <br/>
         <code>In the svc, set function as public: public getAString() </code><br/>        
         <code>in ts using svc:  constructor (private mathServices:MathServices, private stringServices:StringServices)</code><br/>        
@@ -50,7 +54,7 @@
         <!--<hr class="hrClass" />-->
 
         
-        <p class="HeadingSubTopic">Call Function in Service @NgModule</p>  
+        <p class="HeadingSubTopic" id="Function-Service-NgModule">Call Function in Service @NgModule</p>  
         <code>in app.module: import &lbrace; OtherServices &rbrace; from './shared/forexamples.service';</code><br/>
         <code>Add to app.module providers under ngModule.</code><br/>
         <code>function in the service should be public</code><br/>
@@ -65,7 +69,7 @@
         <!--<hr class="hrClass" />-->
 
         
-        <p class="HeadingSubTopic">Call method that emmits event and listen to it</p>  
+        <p class="HeadingSubTopic" id="Emmits">Call method that emmits event and listen to it</p>  
         <code>in component, call service: this.otherServices.callMeToEmitEvent();    </code><br/>
         <code>the service will: this.somethingHappened.emit(now.toString()); with somethingHappened = new EventEmitter&lt;string &gt;();</code><br/>
         <code>in constructor of component: this.otherServices.somethingHappened.subscribe( 
@@ -90,6 +94,8 @@
             <!--<a   href="/angular-notes-svc-routing/#services">Jump To Services</a><br/><br/>-->
             <a  [routerLink]='["/angular-notes-svc-routing"]' fragment="services" >Jump To Services </a>
         </h3>
+
+        <p class="HeadingSubTopic" id="Routing-General">Routing General</p>  
 
         When you create an Angular app with VSC, it will create the initial routing for you:<br/>
         app.module.ts will have: <code ngNonBindable>import &lbrace; AppRoutingModule &rbrace; from './app-routing.module';</code><br/>
@@ -130,7 +136,7 @@
 
        <!--<hr class="hrClass" />-->
         
-        <p class="HeadingSubTopic">dynamic Paths</p>  
+        <p class="HeadingSubTopic" id="Dynamic-Paths">dynamic Paths</p>  
         <code>this.router.navigate(["/dynamic-notes/" + sendId]);  </code>
         <code>import &lbrace; ActivatedRoute, Router &rbrace; from '@angular/router';</code><br/>
         <code>constructor(private route:ActivatedRoute)</code><br/>
@@ -154,7 +160,7 @@
 
 
                  
-         <p class="HeadingSubTopic">dynamic Paths with dynamic part in the middle</p>  
+         <p class="HeadingSubTopic" id="Dynamic-Middle">dynamic Paths with dynamic part in the middle</p>  
          You could add something else after the dynamic element of the path, something like this: <code>... path: 'dynamic-notes/:id/<b>edit</b>', ...</code>
          The link could be something like <code>[routerLink]='["/dynamic-notes",5, "edit" ]'</code><br/>
         
@@ -173,7 +179,7 @@
          <br/>
 
        <!--<hr class="hrClass" />-->     
-         <p class="HeadingSubTopic">Nested Routing</p>  
+         <p class="HeadingSubTopic" id="Nested-Routes">Nested Routing</p>  
 
          I you end up with different routes that have the same at the beginning of the path, you may be better of changing them to have a main path, and 
          then children paths (routes) under it. For example, if you have paths:<br/>         
@@ -201,14 +207,14 @@
 
 
        <!--<hr class="hrClass" />-->       
-         <p class="HeadingSubTopic">Redirect</p>  
+         <p class="HeadingSubTopic" id="Redirect">Redirect</p>  
          You can redirect from one path to another one with something like &lbrace;path:'somepath or **', <b>redirectTo</b>:'some other path'&rbrace;
          The ** means any unknown route, and it should be the last entry under the routes array.  With redirect, use the pathMatch:'full'<br/>
 
         <br/><br/>
 
        <!--<hr class="hrClass" />-->      
-        <p class="HeadingSubTopic">CanActivate and CanActivateChild</p>  
+        <p class="HeadingSubTopic" id="CanActivate-CanActivateChild">CanActivate and CanActivateChild</p>  
         We can create a service and have it implement CanActivate.  The CanActivate will apply to whatever route we use it in and its children.<br/>
         We could have this route that uses the service to see if we can go to that route:<br/>
         <code>path: 'angular-notes-noactivate', component: ..., <b>canActivate:[ForCanActivate]</b>, pathMatch: 'full'</code><br/>
@@ -244,7 +250,7 @@
 
 
        <!--<hr class="hrClass" />-->       
-        <p class="HeadingSubTopic">CanDeactivate</p>   
+        <p class="HeadingSubTopic" id="CanDeactivate">CanDeactivate</p>   
         I am using the same path I used for the noactivate, but, to test the deactivate it has to be activated so I have to change the canActivate to return 
         true instead of false.<br/>
         In the service file, same one I used before, now we are doing this:<br/>
@@ -296,7 +302,7 @@
         <img width="100%" src="assets\images\angular\candeactivate.png" alt="can deactivate" /><br/><br/>
         <!--<hr class="hrClass" />-->
     
-        <p class="HeadingSubTopic">Pass Static Data to not-found</p>   
+        <p class="HeadingSubTopic" id="NotFound">Pass Static Data to not-found</p>   
         This doesn't have to be for a not found page but using that to show it.  We have the ** to catch a route that doesn't exist, and we reroute it 
         to the not found page with this. Notice the data part of it, because that will be send to the ts file for that page.
         <pre>
@@ -322,7 +328,7 @@
 
 
        <!--<hr class="hrClass" />-->
-        <p class="HeadingSubTopic">Resolve Dynamic Data</p>   
+        <p class="HeadingSubTopic" id="Resolve-Dynamic-Data">Resolve Dynamic Data</p>   
         This is for when we need to get the data before to route somewhere.  We should create a new file, such as server-recolver.service.ts.  It should be 
         similar to:
         <pre>

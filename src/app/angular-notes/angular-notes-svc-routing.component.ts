@@ -1,20 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { MathServices, OtherServices, StringServices } from '../shared/forexamples.service';
 import { Injectable } from "@angular/core";
 import { Router } from '@angular/router';
+import {HeadingSubTopicDirective} from '../shared/directives';
+import {LeftLinksComponent} from  '../shared/left-links.component';
+import {CommonFuncs} from '../shared/commonFuncs.service'
 
 @Component({
   selector: 'angular-notes-svc-routing',
   templateUrl: './angular-notes-svc-routing.components.html',
   styleUrls: ['./angular-notes.component.css'], //share the css file
-  providers: [MathServices, StringServices]
+  providers: [MathServices, StringServices,CommonFuncs]
 })
 
 @Injectable()
 export class AngularNotesSvcRoutingComponent implements OnInit {
+@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
+myHeadings : string[] = [];
+myName : string = "angular-notes-svc-routing";
+@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+
     somethingHappenedText:string = "";
 
-    constructor (private mathServices:MathServices, private stringServices:StringServices, private otherServices:OtherServices, private router:Router){
+    constructor (private mathServices:MathServices, private stringServices:StringServices, 
+        private otherServices:OtherServices, private router:Router, private commonFuncs:CommonFuncs){
         this.otherServices.somethingHappened.subscribe( 
             (text:string) =>{ this.somethingHappenedText = text;}
         );
@@ -52,4 +61,8 @@ export class AngularNotesSvcRoutingComponent implements OnInit {
         }          
         this.router.navigate(["/dynamic-notes/" + sendId]);    
     }
+    ngAfterViewInit(){       
+        this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
+        this.child.getChangesFromParent(this.myHeadings,this.myName )    
+      }  
 }
