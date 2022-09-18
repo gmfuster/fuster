@@ -132,9 +132,12 @@
             protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
             &lbrace;
 	            //apply this max to all string columns
-	            configurationBuilder.Properties<&lt;tring&gt;().HaveMaxLength(75);
-	            //or have a custom interface DoNotMap and make sure none of the properties implementing it are mapped
-	            configurationBuilder.IgnoreAny&lt;DoNotMap&gt;();                
+	            configurationBuilder.Properties&lt;tring&gt;().HaveMaxLength(75);
+	            
+                //or have a custom interface IDoNotMap and make sure none of the properties implementing it are mapped
+                //can algo put a type in the IgnoreAny
+                //Could have also used [NotMapped] in a particular property.
+	            configurationBuilder.IgnoreAny&lt;IDoNotMap&gt;();  (NOT SURE ABOUT THIS IDONOTMAP)
             &rbrace;
         </code>
     </pre>
