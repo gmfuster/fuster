@@ -27,6 +27,9 @@ import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-n
 
 import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.component';
 import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
+import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
+import { CSharpInterfacesComponent } from './csharp-notes/csharp-interfaces.component';
+import { CSharpDelegatesetcComponent } from './csharp-notes/csharp-delegatesetc.component';
 
 import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
 import { SomeDirectiveDirective } from './some-directive-directive/some-directive-directive.directive';
@@ -80,6 +83,9 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     NotFoundComponent,
     CSharpThreadingComponent,
     CSharpEFComponent,
+    CSharpBasicsComponent,
+    CSharpInterfacesComponent,
+    CSharpDelegatesetcComponent,
     JavaScriptNotesAsyncComponent,
     JavaScriptNotesObjectsComponent,
     DoublesComponent,

@@ -1,13 +1,18 @@
-<div class="PaddedContents">
+<div class="PaddedContents ">
 
-    <br/>
-    <h2 class="CenterMe">C# notes - Basics</h2>      
+    <div class="leftLinks" #HeadingsContainer>      
+        <left-links ></left-links>      
+      </div> 
+
+<div class="PaddedContents PaddedContentsTopics">
+
+    <br/>    
     <h4 class="CenterMe">You can type the C# code  
       <a class="CenterMe" href="https://replit.com/languages/csharp" target="_new">on replit.com</a> 
       to see how it works <br/>   
     </h4>
     
-    <p class="HeadingSubTopic">InottifyPropertyChanged</p>
+    <p class="HeadingSubTopic" id="InottifyPropertyChanged">InottifyPropertyChanged</p>
     When you need to know that a property changed.<br/>
 
     <img width="100%" src="assets\images\csharp\INotifyPropertyChanged.png" alt="Notify property changed" /><br/><br/>
@@ -51,7 +56,7 @@
     <br/>
     <br/>
     
-    <p class="HeadingSubTopic">IComparable</p>
+    <p class="HeadingSubTopic" id="IComparable">IComparable</p>
 
     Implement it when you want to provide a method to compare your classes.<br/>
     <img width="100%" src="assets\images\csharp\IComparable.png" alt="IComparable" /><br/><br/>
@@ -125,7 +130,7 @@
     </pre>
 
     
-    <p class="HeadingSubTopic">IComparer</p>
+    <p class="HeadingSubTopic" id="IComparer">IComparer</p>
 
     
     IComparable will help you in your sorting when you have control over the class you are sorting, 
@@ -191,7 +196,7 @@
         </code>
     </pre>
     
-    <p class="HeadingSubTopic">IEquitable</p>
+    <p class="HeadingSubTopic" id="IEquitable">IEquitable</p>
 
     You know you can use equals to compare strings, and you want to have something similar for your class, with whatever criteria you want to use.<br/>
     The class that will have the Equals is this one, and notice that we are indicating the object have to be equaled to a string (could have been the object type or 
@@ -225,7 +230,7 @@
     </pre>
 
     
-    <p class="HeadingSubTopic">IEqualityComparer</p>
+    <p class="HeadingSubTopic" id="IEqualityComparer">IEqualityComparer</p>
 
     Similar to the IEquatable, but you create it in another class and the method will take 2 arguments to compare.<br/>
     You create the class you will use to compare, and implement IEqualityComparer with whatever type you want to compare.  In the Equals, 
@@ -241,7 +246,7 @@
 
 
     
-    <p class="HeadingSubTopic">IEnumerable</p>
+    <p class="HeadingSubTopic" id="IEnumerable">IEnumerable</p>
     
     You need to add this when you want to be able to iterate through a custom <b>collection</b><br/>
     This is one way to do it:<br/>
@@ -325,7 +330,7 @@
 
 
     
-    <p class="HeadingSubTopic">IEnumerator</p>
+    <p class="HeadingSubTopic" id="IEnumerator">IEnumerator</p>
     IEnumerable and the use of foreach hide the complexity of the enumerator if you just use the enumerator of the list itself, like 
     in the examples above. But you can use your own Enumerator.<br/>
     Same example above but now using our own enumerator could look something like this.  Change the enumerator to be whatever you need it to be<br/>
@@ -454,7 +459,8 @@
     </pre>
     
 
-    <p class="HeadingSubTopic">C# 8 Default Interface Implementations</p>
+    <p class="HeadingSubTopic" id="Default-Implementation">C# 8 Default Interface Implementations</p>
     With c# 8 you can have a method in an interface with a default implementation.  To do that just add the method to the interface but give it an implementation.
 
+</div>
 </div>

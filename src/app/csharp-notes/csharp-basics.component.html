@@ -1,4 +1,10 @@
-<div class="PaddedContents">
+<div class="PaddedContents ">
+
+    <div class="leftLinks" #HeadingsContainer>      
+        <left-links ></left-links>      
+      </div> 
+
+<div class="PaddedContents PaddedContentsTopics">
 
     <br/>
     <h2 class="CenterMe">C# notes - Basics</h2>      
@@ -6,27 +12,8 @@
       <a class="CenterMe" href="https://replit.com/languages/csharp" target="_new">on replit.com</a> 
       to see how it works <br/>   
     </h4>
-      <!--
-    <div style="position:fixed; left:12px; top: 10vh; width:8vw; ">
-        <p>
-          <a  href="/csharp-basics/#accessmodifiers">Access Modifiers</a>
-        <p>
-        <p>
-          <a  href="/csharp-basics/#nullcoalesce">Null coalescing</a>
-        </p>
-        <p>
-          <a  href="/csharp-basics/#operatoroverloading">Operator Overloading</a>
-        </p>
-        <p>
-          <a  href="/csharp-basics/#akeywordsasvars">Keywords as variables</a>
-        </p>
-        <p>
-          <a  href="/csharp-basics/#accessmodifiers">Misc.</a>
-        </p>
-    </div>
-      -->
-    <!--<div class="PaddedContents">-->
-        <p class="HeadingSubTopic">Access Modifiers</p>
+            
+        <p class="HeadingSubTopic" id="Access-Modifiers">Access Modifiers</p>
 
         <b>private: </b> Member is accessible only inside its type.<br/>
         <b>internal: </b> Accessible inside the type and any type in the same assembly.<br/>
@@ -35,7 +22,7 @@
         <b>internal protected: </b>Accessible inside the type, same assembly, and types that inherit from it. <br/>
         <b>private protected: </b>Accesible inside the type, and any inherited type that is IN the same assembly.<br/>
         
-        <p class="HeadingSubTopic">null coalescing operator</p>
+        <p class="HeadingSubTopic" id="Null-Coalescing">null coalescing operator</p>
         <pre>
             <code >
                 class Program &lbrace;
@@ -50,7 +37,7 @@
         </pre>
     
         
-        <p class="HeadingSubTopic">operator overloading</p>
+        <p class="HeadingSubTopic" id="Overloading">operator overloading</p>
         This example is silly but it's just to illustrate how this works.  We have a clas SomeObj, and it has a method for the + of objects of that class:<br/>
         <pre>
             <code >
@@ -70,7 +57,7 @@
         <br/>
         <img width="100%" src="assets\images\csharp\opoverloading1.png" alt="operator overloading" /><br/><br/>
         
-        <p class="HeadingSubTopic">keywords as variables</p>
+        <p class="HeadingSubTopic" id="Keywords">keywords as variables</p>
         <pre>
             <code>
                 using System;
@@ -85,7 +72,7 @@
             </code>
         </pre>
         
-        <p class="HeadingSubTopic">Ignore/use special chars</p>
+        <p class="HeadingSubTopic" id="Special-Chars">Ignore/use special chars</p>
 
         <pre>
             <code>
@@ -101,7 +88,7 @@
         </pre>
         <br/>
         
-        <p class="HeadingSubTopic">format strings with variables</p>
+        <p class="HeadingSubTopic" id="Format-Strings">format strings with variables</p>
         <pre>
             <code>
                 string fillIt = "Michael";
@@ -133,7 +120,7 @@
         Use double instead of decimal when accuracy is not important, especially when comparing numbers.<br/>
 
         
-        <p class="HeadingSubTopic">Some little things</p>
+        <p class="HeadingSubTopic" id="Little-Things">Some little things</p>
         <pre>
             <code>
                 int i = 10_123;
@@ -193,7 +180,7 @@
 
 
         
-        <p class="HeadingSubTopic">params argument</p>
+        <p class="HeadingSubTopic" id="Params">params argument</p>
         the params argument has to be the last one <br/>
         <pre>
             <code>
@@ -221,7 +208,7 @@
         </pre>
 
         
-        <p class="HeadingSubTopic">Default params</p>
+        <p class="HeadingSubTopic" id="Default-Params">Default params</p>
 
         <pre>
             <code>
@@ -246,11 +233,10 @@
                 defaulted 2
             </samp>
         </pre>
-
-        <p class="HeadingSubTopic">Default params</p>
+        
         Parameters can be passed by value (default), by reference (<b>ref</b>), and as an <b>out</b> parameter.
         <br/>    
-        <p class="HeadingSubTopic">Extension Methods</p>
+        <p class="HeadingSubTopic" id="Extension-Methods">Extension Methods</p>
 
         Extension methods have to be created, for a type, in a non-generic static class.  That is why I'm changing the class program to be static.  The 
         use of this indicates the one that will be the string that has the method.<br/>
@@ -281,7 +267,7 @@
 
 
         <br/>    
-        <p class="HeadingSubTopic">Tuples</p>
+        <p class="HeadingSubTopic" id="Tuples">Tuples</p>
 
         We have System.Tuple (reference, the data members are properties) and System.ValueTuple (value, the data members are fields).<br/>
 
@@ -367,7 +353,7 @@
         </pre>
 
         <br/>    
-        <p class="HeadingSubTopic">Generics</p>
+        <p class="HeadingSubTopic" id="Generics">Generics</p>
 
         <pre>
             <code>
@@ -425,7 +411,7 @@
         
 
         
-        <p class="HeadingSubTopic">Enums</p>
+        <p class="HeadingSubTopic" id="Enums">Enums</p>
 
         Regular way to use an Enum<br/>
         <pre>
@@ -502,7 +488,7 @@
         Keep in mind that the type you can use for the enum will depend on how many values you are going to need.<br/>
 
 
-        <p class="HeadingSubTopic">Records</p>
+        <p class="HeadingSubTopic" id="Records">Records</p>
         Medium Article - <a href="https://gmfuster.medium.com/c-class-struct-record-record-struct-d3b21c57d9bb"
         target="_new">C# — Class, Struct, Record, Record Struct</a><br/><br/>
 
@@ -580,7 +566,7 @@
         </pre>
         For two record variables to be equal, the run-time type must be equal (not just the values, also the type).
         
-        <p class="HeadingSubTopic">Pattern Matches - Switch - Comparing - checking type</p>
+        <p class="HeadingSubTopic" id="Comparing">Pattern Matches - Switch - Comparing - checking type</p>
 
         The info in this article is the same but may be better explained:<br/>
         <a href="https://gmfuster.medium.com/c-summary-of-patter-matching-1a1efec983cd"
@@ -816,7 +802,7 @@
         </pre>
         There is more than what is mentioned above, so check the documentation for more and for how to do it, or understand something you see.
 
-        <p class="HeadingSubTopic">Other</p>
+        <p class="HeadingSubTopic" id="Other">Other</p>
 
         <p class="HeadingSubTopic2">function inside function</p>
         You can have a method and have a local function inside that method (starting with C#7). That local function can be accessed only from within that method.
@@ -869,6 +855,6 @@
         </pre>
         <br/>
 
-        
-    <!--</div>  -->
+            
+</div>
 </div>

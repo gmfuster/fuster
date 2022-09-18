@@ -1,14 +1,16 @@
-<div>
+<div class="PaddedContents ">
 
-    <div class="PaddedContents">
+    <div class="leftLinks" #HeadingsContainer>      
+        <left-links ></left-links>      
+      </div> 
 
-        <br/>
-    <h2 class="CenterMe">C# notes - Entity Framework</h2>                 
+    <div class="PaddedContents PaddedContentsTopics">
+
+        <br/>   
         
-    <h3 class="CenterMe">This is about Entity Framework Core.</h3>  
-    <br/>
+        <h4 class="CenterMe">This is about Entity Framework Core.</h4>      
                     
-    <p class="HeadingSubTopic">Intro</p>
+    <p class="HeadingSubTopic" id="Intro">Intro</p>
     You use EF to access data.  If you have a DB in place, you set it so it matches the structure of that DB.  Otherwise you can use to create the DB itself.<br/>
 
     <p class="HeadingSubTopic2">Connection string</p>
@@ -171,7 +173,7 @@
         </code>
     </pre>
 
-    <p class="HeadingSubTopic">Manipulating the Data</p>
+    <p class="HeadingSubTopic" id="Manipulate-Data">Manipulating the Data</p>
 
     <p class="HeadingSubTopic2">Inserting</p>
 
@@ -213,7 +215,7 @@
             <b>t.commit();</b>
         </code>
     </pre>
-    <p class="HeadingSubTopic">Loading Patterns</p>
+    <p class="HeadingSubTopic" id="Loading">Loading Patterns</p>
         Eager Loading: Load data early<br/>
         Lazy Loading: Load before it is needed<br/>
         Explicit Loading: load data manually<br/>
@@ -251,7 +253,7 @@
 
 
 
-        <p class="HeadingSubTopic">Logging</p>
+        <p class="HeadingSubTopic" id="Logging">Logging</p>
 
     We can monitor the interaction between EF and the Database.  Create a file to have the <b>logging code:</b> (not really getting into this)
     <pre>
