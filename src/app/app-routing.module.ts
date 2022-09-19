@@ -15,6 +15,7 @@ import { CSharpDelegatesetcComponent } from './csharp-notes/csharp-delegatesetc.
 import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.component';
 import { CSharpInterfacesComponent } from './csharp-notes/csharp-interfaces.component';
 import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
+import { CSharpLinqComponent } from './csharp-notes/csharp-linq.component';
 import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
 import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
 import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-notes-objects.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'csharp-threading', component: CSharpThreadingComponent, pathMatch: 'full' },
   { path: 'csharp-interfaces', component: CSharpInterfacesComponent, pathMatch: 'full' },
   { path: 'csharp-ef', component: CSharpEFComponent, pathMatch: 'full' },
+  { path: 'csharp-linq', component: CSharpLinqComponent, pathMatch: 'full' },
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },

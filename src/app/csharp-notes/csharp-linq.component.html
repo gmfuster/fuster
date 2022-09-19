@@ -1,0 +1,230 @@
+<div class="PaddedContents ">
+  
+    
+  
+    <div class="leftLinks" #HeadingsContainer>      
+      <left-links ></left-links>      
+    </div>      
+    
+    <div class="PaddedContents PaddedContentsTopics">
+      
+      <!-------------------------------------------------------------->
+      <!--General-->
+      <!-------------------------------------------------------------->     
+      
+      <p class="HeadingSubTopic" id="general">General</p>
+      Linq uses deferred execution.  You can use linq for arrays and links and others similar to those.  I'll just use List for the examples.
+      Some examples using linq. (I just have a List&lt;string&gt; of some random words).
+      <pre>
+          <code>
+            var query1 = theList.Where(i => i.StartsWith("w"));
+            foreach (string w in query1.ToList())
+            &lbrace;
+                Console.WriteLine(w);
+            &rbrace;
+            var query2 = theList.Where(i => i.Contains("ll"));
+            foreach (string w in query2.ToList())
+            &lbrace;
+                Console.WriteLine(w);
+            &rbrace;
+            //using linq query syntax
+            var query3 = from word in theList where word.StartsWith("w") select word; 
+            foreach (string w in query3.ToList())
+            &lbrace;
+                Console.WriteLine(w);     
+            &rbrace;
+            var query4 = from word in theList where word.Contains("ll") select word; 
+            foreach (string w in query4.ToList())
+            &lbrace;
+                Console.WriteLine(w);
+            &rbrace;
+
+          </code>
+      </pre>
+
+      <p class="HeadingSubTopic" id="Filtering-Sorting">Filtering Sorting</p>
+      Use System.Linq if it is not in the file already.  You can also call a method that will indicate whether the word should go in or not.
+      <pre>
+          <code>
+              //have this method: Takes string, returns bool
+              public bool ShouldWordGoIn(string word)
+              &lbrace;
+                return (word.Length > 5);
+              &rbrace;
+
+              //note: we don't have to include the new Func..., we can just have <b> Where(methodName);</b>
+              var query3 = theList.Where(<b>new Func&lt;string, bool&gt;</b>(ShouldWordGoIn));
+              foreach (string w in query4.ToList())
+              &lbrace;
+                  Console.WriteLine(w);
+              &rbrace;
+
+              //Since the code in the method is simple, could just have done This
+              var query4 = theList.<b>Where(word =&gt; word.Length &gt; 5);</b>
+
+              //another way to do the previous one would be
+              var query5 = theList.Where(word =&gt; word.Length &gt; 5).<b>OrderByDescending(w =&gt; w.Length);</b>
+
+              //doing this will take the ones longer than 5 and sort them alphabetically in descending order.
+              var query5 = theList.Where(word =&gt; word.Length &gt; 5).<b>OrderByDescending(w =&gt; w);</b>
+
+              //do <b>OrderBy(w => w); </b>to get them by ascending alphabetical order.
+
+          </code>
+      </pre>
+      You can also sort by the length and then by the name:
+      <pre>
+          <code>
+              //this:
+              var query5 = theList.Where(word =&gt; word.Length &gt; 5).<b>OrderBy(w =&gt; w.Length).ThenBy(w =&gt; w);</b>
+              //Will get you this:
+              //animal
+              //doctor
+              //enough
+              //fluoride
+              //fluoride1
+              //fluoride2
+              //animation1
+              //animation2
+              //animation3
+              //fluoride10
+          </code>
+      </pre>
+      Linq also provides a way to filter based on type: <b>theList.OfType&lt;WhateverType&gt;</b>
+
+
+      <p class="HeadingSubTopic" id="Sets">Sets</p>
+      There are some operations that can be done that are similar to the ones we have for sets.
+      If I have this:
+      <pre>
+          <samp>            
+                theList1.Add("animal");
+                theList1.Add("animal");
+                theList1.Add("animation");
+                theList1.Add("animation");
+                theList1.Add("arm");                
+                theList1.Add("and");
+                theList1.Add("appropriate");
+                theList1.Add("astute");                               
+          </samp>
+      </pre>
+      Getting the distinct ones will not show the duplicates:
+      <pre>
+          <code>
+            var query1 = theList1.Distinct();
+          </code>
+      </pre>
+      For the same list, we can say we want the disctinct ones based on the first 2 chars:
+      <pre>
+          <code>
+            ar query1 = theList1.DistinctBy( w =&gt; w.Substring(0, 2));
+          </code>
+      </pre>
+      Now I have the lists as:
+      <pre>
+          <samp>
+            <b>theList1.Add("animal");</b>
+            theList1.Add("arm");
+            <b>theList1.Add("animation");</b>
+            theList1.Add("and");
+            theList1.Add("appropriate");
+            theList1.Add("astute");
+            <b>theList1.Add("animal");</b>
+            <b>theList1.Add("animation");</b>
+
+            theList2.Add("baby");
+            <b>theList2.Add("arm");</b>
+            theList2.Add("beasts");
+            <b>theList2.Add("appropriate");</b>
+          </samp>
+      </pre>
+      this:
+      <pre>
+          <code>
+            var query1 = theList1.<b>Concat(theList2);</b>
+          </code>
+      </pre>
+      Will get:
+      <pre>
+          <samp>
+            animal
+            arm
+            animation
+            and
+            appropriate
+            astute
+            animal
+            animation
+            baby
+            arm
+            beasts
+            appropriate
+          </samp>
+      </pre>
+      <b>Union is different from Concat.  Union will get you the union without the duplicates. </b>
+      <pre>
+          <code>
+            var query1 = theList1.<b>Union(theList2);</b>
+          </code>
+      </pre>
+      Get you:
+      <pre>
+          <samp>
+            animal
+            arm
+            animation
+            and
+            appropriate
+            astute
+            baby
+            beasts
+          </samp>
+      </pre>
+      You can also intersect
+      <pre>
+          <code>
+            var query1 = theList1.<b>Intersect(theList2);</b>
+          </code>
+      </pre>
+      Will get:
+      <pre>
+          <samp>
+            arm
+            appropriate
+          </samp>
+      </pre>
+      There is also an except, which notice has remove duplicates too:
+      <pre>
+          <code>
+            var query1 = theList1.Except(theList2);
+          </code>
+      </pre>
+      <pre>
+          <samp>
+            animal
+            animation
+            and
+            astute
+          </samp>
+      </pre>
+        ZIP will let you pairs of items from one list to the other (if they are not the same, the items without pair will be left out). Notice that the last 3 of the 
+        longer list (1) are not paired with anybody. (this is done by order)
+        <pre>
+            <code>
+                var query1 = theList1.Zip(theList2, (first, second) => first + " - " + second);
+            </code>
+        </pre>
+        Will get:
+        <pre>
+            <samp>
+            animal - baby
+            arm - arm
+            animation - beasts
+            and - appropriate
+            </samp>
+        </pre>
+        <p class="HeadingSubTopic" id="Linq-EF">Linq with EF</p>
+
+
+    </div>  
+</div>  

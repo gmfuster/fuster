@@ -30,6 +30,7 @@ import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
 import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
 import { CSharpInterfacesComponent } from './csharp-notes/csharp-interfaces.component';
 import { CSharpDelegatesetcComponent } from './csharp-notes/csharp-delegatesetc.component';
+import { CSharpLinqComponent } from './csharp-notes/csharp-linq.component';
 
 import { NodeNotesExpressComponent} from './node-notes/node-notes-express.component';
 import { NodeNotesComponent} from './node-notes/node-notes.component';
@@ -90,6 +91,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     CSharpBasicsComponent,
     CSharpInterfacesComponent,
     CSharpDelegatesetcComponent,
+    CSharpLinqComponent,
     JavaScriptNotesAsyncComponent,
     JavaScriptNotesObjectsComponent,
     DoublesComponent,
