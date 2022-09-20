@@ -225,6 +225,72 @@
         </pre>
         <p class="HeadingSubTopic" id="Linq-EF">Linq with EF</p>
 
+        You can look at the Entity Framework section for this too.  Adding more here to indicate what this is about.
+        <pre>
+            <code>
+                using (Northwind db = new Northwind())
+                &lbrace;
+                    DbSet&lt;Product&gt; products = db.Products;
+                    IQueryable&lt;Product&gt;? productsCh = products.Where(p =&gt; EF.Functions.Like(p.ProductName, "Ch%"));
+                    <b>IOrderedQueryable&lt;</b>Product&gt; sortedProds = productsCh.<b>OrderByDescending</b>(product =&gt; product.Cost);
+                    foreach (Product p in sortedProds)
+                    &lbrace;
+                        Console.WriteLine(p.ProductName + "----" + p.cost.ToString());
+                    &rbrace;
+            </code>
+        </pre>
+        Gets:
+        <pre>
+            <samp>
+                Chef Anton's Cajun Seasoning----22.0000
+                Chef Anton's Gumbo Mix----21.3500
+                Chang----19.0000
+                Chai Updated----18.0000
+                Chartreuse verte----18.0000
+                Chocolade----12.7500
+            </samp>
+        </pre>
+
+        You can take advantage of anonymous types with EF.
+        <pre>
+            <code>
+                var someNewType = new
+                &lbrace;
+                    ProductName = "I am new",
+                    Cost = 98.98
+                &rbrace;
+            </code>
+        </pre>
+
+        <p class="HeadingSubTopic2" >Select only some columns</p>
+
+        With the statements we have above for the queries, we are getting all the columns back.  We can specify what columns we want:
+        <pre>
+            <code>
+                <b>//notice we cannot use IQueryable&lt;Product&gt; anymore because we are using the anonymous type and not getting all cols back.</b>
+                IQueryable? productsCh = products.<b>Select(prod =&gt; new &lbrace; prod.ProductId, prod.ProductName, prod.cost &rbrace;)</b>.Where(p => EF.Functions.Like(p.ProductName, "Ch%"));
+
+                Then in the for loop use var:
+                foreach (<b>var</b> p in productsCh)
+                ...
+                    Console.WriteLine(p.ToString());
+            </code>
+        </pre>
+        Will get:
+        <pre>
+            <samp>
+                &lt; ProductId = 1, ProductName = Chai Updated, cost = 18.0000 &gt;
+                &lt; ProductId = 2, ProductName = Chang, cost = 19.0000 &gt;
+                &lt; ProductId = 4, ProductName = Chef Anton's Cajun Seasoning, cost = 22.0000 &gt;
+                &lt; ProductId = 5, ProductName = Chef Anton's Gumbo Mix, cost = 21.3500 
+                &lt; ProductId = 39, ProductName = Chartreuse verte, cost = 18.0000 &gt;
+                &lt; ProductId = 48, ProductName = Chocolade, cost = 12.7500 &gt;
+            </samp>
+        </pre>
+
+        <p class="HeadingSubTopic2" >Joining Queries</p>
+
+
 
     </div>  
 </div>  
