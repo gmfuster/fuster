@@ -318,5 +318,42 @@
         Similar to the join above but now you can joing each category to a group of products, instead of having one row per category-product.
         <p class="HeadingSubTopic2" >Other</p>
         You can perform other actions in the collections, such as MAX, AVERAGE, SUM etc.
+
+        <p class="HeadingSubTopic" id="Parallel-Linq" >Parallel Linq</p>
+        You can run queries with the .AsParallel to use different processors at the same time if you have them.  Whatever comes after the .AsParallel will 
+        be run in parallel, so don't just put it at the end of the statement.
+
+        <p class="HeadingSubTopic" id="Linq-XML" >Linq to XML</p>
+        Pay attention to the types being used here or it won't work.  <b>Don't put the SBSet directly in the XML or you get an exception.</b>
+        <pre>
+            <code>
+                DbSet&lt;Category&gt; cats = db.Categories;
+                List&lt;Category&gt; catList = cats.ToList();
+
+                <b>XElement</b> xml = <b>new XElement("CATEGORIES"</b>,  (from c in <b>catList</b>
+                    select <b>new XElement("category", </b>
+                    new <b>XAttribute</b>("CatID", c.CategoryId),
+                    new <b>XElement</b>("desc", c.Description),
+                    new <b>XElement</b>("name", c.CategoryName)))
+                    );
+            </code>
+        </pre>
+        The xml that we get is this:
+        <pre>
+            <samp>
+                &lt;CATEGORIES&gt;  --- From XElement
+                &lt;category CatID="1"&gt; --- CatId from XAttribute
+                    &lt;desc&gt;Soft drinks, coffees, teas, beers, and ales &lt;/desc&gt;
+                    &lt;name&gt;Beverages &lt;/name&gt;
+                    &lt;/category&gt;
+                    &lt;category CatID="2"&gt;
+                        &lt;desc&gt;Sweet and savory sauces, relishes, spreads, and seasonings &lt;/desc&gt;
+                        &lt;name&gt;Condiments &lt;/name&gt;
+                    &lt;/category&gt;
+                    ...
+                    &lt;/CATEGORIES&gt;
+            </samp>
+        </pre>
+        You can also get data from an xml and set it for your code.
     </div>  
 </div>  
