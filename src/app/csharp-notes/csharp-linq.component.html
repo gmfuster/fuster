@@ -289,8 +289,34 @@
         </pre>
 
         <p class="HeadingSubTopic2" >Joining Queries</p>
-
-
-
+        Having Categories and having Products, with the products having a category id, we can join those 2 with something like this:
+        <pre>
+            <code>
+                DbSet&lt;Product&gt; products = db.Products;
+                DbSet&lt;Category&gt; categories = db.Categories;
+                ...
+                //join categories with the products, based on the categoryID (outer key for the category, inner key for the product)
+                var join = categories.<b>Join</b>(<b>inner: products</b>, 
+                    <b>outerKeySelector: category =&gt; category.CategoryId</b>, 
+                    <b>innerKeySelector: prod =&gt; prod.CategoryId, </b>
+				    <b>resultSelector: (c, p) =&gt; new &lbrace;c.CategoryId, c.CategoryName, p.ProductName, p.cost&rbrace;);</b>
+            </code>
+        </pre>
+        Because we choose what we want to get from the join in the resultSelector, in this case we will see:
+        <pre>
+            <samp>
+                &lbrace; CategoryId = 1, CategoryName = Beverages, ProductName = Chai Updated, cost = 18.0000 &rbrace;
+                &lbrace; CategoryId = 1, CategoryName = Beverages, ProductName = Chang, cost = 19.0000 &rbrace;
+                &lbrace; CategoryId = 2, CategoryName = Condiments, ProductName = Aniseed Syrup, cost = 10.0000 &rbrace;
+                &lbrace; CategoryId = 2, CategoryName = Condiments, ProductName = Chef Anton's Cajun Seasoning, cost = 22.0000 &rbrace;
+                &lbrace; CategoryId = 2, CategoryName = Condiments, ProductName = Chef Anton's Gumbo Mix, cost = 21.3500 &rbrace;
+                &lbrace; CategoryId = 2, CategoryName = Condiments, ProductName = Grandma's Boysenberry Spread, cost = 25.0000 &rbrace;
+                ...
+            </samp>
+        </pre>
+        <p class="HeadingSubTopic2" >Joining Groups</p>
+        Similar to the join above but now you can joing each category to a group of products, instead of having one row per category-product.
+        <p class="HeadingSubTopic2" >Other</p>
+        You can perform other actions in the collections, such as MAX, AVERAGE, SUM etc.
     </div>  
 </div>  
