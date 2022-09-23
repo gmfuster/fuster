@@ -8,6 +8,7 @@ import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-s
 import { AngularNotesFormsComponent } from './angular-notes/angular-notes-forms.component';
 import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
 import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.component';
+import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.component';
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
 import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
@@ -38,6 +39,7 @@ const routes: Routes = [
   { path: 'dynamic-notes/:id', component: DynamicNotesComponent, pathMatch: 'full' },  
   { path: 'angular-notes-noactivate', component: AngularNotesComponent, canActivate:[ForCanActivate], canDeactivate:[ForCanDeActivate], pathMatch: 'full' },  
   { path: 'angular-notes-http', component: AngularNotesHttpComponent, pathMatch: 'full' },  
+  { path: 'angular-notes-auth', component: AngularNotesAuthComponent, pathMatch: 'full' },  
 
   { path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },
 

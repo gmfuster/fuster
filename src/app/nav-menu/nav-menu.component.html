@@ -49,7 +49,12 @@
               <a [routerLink]='["/angular-notes-http"]'  style="color:navy; font-size:2.5vh; ">
                HTTP
               </a>
-            </li>           
+            </li>    
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-auth"]'  style="color:navy; font-size:2.5vh; ">
+               Authorization
+              </a>
+            </li>         
           </ul>                    
         </li>
       </ul>
