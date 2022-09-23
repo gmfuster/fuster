@@ -85,7 +85,7 @@
     Show or hide (or disable) elements on your html based on what you get from the user, and what values you set from that.
 
     <p class="HeadingSubTopic" id="Send-Token">Sending Token with New Requests</p> 
-    You need to get the token from your code (whether you have it in a service or whatever).  You can have this toke stored somewhere accessible when the user 
+    You need to get the token from your code (whether you have it in a service or whatever).  You can have this token stored somewhere accessible when the user 
     changes, or you could also have this type of Subject instead of the regular Subject <b>user = new BehaviorSubject&lt;User&gt;(null);</b>
     With this one, even if some code has subscribed after the user has changed, it can still access the last (most current) value, even if it was set before the code started listening.
     <br/>
@@ -95,7 +95,7 @@
       <code>
         //this code still returns the http observable, because of the exhaustMap operator
         return this.yourservice.user.pipe(take(1)), <b>exhaustMap</b>(user =&gt; &lbrace;
-          return this.http.get&lt;whatever&gt;("your http")
+          return this.http.get&lt;whatever&gt;("your http"...and params etc)
 
         &rbrace;),
         map(whatever other things you need to do)
