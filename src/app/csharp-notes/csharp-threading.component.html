@@ -13,26 +13,21 @@
   
         <h4 class="CenterMe">You can type the C# code  
             <a class="CenterMe" href="https://replit.com/languages/csharp" target="_new">on replit.com</a> 
-            to see how it works <br/>
-         
-          </h4>
-
-        <div id="threads"></div><br/>
-        <hr class="hrHeaderClass" />
-            <h2 class="CenterMe" >Threads</h2>
-        <hr class="hrHeaderClass"/>
+            to see how it works <br/>         
+          </h4>       
                 
         
         A Thread is an object that represents a process running in the Operating System.
         <br/>
         Threads run in the foreground by default.  They will be run to completion so an application will not end while it has threads running.  <br/>
-        Threads have a priority that can be changes as long as they are active.<br/>
+        Threads have a priority that can be changed as long as they are active.<br/>
         Threads cannot deliver results to another thread.  They need to pass data with shared variables (can introduce sync issues).
         <br/>
         Exceptions have to be caught inside the thread.<br/>
+        When using Tasks and Threads we cannot update an element on a view because they run on different threads.  <br/>
 
         
-        <p class="HeadingSubTopic" id="Basics-Threads">Basics</p>
+        <p class="HeadingSubTopic" id="Basics-Threads">Threads Basics</p>
 
         <pre>
             <code>
@@ -73,7 +68,7 @@
         
         <p class="HeadingSubTopic" id="Passing-Data-To-Thread">Passing Data to Threads</p>
         If we need to pass data to a thread<br/>
-        Pass data to thread 1 - ParameterizedThreadStart - Would work the same if using calling a method instead of a anonymous one.<br/>
+        Pass data to thread 1 - ParameterizedThreadStart - Would work the same if using calling a method instead of an anonymous one.<br/>
         <pre>
             <code>
                 static void Main(string[] args) &lbrace;
@@ -271,46 +266,46 @@
             </samp>
         </pre>
 
-        TODO revisit the lock, I thought maybe this would keep waiting:<br/>
+        Another one:<br/>
         <pre>
             <code>
                 using System;
-            using System.Threading;
+                using System.Threading;
 
-            class Program&lbrace;    
+                class Program&lbrace;    
 
-                public static string _something = string.Empty;
-                public static object _lock = new object();
-                public static object _lock1 = new object();
-                public static bool _exit = false;
+                    public static string _something = string.Empty;
+                    public static object _lock = new object();
+                    public static object _lock1 = new object();
+                    public static bool _exit = false;
                 
-                static void Main(string[] args) &lbrace; 
+                    static void Main(string[] args) &lbrace; 
 
-                    Thread th2 = new Thread(() => &lbrace;  
-                    while (!_exit)&lbrace; //only while this is false
-                        lock(_lock)&lbrace;  //lock it        
-                        _something = DateTime.Now.ToString();  
+                        Thread th2 = new Thread(() => &lbrace;  
+                        while (!_exit)&lbrace; //only while this is false
+                            lock(_lock)&lbrace;  //lock it        
+                            _something = DateTime.Now.ToString();  
+                            &rbrace;
                         &rbrace;
-                    &rbrace;
-                    Console.WriteLine("th2 done with while");
-                    &rbrace;);
+                        Console.WriteLine("th2 done with while");
+                        &rbrace;);
                 
-                    Thread th1 = new Thread(() => &lbrace;  
-                    lock(_lock)&lbrace;  //lock it 
-                        _something = "trying";      
-                    &rbrace;
-                    Thread.Sleep(1000);
-                    _exit = true; //set to false so th2 can finish      
-                    &rbrace;);
+                        Thread th1 = new Thread(() => &lbrace;  
+                        lock(_lock)&lbrace;  //lock it 
+                            _something = "trying";      
+                        &rbrace;
+                        Thread.Sleep(1000);
+                        _exit = true; //set to false so th2 can finish      
+                        &rbrace;);
 
-                    th2.Start();
-                    th1.Start();   
-                    
-                    th2.Join();//Have main wait for this to finish
-                    th1.Join();
-                    Console.WriteLine(_something);
+                        th2.Start();
+                        th1.Start();   
+                        
+                        th2.Join();//Have main wait for this to finish
+                        th1.Join();
+                        Console.WriteLine(_something);
+                     &rbrace;
                 &rbrace;
-            &rbrace;
             </code>
         </pre>
         Prints:<br/>
@@ -319,15 +314,11 @@
                 th2 done with while
                 1/23/2022 9:59:54 PM
             </samp>
-        </pre>
-
-        <div id="tasks"></div><br/>
-        <hr class="hrHeaderClass" />
-            <h2 class="CenterMe" >Tasks</h2>
-        <hr class="hrHeaderClass"/>
+        </pre>      
         
         
-        <p class="HeadingSubTopic" id="Parallel.Invoke">Tasks and Parallel.Invoke</p>
+        <p class="HeadingSubTopic" id="Task-Parallel">Tasks and Running in Parallel</p>
+        <p class="HeadingSubTopic2" >Tasks and Parallel.Invoke</p>
         A Task is an object that represents a job (method) that's going to be performed.
         <br/>
         Tasks are created as background processes, so they can be ended even before completion if the foreground processes 
@@ -377,9 +368,32 @@
         </pre>
         Invoke waits for all tasks to be done.<br/>
 
+        Those are not the only ways to start a task.  
+        <pre>
+            <code>
+                Console.WriteLine("START SomeMethod");
+                
+                Task T1 = new Task(Method1);
+		        T1.Start();
 
-        
-        <p class="HeadingSubTopic" id="More-Parallel">More Parallel</p>
+		        Task T2 = Task.Factory.StartNew(Method2);
+
+		        Task T3 = Task.Run(Method3);
+
+                <b>Console.WriteLine("END");</b>
+            </code>
+        </pre>
+        The above has printed this :
+        <pre>
+            <samp>
+                START SomeMethod
+                <b>END</b>
+                method 2
+                method 1
+                method 3
+            </samp>
+        </pre>
+        <p class="HeadingSubTopic2" >More Parallel Options</p>
 
         <pre>
             <code>
@@ -451,8 +465,7 @@
                 System.Threading.Tasks.ParallelLoopResult
             </samp>
         </pre>
-
-        Note:On replit where I'm doing this, if I don't get the ParallelLoopResult res = (if I don't check the result), then the loop is not stopping.<br/>
+        
         The ParallelLoopState can also be used with the foreach.<br/>
 
         Can also use parallel programming with linq<br/>
@@ -501,10 +514,12 @@
         Remember to use <b>locks</b> for variables that are going to be used by different processes/threads. It is a good idea to use an object as the lock, don't use a string.<br/>        
 
         We could also use Monitor.Enter and Monitor.Exit to enclose the code that needs to be thread safe.  If the code can throw an exception, 
-        have the code in a catch and the Monitor.Exit in the finally.  Using monitors instead of locks lets the program check whether the variable or whatever is going to be locked if  (Monitor.TryEnter(…)--> the if will have if it is available, the else if it is locked, so we can do something else in that case.
+        have the code in a catch and the Monitor.Exit in the finally.  Using monitors instead of locks lets the program check whether the variable or whatever is going to be locked if  (Monitor.TryEnter(…)--> the if will have if it is available, 
+        the else if it is locked, so we can do something else in that case. (the lock statement is really doing a try (Monitor.Entered) finally Monitor.Exit)
 
         <br/>
 
+        <p class="HeadingSubTopic" id="Task-Waiting">Waiting on Task</p>
         We can wait for a task to be done :<br/>
         <pre>
             <code>
@@ -517,6 +532,9 @@
 
             </code>
         </pre>
+        You can also wait for a bunch of tasks: Task.WaitAll(array or list of tasks to wait on).<br/>
+
+        <p class="HeadingSubTopic2" >Return Result from Task</p>
         A task can also return a result.  Use Run in that case.
         <pre>
             <code>
@@ -528,21 +546,137 @@
                 &rbrace;
             </code>
         </pre>
-        You can also wait for a bunch of tasks: Task.WaitAll(array or list of tasks to wait on).<br/>
-        We can also continue one task with another one with ContinueWith<br/>TODO
+       
+        <p class="HeadingSubTopic2" >Task ContinueWith</p>
+        We can also continue one task with another one with ContinueWith.  Do the task, and indicate what task should happen after that with the ContinueWith.  Add 
+        the prevTask in the () so you can refer to it in the code inside the ContinueWith. (thisTask.ContinueWith(prevtask) &gt; &lbrace; continue with this, and access that first 
+        task through prevtask&rbrace;<br/>
         
         <img width="100%" src="assets\images\csharp\ContinueWith.png" alt="ContinueWith" /><br/><br/>
+
+        <p class="HeadingSubTopic" id="Parent-Task">Parent Task</p>
         A parent task can create other child tasks, they can be attached or unattached.  If they are attached, the task will not complete until the children are done.
         <br/>
+        If the child task doesn't have to complete before the parent can complete, it's called just a nested task.  If the parent has to wait for it, then it's really a CHILD 
+        task.
 
         <img width="100%" src="assets\images\csharp\taskattach.png" alt="attach" /><br/><br/>
-        When using Tasks and Threads we cannot update an element on a view because they run on different threads.  
+       
+        <p class="HeadingSubTopic" id="Async-Await">Async Await</p>
 
+        First thing, just because something looks like it's doing the same thing, it may not be the same thing:
+        <pre>
+            <code>
+                //You cannot await this 
+                Task t = new Task(() =&gt;...
+                await t.Start(); //----&gt; <b>this will not compile, you cannot await that.</b>
 
-        <div id="await"></div><br/>
-        <hr class="hrHeaderClass" />
-            <h2 class="CenterMe" >Await</h2>
-        <hr class="hrHeaderClass"/>
+                <b>//but you can await this </b>
+                await Task.Run(() =&gt;...
+            </code>
+        </pre>
+        Suppose I have these methods:
+        <pre>
+            <code>
+                //gives warning that async method not using await and will be run sync.
+                public static async <b>void</b> Method1()
+                &lbrace;
+                    Task t = new Task(() =&gt;
+                    &lbrace;
+                        Thread.Sleep(2000);
+                        Console.WriteLine("Task in Method 1");
+                    &rbrace;);
+                    t.Start();
+                &rbrace;
 
+                //has await, returns Task
+                public static async <b>Task</b> Method2()
+                &lbrace;
+                    await Task.Run(() =&gt;
+                    &lbrace;
+                        <b>Thread.Sleep(6000);</b>
+                        Console.WriteLine("Task in Method 2 async int");
+                    &rbrace;);
+                    return;
+                &rbrace;
+
+                //return Task of int.
+                public static async <b>Task&lt;int&gt;</b> Method3()
+                &lbrace;
+                await Task.Run(() =&gt;
+                    &lbrace;
+                        <b>Thread.Sleep(4000);</b>
+                        Console.WriteLine("Task in Method 3 async int");
+                    &rbrace;
+                    return 90;
+                &rbrace;
+            </code>
+        </pre>
+        If I call those with code like this:
+        <pre>
+            <code>
+                Console.WriteLine("START");
+                Method1();
+		        Method2();
+		        Method3();
+                Console.WriteLine("END");
+            </code>
+        </pre>
+        I get this:
+        <pre>
+            <samp>
+                START
+                END
+            </samp>
+        </pre>
+
+        NOTICE the methods that use await need to be async methods. Also, because Method1 returns void, we cannot await on it.<br/>
+        For the ones that return Task or Task&lbrace;something&rbrace;, we can do something like this:
+        <pre>
+            <code>
+                Console.WriteLine("START");
+                Task t2 = Method2();
+                Console.WriteLine("Mid 2");
+                Task t3 = Method3();
+                Console.WriteLine("END");
+
+                Task.WaitAll(t2, t3);
+            </code>
+        </pre>
+        And we get this:
+        <pre>
+            <samp>
+                START
+                Mid 2
+                END
+                <b>Task in Method 3 async TASK int //at 4 seconds
+                Task in Method 2 async int //at 6 seconds</b>
+            </samp>
+        </pre>
+        What if I want method 2 to happen before method 3, even though method 3 is going to be faster?
+        <pre>
+            <code>
+                Console.WriteLine("START");
+                Task t2 = Method2();
+		        await t2; <b>//do not go on until this one is done.</b>
+		        Console.WriteLine("Mid 2");
+		        Task t3 = Method3();
+		        Console.WriteLine("END");
+
+		        Task.WaitAll(t2, t3);
+            </code>
+        </pre>
+        I get:
+        <pre>
+            <samp>
+                START
+                Task in Method 2 async int
+                Mid 2
+                END 
+                Task in Method 3 async TASK int
+            </samp>
+        </pre>
+        <b>NOTE: if you are using a console project, make sure you have Console.ReadLine(); after you call the method that has this type of code, or the console will 
+        be done before the tasks are done and you will se nothing.</b>
    </div>
 </div>

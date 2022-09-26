@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap:regular,bold,italic&subset=latin,latin-ext');
 :root{
   --main-code-background: rgb(192, 228, 250);  
+  --main-font-color:rgb(183, 253, 253);
 }
 .main-body {  
-  color:rgb(183, 253, 253);
+  color:var(--main-font-color);
   font-family: 'Arima Madurai', cursive;
   font-size: 1.6vw;    
   background-color: rgb(48, 46, 46);
@@ -33,11 +34,12 @@
   flex-direction: row;  
 }
 body button { 
-  background-color: deepskyblue;
+  /*background-color: deepskyblue;*/
+  background-color: transparent;
   border-color: deepskyblue;  
-  color: navy;
+  color:deepskyblue;
   padding: 0.5vw;
-  border-width: 0px;
+  border-width: 6px;
   border-radius: 10px;
   margin: 2px;
   font-size: inherit;
