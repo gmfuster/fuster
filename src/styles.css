@@ -258,7 +258,9 @@ body button{
   left:12px; 
   width:15vw; 
   top: 10vh;
-  margin-right: 6px;;
+  height: 75vh;
+  margin-right: 6px;
+  overflow:auto;
 }
 
 /*
