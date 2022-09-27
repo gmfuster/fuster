@@ -19,6 +19,7 @@ import { AngularNotesFormsComponent } from './angular-notes/angular-notes-forms.
 import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
 import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.component';
 import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.component';
+import { AngularNotesDynamicComponent } from './angular-notes/angular-notes-dynamic.component';
 
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 
@@ -71,6 +72,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     AngularNotesFormsComponent,
     AngularNotesHttpComponent,
     AngularNotesAuthComponent,
+    AngularNotesDynamicComponent,
     JavaScriptNotesComponent,
     DynamicNotesComponent,
     ProbabilityNotesComponent,

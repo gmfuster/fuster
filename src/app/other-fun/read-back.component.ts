@@ -10,7 +10,7 @@ export class ReadBackComponent implements OnInit{
   url: string = "https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml";
   titlesDescArray: {title:string, desc:string}[] = [];
   option:string = "backwards";
-  
+  halfArray : Number = 0;
 
   ngOnInit(){
     this.getRssFeed();    
@@ -20,7 +20,7 @@ export class ReadBackComponent implements OnInit{
     let url = this.url;         
     let response = await fetch(url);      
     let xmlText = "";   
-    var xmlDoc = new Document();  
+    var xmlDoc = new Document();      
                 
     xmlText = await response.text();      
     var parser = new DOMParser();
@@ -38,6 +38,7 @@ export class ReadBackComponent implements OnInit{
       }
       this.titlesDescArray.push(obj);
     }            
+    this.halfArray = Math.round(this.titlesDescArray.length /2);
     //this.titlesDescArray = arrayOfNews;
   }
 

@@ -1,0 +1,128 @@
+
+<div class="PaddedContents">
+  <br/><br/>
+  <div class="leftLinks" #HeadingsContainer>      
+    <left-links ></left-links>      
+  </div> 
+
+  <div class="PaddedContents PaddedContentsTopics">
+
+    
+    <p class="HeadingSubTopic" id="General">General</p>   
+    No validation in the browser! :-)
+    <br/>
+    We use REST with Angular so we will not have sessions here.  It will be stateless.  Instead, the server sends an ENCODED token to the client.  Only the server 
+    can validate incoming tokens for validation.  You can see how an API for this could look like by googling Firebase API authentication or something like that.  You can 
+    have your own API for it.  Anyway, whatever it is you are using will be somehow similar, and the process will be the same.<br/>
+
+    <p class="HeadingSubTopic" id="Requests-Auth">Send Auth Requests</p> 
+    One request to the one by Firebase would be like this.  You can have this in a method and return it (it's an observable) so somebody can listen to it. (this is for 
+    signup of Firebase)
+    <pre>
+      <code>
+        this.http.post(
+          'https://.....',
+          &lbrace;
+            email:theEmail,
+            password:thePwd,
+            returnSecureToken: true
+          &rbrace;
+          );
+      </code>
+    </pre>
+    The API will tell you what data you can expect back.  For the Firebase one, you can create an interface for what they will send back just to make things more clear.
+    <pre>
+      <code>
+        interface AuthResponseData&lbrace;
+          kind: string;
+          idToken:string,
+          email: string,
+          refreshToken:string,
+          expiresIn:string,
+          localId:string
+        &rbrace;
+
+        //in that case set the type in the post with this.http.post&lt;AuthResponseData&gt;
+      </code>
+    </pre>
+    Regardles of whether you have the http call in a service you will be using, or you are going to subscribe to the call directly, you would have something like this:
+    <pre>
+      <code>
+        .subscribe(resData =&gt;
+        &lbrace;
+          ...
+        &rbrace;,
+          error =&gt; &lbrace;...&rbrace;
+        );
+      </code>
+    </pre>    
+    <p class="HeadingSubTopic" id="Get-Response">Get the Response</p> 
+    Once we get the response from the API, we can set up a user to have the data, including the token that we got.  Something like this if we are returning the observable from the 
+    method http call.
+    <pre>
+      <code>
+          return this.http.post&lt;...&gt;(...)
+            .pipe(catchError (whatever), <b>tap( resData =>
+            &lbrace;
+              //get an expiration date created using the expiresIn returned (in seconds)
+              const expDate = new Date(new Date().getTime() +  +resData.expiresIn * 1000);
+              const user = new User (resData.email, resData.localID, resData.idToken, expDate);</b>
+              ...
+
+              //pass the user we got along by using a user subject we have created here.
+              this.user.next(user);
+            &rbrace;));
+      </code>
+    </pre>
+    <p class="HeadingSubTopic" id="Using-User">Using the user for show/hide/enable/disable</p> 
+    Once you have the user, you can redirect the user.
+    If the user was successfull, you can send the user to wherever with <b>this.router.navigate(['/whereverUserShouldGo])</b><br/>
+    After this we should also disable whatever the user should not have access too (like the login if we are already logged in, or whatever if the 
+    user could not log in)<br/>
+    Assuming the user is already updated with the right state (logged in or not), if the user subject is in the service, we need to import it 
+    and use it in whatever component we want to check the state (add to constructor -- private authService:AuthService)<br/>
+    You should subscribe to the user subject wherever you need it so you are aware of changes.<br/>
+    Show or hide (or disable) elements on your html based on what you get from the user, and what values you set from that.
+
+    <p class="HeadingSubTopic" id="Send-Token">Sending Token with New Requests</p> 
+    You need to get the token from your code (whether you have it in a service or whatever).  You can have this token stored somewhere accessible when the user 
+    changes, or you could also have this type of Subject instead of the regular Subject <b>user = new BehaviorSubject&lt;User&gt;(null);</b>
+    With this one, even if some code has subscribed after the user has changed, it can still access the last (most current) value, even if it was set before the code started listening.
+    <br/>
+    This code <b>this.yourservice.user.pipe(take(1)).subscribe( user => ... do the call .. see code below)</b> will take 1 value from that user (most current) and then it will automatially unsubscribe.  You should 
+    have this code before the http call you need to do sending the token to the API.
+    <pre>
+      <code>
+        //this code still returns the http observable, because of the exhaustMap operator
+        return this.yourservice.user.pipe(take(1)), <b>exhaustMap</b>(user =&gt; &lbrace;
+          return this.http.get&lt;whatever&gt;("your http"...and params etc)
+
+        &rbrace;),
+        map(whatever other things you need to do)
+      </code>
+    </pre>
+    You will now have to pass the token however the API you are using requires it.  If you have to pass the token in multiple places, you can move that code 
+    to an <b>interceptor</b> (check out Angular Http notes for more on this).<br/>
+
+    <p class="HeadingSubTopic" id="Auto-Login-Logout">Auto Login/Logout</p> 
+    On refresh, Angular resets everything.  We can store the value in cookies or in the browser's local storage.  To store locally you can do something like This
+    <b>localStorage.SetItem('userData', JSON.stringify(user));</b><br/>
+    To get it back just <b>JSON.Parse(localStorage.getItem('userData'))</b><br/>
+    If you check the saved user and its token is not expired (assuming they expire for your API), you can use it by doing this.user.next(theSavedUser).<br>
+    Clear the localStorage when the user logs out.<br/>
+    For logging out automatically, you can call a function that receives the date/time when the token expires and set a setTimeout in that function to call 
+    logout (the setTimeout set to those milliseconds when the token will expire).  You can set the timeout to some variable so you can clear it with 
+    ClearTimeout(yourvariable) if the user logs out manually.
+
+    <p class="HeadingSubTopic" id="Path Guards">Path Guards</p> 
+    Besides disabling buttons , don't forget to set the canActivate in the routes so the user cannot access something by typing the URL directly.
+    In your canActivate function to use in the paths, you can returns true or false, or you could also redirect (by returning URLTree) in case they are not 
+    logged in (<b>return this.router.createUrlTree(['yourLoginPageOrWhatever']);</b>).
+
+    <p class="HeadingSubTopic" id="More">More little things</p> 
+    To log out, you can just do this.user.next(null) in your logout function in your service.
+
+</div>
+
+  
+</div> 

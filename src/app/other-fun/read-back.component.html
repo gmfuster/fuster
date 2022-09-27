@@ -13,13 +13,12 @@
   </div>
 
   <div className="CenterMe" >          
-    <div class="PaddedContents">
-      <br/>
-      <strong>Reading backwards or upsidedown is good for you!</strong><br/>
-      Direction is right to left and the letters are rotated. 
+    <div class="PaddedContents PaddedContentsTopics">
+      <br/>      
+      Direction to read with the arrows on the left. <br/>Have indication half way in case you want to change direction then.
       <br/>      
 
-      <div *ngFor = "let item of titlesDescArray;" class="timesFont"> 
+      <div *ngFor = "let item of titlesDescArray; let i=index;" class="timesFont"> 
         <div [ngClass]="option === 'backwards' ? 'reverse title' : 'upsideDown title' " *ngIf="item.title != ''">{{item.title}}</div>
         <div [ngClass]="option === 'backwards' ? 'reverse desc' : 'upsideDown desc' " *ngIf="item.desc != ''">
           {{item.desc}}
@@ -27,6 +26,10 @@
         <div class="showOriginal" *ngIf="item.title != ''">
           <span class="showOriginalTitle">{{item.title}}</span><br/>
           {{item.desc}}
+        </div>                
+        <br *ngIf ="i === halfArray"/>
+        <div *ngIf ="i === halfArray" style="border: 3px solid deeppink; color:deeppink; background-color: lightcyan;" class="CenterMyContent" >
+           HALF WAY
         </div>
         <br><br/>
       </div>     
