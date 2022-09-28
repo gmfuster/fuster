@@ -42,7 +42,8 @@
         &rbrace;
       </code>
     </pre>
-      To set the place for this in the DOM, you can add an <b>ng-template wherever you want it and to it, add the directive created above.</b><br/>
+      To set the place for this in the DOM, you can add an <b>ng-template wherever you want it and to it, add the directive created above
+        <b> (&lt;ng-template appWhateverName&gt;).</b></b><br/>
       In the ts file of the parent, since we have an ng-content with that directive, we can now use ViewChild to access it. Something like:
       <b>@ViewChild(WhateverYourNameDirective, &lbrace;static : false&rbrace;) popuporwhatevername! : WhateverYourNameDirective;</b><br/>
       In the code itself, something like this:
@@ -89,8 +90,8 @@
 
         //listen to the closeMe of the child (popup) and when it happens, unsubscribe and clear so it doesn't show up anymore.
         //if you need to set properties from the parent to the popup, like a message, do it with instance.messageOrWhatever = whatever.
-        this.closeSubs = theCreatedPopupRef.instance.closeMe.subscribe(  () => &lbrace;
-          this.closeSubs.unsubscribe();
+        this.closeSub = theCreatedPopupRef.instance.closeMe.subscribe(  () => &lbrace;
+          this.closeSub.unsubscribe();
           thePopupRef.clear();
         &rbrace;)
         
