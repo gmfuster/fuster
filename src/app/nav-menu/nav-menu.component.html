@@ -54,7 +54,12 @@
               <a [routerLink]='["/angular-notes-auth"]'  style="color:navy; font-size:2.5vh; ">
                Authorization
               </a>
-            </li>         
+            </li>   
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-dynamic"]'  style="color:navy; font-size:2.5vh; ">
+               Dynamic Components
+              </a>
+            </li>        
           </ul>                    
         </li>
       </ul>

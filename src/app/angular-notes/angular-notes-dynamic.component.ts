@@ -1,10 +1,12 @@
 //import { stringify } from '@angular/compiler/src/util';
-import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, ComponentFactoryResolver, OnDestroy } from '@angular/core';
 import { FormControl, NgForm } from '@angular/forms';
 import {FormGroup} from '@angular/forms';
-import {HeadingSubTopicDirective} from '../shared/directives';
+import {HeadingSubTopicDirective, PlaceholderDirective} from '../shared/directives';
 import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
+import { SomePopupComponent } from '../shared/some-popup.component';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,15 +16,16 @@ import {CommonFuncs} from '../shared/commonFuncs.service'
   providers: [CommonFuncs]
 })
 
-export class AngularNotesDynamicComponent implements OnInit {
+export class AngularNotesDynamicComponent implements OnInit, OnDestroy {
 @ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
 myHeadings : string[] = [];
 myName : string = "angular-notes-dynamic";
 @ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+@ViewChild(PlaceholderDirective, {static : false}) popup! : PlaceholderDirective;
+showPopup : boolean = false;
+private closeSubs : Subscription = new Subscription();
 
-
-
-  constructor(private commonFuncs:CommonFuncs){
+  constructor(private commonFuncs:CommonFuncs, private componentFactoryResolver : ComponentFactoryResolver){
     
   }
 
@@ -36,5 +39,35 @@ myName : string = "angular-notes-dynamic";
     this.child.getChangesFromParent(this.myHeadings,this.myName )    
   }  
   
+  OnSetVarToShowPopup()
+  {    
+    this.showPopup = true;
+  }
+  OnHidePopup(){
+    alert("hey")
+    this.showPopup = false;
+  }
+
+  OnShowProgramatically(){
+    this.showPopupWithCode();
+  }
+  private showPopupWithCode(){
+    const somePopupCompFactory = this.componentFactoryResolver.resolveComponentFactory(SomePopupComponent);
+    //now with that factory we can create the component, but we also need to attach it to the DOM.
+    const thePopupRef = this.popup.viewContainerRef;
+    thePopupRef.clear();
+    const theCreatedPopupRef = thePopupRef.createComponent(somePopupCompFactory);
+
+    this.closeSubs = theCreatedPopupRef.instance.closeMe.subscribe(  () => {
+      this.closeSubs.unsubscribe();
+      thePopupRef.clear();
+    })
+  }
+
+  ngOnDestroy(){
+    if (this.closeSubs){
+      this.closeSubs.unsubscribe();
+    }
+  }
   
 }

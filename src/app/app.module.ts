@@ -48,10 +48,12 @@ import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-di
 import { LeftLinksComponent } from './shared/left-links.component';
 
 import { DropdownDirective } from './shared/dropdown-directive';
+import { PlaceholderDirective } from './shared/directives';
 import { HeadingSubTopicDirective } from './shared/directives';
 import { OtherServices } from './shared/forexamples.service';
 import { ForCanActivate } from './shared/forCanActivate.service';
 import { ForCanDeActivate } from './shared/forCanActivate.service';
+import { SomePopupComponent } from './shared/some-popup.component';
 
 import { NotFoundComponent } from './other-fun/not-found.component';
 
@@ -85,6 +87,8 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     SomeDirectiveDirective3,
     SomeDirectiveDirective4,
     SomeDirectiveDirective5,
+    PlaceholderDirective,
+    SomePopupComponent,
     appSomeDirectiveDirectiveSTR,
     DropdownDirective,
     ReadBackComponent,

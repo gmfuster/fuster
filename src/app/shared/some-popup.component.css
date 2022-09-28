@@ -1,0 +1,10 @@
+
+#thePopup{
+    background-color: turquoise;
+    color:navy;
+    position: fixed;
+    top: 10vh;
+    left : 30vw;
+    width:50vw;
+    height: 50vh;
+}

@@ -270,6 +270,18 @@
 
     <p appSomeDirectiveDirective appSomeDirectiveDirective2 [fontColor]="'deeppink'">Some p element using the SomeDirectiveDirective.  </p>
 
+    <b>YOU CAN USE your own directives so you can get elements of a certain class from your html.  To do that.</b><br/>
+    <pre>
+      <code>
+        //create the directive as something like where theClassYouWillUse is what you have in your css and in the html as class="theClassYouWillUse"
+          selector: '.theClassYouWillUse'
+
+        //then in the code where you need to get the elements with that class
+        @ViewChildren(TheClassYouWillUseDirective, &lbrace; read: ElementRef &rbrace;) whateverElementsYouWant!:QueryList&lt;any&gt;;
+
+        //Or just ViewChild instead if you only one to get one (first one found)
+      </code>
+    </pre>
 
 
 
