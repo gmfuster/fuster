@@ -43,8 +43,7 @@ private closeSubs : Subscription = new Subscription();
   {    
     this.showPopup = true;
   }
-  OnHidePopup(){
-    alert("hey")
+  OnHidePopup(){    
     this.showPopup = false;
   }
 
