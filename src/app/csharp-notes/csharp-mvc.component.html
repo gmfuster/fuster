@@ -78,5 +78,38 @@
         <b>https://localhost:7298/weatherforecast/SomeOTherName/5</b><br/>
         Will have more on naming later. (TODO)
 
+        <p class="HeadingSubTopic" id="EF">Entity Framework</p>
+        Check the EF section for more info.  But in this project, you can also create a NorthwindDbContext or whatever class that inherits from DbContext.  Then before the 
+        services.AddControllers you can have something like this (this is from MS)
+        <pre>
+            <code>
+                services.AddDbContext&lt;NorthwindDbContext&gt;(
+                    options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+            </code>
+        </pre>
+        In the NorthwindDbContext you should have something like this, also from MS.
+        <pre>
+            <code>
+                public NorthwindDbContext(DbContextOptions&lt;NorthwindDbContext&gt; options)
+                    : base(options)
+                    &lbrace;
+                    &rbrace;
+            </code>
+        </pre>
+        Once you have that you can use it in the controllers.  Also from the MS example with changed names:
+        <pre>
+            <code>
+                public class MyController
+                &lbrace;
+                    private readonly NorthwindDbContext _context;
+
+                    public MyController(NorthwindDbContext context)
+                    &lbrace;
+                        _context = context;
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+        There are other ways to set it up, like overriding the OnConfiguring.  I don't have all that info here.
    </div>
 </div>

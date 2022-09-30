@@ -15,6 +15,7 @@ export class MapItComponent implements OnInit{
     {title:"Participation Iraq War 2003", map:"worldmap_iraq.svg", add:""},
     {title:"Participation Afghanistan War 2001", map:"worldmap_afghanistan.svg",add:""},
     {title:"Top 10 polluters per capita 2021", map:"worldmap_top_polluters_21.svg",add:""},
+    {title:"Countries recognizing Kosovo 2022", map:"worldmap_kosovo.svg",add:""},
     /*{title:"Bombed by US 1991-2021", map:"worldmap_bomb_us.svg",add:"I tried to find the data on Russia, China but not much on it"}] -- add back when available for other too*/
   ]
   selectedEvent :string = "";
