@@ -4,13 +4,13 @@ import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
 
 @Component({
-  selector: 'csharp-threading',
+  selector: 'csharp-mvc',
   templateUrl: './csharp-mvc.component.html',
   styleUrls: [], //share the css file 
   providers: [CommonFuncs] 
 })
 
-export class CSharpThreadingComponent implements OnInit {
+export class CSharpMVCComponent implements OnInit {
   @ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
   myHeadings : string[] = [];
   myName : string = "csharp-mvc";

@@ -1,0 +1,82 @@
+<div class="PaddedContents">
+    
+    <div class="leftLinks" #HeadingsContainer>      
+        <left-links ></left-links>      
+      </div>   
+    
+  
+    <br/>
+        
+    
+
+    <div class="PaddedContents PaddedContentsTopics">
+          
+        <p class="HeadingSubTopic" id="MVC-General">General MVC</p>
+        With ASP.Net Core, it's common to use the MVS (Model View Controller)     <br/>
+        Models: classes that represent the data entities and the view models used.<br/>
+        views: render the data, could be Razor pages or something else.<br/>
+        controllers: intermediaries between servers and the other 2, and tell each one what to do.
+        <br/>
+        Just saying, I'm not adding any notes on Razor pages.<br/>
+
+        <p class="HeadingSubTopic" id="Web-Services">Web Services</p>
+        Some of the status code that can be returned:<br/>
+        <ul>
+            <li>200 OK</li>
+            <li>301 Moved Permanently</li>
+            <li>302 Found</li>
+            <li>304 Not Modified</li>
+            <li>400 Bad Request</li>
+            <li>401 Unauthorized</li>
+            <li>403 Forbidden</li>
+            <li>404 Not Found</li>
+            <li>406 Not Acceptable</li>
+            <li>451 Unavailable for legal reasons</li>
+            <li>500 Server Error</li>
+            <li>503 Service Unavailable</li>      
+            <li>201 Created</li>      
+            <li>202 Accepted</li>
+            <li>204 No Content</li>
+            <li>405 Method Not Allowed</li>
+            <li>415 Unsupported Media Type</li>            
+        </ul>
+        <br/>
+        Types of requests: GET, POST (a new one), PUT (update), DELETE, and also PATCH (update only some parts).<br/>
+        To create a new WEB API project,  choose <b>ASP.NET Core Web API.</b>        
+
+        <p class="HeadingSubTopic" id="Web-API-Struct">Web API Structure</p>
+        When you do that you get a bunch of files created for you.<br/>
+        Controllers folder: gets a WatherForecastController.cs file. Inherits from ControllerBase, not Controller.<br/>
+        <b>[Route("[controller]")]</b> ---- the main url will depend on the string you have in the class name before Controller:
+        <b>WeatherForecast</b>Controller <br/>
+        You can also change to whatever you want to be the root url: <b>[Route("api/whateveryouwant")]</b>
+        <b>[ApiController] enables REST specific behavior for controllers.</b><br/>
+
+        <b>[HttpGet(Name = "GetWeatherForecast")]</b> will respond to http get requests.<br/>
+        Your <b>launchsettings.json</b> file will tell you where this server will be listening. (under the properties folder)<br/>
+        If you have the launchUrl set to "swagger", you can change launchbrowser to false, then change the applicationUrl to have something other than 
+        the random portif you prefer ( "applicationUrl": "https://localhost:7298;http://localhost:5298",).<br/>
+        If you run now, it will not launch the browser.  Check the output window for what's going on.  Make sure the code is listening before you go to the browser and 
+        enter the url.  You may have to bypass the not trusted website error.  Because this is a web api project, doing localhost in the browser will get you a 
+        <b>404 error.  This is normal.</b>  You can go directly to the method, such as <b>https://localhost:7298/weatherforecast</b> and you can see the data being returned.
+        Something like this:
+        <pre>
+            <samp>
+                [&lbrace;"date":"2022-09-30T19:54:10.1399401-04:00","temperatureC":36,"temperatureF":96,"summary":"Warm"&rbrace;,
+                &lbrace;"date":"2022-10-01T19:54:10.1404148-04:00",...
+            </samp>
+        </pre>
+        <br/>
+        If you look in the netword tab of the dev tools, you now see you get OK 200 and not the 404 error.<br/>
+        You can change the get so it also takes some parameter: <b>[HttpGet("&lbrace;days:int&rbrace;")]</b> and have the method as 
+        public IEnumerable&lt;String&gt;<b> Get(int i)</b> 
+        then call it with <b>https://localhost:7298/weatherforecast/5</b><br/>
+        You can name the methods something else, such as <b>[HttpGet, Route("SomeOtherName/&lbrace;days:int&rbrace;")]</b> but you will have to change 
+        the Route on top of the file.  For example, if I set it to [Route("")], for the original method I'd have to do <b>https://localhost:7298/.  </b>
+        <br/>
+        If I leave the <b>[Route("[controller]")]</b>, the method [HttpGet, <b>Route("SomeOtherName/&lbrace;days:int&rbrace;")]</b> will be called with 
+        <b>https://localhost:7298/weatherforecast/SomeOTherName/5</b><br/>
+        Will have more on naming later. (TODO)
+
+   </div>
+</div>
