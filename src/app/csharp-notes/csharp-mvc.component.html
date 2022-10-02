@@ -79,37 +79,169 @@
         Will have more on naming later. (TODO)
 
         <p class="HeadingSubTopic" id="EF">Entity Framework</p>
-        Check the EF section for more info.  But in this project, you can also create a NorthwindDbContext or whatever class that inherits from DbContext.  Then before the 
-        services.AddControllers you can have something like this (this is from MS)
+
+        Check the EF section for more info.  But in this project, you can also create a NorthwindDbContext or whatever class that inherits from DbContext.  You will need the DbContext 
+        for each unit of work, which in this case isthe http call.
+         On your class inherting from DbContext you can do something like this:
+         <pre>
+             <code>
+                protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+                &lbrace;
+                    if (ForEF.DatabaseProvider == "SQLServer")
+                    &lbrace;
+                    string connection = "Data source= YourServerName\\YourInstanceName;" + "Initial Catalog=Northwind;" +
+				        "Integrated Security=true;" + "MultipleActiveResultSets=true;";
+				        <b>optionsBuilder.UseSqlServer(connection);</b>
+                    &rbrace;
+                &rbrace;
+             </code>
+         </pre>
+         You could also have a constructor in your WhateverDbContext class to take the connection string and set it that way.  In any case, just have the connection 
+         string and set it to UseSqlServer in the OnCOnfiguring.
+         <br/>
+         In your program, before the builder.Services.AddControllers(); you can also do:        
         <pre>
             <code>
                 services.AddDbContext&lt;NorthwindDbContext&gt;(
-                    options => options.UseSqlServer("name=ConnectionStrings:DefaultConnection"));
+                    options => options.UseSqlServer("Data source= YourServerName\\\\YourInstanceName;\" + \"Initial Catalog=Northwind;\" +\r\n\t\t\t\t\"Integrated Security=true;\" + \"MultipleActiveResultSets=true;"));
             </code>
         </pre>
-        In the NorthwindDbContext you should have something like this, also from MS.
-        <pre>
-            <code>
-                public NorthwindDbContext(DbContextOptions&lt;NorthwindDbContext&gt; options)
-                    : base(options)
-                    &lbrace;
-                    &rbrace;
-            </code>
-        </pre>
-        Once you have that you can use it in the controllers.  Also from the MS example with changed names:
-        <pre>
-            <code>
-                public class MyController
-                &lbrace;
-                    private readonly NorthwindDbContext _context;
+        
+        <p class="HeadingSubTopic" id="Repos">Repos - Repositories</p>
 
-                    public MyController(NorthwindDbContext context)
-                    &lbrace;
-                        _context = context;
-                    &rbrace;
-                &rbrace;
+        It's a good idea to have a repositories or repos folder. This is for the CRUD operations.  Create and interface class with the methods that will be needed 
+        and the class itself.  You can have this for each EF model you will need for each table or whatever you need to get data from. (Remember VS may give you a 
+        namespace you don't want when you add a new class).  The interface could look like this:
+        <pre>
+            <code>
+                public interface  ICustomerRepository
+	            &lbrace;
+		            Task&lt;Customer?&gt; CreateAsync(Customer c);
+		            Task&lt;IEnumerable&lt;Customer&gt;&gt; RetrieveAllAsync();
+		            Task&lt;Customer?&gt; RetrieveAsync(string id);
+		            Task&lt;Customer?&gt; UpdateAsync(string id, Customer c);
+		            Task&lt;bool?&gt; DeleteAsync(string id);
+	            &rbrace;
             </code>
         </pre>
-        There are other ways to set it up, like overriding the OnConfiguring.  I don't have all that info here.
+        For the code itself, something like this.
+        <pre>
+            <code>
+                public class CustomerRepository : ICustomerRepository
+	            &lbrace;
+		            //use to cache customers
+		            private static ConcurrentDictionary&lt;string, Customer&gt; _customerMap = new ConcurrentDictionary&lt;string, Customer&gt;();
+		            //not static, should not cache
+		            private NorthwindDbContext _context;
+
+		            public CustomerRepository(NorthwindDbContext injectedContext)
+		            &lbrace;
+			            this._context = injectedContext;
+			            if (_customerMap is null)
+			            &lbrace;
+				            _customerMap = new ConcurrentDictionary&lt;string, Customer&gt;(this._context.Customers.ToDictionary(c =&gt; c.CustomerID));
+			            &rbrace;
+		            &rbrace;
+
+		            public async Task&lt;Customer&gt; CreateAsync(Customer c)
+		            &lbrace;
+			            c.CustomerID = c.CustomerID.ToUpper();
+			            EntityEntry&lt;Customer&gt; added = await this._context.AddAsync(c);
+			            int affected = await this._context.SaveChangesAsync();
+			            if (affected == 1)
+			            &lbrace;
+				            if (_customerMap == null)
+				            &rbrace;
+					            return c;
+				            &rbrace;
+				            else
+				            &lbrace;
+					            return _customerMap.AddOrUpdate(c.CustomerID, c, UpdateCache);
+				            &rbrace;
+			            &rbrace;
+			            else
+			            &lbrace;
+				            return null;
+			            &rbrace;
+		            &rbrace;
+
+		            public Task&lt;IEnumerable&lt;Customer&gt;&gt; RetrieveAllAsync()
+		            &lbrace;
+			            return Task.FromResult(_customerMap is null ? Enumerable.Empty&lt;Customer&gt;() : _customerMap.Values);
+		            &lbrace;
+		            
+                    public Task&lt;Customer?&gt; RetrieveAsync(string id)
+		            &lbrace;
+			            id = id.ToUpper();
+			            if (_customerMap is null) return null!;
+			            _customerMap.TryGetValue(id, out Customer? c);
+			            return Task.FromResult(c);
+		            &rbrace;
+
+		            private Customer UpdateCache(string id, Customer c)
+		            &lbrace;
+			            Customer? old;
+			            if (_customerMap is not null)
+			            &lbrace;
+				            if (_customerMap.TryGetValue(id, out old))
+				            &lbrace;
+					            if (_customerMap.TryUpdate(id, c, old))
+					            &lbrace;
+						            return c;
+					            &rbrace;
+				            &rbrace;
+			            &rbrace;
+			            return null;
+		            &rbrace;
+
+		            public async Task&lt;Customer?&gt; UpdateAsync(string id, Customer c)
+		            &lbrace;
+			            id = id.ToUpper();
+			            c.CustomerID = c.CustomerID.ToUpper();
+			            this._context.Update(c);
+			            int affected = await this._context.SaveChangesAsync();
+			            if (affected == 1)
+			            &lbrace;
+				            return UpdateCache(id, c);
+			            &rbrace;
+			            return null;
+		            &rbrace;
+
+		            public async Task&lt;bool?&gt; DeleteAsync(string id)
+		            &lbrace;
+			            id = id.ToUpper();
+			            Customer? c = this._context.Customers.Find( id);
+			            if (c is null) return null;
+			            this._context.Remove(c);
+			            int affected = await this._context.SaveChangesAsync();
+			            if (affected == 1)
+			            &lbrace;
+				            if (_customerMap is null) return null;
+				            return _customerMap.TryRemove(id, out c);
+			            &rbrace;else
+			            &lbrace;
+				            return null;
+			            &rbrace;			
+		            &rbrace;
+	            &rbrace;
+            </code>
+        </pre>
+
+        <p class="HeadingSubTopic" id="Routes-Controller">Routes in Controllers</p>
+
+        In the routes in the controllers, like the WeatherForecastController used previously, it's a good idea to indicate whether the method is going to be get or post or what.
+        <ul>
+            <li>[HttpGet] - a GET request</li>
+            <li>[HttpHead] - a GET for the header</li>
+            <li>[HttpPost] - a POST request</li>
+            <li>[HttpPut] - PUT request</li>
+            <li>[HttpPatch] - PATCH request</li>
+            <li>[HttpDelete] DELETE request</li>
+            <li>[HttpOptions] - OPTIONS request</li>
+        </ul>
+        <p class="HeadingSubTopic" id="Return-Types">Return Types</p>
+        An Action method can return .NET types or IActionResult if the return type could differ based on something, or ActionResult&lt;T&gt; if it will 
+        return the same type but with different status codes.<br/>
+        You can use [ProducesResponseType] to indicate what types of returns the method can generate.
    </div>
 </div>
