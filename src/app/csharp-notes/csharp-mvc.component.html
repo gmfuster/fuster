@@ -240,8 +240,119 @@
             <li>[HttpOptions] - OPTIONS request</li>
         </ul>
         <p class="HeadingSubTopic" id="Return-Types">Return Types</p>
-        An Action method can return .NET types or IActionResult if the return type could differ based on something, or ActionResult&lt;T&gt; if it will 
+        An Action method can return .NET types or <b>IActionResult</b> if the return type could differ based on something, or <b>ActionResult&lt;T&gt;</b> if it will 
         return the same type but with different status codes.<br/>
         You can use [ProducesResponseType] to indicate what types of returns the method can generate.
+
+        <p class="HeadingSubTopic" id="Use-Repo-Controller">Using the repository</p>
+        In the program file, before the call to builder.Build(), register the repo with something like:
+        <pre>
+            <code>
+                builder.Services.AddScoped&lt;ICustomerRepository, CustomerRepository&gt;();
+            </code>
+        </pre>
+        To have things more organized, you should add a new controller for eas repository, under the controllers folder.<br/>
+        Before testing, make sure you have the services with the DB context:
+        <pre>
+            <code>
+                //in program
+                builder.Services.AddDbContext&lt;YourDbDbContext&gt;(
+                    options => options.UseSqlServer("Data source=server\\\\instance;\" + \"Initial Catalog=Northwind;\" + \"Integrated Security=true;\" + \"MultipleActiveResultSets=true;"));             
+            </code>
+        </pre>
+        You need to create your controller.  Something like this one here:
+        <pre>
+            <code>
+                //the urls for these will be localhostorwhatever/api/firstpartofcontrollerclassname
+                [Route("api/[controller]")]
+                //[ApiController] -- enables a few features including attribute routing requirement, automatic model validation and binding source parameter inference
+
+                public class <b>Customer</b>Controller :ControllerBase
+                &lbrace;
+                    private readonly ICustomerRepository repo;
+                    public CustomerController(ICustomerRepository repo)
+                    &lbrace;
+                        this.repo = repo;
+                    &lbrace;
+
+                    [HttpGet]
+                    [ProducesResponseType(200, Type = typeof(IEnumerable&lt;Customer&gt;))]
+                    public async Task&lt;IEnumerable&lt;Customer&gt;&gt; GetCustomers(string country)
+                    &lbrace;
+                        if (string.IsNullOrEmpty(country) || string.IsNullOrWhiteSpace(country))
+                        &lbrace;
+                            return await repo.RetrieveAllAsync();
+                        &lbrace;                
+                        else 
+                        &lbrace;
+                            return (await repo.RetrieveAllAsync()).Where( c =&gt; c.Country == country);
+                        &rbrace;
+                    &rbrace;
+
+                    [HttpGet("&lbrace;id&rbrace;", Name = nameof(GetCustomer))]
+                    [ProducesResponseType(200, Type = typeof(Customer))]
+                    [ProducesResponseType(404)]
+                    public async Task&lt;IActionResult&gt; GetCustomer(string id)
+                    &lbrace;
+                        Customer? c = await this.repo.RetrieveAsync(id);
+                        if (c == null)&lbrace;
+                            NotFound();
+                        &rbrace;
+                        else &lbrace;
+                            return Ok(c);
+                        &rbrace;
+                    &rbrace;
+
+                    [HttpPost]
+                    [ProducesResponseType(201, Type = typeof(Customer))]
+                    [ProducesResponseType(400)]
+                    public async Task&lt;IActionResult&gt; Create ([FromBody] Customer c)
+                    &lbrace;
+                        .. return BadRequest();...
+                        Customer? customer = await this.repo.CreateAsync(c);
+                        ...
+                        //if created
+                        return CreatedAtRoute(
+                            routeName: nameof(GetCustomer),
+                            new &lbrace; id = customer.CustomerID, value = customer &rbrace;);
+                    &rbrace;
+
+                    [HttpPut("&lbrace;id&rbrace;")]
+                    [ProducesResponseType(204)]
+                    [ProducesResponseType(400)]
+                    [ProducesResponseType(404)]
+                    public async Task&lt;IActionResult&gt; Update(string id, [FromBody] Customer c)
+                    &lbrace;
+                        ...
+                        Customer? existingC = await this.repo.RetrieveAsync(id);
+                        ...
+                        await this.repo.UpdateAsync(id, c);
+                        return new NoContentResult();
+                    &rbrace;
+
+                    [HttpDelete("&lbrace;id&rbrace;")]
+                    [ProducesResponseType(204)]
+                    [ProducesResponseType(400)]
+                    [ProducesResponseType(404)]
+                    public async Task&lt;IActionResult&gt; Delete(string id)
+                    &lbrace;
+                        Customer? existingC = await this.repo.RetrieveAsync(id.ToUpper());
+                        ...
+                        bool? deleted = await this.repo.DeleteAsync(id.ToUpper());
+                        if (deleted.HasValue && deleted.Value)
+                        &lbrace;
+                            return new NoContentResult();
+                        &rbrace;
+                        ...
+                    &rbrace;
+            </code>
+        </pre>
+        Call them with:<br/>
+        https://localhost:yourport/api/Customer/<br/>
+        https://localhost:yourport/api/Customer/alfki<br/>
+        https://localhost:yourport/api/Customer/?country=Germany<br/>
+        
+
+
    </div>
 </div>
