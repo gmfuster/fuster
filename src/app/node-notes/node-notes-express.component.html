@@ -261,8 +261,44 @@
 
     <p class="HeadingSubTopic" id="HTML">Express - HTML</p>
     
+    We can have html files that we can serve from nodejs. To serve pages we need to provide the absolute path, and for that we need to use a nodejs package.
+    You have to send the html with res.sendFile, which takes an absolute path.
+    <pre>
+      <code>
+        //this will work
+        res.sendFile( "C:\\YOURDIR\\viewsorwhatver\\shop.html");
+
+        //or even better
+        const path =require("path");
+        //__dirname will be where the file with this code is, in this case, YOURDIR.
+        res.sendFile(path.join(__dirname, "viewsorwhatver", "shop.html")); //pay attention to the parenthesis if you get an error!!
+
+        //if you need to go up a level or something:
+        res.sendFile(path.join(__dirname, "../", "viewsorwhatver", "shop.html"));
+        //even better
+        res.sendFile(path.join(__dirname, "..", "viewsorwhatver", "shop.html"));        
+      </code>
+    </pre>
+    For the same thing you could also do:
+    <pre>
+      <code>
+        //you can also create a new file path.js which has a 
+
+        const path = require("path");
+
+        /get the directory of the main module
+        module.exports = path.dirname(process.mainModule.filename);
+        //or module.exports = path.dirname(require.main.filename);
 
 
+        //then import this file whereever you want to use the sendFile and then 
+        const rootDir = require("thePathToTheFileAboveWithFileNameWithoutJSExt");
+        res.sendFile(path.join(rootDir, "views", "shop.html"));
+      </code>
+    </pre>
+
+
+    
   </div>
   
 </div> 

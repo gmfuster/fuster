@@ -59,7 +59,12 @@
               <a [routerLink]='["/angular-notes-dynamic"]'  style="color:navy; font-size:2.5vh; ">
                Dynamic Components
               </a>
-            </li>        
+            </li>     
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-modules"]'  style="color:navy; font-size:2.5vh; ">
+               Modules
+              </a>
+            </li>       
           </ul>                    
         </li>
       </ul>

@@ -10,6 +10,7 @@ import { AngularNotesDynamicComponent } from './angular-notes/angular-notes-dyna
 import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
 import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.component';
 import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.component';
+import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
 import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'angular-notes-http', component: AngularNotesHttpComponent, pathMatch: 'full' },  
   { path: 'angular-notes-auth', component: AngularNotesAuthComponent, pathMatch: 'full' },  
   { path: 'angular-notes-dynamic', component: AngularNotesDynamicComponent, pathMatch: 'full' },  
+  { path: 'angular-notes-modules', component: AngularNotesModulesComponent, pathMatch: 'full' },  
 
   { path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },
 

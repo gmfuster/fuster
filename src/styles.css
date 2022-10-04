@@ -3,12 +3,13 @@
 :root{
   --main-code-background: rgb(192, 228, 250);  
   --main-font-color:rgb(183, 253, 253);
+  --main-background-color:rgb(48, 46, 46);
 }
 .main-body {  
   color:var(--main-font-color);
   font-family: 'Arima Madurai', cursive;
   font-size: 1.6vw;    
-  background-color: rgb(48, 46, 46);
+  background-color:var(--main-background-color);
   margin:0;
 }
 .homeInit{
@@ -59,16 +60,14 @@ body b{
   /*border-radius: 15%;*/
 }
 body pre {
-  display: block;
-  padding: 9.5px;
-  margin: 0 0 10px;
+  display: block;  
+ /* margin: 0 0 10px;*/
   font-size: 1.4vw;  
-  line-height: 1.42857143;
+  /*line-height: 1.42857143;*/
   color: #333333;
   word-break: break-all;
   word-wrap: break-word;
-  /*background-color: #f5f5f5;*/
-  background-color: var(--main-code-background);
+  background-color: lightblue;  
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -93,6 +92,7 @@ body pre samp{
   padding:8px;  
   color:gray  
 }
+
 .HeadingSubTopic{  
   font-size: 3vw;  
   font-weight: bold;  

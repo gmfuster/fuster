@@ -1,0 +1,130 @@
+
+<div class="PaddedContents">
+  <br/><br/>
+  <div class="leftLinks" #HeadingsContainer>      
+    <left-links ></left-links>      
+  </div> 
+
+  <div class="PaddedContents PaddedContentsTopics">
+
+    
+    <p class="HeadingSubTopic" id="General">General</p>   
+    We use modules to bundle things together, usually things that are related.  The app.module is a module, and you need to at least have that one.
+    Angular also provides some modules for us, like the FormsModule.  Extra modules you create will need to be included under the "imports" section in your app.module. 
+    THe bootstrap section defines what components are available in the index file (usually just the app-root component).  <br/>
+    Every module works independently.  If you need a module to be available in some other module, you need to add it to the export section.<br/>
+
+    <img width="100%" src="assets\images\angular\appmodule.png" alt="app module" /><br/><br/>
+    One way to do your own module is like this:
+    <pre>
+      <code>
+        import &lbrace;NgModule&rbrace; from '@angular/core';
+        import &lbrace;SomeComponent&rbrace; from '...'
+        import &lbrace;SomeOtherComponent&rbrace; from '...'
+
+        @NgModule( &lbrace;
+          declarations: [
+	          SomeComponent,
+	          SomeOtherComponent,
+	          ...
+          ]
+        &rbrace;)
+
+        export class YourCustomModule &lbrace;&rbrace;
+      </code>
+    </pre>
+    You have to import that module in the imports of your app.module or whatever module needs to have access.  Keep in mind you may need to import other modules in your custom 
+    modules if it's things you are going to need.<br/>
+    <b>if your app.module already is using BrowserModule, in additional modules you may be able to just use CommonModule.  If that is the case, that is preferred.  For the services,
+    you can set them up just in the app.module and not have to redo them in the additional modules.</b><br/>
+    If we have a routes module, it's going to be something like this for the app.module 
+    <pre>
+      <code>
+        import &lt; NgModule &gt; from '@angular/core';
+        import &lt; ExtraOptions, RouterModule, Routes &gt; from '@angular/router';
+        ...
+        const <b>routes: Routes = [</b>
+        &lt; path: '', component: HomeComponent, pathMatch: 'full' &gt;,
+        &lt; path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' &rbrace;, ...
+
+        const routerOptions :ExtraOptions =...
+
+        @NgModule(&lbrace;
+          imports: [RouterModule.<b>forRoot(routes,routerOptions )</b>, CommonModule],
+          exports: [RouterModule]
+        &rbrace;)
+      </code>
+    </pre>
+    if we have another one for some routes for an additional module, it will be the same way except we can do this in the imports:
+    <pre>
+      <code>
+        @NgModule(&lbrace;
+          imports: [RouterModule.<b>forChild(routes)</b>, CommonModule],
+          exports: [RouterModule]
+        &rbrace;)
+      </code>
+    </pre>
+    Don't forget to import this additional routes module to your additions module that goes with it.
+
+
+    <p class="HeadingSubTopic" id="Shared">Shared Modules</p>   
+    You could have modules that have the same components etc with just a few differences.  You would want to put those common things in one shared module.<br/>
+    A shared module would look something like this:
+    <pre>
+      <code>
+        @NgModule( &lbrace;
+          declarations: [
+            Comp1,
+            Comp2,
+            ...
+          ],
+          imports : [CommonModule],
+          <b>exports: [
+            Comp1,
+            Comp2,
+            ...
+            CommonModule
+          ]</b>
+      </code>
+    </pre>
+    The things we are exporting will be accessible to other modules importing this shared module. (in the imports of the module that needs to access those components 
+    in the shared module<br/>
+    You can have duplicate imports in different modules (like two modules importing the same thing), but you cannot have the same declarations in 2 different modules. 
+    What you do instead is declare it only in one, and export it so it can be accessed by other modules.
+
+    <p class="HeadingSubTopic" id="Lazy-Loading">Lazy Loading</p>   
+    Without lazy loading, whenever we load a page, we load everything, not only what is needed for that area.  For lazy loading, it helps that your modules bring their own routes.
+    Example of how you would indicate that a particular module should only be loaded when that particular route happens.
+    <pre>
+      <code>
+        //in your main routing file
+        //need to also indicate the class name for the module that needs to load on http:\\url\somePath
+        &lbrace;path: 'somePath', loadChildren: './pathToTheModuleYouWantToLoadInThatCase.module.ts#nameOfThatClassModule' &rbrace;
+      </code>
+    </pre>
+    When you do the above, it's important to have a path:'' in the pathToTheModuleYouWantToLoadInThatCase.module.ts file.  That indicates to start at \ because we are 
+    already at somePath so we don't want to end with \somePath\somePath.  <b>RESTART the server after changing this</b>
+    <br/>
+    The exact syntax of loadChildren may change a bit depending on the version, so if getting errors google it.<br/>
+    Whatever modules you are setting up to load with lazy loading, make sure not to import them in the app module or other modules so it doesn't try to find it and it's not 
+    there.<br/>
+    In your router options ( const routerOptions :ExtraOptions =...) you can also include a preLoadingStrategy: PreloadAllModules.  This will still use lazy loading 
+    but it will load them ASAP (which will not make the first page take longer).
+
+    <p class="HeadingSubTopic" id="Services">Services</p>   
+    Services can be provided:<br/>          
+    <u>AppModule:</u><br/>
+    available everywhere<br/>
+    inRoot -- recommended instead of providing in AppModule<br/><br/>
+
+    <u>AppComponent:</u><br/>
+    available in its tree<br/>
+    <br/>
+    <u>Modules:</u><br/>
+    available everywhere if eager-loaded (not recommended)<br/>
+    available only in the module (own instance if service also in AppModule)<br/>
+    
+</div>
+
+  
+</div> 
