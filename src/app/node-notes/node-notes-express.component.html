@@ -175,7 +175,7 @@
         const app = express();
 
         app.use( "/", (req, res, next) => &lbrace;            
-          res.send("&lt;html&gt;&lt;form <b>action='hello' method='GET'</b>&gt;&lt;button&gt;here&lt;/button&gt;<&lt;form&gt;&lt;/html&gt;")
+          res.send("&lt;html&gt;&lt;form <b>action='hello' method='GET'</b>&gt;&lt;button&gt;here&lt;/button&gt;&lt;/form&gt;&lt;/html&gt;")
           next(); 
         &rbrace; );
       </code>
@@ -212,7 +212,7 @@
     
 
     <p class="HeadingSubTopic" id="Request-Types">Differentiate between types of requests - methods GET POST etc</p>
-    If you have a route that is only for GET requests, you can use <b>app.get</b> instead of app.use (the rest is the same). Same thing for POST, use <b>use.post.</b>
+    If you have a route that is only for GET requests, you can use <b>app.get</b> instead of app.use (the rest is the same). Same thing for POST, use <b>app.post.</b>
     
     <p class="HeadingSubTopic" id="Paths">Express - Paths</p>
 
@@ -256,12 +256,16 @@
         <b>app.use("/thefolder", theFile); </b>
       </code>
     </pre>
-
+    Just to clarify, this is just to organize things around, so the paths that are in the same route (both with theFolder) can be in the same file.  Because 
+    in that file we don't have the theFolder because Express already knows that, and we don't want other "thepath" paths to also go to those, we indicate that only the ones 
+    with theFolder will go into that file that has those that we moved there to be more organized.
 
 
     <p class="HeadingSubTopic" id="HTML">Express - HTML</p>
     
-    We can have html files that we can serve from nodejs. To serve pages we need to provide the absolute path, and for that we need to use a nodejs package.
+    We can have html files that we can serve from nodejs. To serve pages we need to provide the absolute path, and for that we need to use a nodejs package (
+      const path =require("path");
+    ).
     You have to send the html with res.sendFile, which takes an absolute path.
     <pre>
       <code>
@@ -298,7 +302,28 @@
     </pre>
 
 
-    
+    <p class="HeadingSubTopic" id="Static Files">Serving Files Statically</p>
+
+    If you need your html files (that you are sending back) to use css files, the convention if to create a public folder under your server root, and in there you can 
+    have a css folder.  Other files are not going to be accessible directly through the url.  for the public folder, you want to make an exception.  These files in public 
+    we need to be able to serve statically.  In your nodejs file:
+    <pre>
+      <code>
+        const express = require('express');
+        //grant static READ ONLY access to the specific public folder
+        <b>app.use(express.static((path.join(__dirname, "public")));</b>
+
+        //then your path in your html file should "pretend" you are already in the public folder.
+        //in my case, I have a views folder with the htmls, and the public folder has a css folder with the css files.
+        &lt;link rel="stylesheet" href="/css/main.css"  &gt;
+
+        //if you check the network info, you will see this for main.css 
+        http://localhost:yourport#/css/main.css
+      </code>
+    </pre>
+    Do the same for images or whatever other files you need to accecss statically.
+
+
   </div>
   
 </div> 

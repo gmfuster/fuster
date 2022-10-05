@@ -24,8 +24,7 @@ export class LeftLinksComponent implements OnInit{
     this.myName = "/" + this.myName ;
     //this.myHeadings = JSON.parse(JSON.stringify(list));    
     this.myHeadings = list;
-    this.ref.detectChanges();
-    console.log(this.myHeadings)
+    this.ref.detectChanges();    
   }
 
 
