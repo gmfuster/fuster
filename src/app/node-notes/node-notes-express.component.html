@@ -302,7 +302,7 @@
     </pre>
 
 
-    <p class="HeadingSubTopic" id="Static Files">Serving Files Statically</p>
+    <p class="HeadingSubTopic" id="Static-Files">Serving Files Statically</p>
 
     If you need your html files (that you are sending back) to use css files, the convention if to create a public folder under your server root, and in there you can 
     have a css folder.  Other files are not going to be accessible directly through the url.  for the public folder, you want to make an exception.  These files in public 
@@ -322,6 +322,170 @@
       </code>
     </pre>
     Do the same for images or whatever other files you need to accecss statically.
+
+    <p class="HeadingSubTopic" id="Modules">A Bit More Info on Modules</p>
+
+    A module is a piece of code, function or object, that you can import in another piece of code (file). If you are in a file you can do 
+    console.log(module) to see what modules you have in that file at the time (you can see what modules you are using).<br/>
+    <pre>
+      <samp>
+        For a module from another file you are using in your file, it would look something like this.
+        Module &lbrace;
+          id: 'c:\\source\\NODE\\fornode2.js',
+          path: 'c:\\source\\NODE',
+          <b>exports: &lbrace; f1: [Function: f1func] &rbrace;,</b>
+          parent: [Circular *1],
+          filename: 'c:\\source\\NODE\\fornode2.js',
+          loaded: true,
+          children: [],
+          paths: [Array]
+        &lbrace;
+
+        For the file where you are it could be like this:
+        Module &lbrace;
+          id: '.',
+          path: 'c:\\source\\NODE',
+          <b>exports: &lbrace;&rbrace;,</b>
+          parent: null,
+          filename: 'c:\\source\\NODE\\fornode.js',
+          loaded: true,
+          children: [
+            Module &lbrace;...
+      </samp>
+    </pre>
+    Notice that the fornode2.js has some info on the exports array.  If I call the function and have the console.log(module) in that fornode2.js I get this:<br/>
+    To use a function from fornode2 in fornode.js you are requiring the whole file, not the specific function <b>const fornode2 = require("./fornode2");</b>
+    <pre>
+      <samp>
+        Module &lbrace;
+          <b>id: 'c:\\source\\NODE\\fornode2.js',</b>
+          path: 'c:\\source\\NODE',
+          exports: &lbrace; f1: [Function: f1func] &rbrace;,
+          <b>parent: Module &lbrace;</b>
+            id: '.',
+            path: 'c:\\source\\NODE',
+            <b>exports: &lbrace;&rbrace;,</b>
+            parent: null,
+            filename: 'c:\\source\\NODE\\fornode.js',
+            loaded: true,
+            children: [ [Module], [Circular *1], [Module] ],
+            paths: [
+              ...            
+      </samp>
+    </pre>
+    There is something in the exports of the fornode2 because this is what I have on that file:
+    <pre>
+      <code>
+        function f1func()&lbrace;
+          console.log(module);
+          return "I am f1";
+        &rbrace;            
+        module.exports.f1 = f1func;      
+      </code>
+    </pre>
+   Could also have <b>module.exports = &lbrace;f1func&rbrace;;</b> and call as fornode2.f1func();<br/>  To import both, do <b>module.exports = &lbrace;f1func, f2func&rbrace;</b>
+   Remember with the exports.somename = &lbrace;function or object you want to export&rbrace; you can export different things and you can access them with those names.
+
+    <p class="HeadingSubTopic" id="Data-Sharing-As-Global">Sharing Data Across Requests - As Global</p>
+    One way to share data is by having an object to store it in your file, and use it in your other file.  <b>Kind of like a global variable which is almost never a good 
+    idea :-).</b>  Pay attention though to what you are actually exporting and where and how it gets changed!<br/>
+    Using function on the fornode2. If I have code like this:
+    <pre>
+      <code>
+        //in fornode2.
+        ImGlobal = &lbrace; name:"James", car: "Aston Martin"&rbrace;
+        //then the functions
+        module.exports.theGlobal = ImGlobal;
+
+        //in fornode.
+        console.log(fornode2.theGlobal);
+
+        //I will get the object in the console of fornode.
+      </code>
+    </pre>
+    <pre>
+      <code>
+        // in fornode2
+        var ImGlobal = null;
+
+        //then set in the the function that will be called from fornode.
+
+        module.exports.theGlobal = ImGlobal;
+
+        //in fornode
+        var s1 = fornode2.f1func();
+        console.log(fornode2.theGlobal);
+
+        //infornode I will see null in the console.
+        //same thing if I export as module.exports = &lbrace;f1func, ImGlobal, f2func&rbrace;
+      </code>
+    </pre>
+    <pre>
+      <code>
+        <b>//but now instead of an object I have an array, the array has not been reassigned, but something has been added to it</b>
+        //now with the same code as above, but in the function we are doing ImGlobal.push(&lbrace; name:"James", car: "Aston Martin"&rbrace;);
+
+        //in the main fornode we will see the added object because we are still pointing to the same array.
+      </code>
+    </pre>
+    That was calling functions, but now assuming we have a request in the fornode2 that will use the array being set in fornode. Doing this one with 
+    an image first, code for copy paste later.<br/>
+    <img width="100%" src="assets\images\node\SharingData1.png" alt="sharing data 1" /><br/><br/>
+
+    With the above, the route in fornode2 will have the array as populated in fornode1.
+    <br/>
+    <pre>
+      <code>
+        //fornode
+        const express = require('express');
+        //import file with route you want to redirect to
+        const fornode2 = require("./fornode2");
+
+        const app = express();
+        //do not forget this to include the routes on the other file
+        app.use(fornode2);
+
+        const thearray = [];
+
+        app.use("/sendAGet",   (req,res,next) =&gt; &lbrace;
+	        console.log("in send a get"); 
+          thearray.push("1");
+          thearray.push("2");
+          res.redirect('/getTheArray');
+        &rbrace;)
+        //the other request will access theArrayId
+        module.exports.theArrayIs = &lbrace;thearray&rbrace;;
+
+        app.listen(3000);
+
+        //fornode2
+        const express = require('express');
+        const fornode = require('./fornode');
+
+        //use router for the paths now, instead of app from express
+        const router = express.Router();
+
+        router.use("/getTheArray",   (req,res,next) =&gt; &lbrace;
+   
+          console.log("in get array");  
+          console.log(fornode.theArrayIs);            
+
+          res.end();
+        &rbrace;)
+
+        //export the routes
+        module.exports = router;
+
+      </code>
+    </pre>
+    <b>If you do the request again, from scratch, on another browser, you will still see the data because it's still shared in the node server, not the browser.
+    Also means all users will get it.<br/></b>
+
+
+  <p class="HeadingSubTopic" id="Templating-Eng-Pug">Templating Engines - Pug</p>
+    Templating engines help you inject your data in your html files, before sending. They are similar but the syntax changes a bit (EJS, Pug, Handlebars).
+
+
 
 
   </div>
