@@ -483,9 +483,65 @@
 
 
   <p class="HeadingSubTopic" id="Templating-Eng-Pug">Templating Engines - Pug</p>
-    Templating engines help you inject your data in your html files, before sending. They are similar but the syntax changes a bit (EJS, Pug, Handlebars).
+    Templating engines help you inject your data in your html files, before sending. They are similar but the syntax changes a bit (EJS, Pug, Handlebars). To 
+    install them:
+    <pre>
+      <code>
+        //make sure to install it where you have your node code :-)
+        npm install --save ejs pug express-handlebars
+      </code>
+    </pre>
+    Once that is installed, pug (and others) will be registered with express.  Then in your main file:
+    <pre>
+      <code>
+        //tell express that you want to use pug for your views
+        app.set("view engine", "pug");
+        //tell if where your views are (second argument would be the path).
+        //the default is views anyway but good to indicate it for clarity.
+        app.set("views", "views");
+      </code>
+    </pre>
+    Now you can create pug files, which are similar to html but not really html. Something like this<br/>
+    <pre>
+      <code>
+        &lt;!DOCTYPE html&gt;
+        html(lang="en")
+        head
+          meta(charset="UTF-8")
+          meta(name="viewport", content="width=device-width, initial-scale=1.0")
+          meta(http-equiv="X-UA-Compatible", content="ie=edge")
+          title My Title
+          link(rel="stylesheet", href="/css/main.css")        
+        body
+          header.main-header
+              nav.main-header__nav
+                  ul.main-header__item-list
+                      li.main-header__item
+                          a.active(href="/") Main
+                      li.main-header__item
+                          a(href="/admin/something-else") Something Else
+      </code>
+    </pre>
+    When sending the html from the action we were doing <b>res.sendFile(path.join(__dirname, "views", "shop.html"));</b>  Now we will do 
+    <b>res.render("shop");</b> We don't need to indicate it is in the views folder because we set it up like that, we don't have to put the extension .pug for the file 
+    either.  If once it is rendered you check the code in the browser, you will see html code, not pug code.<br/>
+    But how do we pass the data?<br/>
+    To pass some data to be placed in some holders, you can do something like this.
+    <pre>
+      <code>
+        //in node
+        res.render("shop", &lbrace;title: "I am Title", topLine: "I am the line", ... &rbrace;);
 
+        //in the template 
+        title #&lbrace; title&rbrace;
+      </code>
+    </pre>
+    Don't edit pug code in notepad.  Identation problems.<br/>
+    You can also do something like this, similar to res.status(404).send(...), res.status(404).render(...)<br/>
+    Not adding more info on the templates. It was just to mention they exist.
+    <p class="HeadingSubTopic" id="MVC">MVC</p>
 
+    
 
 
   </div>
