@@ -64,7 +64,53 @@
 
   We can have this if we are using a ejs template for a product id in the path: &lt;a href ="/products/&lt;%= product.id%&gt; ...<br/> That will show up as 
   localhost:3000/products/123 <br/>
-  
+  to match that path in the node code:
+  <pre>
+    <code>
+      //..put them after more specific routes
+
+      router.get("/products/:productId");
+
+      <b>//if you had this after the above, the something will be treated as the productId</b>  
+      router.get("/products/something");
+    </code>
+  </pre>
+  To get it in the controller:
+  <pre>
+    <code>
+      exports.getProduct = (req, res, next) => &lbrace;
+        ...<b>req.params.productId;</b> //productId has be be what was used in the path
+      &rbrace;
+    </code>
+  </pre>
+  In a post request, if you want to add the product, you can just send the id since the backend will know what that is.  Using ejs for the template it would look like:
+  <pre>
+    <code>
+      &lt;input <b>type="hidden"</b> name="productID" value="&lt;%= product.id %&gt;"...
+
+      //in the code for the request 
+      router.post("/somepath", thecontroller.postSomepath);
+      ...
+      //in the controller
+      exports.postSomepath = (req, res, next) =&gt; &lbrace;
+        const productiId = req.body.productId;
+        ...
+      &rbrace;
+    </code>
+  </pre>
+  When we have parameters in an url, something like <b>http://whatever:3000/?type=something&type2=somethingelse</b>.  You can access those params in the code with :
+  <pre>
+    <code>
+      esports.getSomething = (req, res, next) =&gt; &lbrace;
+        ...
+        const type = req.query.type;
+        ...
+        const type2 = req.query.type2;
+        ...
+    </code>
+  </pre>
+  <b>regardless of the type based on the meaning, we will always get them as strings, so a true will be a "true"</b><br/> Trying to access a non existing one will not fail.  We 
+  will just get undefined.
 
 
 
