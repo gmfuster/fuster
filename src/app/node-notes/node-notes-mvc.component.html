@@ -1,0 +1,74 @@
+
+<div class="PaddedContents">
+
+  <div class="leftLinks" #HeadingsContainer>      
+    <left-links ></left-links>      
+  </div>  
+
+  <br/>  
+  
+  <div class="PaddedContents PaddedContentsTopics">
+    
+    <p class="HeadingSubTopic" id="general">General</p>
+    Model View Controller: Models hold the data nad some operations on it.  Views are what the users sees.  Controllers have the routes and connect what goes where.
+    <br/>
+    You should have a controllers folder and have a different file for different models, at least. In the controller files, you will have functions for your paths (actions) 
+    that you can export so they are including in the main file.
+    <pre>
+      <code>
+        exports.<b>getAddProdPage</b> = (req, res, next) =&gt; &lbrace;
+          res.render(...);
+        &rbrace;
+      </code>
+    </pre>
+    Then in the file that will get the route, you can have:
+    <pre>
+      <code>
+        const prodsController = require(path to the file that has the exports above)
+
+        router.get('/forThisPath', <b>prodsController.getAddProdPage)</b>;//do not call it by adding ()
+      </code>
+    </pre>
+    You can also have a models folder, for your model files.  We can create javascript classes in these model files, something like this:
+    <pre>
+      <code>
+        const products = [];
+
+        module.exports = class Product&lbrace;
+          constructor(t)&lbrace;
+            this.title = t;
+          &rbrace;
+    
+          save() &lbrace;
+            products.push(this);
+          &rbrace;
+    
+          //so you don't have to create an instance to call it
+          static fetchAll() &lbrace;
+            return this.products;
+          &rbrace;
+        &rbrace;
+      </code>
+    </pre>
+    Then to use this new class, in your controllers:
+    <pre>
+      <code>
+        const Product = require("the file where your class is"):
+
+        const product = new Product(req.body.whatever);
+        product.save(); 
+      </code>
+    </pre>
+
+  <p class="HeadingSubTopic" id="routing">Routing</p>
+
+  We can have this if we are using a ejs template for a product id in the path: &lt;a href ="/products/&lt;%= product.id%&gt; ...<br/> That will show up as 
+  localhost:3000/products/123 <br/>
+  
+
+
+
+
+  </div>
+  
+</div> 
