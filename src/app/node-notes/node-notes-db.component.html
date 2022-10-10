@@ -1,0 +1,187 @@
+
+<div class="PaddedContents">
+
+  <div class="leftLinks" #HeadingsContainer>      
+    <left-links ></left-links>      
+  </div>  
+
+  <br/>  
+  
+  <div class="PaddedContents PaddedContentsTopics">
+    
+    <p class="HeadingSubTopic" id="general">General</p>
+       
+    Depending on what DB you want to use, you will need to install a different package.  I tried using my SQL server one but it seemed to be more complicated (set up) so 
+    going with the more popular anyway MySql. (downloading the community server and the workbench from mysql.com.  The installer for windows will install both.  I' 
+    talking about the community versions:  <a href="https://dev.mysql.com/downloads/installer/" target="_new">Install here.</a>)
+    <br/>
+    After the installation I'm going to the MySQL Workbench 8.0 CE file in C:\ProgramData\Microsoft\Windows\Start Menu\Programs\MySQL and creating a short cut so 
+    I can access the workbench and then, double clicking on the connection created, open up the work environment. (this is a bit of a pain). (or open once and pin to 
+    taskbar)<br/>
+    Once that is open, go to SCHEMAS and right click under it to create a new schema and once you have it add your tables.<br/>
+    Once that is installed, you need the package in your node server : <b>npm install --save mysql2</b><br/>
+
+    <p class="HeadingSubTopic" id="MySQL">MySQL</p>
+    You will have to create a file to handle the DB info for the connection.  Something like:
+    <pre>
+      <code>
+        const mysql = require("mysql2");
+
+        const pool = mysql.createPool(&lbrace;
+	        host:"localhost",
+	        user:"root",
+	        database: "the db you had in MySQl",
+	        password:"the pwd you gave the user"
+        &rbrace;
+        );
+
+        //async
+        module.exports = pool.promise();
+      </code>
+    </pre>
+    Then to use in the code, something like this to check if it connects:
+    <pre>
+      <code>
+        db.execute("select * from products").then( (res) =&gt;
+        &lbrace;
+          console.log(res);   
+        &rbrace;).catch( err =&gt; &lbrace; console.log(err);&rbrace;);
+      </code>
+    </pre>
+
+    Remember to click apply on the MySql workbench if you make changes to the rows.<br/>
+    Other types of requests will be similar.  Below just a couple more examples (in this the SQL statement is returned as promise so the code is separate from 
+    what we need to do with the object).
+
+    <pre>
+      <code>
+        save() &lbrace;
+          <b>return db.execute(</b>
+            'INSERT INTO products (title, price, imageUrl, description) VALUES (?, ?, ?, ?)',
+            [this.title, this.price, this.imageUrl, this.description] //where you have the data 
+          );
+        &rbrace;
+
+        //in the code that will consume that promise.
+        product
+        .save()
+        .then(() => &lbrace;
+            res.redirect('/');
+        &rbrace;)
+        .catch(err => console.log(err));
+
+        static findById(id) &lbrace;
+          return db.execute('SELECT * FROM products WHERE products.id = ?', [id]);
+        &rbrace;
+
+        Product.findById(prodId, product =&gt; &lbrace;
+          Cart.deleteProduct(prodId, product.price);
+          res.redirect('/cart');
+        &rbrace;);
+      </code>
+    </pre>
+
+
+    <p class="HeadingSubTopic" id="Sequelize">Sequelize</p>
+    Sequelize lets you run queries with MySQL without having to write the statements like with MySql. <br/>
+    npm install --save sequelize.  It requires MySQL.<br/>
+    Once you have it intalled, in the database file, similar to what we do with mysql, we can do:
+    <pre>
+      <code>
+          const Sequelize = require("sequelize");
+          //will set connection pool
+          const sequelize = new Sequelize("yourdb", "root", "your root pwd", 
+              &lbrace;dialect:"mysql", host:"localhost"&rbrace;);
+
+      </code>
+    </pre>
+    With this, for your model you can have something like this:
+    <pre>
+      <code>
+        const Sequelize = require('sequelize');
+        const sequelize = require('//util/database');
+
+        const ProductSeq = sequelize.<b>define</b>("productSeq", &lbrace;
+          id: &lbrace;
+            type: Sequelize.INTEGER,
+            autoIncrement:true,
+            allowNull:false,
+            primaryKey:true
+          &rbrace;,
+          title: Sequelize.STRING,
+          price: &lbrace;
+            type:Sequelize.DOUBLE,
+            allowNull:false    
+          &rbrace;,
+          ...
+          module.exports = ProductSeq;
+
+      </code>
+    </pre>
+    Once you have the models, you can do this in your main file:
+    <pre>
+      <code>
+        const sequelize = require('./util/database');
+
+        //towards the end of the file before you start the server 
+        sequelize.sync().then(res =&gt; &lt;
+          console.log(res);
+        &rbrace;).catch( err=&gt; &lbrace;console.log(err)&rbrace;);
+      </code>
+    </pre>
+    The above code will sync your models to the tables in your DB and add whatever tables are missing.  The model we have for ProductSeq will create table productseqs. (adds the s)<br/>
+    <br/>
+    Not that it will make things easier, but you can have both mysql and sequelize on the same app at the same time, just make sure you can differentiate them.
+    <pre>
+      <code>
+        //in your DB filename
+        
+        const mysql = require('mysql2');
+        const Sequelize = require("sequelize");
+        
+        //will set connection pool
+        const sequelize = new Sequelize("your db", "root", "your pwd", 
+            &lbrace;dialect:"mysql", host:"localhost"&rbrace;);
+        
+        const pool = mysql.createPool(&lbrace;
+            host: 'localhost',
+            user: 'root',
+            database: 'your db',
+            password: 'your pwd'
+        &rbrace;);
+        
+        <b>module.exports.mysql = pool.promise();
+        module.exports.seq = sequelize;</b>
+
+        //then in the code 
+        sequelize.<b>seq.</b>sync()...
+
+        return db.<b>mysql</b>.execute(
+          'INSERT INTO products ...
+      </code>
+    </pre>
+    To insert a product this way, we can do 
+    <pre>
+      <code>
+        ProductSeq.ProductSeq.create(&lbrace;
+          title:title,
+          price:price,
+          imageUrl:imageUrl,
+          description:description
+        &rbrace;).then( res =&gt; &lbrace;
+          console.log(res);
+          res.end();
+        &rbrace;).catch( (err) =&gt; &lbrace;console.log(err)&rbrace;)
+      </code>
+    </pre>
+    findById will be findByPK in sequelize.<br/>
+    Instead of fetchAll, this uses findAll (can also be used with where).<br/>
+    You can update with .save.<br/>
+    Use destroy to delete<br/>
+    for relationshipts, Product.belongsTo(UserorWhatever, &lbrace;constraints:true, onDelete:Cascade&rbrace;)...<br/>
+
+    <b>Look up the documentation for the specifics on each things.  This was just to give an idea, not a reference.<br/></b>
+
+  </div>
+  
+</div> 

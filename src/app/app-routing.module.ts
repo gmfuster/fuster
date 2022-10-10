@@ -26,6 +26,7 @@ import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-n
 import { NodeNotesComponent } from './node-notes/node-notes.component';
 import { NodeNotesExpressComponent } from './node-notes/node-notes-express.component';
 import { NodeNotesMVCComponent } from './node-notes/node-notes-mvc.component';
+import { NodeNotesDBComponent } from './node-notes/node-notes-db.component';
 import { ReadBackComponent } from './other-fun/read-back.component';
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
 import {MapItComponent } from './other-fun/map-it.component';
@@ -69,6 +70,7 @@ const routes: Routes = [
   { path: 'node-notes', component: NodeNotesComponent, pathMatch: 'full' }, //basics
   { path: 'node-notes-express', component: NodeNotesExpressComponent, pathMatch: 'full' }, //Express
   { path: 'node-notes-mvc', component: NodeNotesMVCComponent, pathMatch: 'full' }, //Express
+  { path: 'node-notes-db', component: NodeNotesDBComponent, pathMatch: 'full' }, //Express
 
   { path: 'doubles', component: DoublesComponent, pathMatch: 'full' }, //kids math
 

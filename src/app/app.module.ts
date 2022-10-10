@@ -39,6 +39,7 @@ import { CSharpMVCComponent } from './csharp-notes/csharp-mvc.component';
 import { NodeNotesExpressComponent} from './node-notes/node-notes-express.component';
 import { NodeNotesComponent} from './node-notes/node-notes.component';
 import { NodeNotesMVCComponent} from './node-notes/node-notes-mvc.component';
+import { NodeNotesDBComponent} from './node-notes/node-notes-db.component';
 
 
 import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
@@ -114,7 +115,8 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     HeadingSubTopicDirective,
     NodeNotesExpressComponent,
     NodeNotesComponent,
-    NodeNotesMVCComponent
+    NodeNotesMVCComponent,
+    NodeNotesDBComponent
   ],
   imports: [
     BrowserModule,

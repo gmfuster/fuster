@@ -171,7 +171,12 @@
               <a [routerLink]='["/node-notes-mvc"]'  style="color:navy; font-size:2.5vh; ">
                 MVC & More Routing
               </a>
-            </li>                          
+            </li>  
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/node-notes-db"]'  style="color:navy; font-size:2.5vh; ">
+                Databases
+              </a>
+            </li>                         
           </ul>             
         </li>
       </ul>
