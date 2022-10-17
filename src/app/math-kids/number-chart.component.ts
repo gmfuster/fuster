@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, OnDestroy, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'number-chart',
@@ -6,19 +6,23 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
   styleUrls: ['./math-kids.component.css']
 })
 
-export class NumberChartComponent implements OnInit {
+export class NumberChartComponent implements OnInit, OnDestroy  {
  @ViewChild("divForNumberChart", {static:true} ) myDivForNumberChart!: ElementRef;
- @ViewChild("mainContainerForThisPage", {static:true} ) myMainContainerForThisPage!: ElementRef; 
+ @ViewChild("upDownSlider", {static:true} ) myUpDownSlider!: ElementRef;
 
  currentColValue: number = 1;
 
-  constructor (){        
+  constructor (private renderer: Renderer2){      
+    this.renderer.addClass(document.body, 'mainBodyScrollingBlocked');  
+    this.renderer.removeClass(document.body, 'mainBodyScrolling');  
   }
 
   ngOnInit(){
-    window.scroll(0,0);    
-    //this.myMainContainerForThisPage.nativeElement.style.overflow = "hidden";
+    window.scroll(0,0);        
     this.loadTable();
+  }
+  onWheel(){
+    alert(2);
   }
   loadTable(){
     const borderST = "deepskyblue solid 2px";
@@ -52,12 +56,8 @@ export class NumberChartComponent implements OnInit {
     if( firstInTable !== null){firstInTable.style.backgroundColor = "deepskyblue";}    
   }
 
-  showInTableLeftRight(rangeVal:string){       
-    if (event !== null && event !== undefined){
-      if (event.target !== null && event.target !== undefined){
-        console.log(event.target);
-      }
-    }
+  showInTableLeftRight(rangeVal:string){     
+    this.myUpDownSlider.nativeElement.value = 1;     
     this.currentColValue = parseInt(rangeVal);            
     var cell = document.getElementById(rangeVal.toString());
     for(let i=1; i<= parseInt(rangeVal); i++){
@@ -70,9 +70,9 @@ export class NumberChartComponent implements OnInit {
         if (cellAfter !== null){cellAfter.style.backgroundColor = "transparent";}        
     }                
 }
-showInTableUpDown(rangeVal:string){    
-            
-    var realRange =  parseInt(rangeVal) + this.currentColValue -1;                           
+  showInTableUpDown(rangeVal:string){     
+    console.log(rangeVal);       
+    var realRange =  parseInt(rangeVal) + this.currentColValue;                           
     var cell = document.getElementById(realRange.toString());
     for(let i=1; i<=realRange; i++){
         let cellAfter = document.getElementById(i.toString());
@@ -83,6 +83,10 @@ showInTableUpDown(rangeVal:string){
         let cellAfter = document.getElementById(i.toString());
         if (cellAfter !== null){cellAfter.style.backgroundColor = "transparent";}        
     }                
-}
+  }
+  ngOnDestroy(): void {
+    this.renderer.removeClass(document.body, 'mainBodyScrollingBlocked');
+    this.renderer.addClass(document.body, 'mainBodyScrolling');  
+  }
   
 }

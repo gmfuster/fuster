@@ -1,12 +1,12 @@
 
 <br/><br/>
-<div id="mainContainerForThisPage">        
+<div>        
   <div class="PaddedContents">                          
       <div  style="text-align: center; ">
           <div class="gridContainerNumberChart" style="margin:auto;">
               <div style="width:5vw; ">
-                  <input type="range" min="1" max= "91" step="10" value="1" style="width:60vh; transform:rotate(90deg); transform-origin: 0% 100%;" 
-                   #topSlider (input)="showInTableUpDown(topSlider.value)" (change)="showInTableUpDown(topSlider.value)">
+                  <input type="range" min="0" max= "100" step="10" value="1" style="width:60vh; transform:rotate(90deg); transform-origin: 0% 100%;" 
+                   #topSlider (input)="showInTableUpDown(topSlider.value)" (change)="showInTableUpDown(topSlider.value)" #upDownSlider>
               </div>
               <div  style="width:60vw;">
                   <div class = "itemTopRange" >

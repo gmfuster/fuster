@@ -475,7 +475,7 @@
         export class MyOwnPipeParamsPipe implements PipeTransform&lbrace;
           transform(value:any, <b>num :number</b>)&lbrace;
             var myS:string =  "♫ " + value + " ♫";
-            for (var i = 1; i<=num; i++)&lbrace;
+            for (var i = 1; i&lt;=num; i++)&lbrace;
               console.log(myS);
               myS += " ♫";
             &rbrace;
@@ -499,6 +499,31 @@
     <div class = "HeadingSubTopic2">Async Pipes</div>
     If you have a variable that will be loaded asynchronously, use the async pipe with it and it will show the data in it (instead of [object] or whatever) 
     once it's loaded
+
+    <div class = "HeadingSubTopic" id="MISCELLANEOUS">MISCELLANEOUS</div>
+    To have the app screen scroll sometimes, but not others because you want them locked, have 2 classes with one having overflow set to auto and 
+    the other one to hidden.  Then, on the pages where you want it locked, do this.
+    <pre>
+      <code>
+        .mainBodyScrolling&lbrace;
+          overflow: auto;
+        &rbrace;
+        .mainBodyScrollingBlocked&rbrace;
+          overflow: hidden;
+        &rbrace;
+
+        //import renderer and onDestroy
+        constructor (private renderer: Renderer2)&lbrace; 
+          this.renderer.addClass(document.body, 'mainBodyScrollingBlocked');  
+          this.renderer.removeClass(document.body, 'mainBodyScrolling');  
+        &rbrace;
+
+        ngOnDestroy(): void &lbrace;
+          this.renderer.removeClass(document.body, 'mainBodyScrollingBlocked');
+          this.renderer.addClass(document.body, 'mainBodyScrolling');  
+        &rbrace;
+      </code>
+    </pre>
 
   </div>
 
