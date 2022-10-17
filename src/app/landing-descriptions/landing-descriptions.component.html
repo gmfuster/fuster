@@ -9,7 +9,7 @@
       <div class="mainBanner forBanner" >  
         <p class="mainParagraph">
           Just <u>some</u> Programming notes (top).<br/>
-          Some programming articles and non programming stuff below.<br/>          
+          Some programming articles and non programming stuff below.<br/>                    
         </p>
       </div>      
     </div>       
@@ -20,24 +20,26 @@
 <div class="DescriptionSectionText ">
     <!--medium and fcc start-->
     <div class="divsByRowCenter">  
-      <a href="https://gmfuster.medium.com/" target="_new" style="border:lightyellow solid 4px;">
-      <span style="height: 5vw; padding: 5px;">My Articles</span><br/>
+      <div style="border:lightyellow solid 4px; width:25vw; text-align: center;">
+      <a href="https://gmfuster.medium.com/" target="_blank" >
+      <span style=" padding: 5px;">Articles</span><br/>
       <img alt="Medium"
         src="assets/images/mediumLogo.png"
-        style="width:20vw; height:15vw; "
-        margin="5px"
+        style=" width:20vh; height:20vh;  "        
         class="rounded-circle d-inline-block align-top" />
-      </a>  
+      </a> 
+    </div> 
 
-      <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_new" style="border:lightyellow solid 4px;">
-        <span style="height: 5vw; padding: 5px;">My Translations</span><br/>
+      <div style="border:lightyellow solid 4px; width:25vw;text-align: center">
+      <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_blank">
+        <span style="padding: 5px;">Translations</span><br/>
         <img alt="freecodecamp"
           src="assets/images/fcc_primary_small.svg"
-          style="width:20vw; height:15vw; "
-          margin="5px"
+          style=" width:20vh; height:20vh;  "           
           class="rounded-circle d-inline-block align-top" />
         </a>       
-    </div>    
+    </div> 
+  </div>   
     <!--medium and fcc End-->
     <br/><br/>
 
@@ -47,12 +49,25 @@
     <div class="markClassCardWholeBlue">Kids Math</div>
     <div class="markClassCardContentBlue">     
       <div style="position:relative;">
-        <div style="background:teal; margin:5vw; padding:4vh; border:5px double salmon; height:400px;">
+        <div style="background:teal; margin:0.5vw; padding:4vh; border:5px double salmon; min-height:400px;">
           <div style="display:flex; flex-direction:row; justify-content:flex-start;">
-            <a [routerLink]='["/doubles"]'  style="color:white; font-size:3vh; ">
-              Near Doubles
-            </a>
+            <div  style="border: white 2px solid; padding:5px; margin-right:6px;">
+              <span><u><em>Adding</em></u></span><br/>
+              <a [routerLink]='["/doubles"]'  style="color:white; font-size:3vh; ">
+                Near Doubles
+              </a>
+            </div>
+            <div style="border: deeppink 2px solid; padding:5px; margin-right:6px;">
+              <span><u><em>Counting</em></u></span><br/>
+              <a [routerLink]='["/number-chart"]'  style="color:white; font-size:3vh; ">
+                Numbers Chart
+              </a><br/>
+              <a [routerLink]='["/count-by"]'  style="color:white; font-size:3vh; ">
+                Count By
+              </a>
+            </div>
           </div>
+          
         </div>        
       </div>          
     </div> 

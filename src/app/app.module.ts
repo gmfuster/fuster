@@ -65,6 +65,8 @@ import { ReadBackComponent } from './other-fun/read-back.component';
 import { MapItComponent } from './other-fun/map-it.component';
 
 import { DoublesComponent } from './math-kids/doubles.component';
+import { NumberChartComponent } from './math-kids/number-chart.component';
+
 import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
 import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
 
@@ -109,6 +111,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     JavaScriptNotesAsyncComponent,
     JavaScriptNotesObjectsComponent,
     DoublesComponent,
+    NumberChartComponent, /*may remove later since not needed for now*/
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,

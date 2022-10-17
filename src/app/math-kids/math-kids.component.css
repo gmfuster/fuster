@@ -11,3 +11,11 @@
     padding: 5px;
     margin:5px;
 }
+
+.gridContainerNumberChart{
+    display:flex; 
+    width: 65vw;   
+    height: 65vh;
+    align-items:flex-start;
+    flex-direction: row;
+} 

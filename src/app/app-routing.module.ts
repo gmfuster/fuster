@@ -35,6 +35,7 @@ import { ForCanDeActivate } from './shared/forCanActivate.service';
 import {NotFoundComponent} from './other-fun/not-found.component';
 
 import {DoublesComponent} from './math-kids/doubles.component';
+import {NumberChartComponent} from './math-kids/number-chart.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -73,6 +74,7 @@ const routes: Routes = [
   { path: 'node-notes-db', component: NodeNotesDBComponent, pathMatch: 'full' }, //Express
 
   { path: 'doubles', component: DoublesComponent, pathMatch: 'full' }, //kids math
+  { path: 'number-chart', component: NumberChartComponent, pathMatch: 'full' }, //kids math
 
 
   { path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:{message:"I AM THE MESSAGE FROM not-found!!!!"}},

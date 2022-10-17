@@ -1,0 +1,26 @@
+
+<br/><br/>
+<div id="mainContainerForThisPage">        
+  <div class="PaddedContents">                          
+      <div  style="text-align: center; ">
+          <div class="gridContainerNumberChart" style="margin:auto;">
+              <div style="width:5vw; ">
+                  <input type="range" min="1" max= "91" step="10" value="1" style="width:60vh; transform:rotate(90deg); transform-origin: 0% 100%;" 
+                   #topSlider (input)="showInTableUpDown(topSlider.value)" (change)="showInTableUpDown(topSlider.value)">
+              </div>
+              <div  style="width:60vw;">
+                  <div class = "itemTopRange" >
+                      <input type="range" #leftSlider min="1" max= "100" step="1" value="1" style="width:60vw;"
+                      (input)="showInTableLeftRight(leftSlider.value)" (change)="showInTableLeftRight(leftSlider.value)">   
+                  </div>
+                  <div class="itemTable" id="divForNumberChart" style="margin:auto; text-align: center;">
+                      <br/>
+                  </div>
+              </div>                                                   
+          </div>            
+      </div>    
+
+  </div>
+
+</div> 
+ 
