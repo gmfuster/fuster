@@ -13,13 +13,13 @@
   background-color:var(--main-background-color);
   margin:0;
 }
-.divOnlyFullScreenNoScroll{
-  width: 100vw;
-  height: 100vh; 
-  position: fixed; 
-  top: 0; 
-  left: 0; z-index: 999
+.mainBodyScrolling{
+  overflow: auto;
 }
+.mainBodyScrollingBlocked{
+  overflow: hidden;
+}
+
 .homeInit{
   position: absolute;
   top:0px;
