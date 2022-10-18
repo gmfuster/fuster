@@ -5,13 +5,20 @@
     margin:5px;
     cursor:pointer;
 }
+.doubleButtonsLikePink{
+    border:deeppink 2px solid;
+    color:deeppink;
+    border-radius: 8px;
+    padding: 5px;
+    margin:5px;
+    cursor:pointer;
+}
 .digitForEquation{
     /*border:aqua 2px solid;*/
     font-size: 8vh;
     padding: 5px;
     margin:5px;
 }
-
 .gridContainerNumberChart{
     display:flex; 
     width: 65vw;   
@@ -19,3 +26,9 @@
     align-items:flex-start;
     flex-direction: row;
 } 
+.blankLine{
+    background-image: url("numberLineBlank.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center;
+}

@@ -21,9 +21,7 @@ export class NumberChartComponent implements OnInit, OnDestroy  {
     window.scroll(0,0);        
     this.loadTable();
   }
-  onWheel(){
-    alert(2);
-  }
+  
   loadTable(){
     const borderST = "deepskyblue solid 2px";
     var divForNumberChart = document.getElementById("divForNumberChart");

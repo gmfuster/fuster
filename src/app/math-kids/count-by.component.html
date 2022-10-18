@@ -1,0 +1,21 @@
+
+<br/><br/>
+<div>        
+  <div class="PaddedContents" style="text-align: center; position:relative">
+
+        <img style = "height:15%; width:15%; position:absolute; top:15%; left:0px;" src='assets\images\kidsmath\requirestouch.svg'  alt="Requires touch screen"  />  
+        <div style="display:flex; flex-direction:row; justify-content:center;">
+            <span class="doubleButtonsLike" (click)="countBy(1)">By 1s</span>
+            <span class="doubleButtonsLike" (click)="countBy(2)">By 2s</span>
+            <span class="doubleButtonsLike" (click)="countBy(5)">By 5s</span>
+            <span class="doubleButtonsLike" (click)="countBy(10)">By 10s</span>            
+            <span class="doubleButtonsLikePink" (click)="checkResult()">Check Result</span>     
+        </div>                                
+
+
+        <canvas #countByCanvas style="border: deepskyblue solid 3px; width:90vw; height:60vh; margin:auto;" class="blankLine" >            
+        </canvas>
+  </div>
+
+</div> 
+ 
