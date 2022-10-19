@@ -28,13 +28,19 @@ showOption:string = "Blank";
     this.setUpResults();    
   }  
   countBy(num:number){
+    this.reset();
     this.countingBy = num;    
   }
   setUpNumbers(){
     let offColor = "deepskyblue";
     let onColor = "deeppink";
     
-    //todo remove all the itmes before adding new ones.
+    //remove all the itmes before adding new ones.    
+    while (this.myMyNumbers.nativeElement.firstChild) {
+      this.myMyNumbers.nativeElement.removeChild(this.myMyNumbers.nativeElement.firstChild);
+    }    
+    //also reset the grid
+    this.numbersFromGrid.length = 0;
     for(var i = 1; i<=100; i++){
       let item = document.createElement("div");        
       item.style.backgroundColor =offColor;      
@@ -83,48 +89,42 @@ showOption:string = "Blank";
     }
     
   }
+  
   checkResult(){
     var mistake:boolean = false;
+    var resultsArray: {number:Number, status:string} [] = [];
+
+    resultsArray.length = 0;        
+
     switch (this.countingBy){
       case 1:
-        this.numbersFromGrid.forEach(element => {                    
-          if (element.status === "off"){
-            mistake = true;
-          }
-        });
+        resultsArray = this.numbersFromGrid.filter(element =>  element.status === "off");
+        if (resultsArray.length > 0) { mistake = true;}
         break;
       case 2:
-        this.numbersFromGrid.forEach(element => {          
-          if (element.number%2 ===  0 && element.status === "off"){
-            mistake = true;
-          }else if  (element.number%2 !==  0 && element.status === "on") {
-            mistake = true;
-          }
-        });
+        resultsArray = this.numbersFromGrid.filter(element => element.number%2 === 0 && element.status === "off");
+        if (resultsArray.length > 0) { mistake = true;}
+        resultsArray = this.numbersFromGrid.filter(element => element.number%2 !== 0 && element.status === "on");
+        if (resultsArray.length > 0) { mistake = true;}
+        resultsArray = this.numbersFromGrid.filter(element => element.number%2 !== 0 && element.status === "on");
         break;
       case 5:
-        this.numbersFromGrid.forEach(element => {          
-          if (element.number%5 ===  0 && element.status === "off"){
-            mistake = true;
-          }else if  (element.number%5 !==  0 && element.status === "on") {
-            mistake = true;
-          }
-        });        
+        resultsArray = this.numbersFromGrid.filter(element => element.number%5 === 0 && element.status === "off");
+        if (resultsArray.length > 0) { mistake = true;}
+        resultsArray = this.numbersFromGrid.filter(element => element.number%5 !== 0 && element.status === "on");
+        if (resultsArray.length > 0) { mistake = true;}        
         break;
       case 10:
-        this.numbersFromGrid.forEach(element => {          
-          if (element.number%10 ===  0 && element.status === "off"){
-            mistake = true;
-          }else if  (element.number%10 !==  0 && element.status === "on") {
-            mistake = true;
-          }
-        });
+        resultsArray = this.numbersFromGrid.filter(element => element.number%10 === 0 && element.status === "off");
+        if (resultsArray.length > 0) { mistake = true;}
+        resultsArray = this.numbersFromGrid.filter(element => element.number%10 !== 0 && element.status === "on");
+        if (resultsArray.length > 0) { mistake = true;}        
+        break;
         break;
       default:
         break;
     }
-    (mistake)? this.showOption = "Red" : this.showOption = "Green";
-    console.log(this.showOption);
+    (mistake)? this.showOption = "Red" : this.showOption = "Green";    
 
   }
   reset(){
