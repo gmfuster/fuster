@@ -66,6 +66,7 @@ import { MapItComponent } from './other-fun/map-it.component';
 
 import { DoublesComponent } from './math-kids/doubles.component';
 import { NumberChartComponent } from './math-kids/number-chart.component';
+import { CountByComponent } from './math-kids/count-by.component';
 
 import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
 import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
@@ -112,6 +113,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     JavaScriptNotesObjectsComponent,
     DoublesComponent,
     NumberChartComponent, /*may remove later since not needed for now*/
+    CountByComponent,
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,

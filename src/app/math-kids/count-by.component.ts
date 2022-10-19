@@ -12,13 +12,14 @@ resultsFor1: number[] = [];
 resultsFor2: number[] = [];
 resultsFor5: number[] = [];
 resultsFor10: number[] = [];
-numbersFromGrid:string[] =[];
+numbersFromGrid: {number:number, status:string}[] =[];
+showOption:string = "Blank";
 
 @ViewChild("forNumbers", {static : true, read: ElementRef}) myMyNumbers! : ElementRef;
 
   constructor (private renderer: Renderer2){      
     this.renderer.addClass(document.body, 'mainBodyScrollingBlocked');  
-    this.renderer.removeClass(document.body, 'mainBodyScrolling');  
+    this.renderer.removeClass(document.body, 'mainBodyScrolling');      
   }
 
   ngOnInit(){
@@ -43,18 +44,18 @@ numbersFromGrid:string[] =[];
       item.style.cursor = "none";
       item.onclick = () => {
         if (item.style.backgroundColor === offColor){
-          item.style.backgroundColor = onColor;
-          this.numbersFromGrid[parseInt(item.innerHTML) -1] = "on";
+          item.style.backgroundColor = onColor;          
+          this.numbersFromGrid[parseInt(item.innerHTML) -1] = {number: i, status:"on" };
         }else{
           item.style.backgroundColor = offColor;
-          this.numbersFromGrid[parseInt(item.innerHTML) -1] = "off";
+          this.numbersFromGrid[parseInt(item.innerHTML) -1] = {number: i, status:"off" };
         }
       };
       if (i%5 === 0){
         item.style.fontWeight = "bold";
       }
       this.myMyNumbers.nativeElement.appendChild(item);   
-      this.numbersFromGrid.push("off");
+      this.numbersFromGrid.push({number: i, status:"off" });
       /*if (i%10 === 0 ){
         var thebreak = document.createElement("br");
         this.myMyNumbers.nativeElement.appendChild(thebreak);
@@ -83,25 +84,42 @@ numbersFromGrid:string[] =[];
     switch (this.countingBy){
       case 1:
         this.numbersFromGrid.forEach(element => {          
-          if (element === "off"){
+          if (element.status === "off"){
             mistake = true;
           }
         });
         break;
       case 2:
         this.numbersFromGrid.forEach(element => {          
-          if (element === "off"){
+          if (element.number%2 ===  0 && element.status === "off"){
+            mistake = true;
+          }else if  (element.number%2 !==  0 && element.status === "on") {
             mistake = true;
           }
         });
         break;
       case 5:
+        this.numbersFromGrid.forEach(element => {          
+          if (element.number%5 ===  0 && element.status === "off"){
+            mistake = true;
+          }else if  (element.number%5 !==  0 && element.status === "on") {
+            mistake = true;
+          }
+        });        
         break;
       case 10:
+        this.numbersFromGrid.forEach(element => {          
+          if (element.number%10 ===  0 && element.status === "off"){
+            mistake = true;
+          }else if  (element.number%10 !==  0 && element.status === "on") {
+            mistake = true;
+          }
+        });
         break;
       default:
         break;
     }
+    (mistake)? this.showOption = "Green" : this.showOption = "Red";
 
   }
 
