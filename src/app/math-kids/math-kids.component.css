@@ -4,6 +4,7 @@
     padding: 5px;
     margin:5px;
     cursor:pointer;
+    color: aqua;
 }
 .doubleButtonsLikePink{
     border:deeppink 2px solid;
@@ -26,13 +27,12 @@
     align-items:flex-start;
     flex-direction: row;
 } 
-/*
-.blankLine{
-    background-image: url("numberLineBlank.png");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: center;
-}*/
+.visible{
+    display: block;
+}
+.invisible{
+    display: none;
+}
 #forNumbers{
     text-align: center;
     display:grid;

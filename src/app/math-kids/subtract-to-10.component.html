@@ -1,0 +1,22 @@
+
+<br/><br/>
+<div>        
+  <div  class="PaddedContents" style="text-align: left; font-size: 2vw;" >
+    <div class="divsByRow">
+      <div>        
+        <span >Choose a number to subtract from: <input  type="number" min="11" max = "20" step="1" [(ngModel)] = "subtractFromNum" (change)="numbersChanged($event)" (keydown)="numbersChangedk($event)" /></span><br/>
+        <span >Choose a number to subtract: <input type="number" min="1" max = "9" [(ngModel)] = "subtractNum" (change)="numbersChanged($event)" (keydown) = "numbersChangedk($event)"/></span><br/>
+      </div>
+      <button class="doubleButtonsLike" (click)="onShowHow()">Show How</button>
+    </div>                
+    <br/>
+    <div #solution class="invisible">
+      Equation = {{subtractFromNum}} - {{subtractNum}} = <br/>
+
+    </div>
+        
+        
+  </div>
+
+</div> 
+ 
