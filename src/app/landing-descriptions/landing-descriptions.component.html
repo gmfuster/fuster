@@ -5,8 +5,9 @@
     <!--<div class="CenterMyContent forBanner" [ngStyle]="{backgroundSize: '100% 100%', textAlign:'center',
     backgroundImage:'url(https://images.unsplash.com/photo-1576502200916-3808e07386a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFic3RyYWN0JTIwaG9yaXpvbnRhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60)'}"
     >   -->         
-    <div class="CenterMyContent " >  
-      <div class="mainBanner forBanner" >  
+    <div class="CenterMyContent">       
+      <div class="mainBanner forBanner" >         
+        <img style="width:200px; display:inline; margin:5px;" src="assets/images/validdevices.svg" alt="valid devices computer and tablet " />
         <p class="mainParagraph">
           Just <u>some</u> Programming notes (top).<br/>
           Some programming articles and non programming stuff below.<br/>                    
@@ -51,19 +52,31 @@
       <div style="position:relative;">
         <div style="background:teal; margin:0.5vw; padding:4vh; border:5px double salmon; min-height:400px;">
           <div style="display:flex; flex-direction:row; justify-content:flex-start;">
-            <div  style="border: white 2px solid; padding:5px; margin-right:6px;">
+
+            <div  style="border: white 2px solid; padding:5px; margin-right:6px;">              
               <span><u><em>Adding</em></u></span><br/>
+
               <a [routerLink]='["/doubles"]'  style="color:white; font-size:3vh; ">
                 Near Doubles
               </a>
             </div>
+
             <div style="border: deeppink 2px solid; padding:5px; margin-right:6px;">
               <span><u><em>Counting</em></u></span><br/>
+
               <a [routerLink]='["/number-chart"]'  style="color:white; font-size:3vh; ">
                 Numbers Chart
               </a><br/>
               <a [routerLink]='["/count-by"]'  style="color:white; font-size:3vh; ">
                 Count By
+              </a>
+            </div>
+
+            <div style="border: deepskyblue 2px solid; padding:5px; margin-right:6px;">
+              <span><u><em>Subtracting</em></u></span><br/>
+
+              <a [routerLink]='["/count-by"]'  style="color:white; font-size:3vh; ">
+                Subtract To 10
               </a>
             </div>
           </div>
