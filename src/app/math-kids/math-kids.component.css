@@ -26,9 +26,18 @@
     align-items:flex-start;
     flex-direction: row;
 } 
+/*
 .blankLine{
     background-image: url("numberLineBlank.png");
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: center;
+}*/
+#forNumbers{
+    text-align: center;
+    display:grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;   
+    row-gap: 10px; 
+    column-gap: 5px;
+
 }
