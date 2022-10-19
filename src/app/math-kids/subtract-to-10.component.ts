@@ -10,6 +10,11 @@ export class SubtractTo10Component implements OnInit, OnDestroy  {
   @ViewChild("solution", {static:true} ) mySolution!: ElementRef;
   subtractFromNum:number = 11;
   subtractNum:number = 1;
+  firstDigitFromNumber:number=1;
+  secondDigitFromNumber:number=1;
+  subtractionRes:number = 10;
+  subtractNumMinusSecondDigit:number = 0;
+  
 
   constructor (private renderer: Renderer2){      
     this.renderer.addClass(document.body, 'mainBodyScrollingBlocked');  
