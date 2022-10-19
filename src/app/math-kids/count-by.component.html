@@ -15,14 +15,15 @@
                 <input class="doubleButtonsLike" type="radio" id="by10" name="countby" value="by10" (click)="countingBy=10" [checked]="countingBy===10"/>
                 <label for="by1">By 10</label>   
                 <span class="doubleButtonsLikePink" (click)="checkResult()">Check Result</span>     
+                <span class="doubleButtonsLikePink" (click)="reset()">Reset</span>     
               </div>                     
         </div>                                
 
         <!--<canvas #countByCanvas style="border: deepskyblue solid 3px; width:100%; height:100%; margin:auto;" class="blankLine" >            
         </canvas>-->
-        <span *ngIf='showOption ==="Green"' style="margin:auto; background-color: green;">CORRECT!</span>
-        <span *ngIf="showOption ==='Red'" style="margin:auto; background-color: red;">Oh NOOOO!</span>
-        <span *ngIf="showOption ==='Blank'" style="margin:auto; background-color: transparent;">Check result here!</span>
+        <span *ngIf='showOption === "Green"' style="margin:auto; background-color: green;">CORRECT!</span>
+        <span *ngIf="showOption === 'Red'" style="margin:auto; background-color: red;">Oh NOOOO!</span>
+        <span *ngIf="showOption === 'Blank'" style="margin:auto; background-color: transparent;">Check result here!</span>
         <div id="forNumbers" #forNumbers>
 
         </div>

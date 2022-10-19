@@ -33,6 +33,8 @@ showOption:string = "Blank";
   setUpNumbers(){
     let offColor = "deepskyblue";
     let onColor = "deeppink";
+    
+    //todo remove all the itmes before adding new ones.
     for(var i = 1; i<=100; i++){
       let item = document.createElement("div");        
       item.style.backgroundColor =offColor;      
@@ -42,14 +44,15 @@ showOption:string = "Blank";
       item.style.color = "darkblue";
       item.innerHTML = i.toString();
       item.style.cursor = "none";
+      item.style.backgroundColor === offColor;
       item.onclick = () => {
         if (item.style.backgroundColor === offColor){
           item.style.backgroundColor = onColor;          
-          this.numbersFromGrid[parseInt(item.innerHTML) -1] = {number: i, status:"on" };
+          this.numbersFromGrid[parseInt(item.innerHTML) -1] = {number: parseInt(item.innerHTML), status:"on" };
         }else{
           item.style.backgroundColor = offColor;
-          this.numbersFromGrid[parseInt(item.innerHTML) -1] = {number: i, status:"off" };
-        }
+          this.numbersFromGrid[parseInt(item.innerHTML) -1] = {number: parseInt(item.innerHTML), status:"off" };
+        }        
       };
       if (i%5 === 0){
         item.style.fontWeight = "bold";
@@ -60,7 +63,7 @@ showOption:string = "Blank";
         var thebreak = document.createElement("br");
         this.myMyNumbers.nativeElement.appendChild(thebreak);
       }*/
-    }
+    }    
   }
   setUpResults(){    
     for (var i=1;i<=100; i++){
@@ -78,12 +81,13 @@ showOption:string = "Blank";
         this.resultsFor10.push(i);
       }
     }
+    
   }
   checkResult(){
     var mistake:boolean = false;
     switch (this.countingBy){
       case 1:
-        this.numbersFromGrid.forEach(element => {          
+        this.numbersFromGrid.forEach(element => {                    
           if (element.status === "off"){
             mistake = true;
           }
@@ -119,10 +123,14 @@ showOption:string = "Blank";
       default:
         break;
     }
-    (mistake)? this.showOption = "Green" : this.showOption = "Red";
+    (mistake)? this.showOption = "Red" : this.showOption = "Green";
+    console.log(this.showOption);
 
   }
-
+  reset(){
+    this.setUpNumbers();  
+    this.showOption = "Blank";
+  }
   ngOnDestroy(): void {
     this.renderer.removeClass(document.body, 'mainBodyScrollingBlocked');
     this.renderer.addClass(document.body, 'mainBodyScrolling');  
