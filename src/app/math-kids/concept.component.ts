@@ -37,25 +37,27 @@ maxNumber:number = 10; //this is going to matter for the animation
     let thediv = document.createElement("div") as HTMLDivElement;
     thediv = document.createElement("div") as HTMLDivElement;
     if (color === "B"){
-      thediv.style.border = "deepskyblue solid 2px";
+      thediv.style.border = "deepskyblue solid 5px";
       setTimeout(() => {              
-        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"50%"}, {top:"75%"}, {top :"85%"} ,  
-        {top :"85%", left: (iteration * 8).toString()+"%"}]  ,      
+        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"50%"}, {top:"75%"}, {top :"75%"} ,  
+        {top :"75%", left: (iteration * 8).toString()+"%"}]  ,      
           {  delay: 300,  duration: 2000, fill: "forwards"})
         }, 500);   
     }      
     else if (color === "P"){
-      thediv.style.border = "deeppink solid 2px";
+      thediv.style.border = "deeppink solid 5px";
       setTimeout(() => {              
-        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"50%"}, {top:"70%"}, {top :"70%"}  , 
-        {top :"70%", left: (iteration* 8).toString()+"%"}]  ,      
+        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"40%"}, {top:"50%"}, {top :"50%"}  , 
+        {top :"50%", left: (iteration* 8).toString()+"%"}]  ,      
           {  delay: 300,  duration: 2000, fill: "forwards"})
         }, 500);   
     }
     thediv.style.borderRadius = "50%";
     thediv.style.position = "absolute";     
     thediv.style.width = "4vw";
-    thediv.style.height = "4vw";         
+    thediv.style.height = "4vw";   
+    thediv.style.backgroundColor = "lightyellow";      
+    thediv.style.color = "navy";
     thediv.innerHTML = iteration.toString();   
     return thediv;
   }
