@@ -20,6 +20,10 @@ export class CommonFuncs{
         return IdsArray;
     }
 
+    public getRandom1ToN(n:number) {
+        return Math.floor(Math.random() * n) + 1
+    }  
+
        
 }
 

@@ -44,6 +44,7 @@ import {DoublesComponent} from './math-kids/doubles.component';
 import {NumberChartComponent} from './math-kids/number-chart.component';
 import {CountByComponent} from './math-kids/count-by.component';
 import {SubtractTo10Component} from './math-kids/subtract-to-10.component';
+import {ConceptComponent} from './math-kids/concept.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -85,6 +86,7 @@ const routes: Routes = [
   { path: 'number-chart', component: NumberChartComponent, pathMatch: 'full' }, //kids math
   { path: 'count-by', component: CountByComponent, pathMatch: 'full' }, //kids math
   { path: 'subtract-to-10', component: SubtractTo10Component, pathMatch: 'full' }, //kids math
+  { path: 'concept', component: ConceptComponent, pathMatch: 'full' }, //kids math
 
 
   { path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:{message:"I AM THE MESSAGE FROM not-found!!!!"}},

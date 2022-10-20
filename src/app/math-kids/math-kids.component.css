@@ -41,3 +41,15 @@
     column-gap: 5px;
 
 }
+.blueCircle1{
+    animation-name: blueCircles;
+    animation-duration: 2s;
+}
+
+@keyframes blueCircles{
+    0% { top:5%}
+    25% { top:25%}
+    50% { top: 50%}
+    75% { top:75%}
+    100% { top:100%}
+}
