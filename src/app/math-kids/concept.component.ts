@@ -13,6 +13,7 @@ export class ConceptComponent implements OnInit, OnDestroy  {
 random1:number = 0;
 random2:number = 0;
 total: number = this.random1 + this.random2;
+maxNumber:number = 10; //this is going to matter for the animation
 
   constructor (private renderer: Renderer2, private commonFuncs:CommonFuncs){      
     this.renderer.addClass(document.body, 'mainBodyScrollingBlocked');  
@@ -25,45 +26,47 @@ total: number = this.random1 + this.random2;
   }  
   
   setRandomNums(){
-    this.random1 = this.commonFuncs.getRandom1ToN(10);
-    this.random2 = this.commonFuncs.getRandom1ToN(10);
+    this.random1 = this.commonFuncs.getRandom1ToN(this.maxNumber);
+    this.random2 = this.commonFuncs.getRandom1ToN(this.maxNumber);
     this.total = this.random1 + this.random2;
 
     this.showTheCircles();
   }
 
+  createElementAndReturnItBluePink(iteration:number, color:string){
+    let thediv = document.createElement("div") as HTMLDivElement;
+    thediv = document.createElement("div") as HTMLDivElement;
+    if (color === "B"){
+      thediv.style.border = "deepskyblue solid 2px";
+    }      
+    else if (color === "P"){
+      thediv.style.border = "deeppink solid 2px";
+    }
+    thediv.style.borderRadius = "50%";
+    thediv.style.position = "absolute";     
+    thediv.style.width = "4vw";
+    thediv.style.height = "4vw";         
+    setTimeout(() => {              
+      thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"50%"}, {top:"75%"}, {top :"85%"} , {top :"85%", left: "40%"} , 
+      {top :"85%", left: (iteration*10).toString()+"%"}]  ,      
+        {  delay: 400,  duration: 2000, fill: "forwards"})
+      }, 500);          
+    return thediv;
+  }
   showTheCircles(){
+    //for some reason if I try to use arrays here for the variables sometimes I get a cannot appendchild error (not always)
+    //so going the ugly way on this, see if it works.
+    //var blueCircles :HTMLDivElement[]  = [];
+    //var pinkCircles :HTMLDivElement[]  = [];
+
     //blue circles (first num)
-    for(var i=1; i<= this.random1; i++){
-      var c = document.createElement("div");
-      c.style.border = "deepskyblue solid 2px";
-      c.style.borderRadius = "50%";
-      c.style.position = "absolute";
-      c.style.left = "1%";
-      c.style.top = "1%";
-      c.style.width = "4vw";
-      c.style.height = "4vw";      
-      this.renderer.addClass(c, 'blueCircle1');        
-      this.myBoxForCircles.nativeElement.appendChild(c);   
+    for(var i=1; i<= this.random1; i++){      
+      this.myBoxForCircles.nativeElement.appendChild(this.createElementAndReturnItBluePink(i, "B"));   
     }
     //pink circles
     for(var i=1; i<= this.random2; i++){
-      var c = document.createElement("div");
-      c.style.border = "deeppink solid 2px";
-      c.style.borderRadius = "50%";
-      c.style.position = "absolute";
-      c.style.left = "1%";
-      c.style.top = "1%";
-      c.style.width = "4vw";
-      c.style.height = "4vw";
-
-      c.animate( [{ top: "5%" }, { top:"25%"}, {top:"50%"}, {top:"75%"}, {top :"80%"} ]  ,      
-      {  delay:500,  duration: 2000, fill: "forwards"})
-
-      this.myBoxForCircles.nativeElement.appendChild(c);         
-    }
-    console.log(this.myBoxForCircles.nativeElement)
-    
+      this.myBoxForCircles.nativeElement.appendChild(this.createElementAndReturnItBluePink(i, "P"));   
+    }        
   }
   
   ngOnDestroy(): void {
