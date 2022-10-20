@@ -5,15 +5,15 @@
     <div class="divsByRow">
       <div>        
         <span >Choose a number to subtract from: <input  type="number" min="11" max = "20" step="1" 
-          [(ngModel)] = "subtractFromNum" (change)="numbersChanged($event)" (keydown)="numbersChangedk($event)" /></span><br/>
+          [(ngModel)] = "subtractFromNum" (change)="numbersChanged($event, 'subtractFromNum')" (keydown)="numbersChangedk($event, 'subtractFromNum')" /></span><br/>
         <span >Choose a number to subtract: <input type="number" min="1" max = "9" 
-          [(ngModel)] = "subtractNum" (change)="numbersChanged($event)" (keydown) = "numbersChangedk($event)"/></span><br/>
+          [(ngModel)] = "subtractNum" (change)="numbersChanged($event, 'subtractNum')" (keydown) = "numbersChangedk($event, 'subtractNum')"/></span><br/>
       </div>
-      <button class="doubleButtonsLike" (click)="onShowHow()">Show How</button>
+      <button class="doubleButtonsLike" (click)="calculate()">Show How</button>
     </div>                
     <br/>
     <div style="border: deepskyblue solid 3px; width:80vw; margin:auto; height:60vh;">
-      <div #solution class="visible" style="position: relative;">
+      <div #solution class="invisible" style="position: relative;">
         <!--<img alt="how to make 10 to subtract" src="assets\images\kidsmath\make10tosubtractWITHNUMBERSINSIDE.svg" style="width:75vw; height:55vh;position:fixed; top:20vh; left:20vw;"> -->
         <svg id="useThisOne" style="width:75vw; height:55vh;position:fixed; top:20vh; left:20vw;"
         width="192.13548mm"
@@ -299,6 +299,47 @@
               style="fill:none;stroke:#ee1784;stroke-width:0.506875;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
               d="M 76.47124,80.151887 86.84995,104.78508"
               id="path1092-2-3-5-4" />
+              <rect
+              style="fill:none;fill-opacity:1;stroke:#fbf20a;stroke-width:1.60075;stroke-dasharray:none;stroke-opacity:1"
+              id="rect22450"
+              width="85.97551"
+              height="25.568739"
+              x="64.314255"
+              y="59.548515" />
+           <rect
+              style="fill:none;fill-opacity:1;stroke:#fbf20a;stroke-width:2;stroke-dasharray:none;stroke-opacity:1"
+              id="rect24012"
+              width="27.37182"
+              height="27.68644"
+              x="44.063663"
+              y="12.240729" />
+              <path
+              style="fill:none;fill-opacity:1;stroke:#fb7b0a;stroke-width:2.35951;stroke-dasharray:none;stroke-opacity:1"
+              id="path25609"
+              sodipodi:type="arc"
+              sodipodi:cx="135.61769"
+              sodipodi:cy="73.276741"
+              sodipodi:rx="14.606937"
+              sodipodi:ry="13.977944"
+              sodipodi:start="1.2820635"
+              sodipodi:end="1.2678912"
+              sodipodi:open="true"
+              sodipodi:arc-type="arc"
+              d="m 139.77684,86.676075 a 14.606937,13.977944 0 0 1 -18.14661,-9.371836 14.606937,13.977944 0 0 1 9.7292,-17.398292 14.606937,13.977944 0 0 1 18.21555,9.248549 14.606937,13.977944 0 0 1 -9.60012,17.463829" />
+              <path
+              style="fill:none;fill-opacity:1;stroke:#fb7b0a;stroke-width:1.70317;stroke-dasharray:none;stroke-opacity:1"
+              id="path25609-4"
+              sodipodi:type="arc"
+              sodipodi:cx="146.47209"
+              sodipodi:cy="-141.70627"
+              sodipodi:rx="10.372806"
+              sodipodi:ry="10.255985"
+              sodipodi:start="1.2820635"
+              sodipodi:end="1.2678912"
+              sodipodi:open="true"
+              sodipodi:arc-type="arc"
+              d="m 149.42562,-131.87482 a 10.372806,10.255985 0 0 1 -12.88643,-6.87637 10.372806,10.255985 0 0 1 6.90899,-12.76558 10.372806,10.255985 0 0 1 12.93538,6.7859 10.372806,10.255985 0 0 1 -6.81732,12.81367"
+              transform="scale(1,-1)" />
        </g>
      </svg>
       </div>
