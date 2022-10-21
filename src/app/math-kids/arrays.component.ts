@@ -39,16 +39,17 @@ stringForAddingRows:string = ""
       }
     }    
 }
-  }
+  }    
+
   setUpCells(){         
 
     this.setUpNumbersToShowWithBackground();    
-      //remove all the itmes before adding new ones.    
-      while (this.myBoxForCells.nativeElement.firstChild) {
-        this.myBoxForCells.nativeElement.removeChild(this.myBoxForCells.nativeElement.firstChild);
-      }    
+    //remove all the itmes before adding new ones.    
+    while (this.myBoxForCells.nativeElement.firstChild) {
+      this.myBoxForCells.nativeElement.removeChild(this.myBoxForCells.nativeElement.firstChild);
+    }   
       
-      for(var i = 1; i<=100; i++){
+    for(var i = 1; i<=100; i++){
         let item = document.createElement("div");                
         item.style.display ="inline-block";
         item.style.margin ="10px;";
@@ -63,60 +64,80 @@ stringForAddingRows:string = ""
           item.style.backgroundColor = "deepskyblue";
         }
         this.myBoxForCells.nativeElement.appendChild(item);
-      }
+    }
+      
+  }
 
-      this.calculateStringsForAddition();
+  showThemNow(){    
+    this.setUpCells();
+    this.calculateStringsForAddition();
+  }
+  resetThemNow(){
+    this.rows = 0;
+    this.columns = 0;
+    this.setUpCells();
   }
 
   calculateStringsForAddition(){
     this.stringForAddingRows = "";
     this.stringForAddingColumns = "";
-    
+    var realRows = this.rows;
+    var realColumns = this.columns;
+
+    //if we have a row we also have at least one column, and if we have a column we also have at least one row
+    if (this.rows === 0 && this.columns > 0 ){
+      realRows = 1;
+    }
+    if (this.columns === 0 && this.rows > 0 ){
+      realColumns = 1;
+    }
     //for adding rows
-    for(var i=1; i<= this.rows; i++){
-      if (i === this.rows){
-        this.stringForAddingRows += this.columns.toString();
+    for(var i=1; i<= realRows; i++){
+      if (i === realRows){
+        this.stringForAddingRows += realColumns.toString();
       }        
       else{
-        this.stringForAddingRows += this.columns.toString() + " + ";
+        this.stringForAddingRows += realColumns.toString() + " + ";
       }
     }
     //for adding cols
-    for(var i=1; i<= this.columns; i++){
-      if (i === this.columns){
-        this.stringForAddingColumns += this.columns.toString();
+    for(var i=1; i<= realColumns; i++){
+      if (i === realColumns){
+        this.stringForAddingColumns += realRows.toString();
       }        
       else{
-        this.stringForAddingColumns += this.columns.toString() + " + ";
+        this.stringForAddingColumns += realRows.toString() + " + ";
       }
     }
   }
   changeRows(option:string){    
+    //this.resetTable(true);
     if (option === "+")
     {
       if (this.rows < 10)
         this.rows++;
-        this.setUpCells();
+        //this.setUpCells();
     }
     else 
     {
       if (this.rows > 0)
         this.rows--;
-        this.setUpCells();
+        //this.setUpCells();
     }
      
   }
   changeColumns(option:string){
+    //this.resetTable(true);
     if (option === "+")
     {
       if (this.columns < 10)
         this.columns++;
-        this.setUpCells();
+        //this.setUpCells();
     }      
     else {
       if (this.columns > 0)
         this.columns--;
-        this.setUpCells();
+        //this.setUpCells();
     }
   }
   ngOnDestroy(): void {
