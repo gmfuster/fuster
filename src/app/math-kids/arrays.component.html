@@ -1,31 +1,45 @@
-
-<br/><br/>
 <div>        
-  <div  class="PaddedContents divsByCol" style="text-align: center; ">
+  <div  class="divsByCol" style="text-align:center; margin-left: 2vw; ">
 
-    <div class="divsByRow">
-      <div style="width:20vw; border:solid deeppink 3px; margin:5px; display:inline-block;">
-        <button class="doubleButtonsLike" (click) = "changeRows('-')">-</button>
-        Rows<button class="doubleButtonsLike" (click) = "changeRows('+')">+</button>
-        <span> -{{rows}}-</span>
-      </div>        
-      <div style="width:20vw; border:solid deeppink 3px; margin:5px; display:inline-block;">
-        <button class="doubleButtonsLike" (click) = "changeColumns('-')">-</button>
-        Columns<button class="doubleButtonsLike" (click) = "changeColumns('+')">+</button>
-        <span> -{{columns}}-</span>
-      </div>     
-      <div style="width:auto; border:solid lightyellow 3px; margin:5px; display:inline-block; text-align: left;">
-        By Rows:{{stringForAddingRows}}<br/>
-        By Columns:{{stringForAddingColumns}}
-      </div>     
-    </div>
-    <div style="display:inline-block">
-      <button class="doubleButtonsLike" (click) = "showThemNow()">Show Them Now</button><button class="doubleButtonsLike" (click) = "resetThemNow()">Reset Them Now</button>
-    </div>
-    
+    <div  >
+
+      <div style="width:20vw; height:8vh; display:inline-block;">
+        <div style="user-select: none; background-color:deeppink; border-radius: 25%; display: inline-block; font-size: 5vh;;">
+            <span  style="cursor:pointer" (click) = "changeRows('-')">-</span><span  >|ROWS|</span>
+            <span  style="cursor:pointer" (click) = "changeRows('+')">+</span>
+        </div>
+        <br/><span> :{{rows}}</span>
+      </div> 
+
+      <div style="width:20vw; height:8vh; display:inline-block;">
+        <div style="user-select: none; background-color:deepskyblue; border-radius: 25%; display: inline-block; font-size: 5vh;;">
+            <span  style="cursor:pointer" (click) = "changeColumns('-')">-</span><span  >|COLUMNS|</span>
+            <span  style="cursor:pointer" (click) = "changeColumns('+')">+</span>
+        </div>
+        <br/><span> :{{columns}}</span>
+      </div>                          
       
-    <div class="forRowsOfTen" #boxForCells style="justify-content:center;">      
-    </div>    
+    </div>     
+  
+
+    <div class="divsByRowSpaceAround">      
+
+      <div style="width:50vw; margin:auto;  text-align: right;">                 
+        <div class="forRowsOfTen" #boxForCells style="justify-content:right; height:60vh;">      
+        </div> 
+      </div>
+
+      <div style=" width:40vw; text-align: left; ">
+        <div style="width:50vw; display:inline-block; height:10vh;">
+          <button class="doubleButtonsLike" (click) = "showThemNow()">Show</button><button class="doubleButtonsLikePink" (click) = "resetThemNow()">Reset</button>
+        </div> 
+        Rows:{{stringForAddingRows}}<br/>
+        Columns:{{stringForAddingColumns}}
+      </div>
+
+    </div>
+
+      
 
 
   </div>

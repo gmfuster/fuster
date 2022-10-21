@@ -1,22 +1,24 @@
 .doubleButtonsLike{
     border:aqua 2px solid;
     border-radius: 8px;
-    padding: 5px;
-    margin:5px;
+    padding: 5px;    
     cursor:pointer;
     color: aqua;
+    height: 4vh;
+    box-sizing: content-box;
 }
 .doubleButtonsLikePink{
     border:deeppink 2px solid;
     color:deeppink;
     border-radius: 8px;
-    padding: 5px;
-    margin:5px;
+    padding: 5px;    
     cursor:pointer;
+    height: 4vh;
+    box-sizing: content-box;
 }
 .digitForEquation{
     /*border:aqua 2px solid;*/
-    font-size: 8vh;
+    font-size: 4vh;
     padding: 5px;
     margin:5px;
 }
@@ -46,6 +48,7 @@
     grid-template-columns: auto auto auto auto auto auto auto auto auto auto;   
     row-gap: 10px; 
     column-gap: 5px;
+
 }
 .blueCircle1{
     animation-name: blueCircles;

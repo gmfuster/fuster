@@ -51,14 +51,12 @@ stringForAddingRows:string = ""
       
     for(var i = 1; i<=100; i++){
         let item = document.createElement("div");                
-        item.style.display ="inline-block";
-        item.style.margin ="10px;";
-        item.style.fontSize = "3vw";
+        item.style.display ="inline-block";                
         item.style.color = "darkblue";        
         item.style.cursor = "none";    
         item.style.border = "deepskyblue 3px solid";
-        item.style.width = "3vw";
-        item.style.height = "3vw";
+        item.style.width = "4vh";
+        item.style.height = "4vh";
         //set the background to something else if there are rows and columns set.
         if (this.itemsThatNeedToBeCounted.includes(i)){
           item.style.backgroundColor = "deepskyblue";

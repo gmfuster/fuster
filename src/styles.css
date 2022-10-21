@@ -35,7 +35,31 @@
 .divsByRowCenter{  
   display: flex;
   flex-wrap: wrap;
+  justify-content:center;
+  flex-direction: row;  
+}
+.divsByRowSpaceEvenly{  
+  display: flex;
+  flex-wrap: wrap;
   justify-content:space-evenly;
+  flex-direction: row;  
+}
+.divsByRowSpaceBetween{  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-between;
+  flex-direction: row;  
+}
+.divsByRowSpaceStretch{  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:stretch;
+  flex-direction: row;  
+}
+.divsByRowSpaceAround{  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
   flex-direction: row;  
 }
 body button { 

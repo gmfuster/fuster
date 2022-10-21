@@ -46,6 +46,7 @@ import {CountByComponent} from './math-kids/count-by.component';
 import {SubtractTo10Component} from './math-kids/subtract-to-10.component';
 import {ConceptComponent} from './math-kids/concept.component';
 import {ArraysComponent} from './math-kids/arrays.component';
+import {AddSplittingComponent} from './math-kids/add-splitting.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -89,6 +90,7 @@ const routes: Routes = [
   { path: 'subtract-to-10', component: SubtractTo10Component, pathMatch: 'full' }, //kids math
   { path: 'concept', component: ConceptComponent, pathMatch: 'full' }, //kids math
   { path: 'arrays', component: ArraysComponent, pathMatch: 'full' }, //kids math
+  { path: 'addSplitting', component:AddSplittingComponent, pathMatch: 'full' }, //kids math
 
 
   { path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:{message:"I AM THE MESSAGE FROM not-found!!!!"}},

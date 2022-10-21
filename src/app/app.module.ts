@@ -69,6 +69,7 @@ import { NumberChartComponent } from './math-kids/number-chart.component';
 import { CountByComponent } from './math-kids/count-by.component';
 import { SubtractTo10Component } from './math-kids/subtract-to-10.component';
 import { ArraysComponent } from './math-kids/arrays.component';
+import { AddSplittingComponent } from './math-kids/add-splitting.component';
 
 import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
 import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
@@ -118,6 +119,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     NumberChartComponent, 
     CountByComponent,
     ArraysComponent,
+    AddSplittingComponent,
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,
