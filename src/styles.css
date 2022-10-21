@@ -84,7 +84,9 @@ body pre code{
 body code{
   font-family: 'Times New Roman', Times, serif;    
   color:navy;
-  padding:8px;  
+  font-size: 1.4vw; 
+  padding:2px;  
+  margin:4px;
   background-color: var(--main-code-background);
   border-radius: 4px;
 }
