@@ -5,6 +5,7 @@
   --main-font-color:rgb(183, 253, 253);
   --main-background-color:rgb(48, 46, 46);
 }
+
 .main-body {  
   color:var(--main-font-color);
   /*font-family: 'Arima Madurai', cursive;*/
@@ -20,11 +21,6 @@
   overflow: hidden;
 }
 
-.homeInit{
-  position: absolute;
-  top:0px;
-  width:100%;
-}
 .divsByRow{  
   display: flex;
   flex-wrap: wrap;
@@ -64,14 +60,11 @@ body button:disabled {
 }
 body b{
   background-color:lightyellow;
-  color:navy;  
-  /*border-radius: 15%;*/
+  color:navy;    
 }
 body pre {
   display: block;  
- /* margin: 0 0 10px;*/
-  font-size: 1.4vw;  
-  /*line-height: 1.42857143;*/
+  font-size: 1.4vw;    
   color: #333333;
   word-break: break-all;
   word-wrap: break-word;
@@ -115,10 +108,7 @@ body pre samp{
   text-decoration: underline solid .5vh;
   padding:8px;  
 }
-.TopNav {
-  height:6vh; 
-  width:100vw;
-}
+
 .TopMarginToDealWithNavBarImg {
   margin-top: 6vh;
 }
