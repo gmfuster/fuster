@@ -1,10 +1,10 @@
+<div class="TopNav" style="margin:0px; border:0px; padding:0px; font-size:2.5vh; background-color: rgb(48, 46, 46)">
 
+<nav class="navbar navbar-default navbar-fixed-top" >
 
-<nav class="navbar navbar-default navbar-fixed-top TopNav"  style="margin:0px; border:0px;">
-
-  <div class="container-fluid-nav"><!--class="container-fluid"-->
+  <div ><!--class="container-fluid-nav"-->
     
-    <div class="navbar-header" style="background-color: rgb(48, 46, 46) " >
+    <div class="navbar-header"  >
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target='.navbar-collapse' 
       [attr.aria-expanded]='isExpanded' (click)='toggle()' style="color:navy;">
         <span style="color:navy;" class="icon-bar"></span>
@@ -13,11 +13,11 @@
       </button>    
     </div>
 
-    <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }' style="background-color: rgb(48, 46, 46); width: 100%;">
+    <div class='navbar-collapse' [ngClass]='{ "in": isExpanded }' style=" width: 100%;">
       <ul class="nav navbar-nav" >
         <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-          <a [routerLink]='["/"]' (click)='collapse()' style="color:rgb(183, 253, 253); font-size:2.5vh; ">
-            <span  class='glyphicon glyphicon-home'></span>
+          <a [routerLink]='["/"]' (click)='collapse()' style="color:rgb(183, 253, 253);  ">
+            <span  style="font-size:2vh; padding: 0%;" class='glyphicon glyphicon-home'></span>
           </a>
         </li>        
       </ul>    
@@ -27,41 +27,41 @@
         
         <li class="dropdown" appDropDown style="background-color:lightcoral;">    
           <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy; font-size:2.5vh; cursor: pointer;">Angular <span class='glyphicon caret'></span></span>
+            <span style="color:navy;  cursor: pointer;">Angular <span class='glyphicon caret'></span></span>
           </a>
           <ul class="dropdown-menu">                       
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/angular-notes"]'  style="color:navy;font-size: 2vh;">
                 Basics
               </a>
             </li> 
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-svc-routing"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/angular-notes-svc-routing"]'  style="color:navy;font-size: 2vh; ">
                 Services & Routing
               </a>
             </li>  
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-forms"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/angular-notes-forms"]'  style="color:navy; font-size: 2vh; ">
                Forms
               </a>
             </li>    
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-http"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/angular-notes-http"]'  style="color:navy;font-size: 2vh;  ">
                HTTP
               </a>
             </li>    
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-auth"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/angular-notes-auth"]'  style="color:navy;font-size: 2vh; ">
                Authorization
               </a>
             </li>   
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-dynamic"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/angular-notes-dynamic"]'  style="color:navy; font-size: 2vh; ">
                Dynamic Components
               </a>
             </li>     
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-modules"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/angular-notes-modules"]'  style="color:navy;font-size: 2vh; ">
                Modules
               </a>
             </li>       
@@ -74,46 +74,46 @@
       <ul class="nav navbar-nav" >
         <li class="dropdown" appDropDown style="background-color:plum;">    
           <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy; font-size:2.5vh; cursor: pointer;">C#<span class='glyphicon caret'></span></span>
+            <span style="color:navy;  cursor: pointer;">C#<span class='glyphicon caret'></span></span>
           </a>
           <ul class="dropdown-menu">                       
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/csharp-articles"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/csharp-articles"]'  style="color:navy;font-size: 2vh; ">
                 Lang. Articles
               </a>
             </li>
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/csharp-basics"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/csharp-basics"]'  style="color:navy; font-size: 2vh; ">
                 Basics
               </a>
             </li>
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/csharp-interfaces"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/csharp-interfaces"]'  style="color:navy;font-size: 2vh;  ">
                 Interfaces
               </a>
             </li>
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/csharp-delegatesetc"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/csharp-delegatesetc"]'  style="color:navy;font-size: 2vh;  ">
                 Delegates/Action/Events...
               </a>
             </li>
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/csharp-threading"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/csharp-threading"]'  style="color:navy;font-size: 2vh;  ">
                 Threading-Tasks
               </a>
             </li>
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/csharp-ef"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/csharp-ef"]'  style="color:navy;font-size: 2vh; ">
                 Entity Framework
               </a>
             </li>
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/csharp-linq"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/csharp-linq"]'  style="color:navy; font-size: 2vh; ">
                 Linq
               </a>
             </li>
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/csharp-mvc"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/csharp-mvc"]'  style="color:navy;font-size: 2vh; ">
                 MVC- ASP.Net Core
               </a>
             </li>
@@ -127,21 +127,21 @@
         
         <li class="dropdown" appDropDown style="background-color:yellow;">    
           <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy; font-size:2.5vh; cursor: pointer;">JavaScript<span class='glyphicon caret'></span></span>
+            <span style="color:navy;  cursor: pointer;">JavaScript<span class='glyphicon caret'></span></span>
           </a>
           <ul class="dropdown-menu">                       
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/javascript-notes"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/javascript-notes"]'  style="color:navy;font-size: 2vh;">
                 Basics
               </a>
             </li>  
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/javascript-notes-async"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/javascript-notes-async"]'  style="color:navy;font-size: 2vh; ">
                 Async
               </a>
             </li>     
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/javascript-notes-objects"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/javascript-notes-objects"]'  style="color:navy;font-size: 2vh;  ">
                 Objects
               </a>
             </li>                
@@ -154,26 +154,26 @@
         
         <li class="dropdown" appDropDown style="background-color: green;">    
           <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy; font-size:2.5vh; cursor: pointer;">Node<span class='glyphicon caret'></span></span>
+            <span style="color:navy;  cursor: pointer;">Node<span class='glyphicon caret'></span></span>
           </a>
           <ul class="dropdown-menu">                       
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/node-notes"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/node-notes"]'  style="color:navy; font-size: 2vh; ">
                 Basics
               </a>
             </li>                          
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/node-notes-express"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/node-notes-express"]'  style="color:navy;font-size: 2vh; ">
                 Express
               </a>
             </li>  
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/node-notes-mvc"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/node-notes-mvc"]'  style="color:navy; font-size: 2vh;">
                 MVC & More Routing
               </a>
             </li>  
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/node-notes-db"]'  style="color:navy; font-size:2.5vh; ">
+              <a [routerLink]='["/node-notes-db"]'  style="color:navy;font-size: 2vh;">
                 Databases
               </a>
             </li>                         
@@ -184,7 +184,7 @@
       <ul class="nav navbar-nav" style="float: right; margin-right:.5vw;" > 
         <li  style="background-color: deepskyblue;">    
           <a class="nav-link" href="/#kidsmath" >         
-            <span style="color:navy; font-size:2.5vh; cursor: pointer;">Kids Math</span>
+            <span style="color:navy; cursor: pointer;">Kids Math</span>
           </a>
         </li> 
       </ul> 
@@ -195,82 +195,4 @@
   
 </nav>
 
-
-<!--
-<div class='main-nav'>
-  <div class='navbar navbar-inverse'>
-    <div class='navbar-header'>
-      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse' [attr.aria-expanded]='isExpanded' (click)='toggle()'>
-        <span class='sr-only'>Toggle navigation</span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-        <span class='icon-bar'></span>
-      </button>
-      <a class='navbar-brand' [routerLink]='["/"]'>HomeApp</a>
-    </div>
-    <div class='clearfix'></div>
-    <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
-      <ul class='nav navbar-nav'>
-        <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-          <a [routerLink]='["/"]' (click)='collapse()'>
-            <span class='glyphicon glyphicon-home'></span> Home
-          </a>
-        </li>
-        <li [routerLinkActive]='["link-active"]'>
-          <a [routerLink]='["/counter"]' (click)='collapse()'>
-            <span class='glyphicon glyphicon-education'></span> Counter
-          </a>
-        </li>
-        <li [routerLinkActive]='["link-active"]'>
-          <a [routerLink]='["/fetch-data"]' (click)='collapse()'>
-            <span class='glyphicon glyphicon-th-list'></span> Fetch data
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
 </div>
-    -->
- <!--Math-->
-      <!--
-      <ul class="nav navbar-nav" >
-        <li class="dropdown" appDropDown style="background-color:deepskyblue;">    
-          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy; font-size:2.5vh; cursor: pointer;">Math<span class='glyphicon caret'></span></span>
-          </a>
-          <ul class="dropdown-menu">                       
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/probability-notes"]'  style="color:navy; font-size:2.5vh; ">
-                Probability
-              </a>
-            </li>
-            
-          </ul>                    
-        </li>
-      </ul>
-      -->
-        <!--icons on right-->
-      
-      <!--<ul class="nav navbar-nav navbar-right" style="margin-right:2px;">                   
-        <li>
-          <a href="https://twitter.com/GMFuster" target="_new">
-            <img alt="Twitter"
-                 src="assets/images/Twitter_Logo_Blue.svg" style="width:35px; height:35px;"
-                 class="align-top" />
-          </a>
-        </li>
-        <li>
-          <a href="https://gmfuster.medium.com/" target="_new">
-            <img alt="Medium"
-                 src="assets/images/mediumLogo.png" style="width:35px; height:35px;"
-                 class="align-top" />
-          </a>
-        </li>
-        <li>
-          <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_new">
-            <img alt="FreeCodeCamp translated articles"
-            src="assets/images/fcc_primary_small.svg" style="width:35px; height:35px;"
-            class="align-top" />
-          </a>
-        </li>     
-      </ul>-->

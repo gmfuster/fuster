@@ -1,3 +1,8 @@
+.TopNav {
+  height:6vh; 
+  width:100vw;
+}
+
 .glyphicon {
     position: relative;
     top: 1px;
@@ -37,7 +42,7 @@
     min-width: 160px;
     padding: 5px 0;
     margin: 2px 0 0;
-    font-size: 14px;
+    /*font-size: 14px;*/    
     text-align: left;
     list-style: none;
     background-color: inherit;
@@ -62,7 +67,7 @@
     display: block;
     padding: 3px 20px;
     clear: both;
-    font-weight: 400;
+    /*font-weight: 400;*/
     line-height: 1.42857143;
     color: #333333;
     white-space: nowrap;
@@ -112,7 +117,7 @@
   .dropdown-header {
     display: block;
     padding: 3px 20px;
-    font-size: 12px;
+    /*font-size: 12px;*/
     line-height: 1.42857143;
     color: #777777;
     white-space: nowrap;
@@ -675,12 +680,10 @@
     }
   }
   .navbar-default {
-    background-color: #f8f8f8;
-    border-color: #e7e7e7;
+    background-color: transparent;
+    border-color: transparent;
   }
-  .navbar-default .navbar-brand {
-    color: #777;
-  }
+  
   .navbar-default .navbar-brand:hover,
   .navbar-default .navbar-brand:focus {
     color: #5e5e5e;
@@ -876,7 +879,10 @@
     content: "\e021";
   }
 
-  
+  /*
+  .navbar-default .navbar-brand {
+    color: #777;
+  }*/
 
 
 
