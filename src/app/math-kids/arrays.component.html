@@ -1,0 +1,29 @@
+
+<br/><br/>
+<div>        
+  <div  class="PaddedContents" style="text-align: center; ">
+
+    <div style="width:20vw; display:inline-block; border:solid deeppink 3px; margin:5px;">
+      <button class="doubleButtonsLike" (click) = "changeRows('-')">-</button>
+      Rows<button class="doubleButtonsLike" (click) = "changeRows('+')">+</button>
+      <span> -{{rows}}-</span>
+    </div>        
+    <div style="width:20vw; display:inline-block;  border:solid deeppink 3px; margin:5px;">
+      <button class="doubleButtonsLike" (click) = "changeColumns('-')">-</button>
+      Columns<button class="doubleButtonsLike" (click) = "changeColumns('+')">+</button>
+      <span> -{{columns}}-</span>
+    </div>  
+    <div style="display:inline-block; text-align: left; margin-top: 5vh;">
+      By Rows: {{stringForAddingRows}} <br/>
+      By Columns: {{stringForAddingColumns}}
+    </div>
+    
+      
+    <div class="forRowsOfTen" #boxForCells style="justify-content:center;">      
+    </div>    
+
+
+  </div>
+
+</div> 
+ 

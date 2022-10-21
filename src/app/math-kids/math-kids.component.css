@@ -39,7 +39,13 @@
     grid-template-columns: auto auto auto auto auto auto auto auto auto auto;   
     row-gap: 10px; 
     column-gap: 5px;
-
+}
+.forRowsOfTen{
+    text-align: center;
+    display:grid;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;   
+    row-gap: 10px; 
+    column-gap: 5px;
 }
 .blueCircle1{
     animation-name: blueCircles;

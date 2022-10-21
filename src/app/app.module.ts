@@ -68,6 +68,7 @@ import { DoublesComponent } from './math-kids/doubles.component';
 import { NumberChartComponent } from './math-kids/number-chart.component';
 import { CountByComponent } from './math-kids/count-by.component';
 import { SubtractTo10Component } from './math-kids/subtract-to-10.component';
+import { ArraysComponent } from './math-kids/arrays.component';
 
 import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
 import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
@@ -116,6 +117,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     SubtractTo10Component,    
     NumberChartComponent, 
     CountByComponent,
+    ArraysComponent,
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,
