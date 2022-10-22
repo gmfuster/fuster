@@ -1,7 +1,7 @@
 
-<br/><br/>
 <div>        
-  <div  class="PaddedContents" style="text-align: left; font-size: 2vw;" >
+  <div  class="divsByCol" style="margin-left:5px; text-align: left; font-size: 2vw;" >
+
     <div class="divsByRow">
       <div>        
         <span >Choose a number to subtract from: <input  type="number" min="11" max = "20" step="1" 
@@ -9,13 +9,14 @@
         <span >Choose a number to subtract: <input type="number" min="1" max = "9" 
           [(ngModel)] = "subtractNum" (change)="numbersChanged($event, 'subtractNum')" (keydown) = "numbersChangedk($event, 'subtractNum')"/></span><br/>
       </div>
-      <button class="doubleButtonsLike" (click)="calculate()">Show How</button>
+      <button style="margin:10px;" class="doubleButtonsLike" (click)="calculate()">Show How</button>
     </div>                
     <br/>
+
     <div style="border: deepskyblue solid 3px; width:80vw; margin:auto; height:60vh;">
-      <div #solution class="invisible" style="position: relative;">
-        <!--<img alt="how to make 10 to subtract" src="assets\images\kidsmath\make10tosubtractWITHNUMBERSINSIDE.svg" style="width:75vw; height:55vh;position:fixed; top:20vh; left:20vw;"> -->
-        <svg id="useThisOne" style="width:75vw; height:55vh;position:fixed; top:20vh; left:20vw;"
+
+      <div #solution class="invisible" style="position: relative;">       
+        <svg id="useThisOne" style="width:75vw; height: 55vh;"
         width="192.13548mm"
         height="159.72414mm"
         viewBox="0 0 192.13548 159.72414"
@@ -282,7 +283,7 @@
             style="font-style:normal;font-weight:normal;font-size:35px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect9831-6-0-7-5);display:inline;fill:#289c1b;fill-opacity:1;stroke:none"><tspan
               x="2"
               y="197.93267"
-              id="tspan9">10 - {{subtractNumMinusSecondDigit}} = {{subtractionRes}}</tspan></text>
+              id="tspan9">10 {{plusOrMinus}} {{subtractNumMinusSecondDigitString}} = {{subtractionRes}}</tspan></text>
          <text
             xml:space="preserve"
             transform="matrix(0.40188625,0,0,0.19989066,11.591434,-12.509519)"
@@ -327,7 +328,7 @@
               sodipodi:arc-type="arc"
               d="m 139.77684,86.676075 a 14.606937,13.977944 0 0 1 -18.14661,-9.371836 14.606937,13.977944 0 0 1 9.7292,-17.398292 14.606937,13.977944 0 0 1 18.21555,9.248549 14.606937,13.977944 0 0 1 -9.60012,17.463829" />
               <path
-              style="fill:none;fill-opacity:1;stroke:#fb7b0a;stroke-width:1.70317;stroke-dasharray:none;stroke-opacity:1"
+              style="fill:none;fill-opacity:1;stroke:#fb7b0a;stroke-width:1.70317;stroke-dasharray:none;stroke-opacity:0.3"
               id="path25609-4"
               sodipodi:type="arc"
               sodipodi:cx="146.47209"

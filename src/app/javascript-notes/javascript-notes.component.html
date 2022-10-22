@@ -125,7 +125,7 @@
 
     <img width="100%" src="assets\images\js\arrow1.png" alt="arrow 1" /><br/><br/>
 
-    Arrow functions don't have their own "this" but the one from the parent. <br/>
+    <b>Arrow functions don't have their own "this" but the one from the parent. (this code also has the this for the object.  More on this later.) </b><br/>
 
     <img width="100%" src="assets\images\js\arrow2.png" alt="arrow 2" /><br/><br/>
 
@@ -160,7 +160,7 @@
     <p class="HeadingSubTopic2">Function Composition</p>
 
     Function composition is the process of combining two or more functions to produce a new function.  
-    A composable function should have 1 input argument and 1 output value.
+    <b>A composable function should have 1 input argument and 1 output value.</b>
     When composing functions, you have to indicate how the composition is going to be.  In math, we are talking about f(g(x)).<br/>
 
     <pre>
@@ -1003,20 +1003,79 @@ let sentence =  ["learning", ...fragment, "is"];
 <br/>
 <br/>
 
-<p class="HeadingSubTopi2c">callback func</p>
+<p class="HeadingSubTopic2">callback func</p>
 <pre>
   <code>
     Array.prototype.myMap = function(<b>callback</b>) &lbrace;<br/>
-    var newArray = [];<br/>
-    // Only change code below this line<br/>
-    for (let i = 0; i < this.length; i++)&lbrace;<br/>
+    var newArray = [];<br/>    
+    for (let i = 0; i &lt; this.length; i++)&lbrace;<br/>
     &nbsp;  newArray.push(<b>callback(this[i])</b>);<br/>
-    &rbrace;<br/>
-    // Only change code above this line<br/>
+    &rbrace;<br/>    
     return newArray;<br/>
     &rbrace;;<br/>
   </code>
 </pre>
+
+<p class="HeadingSubTopic2">Where to put scripts in the html page</p>
+the scripts, and you can have more than one, can be in the head or in the body.  If you put them at the end of the body the page will load faster.
+This to use JS from another file.  It will be like it is in the same html file: script src="myScript.js".  Cached JavaScript files can speed up page loads.
+
+<p class="HeadingSubTopic2">Writing from js</p>
+<b>document.write(5 + 6);</b> --> will show it in the doc, but will remove other things that were already loaded when this happens.<br/>
+<b>someElement.innerHTML</b> --> will show it in the element <br/>
+<b>alert("whatever")</b> --> show it as an alert<br/>
+<b>console.log()</b> --> in the console of the browser (F12 for dev tools)<br/>
+<b>window.print()</b> --> will open the print window your browser uses<br/>
+
+When writing, In JavaScript, the window object is the global scope object. 
+This means that variables, properties, and methods by default belong to the window object. This also means that specifying the window keyword is optional.
+
+<p class="HeadingSubTopic2">To remember</p>
+JS is case sensitive<br/>
+Hyphens are not allowed in JavaScript. They are reserved for subtractions.<br/>
+Valid Syntax: let person = "John Doe", carName = "Volvo", price = 200;<br/>
+this: let x = 2 + 3 + "5"; --> will be 55<br/>
+variables declared with let cannot be redeclared<br/>
+if using "var", Redeclaring a variable inside a block will also redeclare the variable outside the block<br/>
+JavaScript const variables must be assigned a value when they are declared<br/>
+const-> It does not define a constant value. It defines a constant reference to a value. (when talking objects and arrays it makes sense)<br/>
+===	equal value and equal type<br/>
+==	equal to<br/>
+<pre>
+  <code>
+    let a = 5; // 00000000000000000000000000000101 in 32 bits
+
+    <b>a &lt;&lt;= 2;</b>   //same as a = a &lt;&lt; 2 , which is  00000000000000000000000000010100
+
+    console.log(a);
+    // expected output: 20
+
+    //binary numbers:
+    Decimal	Binary
+    1	--> 0001 --> a 1 in this position means 2 to the power of 0, which is 1
+    2	--> 0010 --> a 1 in this position means 2 to the power of 1, which is 2
+    3	--> 0011 --> a 1 in this position means 2 to the power of 1, which is 2, and 2 to the power of 0 which is 1, so the total is 3.
+    4	--> 0100 --> etc
+    5	--> 0101 -->
+    6	--> 0110 -->
+    7	--> 0111 -->
+    8	--> 1000 -->
+    9	--> 1001 -->
+    10--> 1010 -->
+
+    //a &gt;&gt;= 2; is similar but going the other way.  
+    //The above are for signed numbers.  Using 3 &lt; or &gt; will be for unsigned numbers. (will not take the sign into account).
+
+  </code>
+  Though not used often, remember you can use prompt, similar to alert but asking the user to enter a value: const myName = prompt("Please enter your name.");
+  cancelling the prompt will return the null value.
+  <br/>
+  
+  
+  
+
+</pre>
+
 
 
 
