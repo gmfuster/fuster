@@ -46,7 +46,7 @@ showOption:string = "Blank";
       item.style.backgroundColor =offColor;      
       item.style.display ="inline-block";
       item.style.margin ="10px;";
-      item.style.fontSize = "3vw";
+      item.style.fontSize = "3vh;";
       item.style.color = "darkblue";
       item.innerHTML = i.toString();
       item.style.cursor = "none";
@@ -64,11 +64,7 @@ showOption:string = "Blank";
         item.style.fontWeight = "bold";
       }
       this.myMyNumbers.nativeElement.appendChild(item);   
-      this.numbersFromGrid.push({number: i, status:"off" });
-      /*if (i%10 === 0 ){
-        var thebreak = document.createElement("br");
-        this.myMyNumbers.nativeElement.appendChild(thebreak);
-      }*/
+      this.numbersFromGrid.push({number: i, status:"off" });     
     }    
   }
   setUpResults(){    
