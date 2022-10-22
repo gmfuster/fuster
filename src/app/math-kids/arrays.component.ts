@@ -32,13 +32,26 @@ stringForAddingRows:string = ""
     for (var i=1; i<= this.rows; i++){
       let firstElementOfRow = 1 + (i-1) * 10;
       this.itemsThatNeedToBeCounted.push(firstElementOfRow);
-      if (this.columns){
+      if (this.columns > 0 ){
         for( var j = 2; j<= this.columns; j++){
           this.itemsThatNeedToBeCounted.push(firstElementOfRow+j-1)
         }
       }
     }    
-}
+  }
+  //it is possible that the rows is zero but we have one column, so do the other way too.
+  //it is ok to have duplicates in here.
+  if (this.columns > 0){
+    for (var i=1; i<= this.columns; i++){
+      let firstElementOfCol = 1 + (i-1);
+      this.itemsThatNeedToBeCounted.push(firstElementOfCol);
+      if (this.rows > 0 ){
+        for( var j = 2; j<= this.rows; j++){
+          this.itemsThatNeedToBeCounted.push(firstElementOfCol+ (j-1) *10)
+        }
+      }
+    }     
+  }
   }    
 
   setUpCells(){         
@@ -48,7 +61,7 @@ stringForAddingRows:string = ""
     while (this.myBoxForCells.nativeElement.firstChild) {
       this.myBoxForCells.nativeElement.removeChild(this.myBoxForCells.nativeElement.firstChild);
     }   
-      
+          
     for(var i = 1; i<=100; i++){
         let item = document.createElement("div");                
         item.style.display ="inline-block";                
@@ -74,6 +87,8 @@ stringForAddingRows:string = ""
     this.rows = 0;
     this.columns = 0;
     this.setUpCells();
+    this.stringForAddingRows = "";
+    this.stringForAddingColumns = "";
   }
 
   calculateStringsForAddition(){
