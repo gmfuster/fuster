@@ -91,7 +91,7 @@ const routes: Routes = [
   { path: 'subtract-to-10', component: SubtractTo10Component, pathMatch: 'full' }, //kids math
   { path: 'concept', component: ConceptComponent, pathMatch: 'full' }, //kids math
   { path: 'arrays', component: ArraysComponent, pathMatch: 'full' }, //kids math
-  { path: 'addSplitting', component:AddSplittingComponent, pathMatch: 'full' }, //kids math
+  { path: 'add-splitting', component:AddSplittingComponent, pathMatch: 'full' }, //kids math
   { path: 'balance-equation', component:BalanceEquationComponent, pathMatch: 'full' }, //kids math
 
 
