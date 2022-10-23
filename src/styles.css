@@ -79,7 +79,7 @@ body button {
   border-width: 6px;
   border-radius: 10px;
   margin: 2px;
-  font-size: inherit;
+  font-size: 3vh;
   box-sizing: border-box;
 }
 body button:disabled { 

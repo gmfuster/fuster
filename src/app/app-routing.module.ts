@@ -47,6 +47,7 @@ import {SubtractTo10Component} from './math-kids/subtract-to-10.component';
 import {ConceptComponent} from './math-kids/concept.component';
 import {ArraysComponent} from './math-kids/arrays.component';
 import {AddSplittingComponent} from './math-kids/add-splitting.component';
+import {BalanceEquationComponent} from './math-kids/balance-equation.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -91,6 +92,7 @@ const routes: Routes = [
   { path: 'concept', component: ConceptComponent, pathMatch: 'full' }, //kids math
   { path: 'arrays', component: ArraysComponent, pathMatch: 'full' }, //kids math
   { path: 'addSplitting', component:AddSplittingComponent, pathMatch: 'full' }, //kids math
+  { path: 'balance-equation', component:BalanceEquationComponent, pathMatch: 'full' }, //kids math
 
 
   { path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:{message:"I AM THE MESSAGE FROM not-found!!!!"}},

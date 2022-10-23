@@ -50,9 +50,9 @@
     <div class="markClassCardContentBlue">     
       <div style="position:relative;">
         <div style="background:teal; margin:0.5vw; padding:4vh; border:5px double salmon; min-height:400px;">
-          <div style="display:flex; flex-direction:row; justify-content:flex-start;">
+          <div style="display:flex; flex-direction:row; justify-content:flex-start; ">
 
-            <div  style="border: white 2px solid; padding:5px; margin-right:6px;">              
+            <div  style="flex:1; border: white 2px solid; padding:5px; margin-right:6px;">              
               <span><u><em>Adding</em></u></span><br/>
               <!--todo maybe make a 10 when adding-->
               <!--todo maybe add even and odd-->
@@ -71,7 +71,7 @@
               </a>
             </div>
 
-            <div style="border: deeppink 2px solid; padding:5px; margin-right:6px;">
+            <div style="flex:1;  border: deeppink 2px solid; padding:5px; margin-right:6px;">
               <span><u><em>Counting</em></u></span><br/>
 
               <a [routerLink]='["/number-chart"]'  style="color:white; font-size:3vh; ">
@@ -82,14 +82,23 @@
               </a>
             </div>
 
-            <div style="border: deepskyblue 2px solid; padding:5px; margin-right:6px;">
+            <div style="flex:1;  border: deepskyblue 2px solid; padding:5px; margin-right:6px;">
               <span><u><em>Subtracting</em></u></span><br/>
 
               <a [routerLink]='["/subtract-to-10"]'  style="color:white; font-size:3vh; ">
                 Subtract To 10
               </a>
             </div>
-          </div>
+
+            <div style="border: salmon 2px solid; padding:5px; margin-right:6px;">
+              <span><u><em>Other</em></u></span><br/>
+
+              <a [routerLink]='["/balance-equation"]'  style="color:white; font-size:3vh; ">
+                Balance Equation
+              </a>
+            </div>
+         
+        </div>
           
         </div>        
       </div>          
