@@ -1,64 +1,47 @@
 
-<div class="PaddedContents " >
-
-  <br/>    
+<div class="PaddedContents"  >  
     
     <h4 class="CenterMe PaddedContents">You can type the JavaScript code  
       <a  href="https://replit.com/languages/nodejs" target="_new">on replit.com</a>     
   </h4>  
 
-  <div class="leftLinks" #HeadingsContainer>
-    <!--<left-links [myHeadings]="myHeadings" [myName]="myName"></left-links> -->
-    <left-links ></left-links>
-    <!--
-    <p>      
-      <a  [routerLink]='["/javascript-notes"]' fragment="scope" >Scope</a>
-    <p>
-    <p>      
-      <a  [routerLink]='["/javascript-notes"]' fragment="functions" >Functions</a>
-    </p>
-    <p>      
-      <a  [routerLink]='["/javascript-notes"]' fragment="arrays" >Arrays</a>
-    </p>
-    <p>      
-      <a  [routerLink]='["/javascript-notes"]' fragment="this" >This</a>
-    </p>
-    <p>      
-      <a  [routerLink]='["/javascript-notes"]' fragment="misc" >Misc.</a>
-    </p>-->
+  <div class="leftLinks" #HeadingsContainer>   
+    <left-links ></left-links>   
   </div>
   
   <div class="PaddedContents PaddedContentsTopics" >
 
-    <!-------------------------------------------------------------->
+    
+   <!-------------------------------------------------------------->
     <!--SCOPE-->
     <!-------------------------------------------------------------->        
-    <p class="HeadingSubTopic" id="scope">Scope</p>
+    <p class="HeadingSubTopic" id="scope" >Scope</p>
 
     <p class="HeadingSubTopic2" >Scope - variables</p>
     There are two types of scope in JavaScript: Global and Local.  You get global scope when you declare a variable outside of a block, or outside of 
     a function.  Global scope on the browsert is the "window".<br/>
     We can declare variables with var, let, const.  LET and CONST are the same as far as scope is concerned.  Using "var"<br/><br/>
 
-    <img width="100%" src="assets\images\js\varscope1.png" alt="var scope" /><br/><br/>
-
+    
+    <img  src="assets\images\js\varscope1.png" alt="var scope" /><br/><br/>
+    
     Similar code, but now we use LET which has block scope<br/><br/>
 
-    <img width="100%" src="assets\images\js\letscope1.png" alt="let scope" /><br/><br/>
-
+    
+    <img  src="assets\images\js\letscope1.png" alt="let scope" /><br/><br/>
+    
     How about if you use var, outside a function and inside a function (we already know there is no block scope)<br/><br/>
 
-    <img width="100%" src="assets\images\js\varscope2.png" alt="var scope outide func" /><br/><br/>
-
+    
+    <img  src="assets\images\js\varscope2.png" alt="var scope outide func" /><br/><br/>
+    
     When working with JavaScript, 
     make sure you declare the variables before you use them because if you forget to declare a variable and just assign it, you will be creating global variables. 
     HOWEVER, you can stop that by declaring the code with "use strict"<br/>
-    <img width="100%" src="assets\images\js\globalbymistake.png" alt="global by  mistake" /><br/><br/>
-
-    Parameters passed to functions act as local variables to the function.
-
     
-    <hr class="hrClass" />
+    <img  src="assets\images\js\globalbymistake.png" alt="global by  mistake" /><br/><br/>
+    
+    Parameters passed to functions act as local variables to the function.    
 
     
     <p class="HeadingSubTopic2">Scope - Hoisting</p>
@@ -67,13 +50,13 @@
     This means that in JavaScript, functions and variables can be accessed before they have been declared.<br/>
     Variables declared with var, are accessible before they are declared, variables declared with let (or const) are not. See the differences here:<br/><br/>
 
-    <img width="100%" src="assets\images\js\assignthendeclare.png" alt="assign then declare" /><br/><br/>
+    
+      <img  src="assets\images\js\assignthendeclare.png" alt="assign then declare" /><br/><br/>
    
+
     JavaScript hoists the declarations but not the initializations.  That means, printing a variable to the console before it has been assigned will print undefined.
 
-    <br/>
-
-    <hr class="hrClass" />
+    <br/>    
 
     
     <p class="HeadingSubTopic2">Scope - Closures</p>
@@ -82,13 +65,15 @@
     When a function is defined within another function, the inner function has access to the variable scope of the outer function. 
     This is what function closures are.
 
-    <img width="100%" src="assets\images\js\closures1.png" alt="closures 1" /><br/><br/>
-
+    
+    <img  src="assets\images\js\closures1.png" alt="closures 1" /><br/><br/>
+    
     The inner function has access to the parent function at the time of creation, not only while the parent function is running.  This will also work:<br/><br/>
 
-    <img width="100%" src="assets\images\js\closures2.png" alt="closures 2" /><br/><br/>
-
-
+    
+    <img  src="assets\images\js\closures2.png" alt="closures 2" /><br/><br/>
+  
+  
     <!-------------------------------------------------------------->
     <!--FUNCTIONS-->
     <!-------------------------------------------------------------->     
@@ -100,61 +85,73 @@
 
     Because regular functions are objects, you can add a property to the function but just doing myFunc.myProp = "hey"<br/>
 
-    <img width="100%" src="assets\images\js\functions1.png" alt="functions 1" /><br/><br/>
-
+    
+    <img  src="assets\images\js\functions1.png" alt="functions 1" /><br/><br/>
+    
     A function that doesn't return something will return undefined.<br/>
 
-    <img width="100%" src="assets\images\js\functions2.png" alt="functions 2" /><br/><br/>
+    
+    <img  src="assets\images\js\functions2.png" alt="functions 2" /><br/><br/>
+
 
     You can assign anonymous functions to a variable, then call them through that variable.<br/>
 
-    <img width="100%" src="assets\images\js\functions3.png" alt="functions 3" /><br/><br/>
-
+    
+    <img  src="assets\images\js\functions3.png" alt="functions 3" /><br/><br/>
+    
     The "this" keyword from inside the function.<br/>
 
-    <img width="100%" src="assets\images\js\functions4.png" alt="functions 4" /><br/><br/>
-
+    
+    <img  src="assets\images\js\functions4.png" alt="functions 4" /><br/><br/>
+    
     functions can be called before they are declared, because they are hoisted.<br/>
 
-    <img width="100%" src="assets\images\js\functions5.png" alt="functions 5" /><br/><br/>
-
+    
+    <img  src="assets\images\js\functions5.png" alt="functions 5" /><br/><br/>
+    
     A function can return a function.  (see example on scope section)<br/><br/>
 
     
     <p class="HeadingSubTopic2">Arrow Functions</p>
 
+    
     <img width="100%" src="assets\images\js\arrow1.png" alt="arrow 1" /><br/><br/>
-
+    
     <b>Arrow functions don't have their own "this" but the one from the parent. (this code also has the this for the object.  More on this later.) </b><br/>
 
+    
     <img width="100%" src="assets\images\js\arrow2.png" alt="arrow 2" /><br/><br/>
-
+    
     Arrow functions don't have the "arguments" keyword.<br/>
 
-    <img width="100%" src="assets\images\js\arrow3.png" alt="arrow 3" /><br/><br/>
-
+    
+    <img  src="assets\images\js\arrow3.png" alt="arrow 3" /><br/><br/>
+    
     Arrow functions can never have duplicate named parameters, whether in strict or non-strict mode.<br/>
 
     Regular functions created using function declarations or expressions are ‘constructible’ and ‘callable’.  
     Being constructible means they can be used with the keyword “new”.  Arrow functions are not. <br/>
 
+    
     <img width="100%" src="assets\images\js\arrow4.png" alt="arrow 4" /><br/><br/>
-
+    
 
     
     <p class="HeadingSubTopic2">Default Parameters</p>
 
     You should put the default paramenters at the end of the parameters of the function.<br/>
 
-    <img width="100%" src="assets\images\js\defaultparams.png" alt="default params" /><br/><br/>
-
+    
+    <img  src="assets\images\js\defaultparams.png" alt="default params" /><br/><br/>
+    
     
     <p class="HeadingSubTopic">Currying</p>
 
     We can use this to take advantage of closures.  <br/>
 
-    <img width="100%" src="assets\images\js\currying1.png" alt="currying" /><br/><br/>
-
+    
+    <img  src="assets\images\js\currying1.png" alt="currying" /><br/><br/>
+    
 
     
     <p class="HeadingSubTopic2">Function Composition</p>
@@ -171,10 +168,11 @@
       </code>
     </pre>
     
+    
+    <img  src="assets\images\js\composition1.png" alt="composition for same function twice" /><br/><br/>
+    
 
-    <img width="100%" src="assets\images\js\composition1.png" alt="composition for same function twice" /><br/><br/>
-
-    <pre>
+    <pre >
       <code>
         const sum = (n) => n+1;
         const  mult = (n) => n*2;
@@ -185,9 +183,11 @@
         
         const compose = (f,g,x) => (a) => f(g(x(a)));
         
-        //sum(mult(sub(2))) = sum(mult(2-1)) = sum(mult(1))=sum(1*2) = sum(2) = 2+1 = 3
+        //sum(mult(sub(2))) = sum(mult(2-1)) = sum(mult(1))=sum(1*2) = 
+        sum(2) = 2+1 = 3
         console.log(compose(sum, mult, sub) (2));
-        //mult(sum(sub(2))) = mult(sum(2-1))= mult(sum(1))=mult(1+1) = mult(2)= 2*2 = 4
+        //mult(sum(sub(2))) = mult(sum(2-1))= mult(sum(1))=mult(1+1) = 
+        mult(2)= 2*2 = 4
         console.log(compose(mult, sum, sub) (2));<br/>
       
         //compose for 2 parameters
@@ -195,14 +195,16 @@
         
         //make sure the second arguments is used with the right
         //func, by composing it on the right location
-        //sub2(sum(mult(2)),7) = sub2(sum(2*2),7) = sub2(sum(4),7) =sub2((4+1),7) = sub2(5,7) = 5-1+7 = 11
+        //sub2(sum(mult(2)),7) = sub2(sum(2*2),7) = sub2(sum(4),7) =
+        sub2((4+1),7) = sub2(5,7) = 5-1+7 = 11
         console.log(compose2(sub2, sum, mult ) (2, 7));
       </code>
     </pre>
    
-
-    <img width="100%" src="assets\images\js\composition2.png" alt="composition for 3 functions, one with 2 arguments" /><br/><br/>
     
+    <img  src="assets\images\js\composition2.png" alt="composition for 3 functions, one with 2 arguments" /><br/><br/>
+    
+
     <p class="HeadingSubTopic2">IIFE (IMMIEDIATELY INVOKE FUNCTION EXPRESSION)</p>
 
     Notice the function being inside () for this:<br/>
@@ -222,24 +224,30 @@
 
     call will call a function. You can call the function in an object, so it will use the data on another object, not the one with the function.<br/>
 
-    <img width="100%" src="assets\images\js\call.png" alt="call" /><br/><br/>
-
+    
+    <img  src="assets\images\js\call.png" alt="call" /><br/><br/>
+    
     If the function takes parameters:<br/>
 
-    <img width="100%" src="assets\images\js\call2.png" alt="call with args" /><br/><br/>
+    
+    <img  src="assets\images\js\call2.png" alt="call with args" /><br/><br/>
+    
 
     Apply is similar to call, but for the arguments, we pass an array instead of comma delimmited.<br/>
 
-    <img width="100%" src="assets\images\js\apply.png" alt="apply with args" /><br/><br/>
-
+    
+    <img src="assets\images\js\apply.png" alt="apply with args" /><br/><br/>
+    
     Bind is similar to call/ apply but returns a new function without running it.  You cannot give an argument on calling it if you already gave it on binding.<br/>
 
-    <img width="100%" src="assets\images\js\bind.png" alt="bind with args" /><br/><br/>
-
+    
+    <img  src="assets\images\js\bind.png" alt="bind with args" /><br/><br/>
+    
     You can provide the argument later if you don't provide it on binding:<br/>
 
-    <img width="100%" src="assets\images\js\bind2.png" alt="bind with args 2" /><br/><br/>
-
+    
+    <img  src="assets\images\js\bind2.png" alt="bind with args 2" /><br/><br/>
+    
     
     <p class="HeadingSubTopic2">Higher Order Functions</p>
 
@@ -250,9 +258,9 @@
     <p class="HeadingSubTopic2">New</p>
 
     Using the new with regular functions:<br/>
-    <img width="100%" src="assets\images\js\functionsnew.png" alt="functins with new" /><br/><br/>
-
-
+    
+    <img  src="assets\images\js\functionsnew.png" alt="functins with new" /><br/><br/>
+    
 
     <!-------------------------------------------------------------->
     <!--Arrays-->
@@ -306,8 +314,9 @@
     Sometimes we can have variables that are like arrays but are not arrays. These almost arrays will not have all methods that are available to arrays.  
     One example in older browser is forEach. But, if the structure is like arrays without being an array, we can also use forEach with Array.Prototype.<br/>
 
-    <img width="100%" src="assets\images\js\arrforeach.png" alt="array foreach" /><br/><br/>
-
+    
+    <img  src="assets\images\js\arrforeach.png" alt="array foreach" /><br/><br/>
+    
     
     <p class="HeadingSubTopic2">map</p>
     This code will <mark>NOT</mark> populate the second array with what is expected, but it will create 5 undefined elements:<br/>
@@ -371,7 +380,8 @@
     The below example gives 5 as the original value (used when there is no previous value).<br/>
     <pre>
       <code>
-        const reducer = (previousValue, currentValue) => previousValue + currentValue;<br/>
+        const reducer = (previousValue, currentValue) => 
+          previousValue + currentValue;<br/>
         //5+1 = 6
         //6+2 = 8
         //8+3 = 11
@@ -396,7 +406,8 @@
     The next one uses a different reducer.<br/>
     <pre>
       <code>
-        const reducer2 = (previousValue, currentValue) => previousValue * currentValue;
+        const reducer2 = (previousValue, currentValue) => 
+          previousValue * currentValue;
         //2*1=2
         //2*2=4
         //4*3=12
@@ -412,7 +423,8 @@
     <pre>
       <code>
         const arr12 = [1, 2, 3, 4];
-        const reducer3 = (previousValue, currentValue) => (previousValue * currentValue) + 1;
+        const reducer3 = (previousValue, currentValue) => 
+          (previousValue * currentValue) + 1;
   
         //2*1 + 1 = 3
         //3*2 + 1 = 7
@@ -424,10 +436,11 @@
    
     <br/>
 
-    <img width="100%" src="assets\images\js\reduce1.png" alt="reduce 1" /><br/><br/>
+    
+    <img  src="assets\images\js\reduce1.png" alt="reduce 1" /><br/><br/>
 
-    <img width="100%" src="assets\images\js\reduce2.png" alt="reduce 2" /><br/><br/>
-
+    <img  src="assets\images\js\reduce2.png" alt="reduce 2" /><br/><br/>
+    
     We can also use reduceRight which is the same thing but it starts from the end.<br/>
 
 
@@ -550,10 +563,11 @@
     It removes a number of elements. <b>It modifies the array and returns a new array too. </b>
 	  The first argument is the index where we start removing.<br/>    
 
-    <img width="100%" src="assets\images\js\splice.png" alt="splice" /><br/><br/>
+    
+    <img  src="assets\images\js\splice.png" alt="splice" /><br/><br/>
 
-    <img width="100%" src="assets\images\js\splice2.png" alt="splice 2" /><br/><br/>
-
+    <img  src="assets\images\js\splice2.png" alt="splice 2" /><br/><br/>
+    
 
     <br/>
     
@@ -658,8 +672,10 @@
         var i = arr1.indexOf("C");<br/>
         console.log(i);//2<br/><br/>
   
-        //If there are duplicates you can indicate the starting //point where indexOf should be looking.<br/>
-        var arr1 = ["A", "B", "C", "D","E","F","G","H","I", "A", "B","C", "D"];<br/><br/>
+        //If there are duplicates you can indicate the starting 
+        //point where indexOf should be looking.<br/>
+        var arr1 = ["A", "B", "C", "D","E","F","G","H","I", 
+          "A", "B","C", "D"];<br/><br/>
   
         var i = arr1.indexOf("C", 4);<br/><br/>
   
@@ -672,7 +688,8 @@
     <p class="HeadingSubTopic2">lastindexof</p>
     <pre>
       <code>
-        var arr1 = ["A", "B", "C", "D","E","F","G","H","I", "A", "B","C", "D"];<br/><br/>
+        var arr1 = ["A", "B", "C", "D","E","F","G","H","I", 
+          "A", "B","C", "D"];<br/><br/>
 
         var i = arr1.lastIndexOf("C");<br/><br/>
   
@@ -707,8 +724,9 @@
       </code>
     </pre>
    
-    <img width="100%" src="assets\images\js\findindex.png" alt="findindex" /><br/><br/>
-
+    
+    <img src="assets\images\js\findindex.png" alt="findindex" /><br/><br/>
+    
 
     <br/>
     
@@ -785,9 +803,7 @@
       </pre>    
      
       There are other array methods not included here.  This includes the most common ones.
-
-
-    <!-------------------------------------------------------------->
+<!-------------------------------------------------------------->
     <!--this-->
     <!-------------------------------------------------------------->
 
@@ -833,31 +849,35 @@
 
     In a class, this will refer to the class itself (regular function or arrow functions).<br/>
 
-    <img width="100%" src="assets\images\js\this1.png" alt="this 1" /><br/><br/>
+    
+    <img  src="assets\images\js\this1.png" alt="this 1" /><br/><br/>
 
     Derived constructors have no initial this binding, so super should be called before accessing this.<br/>
 
-    <img width="100%" src="assets\images\js\this2.png" alt="this 2" /><br/><br/>
+    <img  src="assets\images\js\this2.png" alt="this 2" /><br/><br/>
 
     Not calling super will give an error:
 
-    <img width="100%" src="assets\images\js\this3.png" alt="this 3" /><br/><br/>
+    <img  src="assets\images\js\this3.png" alt="this 3" /><br/><br/>
 
     You can change the this in a call by using call (or apply) to call it:<br/>
 
-    <img width="100%" src="assets\images\js\this4.png" alt="this 4" /><br/><br/>
+    <img src="assets\images\js\this4.png" alt="this 4" /><br/><br/>
 
     Bind is similar to call/ apply but returns a new function without running it. See it under JavaScript-Basics-Functions<br/>
     In arrow functions, this retains the value of the enclosing lexical context's this (see arrow functions).<br/>
 
     When there are object inside object, the this will refer to the closest one to how the function is called.<br/>
 
-    <img width="100%" src="assets\images\js\this5.png" alt="this 5" /><br/><br/>
+    <img  src="assets\images\js\this5.png" alt="this 5" /><br/><br/>
 
     For even more examples please check the documentation (MDN docs). <br/>
+      
 
 
-    <!-------------------------------------------------------------->
+
+
+     <!-------------------------------------------------------------->
     <!--misc-->
     <!-------------------------------------------------------------->
     
@@ -1043,9 +1063,10 @@ const-> It does not define a constant value. It defines a constant reference to 
 ==	equal to<br/>
 <pre>
   <code>
-    let a = 5; // 00000000000000000000000000000101 in 32 bits
+    let a = 5; // 00000000000000000000000000000101 
 
-    <b>a &lt;&lt;= 2;</b>   //same as a = a &lt;&lt; 2 , which is  00000000000000000000000000010100
+    <b>a &lt;&lt;= 2;</b>   
+    //same as a = a &lt;&lt; 2 ,  00000000000000000000000000010100
 
     console.log(a);
     // expected output: 20
@@ -1054,7 +1075,8 @@ const-> It does not define a constant value. It defines a constant reference to 
     Decimal	Binary
     1	--> 0001 --> a 1 in this position means 2 to the power of 0, which is 1
     2	--> 0010 --> a 1 in this position means 2 to the power of 1, which is 2
-    3	--> 0011 --> a 1 in this position means 2 to the power of 1, which is 2, and 2 to the power of 0 which is 1, so the total is 3.
+    3	--> 0011 --> a 1 in this position means 2 to the power of 1, which is 2,
+       and 2 to the power of 0 which is 1, so the total is 3.
     4	--> 0100 --> etc
     5	--> 0101 -->
     6	--> 0110 -->
@@ -1064,17 +1086,14 @@ const-> It does not define a constant value. It defines a constant reference to 
     10--> 1010 -->
 
     //a &gt;&gt;= 2; is similar but going the other way.  
-    //The above are for signed numbers.  Using 3 &lt; or &gt; will be for unsigned numbers. (will not take the sign into account).
-
+    //The above are for signed numbers.  Using 3 &lt; or &gt; will be for unsigned numbers. (will not take the sign into account).  
   </code>
+</pre>
   Though not used often, remember you can use prompt, similar to alert but asking the user to enter a value: const myName = prompt("Please enter your name.");
   cancelling the prompt will return the null value.
   <br/>
-  
-  
-  
 
-</pre>
+
 
 
 

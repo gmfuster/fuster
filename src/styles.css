@@ -13,6 +13,8 @@
   font-size: 1.6vw;    
   background-color:var(--main-background-color);
   margin:0;
+  box-sizing: border-box;  
+  width:95vw;
 }
 .mainBodyScrolling{
   overflow: auto;
@@ -20,7 +22,13 @@
 .mainBodyScrollingBlocked{
   overflow: hidden;
 }
-
+div{
+  box-sizing: border-box;
+}
+img{
+  width:60vw;
+  box-sizing: border-box;
+}
 .divsByRow{  
   display: flex;
   flex-wrap: wrap;
@@ -72,6 +80,7 @@ body button {
   border-radius: 10px;
   margin: 2px;
   font-size: inherit;
+  box-sizing: border-box;
 }
 body button:disabled { 
   background-color: lightgray;
@@ -95,6 +104,7 @@ body pre {
   background-color: lightblue;  
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;
 }
 body pre code{
   font-family: 'Times New Roman', Times, serif;
@@ -104,6 +114,7 @@ body pre code{
   background-color: transparent;
   border-radius: 0;
   white-space: pre-wrap;
+  box-sizing: border-box;
 }
 body code{
   font-family: 'Times New Roman', Times, serif;    
@@ -113,11 +124,13 @@ body code{
   margin:4px;
   background-color: var(--main-code-background);
   border-radius: 4px;
+  box-sizing: border-box;
 }
 body pre samp{
   font-family: 'Times New Roman', Times, serif;    
   padding:8px;  
-  color:gray  
+  color:gray  ;
+  box-sizing: border-box;
 }
 
 .HeadingSubTopic{  
@@ -125,7 +138,7 @@ body pre samp{
   font-weight: bold;  
   color:lightpink;  
   text-decoration: overline underline solid 1.1vh;
-  padding:8px;  
+  padding:8px;    
 }
 .HeadingSubTopic2{  
   font-size: 1.8vw;  
@@ -139,14 +152,19 @@ body pre samp{
   margin-top: 6vh;
 }
 .PaddedContents {
-  padding-left: 2vw;
-  padding-right: 2vw;
+  /*padding-left: 1vw;
+  padding-right: 1vw;*/
+  box-sizing: border-box;    
+  overflow-x: hidden;
 }
 .PaddedContentsTopics{  
-  padding-left: 15vw;
+  padding-left: 18vw;
+  box-sizing: border-box;
+  width:85vw;  
 }
 .CenterMe {
   text-align: center;
+  box-sizing: border-box;
 }
 .CenterMyContent {  
   display: flex;
@@ -155,6 +173,7 @@ body pre samp{
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;  
+  box-sizing: border-box;
 }
 body button{
   cursor: pointer;
@@ -278,13 +297,14 @@ body button{
 }
 
 .leftLinks{
+  box-sizing: border-box;
   position:fixed;
-  left:12px; 
+  left:5px; 
   width:15vw; 
   top: 10vh;
-  height: 75vh;
-  margin-right: 6px;
+  height: 75vh;  
   overflow:auto;
+  border:solid deepskyblue 2px;
 }
 
 /*
@@ -321,6 +341,7 @@ mark {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  box-sizing: border-box;
 }
 @media (min-width: 768px) {
   .container {

@@ -20,7 +20,7 @@ myName : string = "javascript-notes-async";
   constructor(private commonFuncs:CommonFuncs){}
 
   ngOnInit(){
-    window.scroll(0,0);
+    window.scroll(0,0);    
   }
 
   ngAfterViewInit(){       
