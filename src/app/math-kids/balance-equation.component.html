@@ -1,0 +1,41 @@
+
+     
+  <div  class="PaddedContents" style="text-align: left; font-size: 2vw;" >
+          
+    <div style="margin:auto; text-align: center; font-size: 6vh; ">
+
+      <!--will not show a real border since it is a span element-->
+      <div style="display:inline-block; width:40%;border:solid 4px salmon; padding-left:10px; padding-right:10px">{{number1eq1}} + {{number2eq1}}</div> 
+      <div style="display:inline-block; width:10%">=</div> 
+      <div style="display:inline-block; width:40%;border:solid 4px darkcyan; padding-right:10px; padding-left:10px">{{number1eq2}} + ?</div>         
+
+      <br/><br/>
+
+      <div style="display:inline-block; width:40%;border:solid 4px salmon; padding-left:10px; padding-right:10px">
+      <input [(ngModel)]="numberEnteredByUser" #inputResEq1 style="width:40%;" type="number"><button  (click)="checkResult()">Check!</button>
+      </div> 
+      <div style="display:inline-block; width:10%">=</div> 
+      <div style="display:inline-block; width:40%;border:solid 4px darkcyan; padding-right:10px; padding-left:10px">{{number1eq2}} + ?</div>  
+
+      <br/><br/>
+      <div style="display:inline-block; width:40%;border:solid 4px salmon; padding-left:10px; padding-right:10px">{{messageForEq1}}</div> 
+      <div style="display:inline-block; width:10%">=</div> 
+      <div style="display:inline-block; width:40%;border:solid 4px darkcyan; padding-right:10px; padding-left:10px">{{number1eq2}} +  ?</div>    
+
+      
+      <br/><br/>
+      <div style="display:inline-block; width:40%;border:solid 4px salmon; padding-left:10px; padding-right:10px">{{messageForEq1WithNumFrom2nd}}</div> 
+      <div style="display:inline-block; width:10%">=</div> 
+      <div style="display:inline-block; width:40%;border:solid 4px darkcyan; padding-right:10px; padding-left:10px">{{number2eq2ForDisplay}}</div>   
+
+      <br/><br/>
+      <button  (click)="getNumbers()">More!</button>
+
+    </div>
+    
+    
+
+
+  </div>    
+
+ 
