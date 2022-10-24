@@ -8,20 +8,19 @@
 }
 
 .forBanner{
-  width:90vw;
+  width:100%;
   display:flex;
   flex-direction: row;  
   justify-content: center;
   text-align: center;
   background-color: darkcyan;
-  border:salmon 5px double;
+  /*border:salmon 5px double;*/
   margin-top: 2.5vh;
   margin-bottom: 40px;
+  box-sizing: border-box;
+  border-top-right-radius: 25%;
 }
 
-.mainBanner{  
-  color:white;  
-}
 .mainParagraph{  
   font-size: 3vw;
   text-align: center;

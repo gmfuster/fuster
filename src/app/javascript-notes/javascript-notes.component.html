@@ -19,7 +19,7 @@
 
     <p class="HeadingSubTopic2" >Scope - variables</p>
     There are two types of scope in JavaScript: Global and Local.  You get global scope when you declare a variable outside of a block, or outside of 
-    a function.  Global scope on the browsert is the "window".<br/>
+    a function.  Global scope on the browser is the "window".<br/>
     We can declare variables with var, let, const.  LET and CONST are the same as far as scope is concerned.  Using "var"<br/><br/>
 
     
@@ -33,11 +33,36 @@
     How about if you use var, outside a function and inside a function (we already know there is no block scope)<br/><br/>
 
     
-    <img  src="assets\images\js\varscope2.png" alt="var scope outide func" /><br/><br/>
+    <img  src="assets\images\js\varscope2.png" alt="var scope outide func" /><br/><br/>    
     
     When working with JavaScript, 
     make sure you declare the variables before you use them because if you forget to declare a variable and just assign it, you will be creating global variables. 
     HOWEVER, you can stop that by declaring the code with "use strict"<br/>
+    With the code above, if instead of declaring the var a in the function we had done this, then we would be creating a global one, which is the 
+    same as the one outside the function.
+    <pre>
+      <code>
+        var a = "A"
+
+        function f()&lbrace;
+        a = "B";
+          console.log(a);
+        &rbrace;
+
+        function g()&lbrace;
+          console.log(a);
+        &rbrace;
+
+        f()
+        g()
+        console.log(a)
+
+        //B 
+        //B 
+        //B 
+
+      </code>
+    </pre>
     
     <img  src="assets\images\js\globalbymistake.png" alt="global by  mistake" /><br/><br/>
     
@@ -57,6 +82,8 @@
     JavaScript hoists the declarations but not the initializations.  That means, printing a variable to the console before it has been assigned will print undefined.
 
     <br/>    
+
+
 
     
     <p class="HeadingSubTopic2">Scope - Closures</p>
@@ -289,7 +316,7 @@
       </code>
     </pre>
   
-    This code returns but the arr3 is not changed either.<br/>
+    This code returns but the arr3 is not changed either. It is undefined.<br/>
     <pre>
       <code>
         var arr3 = arr1.forEach ( (item) => &lbrace;    
@@ -432,9 +459,7 @@
         //22 * 4 + 1 = 89 --? will print 89
         console.log(arr11.reduce(reducer3, 2));
       </code>
-    </pre>
-   
-    <br/>
+    </pre>      
 
     
     <img  src="assets\images\js\reduce1.png" alt="reduce 1" /><br/><br/>
@@ -442,6 +467,21 @@
     <img  src="assets\images\js\reduce2.png" alt="reduce 2" /><br/><br/>
     
     We can also use reduceRight which is the same thing but it starts from the end.<br/>
+
+    I want to give one more example with a reduce without providing the starting point (prev value to start)
+    <pre>
+      <code>
+        arr11 = [2,3,4,5]
+        const reducer2 = (previousValue, currentValue) =&gt;
+          previousValue * currentValue;
+        <b>// 2 --> Starts with the first element but it will not be applied to itself (not 2*2)</b>
+        //2*3 = 6
+        //6*4 = 24
+        //24 * 5 = 120
+        console.log(arr11.reduce(reducer2)); 
+      </code>
+    </pre>
+    <br/>
 
 
     <br/>
@@ -495,6 +535,9 @@
         const arr1 = [1, 2, 3, 4];<br/>
         arr1.unshift(0);<br/>
         console.log(arr1.toString());//--> 0,1,2,3,4<br/>
+
+        const a = [1,2,3,4]
+        a.unshift(2); // 2,1,2,3,4
       </code>
     </pre>
   
@@ -617,6 +660,11 @@
       <code>
         var arr1 = [1, 2, 3, 4,5,6,7,8,9];<br/>
         arr1 = arr1.reverse();<br/>
+
+        You don't need to assign the array, just calling it will reverse it:
+        var a = [1,2,3,4]
+        a.reverse()
+        console.log(a) // 4,3,2,1
       </code>
     </pre>  
 
@@ -1092,6 +1140,35 @@ const-> It does not define a constant value. It defines a constant reference to 
   Though not used often, remember you can use prompt, similar to alert but asking the user to enter a value: const myName = prompt("Please enter your name.");
   cancelling the prompt will return the null value.
   <br/>
+  When loading the js code from a js file, you can do that at the end of the body so the document loads efficiently, or you can also do:
+  &lt;script src="script.js" <b>defer</b>&gt;<br/>
+  If you are loading more than one script, there is no guarantee as to the order in which those are loaded.  Similar to defer, there is an async 
+  that can be used.  The content will not be blocked while the scripts are loaded, but, again no guarantee as to the order of exxecution after they are loaded.
+  <br/>
+  scripts loaded with async will execute after they are downloaded, even if the contents are still loading.  With defer, they will not execute until 
+  the contents are loaded.  Both will load without preventing the contents from being loaded.<br/>
+  Scripts loaded with defer will be loaded in the order in which they appear, and will execute once they and the content are loaded.<br/>
+  If your scripts depend on the content being loaded, you can use defer to make sure they will now try to access something that has not been loaded yet.<br/>
+  <br/><br/>
+  You can concatenate strings:
+  <pre>
+    <code >
+      var1 = "hello";
+      var2= "what's up?"
+
+      console.log(var1 + " " + var2);
+
+      console.log( `$&lbrace;var1&rbrace; $&lbrace;var2&rbrace;`); //notice, it's not a regular quote.
+    </code>
+    You can also use the ` if you want to preserve the spaces:
+    <pre>
+      <code>
+        const output = `I like the song.
+            I gave it a score of 90%.`;        
+      </code>
+    </pre>
+  </pre>
+  With the regular " we would need to escape the characters/tab/new line etc<br/>
 
 
 

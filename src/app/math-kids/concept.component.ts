@@ -61,12 +61,8 @@ maxNumber:number = 10; //this is going to matter for the animation
     thediv.innerHTML = iteration.toString();   
     return thediv;
   }
-  showTheCircles(){
-    //for some reason if I try to use arrays here for the variables sometimes I get a cannot appendchild error (not always)
-    //so going the ugly way on this, see if it works.
-    //var blueCircles :HTMLDivElement[]  = [];
-    //var pinkCircles :HTMLDivElement[]  = [];
-
+  showTheCircles(){    
+    //remove existing ones
     while (this.myBoxForCircles.nativeElement.firstChild) {
       this.myBoxForCircles.nativeElement.removeChild(this.myBoxForCircles.nativeElement.firstChild);
     } 
