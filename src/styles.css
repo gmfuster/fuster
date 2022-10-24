@@ -14,7 +14,10 @@
   background-color:var(--main-background-color);
   margin:0;
   box-sizing: border-box;  
-  width:95vw;
+  width:100%;
+}
+.main-body input{
+  color:darkcyan;  
 }
 .mainBodyScrolling{
   overflow: auto;
@@ -193,24 +196,26 @@ body button{
   }
   .markClassCardContentBlue {
     border: 3px skyblue solid;
-    padding:6px;
+    /*padding:6px;*/
     /*background-color: lightcyan;  */
   }
   .markClassCardWholeBlue {
     /*background-color: skyblue;*/
-    padding-left: 6px;
-    padding-right: 6px;
+    /*padding-left: 6px;
+    padding-right: 6px;*/
     border: 3px skyblue solid;  
     border-bottom: 0;  
     text-align: center;
     background-color: teal;
+    box-sizing: border-box;
   }
   .markClassCardWholePink {
     /*background-color: skyblue;*/
-    padding-left: 6px;
-    padding-right: 6px;
+    /*padding-left: 6px;
+    padding-right: 6px;*/
     border: 6px deeppink solid;    
     text-align: center;
+    box-sizing: border-box;
   }
   a:link {
     color:lightyellow;
@@ -230,9 +235,7 @@ body button{
     background-color: transparent;
     text-decoration: none;
   }
-  .main-body input{
-    color:darkcyan;  
-  }
+  
   .hrClass {
     border: none;
     height: 4px;
