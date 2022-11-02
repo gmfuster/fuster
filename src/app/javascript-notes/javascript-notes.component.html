@@ -163,6 +163,13 @@
     <img width="100%" src="assets\images\js\arrow4.png" alt="arrow 4" /><br/><br/>
     
 
+    This depends on the scope the arrow function is defined within.  They don't have their own this, super, arguments.
+    <br/>
+    Arrow functions don't have access to new.target (which tells you the target of function that got created with new)<br/>
+    Arrow functions aren't suitable for call, bind, apply.<br/>
+    Arrow functions cannot be used as constructors<br/>
+    Arrow functions cannot use yield, so they cannot be used as generators.<br/>
+    Arrow functions do not have a prototype property.<br/>
     
     <p class="HeadingSubTopic2">Default Parameters</p>
 
@@ -287,7 +294,96 @@
     Using the new with regular functions:<br/>
     
     <img  src="assets\images\js\functionsnew.png" alt="functins with new" /><br/><br/>
+
+    <p class="HeadingSubTopic2">Generator Functions</p>
+    These functions are defined with function*. They return a Generator object. These functions can be exited and later re-entered. 
+    Their context (variable bindings) will be saved across re-entrances.<br/>
+    Used mostly in async programming<br/>
+    Calling a generator function does not execute its body immediately;Instead we get an iterator.  When we call .next on that iterator, 
+    the body of the function executes until the next yield statement, which specifies the value to be returned.  It could also be a yield*,
+    which points to another delegator function.<br/>
+    next() returns an object with the returned value, and with a boolean (done)indicating if that was the last yield in the function.<br/>
+    Calling next() again will move to the next yield.<br/>
+    having a return statement will make the generator function finish.
+    <br/>
+    Here is the code but also a pic later to make it more clear.
+    <pre>
+      <code>
+        function* gen2(i) &lbrace;
+          yield i + 1;
+          yield i + 2;
+          yield i + 3;
+        &rbrace;
+        
+        function* generator(i) &lbrace;
+          yield i;
+          yield i + 10;
+          yield* gen2(i);
+          return "done";
+          yield i + 20;
+        &rbrace;
+        
+        const gen = generator(11);
+        
+        console.log(gen.next().value); //yield 1 -> 11
+        console.log(gen.next().value); //yield i+10->11+10 = 21
+        console.log(gen.next().value); //yield gen2 - 11+1 = 12  
+        console.log(gen.next().value); //yield i+2 = 13 
+        console.log(gen.next().value); //yield i+3 = 14
+        console.log(gen.next().value); //return done
+        console.log(gen.next().value); //yield i+20 = UNREACHEABLE
+      </code>
+    </pre>
+    <img  src="assets\images\js\generatorfunc1.png" alt="generator func 1" /><br/><br/>
+    We can also do something like this:
+    <pre>
+      <code>
+        function* logGenerator() &lbrace;
+          console.log();
+          console.log(yield);
+          console.log(yield);
+          console.log(yield);
+        &rbrace;
+        
+        const gen = logGenerator();
+        
+        gen.next();   
+        gen.next('A');    // A
+        gen.next('B'); // B
+        gen.next('C'); //C
+      </code>
+    </pre>
+    Generators are not constructible.
     
+    <p class="HeadingSubTopic2">Regular function vs arrow functions</p>
+
+    Arrow functions don't have their own bindings to "this", "arguments" or "super", and should not be used as methods (functions in objects).
+    arrow functions take this from the context in which they are declared.
+
+
+    <p class="HeadingSubTopic2">arguments</p>
+    <pre>
+      <code>
+        function hey (a,b,c)&lbrace;<br/>
+        &nbsp;  console.log(arguments);<br/>
+      &rbrace;<br/>
+      hey(1,2,3);//[Arguments] &lbrace; '0': 1, '1': 2, '2': 3 &rbrace;<br/>
+      </code>
+    </pre>
+  
+
+
+    <br/>
+    <pre>
+      <code>
+        function hey (...args)&lbrace;<br/>
+        &nbsp;  console.log(arguments);  <br/>
+    &rbrace;    <br/>
+    hey(1,2,3, 4);//[Arguments] &lbrace; '0': 1, '1': 2, '2': 3, '3': 4 &rbrace;<br/>
+      </code>
+    </pre>
+   
+    <br/>
 
     <!-------------------------------------------------------------->
     <!--Arrays-->
@@ -919,9 +1015,9 @@
 
     <img  src="assets\images\js\this5.png" alt="this 5" /><br/><br/>
 
-    For even more examples please check the documentation (MDN docs). <br/>
+     <br/>
       
-
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this" target="_blank">For even more examples please check the documentation (MDN docs).</a>
 
 
 
@@ -960,29 +1056,7 @@
 
 
     
-    <p class="HeadingSubTopic2">arguments</p>
-    <pre>
-      <code>
-        function hey (a,b,c)&lbrace;<br/>
-        &nbsp;  console.log(arguments);<br/>
-      &rbrace;<br/>
-      hey(1,2,3);//[Arguments] &lbrace; '0': 1, '1': 2, '2': 3 &rbrace;<br/>
-      </code>
-    </pre>
-  
-
-
-    <br/>
-    <pre>
-      <code>
-        function hey (...args)&lbrace;<br/>
-        &nbsp;  console.log(arguments);  <br/>
-    &rbrace;    <br/>
-    hey(1,2,3, 4);//[Arguments] &lbrace; '0': 1, '1': 2, '2': 3, '3': 4 &rbrace;<br/>
-      </code>
-    </pre>
    
-    <br/>
 
     
     <p class="HeadingSubTopic2">undefined - null</p>
