@@ -71,6 +71,7 @@ import { SubtractTo10Component } from './math-kids/subtract-to-10.component';
 import { ArraysComponent } from './math-kids/arrays.component';
 import { AddSplittingComponent } from './math-kids/add-splitting.component';
 import { BalanceEquationComponent } from './math-kids/balance-equation.component';
+import { Carry1Component } from './math-kids/carry1.component';
 
 import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
 import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
@@ -122,6 +123,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     ArraysComponent,
     AddSplittingComponent,
     BalanceEquationComponent,
+    Carry1Component,
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,

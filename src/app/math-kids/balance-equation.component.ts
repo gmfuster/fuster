@@ -52,9 +52,7 @@ maxNumber:number = 20;
    this.getNumbers();
   }  
  
-  inputChange(){
-
-  }
+  
   checkResult(){
     
     //check for the old code
