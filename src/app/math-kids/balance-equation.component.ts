@@ -40,10 +40,7 @@ inputResEq1:number = 0;
     this.number1eq2 = this.CommonFuncs.getRandom1ToN(10);
  
     this.totalOfEa1 = this.number1eq1 + this.number2eq1;
-    this.number2eq2 = this.totalOfEa1 - this.number1eq2;
-   //(this.number2eq2 >= 0 )? this.signEq2 = " + ": this.signEq2 = " - ";
-   
-   
+    this.number2eq2 = this.totalOfEa1 - this.number1eq2;         
   }
 
   ngOnInit(){
