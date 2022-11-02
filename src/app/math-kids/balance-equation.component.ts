@@ -22,6 +22,7 @@ messageForEq1WithNumFrom2nd = "??";
 numberEnteredByUser = 0;
 
 inputResEq1:number = 0;
+maxNumber:number = 20;
   
 
   constructor (private renderer: Renderer2, private CommonFuncs:CommonFuncs){      
@@ -36,9 +37,9 @@ inputResEq1:number = 0;
     this.totalOfEa1 = 0;
     this.messageForEq1WithNumFrom2nd = "??";
     this.messageForEq1 = "the total is";
-    this.number1eq1 = this.CommonFuncs.getRandom1ToN(10);
-    this.number2eq1 = this.CommonFuncs.getRandom1ToN(10);
-    this.number1eq2 = this.CommonFuncs.getRandom1ToN(10);
+    this.number1eq1 = this.CommonFuncs.getRandom1ToN(this.maxNumber);
+    this.number2eq1 = this.CommonFuncs.getRandom1ToN(this.maxNumber);
+    this.number1eq2 = this.CommonFuncs.getRandom1ToN(this.maxNumber);
  
     this.totalOfEa1 = this.number1eq1 + this.number2eq1;
     this.number2eq2 = this.totalOfEa1 - this.number1eq2;         
@@ -67,13 +68,14 @@ inputResEq1:number = 0;
     let userTotal = this.number1eq2 + this.numberEnteredByUser;      
     if (userTotal === this.totalOfEa1){
       //balanced
+      alert("YAY (some other msg coming soon");
       this.mySVG.nativeElement.style.transform = "rotate(0deg)";
     }else if ( userTotal > this.totalOfEa1){
       //res is bigger      
-      this.mySVG.nativeElement.style.transform = "rotate(-10deg)";
+      this.mySVG.nativeElement.style.transform = "rotate(10deg)";
     }else {
       //res is smaller
-      this.mySVG.nativeElement.style.transform = "rotate(10deg)";
+      this.mySVG.nativeElement.style.transform = "rotate(-10deg)";
     }
   }
 
