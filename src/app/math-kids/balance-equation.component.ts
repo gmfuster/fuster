@@ -9,6 +9,7 @@ import { CommonFuncs } from '../shared/commonFuncs.service';
 })
 
 export class BalanceEquationComponent implements OnInit, OnDestroy  {
+@ViewChild ("balanceEquationSVG", {static:true, read:ElementRef}) mySVG! : ElementRef;
 number1eq1: number=0; 
 number2eq1: number=0; 
 number1eq2: number=0; 
@@ -41,6 +42,8 @@ inputResEq1:number = 0;
  
     this.totalOfEa1 = this.number1eq1 + this.number2eq1;
     this.number2eq2 = this.totalOfEa1 - this.number1eq2;         
+
+    this.mySVG.nativeElement.style.transform = "rotate(0deg)";
   }
 
   ngOnInit(){
@@ -48,15 +51,30 @@ inputResEq1:number = 0;
    this.getNumbers();
   }  
  
+  inputChange(){
+
+  }
   checkResult(){
-     
-    if (this.numberEnteredByUser === this.totalOfEa1){
+    
+    //check for the old code
+    /*if (this.numberEnteredByUser === this.totalOfEa1){
       this.messageForEq1 = this.totalOfEa1.toString();
       this.messageForEq1WithNumFrom2nd = this.messageForEq1 + " - " + this.number1eq2.toString();
       this.number2eq2ForDisplay = this.number2eq2.toString();
     }else{
       this.messageForEq1 = "Try again";
-    } 
+    } */
+    let userTotal = this.number1eq2 + this.numberEnteredByUser;      
+    if (userTotal === this.totalOfEa1){
+      //balanced
+      this.mySVG.nativeElement.style.transform = "rotate(0deg)";
+    }else if ( userTotal > this.totalOfEa1){
+      //res is bigger      
+      this.mySVG.nativeElement.style.transform = "rotate(-10deg)";
+    }else {
+      //res is smaller
+      this.mySVG.nativeElement.style.transform = "rotate(10deg)";
+    }
   }
 
 
