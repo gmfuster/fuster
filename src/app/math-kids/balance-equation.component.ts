@@ -66,15 +66,18 @@ maxNumber:number = 20;
       this.messageForEq1 = "Try again";
     } */
     let userTotal = this.number1eq2 + this.numberEnteredByUser;      
-    if (userTotal === this.totalOfEa1){
-      //balanced
-      alert("YAY (some other msg coming soon");
-      this.mySVG.nativeElement.style.transform = "rotate(0deg)";
+    if (userTotal === this.totalOfEa1){                     
+        this.mySVG.nativeElement.style.transition = "2s";              
+        this.mySVG.nativeElement.style.transform = "rotate(0deg)";      
+        this.mySVG.nativeElement.animate( [{ border: "green solid 2px" }, {border:"green solid 10px"}, {border:"green solid 15px"} ,  
+        {border: "green solid 5px"}, {border:"0px"} ], {  delay: 100,  duration: 1500})        
     }else if ( userTotal > this.totalOfEa1){
       //res is bigger      
+      this.mySVG.nativeElement.style.transition = "2s";      
       this.mySVG.nativeElement.style.transform = "rotate(10deg)";
     }else {
       //res is smaller
+      this.mySVG.nativeElement.style.transition = "2s";      
       this.mySVG.nativeElement.style.transform = "rotate(-10deg)";
     }
   }
