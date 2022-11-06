@@ -546,6 +546,83 @@
     If you have a variable that will be loaded asynchronously, use the async pipe with it and it will show the data in it (instead of [object] or whatever) 
     once it's loaded<br/><br/>
 
+    <div class = "HeadingSubTopic" id="Animations">Animations</div>
+
+    We can make animations with Angular, similar to the transforms and keyframes that we have with css.<br/>
+    This div element will have some animations.  You don't have to include everything in the animation, I'm just giving an example with a few things for reference.
+    <br/>
+    You may need to install <b>npm install --save @angular/animations.</b><br/>
+    You may need to add <b>BrowserAnimationModule</b> to your appModule file, in the imports.  Import it from <b>"@angular/platform-browser/animations."</b>
+    The div changes the style, the button changes the theState property, which triggers the style change.
+    <br/>
+    <button (click)="onChangeDivClicked()">Click To Change theState</button><button (click)="onChangeDivClickedGreen()">Green</button>
+    <div [@theDivState]= "theState" style="width:200px; height:200px; "></div>
+    For the buttons above, the transition to pink takes 2 secs, anything to green takes 1, and going back to default has no transition to it happens right away.
+    animations is added to the @Component.
+    <pre>
+      <code>
+        div [<b>@theDivState]= "theState"</b>
+
+        <b>animations</b>: [
+          trigger('theDivState', [      
+            state('default', style( &lbrace;      
+              backgroundColor: 'lightblue'
+            &rbrace;)),
+              state('pink', style(&lbrace;      
+                backgroundColor: 'deeppink'
+              &rbrace;)),
+            state('green', style(&lbrace;    
+              backgroundColor: 'green'
+            &rbrace;)),
+
+            transition('default =&gt; pink', [
+              animate('2s')
+            ]),
+            transition('* =&gt; green', [
+              animate('1s')
+            ]),
+          ]),
+      ],
+      </code>
+    </pre>
+    the * means any state. You can also use &lt;=&gt; to mean both aways. You can also indicate void instead of the * or a value, and it means when there is 
+    nothing there.
+    Another way, if we want to indicate the steps of the transitions, we also have keyframes like with css.  It would look something like this:
+    <pre>
+      <code>
+        //providing offset values, if not provided, they are calculated and time is spread out evenly.
+        animate("5s", <b>keyframes</b>([
+          style(&lbrace; backgroundColor: "white", offset: 0 &rbrace;),
+          style(&lbrace; backgroundColor: "blue", offset: 0.2 &rbrace;),
+          style(&lbrace; backgroundColor: "orange", offset: 0.3 &rbrace;),
+          style(&lbrace; backgroundColor: "pink", offset: 1 &rbrace;)
+        ]))
+      </code>
+    </pre>
+    You can also group transitions if you have more than one animation going on at the same time.
+    <pre>
+      <code>
+        transition("* =&gt; void")
+        [
+          <b>group</b>([
+            animate("1s", style(&lbrace; background: "black" &rbrace;)),
+            animate("2s", style(&lbrace; color: "white" &rbrace;))
+          ])
+        ]
+      </code>
+    </pre>
+    You can also have code for when an animation starts or ends, with something like this.
+    <pre>
+      <code>
+        //in your div element or whatever element
+        (@theDivState.<b>start</b>) = "someFuncIntsFile")
+        (@theDivState.<b>done</b>) = "someFuncIntsFile")
+      </code>
+    </pre>
+
+    
+    <br/>
+    
     <div class = "HeadingSubTopic" id="MISCELLANEOUS">MISCELLANEOUS</div>
     To have the app screen scroll sometimes, but not others because you want them locked, have 2 classes with one having overflow set to auto and 
     the other one to hidden.  Then, on the pages where you want it locked, do this.

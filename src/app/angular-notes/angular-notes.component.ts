@@ -5,19 +5,41 @@ import { ForCanDeActivate } from '../shared/forCanActivate.service';
 import {HeadingSubTopicDirective} from '../shared/directives';
 import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
+import { trigger, state, style, animate, transition } from '@angular/animations';
 
 @Component({
   selector: 'angular-notes',
   templateUrl: './angular-notes.component.html',
   styleUrls: ['./angular-notes.component.css'],
-  providers: [CommonFuncs]
-})
+  providers: [CommonFuncs],
+  animations: [
+    trigger('theDivState', [      
+      state('default', style({        
+        backgroundColor: 'lightblue'
+      })),
+      state('pink', style({       
+        backgroundColor: 'deeppink'
+      })),
+      state('green', style({       
+        backgroundColor: 'green'
+      })),
+      transition('default => pink', [
+        animate('2s')
+      ]),
+      transition('* => green', [
+        animate('1s')
+      ]),
+    ]),
+  ],
+    })
 
 export class AngularNotesComponent implements OnInit, ForCanDeActivate {
 @ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
 myHeadings : string[] = [];
 myName : string = "angular-notes";
 @ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+  theState : string = "default";
+
   theVariable :string =  "" ;
   theBoolVar: boolean = true;
   theBoolVar2: boolean = false;
@@ -40,6 +62,14 @@ myName : string = "angular-notes";
     this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
     this.child.getChangesFromParent(this.myHeadings,this.myName )    
   } 
+
+  onChangeDivClicked(){
+
+    (this.theState === "default") ? this.theState = "pink" : this.theState = "default";
+  }
+  onChangeDivClickedGreen(){
+    this.theState = "green";
+  }
   onClickButton1(s: string) {
     this.theVariable = s + "-" + "changed";
   }
