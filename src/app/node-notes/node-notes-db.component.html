@@ -182,6 +182,49 @@
 
     <b>Look up the documentation for the specifics on each things.  This was just to give an idea, not a reference.<br/></b>
 
+
+
+    <p class="HeadingSubTopic" id="Cookies">Cookies and Sessions</p>
+
+    NodeJS can send cookies to the client.  
+    <pre>
+      <code>
+        //send a cookie that expires in 10 seconds.  We can send whatever key-value pairs we want.
+        res.setHeader("Set-Cookie", "loggedIn=true; Max-Age=10");
+      </code>
+    </pre>
+
+    The browser will send the cookie back with each request.  The user can manipulate them in the browser.
+
+    <br/>
+    Session can track different users, and with the session info in the client, more sensitive information can be stored in the server, for 
+    that session, instead of in a cookie in the client.<br/>
+    Install <b>npm install --save express-session</b>
+    <br/>
+    at the beginning of the code:
+    <pre>
+      <code>
+        const session = require("express-session");
+
+        app.use (session(secret:"somelongstring",
+                          resave:false,
+                          saveUninitialized:false,
+                          cookie:...whatever cookie object but optional))
+        
+        //to use it
+        req.session.isLoggedIn = true;
+
+        //on logging out 
+        req.session.destroy( (err)  => res.redirect("\"))
+      </code>
+    </pre>
+
+
+
+
+
+
+
   </div>
   
 </div> 
