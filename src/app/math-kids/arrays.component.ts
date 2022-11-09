@@ -14,6 +14,7 @@ rows:number = 0;
 itemsThatNeedToBeCounted:number[] = [];
 stringForAddingColumns:string = "";
 stringForAddingRows:string = ""
+result: number = 0;
 
   constructor (private renderer: Renderer2){      
     this.renderer.addClass(document.body, 'mainBodyScrollingBlocked');  
@@ -26,32 +27,40 @@ stringForAddingRows:string = ""
   }  
   
   setUpNumbersToShowWithBackground(){
-  //set items that need to be counted.
-  this.itemsThatNeedToBeCounted.length = 0;
-  if (this.rows > 0){
-    for (var i=1; i<= this.rows; i++){
-      let firstElementOfRow = 1 + (i-1) * 10;
-      this.itemsThatNeedToBeCounted.push(firstElementOfRow);
-      if (this.columns > 0 ){
-        for( var j = 2; j<= this.columns; j++){
-          this.itemsThatNeedToBeCounted.push(firstElementOfRow+j-1)
-        }
+
+      if (this.rows <1){
+        this.result = this.columns;
+      }else if (this.columns < 1){
+        this.result = this.rows
+      }else{
+        this.result = this.rows * this.columns;
+      }      
+      //set items that need to be counted.
+      this.itemsThatNeedToBeCounted.length = 0;
+      if (this.rows > 0){
+        for (var i=1; i<= this.rows; i++){
+          let firstElementOfRow = 1 + (i-1) * 10;
+          this.itemsThatNeedToBeCounted.push(firstElementOfRow);
+          if (this.columns > 0 ){
+            for( var j = 2; j<= this.columns; j++){
+              this.itemsThatNeedToBeCounted.push(firstElementOfRow+j-1)
+            }
+          }
+        }    
       }
-    }    
-  }
-  //it is possible that the rows is zero but we have one column, so do the other way too.
-  //it is ok to have duplicates in here.
-  if (this.columns > 0){
-    for (var i=1; i<= this.columns; i++){
-      let firstElementOfCol = 1 + (i-1);
-      this.itemsThatNeedToBeCounted.push(firstElementOfCol);
-      if (this.rows > 0 ){
-        for( var j = 2; j<= this.rows; j++){
-          this.itemsThatNeedToBeCounted.push(firstElementOfCol+ (j-1) *10)
-        }
+      //it is possible that the rows is zero but we have one column, so do the other way too.
+      //it is ok to have duplicates in here.
+      if (this.columns > 0){
+        for (var i=1; i<= this.columns; i++){
+          let firstElementOfCol = 1 + (i-1);
+          this.itemsThatNeedToBeCounted.push(firstElementOfCol);
+          if (this.rows > 0 ){
+            for( var j = 2; j<= this.rows; j++){
+              this.itemsThatNeedToBeCounted.push(firstElementOfCol+ (j-1) *10)
+            }
+          }
+        }     
       }
-    }     
-  }
   }    
 
   setUpCells(){         

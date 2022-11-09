@@ -39,17 +39,17 @@ maxNumber:number = 10; //this is going to matter for the animation
     if (color === "B"){
       thediv.style.border = "deepskyblue solid 5px";
       setTimeout(() => {              
-        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"50%"}, {top:"75%"}, {top :"75%"} ,  
-        {top :"75%", left: (iteration * 8).toString()+"%"}]  ,      
-          {  delay: 300,  duration: 2000, fill: "forwards"})
+        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"40%"}, {top:"50%"}, {top :"50%"} ,  
+        {top :"50%", left: (iteration * 8).toString()+"%"}]  ,      
+          {  delay: 200,  duration: 2000, fill: "forwards"})
         }, 500);   
     }      
     else if (color === "P"){
       thediv.style.border = "deeppink solid 5px";
       setTimeout(() => {              
-        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"40%"}, {top:"50%"}, {top :"50%"}  , 
-        {top :"50%", left: (iteration* 8).toString()+"%"}]  ,      
-          {  delay: 300,  duration: 2000, fill: "forwards"})
+        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"50%"}, {top:"75%"}, {top :"75%"}  , 
+        {top :"75%", left: (iteration* 8).toString()+"%"}]  ,      
+          {  delay: 200,  duration: 2000, fill: "forwards"})
         }, 500);   
     }
     thediv.style.borderRadius = "50%";

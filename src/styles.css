@@ -43,6 +43,21 @@ img{
   align-content:flex-start;
   flex-direction: column;  
 }
+.divsByColCenter{  
+  display: flex;  
+  align-content:center;
+  flex-direction: column;  
+}
+.divsByColSpaceAround{  
+  display: flex;  
+  align-content:space-around;
+  flex-direction: column;  
+}
+.divsByColFlexEnd{  
+  display: flex;  
+  align-content:flex-end;
+  flex-direction: column;  
+}
 .divsByRowCenter{  
   display: flex;
   flex-wrap: wrap;

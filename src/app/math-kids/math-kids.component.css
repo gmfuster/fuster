@@ -7,6 +7,15 @@
     height: 4vh;
     box-sizing: content-box;
 }
+.doubleButtonsLikeDeepSkyBlue{
+    border:deepskyblue 2px solid;
+    border-radius: 8px;
+    padding: 5px;    
+    cursor:pointer;
+    color: deepskyblue;
+    height: 4vh;
+    box-sizing: content-box;
+}
 .doubleButtonsLikePink{
     border:deeppink 2px solid;
     color:deeppink;
@@ -16,8 +25,7 @@
     height: 4vh;
     box-sizing: content-box;
 }
-.digitForEquation{
-    /*border:aqua 2px solid;*/
+.digitForEquation{    
     font-size: 4vh;
     padding: 5px;
     margin:5px;
@@ -54,7 +62,7 @@
     animation-name: blueCircles;
     animation-duration: 2s;
 }
-
+/*TODO change to Angular animation?*/
 @keyframes blueCircles{
     0% { top:5%}
     25% { top:25%}
@@ -63,9 +71,3 @@
     100% { top:100%}
 }
 
-
-/*
-#balanceEquationSVG{
-    transform: rotate(10deg);
-}
-*/

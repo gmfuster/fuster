@@ -1,21 +1,15 @@
 
-  <div >    
-    <!--<div class="CenterMyContent forBanner" [ngStyle]="{backgroundSize: '100% 100%', textAlign:'center',
-    backgroundImage:'url(https://images.unsplash.com/photo-1576502200916-3808e07386a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGFic3RyYWN0JTIwaG9yaXpvbnRhbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60)'}"
-    >   -->         
+  <div >       
     <div class="CenterMyContent">       
       <div class="forBanner" >                 
         <div class="divsByRowCenter">
           <img style="width:30%; margin:5px;;" src="assets/images/validdevices.svg" alt="valid devices computer and tablet " />
-          <p style="color:lightyellow; font-size:3vw; text-align:left; width:65%">          
-            Some programming notes(&uparrow;). <br/>
-            Articles(&downarrow;).<br/>
-            Non Programming(&downarrow;)<br/>    
-            Some Cool Links (&downarrow;)<br/>
+          <p style="color:lightyellow; font-size:3vw; text-align:left; width:65%">                     
+            Programming Notes &amp; Articles<br/>
+            Kids Math Concepts<br/>    
+            Some Fun Stuff &amp; Some Cool <a href="/#links" style="text-decoration:underline">Links</a> (&downarrow;)<br/>
           </p>
-        </div>
-        <!--<img style="width:24%; position:absolute; top:10%; left:6%; opacity: 50%; display:inline; margin:15px; transform: rotate(-10deg);" src="assets/images/validdevices.svg" alt="valid devices computer and tablet " />-->
-        
+        </div>             
       </div>      
     </div>       
   </div>
@@ -24,10 +18,10 @@
 
 <div class="DescriptionSectionText ">
     <!--medium and fcc start-->
-    <div class="divsByRowCenter">  
+    <div class="divsByRowCenter" >  
 
       <div style="border:lightyellow solid 4px; width:25vw; text-align: center;">
-        <a href="https://gmfuster.medium.com/" target="_blank" >
+        <a style="background-color: transparent;" href="https://gmfuster.medium.com/" target="_blank" >
         <span style=" padding: 5px;">Articles</span><br/>
         <img alt="Medium"
           src="assets/images/mediumLogo.png"
@@ -37,7 +31,7 @@
       </div> 
 
       <div style="border:lightyellow solid 4px; width:25vw;text-align: center">
-      <a href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_blank">
+      <a style="background-color: transparent;" href="https://www.freecodecamp.org/espanol/news/author/gemma/" target="_blank">
         <span style="padding: 5px;">Translations</span><br/>
         <img alt="freecodecamp"
           src="assets/images/fcc_primary_small.svg"
@@ -59,15 +53,15 @@
           <div style="display:flex; flex-direction:row; justify-content:flex-start; ">
 
             <div  style="flex:1; border: white 2px solid; padding:5px; margin-right:6px;">              
-              <span><u><em>Adding</em></u></span><br/>
-              <!--todo maybe make a 10 when adding-->
-              <!--todo maybe add even and odd-->
+              <span><u><em>Adding</em></u></span><br/>                    
               <a [routerLink]='["/concept"]'  style="color:white; font-size:3vh; ">
                 Adding Concept
               </a><br/>
+              <!-- comment out and replace with better way 
               <a [routerLink]='["/doubles"]'  style="color:white; font-size:3vh; ">
                 Near Doubles
               </a><br/>
+              -->
               <a [routerLink]='["/arrays"]'  style="color:white; font-size:3vh; ">
                 Arrays
               </a>
@@ -117,7 +111,7 @@
     <br/><br/>
     
     <!--BOOKS START-->
-    <!--<div class="markClassCardWholeBlue">Books</div>-->
+    <div class="markClassCardWholeBlue">Books</div>
     <div class="markClassCardContentBlue">     
       <div style="position:relative;">
         <div style="background:teal; margin:5vw; padding:4vh; border:5px double salmon; height:400px;">
@@ -152,9 +146,9 @@
     </div> 
     <!-- BOOKS END-->
 
-    <!--Links START-->
-    <p id="kidsmath"></p>  
-    <div class="markClassCardWholeBlue">LINKS</div>
+    <br/><br/>
+    <!--Links START-->    
+    <div id="links"  class="markClassCardWholeBlue">LINKS</div>
     <div class="markClassCardContentBlue">     
       <div style="position:relative;">
         <div style="background:teal; margin:0.5vw; padding:4vh; border:5px double salmon; min-height:400px;">
@@ -168,7 +162,7 @@
               <a href="https://codepen.io/pen/" target="_blank">codepen</a><br/>
               <a href="https://stackblitz.com/" target="_blank">stackblitz</a><br/>
               <a href="https://jsfiddle.net/" target="_blank">jsfiddle</a><br/>
-              <!--<a href="https://www.freecodecamp.org/" target="_blank">FCC</a><br/>-->
+              <a href="https://postman.com/" target="_blank">Postman</a><br/>         
             </div>                     
          
         </div>
