@@ -32,8 +32,8 @@
 }
 .gridContainerNumberChart{
     display:flex; 
-    width: 65vw;   
-    height: 65vh;
+    width: 70vw;   
+    height: 70vh;
     align-items:flex-start;
     flex-direction: row;
 } 
