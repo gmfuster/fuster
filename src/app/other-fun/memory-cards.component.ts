@@ -1,4 +1,4 @@
-import { Component , OnInit} from '@angular/core';
+import { Component , OnInit, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'memory-cards',
@@ -30,6 +30,11 @@ export class MemoryCardsComponent implements OnInit{
     this.backImage,this.backImage,this.backImage];
   cardOneOpen: { open:boolean, n:number} = {open:false, n:-1};
   cardTwoOpen: { open:boolean, n:number} = {open:false, n:-1};  
+
+  constructor (private renderer: Renderer2){      
+    this.renderer.addClass(document.body, 'mainBodyScrollingBlocked');  
+    this.renderer.removeClass(document.body, 'mainBodyScrolling');      
+  }
 
   ngOnInit(){
     window.scroll(0,0);
@@ -90,4 +95,9 @@ export class MemoryCardsComponent implements OnInit{
     }     
   }
 
+  ngOnDestroy(): void {
+    this.renderer.removeClass(document.body, 'mainBodyScrollingBlocked');
+    this.renderer.addClass(document.body, 'mainBodyScrolling');  
+  }
+  
 }
