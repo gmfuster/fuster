@@ -291,14 +291,15 @@
     
     <p class="HeadingSubTopic2">New</p>
 
-    Using the new with regular functions:<br/>
+    Using the new with regular functions. You will use this with functions that are called constructor functions (create an object).  The image 
+    here is not one, but in real life, that is what New is used for (those constructor function start with uppercase)<br/>
     
     <img  src="assets\images\js\functionsnew.png" alt="functins with new" /><br/><br/>
 
     <p class="HeadingSubTopic2">Generator Functions</p>
     These functions are defined with function*. They return a Generator object. These functions can be exited and later re-entered. 
     Their context (variable bindings) will be saved across re-entrances.<br/>
-    Used mostly in async programming<br/>
+    Used mostly in async programming.<br/>
     Calling a generator function does not execute its body immediately;Instead we get an iterator.  When we call .next on that iterator, 
     the body of the function executes until the next yield statement, which specifies the value to be returned.  It could also be a yield*,
     which points to another delegator function.<br/>
@@ -961,8 +962,7 @@
 
     Outside of functions, this refers to the global object (window, global).  To get this, you can always use globalThis, both in JS and node.<br/>
 
-    <b>Inside a function, the value of this depends on how the function is called.</b><br/><br/>
-    Again.  <b>Inside a function, the value of this depends on how the function is called.</b><br/> <br/>
+    <b>Inside a function, the value of this depends on how the function is called.</b><br/><br/>    
 
     In a function that doesn't set this to anything else, this will be the global object.<br/>
     <pre>
