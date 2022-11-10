@@ -72,6 +72,7 @@ import { ArraysComponent } from './math-kids/arrays.component';
 import { AddSplittingComponent } from './math-kids/add-splitting.component';
 import { BalanceEquationComponent } from './math-kids/balance-equation.component';
 import { Carry1Component } from './math-kids/carry1.component';
+import { SubtalliesComponent } from './math-kids/subtallies.component';
 
 import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
 import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
@@ -116,6 +117,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     CSharpMVCComponent,
     JavaScriptNotesAsyncComponent,
     JavaScriptNotesObjectsComponent,
+    
     DoublesComponent,
     SubtractTo10Component,    
     NumberChartComponent, 
@@ -124,6 +126,8 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     AddSplittingComponent,
     BalanceEquationComponent,
     Carry1Component,
+    SubtalliesComponent,
+
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,
