@@ -22,81 +22,6 @@
         </li>        
       </ul>    
       
-       <!--JavaScript-->
-       <ul class="nav navbar-nav" >        
-        
-        <li class="dropdown" appDropDown style="background-color:yellow;">    
-          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy;  cursor: pointer;">JS<span class='glyphicon caret'></span></span>
-          </a>
-          <ul class="dropdown-menu">                       
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/javascript-notes"]'  style="color:navy;font-size: 2vh;">
-                Basics
-              </a>
-            </li>  
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/javascript-notes-async"]'  style="color:navy;font-size: 2vh; ">
-                Async
-              </a>
-            </li>     
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/javascript-notes-objects"]'  style="color:navy;font-size: 2vh;  ">
-                Objects
-              </a>
-            </li>                
-          </ul>                    
-        </li>
-      </ul>
-      
-      <!--Angular-->
-      <ul class="nav navbar-nav" >        
-        
-        <li class="dropdown" appDropDown style="background-color:lightcoral;">    
-          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy;  cursor: pointer;">Angular <span class='glyphicon caret'></span></span>
-          </a>
-          <ul class="dropdown-menu">                       
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes"]'  style="color:navy;font-size: 2vh;">
-                Basics or Short
-              </a>
-            </li> 
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-svc-routing"]'  style="color:navy;font-size: 2vh; ">
-                Services & Routing
-              </a>
-            </li>  
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-forms"]'  style="color:navy; font-size: 2vh; ">
-               Forms
-              </a>
-            </li>    
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-http"]'  style="color:navy;font-size: 2vh;  ">
-               HTTP
-              </a>
-            </li>    
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-auth"]'  style="color:navy;font-size: 2vh; ">
-               Authorization
-              </a>
-            </li>   
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-dynamic"]'  style="color:navy; font-size: 2vh; ">
-               Dynamic Components
-              </a>
-            </li>     
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-modules"]'  style="color:navy;font-size: 2vh; ">
-               Modules
-              </a>
-            </li>       
-          </ul>                    
-        </li>
-      </ul>
-
-     
       <!--C#-->
       <ul class="nav navbar-nav" >
         <li class="dropdown" appDropDown style="background-color:plum;">    
@@ -148,8 +73,79 @@
         </li>
       </ul>
 
+      <!--Angular-->
+      <ul class="nav navbar-nav" >        
+        
+        <li class="dropdown" appDropDown style="background-color:lightcoral;">    
+          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
+            <span style="color:navy;  cursor: pointer;">Angular<span class='glyphicon caret'></span></span>
+          </a>
+          <ul class="dropdown-menu">                       
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes"]'  style="color:navy;font-size: 2vh;">
+                Basics or Short
+              </a>
+            </li> 
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-svc-routing"]'  style="color:navy;font-size: 2vh; ">
+                Services & Routing
+              </a>
+            </li>  
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-forms"]'  style="color:navy; font-size: 2vh; ">
+               Forms
+              </a>
+            </li>    
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-http"]'  style="color:navy;font-size: 2vh;  ">
+               HTTP
+              </a>
+            </li>    
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-auth"]'  style="color:navy;font-size: 2vh; ">
+               Authorization
+              </a>
+            </li>   
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-dynamic"]'  style="color:navy; font-size: 2vh; ">
+               Dynamic Components
+              </a>
+            </li>     
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/angular-notes-modules"]'  style="color:navy;font-size: 2vh; ">
+               Modules
+              </a>
+            </li>       
+          </ul>                    
+        </li>
+      </ul>
 
-      
+       <!--JavaScript-->
+       <ul class="nav navbar-nav" >        
+        
+        <li class="dropdown" appDropDown style="background-color:yellow;">    
+          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
+            <span style="color:navy;  cursor: pointer;">JS<span class='glyphicon caret'></span></span>
+          </a>
+          <ul class="dropdown-menu">                       
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/javascript-notes"]'  style="color:navy;font-size: 2vh;">
+                Basics
+              </a>
+            </li>  
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/javascript-notes-async"]'  style="color:navy;font-size: 2vh; ">
+                Async
+              </a>
+            </li>     
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/javascript-notes-objects"]'  style="color:navy;font-size: 2vh;  ">
+                Objects
+              </a>
+            </li>                
+          </ul>                    
+        </li>
+      </ul>      
 
       <!--Node-->
       <ul class="nav navbar-nav" >        

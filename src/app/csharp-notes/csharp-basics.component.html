@@ -156,10 +156,15 @@
                         &rbrace;;
             </code>
         </pre>
-        C# has const and read only fields.  Const values have to be known at compile time, while read only fields can be set in the constructor.  Declare in the class, 
-        set it in the constructor.<br/>
+        C# has const and read only fields.  <b>Const values have to be known at compile time, while read only fields can be set in the constructor.  Declare in the class, 
+        set it in the constructor.</b><br/>
         With c#11 we have a <b>required</b> keyword: public required string Email &lbrace; get; set; &rbrace;.  If we do this, when we instantiate the class with the fields 
         marked as required, we will have to give values for them or we will get a compiler error.<br/><br/>
+        <pre>
+            <code>
+                var person = new Person &lbrace; FirstName = "Ada" &rbrace;// FirstName has been marked required in Person.
+            </code>
+        </pre>
         We can have properties that can be instatiated once but not afterwards, for that we use the <b>init</b> keyword:<br/>
         <pre>
             <code>
@@ -343,7 +348,7 @@
                 Console.WriteLine(t.<b>str</b>);	        
             </code>
         </pre>
-        <b>Deconstructing Tuples</b><br/>
+        <b>Destructuring Tuples</b><br/>
         Using the same GiveATuple() as above, we could also do:
         <pre>
             <code>
@@ -361,17 +366,17 @@
 
                     public class <b>TestGen&lt;T&gt;</b>&lbrace;
                 
-                    public bool isItNull(<b>T theT</b>)&lbrace;
-                        return theT == null;
-                    &rbrace;
+                        public bool isItNull(<b>T theT</b>)&lbrace;
+                            return theT == null;
+                        &rbrace;
                     &rbrace;
                     
                     static void Main(string[] args) &lbrace;    
-                    TestGen<b>&lt;string&gt;</b> t = new TestGen<b>&lt;string&gt;</b>();
-                    TestGen&lt;Int32?&gt; t2 = new TestGen&lt;Int32?&gt;();
-                    Console.WriteLine(t.isItNull("hello"));//false
-                    Console.WriteLine(t2.isItNull(3));//false
-                    Console.WriteLine(t2.isItNull(null));//true
+                        TestGen<b>&lt;string&gt;</b> t = new TestGen<b>&lt;string&gt;</b>();
+                        TestGen&lt;Int32?&gt; t2 = new TestGen&lt;Int32?&gt;();
+                        Console.WriteLine(t.isItNull("hello"));//false
+                        Console.WriteLine(t2.isItNull(3));//false
+                        Console.WriteLine(t2.isItNull(null));//true
                     &rbrace;            
             </code>
         </pre>
@@ -381,16 +386,16 @@
 
                     public class TestGen&lt;T&gt;&lbrace;
                 
-                    <b>public T Data &lbrace; get; set; &rbrace;</b>
+                        <b>public T Data &lbrace; get; set; &rbrace;</b>
                     &rbrace;
                     
                     static void Main(string[] args) &lbrace;     
-                    TestGen&lt;string&gt; t = new TestGen&lt;string&gt;();
-                    t.Data = "hello";
-                    TestGen&lt;nt32?&gt; t2 = new TestGen&lt;Int32?&gt;();
-                    t2.Data = 48;
-                    Console.WriteLine(t.Data);//false
-                    Console.WriteLine(t2.Data);//false      
+                        TestGen&lt;string&gt; t = new TestGen&lt;string&gt;();
+                        t.Data = "hello";
+                        TestGen&lt;Int32?&gt; t2 = new TestGen&lt;Int32?&gt;();
+                        t2.Data = 48;
+                        Console.WriteLine(t.Data);//hello
+                        Console.WriteLine(t2.Data);//48
                     &rbrace;
                 &rbrace;
             </code>
