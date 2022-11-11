@@ -191,7 +191,7 @@
         child component: [ngStyle] has backgroundColor:myColor
         on child component html: &lbrace;&lbrace; myText &rbrace;&rbrace; -- use the variable name, not the alias name 
       </code>
-    </pre>>
+    </pre>
     
     <p class="HeadingSubTopic" id= "NotifyParent">Tell Parent of Change in Child</p>
       
@@ -390,7 +390,7 @@
     You can install the package with <b>npm install --save rxjs@6</b> or whatever version you want.  You can also install <b>npm install --save rxjs-compat</b>
 
     <br/>
-    In previous code we have used this.route.params.subscribe.  params is an observable.  <b>In general, you will not need to create your own observables</b>, but just 
+    In other code (routing section) we have used this.route.params.subscribe.  params is an observable.  <b>In general, you will not need to create your own observables</b>, but just 
     to know, a little bit here.<br/>
     To create your own observables, which are not a part of JS or TypeScript, you need <b>package rxjs</b>.  One of the easiest ways is importing <b>"interval"</b> from 
     the package.<br/>
