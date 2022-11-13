@@ -540,7 +540,7 @@
             <code>
                 private void Tasks_Click(object sender, EventArgs e)
                 &lbrace;
-                    Task&lt;String&gt; newTask = Task.Run(  () => &lt; Thread.Sleep(2000);  return ("I am the new task"); &gt;);                            
+                    Task&lt;String&gt; newTask = Task.Run(  () => &lbrace; Thread.Sleep(2000);  return ("I am the new task"); &rbrace;);                            
                     newTask.Wait();        
                     Console.WriteLine(newTask.Result);                
                 &rbrace;
@@ -554,6 +554,26 @@
         
         <img width="100%" src="assets\images\csharp\ContinueWith.png" alt="ContinueWith" /><br/><br/>
 
+        <pre>
+            <code>
+                Console.WriteLine("START");
+
+		        Task&lt;StringGt; newTask = Task.Run(() =&gt; &lbrace; Thread.Sleep(2000); return ("I am the new task"); &rbrace;);		
+		        newTask.ContinueWith((prevTask) =&lt;
+			    &lbrace;
+				    Console.WriteLine("I continue from newTask and I print its result");
+				    Console.WriteLine("Result of new task: " + prevTask.Result);
+				    return "I am the 2nd task";
+			    &rbrace;).ContinueWith( (prevTask2) =&gt;
+                &lbrace;
+				    Console.WriteLine("I am the 3rd task and I print the 2nd's one result");
+				    Console.WriteLine("Result of 2nd task: " + prevTask2.Result);
+			    &rbarr;) .Wait();
+		
+		        Console.WriteLine("END");
+            </code>
+        </pre>
+
         <p class="HeadingSubTopic" id="Parent-Task">Parent Task</p>
         A parent task can create other child tasks, they can be attached or unattached.  If they are attached, the task will not complete until the children are done.
         <br/>
@@ -561,6 +581,28 @@
         task.
 
         <img width="100%" src="assets\images\csharp\taskattach.png" alt="attach" /><br/><br/>
+
+
+        <pre>
+            <code>
+                Task parent = Task.Factory.StartNew(() =&gt;
+		        &lbrace;
+                    Console.WriteLine("parent task started");
+
+                    Console.WriteLine("starting indepdent nested task");
+                    Task.Factory.StartNew(() =&gt; &lbrace; Thread.Sleep(4000); Console.WriteLine("Indep nested task after 4 secs"); &rbrace;);
+
+                    Console.WriteLine("starting child task - attached");
+                    Task.Factory.StartNew(() =&gt; &lbrace; Thread.Sleep(2000); Console.WriteLine("attached child after 2 secs"); &rbrace;, TaskCreationOptions.AttachedToParent);
+
+                    Console.WriteLine("parent child ending");
+
+		        &rbrace;);
+
+                parent.Wait(); //Wait for attached
+                Console.WriteLine("Parent Done Waiting ");
+            </code>
+        </pre>
        
         <p class="HeadingSubTopic" id="Async-Await">Async Await</p>
 
@@ -677,6 +719,6 @@
             </samp>
         </pre>
         <b>NOTE: if you are using a console project, make sure you have Console.ReadLine(); after you call the method that has this type of code, or the console will 
-        be done before the tasks are done and you will se nothing.</b>
+        be done before the tasks are done and you will see nothing.</b>
    </div>
 </div>
