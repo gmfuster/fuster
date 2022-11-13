@@ -5,7 +5,7 @@ import {CommonFuncs} from '../shared/commonFuncs.service'
 
 @Component({
   selector: 'csharp-threading',
-  templateUrl: './csharp-mvc.component.html',
+  templateUrl: './csharp-threading.component.html',
   styleUrls: [], //share the css file 
   providers: [CommonFuncs] 
 })
@@ -13,7 +13,7 @@ import {CommonFuncs} from '../shared/commonFuncs.service'
 export class CSharpThreadingComponent implements OnInit {
   @ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
   myHeadings : string[] = [];
-  myName : string = "csharp-mvc";
+  myName : string = "csharp-threading";
   @ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
 
   constructor(private commonFuncs:CommonFuncs){}
