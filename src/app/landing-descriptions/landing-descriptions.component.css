@@ -8,17 +8,21 @@
 }
 
 .forBanner{
-  width:96%;
+  width:95%;
   display:flex;
   flex-direction: row;  
   justify-content: center;
   text-align: center;
-  background-color: darkcyan;
+  background-color: deepskyblue;
+  color:navy;
   /*border:salmon 5px double;*/
   margin-top: 2.5vh;
   margin-bottom: 40px;
   box-sizing: border-box;
-  border-top-right-radius: 25%;
+  border-top-right-radius: 15%;
+  border-bottom-left-radius: 15%;
+  border-top-left-radius: 4%;
+  border-bottom-right-radius: 4%;  
 }
 
 .mainParagraph{  
