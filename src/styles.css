@@ -221,8 +221,8 @@ body button{
     border: 3px skyblue solid;  
     border-bottom: 0;  
     text-align: center;
-    background-color: skyblue;
-    color:navy;
+    background-color: deepskyblue;
+    color:white;
     box-sizing: border-box;
     font-weight: bold;
   }
