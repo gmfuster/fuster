@@ -72,11 +72,11 @@ maxNumber:number = 20;
     }else if ( userTotal > this.totalOfEa1){
       //res is bigger      
       this.mySVG.nativeElement.style.transition = "2s";      
-      this.mySVG.nativeElement.style.transform = "rotate(10deg)";
+      this.mySVG.nativeElement.style.transform = "rotate(6deg)";
     }else {
       //res is smaller
       this.mySVG.nativeElement.style.transition = "2s";      
-      this.mySVG.nativeElement.style.transform = "rotate(-10deg)";
+      this.mySVG.nativeElement.style.transform = "rotate(-6deg)";
     }
   }
 
