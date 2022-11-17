@@ -68,22 +68,31 @@ maxNumber:number = 20; //this is going to matter for the animation
            
     thediv.style.position = "absolute"; 
     thediv.style.fontSize = "6vh";    
+    thediv.style.color = "lightyellow";
+    thediv.style.padding = "0.2vw";
+    thediv.style.borderRadius = "50%";
+    thediv.style.backgroundColor = "teal";
     (type === tallyType.crossed)? thediv.innerText = "Ø": thediv.innerText = "0";
     /*if (type === tallyType.crossed){
       thediv.style.transform = "rotate(130deg)";
     } */
     
+    let endLeftposition  = (iteration * 4).toString()+"%";
+    let startLeftPosition = (iteration * 0.5).toString()+"%";
+    let secondLeftPosition = (iteration * 1).toString()+"%";
+    let thirdLeftPosition = (iteration * 2).toString()+"%";
+    let fourthLeftPosition = (iteration * 3).toString()+"%";
 
     if (type === tallyType.regular){
       setTimeout(() => {              
-        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"40%"}, {top:"45%"}, 
-        {top :"50%", left: (iteration * 5).toString()+"%"}]  ,      
+        thediv.animate( [{ top: "1%", left:startLeftPosition }, { top:"25%", left:secondLeftPosition}, {top:"40%", left:thirdLeftPosition}, {top:"45%", left:fourthLeftPosition}, 
+        {top :"50%", left: endLeftposition}]  ,      
           {  delay: 100,  duration: 1000, fill: "forwards"})
         }, 500);                    
     }else{
       setTimeout(() => {              
-        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"50%"}, {top:"60%"}, 
-        {top :"70%", left: (iteration * 5).toString()+"%"}]  ,      
+        thediv.animate( [{ top: "1%", left:startLeftPosition }, { top:"25%", left:secondLeftPosition}, {top:"50%", left:thirdLeftPosition}, {top:"60%", left:fourthLeftPosition}, 
+        {top :"70%", left: endLeftposition}]  ,      
           {  delay: 100,  duration: 1000, fill: "forwards"})
         }, 500);                    
     }                                           
