@@ -51,6 +51,7 @@ showOption:string = "Blank";
       item.innerHTML = i.toString();
       item.style.cursor = "none";
       item.style.backgroundColor === offColor;
+      item.style.cursor = "pointer";
       item.onclick = () => {
         if (item.style.backgroundColor === offColor){
           item.style.backgroundColor = onColor;          
