@@ -36,22 +36,28 @@ maxNumber:number = 10; //this is going to matter for the animation
   createElementAndReturnItBluePink(iteration:number, color:string){
     let thediv = document.createElement("div") as HTMLDivElement;
     thediv = document.createElement("div") as HTMLDivElement;
+
+    let endLeftposition  = (iteration * 8).toString()+"%";
+    let startLeftPosition = (iteration * 2).toString()+"%";
+    let secondLeftPosition = (iteration * 4).toString()+"%";
+    let thirdLeftPosition = (iteration * 6).toString()+"%";
     if (color === "B"){
       thediv.style.border = "deepskyblue solid 5px";
       setTimeout(() => {              
-        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"40%"}, {top:"50%"}, {top :"50%"} ,  
-        {top :"50%", left: (iteration * 8).toString()+"%"}]  ,      
+        thediv.animate( [{ top: "1%", left:startLeftPosition }, { top:"25%", left:secondLeftPosition }, {top:"40%", left:thirdLeftPosition}, {top:"50%"}, {top :"50%"} ,  
+        {top :"50%", left:endLeftposition }]  ,      
           {  delay: 200,  duration: 2000, fill: "forwards"})
         }, 500);   
     }      
     else if (color === "P"){
       thediv.style.border = "deeppink solid 5px";
       setTimeout(() => {              
-        thediv.animate( [{ top: "1%" }, { top:"25%"}, {top:"50%"}, {top:"75%"}, {top :"75%"}  , 
-        {top :"75%", left: (iteration* 8).toString()+"%"}]  ,      
+        thediv.animate( [{ top: "1%", left:startLeftPosition  }, { top:"25%", left:secondLeftPosition}, {top:"50%", left:thirdLeftPosition}, {top:"75%"}, {top :"75%"}  , 
+        {top :"75%", left:endLeftposition}]  ,      
           {  delay: 200,  duration: 2000, fill: "forwards"})
         }, 500);   
     }
+
     thediv.style.borderRadius = "50%";
     thediv.style.position = "absolute";     
     thediv.style.width = "4vw";
