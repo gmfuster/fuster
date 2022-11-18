@@ -1,3 +1,17 @@
+.forNumberDiv{
+    display:inline-block;
+    border:3px solid deepskyblue;
+    color:deeppink;
+    font-size: 4vh;
+    width:5vw;
+}
+.forNumberDivSmall{
+    display:inline-block;
+    border:3px solid deepskyblue;
+    color:deeppink;
+    font-size: 3vh;
+    width:4vw;
+}
 .doubleButtonsLike{
     border:aqua 2px solid;
     border-radius: 8px;

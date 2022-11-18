@@ -73,6 +73,7 @@ import { AddSplittingComponent } from './math-kids/add-splitting.component';
 import { BalanceEquationComponent } from './math-kids/balance-equation.component';
 import { Carry1Component } from './math-kids/carry1.component';
 import { SubtalliesComponent } from './math-kids/subtallies.component';
+import { SubCountUpComponent } from './math-kids/sub-count-up.component';
 
 import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
 import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
@@ -127,6 +128,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     BalanceEquationComponent,
     Carry1Component,
     SubtalliesComponent,
+    SubCountUpComponent,
 
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
