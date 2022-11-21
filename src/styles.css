@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap:regular,bold,italic&subset=latin,latin-ext');
+/*@import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap:regular,bold,italic&subset=latin,latin-ext');*/
 /*@import '~bootstrap/dist/css/bootstrap.css';*/
 
 :root{
@@ -10,9 +10,8 @@
 
 .main-body {  
   color:var(--main-font-color);
-  /*font-family: 'Arima Madurai', cursive;*/
   font-family: 'Courier New', "Lucida Console", "Times New Roman", cursive;
-  font-size: 1.6vw;    
+  font-size: 1.5vw;    
   background-color:var(--main-background-color);
   margin:0;
   box-sizing: border-box;  
@@ -50,16 +49,6 @@ img{
   align-content:center;
   flex-direction: column;  
 }
-.divsByColSpaceAround{  
-  display: flex;  
-  align-content:space-around;
-  flex-direction: column;  
-}
-.divsByColFlexEnd{  
-  display: flex;  
-  align-content:flex-end;
-  flex-direction: column;  
-}
 .divsByRowCenter{  
   display: flex;
   flex-wrap: wrap;
@@ -72,25 +61,6 @@ img{
   justify-content:space-evenly;
   flex-direction: row;  
 }
-.divsByRowSpaceBetween{  
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:space-between;
-  flex-direction: row;  
-}
-.divsByRowSpaceStretch{  
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:stretch;
-  flex-direction: row;  
-}
-.divsByRowSpaceAround{  
-  display: flex;
-  flex-wrap: wrap;
-  justify-content:space-around;
-  flex-direction: row;  
-}
-
 body button {   
   background-color: transparent;
   border-color: deepskyblue;  
@@ -106,8 +76,6 @@ body button:disabled {
   background-color: lightgray;
   border-color: lightgray;    
 }
-
-
 body b{
   background-color:lightyellow;
   color:navy;    
@@ -149,7 +117,6 @@ body pre samp{
   color:gray  ;
   box-sizing: border-box;
 }
-
 .HeadingSubTopic{  
   font-size: 3vw;  
   font-weight: bold;  
@@ -165,13 +132,10 @@ body pre samp{
   text-decoration: underline solid .5vh;
   padding:8px;  
 }
-
 .TopMarginToDealWithNavBarImg {
   margin-top: 6vh;
 }
-.PaddedContents {
-  /*padding-left: 1vw;
-  padding-right: 1vw;*/
+.PaddedContents {  
   box-sizing: border-box;    
   overflow-x: hidden;
 }
@@ -196,28 +160,11 @@ body pre samp{
 body button{
   cursor: pointer;
 }
-.buttonGeneral {
-  background-color: skyblue;
-  border-color: skyblue;
-  color: white;
-  padding: 0.5vw;
-  border-width: 0px;
-  border-radius: 10px;
-  margin: 2px;
-}
-
-  .buttonGeneral:focus {
-    outline: none;
-  }
-  .markClassCardContentBlue {
+.markClassCardContentBlue {
     border: 3px skyblue solid;
-    /*padding:6px;*/
-    /*background-color: lightcyan;  */
-  }
-  .markClassCardWholeBlue {
-    /*background-color: skyblue;*/
-    /*padding-left: 6px;
-    padding-right: 6px;*/
+   
+}
+.markClassCardWholeBlue {  
     border: 3px skyblue solid;  
     border-bottom: 0;  
     text-align: center;
@@ -226,10 +173,7 @@ body button{
     box-sizing: border-box;
     font-weight: bold;
   }
-  .markClassCardWholePink {
-    /*background-color: skyblue;*/
-    /*padding-left: 6px;
-    padding-right: 6px;*/
+  .markClassCardWholePink {   
     border: 6px deeppink solid;    
     text-align: center;
     box-sizing: border-box;
@@ -253,26 +197,12 @@ body button{
     text-decoration: none;
   }
   
-  .hrClass {
-    border: none;
-    height: 4px;
-    background: skyblue;
-    margin-bottom: 50px;
-    margin-left: 3vw;
-    margin-right: 3vw;
-  }
 .hrHeaderClass {
   border: none;
   height: 10px;
   background: skyblue;  
   margin-left: 3vw;
   margin-right: 3vw;
-}
-.hrClassNoSideMargin {
-  border: none;
-  height: 4px;
-  background: skyblue;
-  margin-bottom: 50px;
 }
 .radio-toolbar {
   margin: 10px;
@@ -309,12 +239,6 @@ body button{
   color: orangered;  
   padding:8px;  
 }
-.container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
 
 .leftLinks{
   box-sizing: border-box;
@@ -326,12 +250,7 @@ body button{
   overflow:auto;
   border:solid deepskyblue 2px;
 }
-.item-fixed-top{
-  position: fixed;
-  right: 0;
-  left: 0;
-  z-index: 1030;
-}
+
 
 
 

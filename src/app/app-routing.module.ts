@@ -12,7 +12,7 @@ import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.co
 import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.component';
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 
-import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
+/*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
 
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
 import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
@@ -34,7 +34,7 @@ import { NodeNotesDBComponent } from './node-notes/node-notes-db.component';
 import { ReadBackComponent } from './other-fun/read-back.component';
 
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
-import {MapItComponent } from './other-fun/map-it.component';
+/*import {MapItComponent } from './other-fun/map-it.component';*/
 
 import { ForCanActivate } from './shared/forCanActivate.service';
 import { ForCanDeActivate } from './shared/forCanActivate.service';
@@ -54,6 +54,8 @@ import {SubCountUpComponent} from './math-kids/sub-count-up.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+
+  /*{ path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },*/
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes-svc-routing', component: AngularNotesSvcRoutingComponent, pathMatch: 'full' },  
   { path: 'angular-notes-forms', component: AngularNotesFormsComponent, pathMatch: 'full' },  
@@ -64,7 +66,7 @@ const routes: Routes = [
   { path: 'angular-notes-dynamic', component: AngularNotesDynamicComponent, pathMatch: 'full' },  
   { path: 'angular-notes-modules', component: AngularNotesModulesComponent, pathMatch: 'full' },  
 
-  { path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },
+  /*{ path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },*/
 
   { path: 'csharp-articles', component: CSharpArticlesComponent, pathMatch: 'full' },
   { path: 'csharp-basics', component: CSharpBasicsComponent, pathMatch: 'full' },
@@ -77,7 +79,7 @@ const routes: Routes = [
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
-  { path: 'map-it', component: MapItComponent, pathMatch: 'full' },  
+ /* { path: 'map-it', component: MapItComponent, pathMatch: 'full' },  */
 
   { path: 'javascript-notes', component: JavaScriptNotesComponent, pathMatch: 'full' }, //basics
   { path: 'javascript-notes-async', component: JavaScriptNotesAsyncComponent, pathMatch: 'full' }, 

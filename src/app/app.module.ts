@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { HeaderImageComponent } from './header-image/header-image.component';
+/*import { HeaderImageComponent } from './header-image/header-image.component';*/
 import { FooterComponent } from './footer/footer.component';
 import { LandingDescriptionsComponent } from './landing-descriptions/landing-descriptions.component';
 
@@ -22,7 +22,7 @@ import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.co
 import { AngularNotesDynamicComponent } from './angular-notes/angular-notes-dynamic.component';
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 
-import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';
+/*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
 
 import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
 import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
@@ -62,7 +62,7 @@ import { SomePopupComponent } from './shared/some-popup.component';
 import { NotFoundComponent } from './other-fun/not-found.component';
 
 import { ReadBackComponent } from './other-fun/read-back.component';
-import { MapItComponent } from './other-fun/map-it.component';
+/*import { MapItComponent } from './other-fun/map-it.component';*/
 
 import { DoublesComponent } from './math-kids/doubles.component';
 import { NumberChartComponent } from './math-kids/number-chart.component';
@@ -92,8 +92,8 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     AngularNotesModulesComponent,
     JavaScriptNotesComponent,
     DynamicNotesComponent,
-    ProbabilityNotesComponent,
-    HeaderImageComponent,
+    /*ProbabilityNotesComponent,*/
+    /*HeaderImageComponent,*/
     LandingDescriptionsComponent,
     FooterComponent,
     SomeChildComponentComponent,
@@ -107,7 +107,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     appSomeDirectiveDirectiveSTR,
     DropdownDirective,
     ReadBackComponent,
-    MapItComponent,
+    /*MapItComponent,*/
     NotFoundComponent,
     CSharpThreadingComponent,
     CSharpEFComponent,
