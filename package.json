@@ -18,7 +18,7 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
-    "bootstrap": "^3.4.1",
+    "bootstrap": "^5.2.2",
     "ejs": "^3.1.8",
     "express-handlebars": "^6.0.6",
     "pug": "^3.0.2",

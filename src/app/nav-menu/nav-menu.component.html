@@ -1,9 +1,10 @@
-<div class="TopNav" style="margin:0px; border:0px; padding:0px; font-size:2.5vh; background-color: rgb(48, 46, 46)">
+<div class="TopNav" style="margin:0px; border:0px; padding:0px; font-size:2vw; background-color: rgb(48, 46, 46)">
 
 <nav class="navbar navbar-default navbar-fixed-top" >
 
-  <div ><!--class="container-fluid-nav"-->
+  <div class="container-fluid-nav"><!---->
     
+    <!--
     <div class="navbar-header"  >
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target='.navbar-collapse' 
       [attr.aria-expanded]='isExpanded' (click)='toggle()' style="color:navy;">
@@ -12,8 +13,10 @@
         <span style="color:navy;" class="icon-bar"></span>
       </button>    
     </div>
+    -->
 
-    <div class='navbar-collapse' [ngClass]='{ "in": isExpanded }' style=" width: 100%;">
+    <div class='navbar-collapse' [ngClass]='{ "in": isExpanded }' style=" width: 75%;">
+      
       <ul class="nav navbar-nav" >
         <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
           <a [routerLink]='["/"]' (click)='collapse()' style="color:rgb(183, 253, 253);  ">
