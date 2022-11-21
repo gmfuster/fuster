@@ -55,7 +55,7 @@ import {SubCountUpComponent} from './math-kids/sub-count-up.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
 
-  /*{ path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },*/
+  { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes-svc-routing', component: AngularNotesSvcRoutingComponent, pathMatch: 'full' },  
   { path: 'angular-notes-forms', component: AngularNotesFormsComponent, pathMatch: 'full' },  
