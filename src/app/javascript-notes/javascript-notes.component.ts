@@ -33,6 +33,4 @@ myName : string = "javascript-notes";
     //TODO I cannot get the child to see the contents when using ViewChildren so doing this for now.
     this.child.getChangesFromParent(this.myHeadings,this.myName )    
   }  
-  
-  
 }

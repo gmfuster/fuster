@@ -1,7 +1,5 @@
 <div class="PaddedContents ">
   
-    
-  
     <div class="leftLinks" #HeadingsContainer>      
       <left-links ></left-links> 
     </div>      
@@ -99,10 +97,7 @@
           consumePromise();
         </code>
       </pre>
- 
 
-
-  
     <img width="100%" src="assets\images\js\promise1.png" alt="promise 1" /><br/><br/>
 
       The above example only has code for the resolve, if we wanted to have somewhere in the code to send the reject, it would look something like <br/>      
@@ -149,18 +144,7 @@
        
     <br/>
     <img width="100%" src="assets\images\js\promise2.png" alt="promise 2" /><br/><br/>
-    <!--
-    The consumePromise doesn't have to name (resolve) and (reject) that way, you can name it whatever. Changing that part of the code to this also works:
-    <pre>
-      <code>
-        let consumePromise = () => &lbrace;
-        &nbsp; myPromise.then( 
-        &nbsp; &nbsp; (null),
-        &nbsp; &nbsp; (rejectOHNO) => console.log(rejectOHNO));
-          &rbrace;
-      </code>
-    </pre>
-    -->
+  
     <br/>
     If instead of reject(new Error("REJECTED!!!") we do reject("REJECTED!!!"); it will still go to the reject but it won't display as an error, but as a string.<br/>
 
@@ -229,8 +213,6 @@
         OH no!!Error: rejected!!!
       </samp>
     </pre>
-    
-
 
     <!-------------------------------------------------------------->
     <!--chains-->
@@ -247,9 +229,6 @@
     <img width="100%" src="assets\images\js\promisechain2.png" alt="promise chain 2" /><br/><br/>
 
     If we had more than one promise (let myPromise = new Promise), the then() can return one of the additional promises instead of just returning a string or whatever.<br/>
-
-
-
 
     <!-------------------------------------------------------------->
     <!--static functions-->
@@ -276,17 +255,14 @@
     <p class="HeadingSubTopic2">allsettled</p>
     This will have the then happen, regardless of resolve or reject.  And values will have the status and result of the promises.
 
-    
     <p class="HeadingSubTopic2">any</p>
 
     Promise.any[ list of promises] will wait for just one to finish.  Once that happens, the others are ignored.<br/>
 
-    
     <p class="HeadingSubTopic2">race</p>
 
     Will happen with whatever promise finishes first, it doesn't matter if with resolve or reject.<br/>
 
-    
     <p class="HeadingSubTopic2">resolve</p>
     the resolve will call the first function in the arguments.
     <pre>
@@ -300,8 +276,6 @@
     <br/>
 
     <img width="100%" src="assets\images\js\resolve.png" alt="resolve" /><br/><br/>
-
-
     
     <p class="HeadingSubTopic2">reject</p>
     similar to the resolve but it goes to the second function provided, the reject one.<br/>
@@ -313,8 +287,6 @@
         )
       </code>
     </pre>
-    
-
 
     <!-------------------------------------------------------------->
     <!--Await-->
@@ -406,8 +378,6 @@
         &rbrace;
       </code>
     </pre>
-    
-
 
     <p class="HeadingSubTopic" id="workers">Workers</p>
 
@@ -432,12 +402,6 @@
         postMessage(whatever);
       </code>
     </pre>
-
-
-
-
-
-
     </div>    
 </div>
     

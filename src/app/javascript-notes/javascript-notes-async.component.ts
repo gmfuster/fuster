@@ -1,4 +1,3 @@
-
 import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import {HeadingSubTopicDirective} from '../shared/directives';
 import {LeftLinksComponent} from  '../shared/left-links.component';
@@ -27,5 +26,4 @@ myName : string = "javascript-notes-async";
     this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
     this.child.getChangesFromParent(this.myHeadings,this.myName )    
   }  
-  
 }

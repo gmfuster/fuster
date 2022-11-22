@@ -26,5 +26,4 @@ export class JavaScriptNotesObjectsComponent implements OnInit {
     this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
     this.child.getChangesFromParent(this.myHeadings,this.myName )    
   }  
-  
 }

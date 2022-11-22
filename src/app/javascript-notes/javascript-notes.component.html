@@ -1,9 +1,5 @@
 
 <div class="PaddedContents"  >  
-    
-    <h4 class="CenterMe PaddedContents">You can type the JavaScript code  
-      <a  href="https://replit.com/languages/nodejs" target="_new">on replit.com</a>     
-  </h4>  
 
   <div class="leftLinks" #HeadingsContainer>   
     <left-links ></left-links>   
@@ -11,7 +7,6 @@
   
   <div class="PaddedContents PaddedContentsTopics" >
 
-    
    <!-------------------------------------------------------------->
     <!--SCOPE-->
     <!-------------------------------------------------------------->        
@@ -21,17 +16,14 @@
     There are two types of scope in JavaScript: Global and Local.  You get global scope when you declare a variable outside of a block, or outside of 
     a function.  Global scope on the browser is the "window".<br/>
     We can declare variables with var, let, const.  LET and CONST are the same as far as scope is concerned.  Using "var"<br/><br/>
-
     
     <img  src="assets\images\js\varscope1.png" alt="var scope" /><br/><br/>
     
     Similar code, but now we use LET which has block scope<br/><br/>
-
     
     <img  src="assets\images\js\letscope1.png" alt="let scope" /><br/><br/>
     
     How about if you use var, outside a function and inside a function (we already know there is no block scope)<br/><br/>
-
     
     <img  src="assets\images\js\varscope2.png" alt="var scope outide func" /><br/><br/>    
     
@@ -68,7 +60,6 @@
     
     Parameters passed to functions act as local variables to the function.    
 
-    
     <p class="HeadingSubTopic2">Scope - Hoisting</p>
 
     Hoisting means JavaScript moving variables or function declarations to the top of their context. 
@@ -83,23 +74,18 @@
 
     <br/>    
 
-
-
-    
     <p class="HeadingSubTopic2">Scope - Closures</p>
 
     JavaScript allows for functions inside functions (nested functions). 
     When a function is defined within another function, the inner function has access to the variable scope of the outer function. 
     This is what function closures are.
 
-    
     <img  src="assets\images\js\closures1.png" alt="closures 1" /><br/><br/>
     
     The inner function has access to the parent function at the time of creation, not only while the parent function is running.  This will also work:<br/><br/>
 
     
     <img  src="assets\images\js\closures2.png" alt="closures 2" /><br/><br/>
-  
   
     <!-------------------------------------------------------------->
     <!--FUNCTIONS-->
@@ -112,7 +98,6 @@
 
     Because regular functions are objects, you can add a property to the function but just doing myFunc.myProp = "hey"<br/>
 
-    
     <img  src="assets\images\js\functions1.png" alt="functions 1" /><br/><br/>
     
     A function that doesn't return something will return undefined.<br/>
@@ -120,9 +105,7 @@
     
     <img  src="assets\images\js\functions2.png" alt="functions 2" /><br/><br/>
 
-
     You can assign anonymous functions to a variable, then call them through that variable.<br/>
-
     
     <img  src="assets\images\js\functions3.png" alt="functions 3" /><br/><br/>
     
@@ -138,30 +121,24 @@
     
     A function can return a function.  (see example on scope section)<br/><br/>
 
-    
     <p class="HeadingSubTopic2">Arrow Functions</p>
 
-    
     <img width="100%" src="assets\images\js\arrow1.png" alt="arrow 1" /><br/><br/>
     
     <b>Arrow functions don't have their own "this" but the one from the parent. (this code also has the this for the object.  More on this later.) </b><br/>
 
-    
     <img width="100%" src="assets\images\js\arrow2.png" alt="arrow 2" /><br/><br/>
     
     Arrow functions don't have the "arguments" keyword.<br/>
 
-    
     <img  src="assets\images\js\arrow3.png" alt="arrow 3" /><br/><br/>
     
     Arrow functions can never have duplicate named parameters, whether in strict or non-strict mode.<br/>
 
     Regular functions created using function declarations or expressions are ‘constructible’ and ‘callable’.  
     Being constructible means they can be used with the keyword “new”.  Arrow functions are not. <br/>
-
     
     <img width="100%" src="assets\images\js\arrow4.png" alt="arrow 4" /><br/><br/>
-    
 
     This depends on the scope the arrow function is defined within.  They don't have their own this, super, arguments.
     <br/>
@@ -175,18 +152,13 @@
 
     You should put the default paramenters at the end of the parameters of the function.<br/>
 
-    
     <img  src="assets\images\js\defaultparams.png" alt="default params" /><br/><br/>
-    
     
     <p class="HeadingSubTopic">Currying</p>
 
     We can use this to take advantage of closures.  <br/>
 
-    
     <img  src="assets\images\js\currying1.png" alt="currying" /><br/><br/>
-    
-
     
     <p class="HeadingSubTopic2">Function Composition</p>
 
@@ -202,9 +174,7 @@
       </code>
     </pre>
     
-    
     <img  src="assets\images\js\composition1.png" alt="composition for same function twice" /><br/><br/>
-    
 
     <pre >
       <code>
@@ -235,10 +205,8 @@
       </code>
     </pre>
    
-    
     <img  src="assets\images\js\composition2.png" alt="composition for 3 functions, one with 2 arguments" /><br/><br/>
-    
-
+  
     <p class="HeadingSubTopic2">IIFE (IMMIEDIATELY INVOKE FUNCTION EXPRESSION)</p>
 
     Notice the function being inside () for this:<br/>
@@ -253,42 +221,34 @@
     
     <br/><br/>
 
-    
     <p class="HeadingSubTopic2">call, apply, bind</p>
 
     call will call a function. You can call the function in an object, so it will use the data on another object, not the one with the function.<br/>
 
-    
     <img  src="assets\images\js\call.png" alt="call" /><br/><br/>
     
     If the function takes parameters:<br/>
-
     
     <img  src="assets\images\js\call2.png" alt="call with args" /><br/><br/>
     
 
     Apply is similar to call, but for the arguments, we pass an array instead of comma delimmited.<br/>
 
-    
     <img src="assets\images\js\apply.png" alt="apply with args" /><br/><br/>
     
     Bind is similar to call/ apply but returns a new function without running it.  You cannot give an argument on calling it if you already gave it on binding.<br/>
 
-    
     <img  src="assets\images\js\bind.png" alt="bind with args" /><br/><br/>
     
     You can provide the argument later if you don't provide it on binding:<br/>
 
-    
     <img  src="assets\images\js\bind2.png" alt="bind with args 2" /><br/><br/>
-    
     
     <p class="HeadingSubTopic2">Higher Order Functions</p>
 
     In JavaScript functions can take other functions as arguments and they can return a function.  Those functions are called Higher Order Functions.
     Examples of HOF are JS map, filter, reduce etc.<br/><br/>
 
-    
     <p class="HeadingSubTopic2">New</p>
 
     Using the new with regular functions. You will use this with functions that are called constructor functions (create an object).  The image 
@@ -361,7 +321,6 @@
     Arrow functions don't have their own bindings to "this", "arguments" or "super", and should not be used as methods (functions in objects).
     arrow functions take this from the context in which they are declared.
 
-
     <p class="HeadingSubTopic2">arguments</p>
     <pre>
       <code>
@@ -371,8 +330,6 @@
       hey(1,2,3);//[Arguments] &lbrace; '0': 1, '1': 2, '2': 3 &rbrace;<br/>
       </code>
     </pre>
-  
-
 
     <br/>
     <pre>
@@ -392,7 +349,6 @@
 
     <p class="HeadingSubTopic" id="arrays">Arrays</p>
     Since functions are objects in JS, an array could contain functions.  Arrays are zero-based.  Ex: var cars = [“Saab”, “Volvo”]’;<br/>
-
     
     <p class="HeadingSubTopic2">forEach</p>
 
@@ -438,9 +394,7 @@
     Sometimes we can have variables that are like arrays but are not arrays. These almost arrays will not have all methods that are available to arrays.  
     One example in older browser is forEach. But, if the structure is like arrays without being an array, we can also use forEach with Array.Prototype.<br/>
 
-    
     <img  src="assets\images\js\arrforeach.png" alt="array foreach" /><br/><br/>
-    
     
     <p class="HeadingSubTopic2">map</p>
     This code will <mark>NOT</mark> populate the second array with what is expected, but it will create 5 undefined elements:<br/>
@@ -485,11 +439,9 @@
       </code>
     </pre>
     
-
     <br/>
     
     <p class="HeadingSubTopic2">reduce</p>
-
 
     It reduces the array to a single value.  It uses a reducer function that we create and it applies it to every element on the array.<br/>
 
@@ -525,7 +477,6 @@
         console.log("----------------------")
       </code>
     </pre>
-    
 
     The next one uses a different reducer.<br/>
     <pre>
@@ -540,7 +491,6 @@
         console.log("----------------------")
       </code>
     </pre>
-    
 
     The next one has yet a different reducer, with a +1 added to each element.<br/>
 
@@ -557,7 +507,6 @@
         console.log(arr11.reduce(reducer3, 2));
       </code>
     </pre>      
-
     
     <img  src="assets\images\js\reduce1.png" alt="reduce 1" /><br/><br/>
 
@@ -579,8 +528,6 @@
       </code>
     </pre>
     <br/>
-
-
     <br/>
     
     <p class="HeadingSubTopic2">string to array</p>
@@ -598,7 +545,6 @@
         console.log(arr2); --> [ 'I ', 'm ', ' very cool string' ]<br/>
       </code>
     </pre>
-   
 
     <br/>
     
@@ -623,7 +569,6 @@
       </code>
     </pre>
    
-
     <br/>
     
     <p class="HeadingSubTopic2">unshift</p>
@@ -638,7 +583,6 @@
       </code>
     </pre>
   
-
     <br/>
     
     <p class="HeadingSubTopic2">shift</p>
@@ -649,8 +593,6 @@
         console.log(arr1.toString());//-->2,3,4<br/>
       </code>
     </pre>
-   
-
 
     <br/>
     
@@ -663,7 +605,6 @@
         //-->[ <1 empty item>, 2, 3, 4 ] <br/>
       </code>
     </pre>
-   
 
     <br/>
     
@@ -695,20 +636,16 @@
         console.log(arr2d);//[2,3]<br/>
       </code>
     </pre>
-   
 
     <br/>
     
     <p class="HeadingSubTopic2">splice</p>
     It removes a number of elements. <b>It modifies the array and returns a new array too. </b>
 	  The first argument is the index where we start removing.<br/>    
-
-    
     <img  src="assets\images\js\splice.png" alt="splice" /><br/><br/>
 
     <img  src="assets\images\js\splice2.png" alt="splice 2" /><br/><br/>
     
-
     <br/>
     
     <p class="HeadingSubTopic2">concat</p>
@@ -719,7 +656,6 @@
         arr1 = arr1.concat(arr2);<br/>
       </code>
     </pre>
-   
 
     <br/>
     
@@ -792,9 +728,7 @@
         console.log(is);//false<br/>
       </code>
     </pre>
-  
-
-
+ 
     <br/>
     
     <p class="HeadingSubTopic2">some</p>
@@ -842,7 +776,6 @@
       </code>
     </pre>
   
-
     <br/>
     
     <p class="HeadingSubTopic2">findindex</p>
@@ -872,7 +805,6 @@
     
     <img src="assets\images\js\findindex.png" alt="findindex" /><br/><br/>
     
-
     <br/>
     
     <p class="HeadingSubTopic2">includes</p>
@@ -892,7 +824,6 @@
       </code>
     </pre>
  
-
     <br/>
     
     <p class="HeadingSubTopic2">flat</p>
@@ -903,7 +834,6 @@
       </code>
     </pre>
    
-
     <br/>
     
     <p class="HeadingSubTopic2">isArray</p>
@@ -913,7 +843,6 @@
         console.log(b);//true
       </code>
     </pre>
-  
 
     <br/>
     
@@ -932,7 +861,6 @@
       </code>
     </pre>
    
-
       There is a similar <span class="notesStrong">keys</span> one.<br/>
 
       <br/>      
@@ -992,7 +920,6 @@
     To set the value of this to a particular value when calling a function, use call(), or apply() (you can check them out under functions)<br/>
 
     In a class, this will refer to the class itself (regular function or arrow functions).<br/>
-
     
     <img  src="assets\images\js\this1.png" alt="this 1" /><br/><br/>
 
@@ -1019,8 +946,6 @@
       
     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this" target="_blank">For even more examples please check the documentation (MDN docs).</a>
 
-
-
      <!-------------------------------------------------------------->
     <!--misc-->
     <!-------------------------------------------------------------->
@@ -1043,7 +968,6 @@
     <p class="HeadingSubTopic2">Compare</p>
 
     === will not do type coertion while == does.  So, 1 == "1" is true, but 1 === "1" is false.<br/>
-
     
     <p class="HeadingSubTopic2">Strings</p>
 
@@ -1053,11 +977,6 @@
     <p class="HeadingSubTopic2">Symbol</p>
 
     JS has a new symbol type.  The particular thing about them is that they are always unique even if they are created with the same values.   <br/>
-
-
-    
-   
-
     
     <p class="HeadingSubTopic2">undefined - null</p>
 
@@ -1072,14 +991,11 @@
     console.log(+0 === -0);//true<br/>
     console.log(Object.is(+0, -0));//false<br/>
     <br/>
-
     
     <p class="HeadingSubTopic2">coalesce</p>
 
     let somevar = avar ?? “hello”;   &nbsp;  &nbsp; ==> Set the somevar to avar unless that is null or undefined, in that case, set it to “hello”<br/>
 
-
-    
     <p class="HeadingSubTopic2">destructuring</p>
 
     <pre>
@@ -1244,15 +1160,5 @@ const-> It does not define a constant value. It defines a constant reference to 
   </pre>
   With the regular " we would need to escape the characters/tab/new line etc<br/>
 
-
-
-
-
-
-
-
   </div>
-
-
-
 </div> 
