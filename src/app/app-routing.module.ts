@@ -15,6 +15,7 @@ import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modu
 /*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
 import { CSharpModule } from './csharp/csharp.module';
 import { JavascriptModule } from './javascript/javascript.module';
+import { NodeModule } from './node/node.module';
 /*
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
 import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
@@ -23,7 +24,7 @@ import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.compon
 import { CSharpInterfacesComponent } from './csharp-notes/csharp-interfaces.component';
 import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
 import { CSharpLinqComponent } from './csharp-notes/csharp-linq.component';
-import { CSharpMVCComponent } from './csharp-notes/csharp-mvc.component';*/
+import { CSharpMVCComponent } from './csharp-notes/csharp-mvc.component';
 
 import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
 import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
@@ -33,8 +34,8 @@ import { NodeNotesComponent } from './node-notes/node-notes.component';
 import { NodeNotesExpressComponent } from './node-notes/node-notes-express.component';
 import { NodeNotesMVCComponent } from './node-notes/node-notes-mvc.component';
 import { NodeNotesDBComponent } from './node-notes/node-notes-db.component';
+*/
 import { ReadBackComponent } from './other-fun/read-back.component';
-
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
 /*import {MapItComponent } from './other-fun/map-it.component';*/
 
@@ -59,6 +60,7 @@ const routes: Routes = [
 
   {path: 'csharp', loadChildren: () => import('./csharp/csharp.module').then(m => m.CSharpModule)},
   {path: 'javascript', loadChildren: () => import('./javascript/javascript.module').then(m => m.JavascriptModule)},
+  {path: 'node', loadChildren: () => import('./node/node.module').then(m => m.NodeModule)},
 
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
@@ -86,11 +88,11 @@ const routes: Routes = [
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
  /* { path: 'map-it', component: MapItComponent, pathMatch: 'full' },  */
-
+/*
   { path: 'javascript-notes', component: JavaScriptNotesComponent, pathMatch: 'full' }, //basics
   { path: 'javascript-notes-async', component: JavaScriptNotesAsyncComponent, pathMatch: 'full' }, 
   { path: 'javascript-notes-objects', component: JavaScriptNotesObjectsComponent, pathMatch: 'full' }, 
-
+*/
   /*
   { path: 'node-notes', component: NodeNotesComponent, pathMatch: 'full' }, //basics
   { path: 'node-notes-express', component: NodeNotesExpressComponent, pathMatch: 'full' }, //Express

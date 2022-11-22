@@ -41,6 +41,14 @@
         </li> 
       </ul> 
 
+      <ul class="nav navbar-nav" > 
+        <li  style="background-color: green; ">    
+          <a class="nav-link" [routerLink]='["/node"]' >         
+            <span style="color:navy; cursor: pointer;">Node</span>
+          </a>
+        </li> 
+      </ul> 
+
       <!--C#-->
       <!--
       <ul class="nav navbar-nav" >
@@ -99,7 +107,7 @@
         
         <li class="dropdown" appDropDown style="background-color:lightcoral;">    
           <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy;  cursor: pointer;">Angular<span class='glyphicon caret'></span></span>
+            <span style="color:navy;  cursor: pointer;">A<span class='glyphicon caret'></span></span>
           </a>
           <ul class="dropdown-menu">                       
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
