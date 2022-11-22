@@ -1,4 +1,3 @@
-//import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, PipeTransform ,Pipe, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ForCanDeActivate } from '../shared/forCanActivate.service';
@@ -104,8 +103,7 @@ myName : string = "angular-notes";
       default: this.theColor = "aqua";
               break;
 
-    }
-      
+    }      
   }
 
   onValueChanged(event:KeyboardEvent){
@@ -138,8 +136,6 @@ myName : string = "angular-notes";
       return true;
   }
 }
-
-
 
 //instead of specific file just add here since it's just for the example.
 @Pipe({

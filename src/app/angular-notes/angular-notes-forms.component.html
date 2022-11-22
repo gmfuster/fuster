@@ -46,13 +46,11 @@
       <input type="number" ngModel name="theNumber"/>
       <button type="submit">Submit JS object</button>
     </form>
-    
-    
+        
     <p class="HeadingSubTopic" id="ViewChild-T">ViewChild (T)</p>  
 
     Another way to access the form from the ts file is the   
-    <a href="/angular-notes/#viewchild">ViewChild</a>
-    <!--TODO figure out why this doesn't work and fix instead of just using the href above-->
+    <a href="/angular-notes/#viewchild">ViewChild</a>   
     <!--<a [routerLink]='["/angular-notes"]' fragment="viewchild">ViewChild</a>--> mentioned in the base notes.<br/>
 
     For the form above, using viewchild would look like this:<br/>
@@ -76,7 +74,6 @@
       </code>
     </pre>
 
-    <!--<hr class="hrClass" />-->
     <p class="HeadingSubTopic" id="Validation-T">Validation (T)</p>  
     In the form below we have the input number as <b>required</b>.  That means we can still submit it, but if we check it in the console we will see valid:false.<br/>
     <b>Make sure you don't have the same id for different forms because then you will be using the first one found in the ts file.</b>  You could also have <b>
@@ -111,7 +108,6 @@
   </pre>
   We could also have something like this <b>input.ng-invalid.ng-touched</b> and it won't be marked until the user has done something in the field and left it.
 
-  <!--<hr class="hrClass" />-->
   <p class="HeadingSubTopic" id="ValidationMsg-T">Validation Messages (T)</p>  
   This form shows a text if the value in the input is valid (a number)
   <form (ngSubmit)="onSubmitNA()" #f5="ngForm">
@@ -131,7 +127,6 @@
   You could also use ! in the if if you want it to show when it is not valid.  Also, you could include theNumber.touched in the if if you want it to 
   just happen once the user has changed something on it.  
 
- <!--<hr class="hrClass" />-->
   <p class="HeadingSubTopic" id="Defaults-T">Default Values (T)</p>  
   We can now use ngModel with the brackets and set it to a hardcoded value or a variable from the ts file.
   <form (ngSubmit)="onSubmitNA()">
@@ -143,8 +138,6 @@
     </code>
   </pre>
 
-
-  <!--<hr class="hrClass" />-->
   <p class="HeadingSubTopic" id="Groups-T">Grouping Form Controls (T)</p>  
   You can have a div around a few controls and have them be grouped when Angular converts the form to an object.  To do that you use <b>ngModelGroup</b>
   <form (ngSubmit)="onSubmit6()" #f6="ngForm">
@@ -194,7 +187,6 @@
     </code>
   </pre>
 
- <!--<hr class="hrClass" />-->
   <p class="HeadingSubTopic" id="Radio-Buttons-T">Radio Buttons (T)</p>  
   <div>
     {{optionR}}  <br/>
@@ -209,8 +201,6 @@
     </code>
   </pre> 
 
-
- <!--<hr class="hrClass" />-->
   Note: Once you have the form in your ts file (the #f we did in code above) you can access the controls in it with yourform.form. and the methods 
   available.  You can use that to manipulate the values in the form.  You can also reset the values from reset() directly on yourform.
 
@@ -218,15 +208,12 @@
   <br/>
   <span  id="reactive"></span>
   <br/>
-    <h3  class="CenterMe">
-      <!--<a  href="/angular-notes-svc-routing/#routing">Jump To Routing</a>-->
+    <h3  class="CenterMe">     
       <a  [routerLink]='["/angular-notes-forms"]' fragment="template" >Jump To Template Forms</a>
     </h3>
   <hr class="hrHeaderClass"/>
   <h2 class="CenterMe" >Reactive Forms</h2>
   <hr class="hrHeaderClass"/>
-
-
 
   <p class="HeadingSubTopic" id="Controls-R">The controls (R)</p>   
   The controls for this form are created in the ts code.<br/>
@@ -265,7 +252,6 @@
 
   For submiting the form, we can still use (onSubmit) = "onSubmitOrWhatever()" but we don't need to pass a reference to the form itself (like we 
   did with #f before) since we already have the form control in the ts code now.<br/>
-
 
   <p class="HeadingSubTopic" id="Validation-R">Validation (R)</p>   
   For the validation, you can pass another argument to FormControl in the ts code ('whatever':new FormControl (null , <b>Validators.required</b>)).
@@ -339,7 +325,5 @@
   to those with <b>this.myForm.valueChanges.subscribe( value=> Console.log("whatever"))</b>.  <br/>
   You can also use setValue here to change the controls (similar to with template forms).  Same for patchValue.
 
-</div>
-
-  
+  </div>
 </div> 

@@ -20,21 +20,15 @@ myHeadings : string[] = [];
 myName : string = "angular-notes-auth";
 @ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
 
-
-
-  constructor(private commonFuncs:CommonFuncs){
-    
+  constructor(private commonFuncs:CommonFuncs){    
   }
 
   ngOnInit(){
     window.scroll(0,0);
-    
   }
 
   ngAfterViewInit(){       
     this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
     this.child.getChangesFromParent(this.myHeadings,this.myName )    
   }  
-  
-  
 }

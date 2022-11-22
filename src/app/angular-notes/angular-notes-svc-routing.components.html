@@ -12,10 +12,8 @@
         <h3  class="CenterMe">In Angular 6+, @Injectable(&lbrace;  providedIn: 'root' &rbrace;), export class MyService and it will be available everywhere.</h3>
 
         <span  id="services"></span>
-        <br/>
-        <!--<a  [routerLink]='["/angular-notes-svc-routing"]' fragment="routing" class="CenterMe">Jump To Routing</a>-->
-        <h3  class="CenterMe">
-            <!--<a  href="/angular-notes-svc-routing/#routing">Jump To Routing</a>-->
+        <br/>        
+        <h3  class="CenterMe">            
             <a  [routerLink]='["/angular-notes-svc-routing"]' fragment="routing" >Jump To Routing</a>
         </h3>
 
@@ -46,7 +44,6 @@
                 <b>//if we don't use injectable provided at root level, we have to included in the app.module and add it to the providers array</b>
            </code>
        </pre>
-
         
         <p class="HeadingSubTopic" id="Function-Service-Injectable">Call Function in Service with @Injectable(&lbrace;  providedIn: 'root' &rbrace;) </p>
         <code>Injectable(&lbrace;providedIn: 'root' &rbrace;) before export class StringServices -- in service ts</code>   <br/>
@@ -58,17 +55,8 @@
         <button (click)="onClickMeClicked2()">Click me 2!</button><br/>
 
         This offers an advantage: Services can be lazy loaded by Angular when needed.  Better performance.
-
-
-        <!--<hr class="hrClass" />-->
-
         
-        <p class="HeadingSubTopic" id="Function-Service-NgModule">Call Function in Service @NgModule</p>  
-        <code></code><br/>
-        <code>.</code><br/>
-       
-        
-        <code></code><br/>
+        <p class="HeadingSubTopic" id="Function-Service-NgModule">Call Function in Service @NgModule</p>                    
                         
         Instead of on each component, import in the app module.  No need to add to providers in component.
         
@@ -113,13 +101,11 @@
             </code>
         </pre>
 
-
         <br  id='routing'/><br />
         <hr class="hrHeaderClass"/>
         <h2 class="CenterMe"  >Routing</h2>
         <hr class="hrHeaderClass"/>
-        <h3  class="CenterMe">
-            <!--<a   href="/angular-notes-svc-routing/#services">Jump To Services</a><br/><br/>-->
+        <h3  class="CenterMe">            
             <a  [routerLink]='["/angular-notes-svc-routing"]' fragment="services" >Jump To Services </a>
         </h3>
 
@@ -160,9 +146,7 @@
         Note: Keep in mind that the code in the ts file doesn't know where you currently are, like it would happen with the routerLink.<br/>
         There is a way to get that information though, and that is by adding <code>ActivatedRoute</code> to the import, and then, we 
         can pass this as a second parameter to navigate <code>&lbrace;relativeTo:this.route&rbrace;</code>. This.route will contain where we are at the time.
-        <br/><br/>
-
-       <!--<hr class="hrClass" />-->
+        <br/><br/>       
         
         <p class="HeadingSubTopic" id="Dynamic-Paths">dynamic Paths</p>  
         <code>this.router.navigate(["/dynamic-notes/" + sendId]);  </code>
@@ -184,10 +168,6 @@
         </code>
         <br/><br/>
 
-        <!--<hr class="hrClass" />-->
-
-
-                 
          <p class="HeadingSubTopic" id="Dynamic-Middle">dynamic Paths with dynamic part in the middle</p>  
          You could add something else after the dynamic element of the path, something like this: <code>... path: 'dynamic-notes/:id/<b>edit</b>', ...</code>
          The link could be something like <code>[routerLink]='["/dynamic-notes",5, "edit" ]'</code><br/>
@@ -203,10 +183,8 @@
 
          To get the parameters it is similar to other things fro the link: this.route.snapshot.queryParams, this.route.snapshot.fragment.  We can also subscribe to those.
         
-
          <br/>
-
-       <!--<hr class="hrClass" />-->     
+       
          <p class="HeadingSubTopic" id="Nested-Routes">Nested Routing</p>  
 
          I you end up with different routes that have the same at the beginning of the path, you may be better of changing them to have a main path, and 
@@ -214,7 +192,6 @@
          &lbrace; path: 'commonpath', component: SomeComponent&rbrace;,<br/>
          &lbrace; path: 'commonpath/:id', component: SomeComponentId&rbrace;,<br/>
          &lbrace;path: 'commonpath/:id/edit', component: SomeComponentIdEdit&rbrace;,<br/>
-
 
          You can split it up in a parent and its children, like this:<br/>
          <code>
@@ -232,16 +209,13 @@
         <code>this.router.navigate(['edit'] , &lbrace; this.route &rbrace;);</code><br/>
         If we are using the queryParams from the parent in the navigation, we will lose them when we navigate.  To preserve them, do this :
         <code>this.router.navigate(['edit'], &lbrace;relativeTo: this.route, <b>queryParamsHandling: 'preserved' </b>&rbrace; ) </code>
-
-
-       <!--<hr class="hrClass" />-->       
+  
          <p class="HeadingSubTopic" id="Redirect">Redirect</p>  
          You can redirect from one path to another one with something like &lbrace;path:'somepath or **', <b>redirectTo</b>:'some other path'&rbrace;
          The ** means any unknown route, and it should be the last entry under the routes array.  With redirect, use the pathMatch:'full'<br/>
 
         <br/><br/>
-
-       <!--<hr class="hrClass" />-->      
+       
         <p class="HeadingSubTopic" id="CanActivate-CanActivateChild">CanActivate and CanActivateChild</p>  
         We can create a service and have it implement CanActivate.  The CanActivate will apply to whatever route we use it in and its children.<br/>
         We could have this route that uses the service to see if we can go to that route:<br/>
@@ -275,9 +249,7 @@
         </pre>
 
         On the route, now it would be <code>path: 'angular-notes-noactivate', component: ..., <b>canActivateChid:[ForCanActivate]</b></code>
-
-
-       <!--<hr class="hrClass" />-->       
+         
         <p class="HeadingSubTopic" id="CanDeactivate">CanDeactivate</p>   
         I am using the same path I used for the noactivate, but, to test the deactivate it has to be activated so I have to change the canActivate to return 
         true instead of false.<br/>
@@ -327,8 +299,7 @@
         Now when we are on that route and we choose to go somewhere else, the canDeactivate in the ts file of the component will be called.  Depending on the 
         return we will be able to leave the route or not.<br/>
 
-        <img width="100%" src="assets\images\angular\candeactivate.png" alt="can deactivate" /><br/><br/>
-        <!--<hr class="hrClass" />-->
+        <img width="100%" src="assets\images\angular\candeactivate.png" alt="can deactivate" /><br/><br/>        
     
         <p class="HeadingSubTopic" id="NotFound">Pass Static Data to not-found</p>   
         This doesn't have to be for a not found page but using that to show it.  We have the ** to catch a route that doesn't exist, and we reroute it 
@@ -353,9 +324,7 @@
                 &lt;h3&gt;&lbrace;&lbrace;errorMessage&rbrace;&rbrace;&lt;/h3&gt;
             </code>
         </pre>
-
-
-       <!--<hr class="hrClass" />-->
+       
         <p class="HeadingSubTopic" id="Resolve-Dynamic-Data">Resolve Dynamic Data</p>   
         This is for when we need to get the data before to route somewhere.  We should create a new file, such as server-recolver.service.ts.  It should be 
         similar to:
@@ -398,6 +367,5 @@
         </pre>
         <br/>
         <br/>
-
     </div>  
 </div>

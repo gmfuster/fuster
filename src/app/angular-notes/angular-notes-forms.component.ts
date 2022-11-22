@@ -6,7 +6,6 @@ import {HeadingSubTopicDirective} from '../shared/directives';
 import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
 
-
 @Component({
   selector: 'angular-notes-forms',
   templateUrl: './angular-notes-forms.component.html',

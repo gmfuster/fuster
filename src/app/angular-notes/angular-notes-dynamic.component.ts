@@ -8,7 +8,6 @@ import {CommonFuncs} from '../shared/commonFuncs.service'
 import { SomePopupComponent } from '../shared/some-popup.component';
 import { Subscription } from 'rxjs';
 
-
 @Component({
   selector: 'angular-notes-dynamic',
   templateUrl: './angular-notes-dynamic.component.html',
@@ -25,13 +24,11 @@ myName : string = "angular-notes-dynamic";
 showPopup : boolean = false;
 private closeSubs : Subscription = new Subscription();
 
-  constructor(private commonFuncs:CommonFuncs, private componentFactoryResolver : ComponentFactoryResolver){
-    
+  constructor(private commonFuncs:CommonFuncs, private componentFactoryResolver : ComponentFactoryResolver){    
   }
 
   ngOnInit(){
-    window.scroll(0,0);
-    
+    window.scroll(0,0);    
   }
 
   ngAfterViewInit(){       
@@ -67,6 +64,5 @@ private closeSubs : Subscription = new Subscription();
     if (this.closeSubs){
       this.closeSubs.unsubscribe();
     }
-  }
-  
+  }  
 }

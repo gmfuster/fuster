@@ -4,8 +4,6 @@
   <div class="leftLinks" #HeadingsContainer>      
     <left-links ></left-links>      
   </div>     
-
-
   <div class="PaddedContents PaddedContentsTopics">
     <h4 class="CenterMe">When adding new components, remember you may have to restart for them to be found.</h4>
     <h3 class="CenterMe"> <a href="https://medium.com/nerd-for-tech/angular-vs-react-compare-the-very-basics-776fd96fec23"
@@ -53,7 +51,6 @@
         app.module.ts -- import FormsModule from '@angular/forms'
       </code>
     </pre>
-
   
     <p class="HeadingSubTopic" id="Wait!">Wait a minute!!</p>
     What is with the [] or no [] or the () and the []?
@@ -86,7 +83,6 @@
     disabled=theBoolVar2<input type="number" disabled=theBoolVar2/><br/>
     disabled="theBoolVar2"<input type="number" disabled="theBoolVar2"/><br/>
     
-    
     <p class="HeadingSubTopic" id="ngIf">Angular Directive - ngIf</p>  
     The marked test below will show depending on a boolean variable on the ts file.  Change the value with the button. You can also use an expression.<br/>
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
@@ -111,7 +107,6 @@
       </code>
     </pre>
     
-      
     <p class="HeadingSubTopic" id="ngStyle">Angular Directive - ngStyle</p>   
     Click the button to get a random background color by changing theColor property. Could also have a method instead
     of theColor in the span element.  <button (click)="onRandomColor()">Random Color</button><br/>
@@ -121,7 +116,6 @@
         [ngStyle]="&lbrace;backgroundColor:theColor&rbrace;"
       </code>
     </pre>
-       
     
     <p class="HeadingSubTopic" id="ngClass">Angular Directive - ngClass</p>      
     Similar to the examples above, set ngClass to a class (redClass) to set the font to red based on the boolean value (when true). The redClass is in the css file.<br/>
@@ -147,7 +141,6 @@
       </code>
     </pre>
     
-
     <p class="HeadingSubTopic" id="ngSwitch">Angular Directive - ngSwitch</p>    
     The random color button returns aqua, red, pink, yellow, green, and gray.  Have a switch for the theColor variable for each of those.<br/>
     Notice the single quotes inside the "" on the case elements.  If numbers, don't include the single quotes.  The color is not changing, but the word will change 
@@ -171,7 +164,6 @@
           &lt; p *ngSwitchDefault&gt;Default&lt;/p&gt;
       </code>
     </pre>
-    
     
     <p class="HeadingSubTopic" id="Data-From-Parent">Get Data from Parent Component</p>    
     In this angular-notes component we have a theColor variable used above (in this parent).  In this html file we have a child component.    
@@ -231,7 +223,6 @@
     <img width="100%" src="assets\images\misc\viewchild3.png" alt="viewchild3 content elements" /><br/><br/>
     <img width="100%" src="assets\images\misc\viewchild4.png" alt="viewchild4 content elements" /><br/><br/>
     
-    
     <p class="HeadingSubTopic" id="ng-Content">ng-Content</p>    
     I am going to have some ng-content elements in the some-child-component component.  Then I'll use that component here in the angular-notes component.
     Each ng-content in the child will display a different way and it will choose what to put in that container based on some element, class, and id.
@@ -288,8 +279,6 @@
       </code>
     </pre>
 
-
-    
     <p class="HeadingSubTopic" id="Custom-Directives">Angular Directives and Your Own</p>    
     Angular directives are cool but we can also create our own.  I'm going to use a component directive some-directive-directive.
     <b><u>The ts file for this directive is not a @Component but a @Directive.</u></b> <strong> Not using renderer in this example </strong>, will use it later for the same thing.
@@ -325,7 +314,6 @@
       </code>
     </pre>
     
-    
     <p class="HeadingSubTopic" id="Renderer">Renderer</p>  
     Similar to the above one, but will get a directive 3 that will use renderer to access the style.  Don't forget to include the new directive in the app.module.  I keep 
     doing that. <br/>
@@ -339,7 +327,6 @@
       </code>
     </pre>
 
-
     <p class="HeadingSubTopic" id="HostBinding">HostBinding to change the directive style</p>    
     Going to use a 4th directive to make use of HostBinding to set the background.<br/>
     <p appSomeDirectiveDirective4>Some p element using the SomeDirectiveDirective4 with HostBinding. </p>
@@ -347,8 +334,6 @@
       @HostBinding('style.backgroundColor') backColor :string = 'transparent';
       on ngOnInit: this.backColor = 'lightblue';
     </pre>
-
-
     
     <p class="HeadingSubTopic" id="HostListener">HostListener for Directive</p>  
     Using the paragraph with a 5th directive now, which will listen to the mouse events and change the color that way. Move the cursor on and off the p.<br/>
@@ -361,7 +346,6 @@
       </code>
     </pre>
 
-    
     <p class="HeadingSubTopic" id="Custom-Structural-Directive">Your Own Structural Directive</p>  
     A structural directive is one that changes the structure of the DOM (like ngIf, ngFor, and we use them with *).
     <strong>TemplateRef</strong>: It represents an embedded template that can be used to instantiate embedded views.  
@@ -453,7 +437,6 @@
     href="https://rxjs.dev/guide/subject#:~:text=What%20is%20a%20Subject%3F%20An%20RxJS%20Subject%20is,independent%20execution%20of%20the%20Observable%29%2C%20Subjects%20are%20multicast."
     target="_new">
     rxjs subjects</a>
-
     
     <p class="HeadingSubTopic" id="Pipes">Pipes</p>
 
@@ -619,8 +602,6 @@
         (@theDivState.<b>done</b>) = "someFuncIntsFile")
       </code>
     </pre>
-
-    
     <br/>
     
     <div class = "HeadingSubTopic" id="MISCELLANEOUS">MISCELLANEOUS</div>
@@ -647,7 +628,5 @@
         &rbrace;
       </code>
     </pre>
-
   </div>
-
 </div> 

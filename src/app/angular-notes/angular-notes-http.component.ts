@@ -1,4 +1,3 @@
-//import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {HeadingSubTopicDirective} from '../shared/directives';
@@ -16,7 +15,6 @@ interface ForSend{
   styleUrls: ['./angular-notes.component.css'],
   providers: [CommonFuncs]
 })
-
 
 export class AngularNotesHttpComponent implements OnInit {
   @ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
@@ -38,9 +36,5 @@ export class AngularNotesHttpComponent implements OnInit {
     
   }
   onSendAGetCliked(){    
-    
-   
-
   }    
-
 }
