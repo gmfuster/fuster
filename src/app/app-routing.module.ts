@@ -85,10 +85,12 @@ const routes: Routes = [
   { path: 'javascript-notes-async', component: JavaScriptNotesAsyncComponent, pathMatch: 'full' }, 
   { path: 'javascript-notes-objects', component: JavaScriptNotesObjectsComponent, pathMatch: 'full' }, 
 
+  /*
   { path: 'node-notes', component: NodeNotesComponent, pathMatch: 'full' }, //basics
   { path: 'node-notes-express', component: NodeNotesExpressComponent, pathMatch: 'full' }, //Express
   { path: 'node-notes-mvc', component: NodeNotesMVCComponent, pathMatch: 'full' }, //Express
   { path: 'node-notes-db', component: NodeNotesDBComponent, pathMatch: 'full' }, //Express
+  */
 
   { path: 'doubles', component: DoublesComponent, pathMatch: 'full' }, //kids math
   { path: 'number-chart', component: NumberChartComponent, pathMatch: 'full' }, //kids math

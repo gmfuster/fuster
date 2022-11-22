@@ -11,7 +11,7 @@ import {CommonFuncs} from '../shared/commonFuncs.service'
 })
 
 export class NodeNotesComponent implements OnInit {  
-  @ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
+ // @ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
   myHeadings : string[] = [];
   myName : string = "node-notes";
   @ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
@@ -22,7 +22,7 @@ export class NodeNotesComponent implements OnInit {
     window.scroll(0,0);
   }
   ngAfterViewInit(){       
-    this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
+    //this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
     this.child.getChangesFromParent(this.myHeadings,this.myName )    
   }  
 
