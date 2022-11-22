@@ -98,7 +98,7 @@ body pre code{
   padding:0px;    
   background-color: transparent;
   border-radius: 0;
-  white-space: pre-wrap;
+  white-space: pre-wrap;  
   box-sizing: border-box;
 }
 body code{
@@ -109,7 +109,7 @@ body code{
   margin:4px;
   background-color: var(--main-code-background);
   border-radius: 4px;
-  box-sizing: border-box;
+  box-sizing: border-box;  
 }
 body pre samp{
   font-family: 'Times New Roman', Times, serif;    
@@ -250,6 +250,7 @@ body button{
   overflow:auto;
   border:solid deepskyblue 2px;
 }
+
 
 
 

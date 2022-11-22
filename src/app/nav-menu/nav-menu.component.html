@@ -25,7 +25,16 @@
         </li>        
       </ul>    
       
+      <ul class="nav navbar-nav" > 
+        <li  style="background-color: plum; margin-left:1vw;">    
+          <a class="nav-link" [routerLink]='["/csharp"]' >         
+            <span style="color:navy; cursor: pointer;">C#</span>
+          </a>
+        </li> 
+      </ul> 
+
       <!--C#-->
+      <!--
       <ul class="nav navbar-nav" >
         <li class="dropdown" appDropDown style="background-color:plum;">    
           <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
@@ -75,13 +84,14 @@
           </ul>                    
         </li>
       </ul>
+      -->
 
       <!--Angular-->
       <ul class="nav navbar-nav" >        
         
         <li class="dropdown" appDropDown style="background-color:lightcoral;">    
           <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy;  cursor: pointer;">Angular&downarrow;</span>
+            <span style="color:navy;  cursor: pointer;">Angular<span class='glyphicon caret'></span></span>
           </a>
           <ul class="dropdown-menu">                       
             <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>

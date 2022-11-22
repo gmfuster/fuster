@@ -1,6 +1,6 @@
 import { Component, OnInit,ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import {HeadingSubTopicDirective} from '../shared/directives';
-import {LeftLinksComponent} from  '../shared/left-links.component';
+//import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
 
 @Component({
@@ -11,10 +11,10 @@ import {CommonFuncs} from '../shared/commonFuncs.service'
 })
 
 export class CSharpBasicsComponent implements OnInit {
-@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
+//@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
 myHeadings : string[] = [];
 myName : string = "csharp-basics";
-@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;   
+//@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;   
 
   constructor(private commonFuncs:CommonFuncs){}
 
@@ -22,8 +22,8 @@ myName : string = "csharp-basics";
         window.scroll(0,0);
     }    
     ngAfterViewInit(){       
-      this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
-      this.child.getChangesFromParent(this.myHeadings,this.myName )    
+     // this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
+      //this.child.getChangesFromParent(this.myHeadings,this.myName )    
     }  
         
 }

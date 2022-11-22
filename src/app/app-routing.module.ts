@@ -13,7 +13,8 @@ import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.co
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 
 /*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
-
+import { CSharpModule } from './csharp/csharp.module';
+/*
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
 import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
 import { CSharpDelegatesetcComponent } from './csharp-notes/csharp-delegatesetc.component';
@@ -21,7 +22,7 @@ import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.compon
 import { CSharpInterfacesComponent } from './csharp-notes/csharp-interfaces.component';
 import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
 import { CSharpLinqComponent } from './csharp-notes/csharp-linq.component';
-import { CSharpMVCComponent } from './csharp-notes/csharp-mvc.component';
+import { CSharpMVCComponent } from './csharp-notes/csharp-mvc.component';*/
 
 import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
 import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
@@ -55,6 +56,8 @@ import {SubCountUpComponent} from './math-kids/sub-count-up.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
 
+  {path: 'csharp', loadChildren: () => import('./csharp/csharp.module').then(m => m.CSharpModule)},
+
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes-svc-routing', component: AngularNotesSvcRoutingComponent, pathMatch: 'full' },  
@@ -67,7 +70,7 @@ const routes: Routes = [
   { path: 'angular-notes-modules', component: AngularNotesModulesComponent, pathMatch: 'full' },  
 
   /*{ path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },*/
-
+/*
   { path: 'csharp-articles', component: CSharpArticlesComponent, pathMatch: 'full' },
   { path: 'csharp-basics', component: CSharpBasicsComponent, pathMatch: 'full' },
   { path: 'csharp-delegatesetc', component: CSharpDelegatesetcComponent, pathMatch: 'full' },
@@ -76,6 +79,7 @@ const routes: Routes = [
   { path: 'csharp-ef', component: CSharpEFComponent, pathMatch: 'full' },
   { path: 'csharp-linq', component: CSharpLinqComponent, pathMatch: 'full' },
   { path: 'csharp-mvc', component: CSharpMVCComponent, pathMatch: 'full' },
+*/
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
@@ -106,6 +110,7 @@ const routes: Routes = [
 
 
   { path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:{message:"I AM THE MESSAGE FROM not-found!!!!"}},
+  
   { path: '**', redirectTo:'not-found'},
 
 ];

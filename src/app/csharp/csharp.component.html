@@ -1,0 +1,25 @@
+<div class="DivsByRow">
+    <div class="leftFixedBox">
+        <button class="areasButton" (click)="setVisibleTo('csharp-articles')">Articles</button>
+        <button class="areasButton" (click)="setVisibleTo('csharp-basics')">Basics</button>
+        <button class="areasButton" (click)="setVisibleTo('csharp-delegatesetc')">Delegates</button>
+        <button class="areasButton" (click)="setVisibleTo('csharp-ef')">EF</button>
+        <button class="areasButton" (click)="setVisibleTo('csharp-interfaces')">Interfaces</button>
+        <button class="areasButton" (click)="setVisibleTo('csharp-mvc')">MVC</button>
+        <button class="areasButton" (click)="setVisibleTo('csharp-threading')">Threading</button>
+        <button class="areasButton" (click)="setVisibleTo('csharp-linq')">Linq</button>
+    </div>
+    <div class="contentsMoveRight">
+        <csharp-articles *ngIf="visibleIs === 'csharp-articles'"></csharp-articles>
+        <csharp-basics *ngIf="visibleIs === 'csharp-basics'"></csharp-basics>
+        <csharp-delegatesetc *ngIf="visibleIs === 'csharp-delegatesetc'"></csharp-delegatesetc>
+        <csharp-ef *ngIf="visibleIs === 'csharp-ef'"></csharp-ef>
+        <csharp-interfaces *ngIf="visibleIs === 'csharp-interfaces'"></csharp-interfaces>
+        <csharp-linq *ngIf="visibleIs === 'csharp-linq'"></csharp-linq>
+        <csharp-mvc *ngIf="visibleIs === 'csharp-mvc'"></csharp-mvc>
+        <csharp-threading *ngIf="visibleIs === 'csharp-threading'"></csharp-threading>
+    </div>
+    
+</div>
+
+

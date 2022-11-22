@@ -27,7 +27,8 @@ import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modu
 import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
 import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
 import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-notes-objects.component';
-
+import {CSharpModule} from './csharp/csharp.module';
+/*
 import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.component';
 import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
 import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
@@ -35,7 +36,7 @@ import { CSharpInterfacesComponent } from './csharp-notes/csharp-interfaces.comp
 import { CSharpDelegatesetcComponent } from './csharp-notes/csharp-delegatesetc.component';
 import { CSharpLinqComponent } from './csharp-notes/csharp-linq.component';
 import { CSharpMVCComponent } from './csharp-notes/csharp-mvc.component';
-
+*/
 /*
 import { NodeNotesExpressComponent} from './node-notes/node-notes-express.component';
 import { NodeNotesComponent} from './node-notes/node-notes.component';
@@ -110,13 +111,13 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     ReadBackComponent,
     /*MapItComponent,*/
     NotFoundComponent,
-    CSharpThreadingComponent,
+    /*CSharpThreadingComponent,
     CSharpEFComponent,
     CSharpBasicsComponent,
     CSharpInterfacesComponent,
     CSharpDelegatesetcComponent,
     CSharpLinqComponent,
-    CSharpMVCComponent,
+    CSharpMVCComponent,*/
     JavaScriptNotesAsyncComponent,
     JavaScriptNotesObjectsComponent,
     
@@ -148,7 +149,8 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CSharpModule
   ],
   providers: [OtherServices, ForCanActivate, ForCanDeActivate],
   bootstrap: [AppComponent]
