@@ -24,10 +24,9 @@ import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modu
 
 /*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
 
-import { JavaScriptNotesComponent } from './javascript-notes/javascript-notes.component';
-import { JavaScriptNotesAsyncComponent } from './javascript-notes/javascript-notes-async.component';
-import { JavaScriptNotesObjectsComponent } from './javascript-notes/javascript-notes-objects.component';
+
 import {CSharpModule} from './csharp/csharp.module';
+import {JavascriptModule} from './javascript/javascript.module';
 /*
 import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.component';
 import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
@@ -91,8 +90,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     AngularNotesHttpComponent,
     AngularNotesAuthComponent,
     AngularNotesDynamicComponent,
-    AngularNotesModulesComponent,
-    JavaScriptNotesComponent,
+    AngularNotesModulesComponent,    
     DynamicNotesComponent,
     /*ProbabilityNotesComponent,*/
     /*HeaderImageComponent,*/
@@ -110,17 +108,8 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     DropdownDirective,
     ReadBackComponent,
     /*MapItComponent,*/
-    NotFoundComponent,
-    /*CSharpThreadingComponent,
-    CSharpEFComponent,
-    CSharpBasicsComponent,
-    CSharpInterfacesComponent,
-    CSharpDelegatesetcComponent,
-    CSharpLinqComponent,
-    CSharpMVCComponent,*/
-    JavaScriptNotesAsyncComponent,
-    JavaScriptNotesObjectsComponent,
-    
+    NotFoundComponent,    
+
     DoublesComponent,
     SubtractTo10Component,    
     NumberChartComponent, 
@@ -150,7 +139,8 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CSharpModule
+    CSharpModule,
+    JavascriptModule
   ],
   providers: [OtherServices, ForCanActivate, ForCanDeActivate],
   bootstrap: [AppComponent]

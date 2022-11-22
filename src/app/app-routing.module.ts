@@ -14,6 +14,7 @@ import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modu
 
 /*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
 import { CSharpModule } from './csharp/csharp.module';
+import { JavascriptModule } from './javascript/javascript.module';
 /*
 import { CSharpArticlesComponent } from './csharp-notes/csharp-articles.component';
 import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
@@ -57,6 +58,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
 
   {path: 'csharp', loadChildren: () => import('./csharp/csharp.module').then(m => m.CSharpModule)},
+  {path: 'javascript', loadChildren: () => import('./javascript/javascript.module').then(m => m.JavascriptModule)},
 
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },

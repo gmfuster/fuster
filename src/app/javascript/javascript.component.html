@@ -1,0 +1,15 @@
+<div class="DivsByRow">
+    <div class="leftFixedBox">        
+        <button class="areasButton" (click)="setVisibleTo('javascript-notes')">Basics</button>
+        <button class="areasButton" (click)="setVisibleTo('javascript-notes-async')">Async</button>
+        <button class="areasButton" (click)="setVisibleTo('javascript-notes-objects')">Objects</button>        
+    </div>
+    <div class="contentsMoveRight">
+        <javascript-notes *ngIf="visibleIs === 'javascript-notes'"></javascript-notes>
+        <javascript-notes-async *ngIf="visibleIs === 'javascript-notes-async'"></javascript-notes-async>
+        <javascript-notes-objects *ngIf="visibleIs === 'javascript-notes-objects'"></javascript-notes-objects>         
+    </div>
+    
+</div>
+
+
