@@ -24,6 +24,5 @@ export class CSharpEFComponent implements OnInit {
     ngAfterViewInit(){       
       this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
       this.child.getChangesFromParent(this.myHeadings,this.myName )    
-    }  
-        
+    }          
 }
