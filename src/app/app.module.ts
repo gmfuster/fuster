@@ -24,9 +24,10 @@ import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modu
 
 /*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
 
-
+/*
 import {CSharpModule} from './csharp/csharp.module';
 import {JavascriptModule} from './javascript/javascript.module';
+*/
 /*
 import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.component';
 import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
@@ -139,8 +140,8 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    CSharpModule,
-    JavascriptModule
+    /*CSharpModule,
+    JavascriptModule*/
   ],
   providers: [OtherServices, ForCanActivate, ForCanDeActivate],
   bootstrap: [AppComponent]
