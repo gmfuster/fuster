@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+  styleUrls: ['./nav-menu.component.css'],
+  
 })
-export class NavMenuComponent {
-  isExpanded = false;
 
+export class NavMenuComponent  {
+  isExpanded = false;  
+  
   collapse() {
     this.isExpanded = false;
   }

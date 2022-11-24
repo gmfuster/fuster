@@ -22,28 +22,6 @@ import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.co
 import { AngularNotesDynamicComponent } from './angular-notes/angular-notes-dynamic.component';
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 
-/*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
-
-/*
-import {CSharpModule} from './csharp/csharp.module';
-import {JavascriptModule} from './javascript/javascript.module';
-*/
-/*
-import { CSharpThreadingComponent } from './csharp-notes/csharp-threading.component';
-import { CSharpEFComponent } from './csharp-notes/csharp-ef.component';
-import { CSharpBasicsComponent } from './csharp-notes/csharp-basics.component';
-import { CSharpInterfacesComponent } from './csharp-notes/csharp-interfaces.component';
-import { CSharpDelegatesetcComponent } from './csharp-notes/csharp-delegatesetc.component';
-import { CSharpLinqComponent } from './csharp-notes/csharp-linq.component';
-import { CSharpMVCComponent } from './csharp-notes/csharp-mvc.component';
-*/
-/*
-import { NodeNotesExpressComponent} from './node-notes/node-notes-express.component';
-import { NodeNotesComponent} from './node-notes/node-notes.component';
-import { NodeNotesMVCComponent} from './node-notes/node-notes-mvc.component';
-import { NodeNotesDBComponent} from './node-notes/node-notes-db.component';
-*/
-
 import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
 import { SomeDirectiveDirective } from './some-directive-directive/some-directive-directive.directive';
 import { SomeDirectiveDirective2 } from './some-directive-directive/some-directive-directive.directive';
@@ -93,8 +71,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     AngularNotesDynamicComponent,
     AngularNotesModulesComponent,    
     DynamicNotesComponent,
-    /*ProbabilityNotesComponent,*/
-    /*HeaderImageComponent,*/
+
     LandingDescriptionsComponent,
     FooterComponent,
     SomeChildComponentComponent,
@@ -107,8 +84,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     SomePopupComponent,
     appSomeDirectiveDirectiveSTR,
     DropdownDirective,
-    ReadBackComponent,
-    /*MapItComponent,*/
+    ReadBackComponent,    
     NotFoundComponent,    
 
     DoublesComponent,
@@ -125,12 +101,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,
-    HeadingSubTopicDirective,
-    /*
-    NodeNotesExpressComponent,
-    NodeNotesComponent,
-    NodeNotesMVCComponent,
-    NodeNotesDBComponent*/
+    HeadingSubTopicDirective,    
   ],
   imports: [
     BrowserModule,
@@ -139,9 +110,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
-    /*CSharpModule,
-    JavascriptModule*/
+    BrowserAnimationsModule,    
   ],
   providers: [OtherServices, ForCanActivate, ForCanDeActivate],
   bootstrap: [AppComponent]
