@@ -19,15 +19,15 @@
       
       <ul class="nav navbar-nav">
         <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-          <a [routerLink]='["/"]' (click)='collapse()' style="color:rgb(183, 253, 253);  ">
-            <span  style="font-size:2vw; padding: 0%; color:aquamarine">H</span>
+          <a [routerLink]='["/"]' (click)='collapse()' style="color:rgb(183, 253, 253); border:2px solid aqua; border-radius: 15%; margin:2px;">
+            <span  style="font-size:2vw; padding: 0%; color:aquamarine; ">H</span>
             <!--<span  style="font-size:2vh; padding: 0%;" class='glyphicon glyphicon-home'>Home</span>-->
           </a>
         </li>        
       </ul>    
       
       <ul class="nav navbar-nav"  >
-        <li style="background-color:plum">    
+        <li style="background-color:plum; margin:2px;">    
           <a class="nav-link" [routerLink]='["/csharp"]' >         
             <span style="color:navy; cursor: pointer;">C#</span>
           </a>
@@ -35,7 +35,7 @@
       </ul> 
 
       <ul class="nav navbar-nav"  > 
-        <li style="background-color:yellow">    
+        <li style="background-color:yellow; margin:2px;">    
           <a class="nav-link" [routerLink]='["/javascript"]' >         
             <span style="color:navy; cursor: pointer;">JS</span>
           </a>
@@ -43,7 +43,7 @@
       </ul> 
 
       <ul class="nav navbar-nav" > 
-        <li  style="background-color:green">    
+        <li  style="background-color:green;margin:2px;">    
           <a class="nav-link" [routerLink]='["/node"]' >         
             <span style="color:navy; cursor: pointer;">Node</span>
           </a>
@@ -53,7 +53,7 @@
       <!--Angular-->
       <ul class="nav navbar-nav"  >        
         
-        <li class="dropdown" style="background-color:lightcoral" appDropDown >    
+        <li class="dropdown" style="background-color:lightcoral; margin:2px;" appDropDown >    
           <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
             <span style="color:navy;  cursor: pointer;">A<span class='glyphicon caret'></span></span>
           </a>
