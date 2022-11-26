@@ -9,6 +9,7 @@ export class LandingDescriptionsComponent {
   scrolldown:string="";
   welcome:string="";
   programmingNotes:string="";
+  articles:string="";
 
 
   doSetTimeout(i:number, s:string, option:string) {
@@ -23,14 +24,18 @@ export class LandingDescriptionsComponent {
         case "scrolldown":
           this.scrolldown += s[i];
           break; 
+        case "articles":
+            this.articles += s[i];
+            break; 
       }            
-    }, i * 80);    
+    }, i * 70);    
   }      
 
   ngAfterViewInit(){
     let welcomearr = "Welcome to my personal space.";
     let scrolldownarr = "Scroll Down for Projects and Random Stuff.";
-    let programmingNotesArr = "Programming Notes on the Top Nav.";
+    let programmingNotesArr = "Programming Notes on Top Nav.";
+    let articlesArr = "Articles have more detail.";
 
     for(let i = 0; i< welcomearr.length; i++){
       this.doSetTimeout(i, welcomearr, "welcome");      
@@ -45,15 +50,20 @@ export class LandingDescriptionsComponent {
     } */  
     
     setTimeout(() => {
+
       for(let j = 0; j< programmingNotesArr.length; j++){
         this.doSetTimeout(j, programmingNotesArr, "programmingNotes");           
       }
       setTimeout(() => {
         for(let j = 0; j< scrolldownarr.length; j++){
           this.doSetTimeout(j, scrolldownarr, "scrolldown");      
-        }    
-      }, 3000);  
-    }, 3000);    
-    
+        }     
+        setTimeout( () =>{
+          for(let j = 0; j< articlesArr.length; j++){
+            this.doSetTimeout(j, articlesArr, "articles");      
+          } 
+        }, 3000);
+      }, 2000);     
+      }, 2000);                
   }
 }

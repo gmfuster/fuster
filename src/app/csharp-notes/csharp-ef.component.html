@@ -37,12 +37,20 @@
         </code>
     </pre>
 
+    Instead of the OnConfiguring, we could also go to the Program.cs and after builder.Services.AddSwaggerGen(); add something like:
+    <pre>
+        <code>
+            builder.Services.AddDbContext&lt;APIDbContext&gt;(option =&gt; option.UseSqlServer("Data source= YourServerName\\YourInstanceName;" + "Initial Catalog=Northwind;" +
+                "Integrated Security=true;" + "MultipleActiveResultSets=true;"));
+        </code>
+    </pre>
+
     <p class="HeadingSubTopic2">Entity Models</p>
     <b>With Entity Framework, an entity class represents the structure of the table and an instance represents a row in the table.</b><br/>
     When creating a model for a table in the DB, we can use <b>attributes</b> de give more details to the fields, such as:
     <pre>
         <code>
-            [required]
+            [Required]
             [StringLength(40)]
             public string ProductName &lbrace;get;set;&rbrace;
         </code>
