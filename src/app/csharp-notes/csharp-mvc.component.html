@@ -67,8 +67,7 @@
         the Route on top of the file.  For example, if I set it to [Route("")], for the original method I'd have to do <b>https://localhost:7298/.  </b>
         <br/>
         If I leave the <b>[Route("[controller]")]</b>, the method [HttpGet, <b>Route("SomeOtherName/&lbrace;days:int&rbrace;")]</b> will be called with 
-        <b>https://localhost:7298/weatherforecast/SomeOTherName/5</b><br/>
-        Will have more on naming later. (TODO)
+        <b>https://localhost:7298/weatherforecast/SomeOTherName/5</b><br/>        
 
         <p class="HeadingSubTopic" id="EF">Entity Framework</p>
 
@@ -143,7 +142,7 @@
 			            if (affected == 1)
 			            &lbrace;
 				            if (_customerMap == null)
-				            &rbrace;
+				            &lbrace;
 					            return c;
 				            &rbrace;
 				            else
@@ -160,7 +159,7 @@
 		            public Task&lt;IEnumerable&lt;Customer&gt;&gt; RetrieveAllAsync()
 		            &lbrace;
 			            return Task.FromResult(_customerMap is null ? Enumerable.Empty&lt;Customer&gt;() : _customerMap.Values);
-		            &lbrace;
+		            &rbrace;
 		            
                     public Task&lt;Customer?&gt; RetrieveAsync(string id)
 		            &lbrace;
@@ -265,7 +264,7 @@
                     public CustomerController(ICustomerRepository repo)
                     &lbrace;
                         this.repo = repo;
-                    &lbrace;
+                    &rbrace;
 
                     [HttpGet]
                     [ProducesResponseType(200, Type = typeof(IEnumerable&lt;Customer&gt;))]
@@ -274,7 +273,7 @@
                         if (string.IsNullOrEmpty(country) || string.IsNullOrWhiteSpace(country))
                         &lbrace;
                             return await repo.RetrieveAllAsync();
-                        &lbrace;                
+                        &rbrace;                
                         else 
                         &lbrace;
                             return (await repo.RetrieveAllAsync()).Where( c =&gt; c.Country == country);

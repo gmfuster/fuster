@@ -32,7 +32,7 @@ export class LandingDescriptionsComponent {
   }      
 
   ngAfterViewInit(){
-    let welcomearr = "Welcome to my personal space.";
+    let welcomearr = "Welcome!";
     let scrolldownarr = "Scroll Down for Projects and Random Stuff.";
     let programmingNotesArr = "Programming Notes on Top Nav.";
     let articlesArr = "Articles have more detail.";
@@ -64,6 +64,6 @@ export class LandingDescriptionsComponent {
           } 
         }, 3000);
       }, 2000);     
-      }, 2000);                
+      }, 1000);                
   }
 }
