@@ -4,12 +4,14 @@
         <button class="areasButton" (click)="setVisibleTo('node-notes-express')">Express</button>
         <button class="areasButton" (click)="setVisibleTo('node-notes-db')">DB</button>        
         <button class="areasButton" (click)="setVisibleTo('node-notes-mvc')">MVC</button> 
+        <button class="areasButton" (click)="setVisibleTo('node-notes-graphql')">GraphQL</button> 
     </div>
     <div class="contentsMoveRight">
         <node-notes-db *ngIf="visibleIs === 'node-notes-db'"></node-notes-db>         
         <node-notes *ngIf="visibleIs === 'node-notes'"></node-notes>
         <node-notes-express *ngIf="visibleIs === 'node-notes-express'"></node-notes-express>
-        <node-notes-mvc *ngIf="visibleIs === 'node-notes-mvc'"></node-notes-mvc>         
+        <node-notes-mvc *ngIf="visibleIs === 'node-notes-mvc'"></node-notes-mvc>        
+        <node-notes-graphql *ngIf="visibleIs === 'node-notes-graphql'"></node-notes-graphql>         
     </div>
     
 </div>

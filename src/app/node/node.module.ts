@@ -7,6 +7,7 @@ import { NodeNotesComponent } from '.././node-notes/node-notes.component';
 import { NodeNotesExpressComponent } from '.././node-notes/node-notes-express.component';
 import { NodeNotesMVCComponent } from '.././node-notes/node-notes-mvc.component';
 import { NodeNotesDBComponent } from '.././node-notes/node-notes-db.component';
+import { NodeNotesGraphQLComponent } from '.././node-notes/node-notes-graphql.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NodeNotesDBComponent } from '.././node-notes/node-notes-db.component';
     NodeNotesComponent,
     NodeNotesExpressComponent,
     NodeNotesMVCComponent,
-    NodeNotesDBComponent,    
+    NodeNotesDBComponent,   
+    NodeNotesGraphQLComponent 
   ],
   imports: [
     CommonModule,
