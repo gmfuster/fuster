@@ -12,6 +12,7 @@ import { CSharpInterfacesComponent } from '.././csharp-notes/csharp-interfaces.c
 import { CSharpDelegatesetcComponent } from '.././csharp-notes/csharp-delegatesetc.component';
 import { CSharpLinqComponent } from '.././csharp-notes/csharp-linq.component';
 import { CSharpMVCComponent } from '.././csharp-notes/csharp-mvc.component';
+import { CSharpGraphQLComponent } from '.././csharp-notes/csharp-graphql.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CSharpMVCComponent } from '.././csharp-notes/csharp-mvc.component';
     CSharpDelegatesetcComponent,
     CSharpLinqComponent,
     CSharpMVCComponent,
-    CSharpArticlesComponent
+    CSharpArticlesComponent,
+    CSharpGraphQLComponent
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,185 @@
+<div class="PaddedContents ">    
+
+    <div >
+    
+            
+        <p class="HeadingSubTopic" >Installing</p>
+
+        There are different packages you can install that work with .NET and graphql.  I am using this one:<br/>
+        Go to a command window and move to the directory where your project is. (the project itself, not the solution where it is)<br/>
+        run <b>dotnet add package GraphQL</b><br/>
+        You may also need (depending whether you are using just the client side or both client and server):
+        <pre>
+            <samp>
+                dotnet add package GraphQL.MicrosoftDI;
+                dotnet add package GraphQL.SystemTextJson;
+
+                and others.
+                //You will need Server.All so you can see your schema (from your server) on the graphiql.
+                //from NuGet : GraphQL.Server.All
+            </samp>
+        </pre>
+
+        <br/>
+        Once you have it installed, you can create folders for your classes: Query, Type, Mutation, Schema, Services.<br/>
+
+        <p class="HeadingSubTopic" >Types</p>
+
+        With c# we have model classes to hold our data, but, those are not what we can use with GraphQL. For example, if we have a model class like this:
+
+        <pre>
+            <code>
+                public class Product
+                &lbrace;
+                    public int Id &lbrace; get; set; &rbrace;
+                    public string Name &lbrace; get; set; &rbrace;
+                    public double Price &lbrace;get; set; &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+
+        The equivalent we would need for graphQL would be something like this:
+
+        <pre>
+            <code>
+                public class ProductType : ObjectGraphType&lt;Product&gt;
+                &lbrace;
+                    public ProductType()
+                    &rbrace;
+                        Field(p => p.Id); //the fields we will be able to query on
+                        Field(p => p.Name);
+                        Field(p => p.Price);
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>        
+
+        <p class="HeadingSubTopic" >Accessing</p>
+        With REST APIs, we need a controller that directs where to go depending on the url request we get.  In here we don't have that.
+        If with a REST request we could have: <br/>
+        localhost/api/products with a GET method or localhost/api/product/1 with a POST method etc. we now will have something different.
+        <br/>
+        So we can access the UI for this, and the graphql itself, we need to do this in the program.cs: 
+        <pre>
+            <code>
+                using GraphQL.Types;
+                using GraphQL;
+                using GraphQL.Server;
+                using GraphQL.MicrosoftDI;
+                using GraphQL.SystemTextJson;
+
+                //assuming these have all been created, add as you create them 
+                builder.Services.AddTransient&lt;IProduct, ProductService&gt;();
+                builder.Services.AddSingleton&lt;ProductType&gt;();
+                builder.Services.AddSingleton&lt;ProductQuery&gt;();
+                builder.Services.AddSingleton&lt;ISchema, ProductSchema&gt;();
+                <b>//builder.Services.AddGraphQL(o =&gt; o.UseApolloTracing(false));
+                builder.Services.AddGraphQL(b => b
+                    .AddAutoSchema&lt;Query&gt;()  // schema
+                    .AddSystemTextJson());   // serializer</b>
+
+                <b>app.UseGraphQL("/graphql");</b>
+                /If you do not explicitly specify an endpoints through the optional options argument then GraphiQL
+                //by default will run on <b>/ui/graphiql</b> (notice the i in graphi) endpoint and will send requests to /graphql GraphQL API endpoint.
+                <b>app.UseGraphQLGraphiQL();</b>
+            </code>
+        </pre>
+
+        To access the UI, the url will be localhost:????/ui/graphiql<br/>
+
+        So far we have the type with its fields and how to access the UI to test it, but we need more so we have something to use.<br/>
+
+        <p class="HeadingSubTopic" >Queries</p>
+        In the code below, we have a ProductService class that contains some methods we can call, and we are using dependency injection for it.
+        <pre>
+            <code>
+                public class ProductQuery :ObjectGraphType
+                &lbrace;
+                    public ProductQuery(IProduct productService)
+                    &lbrace;
+                        <b>Field&lt;ListGraphType&lt;ProductType&gt;&gt;</b>("products").Resolve(context =&gt; &lbrace; return productService.GetAllProducts(); &rbrace;);
+                        Field&lt;ProductType&gt;("product").Arguments(new QueryArgument&lt;IntGraphType&gt; &lbrace; Name = "Id" &rbrace;).Resolve
+                        (context =&gt;
+                        &lbrace;
+                            return productService.GetProductById(context.GetArgument&lt;int&gt;("Id"));
+                        &rbrace;);			
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+
+        <p class="HeadingSubTopic" >Schemas</p>
+        
+        <pre>
+            <code>
+                public class ProductSchema :GraphQL.Types.Schema
+                &lbrace;
+                    public ProductSchema(ProductQuery pq)
+                    &lbrace;
+                        Query = pq;
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+
+      
+        <p class="HeadingSubTopic" >Querying</p>
+
+        With all the previous code, we can call to get the list of products with this (in https://localhost:????/ui/graphiql):
+        <pre>
+            <samp>
+                query &lbrace;
+                    products&lbrace;
+                      name
+                      price
+                    &rbrace;
+                  &rbrace;
+            </samp>
+        </pre>
+
+        And we will get:
+        <pre>
+            <samp>
+                &lbrace;
+                    "data": &lbrace;
+                      "products": [
+                      &lbrace;
+                          "name": "Coffee",
+                          "price": 10
+                        &rbrace;,
+                        &lbrace;
+                          "name": "Tea",
+                          "price": 15
+                        &rbrace;
+                      ]
+                      &rbrace;
+                &rbrace;
+            </samp>
+        </pre>
+
+        <pre>
+            <samp>
+                query &lbrace;
+                    product(id:0)&lbrace;
+                      name
+                      price
+                    &rbrace;
+                  &rbrace;
+            </samp>
+        </pre>
+        <pre>
+            <samp>
+                &lbrace;
+                    "data": &lbrace;
+                      "product": &lbrace;
+                        "name": "Coffee",
+                        "price": 10                      
+                        &rbrace;
+                    &rbrace;
+                &rbrace;
+            </samp>
+        </pre>
+
+
+    </div>
+</div>

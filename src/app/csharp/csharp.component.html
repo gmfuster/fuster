@@ -8,6 +8,7 @@
         <button class="areasButton" (click)="setVisibleTo('csharp-mvc')">MVC</button>
         <button class="areasButton" (click)="setVisibleTo('csharp-threading')">Threading</button>
         <button class="areasButton" (click)="setVisibleTo('csharp-linq')">Linq</button>
+        <button class="areasButton" (click)="setVisibleTo('csharp-graphql')">GraphQL</button>
     </div>
     <div class="contentsMoveRight">
         <csharp-articles *ngIf="visibleIs === 'csharp-articles'"></csharp-articles>
@@ -18,6 +19,7 @@
         <csharp-linq *ngIf="visibleIs === 'csharp-linq'"></csharp-linq>
         <csharp-mvc *ngIf="visibleIs === 'csharp-mvc'"></csharp-mvc>
         <csharp-threading *ngIf="visibleIs === 'csharp-threading'"></csharp-threading>
+        <csharp-graphql *ngIf="visibleIs === 'csharp-graphql'"></csharp-graphql>
     </div>
     
 </div>
