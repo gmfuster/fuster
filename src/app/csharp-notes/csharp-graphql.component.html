@@ -122,6 +122,9 @@
             </code>
         </pre>
 
+        Once we have the schemas (one per project) and we have the configuration set in program.cs, we can see the documentation created by the 
+        schemas in the right side of the ui/graphiql UI.
+
       
         <p class="HeadingSubTopic" >Querying</p>
 
@@ -180,6 +183,127 @@
             </samp>
         </pre>
 
+        <p class="HeadingSubTopic" >graphql  github explorer</p>
 
+        To see other types of queries, you can go to <a href="https://docs.github.com/en/graphql/overview/explorer" target="_new">docs.github.com/en/graphql/overview/explorer</a>
+        <br/>
+        <pre>
+            <code>
+                //passing arguments 
+                query &lbrace;
+                    repository(name:"graphql" owner:"facebook") &lbrace;
+                      createdAt
+                    &rbrace;
+                  &rbrace;
+            </code>
+        </pre>
+        <pre>
+            <samp>
+                &lbrace;
+                    "data": &lbrace;
+                      "repository": &lbrace;
+                        "createdAt": "2015-07-01T01:26:56Z"
+                      &rbrace;
+                    &rbrace;
+                &rbrace;
+            </samp>
+        </pre>
+
+        Note: in the schema, a <b>!</b> next to the field means the field is required.<br/>
+
+        Sometimes we need to use an alias so graphql doesn't get confused with what we are asking about, for example, in the example below,
+        if we didn't have the <b>aliases</b> we would get an error.
+        <pre>
+            <code>
+                query &lbrace;
+                    Core: repository(name:"core" owner:"microsoft") &lbrace;
+                      name
+                      homepageUrl
+                    &rbrace;,
+                    M365: repository(name:"Microsoft365DSC" owner:"microsoft") &lbrace;
+                      name
+                      homepageUrl
+                    &rbrace;
+                  &rbrace;
+            </code>
+        </pre>
+        <pre>
+            <samp>
+                &lbrace;
+                    "data": &lbrace;
+                      "Core": &lbrace;
+                        "name": "core",
+                        "homepageUrl": null
+                      &rbrace;,
+                      "M365": &lbrace;
+                        "name": "Microsoft365DSC",
+                        "homepageUrl": "https://aka.ms/M365DSC"
+                      &rbrace;
+                    &rbrace;
+                  &rbrace;
+            </samp>
+        </pre>
+
+        When we are queryind and repeating the same fields multiple times, we can use fragments.
+        <pre>
+            <code>
+                query &lbrace; 
+                    Core: repository(name:"core" owner:"microsoft") &lbrace;
+                      <b>...MyCommonFields</b>
+                    &rbrace;,
+                    M365: repository(name:"Microsoft365DSC" owner:"microsoft") &lbrace;
+                      ...MyCommonFields
+                      &rbrace;
+                    &rbrace;
+                  
+                  fragment <b>MyCommonFields</b> on Repository&lbrace;
+                        name
+                      homepageUrl
+                      autoMergeAllowed
+                &rbrace;
+            </code>
+        </pre>
+        <pre>
+            <samp>
+                &lbrace;
+                    "data": &lbrace;
+                      "Core": &lbrace;
+                        "name": "core",
+                        "homepageUrl": null,
+                        "autoMergeAllowed": false
+                      &rbrace;,
+                      "M365": &lbrace;
+                        "name": "Microsoft365DSC",
+                        "homepageUrl": "https://aka.ms/M365DSC",
+                        "autoMergeAllowed": false
+                      &rbrace;
+                    &rbrace;
+                  &rbrace;
+            </samp>
+        </pre>
+
+        We can also use <b>variables</b>. In the regular query section, something like this (notice the case for String)
+        <pre>
+            <code>
+                query Core <b>($nm:String! $own:String!)</b>  &lbrace;
+                    repository(name:$nm owner:$own) &lbrace;
+                        name
+                        homepageUrl
+                        autoMergeAllowed
+                &rbrace;
+              &rbrace;
+            </code>
+        </pre>
+        In the query varables section:
+        <pre>
+            <code>
+                &lbrace;
+                    "nm": "core",
+                    "own": "microsoft"
+                &rbrace;
+            </code>
+        </pre>
+
+        There is also a mutations on the right side (in addition to queries) but not looking at this yet.
     </div>
 </div>
