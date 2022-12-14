@@ -69,7 +69,8 @@
                 using GraphQL.SystemTextJson;
 
                 //assuming these have all been created, add as you create them 
-                builder.Services.AddTransient&lt;IProduct, ProductService&gt;();
+                //code for IProduct is not here but you should have it for the services you offer (not part of graphQL)
+                builder.Services.AddTransient&lt;IProduct, ProductService&gt;(); 
                 builder.Services.AddSingleton&lt;ProductType&gt;();
                 builder.Services.AddSingleton&lt;ProductQuery&gt;();
                 builder.Services.AddSingleton&lt;ISchema, ProductSchema&gt;();
@@ -305,5 +306,118 @@
         </pre>
 
         There is also a mutations on the right side (in addition to queries) but not looking at this yet.
+
+        <p class="HeadingSubTopic" >Add Our Mutations</p>
+        In the Type folder, where we already have the ProductType class, we need to add a ProductInputType.
+        <pre>
+            <code>
+                public class ProductInputType: InputObjectGraphType
+	            &lbrace;
+		            public ProductInputType()
+		            &lbrace;
+			            Field&lt;IntGraphType&gt;("id");
+			            Field&lt;StringGraphType&gt;("name");
+			            Field&lt;FloatGraphType&gt;("price");
+		            &rbrace;
+	            &rbrace;
+            </code>
+        </pre>
+
+        In a Mutation folder, ProductMutation.
+        <pre>
+            <code>
+                public class ProductMutation : ObjectGraphType
+                &lbrace;
+                    public ProductMutation(IProduct productService) &lbrace;
+
+                        Field&lt;ProductType&gt;("createProduct").Arguments(new QueryArgument&lt;ProductInputType&gt; &lbrace; Name = "product" &rbrace;).Resolve
+                        (context =&gt;
+                        &lbrace;
+                                    return productService.AddProduct(context.GetArgument&lt;Product&gt;("product"));
+                                    &rbrace;);
+
+                        Field&lt;ProductType&gt;("updateProduct").Arguments(new QueryArgument&lt;IntGraphType&gt; &lbrace; Name = "id" &rbrace;,
+                            new QueryArgument&lt;ProductInputType&gt; &lbrace; Name = "product" &rbrace;).Resolve
+                        (context =&gt;
+                        &lbrace;
+                            return productService.UpdateProduct(context.GetArgument&lt;int&gt;("id") ,context.GetArgument&lt;Product&gt;("product"));
+                        &rbrace;);
+
+                        Field&lt;StringGraphType&gt;("deleteProduct").Arguments(new QueryArgument&lt;IntGraphType&gt; &lbrace; Name = "id" &rbrace;).Resolve
+                        (context =&gt;
+                        &lbrace;
+                            productService.DeleteProduct(context.GetArgument&lt;int&gt;("id"));
+                            return "done";
+                        &rbrace;);
+                    &rbrace;
+                &rbrace;
+            </code>
+        </pre>
+
+        Now we can go to the same schema we have for the queries and add this:
+        <pre>
+            <code>
+                public ProductSchema(ProductQuery pq, ProductMutation pm)
+		        &lbrace;
+			        Query = pq;
+			        Mutation = pm;
+		        &rbrace;
+            </code>
+        </pre>
+
+        In program.cs we need to register the mutations too.  Both the new input type and the ProductMutation.<br/>
+        Now when we run we see the mutation as well as the query (in the right side of ui/graphi)<br/>
+        To use the mutations:<br/>
+        Under the query variables section of the ui
+        <pre>
+            <code>
+                &lbrace;
+                    "product": &lbrace;
+                      "id": 2,
+                      "name": "Apple Juice",
+                      "price": 5
+                    &rbrace;
+                  &rbrace;
+            </code>
+        </pre>
+        In the query (mutation) section 
+        <pre>
+            <code>
+                mutation AddProduct ($product:ProductInputType)&lbrace;
+                    createProduct(product: $product)&lbrace;
+                      id
+                      name 
+                      price 
+                    &rbrace;
+                  &rbrace;
+            </code>
+        </pre>
+        You can do similar mutations using the other services.
+
+        <p class="HeadingSubTopic" >Having Multiple Query objects</p>
+
+        The project can have one schema only and the schema can only contain one query, so when we have different types, each with its own query, 
+        we need to have a rootQuery to handle the queries.
+
+        Something like this:
+        <pre>
+            <code>
+                public class RootSchema:GraphQl.Type.Schema 
+                &lbrace;
+                    public RootSchema(IServiceProvider sp) :base(sp)
+                    &lbrace;
+                        query = ps.GetRequiredService&lt;RootQuery&gt;()
+                    &rbrace;
+                &rbrace;
+
+
+                //in the RootQuery which inherits from ObjectGraphType, in the constructor:
+                Field&lt;Type1Query&gt;("Type1Query", resolve: context =&gt; new &lbrace;&rbrace;);
+                Field&lt;Type2Query&gt;("Type2Query", resolve: context =&gt; new &lbrace;&rbrace;);
+                Field&lt;Type3Query&gt;("Type3Query", resolve: context =&gt; new &lbrace;&rbrace;);
+            </code>
+        </pre>
+        Similar thing as above for the mutations.  Don't forget to register everything in program.cs  To call them, we don't need to use the root, use like 
+        for the Product one earlier on the notes.
     </div>
 </div>
