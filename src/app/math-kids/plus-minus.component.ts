@@ -37,40 +37,54 @@ equationMinus:string ="";
    window.scroll(0,0);    
    this.getNumbers();
   }    
+
   showOnCanvas(option:string){
     let ctx = this.myCanvas.nativeElement.getContext("2d");
     ctx.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
     let endOfFirst = 0;
+    let multiplier = 8;
     
     ctx.font = "12px consolas";
+    ctx.lineWidth = "15";
 
     if (option === "+"){
-      ctx.beginPath();
-      ctx.lineWidth = "15";
+      ctx.beginPath();      
       ctx.strokeStyle = "deeppink";
-      ctx.moveTo(5, 15);
-      endOfFirst = 5+(this.number1 * 8);
+      ctx.moveTo(0, 15);
+      endOfFirst = this.number1 * multiplier;
       ctx.lineTo(endOfFirst, 15);  
       ctx.stroke();      
-      ctx.fillText(this.number1 , 6, 18);
+      ctx.fillText(this.number1 , 1, 18);
 
-      ctx.beginPath();
-      ctx.lineWidth = "15";
+      ctx.beginPath();      
       ctx.strokeStyle = "deepskyblue";
       ctx.moveTo( endOfFirst , 15);
-      ctx.lineTo(endOfFirst + (this.number2 * 8), 15);  
+      ctx.lineTo(endOfFirst + (this.number2 * multiplier), 15);  
       ctx.stroke();      
       ctx.fillText(this.number2 , endOfFirst + 1, 18);
 
-      ctx.beginPath();
-      ctx.lineWidth = "15";
+      ctx.beginPath();      
       ctx.strokeStyle = "green";
-      ctx.moveTo( 5 , 40);
-      ctx.lineTo(endOfFirst + (this.number2 * 8), 40);  
+      ctx.moveTo( 0 , 40);
+      ctx.lineTo(endOfFirst + (this.number2 * multiplier), 40);  
       ctx.stroke();
-      ctx.fillText(this.number1 + this.number2, 6,42 );
+      ctx.fillText(this.number1 + this.number2, 1,42 );
 
     }else if (option === "-"){
+      ctx.beginPath();      
+      ctx.strokeStyle = "deeppink";
+      ctx.moveTo(0, 15);
+      endOfFirst = (this.number1 * multiplier);
+      ctx.lineTo(endOfFirst, 15);  
+      ctx.stroke();      
+      ctx.fillText(this.number1 , 1, 18);
+
+      ctx.beginPath();      
+      ctx.strokeStyle = "deepskyblue";
+      ctx.moveTo( endOfFirst , 30);      
+      ctx.lineTo( this.number2 * multiplier, 30);  
+      ctx.stroke();      
+      ctx.fillText(this.number2 , ((this.number2 * multiplier)) + 1, 32);
 
     }
   }
