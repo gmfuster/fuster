@@ -54,6 +54,7 @@ import { BalanceEquationComponent } from './math-kids/balance-equation.component
 import { Carry1Component } from './math-kids/carry1.component';
 import { SubtalliesComponent } from './math-kids/subtallies.component';
 import { SubCountUpComponent } from './math-kids/sub-count-up.component';
+import { PlusMinusComponent } from './math-kids/plus-minus.component';
 
 import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
 import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
@@ -97,6 +98,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     Carry1Component,
     SubtalliesComponent,
     SubCountUpComponent,
+    PlusMinusComponent,
 
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,

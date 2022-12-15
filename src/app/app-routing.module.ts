@@ -54,6 +54,7 @@ import {BalanceEquationComponent} from './math-kids/balance-equation.component';
 import {Carry1Component} from './math-kids/carry1.component';
 import {SubtalliesComponent} from './math-kids/subtallies.component';
 import {SubCountUpComponent} from './math-kids/sub-count-up.component';
+import {PlusMinusComponent} from './math-kids/plus-minus.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -73,32 +74,9 @@ const routes: Routes = [
   { path: 'angular-notes-dynamic', component: AngularNotesDynamicComponent, pathMatch: 'full' },  
   { path: 'angular-notes-modules', component: AngularNotesModulesComponent, pathMatch: 'full' },  
 
-  /*{ path: 'probability-notes', component: ProbabilityNotesComponent, pathMatch: 'full' },*/
-/*
-  { path: 'csharp-articles', component: CSharpArticlesComponent, pathMatch: 'full' },
-  { path: 'csharp-basics', component: CSharpBasicsComponent, pathMatch: 'full' },
-  { path: 'csharp-delegatesetc', component: CSharpDelegatesetcComponent, pathMatch: 'full' },
-  { path: 'csharp-threading', component: CSharpThreadingComponent, pathMatch: 'full' },
-  { path: 'csharp-interfaces', component: CSharpInterfacesComponent, pathMatch: 'full' },
-  { path: 'csharp-ef', component: CSharpEFComponent, pathMatch: 'full' },
-  { path: 'csharp-linq', component: CSharpLinqComponent, pathMatch: 'full' },
-  { path: 'csharp-mvc', component: CSharpMVCComponent, pathMatch: 'full' },
-*/
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
- /* { path: 'map-it', component: MapItComponent, pathMatch: 'full' },  */
-/*
-  { path: 'javascript-notes', component: JavaScriptNotesComponent, pathMatch: 'full' }, //basics
-  { path: 'javascript-notes-async', component: JavaScriptNotesAsyncComponent, pathMatch: 'full' }, 
-  { path: 'javascript-notes-objects', component: JavaScriptNotesObjectsComponent, pathMatch: 'full' }, 
-*/
-  /*
-  { path: 'node-notes', component: NodeNotesComponent, pathMatch: 'full' }, //basics
-  { path: 'node-notes-express', component: NodeNotesExpressComponent, pathMatch: 'full' }, //Express
-  { path: 'node-notes-mvc', component: NodeNotesMVCComponent, pathMatch: 'full' }, //Express
-  { path: 'node-notes-db', component: NodeNotesDBComponent, pathMatch: 'full' }, //Express
-  */
 
   { path: 'doubles', component: DoublesComponent, pathMatch: 'full' }, //kids math
   { path: 'number-chart', component: NumberChartComponent, pathMatch: 'full' }, //kids math
@@ -111,6 +89,7 @@ const routes: Routes = [
   { path: 'carry1', component:Carry1Component, pathMatch: 'full' }, //kids math
   { path: 'subtallies', component:SubtalliesComponent, pathMatch: 'full' }, //kids math
   { path: 'sub-count-up', component:SubCountUpComponent, pathMatch: 'full' }, //kids math
+  { path: 'plus-minus', component:PlusMinusComponent, pathMatch: 'full' }, //kids math
 
 
   { path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:{message:"I AM THE MESSAGE FROM not-found!!!!"}},
