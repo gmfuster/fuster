@@ -24,8 +24,8 @@ equationMinus:string ="";
     let ctx = this.myCanvas.nativeElement.getContext("2d");
     ctx.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
 
-    this.number1 = this.CommonFuncs.getRandom1ToN(15);
-    this.number2 = this.CommonFuncs.getRandom1ToN(15);   
+    this.number1 = this.CommonFuncs.getRandom1ToN(12);
+    this.number2 = this.CommonFuncs.getRandom1ToN(12);   
     if (this.number2 > this.number1) { 
       [this.number1, this.number2] = [this.number2, this.number1];
     }
@@ -42,10 +42,11 @@ equationMinus:string ="";
     let ctx = this.myCanvas.nativeElement.getContext("2d");
     ctx.clearRect(0, 0, this.myCanvas.nativeElement.width, this.myCanvas.nativeElement.height);
     let endOfFirst = 0;
-    let multiplier = 8;
-    
+    let multiplier = 10;    
+    let secondStartPointSub = 0;
+    let normalLineWdth = 15;
     ctx.font = "12px consolas";
-    ctx.lineWidth = "15";
+    ctx.lineWidth = normalLineWdth;
 
     if (option === "+"){
       ctx.beginPath();      
@@ -56,21 +57,25 @@ equationMinus:string ="";
       ctx.stroke();      
       ctx.fillText(this.number1 , 1, 18);
 
-      ctx.beginPath();      
-      ctx.strokeStyle = "deepskyblue";
-      ctx.moveTo( endOfFirst , 15);
-      ctx.lineTo(endOfFirst + (this.number2 * multiplier), 15);  
-      ctx.stroke();      
-      ctx.fillText(this.number2 , endOfFirst + 1, 18);
+      setTimeout(() => {
+        ctx.beginPath();      
+        ctx.strokeStyle = "deepskyblue";
+        ctx.moveTo( endOfFirst , 15);
+        ctx.lineTo(endOfFirst + (this.number2 * multiplier), 15);  
+        ctx.stroke();      
+        ctx.fillText(this.number2 , endOfFirst + 1, 18);
 
-      ctx.beginPath();      
-      ctx.strokeStyle = "green";
-      ctx.moveTo( 0 , 40);
-      ctx.lineTo(endOfFirst + (this.number2 * multiplier), 40);  
-      ctx.stroke();
-      ctx.fillText(this.number1 + this.number2, 1,42 );
-
+        setTimeout(() => {
+          ctx.beginPath();      
+          ctx.strokeStyle = "green";
+          ctx.moveTo( 0 , 40);
+          ctx.lineTo(endOfFirst + (this.number2 * multiplier), 40);  
+          ctx.stroke();
+          ctx.fillText(this.number1 + this.number2, 1,42 );
+        }, 1000);
+      }, 1000);      
     }else if (option === "-"){
+
       ctx.beginPath();      
       ctx.strokeStyle = "deeppink";
       ctx.moveTo(0, 15);
@@ -79,13 +84,36 @@ equationMinus:string ="";
       ctx.stroke();      
       ctx.fillText(this.number1 , 1, 18);
 
-      ctx.beginPath();      
-      ctx.strokeStyle = "deepskyblue";
-      ctx.moveTo( endOfFirst , 30);      
-      ctx.lineTo( this.number2 * multiplier, 30);  
-      ctx.stroke();      
-      ctx.fillText(this.number2 , ((this.number2 * multiplier)) + 1, 32);
+      secondStartPointSub = (this.number1 - this.number2) * multiplier;
+      setTimeout(() => {
+        ctx.beginPath();            
+        ctx.strokeStyle = "deepskyblue";
+        ctx.moveTo( secondStartPointSub , 35);      
+        ctx.lineTo( this.number1 * multiplier, 35);  
+        ctx.stroke();      
+        ctx.fillText(this.number2 , secondStartPointSub + 1 , 38);
 
+        ctx.lineWidth = 1;
+        ctx.beginPath();    
+        ctx.moveTo( secondStartPointSub , 45);
+        ctx.lineTo( secondStartPointSub, 5);  
+        ctx.stroke(); 
+        ctx.beginPath();    
+        ctx.moveTo(  this.number1 * multiplier , 45);
+        ctx.lineTo(  this.number1 * multiplier, 5);  
+        ctx.stroke();     
+
+        ctx.lineWidth = normalLineWdth; 
+        setTimeout(() => {
+          ctx.beginPath();   
+            
+          ctx.strokeStyle = "green";
+          ctx.moveTo( 0 , 35);      
+          ctx.lineTo(secondStartPointSub, 35);  
+          ctx.stroke();      
+          ctx.fillText(this.number1 - this.number2 ,  1 , 38);
+        }, 1000);
+      }, 1000);
     }
   }
 
