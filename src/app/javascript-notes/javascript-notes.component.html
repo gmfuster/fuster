@@ -986,6 +986,7 @@
     
 
     <p class="HeadingSubTopic" id="misc">Miscellaneous</p>
+
     <p class="HeadingSubTopic2">Loop through properties</p>
     <pre>
       <code>
@@ -1164,6 +1165,25 @@ The private field can also be static:
 </pre>
 You can do something similar with methods instead of fields.  Not adding the examples because it's the same idea.
 
+<p class="HeadingSubTopic2">Imports</p>
+ES6 introduced the modules, and with them we can do this.
+<code>import &lbrace;someFunc&rbrace; from './someFile.js';</code>  We cannot do that dynamically though, like in the code inside a click or some other function. 
+ES2020 introduced the dynamic imports.  For that we use import(), which returns a promise that will be fulfilled when the module is loaded.
+<pre>
+  <code>
+    let btn = document.querySelector('#thebtn');
+
+    btn.addEventListener('click', function() &lbrace;
+      <b>import('./someFile.js')</b>
+        .then(( dialog ) => &lbrace;
+            dialog.someFunc();
+        &rbrace;)
+        .catch( error => &lbrace;
+            // handle error here
+        &rbrace;);
+    &rbrace;);
+  </code>
+</pre>
 
 <p class="HeadingSubTopic2">To remember</p>
 JS is case sensitive<br/>
