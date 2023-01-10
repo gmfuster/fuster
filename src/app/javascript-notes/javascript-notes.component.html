@@ -1085,6 +1085,49 @@ This to use JS from another file.  It will be like it is in the same html file: 
 When writing, In JavaScript, the window object is the global scope object. 
 This means that variables, properties, and methods by default belong to the window object. This also means that specifying the window keyword is optional.
 
+<p class="HeadingSubTopic2">Private fields and methods</p>
+With ES2022 we can have private fields and methods in a class.  We use # for these private elements.
+
+<pre>
+  <code>
+    class MyClass &lbrace;
+      <b>#privateField;</b>
+      notPrivateField = "Ironman";
+      constructor(value) &lbrace;
+        <b>this.#privateField = value;</b>
+      &rbrace;
+      get useInString() &lbrace;
+        return "I got " + this.#privateField;
+      &rbrace;
+    &rbrace;
+    
+    let mc = new MyClass("Mazinger");
+    <b>console.log(mc.useInString); //it is a get, not a function
+    console.log(mc.notPrivateField);
+    //console.log(mc.#privateField); //will not work</b>
+  </code>
+</pre>
+The private field can also be static:
+<pre>
+  <code>
+    class MyClass &lbrace;
+      <b>static #total;  </b> 
+      constructor(value) &lbrace;
+        <b>MyClass.#total</b> += value;//not accessed through this
+      &rbrace;
+      static theTotal()&lbrace;
+        return MyClass.#total;
+      &rbrace;
+    &rbrace;
+    
+    let mc = new MyClass("Mazinger");
+    let mc2 = new MyClass("Ironman");
+    console.log(<b>MyClass.theTotal()</b>);//call static method
+  </code>
+</pre>
+You can do something similar with methods instead of fields.  Not adding the examples because it's the same idea.
+
+
 <p class="HeadingSubTopic2">To remember</p>
 JS is case sensitive<br/>
 Hyphens are not allowed in JavaScript. They are reserved for subtractions.<br/>
