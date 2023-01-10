@@ -311,7 +311,44 @@
         gen.next('C'); //C
       </code>
     </pre>
-    Generators are not constructible.
+    Generators are not constructible.<br/>
+    Generators can also be used with the for ... of syntax.  Still with the generator function above:
+    <pre>
+      <code>
+        const gen = generator(11);
+        for (g of gen)&lbrace;
+          console.log(g);
+        &rbrace;
+      </code>
+    </pre>
+
+
+    <br/>
+    Generators can also be async.  In this case, the next method will return a promise. The regular exampple above has too many yields so to make 
+    it less confusing this one will be different.
+    <pre>
+      <code>                
+          <b>async</b> function* generator(i) &lbrace;
+            <b>yield new Promise</b>((resolve, reject) => &lbrace;
+              setTimeout(() => &lbrace;
+                resolve(i);
+              &rbrace;, 1000);
+            &rbrace;);
+          yield new Promise((resolve, reject) => &lbrace;
+            setTimeout(() => &lbrace;
+              resolve(i + 10);
+            &rbrace;, 1000);
+            &rbrace;);  
+          &rbrace;
+
+          <b>(async () => &lbrace;</b>
+              const gen = generator(11);
+              <b>for await</b> (let g of gen)&lbrace;
+                console.log(g);
+              &rbrace;
+          <b>&rbrace;)();</b>
+      </code>
+    </pre>
     
     <p class="HeadingSubTopic2">Regular function vs arrow functions</p>
 
