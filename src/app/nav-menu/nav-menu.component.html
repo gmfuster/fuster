@@ -17,17 +17,18 @@
 
     <div class='navbar-collapse' [ngClass]='{ "in": isExpanded }' style=" width: 75%;">
       
-      <ul class="nav navbar-nav">
-        <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-          <a [routerLink]='["/"]' (click)='collapse()' style="color:rgb(183, 253, 253); border:2px solid aqua; border-radius: 15%; margin:2px;">
-            <span  style="font-size:2vw; padding: 0%; color:aquamarine; ">H</span>
+      <ul class="nav navbar-navH">
+        <!--<li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }' style="border:3px pink solid">-->
+        <li style=" margin:2px;">
+          <a [routerLink]='["/"]' class="nav-link"  >  <!--(click)='collapse()'-->
+            <img style="width:5.5vh; padding:0%; background-color: white; cursor: pointer; border-radius: 25%; " src="assets\images\jandmlaughingblue.svg" alt="Home" />
             <!--<span  style="font-size:2vh; padding: 0%;" class='glyphicon glyphicon-home'>Home</span>-->
           </a>
         </li>        
       </ul>    
       
       <ul class="nav navbar-nav"  >
-        <li style="background-color:plum; margin:2px;">    
+        <li style="background-color:plum; margin:2px; ">    
           <a class="nav-link" [routerLink]='["/csharp"]' >         
             <span style="color:navy; cursor: pointer;">C#</span>
           </a>
@@ -98,7 +99,7 @@
       </ul>      
     
       <ul class="nav navbar-nav" > 
-        <li  style="background-color: lightblue; margin-left:1vw;">    
+        <li  style="background-color: lightblue; margin-left:1vw; margin-top: 2px;">    
           <a class="nav-link" href="/#kidsmath" >         
             <span style="color:navy; cursor: pointer;">Kids Math</span>
           </a>

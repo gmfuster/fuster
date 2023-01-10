@@ -28,7 +28,7 @@ export class LandingDescriptionsComponent {
             this.articles += s[i];
             break; 
       }            
-    }, i * 70);    
+    }, i * 60);    
   }      
 
   ngAfterViewInit(){
@@ -62,8 +62,8 @@ export class LandingDescriptionsComponent {
           for(let j = 0; j< articlesArr.length; j++){
             this.doSetTimeout(j, articlesArr, "articles");      
           } 
-        }, 3000);
-      }, 2000);     
-      }, 2000);                
+        }, 2800);
+      }, 1700);     
+      }, 1700);                
   }
 }
