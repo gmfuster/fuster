@@ -398,6 +398,23 @@
         postMessage(whatever);
       </code>
     </pre>
+
+
+    <p class="HeadingSubTopic" id="topLevelAsync">Top Level Async</p>
+
+    It allows a module to behave like an async function. A module that imports the top-level await 
+    module will wait for it to load before evaluating its body.  In the file that is going to return something async, you can have something like this:
+    <pre>
+      <code>
+        const response = await fetch(url);
+        let users = await response.json();
+
+        export &lbrace; users &rbrace;;
+      </code>
+    </pre>
+    Then to use it: import &lbrace; users &rbrace; from './userFile.mjs'; And check for users being there, then use. (!users means it's not ready).
+
+
     </div>    
 </div>
     
