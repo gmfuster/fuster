@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
-///import {HeadingSubTopicDirective} from '../shared/directives';
-//import {LeftLinksComponent} from  '../shared/left-links.component';
+import {HeadingSubTopicDir} from '../shared/directives';
+import {TopLinksComponent} from  '../shared/top-links.component';
+
 import {CommonFuncs} from '../shared/commonFuncs.service'
 
 @Component({
@@ -11,10 +12,10 @@ import {CommonFuncs} from '../shared/commonFuncs.service'
 })
 
 export class JavaScriptNotesAsyncComponent implements OnInit {  
-//@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
+@ViewChildren(HeadingSubTopicDir, { read: ElementRef }) headings!:QueryList<any>;
 myHeadings : string[] = [];
-myName : string = "javascript-notes-async";
-//@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+myName : string = "javascript";
+@ViewChild(TopLinksComponent, {static : true}) child! : TopLinksComponent  ;
 
   constructor(private commonFuncs:CommonFuncs){}
 
@@ -23,7 +24,7 @@ myName : string = "javascript-notes-async";
   }
 
   ngAfterViewInit(){       
-  //  this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
-   // this.child.getChangesFromParent(this.myHeadings,this.myName )    
+    this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
+    this.child.getChangesFromParent(this.myHeadings,this.myName )        
   }  
 }

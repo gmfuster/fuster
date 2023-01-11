@@ -1,13 +1,11 @@
 <div class="PaddedContents ">       
       
     
-    <div >
-
-        <h4 class="CenterMe">You can type the JavaScript code  
-            <a class="CenterMe" href="https://replit.com/languages/nodejs" target="_new">on replit.com</a> 
-            to see how it works (it is nodejs but you can also choose JavaScript): <br/>   
-          </h4>
-          
+    <div >        
+          <div class="TopLinks" #HeadingsContainer>      
+            <top-links ></top-links>      
+          </div>  
+          <br/>
         In JavaScript, everything is an object except primitive types. Even with primitive types, there is a way to create them as objects instead of just primitive types.
         <br/>
         In OOP we center the code around objects. OOP will provide encapsulation, abstraction, inheritance, and polymorphism.<br/>
@@ -21,7 +19,7 @@
       <!--Create Objects-->
       <!-------------------------------------------------------------->
     
-      <p class="HeadingSubTopic" id="create">Create Objects</p>
+      <p class="HeadingSubTopic" id="create" HeadingSubTopicDir>Create Objects</p>
       
       We can create an object from a primitive type using New and the type.<br/>
     
@@ -129,7 +127,7 @@
     <!--Object-->
     <!-------------------------------------------------------------->    
 
-    <p class="HeadingSubTopic" id="object">Object</p>
+    <p class="HeadingSubTopic" id="object" HeadingSubTopicDir>Object</p>
 
     With the Object type we get the “values”, “entries”, and “keys” methods as shown below.<br/>
     <pre>
@@ -187,7 +185,7 @@
     <!--Reference-->
     <!-------------------------------------------------------------->    
 
-    <p class="HeadingSubTopic" id="reference">Reference Types</p>
+    <p class="HeadingSubTopic" id="reference" HeadingSubTopicDir>Reference Types</p>
 
     When we are assigning an object variable to another object variables, what the object is “saying” is “here, 
     this is the the box where my data is, I’ll share it with you, if you change it you will change it for me too.”  That is not the case 
@@ -284,7 +282,7 @@
     <!--functions-->
     <!-------------------------------------------------------------->
         
-    <p class="HeadingSubTopic" id="functions">Functions</p>
+    <p class="HeadingSubTopic" id="functions" HeadingSubTopicDir>Functions</p>
     We ca use functions that we will use to create new objects. The standard is to name this functions starting with uppercase.  
     <br/>
     <pre>
@@ -429,7 +427,7 @@
     <!--classes-->
     <!-------------------------------------------------------------->
    
-    <p class="HeadingSubTopic" id="classes">Classes</p>
+    <p class="HeadingSubTopic" id="classes" HeadingSubTopicDir>Classes</p>
     We don’t really have classes in JavaScript because under the hood they will be turned in to the constructor functions we have seen, 
     but as far as coding goes, they look a lot like classes.  From the Vehicle examples above<br/>
     Vehicle will look like this:<br/>
@@ -490,7 +488,7 @@
     <!--styless-->
     <!-------------------------------------------------------------->
     
-    <p class="HeadingSubTopic" id="styles">Styles</p>
+    <p class="HeadingSubTopic" id="styles" HeadingSubTopicDir>Styles</p>
     
     Because styles are also objects we can do this:<br/>
     <pre>
@@ -511,7 +509,7 @@
     <br/>
     <br/>
 
-    <p class="HeadingSubTopic" id="Sets">Set Objects</p>
+    <p class="HeadingSubTopic" id="Sets" HeadingSubTopicDir>Set Objects</p>
 
     ES6 and later.  It provides a collection of unique values of any type.
     <pre>
@@ -541,7 +539,7 @@
     A WeakSet is similar to a Set except that it contains only objects. Since objects in a WeakSet 
     may be automatically garbage-collected, a WeakSet does not have size property. Like a WeakMap, you cannot iterate elements of a WeakSet
 
-    <p class="HeadingSubTopic" id="Proxy">Proxy Objects</p>
+    <p class="HeadingSubTopic" id="Proxy" HeadingSubTopicDir>Proxy Objects</p>
 
     A JavaScript Proxy is an object that wraps another object (target) and intercepts the fundamental operations of the target object.
     <pre>
