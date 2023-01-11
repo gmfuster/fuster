@@ -256,6 +256,12 @@ body button{
   border:solid deepskyblue 2px;
 }
 
+.TopLinks{
+  box-sizing: border-box;        
+  border:solid deepskyblue 2px;
+  margin:5px;
+}
+
 
 
 

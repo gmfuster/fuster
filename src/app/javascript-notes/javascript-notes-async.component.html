@@ -5,7 +5,7 @@
         <a class="CenterMe" href="https://replit.com/languages/nodejs" target="_new">on replit.com</a>          
       </h4>
 
-      <p class="HeadingSubTopic" id="General">General</p>
+      <p class="HeadingSubTopic" id="General" HeadingSubTopicDir>General</p>
       We need this when we have a few operations to do, that take some time, and can be done independently, or when we need the operation to access some 
       external service, like an http call would be.<br/>
       One way to do this is like this, though it can get messy quickly:
@@ -43,7 +43,7 @@
       <!--Promises-->
       <!-------------------------------------------------------------->     
       
-      <p class="HeadingSubTopic" id="promises">Promises</p>
+      <p class="HeadingSubTopic" id="promises" HeadingSubTopicDir>Promises</p>
       <p class="HeadingSubTopic2" id="promises">Basic</p>
       A promise is an object returned by an asynchronous function, which represents the current state of the operation<br/>
       Promises are objects.  At the time the promise is returned to the caller, the operation often isn't finished, 
@@ -148,7 +148,7 @@
     <!--catch finally-->
     <!-------------------------------------------------------------->   
     
-    <p class="HeadingSubTopic" id="catch">Try-Catch</p>
+    <p class="HeadingSubTopic" id="catch" HeadingSubTopicDir>Try-Catch</p>
     <p class="HeadingSubTopic2">catch</p>
 
     We could also be catching an error this way:<br/>
@@ -182,7 +182,7 @@
     <img width="100%" src="assets\images\js\promise3.png" alt="promise 3" /><br/><br/>
 
     
-    <p class="HeadingSubTopic2">finally</p>
+    <p class="HeadingSubTopic2" HeadingSubTopicDir>finally</p>
     Finally always happen, no matter resolve or reject.<br/>
     <pre>
       <code>
@@ -213,7 +213,7 @@
     <!-------------------------------------------------------------->
     <!--chains-->
     <!-------------------------------------------------------------->
-    <p class="HeadingSubTopic" id="chains">Chains</p>
+    <p class="HeadingSubTopic" id="chains" HeadingSubTopicDir>Chains</p>
 
     
     We can have then after then, such as then(...).then(...) etc. However, the resolve from the myPromise will only make it to the first then.
@@ -230,7 +230,7 @@
     <!--static functions-->
     <!-------------------------------------------------------------->  
 
-    <p class="HeadingSubTopic" id="static">Static functions</p>
+    <p class="HeadingSubTopic" id="static" HeadingSubTopicDir>Static functions</p>
     JS has some static functions to deal with promises. This is just a brief summary.<br/>
 
     
@@ -288,7 +288,7 @@
     <!--Await-->
     <!-------------------------------------------------------------->
 
-    <p class="HeadingSubTopic" id="await">Await</p>
+    <p class="HeadingSubTopic" id="await" HeadingSubTopicDir>Await</p>
     
     AWAIT is used to wait for a promise or a value if what we return is not a promise, but it will be turned into a promise.  
     <b>AWAIT has to be called inside a async function.</b><br/>
@@ -375,7 +375,7 @@
       </code>
     </pre>
 
-    <p class="HeadingSubTopic" id="workers">Workers</p>
+    <p class="HeadingSubTopic" id="workers" HeadingSubTopicDir>Workers</p>
 
     Workers give you the ability to start a task in a different thread.  But workers cannot be accessing the same variables, for example something 
     on the window or the DOM.  (can't really lock them like in C#).  Communication happens via sending messages.  <br/>
@@ -400,7 +400,7 @@
     </pre>
 
 
-    <p class="HeadingSubTopic" id="topLevelAsync">Top Level Async</p>
+    <p class="HeadingSubTopic" id="topLevelAsync" HeadingSubTopicDir>Top Level Async</p>
 
     It allows a module to behave like an async function. A module that imports the top-level await 
     module will wait for it to load before evaluating its body.  In the file that is going to return something async, you can have something like this:

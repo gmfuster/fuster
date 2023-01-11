@@ -1,11 +1,17 @@
-import { Directive, HostBinding, HostListener, ViewContainerRef } from "@angular/core";
+import { Directive, ViewContainerRef } from "@angular/core";
 
-//not following standards because I already was using this in the code everywhere.
 @Directive({
     selector: '.HeadingSubTopic'
   })
   export class HeadingSubTopicDirective {}
 
+  //because the above doesn't longer work with the new code, TODO but this for now
+  //I don't know why it works on the Angular pages but not in the new ones, so using
+  //this for now but need to come back to it and figure it out TODO
+  @Directive({
+    selector: '[HeadingSubTopicDir]'
+  })
+  export class HeadingSubTopicDir {}
 
   @Directive({
     selector: '[appPopupPlaceHolder]'
