@@ -541,6 +541,32 @@
     A WeakSet is similar to a Set except that it contains only objects. Since objects in a WeakSet 
     may be automatically garbage-collected, a WeakSet does not have size property. Like a WeakMap, you cannot iterate elements of a WeakSet
 
+    <p class="HeadingSubTopic" id="Proxy">Proxy Objects</p>
+
+    A JavaScript Proxy is an object that wraps another object (target) and intercepts the fundamental operations of the target object.
+    <pre>
+        <code>
+            //original object
+            const user = &lbrace;
+                first: 'John',
+                last: 'Doe'    
+            &rbrace;
+            //handler, needs to have the get
+            const handler = &lbrace;
+                get(target, property) &lbrace;
+                    console.log(`Property $&lbrace;property&rbrace; has been read.`);
+                    return target[property];
+                &rbrace;
+            &rbrace;
+            //proxy
+            const proxyUser = new Proxy(user, handler);
+
+            console.log(proxyUser.first);
+            console.log(proxyUser.last);
+        </code>
+    </pre>
+    The handler object could have a set property (set(target, property, value)) for the assignments to have some validation logic.  There are other methods 
+    that the handler can have but this is just to mention this exists.
     </div>    
 </div>
     
