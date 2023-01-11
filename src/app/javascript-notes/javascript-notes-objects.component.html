@@ -510,6 +510,37 @@
 
     <br/>
     <br/>
+
+    <p class="HeadingSubTopic" id="Sets">Set Objects</p>
+
+    ES6 and later.  It provides a collection of unique values of any type.
+    <pre>
+        <code>
+            let s = new Set();
+            s.add("hello");
+            s.add(",");
+            s.add("how are you?");
+            console.log(s); // Set &lbrace; 'hello', ',', 'how are you?' &rbrace;
+
+            s.clear();
+            console.log(s); //Set &lbrace;&rbrace;
+            
+            s.add("hello");
+            s.add(",");
+            s.add("how are you?");
+            s.delete(",");
+            console.log(s);//Set &lbrace; 'hello', 'how are you?' &rbrace;
+
+
+            let chars = new Set(['a', 'a', 'b', 'c', 'c']);
+
+            console.log(chars) //Set &lbrace; 'a', 'b', 'c' &rbrace;
+        </code>
+    </pre>
+    There are other operations that you can perform on sets.  This is just to say this exists.<br/>
+    A WeakSet is similar to a Set except that it contains only objects. Since objects in a WeakSet 
+    may be automatically garbage-collected, a WeakSet does not have size property. Like a WeakMap, you cannot iterate elements of a WeakSet
+
     </div>    
 </div>
     
