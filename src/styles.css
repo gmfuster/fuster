@@ -260,6 +260,7 @@ body button{
   box-sizing: border-box;        
   border:solid deepskyblue 2px;
   margin:5px;
+  font-size: 1.5vw;
 }
 
 

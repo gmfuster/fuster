@@ -2,11 +2,16 @@
     
     <div >
       
+        <div class="TopLinks" #HeadingsContainer>      
+            <top-links ></top-links>      
+          </div>  
+          <br/>
+
       <!-------------------------------------------------------------->
       <!--General-->
       <!-------------------------------------------------------------->     
       
-      <p class="HeadingSubTopic" id="general">General</p>
+      <p class="HeadingSubTopic" id="general" HeadingSubTopicDir>General</p>
       Linq uses deferred execution.  You can use linq for arrays and links and others similar to those.  I'll just use List for the examples.
       Some examples using linq. (I just have a List&lt;string&gt; of some random words).
       <pre>
@@ -36,7 +41,7 @@
           </code>
       </pre>
 
-      <p class="HeadingSubTopic" id="Filtering-Sorting">Filtering Sorting</p>
+      <p class="HeadingSubTopic" id="Filtering-Sorting" HeadingSubTopicDir>Filtering Sorting</p>
       Use System.Linq if it is not in the file already.  You can also call a method that will indicate whether the word should go in or not.
       <pre>
           <code>
@@ -86,7 +91,7 @@
       </pre>
       Linq also provides a way to filter based on type: <b>theList.OfType&lt;WhateverType&gt;</b>
 
-      <p class="HeadingSubTopic" id="Sets">Sets</p>
+      <p class="HeadingSubTopic" id="Sets" HeadingSubTopicDir>Sets</p>
       There are some operations that can be done that are similar to the ones we have for sets.
       If I have this:
       <pre>
@@ -216,7 +221,7 @@
             and - appropriate
             </samp>
         </pre>
-        <p class="HeadingSubTopic" id="Linq-EF">Linq with EF</p>
+        <p class="HeadingSubTopic" id="LinqEF" HeadingSubTopicDir>Linq with EF</p>
 
         You can look at the Entity Framework section for this too.  Adding more here to indicate what this is about.
         <pre>
@@ -312,11 +317,11 @@
         <p class="HeadingSubTopic2" >Other</p>
         You can perform other actions in the collections, such as MAX, AVERAGE, SUM etc.
 
-        <p class="HeadingSubTopic" id="Parallel-Linq" >Parallel Linq</p>
+        <p class="HeadingSubTopic" id="ParallelLinq" HeadingSubTopicDir>Parallel Linq</p>
         You can run queries with the .AsParallel to use different processors at the same time if you have them.  Whatever comes after the .AsParallel will 
         be run in parallel, so don't just put it at the end of the statement.
 
-        <p class="HeadingSubTopic" id="Linq-XML" >Linq to XML</p>
+        <p class="HeadingSubTopic" id="LinqXML" HeadingSubTopicDir>Linq to XML</p>
         Pay attention to the types being used here or it won't work.  <b>Don't put the DBSet directly in the XML or you get an exception.</b>
         <pre>
             <code>

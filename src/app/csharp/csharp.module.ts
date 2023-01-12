@@ -14,6 +14,8 @@ import { CSharpLinqComponent } from '.././csharp-notes/csharp-linq.component';
 import { CSharpMVCComponent } from '.././csharp-notes/csharp-mvc.component';
 import { CSharpGraphQLComponent } from '.././csharp-notes/csharp-graphql.component';
 
+import { SharedModule } from "../shared/shared.module";
+
 @NgModule({
   declarations: [
     CSharpComponent,
@@ -29,7 +31,8 @@ import { CSharpGraphQLComponent } from '.././csharp-notes/csharp-graphql.compone
   ],
   imports: [
     CommonModule,
-    CSharpRoutingModule
+    CSharpRoutingModule,
+    SharedModule
   ]
 })
 export class CSharpModule { }

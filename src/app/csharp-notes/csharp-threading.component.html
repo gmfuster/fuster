@@ -3,10 +3,10 @@
 
     <div >
   
-        <h4 class="CenterMe">You can type the C# code  
-            <a class="CenterMe" href="https://replit.com/languages/csharp" target="_new">on replit.com</a> 
-            to see how it works <br/>         
-          </h4>       
+        <div class="TopLinks" #HeadingsContainer>      
+            <top-links ></top-links>      
+          </div>  
+          <br/>     
                 
         A Thread is an object that represents a process running in the Operating System.
         <br/>
@@ -17,7 +17,7 @@
         Exceptions have to be caught inside the thread.<br/>
         When using Tasks and Threads we cannot update an element on a view because they run on different threads.  <br/>
         
-        <p class="HeadingSubTopic" id="Basics-Threads">Threads Basics</p>
+        <p class="HeadingSubTopic" id="BasicsThreads" HeadingSubTopicDir>Threads Basics</p>
 
         <pre>
             <code>
@@ -54,7 +54,7 @@
             </samp>
         </pre>
         
-        <p class="HeadingSubTopic" id="Passing-Data-To-Thread">Passing Data to Threads</p>
+        <p class="HeadingSubTopic" id="PassingDataToThread" HeadingSubTopicDir>Passing Data to Threads</p>
         If we need to pass data to a thread<br/>
         Pass data to thread 1 - ParameterizedThreadStart - Would work the same if using calling a method instead of an anonymous one.<br/>
         <pre>
@@ -87,7 +87,7 @@
 
         <br/>
 
-        <p class="HeadingSubTopic" id="Wait-On-Thread">Wait on a thread</p>
+        <p class="HeadingSubTopic" id="WaitOnThread" HeadingSubTopicDir>Wait on a thread</p>
         <b>We can wait for a thread<br/></b>
         Like we saw before, this:
         <pre>
@@ -181,7 +181,7 @@
             </samp>
         </pre>
         
-        <p class="HeadingSubTopic" id="Data-Between-Threads">Data Between Threads</p>
+        <p class="HeadingSubTopic" id="DataBetweenThreads" HeadingSubTopicDir>Data Between Threads</p>
         You don't really pass data from one thread to another thread.  But you can have data in a shared variable, and use lock to make sure it doesn't get messed up.
         A very simple example would be something like this.  You can also have one thread wait on the other one, to make sure the data will be there.
         The code is a bit silly but just focus on the highlighted parts<br/>
@@ -303,7 +303,7 @@
             </samp>
         </pre>      
         
-        <p class="HeadingSubTopic" id="Task-Parallel">Tasks and Running in Parallel</p>
+        <p class="HeadingSubTopic" id="TaskParallel" HeadingSubTopicDir>Tasks and Running in Parallel</p>
         <p class="HeadingSubTopic2" >Tasks and Parallel.Invoke</p>
         A Task is an object that represents a job (method) that's going to be performed.
         <br/>
@@ -504,7 +504,7 @@
 
         <br/>
 
-        <p class="HeadingSubTopic" id="Task-Waiting">Waiting on Task</p>
+        <p class="HeadingSubTopic" id="TaskWaiting" HeadingSubTopicDir>Waiting on Task</p>
         We can wait for a task to be done :<br/>
         <pre>
             <code>
@@ -559,7 +559,7 @@
             </code>
         </pre>
 
-        <p class="HeadingSubTopic" id="Parent-Task">Parent Task</p>
+        <p class="HeadingSubTopic" id="ParentTask" HeadingSubTopicDir>Parent Task</p>
         A parent task can create other child tasks, they can be attached or unattached.  If they are attached, the task will not complete until the children are done.
         <br/>
         If the child task doesn't have to complete before the parent can complete, it's called just a nested task.  If the parent has to wait for it, then it's really a CHILD 
@@ -588,7 +588,7 @@
             </code>
         </pre>
        
-        <p class="HeadingSubTopic" id="Async-Await">Async Await</p>
+        <p class="HeadingSubTopic" id="AsyncAwait" HeadingSubTopicDir>Async Await</p>
 
         First thing, just because something looks like it's doing the same thing, it may not be the same thing:
         <pre>

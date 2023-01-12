@@ -6,21 +6,20 @@ import { JavascriptComponent } from './javascript.component';
 import { JavaScriptNotesComponent } from '../javascript-notes/javascript-notes.component';
 import { JavaScriptNotesAsyncComponent } from '../javascript-notes/javascript-notes-async.component';
 import { JavaScriptNotesObjectsComponent } from '../javascript-notes/javascript-notes-objects.component';
-import { TopLinksComponent } from '../shared/top-links.component';
-import { HeadingSubTopicDir } from '../shared/directives';
+
+import { SharedModule } from "../shared/shared.module";
 
 @NgModule({
   declarations: [
     JavascriptComponent,
     JavaScriptNotesComponent,
     JavaScriptNotesAsyncComponent,
-    JavaScriptNotesObjectsComponent,
-    TopLinksComponent,
-    HeadingSubTopicDir
+    JavaScriptNotesObjectsComponent    
   ],
   imports: [
     CommonModule,
-    JavascriptRoutingModule
+    JavascriptRoutingModule,
+    SharedModule
   ]
 })
 export class JavascriptModule { }

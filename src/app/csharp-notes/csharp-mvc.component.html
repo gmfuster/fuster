@@ -2,8 +2,12 @@
    
 
     <div >
-          
-        <p class="HeadingSubTopic" id="MVC-General">General MVC</p>
+        <div class="TopLinks" #HeadingsContainer>      
+            <top-links ></top-links>      
+          </div>  
+          <br/>
+
+        <p class="HeadingSubTopic" id="MVCGeneral" HeadingSubTopicDir>General MVC</p>
         With ASP.Net Core, it's common to use the MVS (Model View Controller)     <br/>
         Models: classes that represent the data entities and the view models used.<br/>
         views: render the data, could be Razor pages or something else.<br/>
@@ -11,7 +15,7 @@
         <br/>
         Just saying, I'm not adding any notes on Razor pages.<br/>
 
-        <p class="HeadingSubTopic" id="Web-Services">Web Services</p>
+        <p class="HeadingSubTopic" id="WebServices" HeadingSubTopicDir>Web Services</p>
         Some of the status code that can be returned:<br/>
         <ul>
             <li>200 OK</li>
@@ -36,7 +40,7 @@
         Types of requests: GET, POST (a new one), PUT (update), DELETE, and also PATCH (update only some parts).<br/>
         To create a new WEB API project,  choose <b>ASP.NET Core Web API.</b>        
 
-        <p class="HeadingSubTopic" id="Web-API-Struct">Web API Structure</p>
+        <p class="HeadingSubTopic" id="WebAPIStruct" HeadingSubTopicDir>Web API Structure</p>
         When you do that you get a bunch of files created for you.<br/>
         Controllers folder: gets a WatherForecastController.cs file. Inherits from ControllerBase, not Controller.<br/>
         <b>[Route("[controller]")]</b> ---- the main url will depend on the string you have in the class name before Controller:
@@ -69,7 +73,7 @@
         If I leave the <b>[Route("[controller]")]</b>, the method [HttpGet, <b>Route("SomeOtherName/&lbrace;days:int&rbrace;")]</b> will be called with 
         <b>https://localhost:7298/weatherforecast/SomeOTherName/5</b><br/>        
 
-        <p class="HeadingSubTopic" id="EF">Entity Framework</p>
+        <p class="HeadingSubTopic" id="EF" HeadingSubTopicDir>Entity Framework</p>
 
         Check the EF section for more info.  But in this project, you can also create a NorthwindDbContext or whatever class that inherits from DbContext.  You will need the DbContext 
         for each unit of work, which in this case is the http call.
@@ -98,7 +102,7 @@
             </code>
         </pre>
         
-        <p class="HeadingSubTopic" id="Repos">Repos - Repositories</p>
+        <p class="HeadingSubTopic" id="Repos" HeadingSubTopicDir>Repos - Repositories</p>
 
         It's a good idea to have a repositories or repos folder. This is for the CRUD operations.  Create and interface class with the methods that will be needed 
         and the class itself.  You can have this for each EF model you will need for each table or whatever you need to get data from. (Remember VS may give you a 
@@ -218,7 +222,7 @@
             </code>
         </pre>
 
-        <p class="HeadingSubTopic" id="Routes-Controller">Routes in Controllers</p>
+        <p class="HeadingSubTopic" id="RoutesController" HeadingSubTopicDir>Routes in Controllers</p>
 
         In the routes in the controllers, like the WeatherForecastController used previously, it's a good idea to indicate whether the method is going to be get or post or what.
         <ul>
@@ -230,12 +234,12 @@
             <li>[HttpDelete] DELETE request</li>
             <li>[HttpOptions] - OPTIONS request</li>
         </ul>
-        <p class="HeadingSubTopic" id="Return-Types">Return Types</p>
+        <p class="HeadingSubTopic" id="ReturnTypes" HeadingSubTopicDir>Return Types</p>
         An Action method can return .NET types or <b>IActionResult</b> if the return type could differ based on something, or <b>ActionResult&lt;T&gt;</b> if it will 
         return the same type but with different status codes.<br/>
         You can use [ProducesResponseType] to indicate what types of returns the method can generate.
 
-        <p class="HeadingSubTopic" id="Use-Repo-Controller">Using the repository</p>
+        <p class="HeadingSubTopic" id="UseRepoController" HeadingSubTopicDir>Using the repository</p>
         In the program file, before the call to builder.Build(), register the repo with something like:
         <pre>
             <code>
@@ -344,7 +348,7 @@
         https://localhost:yourport/api/Customer/?country=Germany<br/>
         For simple services you do need to create a controller and can have everything in the program (minimal API) but not sure it's the best thing.
 
-        <p class="HeadingSubTopic" id="Testing">Testing</p>
+        <p class="HeadingSubTopic" id="Testing" HeadingSubTopicDir>Testing</p>
         You can use Postman or a similar tool to test all sorts of requests. You can also use swagger in VS for documentation and testing.<br/>
         https://localhost:yourport/swagger will display the services you have , something like this:<br/>
         Open the drop down and click on try it out and execute to test.<br/>

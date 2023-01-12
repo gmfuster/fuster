@@ -31,6 +31,8 @@ import { SomeDirectiveDirective5 } from './some-directive-directive/some-directi
 import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-directive-directive.directive';
 import { LeftLinksComponent } from './shared/left-links.component';
 
+import { SharedModule } from "./shared/shared.module";
+
 import { DropdownDirective } from './shared/dropdown-directive';
 import { PlaceholderDirective } from './shared/directives';
 import { HeadingSubTopicDirective } from './shared/directives';
@@ -103,7 +105,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,
-    HeadingSubTopicDirective,    
+    HeadingSubTopicDirective     
   ],
   imports: [
     BrowserModule,
@@ -112,9 +114,11 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,    
+    BrowserAnimationsModule,   
+    SharedModule 
   ],
   providers: [OtherServices, ForCanActivate, ForCanDeActivate],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }

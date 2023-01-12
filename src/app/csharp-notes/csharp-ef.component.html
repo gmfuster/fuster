@@ -2,11 +2,14 @@
 
     <div >
 
-        <br/>   
+        <div class="TopLinks" #HeadingsContainer>      
+            <top-links ></top-links>      
+          </div>  
+          <br/> 
         
         <h4 class="CenterMe">This is about Entity Framework Core.</h4>      
                     
-    <p class="HeadingSubTopic" id="Intro">Intro</p>
+    <p class="HeadingSubTopic" id="Intro" HeadingSubTopicDir>Intro</p>
     You use EF to access data.  If you have a DB in place, you set it so it matches the structure of that DB.  Otherwise you can use to create the DB itself.<br/>
 
     <p class="HeadingSubTopic2">Connection string</p>
@@ -190,7 +193,7 @@
         </code>
     </pre>
 
-    <p class="HeadingSubTopic" id="Manipulate-Data">Manipulating the Data</p>
+    <p class="HeadingSubTopic" id="ManipulateData" HeadingSubTopicDir>Manipulating the Data</p>
 
     <p class="HeadingSubTopic2">Inserting</p>
 
@@ -232,7 +235,7 @@
             <b>t.commit();</b>
         </code>
     </pre>
-    <p class="HeadingSubTopic" id="Loading">Loading Patterns</p>
+    <p class="HeadingSubTopic" id="Loading" HeadingSubTopicDir>Loading Patterns</p>
         Eager Loading: Load data early<br/>
         Lazy Loading: Load before it is needed<br/>
         Explicit Loading: load data manually<br/>
@@ -267,7 +270,7 @@
             </code>
         </pre>
 
-        <p class="HeadingSubTopic" id="Logging">Logging</p>
+        <p class="HeadingSubTopic" id="Logging" HeadingSubTopicDir>Logging</p>
 
     We can monitor the interaction between EF and the Database.  Create a file to have the <b>logging code:</b> (not really getting into this)
     <pre>

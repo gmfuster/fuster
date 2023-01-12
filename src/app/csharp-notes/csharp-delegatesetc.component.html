@@ -1,12 +1,15 @@
 <div class="PaddedContents ">
     
 <div >
-  
+    <div class="TopLinks" #HeadingsContainer>      
+        <top-links ></top-links>      
+      </div>  
+      <br/>
               
     <b>With delegates, you should always check them for null before calling them.  I have not here so it's less code, but you should always check for null.</b>
   <br/><br/>
     
-    <p class="HeadingSubTopic" id="Regular-Delegates">Regular Delegates</p>
+    <p class="HeadingSubTopic" id="RegularDelegates" HeadingSubTopicDir>Regular Delegates</p>
     
     This is a delegate:<br/>
     <img width="100%" src="assets\images\csharp\adelegate.png" alt="I am a delegate" /><br/><br/>
@@ -93,7 +96,7 @@
 
     <br/>
     
-    <p class="HeadingSubTopic" id="Actions">Actions</p>
+    <p class="HeadingSubTopic" id="Actions" HeadingSubTopicDir>Actions</p>
 
     When the methods we are using are returning void we can use the Action type provided by C#.  This also works for static and non-static methods<br/>
     Notice we are not creating a new delegate, Action is the delegate.<br/>
@@ -128,7 +131,7 @@
     <b>When you create Action delegates in a class they are created as properties with set and get methods, so it’s possible for code outside the class to access them.
     You can add the event keyword to them and then they are created as fields instead of properties. </b><br/><br/>
     
-    <p class="HeadingSubTopic" id="Action-Event">Actions with the Event keyword</p>
+    <p class="HeadingSubTopic" id="ActionEvent" HeadingSubTopicDir>Actions with the Event keyword</p>
 
     When you create the Actions as Events in a class, 
     they are created as fields not properties with get and set properties. Also, they are assigned a 
@@ -168,7 +171,7 @@
 
    Still is you are going to use events, use EventHandler instead of event Action<br/>
 
-   <p class="HeadingSubTopic" id="EventHandler">EventHandler</p>
+   <p class="HeadingSubTopic" id="EventHandler" HeadingSubTopicDir>EventHandler</p>
    This allows subscribers to be given data about the event.<br/>
    If we are using EventHandlers, the methods we can use with them need to have the parameters <b>(Object sender, EventArgs e)</b><br/>
    The example below is very simple to illustrate how it works<br/>
@@ -227,7 +230,7 @@
        </code>
    </pre><br/>
 
-   <p class="HeadingSubTopic" id="Func">Func</p>
+   <p class="HeadingSubTopic" id="Func" HeadingSubTopicDir>Func</p>
 
    We saw how we can use Action for methods that don't return anything.  Similarly, we have this: <b>public delegate TResult Func&lt;in T,out TResult&gt;>(T arg);</b><br/>
 
@@ -254,7 +257,7 @@
        </code>
    </pre>
 
-   <p class="HeadingSubTopic" id="Exceptions">Exceptions</p>
+   <p class="HeadingSubTopic" id="Exceptions" HeadingSubTopicDir>Exceptions</p>
    If we have a delegate with more than one subscriber, if one of the methods called throws an exception, the ones that are still waiting to be called will not be.
    <b>Your methods should have TRY-CATCH blocks.</b>  Having them here will ensure all methods get called.<br/>
 

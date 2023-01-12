@@ -1,9 +1,12 @@
 <div class="PaddedContents ">    
 
     <div >
-    
+        <div class="TopLinks" #HeadingsContainer>      
+            <top-links ></top-links>      
+          </div>  
+          <br/>
             
-        <p class="HeadingSubTopic" >Installing</p>
+        <p class="HeadingSubTopic" id="Installing" HeadingSubTopicDir>Installing</p>
 
         There are different packages you can install that work with .NET and graphql.  I am using this one:<br/>
         Go to a command window and move to the directory where your project is. (the project itself, not the solution where it is)<br/>
@@ -23,7 +26,7 @@
         <br/>
         Once you have it installed, you can create folders for your classes: Query, Type, Mutation, Schema, Services.<br/>
 
-        <p class="HeadingSubTopic" >Types</p>
+        <p class="HeadingSubTopic" id="Types"  HeadingSubTopicDir>Types</p>
 
         With c# we have model classes to hold our data, but, those are not what we can use with GraphQL. For example, if we have a model class like this:
 
@@ -54,7 +57,7 @@
             </code>
         </pre>        
 
-        <p class="HeadingSubTopic" >Accessing</p>
+        <p class="HeadingSubTopic" id="Accessing" HeadingSubTopicDir>Accessing</p>
         With REST APIs, we need a controller that directs where to go depending on the url request we get.  In here we don't have that.
         If with a REST request we could have: <br/>
         localhost/api/products with a GET method or localhost/api/product/1 with a POST method etc. we now will have something different.
@@ -90,7 +93,7 @@
 
         So far we have the type with its fields and how to access the UI to test it, but we need more so we have something to use.<br/>
 
-        <p class="HeadingSubTopic" >Queries</p>
+        <p class="HeadingSubTopic" id="Queries" HeadingSubTopicDir>Queries</p>
         In the code below, we have a ProductService class that contains some methods we can call, and we are using dependency injection for it.
         <pre>
             <code>
@@ -109,7 +112,7 @@
             </code>
         </pre>
 
-        <p class="HeadingSubTopic" >Schemas</p>
+        <p class="HeadingSubTopic" id="Schemas" HeadingSubTopicDir>Schemas</p>
         
         <pre>
             <code>
@@ -127,7 +130,7 @@
         schemas in the right side of the ui/graphiql UI.
 
       
-        <p class="HeadingSubTopic" >Querying</p>
+        <p class="HeadingSubTopic" id="Querying" HeadingSubTopicDir>Querying</p>
 
         With all the previous code, we can call to get the list of products with this (in https://localhost:????/ui/graphiql):
         <pre>
@@ -184,7 +187,7 @@
             </samp>
         </pre>
 
-        <p class="HeadingSubTopic" >graphql  github explorer</p>
+        <p class="HeadingSubTopic" id="GithubExplorer" HeadingSubTopicDir>graphql  github explorer</p>
 
         To see other types of queries, you can go to <a href="https://docs.github.com/en/graphql/overview/explorer" target="_new">docs.github.com/en/graphql/overview/explorer</a>
         <br/>
@@ -307,7 +310,7 @@
 
         There is also a mutations on the right side (in addition to queries) but not looking at this yet.
 
-        <p class="HeadingSubTopic" >Add Our Mutations</p>
+        <p class="HeadingSubTopic" id="Murations" HeadingSubTopicDir>Add Our Mutations</p>
         In the Type folder, where we already have the ProductType class, we need to add a ProductInputType.
         <pre>
             <code>
@@ -394,7 +397,7 @@
         </pre>
         You can do similar mutations using the other services.
 
-        <p class="HeadingSubTopic" >Having Multiple Query objects</p>
+        <p class="HeadingSubTopic" id="MultipleQUeryObjs" HeadingSubTopicDir>Having Multiple Query objects</p>
 
         The project can have one schema only and the schema can only contain one query, so when we have different types, each with its own query, 
         we need to have a rootQuery to handle the queries.

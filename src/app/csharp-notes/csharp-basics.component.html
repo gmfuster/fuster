@@ -4,12 +4,12 @@
 
     <br/>
     <h2 class="CenterMe">C# notes - Basics</h2>      
-    <h4 class="CenterMe">You can type the C# code  
-      <a class="CenterMe" href="https://replit.com/languages/csharp" target="_new">on replit.com</a> 
-      to see how it works <br/>   
-    </h4>
+    <div class="TopLinks" #HeadingsContainer>      
+        <top-links ></top-links>      
+      </div>  
+      <br/>
             
-        <p class="HeadingSubTopic" id="Access-Modifiers">Access Modifiers</p>
+        <p class="HeadingSubTopic" id="AccessModifiers" HeadingSubTopicDir>Access Modifiers</p>
 
         <b>private: </b> Member is accessible only inside its type.<br/>
         <b>internal: </b> Accessible inside the type and any type in the same assembly.<br/>
@@ -18,7 +18,7 @@
         <b>internal protected: </b>Accessible inside the type, same assembly, and types that inherit from it. <br/>
         <b>private protected: </b>Accesible inside the type, and any inherited type that is IN the same assembly.<br/>
         
-        <p class="HeadingSubTopic" id="Null-Coalescing">null coalescing operator</p>
+        <p class="HeadingSubTopic" id="NullCoalescing" HeadingSubTopicDir>null coalescing operator</p>
         <pre>
             <code >
                 class Program &lbrace;
@@ -32,7 +32,7 @@
             </code>
         </pre>
             
-        <p class="HeadingSubTopic" id="Overloading">operator overloading</p>
+        <p class="HeadingSubTopic" id="Overloading" HeadingSubTopicDir>operator overloading</p>
         This example is silly but it's just to illustrate how this works.  We have a clas SomeObj, and it has a method for the + of objects of that class:<br/>
         <pre>
             <code >
@@ -52,7 +52,7 @@
         <br/>
         <img width="100%" src="assets\images\csharp\opoverloading1.png" alt="operator overloading" /><br/><br/>
         
-        <p class="HeadingSubTopic" id="Keywords">keywords as variables</p>
+        <p class="HeadingSubTopic" id="Keywords" HeadingSubTopicDir>keywords as variables</p>
         <pre>
             <code>
                 using System;
@@ -67,7 +67,7 @@
             </code>
         </pre>
         
-        <p class="HeadingSubTopic" id="Special-Chars">Ignore/use special chars</p>
+        <p class="HeadingSubTopic" id="SpecialChars" HeadingSubTopicDir>Ignore/use special chars</p>
 
         <pre>
             <code>
@@ -83,7 +83,7 @@
         </pre>
         <br/>
         
-        <p class="HeadingSubTopic" id="Format-Strings">format strings with variables</p>
+        <p class="HeadingSubTopic" id="FormatStrings" HeadingSubTopicDir>format strings with variables</p>
         <pre>
             <code>
                 string fillIt = "Michael";
@@ -114,7 +114,7 @@
         <br/>
         Use double instead of decimal when accuracy is not important, especially when comparing numbers.<br/>
         
-        <p class="HeadingSubTopic" id="Little-Things">Some little things</p>
+        <p class="HeadingSubTopic" id="LittleThings" HeadingSubTopicDir>Some little things</p>
         <pre>
             <code>
                 int i = 10_123;
@@ -177,7 +177,7 @@
             </code>
         </pre>
         
-        <p class="HeadingSubTopic" id="Params">params argument</p>
+        <p class="HeadingSubTopic" id="Params" HeadingSubTopicDir>params argument</p>
         the params argument has to be the last one <br/>
         <pre>
             <code>
@@ -204,7 +204,7 @@
             </samp>
         </pre>
         
-        <p class="HeadingSubTopic" id="Default-Params">Default params</p>
+        <p class="HeadingSubTopic" id="DefaultParams" HeadingSubTopicDir>Default params</p>
 
         <pre>
             <code>
@@ -232,7 +232,7 @@
         
         Parameters can be passed by value (default), by reference (<b>ref</b>), and as an <b>out</b> parameter.
         <br/>    
-        <p class="HeadingSubTopic" id="Extension-Methods">Extension Methods</p>
+        <p class="HeadingSubTopic" id="ExtensionMethods" HeadingSubTopicDir>Extension Methods</p>
 
         Extension methods have to be created, for a type, in a non-generic static class.  That is why I'm changing the class program to be static.  The 
         use of this indicates the one that will be the string that has the method.<br/>
@@ -262,7 +262,7 @@
         </pre>
 
         <br/>    
-        <p class="HeadingSubTopic" id="Tuples">Tuples</p>
+        <p class="HeadingSubTopic" id="Tuples" HeadingSubTopicDir>Tuples</p>
 
         We have System.Tuple (reference, the data members are properties) and System.ValueTuple (value, the data members are fields).<br/>
 
@@ -348,7 +348,7 @@
         </pre>
 
         <br/>    
-        <p class="HeadingSubTopic" id="Generics">Generics</p>
+        <p class="HeadingSubTopic" id="Generics" HeadingSubTopicDir>Generics</p>
 
         <pre>
             <code>
@@ -403,7 +403,7 @@
         Above, we could also be using a class and an interface for each where.<br/>
         <br/>      
       
-        <p class="HeadingSubTopic" id="Enums">Enums</p>
+        <p class="HeadingSubTopic" id="Enums" HeadingSubTopicDir>Enums</p>
 
         Regular way to use an Enum<br/>
         <pre>
@@ -479,7 +479,7 @@
         </pre>
         Keep in mind that the type you can use for the enum will depend on how many values you are going to need.<br/>
 
-        <p class="HeadingSubTopic" id="Records">Records</p>
+        <p class="HeadingSubTopic" id="Records" HeadingSubTopicDir>Records</p>
         Medium Article - <a href="https://gmfuster.medium.com/c-class-struct-record-record-struct-d3b21c57d9bb"
         target="_new">C# — Class, Struct, Record, Record Struct</a><br/><br/>
 
@@ -557,7 +557,7 @@
         </pre>
         For two record variables to be equal, the run-time type must be equal (not just the values, also the type).
         
-        <p class="HeadingSubTopic" id="Comparing">Pattern Matches - Switch - Comparing - checking type</p>
+        <p class="HeadingSubTopic" id="Comparing" HeadingSubTopicDir>Pattern Matches - Switch - Comparing - checking type</p>
 
         The info in this article is the same but may be better explained:<br/>
         <a href="https://gmfuster.medium.com/c-summary-of-patter-matching-1a1efec983cd"
@@ -793,7 +793,7 @@
         </pre>
         There is more than what is mentioned above, so check the documentation for more and for how to do it, or understand something you see.
 
-        <p class="HeadingSubTopic" id="Other">Other</p>
+        <p class="HeadingSubTopic" id="Other" HeadingSubTopicDir>Other</p>
 
         <p class="HeadingSubTopic2">function inside function</p>
         You can have a method and have a local function inside that method (starting with C#7). That local function can be accessed only from within that method.
@@ -822,7 +822,7 @@
                 Console.WriteLine(arrays[i5]); // prints five!!!!!!!!!!
             </code>
         </pre>
-        <p class="HeadingSubTopic2">Ranges</p>
+        <p class="HeadingSubTopic2" HeadingSubTopicDir>Ranges</p>
         The Range type uses indexes to indicate its range.  We can use the ranges with spans to get parts of them.
         <pre>
             <code>
