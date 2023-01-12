@@ -49,7 +49,7 @@
       
       <p class="HeadingSubTopic" id="promises" HeadingSubTopicDir>Promises</p>
       <p class="HeadingSubTopic2" id="promises">Basic</p>
-      A promise is an object returned by an asynchronous function, which represents the current state of the operation<br/>
+      A promise is an object returned by an asynchronous function, which represents the current state of the operation.<br/>
       Promises are objects.  At the time the promise is returned to the caller, the operation often isn't finished, 
       but the promise object provides methods to handle the eventual success or failure of the operation.<br/>
       The promise object returns properties: <b>state</b> (pending, fulfilled, rejected), <b>result</b> (undefined, value, error).<br/>
@@ -147,6 +147,31 @@
   
     <br/>
     If instead of reject(new Error("REJECTED!!!") we do reject("REJECTED!!!"); it will still go to the reject but it won't display as an error, but as a string.<br/>
+
+    When creating our own Promise, we can also use this syntax:
+    <pre>
+      <code>
+        new Promise( (resolve,reject) => &lbrace;
+            //...
+          &rbrace; )
+      </code>
+    </pre>
+    <!-------------------------------------------------------------->
+    <!--Observables-->
+    <!-------------------------------------------------------------->   
+    <p class="HeadingSubTopic" id="observables" HeadingSubTopicDir>Observables</p>
+    See this under Angular notes, "basic or short" notes.
+
+    <!-------------------------------------------------------------->
+    <!--Observables Promises-->
+    <!-------------------------------------------------------------->   
+    <p class="HeadingSubTopic" id="observablesVSpromises" HeadingSubTopicDir>Observables vs Promises</p>
+
+    Observables will only happen if somebody has subscribed to them.<br/>
+    Observables can return multiple values.<br/>
+    Observables can be unsubscribed from and therefore stopped.<br/>
+    Observables come with a set of operators that can be performed on the data.<br/>
+    Observables can have multiple observers (Subjet)<br/>
 
     <!-------------------------------------------------------------->
     <!--catch finally-->

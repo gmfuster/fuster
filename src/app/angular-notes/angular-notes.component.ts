@@ -154,7 +154,7 @@ export class MyOwnPipeParamsPipe implements PipeTransform{
   transform(value:any, num :number){
     var myS:string =  "♫ " + value + " ♫";
     for (var i = 1; i<=num; i++){
-      console.log(myS);
+      //console.log(myS);
       myS += " ♫";
     }
     return myS;
