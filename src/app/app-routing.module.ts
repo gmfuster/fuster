@@ -12,6 +12,8 @@ import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.co
 import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.component';
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 
+import { ReactNotesComponent } from './react-notes/react-notes.component';
+
 /*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
 import { CSharpModule } from './csharp/csharp.module';
 import { JavascriptModule } from './javascript/javascript.module';
@@ -73,6 +75,8 @@ const routes: Routes = [
   { path: 'angular-notes-auth', component: AngularNotesAuthComponent, pathMatch: 'full' },  
   { path: 'angular-notes-dynamic', component: AngularNotesDynamicComponent, pathMatch: 'full' },  
   { path: 'angular-notes-modules', component: AngularNotesModulesComponent, pathMatch: 'full' },  
+
+  { path: 'react-notes', component: ReactNotesComponent, pathMatch: 'full' },  
 
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },

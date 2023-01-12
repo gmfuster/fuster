@@ -22,6 +22,8 @@ import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.co
 import { AngularNotesDynamicComponent } from './angular-notes/angular-notes-dynamic.component';
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 
+import { ReactNotesComponent } from './react-notes/react-notes.component';
+
 import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
 import { SomeDirectiveDirective } from './some-directive-directive/some-directive-directive.directive';
 import { SomeDirectiveDirective2 } from './some-directive-directive/some-directive-directive.directive';
@@ -105,7 +107,9 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,
     LeftLinksComponent,
-    HeadingSubTopicDirective     
+    HeadingSubTopicDirective   ,
+    
+    ReactNotesComponent
   ],
   imports: [
     BrowserModule,
