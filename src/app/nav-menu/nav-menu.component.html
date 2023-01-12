@@ -15,7 +15,7 @@
     </div>
     -->
 
-    <div class='navbar-collapse' [ngClass]='{ "in": isExpanded }' style=" width: 75%;">
+    <div class='navbar-collapse' [ngClass]='{ "in": isExpanded }' ><!--style=" width: 75%;-->
       
       <ul class="nav navbar-navH">
         <!--<li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }' style="border:3px pink solid">-->
@@ -105,6 +105,14 @@
           </a>
         </li> 
       </ul> 
+
+      <ul class="nav navbar-nav" style="float: right; margin-right: 10px;  caret-color: rgba(0,0,0,0); " (click)="scrollUp()"> 
+        <li  style="background-color: hotpink; margin-top: 2px; color:navy;">    
+          <a class="nav-link" >         
+            <span style="color:navy; cursor: pointer;">&uparrow;</span>
+          </a>
+        </li> 
+      </ul>       
 
     </div>
 

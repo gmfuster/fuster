@@ -18,4 +18,8 @@ export class NavMenuComponent  {
   toggle() {
     this.isExpanded = !this.isExpanded;
   }
+
+  scrollUp(){
+    window.scroll(0,0);
+  }
 }
