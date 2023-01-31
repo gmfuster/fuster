@@ -417,6 +417,17 @@
         )
       </code>
     </pre>
+    Note: depending on your version the above create may be obsolete.  If that is the case, create the observable this way.
+    <pre>
+      <code>
+        const myObservable = new Observable( (observer) =>
+        &lbrace;
+          ...
+          observer.next(value);
+          ...     
+        &rbrace;
+      </code>
+    </pre>
     The observer above, in the myObservable code, could also be throwing an error with <b>observer.error(new Error(message:"some error"));</b><br/>
     If we don't handle the possibility of an error when we are observing, the code will just break.  If we want to handle it, we can add another argument to the 
     <b>this.whatever = interval(period:1000).subscribe(next:value => console.log(value));</b>.  It could be something like 

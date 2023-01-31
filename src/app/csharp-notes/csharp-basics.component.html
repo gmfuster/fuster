@@ -844,6 +844,29 @@
                 Console.WriteLine(sp1[r6].ToString());//hel
             </code>
         </pre>
-        <br/>    
+        <br/>   
+        
+        <p class="HeadingSubTopic2" HeadingSubTopicDir>Instantiate Structure</p>
+
+        <pre>
+            <code>
+                Test t1 = new();
+		        Console.WriteLine(t1); //Test &lbrace; defTrue = False, defFalse = False &rbrace;
+
+                Test t2 = new Test(false);
+                Console.WriteLine(t2); //Test &lbrace; defTrue = False, defFalse = False &rbrace;
+
+                Test t3 = new Test(true);
+                Console.WriteLine(t3); //Test &lbrace; defTrue = True, defFalse = False &rbrace;
+
+                Test? t4 = null;
+                var t5 = t4.GetValueOrDefault(default);
+                Console.WriteLine(t5); //Test &lbrace; defTrue = False, defFalse = False &rbrace;
+
+                Test t6 = new Test(false, true);
+                Console.WriteLine(t6); //Test &lbrace; defTrue = False, defFalse = True &rbrace;
+            </code>
+        </pre>
+
     </div>
 </div>
