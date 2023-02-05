@@ -1,0 +1,11 @@
+<div class="DivsByRow">
+    <div class="leftFixedBox">        
+        <button class="areasButton" (click)="setVisibleTo('sql-basics')">Basics</button>        
+    </div>
+    <div class="contentsMoveRight">      
+        <sql-basics *ngIf="visibleIs === 'sql-basics'"></sql-basics>        
+    </div>
+    
+</div>
+
+

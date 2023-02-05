@@ -1,0 +1,87 @@
+<div class="PaddedContents ">    
+
+<div >
+
+    <br/>
+    <h2 class="CenterMe">SQL notes - Basics</h2>      
+    <div class="TopLinks" #HeadingsContainer>      
+        <top-links ></top-links>      
+      </div>  
+      <br/>
+            
+        <p class="HeadingSubTopic" id="Selects" HeadingSubTopicDir>Selects</p>
+
+        <pre>
+            SELECT * FROM orders
+
+            SELECT OrderID, OrderDate FROM orders
+
+            SELECT DISTINCT ShipCity FROM orders
+
+            SELECT COUNT(DISTINCT ShipCity) FROM orders;
+
+            SELECT * FROM orders WHERE EmployeeId > 8;
+
+            SELECT * FROM Customers WHERE Country='Germany' AND City='Berlin';
+
+            SELECT * FROM Customers WHERE NOT Country='Germany';
+
+            SELECT * FROM Customers ORDER BY Country DESC;
+
+            SELECT * FROM Customers ORDER BY Country ASC, city DESC;
+
+            SELECT SUM(Freight) FROM orders WHERE EmployeeId = 4
+
+            SELECT CustomerID, CompanyName AS CN FROM Customers
+
+            SELECT EmployeeId, SUM(Freight) FROM orders WHERE EmployeeId > 4
+            GROUP BY EmployeeId
+
+            SELECT EmployeeId, AVG(Freight) FROM orders WHERE EmployeeId > 4
+            GROUP BY EmployeeId
+
+            SELECT COUNT(*) FROM CUSTOMERS; /*92*/
+            SELECT COUNT(Region) FROM CUSTOMERS; /*31*/
+            SELECT COUNT(*) FROM CUSTOMERS WHERE Region IS NOT NULL; /*31*/
+
+            SELECT city, Country, COUNT(*) FROM Customers 
+            WHERE CompanyName LIKE 'A%' OR Address LIKE 'A%'
+            GROUP BY Country, City
+            HAVING COUNT(*) > 1
+
+        </pre>
+
+        <p class="HeadingSubTopic" id="Inserts" HeadingSubTopicDir>Inserts</p>
+
+        <pre>
+            INSERT INTO Customers (CustomerID, CompanyName, ContactName, Address, City, PostalCode, Country)
+            VALUES ('CA', 'A', 'Tom B', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+            INSERT INTO Customers 
+            VALUES ('CAA', 'ACOMP', 'Tom B', 'Sir', 'Skagen 21', 'Stavanger', 'RE', '4006', 'Norway', NULL, NULL);
+
+            INSERT INTO Customers (CustomerID, CompanyName, ContactName, Address, City, PostalCode, Country)
+            VALUES 
+			('CAAA', 'A', 'Tom B', 'Skagen 21', 'Stavanger', '4006', 'Norway'),
+			('CAAAA', 'A', 'Tom B', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+
+            DECLARE @temp Table (
+	            CompanyName varchar(200),
+	            ContactName varchar(200)
+            );
+
+            INSERT INTO @temp
+            SELECT CompanyName, ContactName FROM Customers
+            
+        </pre>  
+
+        <p class="HeadingSubTopic" id="Updates" HeadingSubTopicDir>Updates</p>
+
+        <pre>
+
+        </pre>
+
+       
+
+    </div>
+</div>

@@ -64,6 +64,7 @@ const routes: Routes = [
   {path: 'csharp', loadChildren: () => import('./csharp/csharp.module').then(m => m.CSharpModule)},
   {path: 'javascript', loadChildren: () => import('./javascript/javascript.module').then(m => m.JavascriptModule)},
   {path: 'node', loadChildren: () => import('./node/node.module').then(m => m.NodeModule)},
+  {path: 'sql', loadChildren: () => import('./sql/sql.module').then(m => m.SQLModule)},
 
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },

@@ -43,22 +43,7 @@
         </li> 
       </ul> 
 
-      <ul class="nav navbar-nav" > 
-        <li  style="background-color:green;margin:2px;">    
-          <a class="nav-link" [routerLink]='["/node"]' >         
-            <span style="color:navy; cursor: pointer;">Node</span>
-          </a>
-        </li> 
-      </ul>      
-
-      <ul class="nav navbar-nav" > 
-        <li  style="background-color: aqua;  margin:2px;">    
-          <a class="nav-link" [routerLink]='["/react-notes"]' >         
-            <span style="color:navy; cursor: pointer;">React</span>
-          </a>
-        </li> 
-      </ul> 
-
+      
       <!--Angular-->
       <ul class="nav navbar-nav"  >        
         
@@ -105,6 +90,36 @@
           </ul>                    
         </li>
       </ul>               
+
+      <ul class="nav navbar-nav"  > 
+        <li style="background-color:deeppink; margin:2px;">    
+          <a class="nav-link" [routerLink]='["/sql"]' >         
+            <span style="color:navy; cursor: pointer;">SQL</span>
+          </a>
+        </li> 
+      </ul> 
+
+      <!--OTHER-->
+      <ul class="nav navbar-nav"  >                
+        <li class="dropdown" style="background-color:aqua; margin:2px;" appDropDown >    
+          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
+            <span style="color:navy;  cursor: pointer;">More<span class='glyphicon caret'></span></span>
+          </a>
+          <ul class="dropdown-menu">                       
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/node"]'  style="color:green;font-size: 2.5vh; font-weight: bold; ">
+               Node
+              </a>
+            </li> 
+            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/react-notes"]'  style="color:navy;font-size:2.5vh; font-weight: bold;">
+                React
+              </a>
+            </li> 
+          </ul>                    
+        </li>
+      </ul>          
+      
 
       <ul class="nav navbar-nav" > 
         <li  style="background-color: lightblue; margin-left:1vw; margin-top: 2px;">    
