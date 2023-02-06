@@ -23,7 +23,7 @@ export class NodeNotesComponent implements OnInit {
   }
   ngAfterViewInit(){       
     //this.myHeadings = this.commonFuncs.getIdsFromHeadingSubTopicElements(this.headings);           
-    this.child.getChangesFromParent(this.myHeadings,this.myName )    
+    //this.child.getChangesFromParent(this.myHeadings,this.myName )    
   }  
 
 }
