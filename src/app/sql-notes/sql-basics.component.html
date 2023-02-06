@@ -49,6 +49,22 @@
             GROUP BY Country, City
             HAVING COUNT(*) > 1
 
+            SELECT TOP 3 * FROM Customers;
+
+            SELECT TOP 50 PERCENT * FROM Customers;
+
+            SELECT MIN(PostalCode) AS smallestPC FROM Customers;
+
+            SELECT * FROM Customers WHERE City LIKE 'L_n_on';
+
+            SELECT * FROM Customers WHERE Country IN ('Germany', 'France', 'UK');
+
+            SELECT * FROM Customers WHERE Country IN (SELECT Country FROM Suppliers);
+
+            SELECT * FROM Employees WHERE EmployeeId BETWEEN 1 AND 5;
+
+            
+
         </pre>
 
         <p class="HeadingSubTopic" id="Inserts" HeadingSubTopicDir>Inserts</p>
@@ -78,10 +94,24 @@
         <p class="HeadingSubTopic" id="Updates" HeadingSubTopicDir>Updates</p>
 
         <pre>
+            UPDATE Customers SET City = 'MADRID' WHERE city='Madrid'
+
+            UPDATE Customers SET Region = LEFT(City, 2)  WHERE Region IS NULL
+
 
         </pre>
 
-       
+        <p class="HeadingSubTopic" id="Delete" HeadingSubTopicDir>Delete</p>
+
+        DELETE FROM Customers WHERE CompanyName='A';
+
+        DELETE FROM Customers;
+
+
+
+       <p class="HeadingSubTopic" id="Joins" HeadingSubTopicDir>Joins</p>
+
+
 
     </div>
 </div>
