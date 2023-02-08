@@ -203,6 +203,33 @@
         ORDER BY City;
         </pre>
 
+        <p class="HeadingSubTopic" id="Create" HeadingSubTopicDir>CREATE</p>
+        <pre>
+        CREATE TABLE [dbo].[Categories](
+	    [CategoryId] [int] IDENTITY(1,1) NOT NULL,
+	    [CategoryName] [nvarchar](15) NOT NULL,
+	    [Description] [ntext] NULL,
+	    [Picture] [image] NULL,
+         CONSTRAINT [PK_Categories] PRIMARY KEY CLUSTERED 
+        (
+	        [CategoryId] ASC
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+        ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+        </pre>
+
+
+        <p class="HeadingSubTopic" id="Alter" HeadingSubTopicDir>ALTER</p>
+        <pre>
+        ALTER TABLE Customers
+            ADD Email varchar(255);
+
+        ALTER TABLE Customers
+            DROP COLUMN Email;
+
+        ALTER TABLE Persons
+            ALTER COLUMN DateOfBirth year; /*change the type*/
+        </pre>
+
 
     </div>
 </div>
