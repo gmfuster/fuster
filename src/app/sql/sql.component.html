@@ -1,9 +1,11 @@
 <div class="DivsByRow">
     <div class="leftFixedBox">        
         <button class="areasButton" (click)="setVisibleTo('sql-basics')">Basics</button>        
+        <button class="areasButton" (click)="setVisibleTo('sql-more')">More</button>        
     </div>
     <div class="contentsMoveRight">      
         <sql-basics *ngIf="visibleIs === 'sql-basics'"></sql-basics>        
+        <sql-more *ngIf="visibleIs === 'sql-more'"></sql-more>        
     </div>
     
 </div>
