@@ -192,5 +192,99 @@
 
         </pre>
 
+
+        <p class="HeadingSubTopic" id="Views" HeadingSubTopicDir>Views</p>
+
+        <pre>
+            create view [dbo].[Current Product List] AS
+            SELECT Product_List.ProductID, Product_List.ProductName
+            FROM Products AS Product_List
+            WHERE (((Product_List.Discontinued)=0))
+
+            SELECT * FROM [Current Product List] -- [] because it has spaces
+
+            CREATE VIEW emp2 (first___name , last___name) AS
+            SELECT 
+                FirstName, lastName
+            FROM
+                employees   
+            GO
+
+            SELECT *  FROM emp2
+
+
+            DROP VIEW emp2 
+            GO
+
+
+            ALTER VIEW emp2 (firstname___ , lastname___) AS
+            SELECT 
+                FirstName, lastName
+            FROM
+                employees   
+            GO
+
+
+            ALTER VIEW emp2 (firstname___ , lastname___) AS
+            SELECT 
+                FirstName, lastName
+            FROM
+                employees   
+	        WHERE city = 'London'
+	        WITH CHECK OPTION -- if using the view for inserts, only if the row satisfies the WHERE
+            GO
+
+            --to see the view code 
+            EXEC sp_helptext emp2
+
+            --use WITH ENCRYPTION and the sp_helptext will not show the code.
+            ALTER VIEW theview WITH ENCRYPTION AS ... 
+
+
+        </pre>
+
+        <p class="HeadingSubTopic" id="Scripts" HeadingSubTopicDir>Scripts</p>
+
+        Just some examples 
+
+        <pre>
+            USE northwind;
+            DECLARE @empid int;
+            SET @empid = 0; --init
+            SET @empid = (SELECT MAX(EmployeeId) FROM Employees ); --get it
+            SELECT @empid; --display it
+
+            DECLARE @empid int = 0;
+
+
+        </pre>
+
+        <p class="HeadingSubTopic" id="SystemFunctions" HeadingSubTopicDir>Some System Functions</p>
+
+        <ul>
+            <li>@@DATEFIRST --> what is currently set as the first day of the week</li>
+            <li>@@ERROR --> error number of last T-SQL statement executed.  O for no error</li>
+            <li>@@IDENTITY --> value of last identity value inserted, or of select into.</li>
+            <li>IDENT_CURRENT('tablename') --> last identity value but for specific table</li>
+            <li>@@OPTIONS --> info about options that have been set with SET</li>
+            <li>@@REMSERVER --> value of the server that called the stored procedure. (only used in stored procedures)</li>
+            <li>@@ROWCOUNT --> Number of rows affected by the last statement</li>
+            <li>SCOPE_IDENTITY() --> last idenitty inserted within the current session and scope</li>
+            <li>@@SERVERNAME --> name of local server</li>
+            <li>@@TRANCOUNT --> number of active transactions for the current connection</li>
+            <li>@@VERSION --> current version of SQL server</li>
+        </ul>
+        
+        <p class="HeadingSubTopic" id="Flow" HeadingSubTopicDir>Flow Statements</p>
+
+        <ul>
+            <li>IF ... ELSE</li>
+            <li>BEGIN ... END</li>
+            <li>CASE ... WHEN ... THEN ... ELSE...END</li>
+            <li>WHILE ... BEGIN ... END</li>
+            <li>WAIT FOR ... DELAY</li>
+            <li>BEGIN TRY ... END TRY BEGIN CATCH ... END CATCH</li>
+        </ul>
+
     </div>
 </div>
