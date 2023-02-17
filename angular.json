@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+
               "src/styles.css"
             ],
             "scripts": ["src/assets/sharedFunctions.js"]
@@ -94,6 +95,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootswatch/dist/state/bootstrap.css",
               "src/styles.css"              
             ],
             "scripts": ["src/assets/sharedFunctions.js"]

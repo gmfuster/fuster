@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
+import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -119,7 +120,8 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,   
-    SharedModule 
+    SharedModule ,
+    BsDropdownModule.forRoot()
   ],
   providers: [OtherServices, ForCanActivate, ForCanDeActivate],
   bootstrap: [AppComponent],
