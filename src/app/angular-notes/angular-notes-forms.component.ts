@@ -1,7 +1,7 @@
 //import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
-import { FormControl, NgForm } from '@angular/forms';
-import {FormGroup} from '@angular/forms';
+import { UntypedFormControl, NgForm } from '@angular/forms';
+import {UntypedFormGroup} from '@angular/forms';
 import {HeadingSubTopicDirective} from '../shared/directives';
 import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
@@ -23,18 +23,18 @@ myHeadings : string[] = [];
 myName : string = "angular-notes-forms";
 @ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
 optionR : string = "1";
-myReactiveForm: FormGroup ; //do not just assign something here, do it in the ngOnInit.
+myReactiveForm: UntypedFormGroup ; //do not just assign something here, do it in the ngOnInit.
 
   constructor(private commonFuncs:CommonFuncs){
-    this.myReactiveForm = new FormGroup({});//just add this here to avoid the compiler error, and do it for real in the ngOnInit
+    this.myReactiveForm = new UntypedFormGroup({});//just add this here to avoid the compiler error, and do it for real in the ngOnInit
   }
 
   ngOnInit(){
     window.scroll(0,0);
-    this.myReactiveForm = new FormGroup({
-      "number1" : new FormControl(),
-      "number2" : new FormControl(),
-      "radioButton" : new FormControl('2')
+    this.myReactiveForm = new UntypedFormGroup({
+      "number1" : new UntypedFormControl(),
+      "number2" : new UntypedFormControl(),
+      "radioButton" : new UntypedFormControl('2')
     });
   }
 
