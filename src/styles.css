@@ -268,7 +268,26 @@ body button{
   font-size: 1.5vw;
 }
 
-
+.areasButton{
+  /*background-color: deeppink;*/
+  color:deepskyblue;
+  border-radius: 5%;
+  display:block;    
+  margin:5px;
+}
+.leftFixedBox{
+  box-sizing: border-box;
+  position:fixed;
+  left:5px; 
+  width:10vw; 
+  top: 10vh;
+  height: 75vh;  
+  overflow:auto;
+  font-size: 2vw;
+}
+.contentsMoveRight{
+  margin-left:12vw;
+}
 
 
 

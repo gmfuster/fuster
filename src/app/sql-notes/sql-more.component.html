@@ -349,6 +349,39 @@
         </pre>
 
 
+        <p class="HeadingSubTopic" id="TRANSACTIONS" HeadingSubTopicDir>Keywords to deal with transactions</p>
+
+        BEGIN TRAN<br/>
+        COMMIT TRAN<br/>
+        ROLLBACK TRAN<br/>
+        SAVE TRAN(for partial rollbacks)<br/>
+
+        <p class="HeadingSubTopic" id="Triggers" HeadingSubTopicDir>Triggers</p>
+
+        set a trigger for what happens when a table gets an insert, delete, update<br/>
+        <pre>
+            DROP TRIGGER IF EXISTS t_for_insert;
+            GO
+            CREATE TRIGGER t_for_insert ON country INSTEAD OF INSERT --Could do INSTEAD OF DELETE for when a delete happens
+            AS BEGIN            
+                DECLARE @country_name_eng CHAR(128);            
+                DECLARE @country_name CHAR(128);        
+                SELECT @country_name = country_name FROM INSERTED;            
+                IF @country_name_eng IS NULL SET @country_name_eng = @country_name;
+                INSERT INTO country (country_name_eng) VALUES (@country_name_eng);
+            END;
+
+            --could throw an error and prevent the insert , delete, update:
+            THROW 51000, "no way!";
+
+            --a trigger can also be AFTER INSERT (same as FOR INSERT).
+            --in an INSTEAD OF INSERTED, the INSERTED table lives only for as long as the trigger is happening.
+            --if we are doing the INSTEAD OF DELETE, what we have is a DELETED table to check.
+            --for an update, we don't have an UPDATED table, we have the same row in a DELETED and an INSERTED table.
+            --the trigger happens before any changes are committed.
+        </pre>
+        
+
 
 
     </div>
