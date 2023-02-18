@@ -2,6 +2,8 @@
   height:6vh; 
   width:95vw;
 }
+
+/*
 .glyphicon-home:before {
   content: "\e021";
 }
@@ -160,6 +162,7 @@
     margin-top: 4px;
   }
   /*for the header with the 3 bars*/
+  /*
   @media (min-width: 600px) {
     .navbar-toggle {
       display: none;
@@ -206,6 +209,7 @@
     }
   }
   /*for the vertical menu, when smaller than this, then it shows as vertical*/
+  /*
   @media (min-width: 400px) {
     .navbar-nav {
       float: left;
@@ -253,3 +257,4 @@
     color: #5e5e5e;
     background-color: transparent;
   }
+*/

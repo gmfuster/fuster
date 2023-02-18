@@ -95,7 +95,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/bootswatch/dist/state/bootstrap.css",
+              "./node_modules/bootswatch/dist/slate/bootstrap.css",
               "src/styles.css"              
             ],
             "scripts": ["src/assets/sharedFunctions.js"]

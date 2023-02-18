@@ -1,146 +1,85 @@
-<div class="TopNav" style="margin:0px; border:0px; padding:0px; font-size:2vw; background-color: rgb(48, 46, 46)">
+<nav  class="navbar navbar-default navbar-expand navbar-dark fixed-top"><!--navbar-toggleable-xl-->
+  <div class="container-fluid" style="color:lightyellow; background-color: teal;">
+      
+      <a  class="navbar-brand nohover"  routerLink="/" >
+        <img style="background-color:white; cursor: pointer; width:45px; height:45px; border-radius: 25%;"  src="assets\images\jandmlaughingblue.svg" alt="Home" />           
+      </a>   
 
-<nav class="navbar navbar-default navbar-fixed-top" >
-
-  <div><!-- class="container-fluid-nav"-->
+        <ul class="navbar-nav">          
+            <li class="nav-item">    
+              <a class="nav-link nohover" [routerLink]='["/csharp"]' >         
+                <span style="cursor: pointer;">C#</span>
+              </a>
+            </li> 
     
-    <!--
-    <div class="navbar-header"  >
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target='.navbar-collapse' 
-      [attr.aria-expanded]='isExpanded' (click)='toggle()' style="color:navy;">
-        <span style="color:navy;" class="icon-bar"></span>
-        <span style="color:navy;" class="icon-bar"></span>
-        <span style="color:navy;" class="icon-bar"></span>
-      </button>    
-    </div>
-    -->
-
-    <div class='navbar-collapse' [ngClass]='{ "in": isExpanded }' ><!--style=" width: 75%;-->
-      
-      <ul class="nav navbar-navH">
-        <!--<li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }' style="border:3px pink solid">-->
-        <li style=" margin:2px;">
-          <a [routerLink]='["/"]' class="nav-link"  >  <!--(click)='collapse()'-->
-            <img style="width:5.5vh; padding:0%; background-color: white; cursor: pointer; border-radius: 25%; " src="assets\images\jandmlaughingblue.svg" alt="Home" />
-            <!--<span  style="font-size:2vh; padding: 0%;" class='glyphicon glyphicon-home'>Home</span>-->
-          </a>
-        </li>        
-      </ul>    
-      
-      <ul class="nav navbar-nav"  >
-        <li style="background-color:plum; margin:2px; ">    
-          <a class="nav-link" [routerLink]='["/csharp"]' >         
-            <span style="color:navy; cursor: pointer;">C#</span>
-          </a>
-        </li> 
-      </ul> 
-
-      <ul class="nav navbar-nav"  > 
-        <li style="background-color:yellow; margin:2px;">    
-          <a class="nav-link" [routerLink]='["/javascript"]' >         
-            <span style="color:navy; cursor: pointer;">JS</span>
-          </a>
-        </li> 
-      </ul> 
-
-      
-      <!--Angular-->
-      <ul class="nav navbar-nav"  >        
-        
-        <li class="dropdown" style="background-color:lightcoral; margin:2px;" appDropDown >    
-          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy;  cursor: pointer;">A<span class='glyphicon caret'></span></span>
-          </a>
-          <ul class="dropdown-menu">                       
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes"]'  style="color:navy;font-size: 2vh;">
-                Basics or Short
+            <li class="nav-item">    
+              <a class="nav-link nohover" [routerLink]='["/javascript"]' >         
+                <span style="cursor: pointer;">JavaScript</span>
               </a>
             </li> 
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-svc-routing"]'  style="color:navy;font-size: 2vh; ">
-                Services & Routing
-              </a>
-            </li>  
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-forms"]'  style="color:navy; font-size: 2vh; ">
-               Forms
-              </a>
-            </li>    
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-http"]'  style="color:navy;font-size: 2vh;  ">
-               HTTP
-              </a>
-            </li>    
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-auth"]'  style="color:navy;font-size: 2vh; ">
-               Authorization
-              </a>
-            </li>   
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-dynamic"]'  style="color:navy; font-size: 2vh; ">
-               Dynamic Components
-              </a>
-            </li>     
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/angular-notes-modules"]'  style="color:navy;font-size: 2vh; ">
-               Modules
-              </a>
-            </li>       
-          </ul>                    
-        </li>
-      </ul>               
-
-      <ul class="nav navbar-nav"  > 
-        <li style="background-color:deeppink; margin:2px;">    
-          <a class="nav-link" [routerLink]='["/sql"]' >         
-            <span style="color:navy; cursor: pointer;">SQL</span>
-          </a>
-        </li> 
-      </ul> 
-
-      <!--OTHER-->
-      <ul class="nav navbar-nav"  >                
-        <li class="dropdown" style="background-color:aqua; margin:2px;" appDropDown >    
-          <a class="nav-link dropdown-toggle" href (click)="false" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-            <span style="color:navy;  cursor: pointer;">More<span class='glyphicon caret'></span></span>
-          </a>
-          <ul class="dropdown-menu">                       
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/node"]'  style="color:green;font-size: 2.5vh; font-weight: bold; ">
-               Node
+            <li class="nav-item">    
+              <a class="nav-link nohover" [routerLink]='["/sql"]' >         
+                <span style=" cursor: pointer;">SQL</span>
               </a>
             </li> 
-            <li  [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-              <a [routerLink]='["/react-notes"]'  style="color:navy;font-size:2.5vh; font-weight: bold;">
-                React
-              </a>
-            </li> 
-          </ul>                    
-        </li>
-      </ul>          
-      
+            
+            <li class="nav-item"> 
+              <div class="dropdown " dropdown >
+                <a class="nav-link dropdown-toggle text-decoration-none nohover" style="color:lightyellow; cursor: pointer;" dropdownToggle>Angular</a>
+                  <div class="dropdown-menu" style="background-color: darkcyan; color:white;" *dropdownMenu>
+                    <a class="dropdown-item nohover" [routerLink]='["/angular-notes"]'  >Basics or Short</a>
+                    <a class="dropdown-item nohover" [routerLink]='["/angular-notes-svc-routing"]'>Services & Routing</a>
+                    <a class="dropdown-item nohover" [routerLink]='["/angular-notes-forms"]' >Forms</a>
+                    <a class="dropdown-item nohover" [routerLink]='["/angular-notes-http"]' >HTTP</a>
+                    <a class="dropdown-item nohover" [routerLink]='["/angular-notes-auth"]'  >Authorization</a>
+                    <a class="dropdown-item nohover" [routerLink]='["/angular-notes-dynamic"]'  >Dynamic Components</a>
+                    <a class="dropdown-item nohover" [routerLink]='["/angular-notes-modules"]'  >Modules</a>
+                  </div>
+              </div>
 
-      <ul class="nav navbar-nav" > 
-        <li  style="background-color: lightblue; margin-left:1vw; margin-top: 2px;">    
-          <a class="nav-link" href="/#kidsmath" >         
-            <span style="color:navy; cursor: pointer;">Kids</span>
-          </a>
-        </li> 
-      </ul> 
+              <li class="nav-item"> 
+                <div class="dropdown" dropdown>
+                  <a class="nav-link dropdown-toggle text-decoration-none nohover" style="color:lightyellow; cursor: pointer;"  dropdownToggle>More</a>
+                    <div class="dropdown-menu" style="background-color: darkcyan; color:white;" *dropdownMenu>
+                      <a class="dropdown-item nohover" [routerLink]='["/node"]'  >Node</a>
+                    <a class="dropdown-item nohover" [routerLink]='["/react-notes"]'>React</a>     
+                    </div>
+                </div>      
+              </li>    
+              
+              
 
-      <ul class="nav navbar-nav" style="float: right; margin-right: 10px;  caret-color: rgba(0,0,0,0); " (click)="scrollUp()"> 
-        <li  style="background-color: hotpink; margin-top: 2px; color:navy;">    
-          <a class="nav-link" >         
+              <li >    
+                <a class="nav-link nohover" href="/#kidsmath" >         
+                  <span style="background-color:lightcoral; padding:4px; border-radius: 10%;; cursor: pointer;">Kids</span>
+                </a>
+              </li>   
+        </ul>
+
+        <!--<div class="dropdown" dropdown >
+          <a class="dropdown-toggle text-decoration-none nohover" style="color:lightyellow; cursor: pointer;" dropdownToggle>Angular</a>
+            <div class="dropdown-menu" style="background-color: darkcyan; color:white;" *dropdownMenu>
+              <a class="dropdown-item nohover" [routerLink]='["/angular-notes"]'  >Basics or Short</a>
+              <a class="dropdown-item nohover" [routerLink]='["/angular-notes-svc-routing"]'>Services & Routing</a>
+              <a class="dropdown-item nohover" [routerLink]='["/angular-notes-forms"]' >Forms</a>
+              <a class="dropdown-item nohover" [routerLink]='["/angular-notes-http"]' >HTTP</a>
+              <a class="dropdown-item nohover" [routerLink]='["/angular-notes-auth"]'  >Authorization</a>
+              <a class="dropdown-item nohover" [routerLink]='["/angular-notes-dynamic"]'  >Dynamic Components</a>
+              <a class="dropdown-item nohover" [routerLink]='["/angular-notes-modules"]'  >Modules</a>
+            </div>
+        </div>-->
+
+                                       
+
+      <ul class="navbar-nav"  >        
+        <li (click)="scrollUp()"  style="background-color: hotpink; margin: 2px; color:navy; border-radius: 25%;">    
+          <a class="nav-link nohover" >         
             <span style="color:navy; cursor: pointer;">&uparrow;</span>
           </a>
         </li> 
-      </ul>       
+      </ul>   
 
-    </div>
-
-  </div>
-  
+  </div>  
 </nav>
 
-</div>
+

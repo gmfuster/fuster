@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 /*@import url('https://fonts.googleapis.com/css?family=Arima+Madurai&display=swap:regular,bold,italic&subset=latin,latin-ext');*/
-/*@import '~bootstrap/dist/css/bootstrap.css';*/
+@import '~bootstrap/dist/css/bootstrap.css';
 
 :root{
   --main-code-background: rgb(192, 228, 250);  
@@ -183,6 +183,7 @@ body button{
     text-align: center;
     box-sizing: border-box;
   }
+  
   a:link {
     color:lightyellow;
     background-color: transparent;
@@ -195,6 +196,10 @@ body button{
   }
   a:hover{      
     background-color: deepskyblue;    
+  }
+  
+  .nohover:hover{
+    background-color:transparent;
   }
   a:visited {
     color: lightyellow;
