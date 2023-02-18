@@ -2,13 +2,15 @@
   <div >       
     <div class="CenterMyContent">       
       <div class="forBanner" >          
-        <div class="divsByRowCenter" style="color:aqua; font-size:3vw; background-color: black; padding:2vh; border:5px aqua solid">                           
+        <div class="divsByColCenter" style="color:aqua; font-size:5vh;  background-color: black; padding:2vh; border:5px aqua solid;">                           
             <!--<img style="width:30%; " src="assets/images/validdevices.svg" alt="valid devices computer and tablet " />-->
             <!--img style="width:70%; " src="assets/images/checkout.svg" alt="Kids Math" />-->
-            {{welcome}}<br/><br/>
-            {{programmingNotes}}<br/><br/>
-            {{scrolldown}}<br/><br/>
-            {{articles}}<br/><br/>
+            <p>{{welcome}}</p>
+            <hr/>
+            <!--{{programmingNotes}}<br/><br/><br/>-->
+            <p>{{articles}} &nbsp;<a *ngIf="articlesDone" href="https://gmfuster.medium.com/" target="_blank">Go</a></p>
+            <hr/>
+            <p>{{scrolldown}}</p>
             <!--Check out <a href="https://gmfuster.github.io/Bonico/#/" target="_blank">Kindergarten (old, no updates).</a>-->          
           <!--<img style="width:30%; margin:5px;;" src="assets/images/validdevices.svg" alt="valid devices computer and tablet " />-->
         </div>             

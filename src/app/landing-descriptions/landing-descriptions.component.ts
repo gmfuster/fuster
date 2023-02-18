@@ -10,7 +10,10 @@ export class LandingDescriptionsComponent {
   welcome:string="";
   programmingNotes:string="";
   articles:string="";
-
+  articlesDone:boolean = false;
+  welcomearr:string = "Not for phone screens";
+  scrolldownarr:string =  "Scroll down for random stuff";
+  articlesArr:string  = "Articles have more detail";
 
   doSetTimeout(i:number, s:string, option:string) {
     setTimeout(() => {   
@@ -25,45 +28,49 @@ export class LandingDescriptionsComponent {
           this.scrolldown += s[i];
           break; 
         case "articles":
-            this.articles += s[i];
+            this.articles += s[i];     
+            if (this.articles === this.articlesArr)       
+            {
+              this.articlesDone = true;
+            }
             break; 
       }            
     }, i * 60);    
   }      
 
-  ngAfterViewInit(){
-    let welcomearr = "Welcome! (not for phone screens)";
-    let scrolldownarr = "Scroll down for random stuff.";
-    let programmingNotesArr = "Notes on Top Nav.";
-    let articlesArr = "Articles have more detail.";
+  ngAfterViewInit(){                
 
-    for(let i = 0; i< welcomearr.length; i++){
-      this.doSetTimeout(i, welcomearr, "welcome");      
-    }
-    /*
-    for(let j = 0; j< programmingNotesArr.length; j++){
-      this.doSetTimeout(j, programmingNotesArr, "programmingNotes");           
-    }
-
-    for(let j = 0; j< scrolldownarr.length; j++){
-      this.doSetTimeout(j, scrolldownarr, "scrolldown");      
-    } */  
+    for(let i = 0; i< this.welcomearr.length; i++){
+      this.doSetTimeout(i, this.welcomearr, "welcome");      
+    }    
     
-    setTimeout(() => {
+    for(let j = 0; j< this.articlesArr.length; j++){
+      this.doSetTimeout(j, this.articlesArr, "articles");               
+    }    
+
+    for(let j = 0; j< this.scrolldownarr.length; j++){
+      this.doSetTimeout(j, this.scrolldownarr, "scrolldown");      
+    } 
+        
+    /*DO NOT USE THE SETTIMEOUT FOR NOW, have them all go at the same time*/
+    /*setTimeout(() => {
 
       for(let j = 0; j< programmingNotesArr.length; j++){
         this.doSetTimeout(j, programmingNotesArr, "programmingNotes");           
       }
       setTimeout(() => {
-        for(let j = 0; j< scrolldownarr.length; j++){
-          this.doSetTimeout(j, scrolldownarr, "scrolldown");      
-        }     
+        for(let j = 0; j< articlesArr.length; j++){
+          this.doSetTimeout(j, articlesArr, "articles");      
+        } 
+        
+        
         setTimeout( () =>{
-          for(let j = 0; j< articlesArr.length; j++){
-            this.doSetTimeout(j, articlesArr, "articles");      
+          for(let j = 0; j< scrolldownarr.length; j++){
+            this.doSetTimeout(j, scrolldownarr, "scrolldown");      
           } 
         }, 2800);
       }, 1700);     
-      }, 1700);                
+      }, 1700);   
+        */     
   }
 }
