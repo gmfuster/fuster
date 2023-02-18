@@ -286,5 +286,70 @@
             <li>BEGIN TRY ... END TRY BEGIN CATCH ... END CATCH</li>
         </ul>
 
+        <p class="HeadingSubTopic" id="StoredProcedure" HeadingSubTopicDir>Stored Procedures and functions</p>
+
+        <pre>
+            CREATE PROCEDURE SelectAllCustomers
+            AS
+                SELECT * FROM Customers
+            GO;
+            EXEC SelectAllCustomers;
+
+
+            CREATE PROCEDURE SelectSomeCustomers @City nvarchar(30)
+            AS
+                SELECT * FROM Customers WHERE City = @City
+            GO;
+            EXEC SelectSomeCustomers @City = 'London'; 
+
+            CREATE PROCEDURE SelectSomeCustomers @City nvarchar(30), @Country nvarchar(30)
+            AS
+                SELECT * FROM Customers WHERE City = @City AND Country=@Country;
+            GO;
+            EXEC SelectSomeCustomers @City = 'London', @Country="UK" ; 
+
+
+            DROP PROC SelectSomeCustomers;
+
+
+            CREATE PROCEDURE SomeProcedure
+                @SalesPerson nvarchar(50),  
+                @SalesYTD money <b>OUTPUT  </b>
+            AS                                
+                SELECT <b>@SalesYTD = SalesYTD  </b>
+                FROM SalesPerson 
+                WHERE ...
+
+                RETURN;
+            GO 
+        </pre>
+
+        Stored Procedures are not really intended to return data, but user functions can return scalar as well as table data.
+        <br/>
+        Created similar to the procedure, but use CREATE FUNCTION instead.
+        <pre>
+            CREATE FUNCTION someFunc (@dt DATE)
+            RETURNS BIT
+            AS 
+            BEGIN 
+                DECLARE @out BIT =0;
+                ... 
+                RETURN @out 
+            END
+
+            CREATE FUNCTION someFunc (@dt DATE)
+            RETURNS TABLE
+            AS 
+            BEGIN 
+                ... 
+                RETURN (SELECT ...)
+            END
+            GO
+
+        </pre>
+
+
+
+
     </div>
 </div>
