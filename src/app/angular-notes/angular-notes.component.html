@@ -369,6 +369,8 @@
     <br/>
    
     <p class="HeadingSubTopic" id="Observables">Observables</p>
+
+    More on <a href="https://medium.com/nerd-for-tech/promises-observables-subjects-behaviorsubjects-replaysubjects-326aa3716ace" target="_blank">Medium</a><br/>
     An Observable is a data source.  We can use it importing the RxJS package.  Your code can be the observer to this observable.  There 
     are three types of data packages you can receive with these: data, errors, completions.  Observables are like a different approach to promises.<br/>
     You can install the package with <b>npm install --save rxjs@6</b> or whatever version you want.  You can also install <b>npm install --save rxjs-compat</b>
@@ -616,6 +618,7 @@
     <br/>
     
     <div class = "HeadingSubTopic" id="MISCELLANEOUS">MISCELLANEOUS</div>
+
     To have the app screen scroll sometimes, but not others because you want them locked, have 2 classes with one having overflow set to auto and 
     the other one to hidden.  Then, on the pages where you want it locked, do this.
     <pre>
@@ -639,5 +642,23 @@
         &rbrace;
       </code>
     </pre>
+
+    <hr/>
+
+    You can use the Angular CLI to help you build the files you need:
+    <ul>
+      <li><b>ng new client</b> --> create a new app, will need to answer a few prompts</li>
+      <li><b>ng serve</b> --> Start app</li>
+      <li><b>ng g c nav --dry-run</b> --> create a component called nav, use dry-run to see what files get created before they are created</li>
+      <li><b>ng g c nav</b> --> create the nav component</li>
+      <li><b>ng g c nav --skip-tests</b> --> create the nav component but skip the test files</li>
+      <li><b>ng g s _services/someServ --skip-tests</b> --> create a service in the _services folder</li>
+      <li><b>ng g --help</b> --> see what options ng offers</li>
+      <li><b>ng g g _guards/auth</b> --> create guard component (to be used in the routes)</li>
+    </ul>
+    
+    If you are getting an error with the NODE version, try <b>export NODE_OPTIONS=--openssl-legacy-provider</b>.  
+    Or SET NODE_OPTIONS=--openssl-legacy-provider as part of the "start" in your package.json file.
+
   </div>
 </div> 

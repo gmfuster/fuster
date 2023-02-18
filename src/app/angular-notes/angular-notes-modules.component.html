@@ -91,7 +91,8 @@
     You can have duplicate imports in different modules (like two modules importing the same thing), but you cannot have the same declarations in 2 different modules. 
     What you do instead is declare it only in one, and export it so it can be accessed by other modules.
 
-    <p class="HeadingSubTopic" id="Lazy-Loading">Lazy Loading</p>   
+    <p class="HeadingSubTopic" id="Lazy-Loading">Lazy Loading</p>  
+    More on <a href="https://medium.com/nerd-for-tech/lazy-loading-modules-in-angular-c3cfca72d21e" target="_blank">Medium</a><br/>
     Without lazy loading, whenever we load a page, we load everything, not only what is needed for that area.  For lazy loading, it helps that your modules bring their own routes.
     Example of how you would indicate that a particular module should only be loaded when that particular route happens.
     <pre>
