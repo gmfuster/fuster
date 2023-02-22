@@ -381,8 +381,36 @@
             --the trigger happens before any changes are committed.
         </pre>
         
+        <p class="HeadingSubTopic" id="Cursors" HeadingSubTopicDir>Cursors</p>
+
+        <pre>                        
+            DECLARE @name VARCHAR(50) -- database name 
+            SET @name = 'default name'
+            --or whatever you need                                     
+            
+            <b>DECLARE db_cursor CURSOR FOR</b>
+                SELECT name 
+                FROM someTable
+            WHERE ...--whatever
+            
+            <b>OPEN db_cursor</b>   
+            
+            <b>FETCH NEXT FROM db_cursor INTO @name  </b>
+            
+            WHILE @@FETCH_STATUS = 0              
+                BEGIN  
+                    --do whatever code you need
+                    -- Fetch the next record from the cursor
+                    FETCH NEXT FROM db_cursor INTO @name 
+                END 
+            
+            <b>CLOSE db_cursor              
+            DEALLOCATE db_cursor</b> 
 
 
+        </pre>
 
+        <p class="HeadingSubTopic" id="TempTable" HeadingSubTopicDir>Temp Table</p>
+        Create a temp table by creating a table but naming it with #YourTableName.  Use ## if you want it to be available from all sessions.
     </div>
 </div>
