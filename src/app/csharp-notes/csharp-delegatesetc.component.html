@@ -41,7 +41,7 @@
             &rbrace;
         </code>
     </pre>
-    If we don't care about the storing what's returned somewhere, we can also have this<br/>
+    If we don't care about storing what's returned, we can also have this<br/>
 
     <pre>
         <code>
@@ -98,7 +98,7 @@
     
     <p class="HeadingSubTopic" id="Actions" HeadingSubTopicDir>Actions</p>
 
-    When the methods we are using are returning void we can use the Action type provided by C#.  This also works for static and non-static methods<br/>
+    <b>When the methods we are using are returning void we can use the Action type provided by C#</b>.  This also works for static and non-static methods<br/>
     Notice we are not creating a new delegate, Action is the delegate.<br/>
     <pre>
         <code>
@@ -131,6 +131,63 @@
     <b>When you create Action delegates in a class they are created as properties with set and get methods, so it’s possible for code outside the class to access them.
     You can add the event keyword to them and then they are created as fields instead of properties. </b><br/><br/>
     
+    <p class="HeadingSubTopic" id="Func" HeadingSubTopicDir>Functions instead of Actions</p>
+    Actions are used for when the methods return void, while with Funcs you will have a return value. However if we have more than one method 
+    for a Func, the last one called will win.
+    <pre>
+        <code>
+            public string ReturnAdd(int x, int y)
+            &lbrace;
+                return (x + y).ToString();
+            &rbrace;
+            public string ReturnMult(int x, int y)
+            &lbrace;
+                return (x * y).ToString();
+            &rbrace;
+            //take 2 ints, return a string
+            Func&lt;int, int, string&gt; myFunc = ReturnMult;
+            myFunc += ReturnAdd;
+            Console.WriteLine(myFunc(3,3));//the console will print 6, and if I change the order in which
+            //they are assigned, 9. Last one in wins
+        </code>
+    </pre>
+    What is the point of this? a Func is a delegate object, not a method, so you can pass it around.
+    <pre>
+        <code>
+            public void TakeAFunc( Func&lt;int,int,string&gt; arg)
+            &lbrace;
+                Console.WriteLine(" in TakeAFunc");
+                Console.WriteLine(arg(3, 3));
+            &rbrace;
+            Func&lt;int, int, string&gt; myFunc = ReturnMult;
+            TakeAFunc(myFunc);
+
+
+            Func&lt;int, int, string&gt;? myFunc = null;
+            var rand = new Random();
+            int i = rand.Next(0, 10);
+            if (i &lt; 5)
+            &lbrace;
+                myFunc = delegate (int x, int y)
+                &lbrace;
+                    return ((x * 10) * (y * 10)).ToString();
+                &rbrace;;
+            &rbrace;
+            else
+            &lbrace;
+                myFunc = delegate (int x, int y)
+                &rbrace;
+                    return ((x + 10 + y).ToString());
+                &rbrace;;
+            &rbrace;
+            Console.WriteLine(myFunc(3,3));
+
+
+            //could do the assignments like this 
+            myFunc = (x, y) => &lbrace; return ((x * 10) * (y * 10)).ToString(); &rbrace;;
+        </code>
+    </pre>
+
     <p class="HeadingSubTopic" id="ActionEvent" HeadingSubTopicDir>Actions with the Event keyword</p>
 
     When you create the Actions as Events in a class, 
@@ -229,33 +286,7 @@
         &rbrace;
        </code>
    </pre><br/>
-
-   <p class="HeadingSubTopic" id="Func" HeadingSubTopicDir>Func</p>
-
-   We saw how we can use Action for methods that don't return anything.  Similarly, we have this: <b>public delegate TResult Func&lt;in T,out TResult&gt;>(T arg);</b><br/>
-
-   Notice in here we are not creating a delegate, the Func is the delegate<br/>
-   <pre>
-       <code>
-        using System;
-
-        class Program &lbrace;    
-        
-            public static string Method1 (string s)&lbrace;
-              return s + " Changed.";             
-            &rbrace; 
-            public static string Method2 (string s)&lbrace;
-              return s + " AWESOME.";             
-            &rbrace;  
-           
-            static void Main(string[] args) &lbrace;            
-              <b>Func&lt;string, string&gt; selector = Method1;</b>
-              //Could add more as selector += Method2;but for return value doesn't make so much sense
-              Console.WriteLine (selector("How are you?:"));
-            &rbrace;
-        &rbrace;
-       </code>
-   </pre>
+   
 
    <p class="HeadingSubTopic" id="Exceptions" HeadingSubTopicDir>Exceptions</p>
    If we have a delegate with more than one subscriber, if one of the methods called throws an exception, the ones that are still waiting to be called will not be.
