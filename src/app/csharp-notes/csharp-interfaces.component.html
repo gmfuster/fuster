@@ -449,5 +449,22 @@
 
     <p class="HeadingSubTopic" id="Default-Implementation" HeadingSubTopicDir>C# 8 Default Interface Implementations</p>
     With c# 8 you can have a method in an interface with a default implementation.  To do that just add the method to the interface but give it an implementation.
+
+
+    <p class="HeadingSubTopic" id="C#11" HeadingSubTopicDir>C# 11 changes</p>
+    Support has been added for static abstract members.  Static memebers cannot use "this", so instead they will use "TSelf". 
+    <pre>
+        <code>
+            public interface IMe&lt;TSelf&gt; where TSelf : IMe&lt;TSelf&gt;
+            &lbrace;
+                public static abstract TSelf operator +(TSelf a, TSelf b);
+                public static abstract TSelf SomeProp &lbrace; get; &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+    Now we can create a class that implements that interface (use the ClassName in please of the TSelf).
+
+
+
     </div>
 </div>

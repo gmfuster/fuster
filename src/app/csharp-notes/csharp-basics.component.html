@@ -643,7 +643,7 @@
 
         Records are also convenient when you want your comparisons on the instances to be based on value.
         
-        <p class="HeadingSubTopic" id="Comparing" HeadingSubTopicDir>Pattern Matches - Switch - Comparing - checking type</p>
+        <p class="HeadingSubTopic" id="PatternMatching" HeadingSubTopicDir>Pattern Matches - Switch - Comparing - checking type</p>
 
         The info in this article is the same but may be better explained:<br/>
         <a href="https://gmfuster.medium.com/c-summary-of-patter-matching-1a1efec983cd"
@@ -898,6 +898,80 @@
                 &rbrace;
             </code>
         </pre>
+        <br/>
+        With C# 11 we also have <b>List Patterns</b>. Some examples (copy pasting this code as is will not work, see dotnetfiddle following this instead):
+        <pre>
+            <code>
+                //int[] lists = &lbrace; 1, 2, 3, 4&rbrace;;
+                Console.WriteLine(lists is [ &gt;1, &gt;2, &lt;=3, 0]); //false
+                Console.WriteLine(lists is [ 1, 2, &lt;=3, &gt;3]);//true
+
+
+                //int[] list2 =  &lbrace; 5, 6, 7, 8&rbrace;;
+                if (list2 is [var first, _, .. var others])
+                &lbrace;
+                    Console.WriteLine(first); // 5
+                    //skip the second one with _
+                    string concatenated = string.Join(",", others);
+                    Console.WriteLine(concatenated); //7,8
+                &rbrace;
+
+
+                string[] s = &lbrace; "hello how are you" &rbrace;;
+                var text = s switch
+                &lbrace;
+                    [] =&gt; "Name was empty",
+                    [var nocommasstring] =&gt; $"I have 1 el: &lbrace;nocommasstring&rbrace;",//prints this one
+                    [var first, var second, _] =&gt; $"I have with commas: &lbrace;first&rbrace; &lbrace;second&rbrace;",
+                &rbrace;
+                Console.WriteLine(text);
+
+                string[] s2 = &lbrace; "hello, how are you" &rbrace;;
+                var text2 = s2 switch
+                &lbrace;
+                    [] =&gt; "Name was empty",
+                    [var oneel] =&gt; $"I have 1 el: &lbrace;oneel&rbrace;", //prints this one
+                    [var first, var second, _] =&gt; $"I have with commas: &lbrace;first&rbrace; &lbrace;second&rbrace;",
+                &rbrace;
+                Console.WriteLine(text2);
+
+                string[] s3 =  &lbrace; "hello" , "how are you" &rbrace;;
+                var text3 = s3 switch
+                &lbrace;
+                    [] =&gt; "Name was empty", //will print if empty array
+                    [var oneel] =&gt; $"I have 1 el: &lbrace;oneel&rbrace;",
+                    [var first, var second] =&gt; $"I have with commas: &lbrace;first&rbrace; AND &lbrace;second&rbrace;",//prints this one
+                &rbrace;;
+                Console.WriteLine(text3);
+
+                string[] s4 =  &lbrace; "hello" , "how are you" &rbrace;;
+                var text4 = s4 switch
+                &lbrace;     //will give exception
+                    [var first, var second, var third] =&gt; $"I have with commas: &lbrace;first&rbrace; AND &lbrace;second&rbrace;",
+                &rbrace;;
+                Console.WriteLine(text4);
+
+
+                string[] s5 =  &lbrace; "hello" , "how are you" , "I ask"&rbrace;;
+                var text5 = s5 switch
+                &lbrace;     //will give exception
+                    [var first, var second] =&gt; $"I have with commas: &lbrace;first&rbrace; AND &lbrace;second&rbrace;",
+                    &rbrace;;
+                Console.WriteLine(text5);
+
+                string[] s6 =  &lbrace; "hello" , "how are you" , "I ask"&rbrace;;
+                var text6 = s6 switch
+                &lbrace;     //use ..var second to avoid exception
+                    //prints I have with commas: hello AND how are you I ask
+                    [var first, ..var second] =&gt; $"I have with commas: &lbrace;first&rbrace; AND &lbrace; string.Join(" ", second)&rbrace;",
+                    &rbrace;;
+                    Console.WriteLine(text6);
+                &rbrace;
+            </code>
+        </pre>
+        Note: I think something is happening in this frame, if you take it and compile it in dotnetfiddle.net with the latest compiler it works.<br/>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/OBBNcr" frameborder="0"></iframe>
+
         <p class="HeadingSubTopic" id="Other" HeadingSubTopicDir>Other</p>
 
         <p class="HeadingSubTopic2">function inside function</p>
@@ -972,6 +1046,50 @@
                 Console.WriteLine(t6); //Test &lbrace; defTrue = False, defFalse = True &rbrace;
             </code>
         </pre>
+
+
+        <p class="HeadingSubTopic2" HeadingSubTopicDir>UT8 and other string changes</p>
+        By default C# strings are hardcoded to UTF-16, whereas the prevailing string encoding on the internet is UTF-8.  With C#11 we can 
+        do <b>var u8 = "This is a UTF-8 string!"u8;</b>  Also, if we what to print exactly the string, we can do this:
+        <b>var raw1 = """This\is\all "content"!""";</b> or if you need more than just "" inside the string, just add more "" at the beginning. You could 
+        also do 
+        <pre>
+            <code>
+                ar raw3 = """                    
+                &lt;body&gt;
+                        This line is indented.
+                &lt;/body&gt;
+                """;
+            </code>
+        </pre>
+
+        <p class="HeadingSubTopic2" HeadingSubTopicDir>Instantiate Structure</p>
+
+        Also with C# 11 you can mark properties as required: <b>public required string FirstName &lbrace; get; init; &rbrace;</b> Not doing it will throw 
+        a compiler error now.
+
+        <p class="HeadingSubTopic2" HeadingSubTopicDir>Discard</p>
+        You can use _ to discard things returned from a lambda expression or a method.
+        <pre>
+            <code>
+                using System;
+
+                Test t = new Test();
+                Tuple&lt;string,string&gt; tp1 = t.SomeMethod();
+                Console.WriteLine(tp1.Item1 +  "-" +  tp1.Item2);
+                (_, string i2) = t.SomeMethod(); //disregard item1 and take only item2
+                Console.WriteLine(i2); 
+
+                public class Test&lbrace;;
+                    public Tuple&lt;string, string&gt; SomeMethod()
+                    &lbrace;   
+                        System.Tuple&lt;string, string&gt; t1 = new Tuple&lt;string, string&gt;("First", "Second"); 
+                        return t1; 
+                    &rbrace; 
+                &rbrace;
+            </code>
+        </pre>
+
 
     </div>
 </div>
