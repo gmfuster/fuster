@@ -268,8 +268,7 @@ body button{
   font-size: 1.5vw;
 }
 
-.areasButton{
-  /*background-color: deeppink;*/
+.areasButton{  
   color:deepskyblue;
   border-radius: 5%;
   display:block;    

@@ -37,7 +37,7 @@
         <pre>
             <code >
                 ...
-                public static SomeObj operator +(SomeObj o1, SomeObj o2)
+                <b>public static SomeObj operator +(SomeObj o1, SomeObj o2)</b>
                 &lbrace;
                 &nbsp; SomeObj newO = new SomeObj("");
                 &nbsp;  newO.TheThing = o1.TheThing + "-" + o2.TheThing;
@@ -46,7 +46,7 @@
                 //to use 
                 SomeObj obj1 = new SomeObj("hey");
                 SomeObj obj2 = new SomeObj("helloooo");
-                Console.WriteLine( (obj1 + obj2).TheThing);
+                Console.WriteLine( <b>(obj1 + obj2).TheThing</b>);
             </code>
         </pre>  
         <br/>
@@ -95,16 +95,16 @@
                 int i = 10;
                 int j = 20;
 
-                Console.WriteLine( format: "Number i is &lbrace;0&rbrace; and number 2 is &lbrace;1&rbrace;", 	i,j);
+                Console.WriteLine( <b>format: "Number i is &lbrace;0&rbrace; and number 2 is &lbrace;1&rbrace;", 	i,j)</b>;
                 //prints Number i is 10 and number 2 is 20
 
                 private const string _name = "Michael";
                 private const string _lname = "Jackson";
                 private const string _fullName =  $"&lbrace;_name&rbrace;&lbrace;_lname&rbrace;"; // in console it would be Michael Jackson.
 
-                Console.WriteLine(String.Format("The current price is &lbrace;0&rbrace; per ounce.", 100));
+                Console.WriteLine(<b>String.Format("The current price is &lbrace;0&rbrace; per ounce.", 100));</b>
 
-                //the -10 and the 6 indicate the alignment of the argument.
+                //the -10 and the 6 indicate the <b>alignment of the argument.</b>
                 //hardcoding the values here, instead of using variables for simplicity
                 Console.WriteLine(   format: "&lbrace;0,-10&rbrace; &lbrace;1,6&rbrace;",   arg0: "Name",   arg1: "Count");
                 Console.WriteLine(  format: "&lbrace;0, -10&rbrace; &lbrace;1, 6:N0&rbrace;",    arg0: "Bananas",    arg1: 5);
@@ -125,34 +125,24 @@
                     //code that may result in an overflow, use the checked so we know if this happens, instead of it being ignored.
                 &rbrace;
                 //Also have the checked code inside a try catch so we can do something if the exception happens
+            </code>
+        </pre>
+                <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/criEG9" frameborder="0"></iframe>
 
-                string  Method1(int i)
-                &lbrace;
-                    if (i == 1)
-                    &lbrace;
-                        return "One";
-                    &rbrace;else if (i == 2)
-                    &lbrace;
-                        return "Two";
-                        &rbrace;
-                    else
-                    &lbrace;
-                        return "Something Else";
-                        &rbrace;
-                        &rbrace;
-
+        <pre>
+            <code>                
                 static string Method2(int i) =>
                     i switch
                     &lbrace;
                         1 => "One", // what it will return
                         2 =>"Two",
                         _ => "Something Else"
-                        &rbrace;;
+                    &rbrace;;
             </code>
         </pre>
         C# has const and read only fields.  <b>Const values have to be known at compile time, while read only fields can be set in the constructor.  Declare in the class, 
         set it in the constructor.</b><br/>
-        With c#11 we have a <b>required</b> keyword: public required string Email &lbrace; get; set; &rbrace;.  If we do this, when we instantiate the class with the fields 
+        With c#11 we have a <b>required</b> keyword: <b>public required string Email &lbrace; get; set; &rbrace;</b>.  If we do this, when we instantiate the class with the fields 
         marked as required, we will have to give values for them or we will get a compiler error.<br/><br/>
         <pre>
             <code>
@@ -231,10 +221,12 @@
         </pre>
         
         Parameters can be passed by value (default), by reference (<b>ref</b>), and as an <b>out</b> parameter.
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/KhD26f" frameborder="0"></iframe>
+
         <br/>    
         <p class="HeadingSubTopic" id="ExtensionMethods" HeadingSubTopicDir>Extension Methods</p>
 
-        Extension methods have to be created, for a type, in a non-generic static class.  That is why I'm changing the class program to be static.  The 
+        Extension methods have to be created, for a type, in a non-generic static class.  The 
         use of this indicates the one that will be the string that has the method.<br/>
 
         <pre>
@@ -273,17 +265,18 @@
 
                 public static class Program &lbrace;   
 
-                    &nbsp;public class Test&lbrace;
-                    &nbsp;&nbsp;public Tuple&lt;Int32&gt; intT = new Tuple&lt;Int32&gt;(100);
-                    &nbsp;&nbsp;public Tuple&lt;Int32, string&gt; intStringT = new Tuple&lt;Int32, string&gt;(1,"hey");
-                    &nbsp;&rbrace;;
+                    public class Test&lbrace;
+                        public Tuple&lt;Int32&gt; intT = new Tuple&lt;Int32&gt;(100);
+                        public Tuple&lt;Int32, string&gt; intStringT = new Tuple&lt;Int32, string&gt;(1,"hey");
+                    &rbrace;;
             
-                    &nbsp;static void Main(string[] args) 
-                    &nbsp;&nbsp;Test t = new Test();
-                    &nbsp;&nbsp;Console.WriteLine(t.intT.Item1);//100
-                    &nbsp;&nbsp;Console.WriteLine(t.intStringT.Item2);//hey
+                    static void Main(string[] args) 
+                    &lbrace;
+                        Test t = new Test();
+                        Console.WriteLine(t.intT.Item1);//100
+                        Console.WriteLine(t.intStringT.Item2);//hey
                     &rbrace;
-                &rbrace;
+                &rbrace;                
             </code>
         </pre>
         You could also create the tuple this way:<br/>
@@ -295,11 +288,19 @@
         For the <b>System.ValueTuple</b><br/>
         <pre>
             <code>
-                public (Int32, double) intT = (100, 4.5);//has to have more than 1 item.
+                var intTupVal = System.ValueTuple.Create&lt;Int32&gt;(200);
+
+                System.ValueTuple&lt;Int32&gt; intTupVal = new ValueTuple&lt;Int32&gt;(100);
+                Console.WriteLine (intTupVal); //(100)
+                Console.WriteLine (intTupVal.Item1); //100
+
+                public (Int32, double) intT = (100, 4.5);
                 public (Int32, string) intStringT = (1,"hey");
                 ...
                 Console.WriteLine(t.intT.Item1);//100
                 Console.WriteLine(t.intStringT.Item2);//hey
+
+
             </code>
         </pre>
         You could also name the items:<br/>
@@ -310,9 +311,16 @@
                 ...
                 Console.WriteLine(t.intT.d);//4.5
                 Console.WriteLine(t.intStringT.s);//hey
+
+                (int first, int second , int third) tup1 = (100,200, 300);
+                Console.WriteLine(tup1.first);//100
+
+                var tup2 = (first:100, second:200, third:300);
+                Console.WriteLine(tup2.second); //200
             </code>
         </pre>
-        You can use == and != to compare these tuples, but it will compare the values, meaning, the names given to the fields will not matter.<br/>
+        You can use == and != to compare these tuples, but it will compare the values for the valueTuples, meaning, the names given to the fields will not matter.<br/>
+        For the reference tuples, the memory allocation is compared, not the values.<br/>
 
         We could also have this code:<br/>
         <pre>
@@ -338,14 +346,30 @@
                 Console.WriteLine(t.<b>str</b>);	        
             </code>
         </pre>
+
         <b>Destructuring Tuples</b><br/>
         Using the same GiveATuple() as above, we could also do:
         <pre>
             <code>
-                (int numero, string <b>cadena</b>)= GiveATuple();
+                (int numero, string <b>cadena</b>)= GiveATuple(); //could just assign the values as (1, "sssss")
                 Console.WriteLine(<b>cadena</b>);		
             </code>
         </pre>
+
+        ValueTuple types can hold more elements than Tuple types. If you have a Tuple, you can convert it to ValueTuple with ToValueTuple.
+        <br/>
+        Because Tuple types are limited as far as number of elements, we may need to have a Tuple instead of another Tuple so we can pass everything we need.
+        <br/>
+        <pre>
+            <code>
+                var numbers = Tuple.Create(1, 2, 3, 4, 5, 6, 7, Tuple.Create(8, 9, 10, 11, 12));
+                Console.WriteLine(numbers.Item1); //1
+                Console.WriteLine(numbers.Rest.Item1); //(8, 9, 10, 11, 12)
+                Console.WriteLine(numbers.Rest.Item1.Item1);   //8
+            </code>
+        </pre>
+
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/PN0RDV" frameborder="0"></iframe>
 
         <br/>    
         <p class="HeadingSubTopic" id="Generics" HeadingSubTopicDir>Generics</p>
@@ -479,19 +503,50 @@
         </pre>
         Keep in mind that the type you can use for the enum will depend on how many values you are going to need.<br/>
 
-        <p class="HeadingSubTopic" id="Records" HeadingSubTopicDir>Records</p>
+        <p class="HeadingSubTopic" id="RecordsClassStruct" HeadingSubTopicDir>Records, Classes, Struct</p>
         Medium Article - <a href="https://gmfuster.medium.com/c-class-struct-record-record-struct-d3b21c57d9bb"
         target="_new">C# — Class, Struct, Record, Record Struct</a><br/><br/>
 
-        Beginning with C#9 for a reference type, then with C#10 we can have <b>record class</b> for reference and <b>record struct</b> for value type.  Not 
+        Before I get into records, just a little refresher about structures and classes.<br/>
+        A structure struc cannot have a parameterless constructor (at least before C#10).  In a constructor, we can assign a property through the constructor, or, 
+        if the property has the set we can also change it later.<br/>
+        Structures are by value, and classes are by reference.<br/>
+        Typically, you use structure types to design small data-centric types that provide little or no behavior. 
+        Because structure types have value semantics, MS recommends to define immutable structure types (you can use readonly for the struct, 
+        and remove the set from the properties))<br/>
+        Once we do that, we can set the value for the readonly fields/properties of the structure in the 
+        constructor but that’s it. This means, even members of the struct cannot change those fields/properties<br/>
+        Starting with C#10 you can also have a structure and create a copy of it with just some of the fields changed:
+        <pre>
+            <code>
+                Name name1 = new Name &lbrace; F= "Michael", L= "Jackson"&rbrace;;
+                Name name2 = name1 with &lbrace; L = "Jordan" &rbrace;;
+            </code>
+        </pre>
+        A structure type can’t inherit from other class or structure type and it can’t be the base of a class. However, a structure type can implement interfaces.<br/>
+        You can’t declare a finalizer within a structure type.<br/>
+        Prior to C# 10, you can’t initialize an instance field or property at its declaration.<br/>
+
+        Structures are passed by value, though you can use ref to indicate that it should be passed by reference.<br/>
+
+        Starting with 7.2 you can also declare structures as reference type with the ref keyword<br/>
+        <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/lNIQK7" frameborder="0"></iframe>
+
+        As opposed to the code above (in dotnetfiddle), if what we had assigned were classes and then we changed the property in one of the instances,
+        the value would be changed in both instances.
+
+        <br/><br/>
+        Beginning with C#9 for a reference type, then with C#10 for also value type, 
+        we can have <b>record class</b> for reference and <b>record struct</b> for value type.  Not 
         indicating class or struct will make it by reference.<br/>
         Records can be mutable (get and set) but they are usually used for immutable models.<br/>
-        Positional properties are immutable in a record class and a readonly record struct. They're mutable in a record struct.<br/>
+        <!--Positional properties are immutable in a record class and a readonly record struct. They're mutable in a record struct.<br/>-->
         <pre>
             <code>
                 //reference because we are not saying struct (class by default)
                 //PersonA gets the values assigned with the contructor, based in the order.
                 public record PersonA(string FirstName, string LastName);
+                PersonA name = new PersonA("Michael", "Jackson");//create like this
                 //PersonB, just create and then assign by name
                 public record PersonB
                 &lbrace;	
@@ -523,17 +578,24 @@
                 Console.WriteLine(personc.Id); //prints 1212
             </code>
         </pre>
+        When comparing (==) records are compared by value, meaning if the properties match, they will be equal.  Not the case for comparing classes.<br/>
+        Like for structures, you can use the WITH expression for records.<br/>
+
         Regarding the printing of Mark and Knight above, but not 1212: Record types have a compiler-generated ToString method that displays 
-        the names and values of <b>public</b> properties and fields. <br/>
+        the names and values of <b>public</b> properties and fields. A record’s ToString method creates a formatted string that 
+        shows an object's type name and the names and values of all its public properties. <br/>
+
         You could also just have a few properties with its constructor and other properties inside (not positional ones)<br/>
         A positional record and a positional readonly record struct declare init-only properties. A positional record struct declares read-write properties. 
         You can override either of those defaults<br/>
+
         After initialization, you can't change the value of value-type properties or the reference of reference-type properties. 
         However, the data that a reference-type property refers to can be changed.<br/>
         For class types, two objects are equal if they refer to the same object in memory.<br/>
         For struct types, two objects are equal if they are of the same type and store the same values.<br/>
-        For record types, including record struct and readonly record struct, two objects are equal if they are of the same type and store the same values.<br/>
+        For record types, including record struct and readonly record struct, two objects are equal if they are <b>of the same type and store the same values.</b><br/>
         <br/>
+
         If you need to copy an instance with some modifications, you can use a with expression to achieve nondestructive mutation. A with expression makes a new record instance that is a copy of an existing record instance, with specified properties and fields modified.
         <pre>
             <code>
@@ -555,7 +617,31 @@
                 public record Teacher(string FirstName, string LastName, int Grade): Person(FirstName, LastName);
             </code>
         </pre>
-        For two record variables to be equal, the run-time type must be equal (not just the values, also the type).
+        For two record variables to be equal, the run-time type must be equal (not just the values, also the type).<br/>
+        You can have abstract records.
+        <pre>
+            <code>
+                public abstract record RecordName
+                &lbrace;
+                    public string First &lbrace; get; set; &rbrace;
+                    public string Last &lbrace; get; set; &rbrace;
+                &rbrace;
+                public record RecordNameDer : RecordName
+                &lbrace;
+                    public string Middle &lbrace; get; set; &rbrace;
+                &rbrace;
+                ...
+                RecordNameDer name = new RecordNameDer  &lbrace; First = "Michael", Last = "Jackson", Middle = "Joseph" &rbrace;;//or could have also done
+                public abstract record RecordName(string First,string Last);
+                public record RecordNameDer(string First, string Last, string Middle) : RecordName(First, Last);
+                ...
+                RecordNameDer name = new RecordNameDer ("Michael", "Jackson","Joseph" );
+            </code>
+        </pre>
+        Records are good for when your data should not change. Records can be inherited from other records so it’s good to have that when you don’t 
+        really need to have a whole class for what you need.
+
+        Records are also convenient when you want your comparisons on the instances to be based on value.
         
         <p class="HeadingSubTopic" id="Comparing" HeadingSubTopicDir>Pattern Matches - Switch - Comparing - checking type</p>
 
@@ -661,7 +747,8 @@
                 &rbrace;
             </code>
         </pre>
-        With C#8 we also have a switch expression instead of the typical switch statement as above.  With the classes and assignments as above:<br/>
+        With C#8 we also have a switch expression instead of the typical switch statement as above.  With the classes and assignments as above (
+            this is matching on the class itself):<br/>
         <pre>
             <code>
                 var <b>theFruit</b> = fruit switch
@@ -793,6 +880,24 @@
         </pre>
         There is more than what is mentioned above, so check the documentation for more and for how to do it, or understand something you see.
 
+        <br/> 
+        You can also do this, notice you can check and do an assignment if condition met at the same time in the if()
+        <pre>
+            <code>
+                object i = 12; //object assigned an int
+                object s = "hello"; //object assigned a stringif (i is int x)//if the object i is int, it will be assigned to x
+                &lbrace;
+                    Console.WriteLine(x);//will happen
+                &rbrace;   if (s is int xx)
+                &lbrace;
+                   Console.WriteLine(xx);//will not happen since s is not an int
+                &rbrace;
+                if (s is string  xxx)
+                &lbrace;
+                    Console.WriteLine("string " + xxx);//will happen
+                &rbrace;
+            </code>
+        </pre>
         <p class="HeadingSubTopic" id="Other" HeadingSubTopicDir>Other</p>
 
         <p class="HeadingSubTopic2">function inside function</p>
