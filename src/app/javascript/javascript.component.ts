@@ -15,6 +15,7 @@ visibleIs:string ="";
 
   setVisibleTo(value:string){
     this.visibleIs = value;
+    window.scroll(0,0);
   }
 
 }

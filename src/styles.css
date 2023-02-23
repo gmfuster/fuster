@@ -74,12 +74,26 @@ body button {
   border-width:1px;
   border-radius: 10px;
   margin: 2px;
-  font-size: 2vh;
+  font-size: 1.7vw;
   box-sizing: border-box;
+  cursor: pointer;
 }
 body button:disabled { 
   background-color: lightgray;
   border-color: lightgray;    
+}
+.leftFixedBox{
+  box-sizing: border-box;
+  position:fixed;
+  left:5px; 
+  width:14vw; 
+  overflow:auto;       
+}
+
+.contentsMoveRight{
+  margin-left:auto;
+  display:inline-block;  
+  margin-left:16vw;
 }
 body b{
   background-color:lightyellow;
@@ -162,9 +176,7 @@ body pre samp{
   align-items: center;  
   box-sizing: border-box;
 }
-body button{
-  cursor: pointer;
-}
+
 .markClassCardContentBlue {
     border: 3px skyblue solid;
    
@@ -274,19 +286,9 @@ body button{
   display:block;    
   margin:5px;
 }
-.leftFixedBox{
-  box-sizing: border-box;
-  position:fixed;
-  left:5px; 
-  width:10vw; 
-  top: 10vh;
-  height: 75vh;  
-  overflow:auto;
-  font-size: 2vw;
-}
-.contentsMoveRight{
-  margin-left:12vw;
-}
+
+ 
+
 
 
 

@@ -61,3 +61,4 @@ src/app with lazy loading.zip
 .firebase/hosting.ZGlzdFxmdXN0ZXI.cache
 firebase.json
 .firebaserc
+.vscode/launch.json
