@@ -539,12 +539,64 @@
 
                     //pass it down as an argument to other methods you will call here.
                     //have those calls inside a try, with a catch like this one 
-                    catch(TaskCanceledException ex)
-
-                    
-
+                    catch(TaskCanceledException ex)                    
                 </code>
             </pre>
+
+
+
+            <p class="HeadingSubTopic" id="Injection-DI" HeadingSubTopicDir>Dependency Injection</p>
+
+            In the code above there are dependency injection examples (like when we inject, the mapper, the logger etc, in the constructor).
+
+            <b>IServiceCollection</b> is an interface in the ASP.NET Core framework that acts as a collection of service descriptions.  If we don't want 
+            out program.cs to be huge, we can create a class to hold part of the statements that would go there.  Then we can use it in the program.cs.
+            In that class we create:
+            <pre>
+                <code>
+                    public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
+                    &lbrace;
+                        services.AddDbContext ...                                    
+                        services.AddScoped&lt;ITokenService, TokenService&gt;();
+                        ...                        
+            
+                        // ********************
+                        // Setup CORS
+                        // ********************
+                        var corsBuilder = new CorsPolicyBuilder();
+                        corsBuilder.AllowAnyHeader();
+                        corsBuilder.AllowAnyMethod();
+                        //corsBuilder.AllowAnyOrigin(); // For anyone access.		
+                        corsBuilder.WithOrigins("http://localhost:nnnn", "https://localhost:nnnn");
+                        //corsBuilder.AllowCredentials();
+            
+                        services.AddCors(options =&gt;
+                        &lbrace;
+                            options.AddPolicy("OpenCORSPolicy", corsBuilder.Build());
+                        &rbrace;);
+            
+                        return services;
+                    &rbrace;
+
+
+                    //in the program.cs : builder.Services.AddApplicationServices(builder.Configuration);
+                </code>
+            </pre>
+
+            When we are adding the service to be available for DI, we have:<br/>
+            <ul>
+                <li>transient: a new instance of the service each time it is requested.  AddTransient.  Services with short lifetimes.</li>
+                <li>Scoped: a new instance for each request. AddScoped.  </li>
+                <li>Singleton: a new instance shared for the entire app. AddSingleton. When we need to hold the state and it's shared. </li>
+            </ul>
+
+            <p class="HeadingSubTopic" id="MinimalAPIs" HeadingSubTopicDir>Minimal APIs</p>
+            Minimal APIs use less code, and can be more efficient, in some cases.<br/>
+            Something like this <b>app.MapGet("/", () =&gt; "Hello world!");</b> will turn into a RequestDelegate, which is a function 
+            that can process an HTTP request (takes an HTTPContext and returns a Task).
+
+            More TODO.
+
 
    </div>
 </div>
