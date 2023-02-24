@@ -526,7 +526,25 @@
             </pre>
 
 
+            <p class="HeadingSubTopic" id="CancellationToken" HeadingSubTopicDir>When a request is cancelled</p>
 
+            When the client cancels a request, it's a good idea to cancel it if we can.  There is a nice article 
+            <a href="https://mitesh1612.github.io/blog/2022/01/20/cancellation-tokens" target="_blank">here</a> 
+            but I'll give a summary.
+
+            <pre>
+                <code>
+                    //in the method that you want to be able to cancel
+                    public async Task&lt;ActionResult&lt;string&gt;&gt; GetThem(<b>CancellationToken cancellationToken</b>)
+
+                    //pass it down as an argument to other methods you will call here.
+                    //have those calls inside a try, with a catch like this one 
+                    catch(TaskCanceledException ex)
+
+                    
+
+                </code>
+            </pre>
 
    </div>
 </div>
