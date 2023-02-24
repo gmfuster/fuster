@@ -51,7 +51,7 @@
         <b>[HttpGet(Name = "GetWeatherForecast")]</b> will respond to http get requests.<br/>
         Your <b>launchsettings.json</b> file will tell you where this server will be listening. (under the properties folder)<br/>
         If you have the launchUrl set to "swagger", you can change launchbrowser to false, then change the applicationUrl to have something other than 
-        the random portif you prefer ( "applicationUrl": "https://localhost:7298;http://localhost:5298",).<br/>
+        the random port if you prefer ( "applicationUrl": "https://localhost:7298;http://localhost:5298",).<br/>
         If you run now, it will not launch the browser.  Check the output window for what's going on.  Make sure the code is listening before you go to the browser and 
         enter the url.  You may have to bypass the not trusted website error.  Because this is a web api project, doing localhost in the browser will get you a 
         <b>404 error.  This is normal.</b>  You can go directly to the method, such as <b>https://localhost:7298/weatherforecast</b> and you can see the data being returned.
@@ -75,7 +75,9 @@
 
         <p class="HeadingSubTopic" id="EF" HeadingSubTopicDir>Entity Framework</p>
 
-        Check the EF section for more info.  But in this project, you can also create a NorthwindDbContext or whatever class that inherits from DbContext.  You will need the DbContext 
+        Check the EF section for more info.  
+        
+        <!--But in this project, you can also create a NorthwindDbContext or whatever class that inherits from DbContext.  You will need the DbContext 
         for each unit of work, which in this case is the http call.
          On your class inherting from DbContext you can do something like this:
          <pre>
@@ -221,7 +223,7 @@
 	            &rbrace;
             </code>
         </pre>
-
+        -->
         <p class="HeadingSubTopic" id="RoutesController" HeadingSubTopicDir>Routes in Controllers</p>
 
         In the routes in the controllers, like the WeatherForecastController used previously, it's a good idea to indicate whether the method is going to be get or post or what.
@@ -353,6 +355,178 @@
         https://localhost:yourport/swagger will display the services you have , something like this:<br/>
         Open the drop down and click on try it out and execute to test.<br/>
         <img width="100%" src="assets\images\csharp\swagger.png" alt="swagger" /><br/><br/>
+
+        <p class="HeadingSubTopic" id="MoreDetail" HeadingSubTopicDir>More Detail </p>
+
+        For your ASP.Net Core app, it doesn't matter if you are going to get the calls from the browser directly (as indicated above), or from 
+        an Angular app, or some node file or whatever.  However you get the call, it will be something like this:<br/>
+
+        In Postman or wherever: https://localhost:7086/<b>api/Account/register</b>
+
+        <pre>
+            <code>
+                //the controller class 
+                public class AccountController : <b>BaseApiController</b> //more on this later
+
+                //going to need a datacontext here if we are not using repositories 
+                private readonly DataContext _context;
+
+                //set this private field in the constructor, by injecting the datacontext
+                public AccountController(DataContext dataContext)
+
+                //to be able to inject the datacontext, we need to do this in the program.cs 
+                //the DefaultConnection is in your appsettings file.
+                builder.services.AddDbContext&lt;DataContext&gt;(opt =&gt;
+                &lbrace;
+                        opt.UseSqlServer(config.GetConnectionString("DefaultConnection"));
+                &rbrace;
+
+                [HttpPost("register")] //notice the url again, it has the Account of the controller's name, and this.
+
+                //notice how we are returning a Dto type instead of the regular model class.  Because usually,
+                //we don't want to send all the data we keep back and forth, so we can have an equivalent Dto file with 
+                different fields.
+                public async Task&lt;ActionResult&lt;UserDto&gt;&gt; Register(RegisterDto registerDto)
+
+                //when you are in asyn method, you are going to be calling something else with await.
+                //we could return a UserDto, but we can also return BadRequest("some string");
+            </code>
+        </pre>
+            The BaseApiController is a class like this (just so we don't have to add those to all the controllers):
+            <pre>
+                <code>
+                    using Microsoft.AspNetCore.Cors;//use in dev so we don't get CORS error (ignore for now)
+                    using Microsoft.AspNetCore.Mvc;
+
+                    namespace API.Controllers
+                    &lbrace;
+	                    [ApiController]
+	                    [Route("api/[controller]")]
+	                    [EnableCors("OpenCORSPolicy")]
+	                    public class BaseApiController :ControllerBase
+	                    &lbrace;
+	                    &rbrace;
+                    &rbrace;
+                </code>
+            </pre>
+
+            If we are using repositories (recommended) we don't have to inject the data context in the controller, because we are going to inject it 
+            in the repository class, whose methods we will can from the controller.
+
+            <br/>
+
+            <p class="HeadingSubTopic" id="Mapper" HeadingSubTopicDir>Mapper</p>
+
+            When we are using our regular model classes and the equivalent Dto classes, we can have an AutoMapper added to the app.
+            An example would be automapper.Extensions.Microsoft.DepedencyInjection.  See related code online to see how it works.  
+            To be able to use it we need to add it to builder.services.  We can use it in code with something like this:
+            <pre>
+                <code>
+                    //in the constructor
+                    public UserRepository(DataContext context, IMapper mapper)
+
+                    _context.Users.ProjectTo&lt;MemberDto&gt;(_mapper.ConfigurationProvider).ToListAsync();
+                    
+                </code>
+            </pre>
+
+            The mapper has to be configures so it knows how to map columns:
+            <pre>
+                <code>
+                    ...
+                    using AutoMapper;
+
+                    namespace API.Utils
+                    &lbrace;
+	                    public class AutoMapperProfiles : Profile 
+	                    &lbrace;
+		                    public AutoMapperProfiles() 
+                            &lbrace;
+			                    CreateMap&lt;AppUser, MemberDto&gt;()
+				                    .ForMember(dest =&gt; dest.PhotoUrl, opt =&gt; opt.MapFrom(src =&gt; src.Photos.FirstOrDefault(i =&gt; i.IsMain).Url))
+				                    .ForMember(dest =&gt; dest.Age, opt =&gt; opt.MapFrom(src =&gt; src.DateOfBirth.CalculateAge()));
+
+			                    CreateMap&lt;Photo, PhotoDto&gt;();
+		                    &rbrace;
+	                    &rbrace;
+                    &rbrace;
+                </code>
+            </pre>
+
+            We also had to add it to the builder.services in program.cs 
+            <pre>
+                <code>
+                    services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+                </code>
+            </pre>
+            <p class="HeadingSubTopic" id="PasswordsTokens" HeadingSubTopicDir>Passwords and Tokens</p>
+
+            TODO
+
+            <p class="HeadingSubTopic" id="Middleware" HeadingSubTopicDir>Middleware for Errors</p>
+            Full code for a possible Middleware error handling class:
+
+            <pre>
+                <code>
+                    using API.Errors;
+                    using System.Net;
+                    using System.Text.Json;
+
+                    namespace API.Middleware
+                    &lbrace;
+	                    public class <b>ExceptionMiddleware</b>
+	                    &lbrace;
+		                    private readonly RequestDelegate _next;
+		                    private readonly ILogger&lt;ExceptionMiddleware&gt; _logger;
+		                    private readonly IHostEnvironment _env;
+		                    public ExceptionMiddleware(RequestDelegate next, 
+                                ILogger&lt;ExceptionMiddleware&gt; 
+                                logger, IHostEnvironment env)
+		                    &lbrace;
+			                    this._next= next;
+			                    this._logger= logger;
+			                    this._env= env;
+		                    &rbrace;
+		                    
+                            //the name needs to be InvokeAsync, that's what the framework looks for
+		                    public async Task InvokeAsync(HttpContext context)
+		                    &lbrace;
+			                    try
+			                    &lbrace;
+				                    await _next(context);
+			                    &rbrace;
+			                    catch (Exception ex)
+			                    &lbrace;
+				                    _logger.LogError(ex, ex.Message); //goes to terminal
+				                    context.Response.ContentType = "application/json";
+				                    context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+				                    var response = this._env.IsDevelopment() ?
+                                        new ApiException(context.Response.StatusCode, ex.Message, ex.StackTrace?.ToString())
+					                    : new ApiException(context.Response.StatusCode, ex.Message, "Internal Server Error");
+
+				                    var options = new JsonSerializerOptions &lbrace; PropertyNamingPolicy = JsonNamingPolicy.CamelCase &rbrace;;
+
+				                    var json = JsonSerializer.Serialize(response, options);
+
+				                    await context.Response.WriteAsync(json);
+			                    &rbrace;
+		                    &rbrace;
+	                    &rbrace;
+                    &rbrace;                    
+                </code>
+            </pre>
+
+            To be able to use:
+            <pre>
+                <code>
+                    //in program.cs, after builder.build()
+                    app.UseMiddleware&lt;ExceptionMiddleware&gt;();
+                </code>
+            </pre>
+
+
+
 
    </div>
 </div>
