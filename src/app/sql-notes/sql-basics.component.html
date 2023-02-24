@@ -70,13 +70,18 @@
         <p class="HeadingSubTopic" id="Inserts" HeadingSubTopicDir>Inserts</p>
 
         <pre>
-            INSERT INTO Customers (CustomerID, CompanyName, ContactName, Address, City, PostalCode, Country)
-            VALUES ('CA', 'A', 'Tom B', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+            INSERT INTO Customers 
+            (CustomerID, CompanyName, ContactName, Address, City, PostalCode, Country)
+            VALUES 
+            ('CA', 'A', 'Tom B', 'Skagen 21', 'Stavanger', '4006', 'Norway');
 
             INSERT INTO Customers 
-            VALUES ('CAA', 'ACOMP', 'Tom B', 'Sir', 'Skagen 21', 'Stavanger', 'RE', '4006', 'Norway', NULL, NULL);
+            VALUES 
+            ('CAA', 'ACOMP', 'Tom B', 'Sir', 'Skagen 21', 'Stavanger', 'RE', 
+            '4006', 'Norway', NULL, NULL);
 
-            INSERT INTO Customers (CustomerID, CompanyName, ContactName, Address, City, PostalCode, Country)
+            INSERT INTO Customers 
+            (CustomerID, CompanyName, ContactName, Address, City, PostalCode, Country)
             VALUES 
 			('CAAA', 'A', 'Tom B', 'Skagen 21', 'Stavanger', '4006', 'Norway'),
 			('CAAAA', 'A', 'Tom B', 'Skagen 21', 'Stavanger', '4006', 'Norway');
@@ -123,7 +128,9 @@
         FROM Orders
         INNER JOIN Customers ON Orders.CustomerID=Customers.CustomerID;
 
-        SELECT Orders.OrderID, Orders.CustomerId AS orderCI, customers.CustomerId AS CustID, Orders.ShipVia AS ordershipvia, Shippers.ShipperId,  Shippers.CompanyName
+        SELECT Orders.OrderID, Orders.CustomerId AS orderCI, 
+        customers.CustomerId AS CustID, Orders.ShipVia AS ordershipvia, 
+        Shippers.ShipperId,  Shippers.CompanyName
         FROM ( (Orders
 	        INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID)
 	        INNER JOIN Shippers ON Orders.ShipVia = Shippers.ShipperID);        
@@ -137,7 +144,7 @@
         --just checking what customers don't have any orders.  
         SELECT * FROM Customers WHERE customerId NOT IN (select CustomerId from orders)
 
-        --the rows that are coming up not having any orders will show up in the left join statement */
+        --the rows that are coming up not having any orders will show up in the left join statement
         SELECT Customers.CustomerId, Customers.ContactName, Orders.OrderID
         FROM Customers
         LEFT JOIN Orders ON Customers.CustomerID = Orders.CustomerID
@@ -213,7 +220,9 @@
          CONSTRAINT [PK_Categories] PRIMARY KEY CLUSTERED 
         (
 	        [CategoryId] ASC
-        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+        )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, 
+        IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, 
+        OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
         ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
         </pre>
 
@@ -330,9 +339,12 @@
         <pre>
             CREATE TABLE OrderDetailsTable ....
 
-            CONSTRAINT FK_OrderDetails1 FOREIGN KEY (OrderId) REFERENCES OrdersTable(OrderId)
+            CONSTRAINT FK_OrderDetails1 FOREIGN KEY (OrderId) 
+            REFERENCES OrdersTable(OrderId)
             ON UPDATE NO ACTION
-            ON DELETE CASCADE --when the row is removed in OrdersTable for id 1, all id 1 FK records here will be deleted too 
+            ON DELETE CASCADE 
+            --when the row is removed in OrdersTable for id 1, all id 1 FK 
+            --records here will be deleted too 
 
         </pre>
 

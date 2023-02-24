@@ -24,10 +24,12 @@
 	            SELECT * FROM Customers WHERE CompanyName LIKE 'G%'
             )<b>,</b>
             MyOrders AS(
-	            SELECT * FROM orders WHERE CustomerId IN (SELECT CustomerId FROM <b>MyCustomers</b>) 
+	            SELECT * FROM orders 
+                WHERE CustomerId IN (SELECT CustomerId FROM <b>MyCustomers</b>) 
             )
 
-            --SELECT * FROM MyCustomers  --comment this one out because we can only have 1 statement after the WITH
+            --SELECT * FROM MyCustomers  
+            --comment this one out because we can only have 1 statement after the WITH
 
             <b>SELECT * FROM MyOrders ORDER BY CustomerID</b>
 
@@ -39,12 +41,14 @@
             --only the suppliers that have products with a unit price over 25
             SELECT *
             FROM Suppliers
-            WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND UnitPrice > 25);
+            WHERE EXISTS (SELECT ProductName FROM Products 
+            WHERE Products.SupplierID = Suppliers.supplierID AND UnitPrice > 25);
 
             --Can also do WHERE NOT EXISTS
 
             --to check if a table exists, before doing something with it 
-            IF EXISTS (SELECT * FROM sys.objects WHERE OBJECT_NAME(object_id) = 'customers' AND SCHEMA_NAME(schema_id) = 'dbo' AND
+            IF EXISTS (SELECT * FROM sys.objects 
+            WHERE OBJECT_NAME(object_id) = 'customers' AND SCHEMA_NAME(schema_id) = 'dbo' AND
 	        OBJECTPROPERTY(object_id, 'IsUserTable') = 1)
             BEGIN
 	            PRINT 'it exists'
@@ -101,16 +105,18 @@
         <p class="HeadingSubTopic" id="Functions" HeadingSubTopicDir>Functions</p>
 
         <pre>
+            --get this estra column with row ids
             SELECT 
-                <b>ROW_NUMBER()</b> OVER ( ORDER BY EmployeeId) row_num,  --get this estra column with row ids
+                <b>ROW_NUMBER()</b> OVER ( ORDER BY EmployeeId) row_num,  
                 LastName,
                 FirstName,
                 EmployeeId
             FROM
                 employees;
 
-                SELECT 
-                ROW_NUMBER() OVER ( ORDER BY EmployeeId) row_num,  --get this estra column with row ids
+            --get this estra column with row ids
+            SELECT 
+                ROW_NUMBER() OVER ( ORDER BY EmployeeId) row_num, 
                 LastName,
                 FirstName,
                 EmployeeId
@@ -138,7 +144,8 @@
             3	Peacock	Margaret	4
             <b>9</b>	Fuller	Andrew	2*/
 
-            /*Different from the RANK() function, the DENSE_RANK() function always generates consecutive rank values.*/
+            /*Different from the RANK() function, 
+            the DENSE_RANK() function always generates consecutive rank values.*/
 
             SELECT 
                 <b>DENSE_RANK()</b> OVER ( ORDER BY Title) theRank, 
@@ -267,7 +274,7 @@
             <li>@@IDENTITY --> value of last identity value inserted, or of select into.</li>
             <li>IDENT_CURRENT('tablename') --> last identity value but for specific table</li>
             <li>@@OPTIONS --> info about options that have been set with SET</li>
-            <li>@@REMSERVER --> value of the server that called the stored procedure. (only used in stored procedures)</li>
+            <li>@@REMSERVER --> value of the server that called the stored procedure.</li>
             <li>@@ROWCOUNT --> Number of rows affected by the last statement</li>
             <li>SCOPE_IDENTITY() --> last idenitty inserted within the current session and scope</li>
             <li>@@SERVERNAME --> name of local server</li>
@@ -360,9 +367,10 @@
 
         set a trigger for what happens when a table gets an insert, delete, update<br/>
         <pre>
+            --Could do INSTEAD OF DELETE for when a delete happens
             DROP TRIGGER IF EXISTS t_for_insert;
             GO
-            CREATE TRIGGER t_for_insert ON country INSTEAD OF INSERT --Could do INSTEAD OF DELETE for when a delete happens
+            CREATE TRIGGER t_for_insert ON country INSTEAD OF INSERT 
             AS BEGIN            
                 DECLARE @country_name_eng CHAR(128);            
                 DECLARE @country_name CHAR(128);        
@@ -375,8 +383,10 @@
             THROW 51000, "no way!";
 
             --a trigger can also be AFTER INSERT (same as FOR INSERT).
-            --in an INSTEAD OF INSERTED, the INSERTED table lives only for as long as the trigger is happening.
-            --if we are doing the INSTEAD OF DELETE, what we have is a DELETED table to check.
+            --in an INSTEAD OF INSERTED, 
+            --the INSERTED table lives only for as long as the trigger is happening.
+            --if we are doing the INSTEAD OF DELETE, 
+            --what we have is a DELETED table to check.
             --for an update, we don't have an UPDATED table, we have the same row in a DELETED and an INSERTED table.
             --the trigger happens before any changes are committed.
         </pre>
