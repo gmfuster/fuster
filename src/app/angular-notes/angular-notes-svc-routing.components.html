@@ -69,7 +69,7 @@
                 //no need to add to the providers in the component itself, since added to app.module
                 //constructor (private mathServices:MathServices, private stringServices:StringServices, private otherServices:OtherServices)
             </code>
-        </pre>>
+        </pre>
 
         
         <p class="HeadingSubTopic" id="Emmits">Call method that emmits event and listen to it</p>        
@@ -201,7 +201,7 @@
             ]&rbrace;
         </code>
         <br/>
-        <b>When we have nested routes, we also need rested router-outlets. </b> In this case, the SomeComponent will load in the main router-outlet 
+        <b>When we have nested routes, we also need nested router-outlets. </b> In this case, the SomeComponent will load in the main router-outlet 
         and this SomeComponent html should have another router-outlet where the child will load.<br/>
         If you want to navigate to a child from SomeComponent, you could do it like this:<br/>
         <code>this.router.navigate(['commonpath', someidvarintparentcomponent, 'edit']);</code><br/>
