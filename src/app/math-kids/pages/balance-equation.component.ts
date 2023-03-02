@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild, OnDestroy, Renderer2 } from '@angular/core';
-import { CommonFuncs } from '../shared/commonFuncs.service';
+import { CommonFuncs } from '../../shared/commonFuncs.service';
 
 @Component({
   selector: 'balance-equation',
-  templateUrl: './balance-equation.component.html',
-  styleUrls: ['./math-kids.component.css'],
+  templateUrl: './balance-equation.component.html', 
+  styleUrls: ['../math-kids.component.css'],
   providers:[CommonFuncs]
 })
 

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'doubles',
   templateUrl: './doubles.component.html',
-  styleUrls: ['./math-kids.component.css']
+  styleUrls: ['../math-kids.component.css']
 })
 
 export class DoublesComponent implements OnInit {

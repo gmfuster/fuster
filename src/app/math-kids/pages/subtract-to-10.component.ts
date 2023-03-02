@@ -1,10 +1,10 @@
-import { keyframes } from '@angular/animations';
+//import { keyframes } from '@angular/animations';
 import { Component, ElementRef, OnInit, ViewChild, OnDestroy, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'subtract-to-10',
-  templateUrl: './subtract-to-10.component.html',
-  styleUrls: ['./math-kids.component.css']
+  templateUrl: './subtract-to-10.component.html', 
+  styleUrls: ['../math-kids.component.css']
 })
 
 export class SubtractTo10Component implements OnInit, OnDestroy  {

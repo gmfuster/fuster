@@ -49,18 +49,6 @@ import { NotFoundComponent } from './other-fun/not-found.component';
 import { ReadBackComponent } from './other-fun/read-back.component';
 /*import { MapItComponent } from './other-fun/map-it.component';*/
 
-import { DoublesComponent } from './math-kids/doubles.component';
-import { NumberChartComponent } from './math-kids/number-chart.component';
-import { CountByComponent } from './math-kids/count-by.component';
-import { SubtractTo10Component } from './math-kids/subtract-to-10.component';
-import { ArraysComponent } from './math-kids/arrays.component';
-import { AddSplittingComponent } from './math-kids/add-splitting.component';
-import { BalanceEquationComponent } from './math-kids/balance-equation.component';
-import { Carry1Component } from './math-kids/carry1.component';
-import { SubtalliesComponent } from './math-kids/subtallies.component';
-import { SubCountUpComponent } from './math-kids/sub-count-up.component';
-import { PlusMinusComponent } from './math-kids/plus-minus.component';
-
 import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
 import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
 
@@ -91,19 +79,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     appSomeDirectiveDirectiveSTR,
     DropdownDirective,
     ReadBackComponent,    
-    NotFoundComponent,    
-
-    DoublesComponent,
-    SubtractTo10Component,    
-    NumberChartComponent, 
-    CountByComponent,
-    ArraysComponent,
-    AddSplittingComponent,
-    BalanceEquationComponent,
-    Carry1Component,
-    SubtalliesComponent,
-    SubCountUpComponent,
-    PlusMinusComponent,
+    NotFoundComponent,        
 
     MyOwnPipePipe,
     MyOwnPipeParamsPipe,

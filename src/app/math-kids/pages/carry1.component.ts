@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild, OnDestroy, Renderer2 } from '@angular/core';
-import { CommonFuncs } from '../shared/commonFuncs.service';
+import { CommonFuncs } from '../../shared/commonFuncs.service';
 
 @Component({
   selector: 'carry1',
   templateUrl: './carry1.component.html',
-  styleUrls: ['./math-kids.component.css'],
+  styleUrls: ['../math-kids.component.css'],
   providers:[CommonFuncs]
 })
 

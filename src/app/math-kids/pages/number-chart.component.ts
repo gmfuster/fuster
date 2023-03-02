@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild, OnDestroy, Renderer2 } from '
 @Component({
   selector: 'number-chart',
   templateUrl: './number-chart.component.html',
-  styleUrls: ['./math-kids.component.css']
+  styleUrls: ['../math-kids.component.css']
 })
 
 export class NumberChartComponent implements OnInit, OnDestroy  {

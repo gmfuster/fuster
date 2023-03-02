@@ -3,7 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild, OnDestroy, Renderer2 } from '
 @Component({
   selector: 'count-by',
   templateUrl: './count-by.component.html',
-  styleUrls: ['./math-kids.component.css']
+  styleUrls: ['../math-kids.component.css']
 })
 
 export class CountByComponent implements OnInit, OnDestroy  {

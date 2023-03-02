@@ -1,0 +1,78 @@
+<div class="DivsByRow" style="padding:1.5vw;">
+
+    <div *ngIf="currentActivity === myActivityEnum.Menu" >
+
+        <div class="markClassCardWholeBlue">Pre k - 1st</div>    
+        <div class="markClassCardContentBlue">     
+          <div style="position:relative;">
+            <div style="background:teal; margin:0.5vw; padding:5px; border:5px double skyblue; ">
+              <div style="display:flex; flex-direction:row; justify-content:center; font-size:3vw;">
+               <a href="https://gmfuster.github.io/Bonico/#/" target="_blank">Check here for math, language, and games.</a>
+            </div>          
+            </div>        
+            </div>          
+        </div> 
+        <br/><br/>
+
+        <div class="markClassCardWholeBlue">Kids Math (2nd)</div>    
+        <div class="markClassCardContentBlue">     
+        <div style="position:relative;">
+            <div style="background:teal; margin:0.5vw; padding:5px; border:5px double skyblue; ">
+            <div style="display:flex; flex-direction:row; justify-content:flex-start; font-size:3vw;">
+
+                <div  style="flex:1; border: white 2px solid; padding:5px; margin-right:6px; ">              
+                    <span style="color:darkblue"><u><em>Adding</em></u></span><br/>                    
+                    <!--<a [routerLink]='["/concept"]'  style="color:white; ">
+                        Adding Concept
+                    </a><br/>-->
+                    <button  (click)="onActivityClick(myActivityEnum.Concept)">Concept</button>                               
+                    <button  (click)="onActivityClick(myActivityEnum.Arrays)">Arrays</button>
+                    <button  (click)="onActivityClick(myActivityEnum.AddSplitting)">Add Splitting Numbers</button>  
+                    <button  (click)="onActivityClick(myActivityEnum.Carry1)">Carry 1</button>                                 
+                </div>
+
+                <div style="flex:1;  border: deeppink 2px solid; padding:5px; margin-right:6px;">
+                    <span style="color:darkblue"><u><em>Counting</em></u></span><br/>
+
+                    <button  (click)="onActivityClick(myActivityEnum.NumberChart)">Numbers Chart</button>                                 
+                    <button  (click)="onActivityClick(myActivityEnum.CountBy)">Count By</button>                                                     
+                </div>
+
+                <div style="flex:1;  border: deepskyblue 2px solid; padding:5px; margin-right:6px;">
+                    <span style="color:darkblue"><u><em>Subtracting</em></u></span><br/>
+
+                    <button  (click)="onActivityClick(myActivityEnum.SubtractTo10)">Subtract To 10</button>                                 
+                    <button  (click)="onActivityClick(myActivityEnum.SubtractWithTallies)">Subtract with Tallies</button>                                 
+                    <button  (click)="onActivityClick(myActivityEnum.SubtractCountUp)">Subtract Counting Up</button>                                                              
+                </div>
+
+                <div style="flex:1; border: salmon 2px solid; padding:5px; margin-right:6px;">
+                    <span style="color:darkblue"><u><em>Other</em></u></span><br/>
+                    <button  (click)="onActivityClick(myActivityEnum.BalanceEquation)">Balance Equation</button>                                                              
+                    <button  (click)="onActivityClick(myActivityEnum.PlusMinus)">Add or Subtract</button>                                                                             
+                </div>            
+            </div>
+            
+            </div>        
+        </div>          
+        </div>     
+    </div>  
+
+    <button  *ngIf="currentActivity !== myActivityEnum.Menu" 
+        (click)="onActivityClick(myActivityEnum.Menu)">Back to Activities</button>
+    <concept *ngIf="currentActivity === myActivityEnum.Concept"></concept>
+    <arrays *ngIf="currentActivity === myActivityEnum.Arrays"></arrays>   
+    <add-splitting *ngIf="currentActivity === myActivityEnum.AddSplitting"></add-splitting>   
+    <carry1 *ngIf="currentActivity === myActivityEnum.Carry1"></carry1>   
+    <number-chart *ngIf="currentActivity === myActivityEnum.NumberChart"></number-chart>   
+    <count-by *ngIf="currentActivity === myActivityEnum.CountBy"></count-by>   
+    <subtract-to-10 *ngIf="currentActivity === myActivityEnum.SubtractTo10"></subtract-to-10>   
+    <subtallies *ngIf="currentActivity === myActivityEnum.SubtractWithTallies"></subtallies>   
+    <sub-count-up *ngIf="currentActivity === myActivityEnum.SubtractCountUp"></sub-count-up>   
+    <balance-equation *ngIf="currentActivity === myActivityEnum.BalanceEquation"></balance-equation>   
+    <plus-minus *ngIf="currentActivity === myActivityEnum.PlusMinus"></plus-minus>   
+    
+    
+</div>
+
+

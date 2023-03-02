@@ -1,10 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild, OnDestroy, Renderer2 } from '@angular/core';
-import { CommonFuncs } from '../shared/commonFuncs.service';
+import { CommonFuncs } from '../../shared/commonFuncs.service';
 
 @Component({
   selector: 'add-splitting',
   templateUrl: './add-splitting.component.html',
-  styleUrls: ['./math-kids.component.css'],
+  styleUrls: ['../math-kids.component.css'],
   providers:[CommonFuncs]
 })
 
