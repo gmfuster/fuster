@@ -22,6 +22,7 @@ import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.co
 import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.component';
 import { AngularNotesDynamicComponent } from './angular-notes/angular-notes-dynamic.component';
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
+import { AngularNotesSomeMoreComponent } from './angular-notes/angular-notes-somemore.component';
 
 import { ReactNotesComponent } from './react-notes/react-notes.component';
 
@@ -65,6 +66,7 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     AngularNotesDynamicComponent,
     AngularNotesModulesComponent,    
     DynamicNotesComponent,
+    AngularNotesSomeMoreComponent,
 
     LandingDescriptionsComponent,
     FooterComponent,

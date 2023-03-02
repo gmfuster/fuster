@@ -11,18 +11,17 @@ import { DynamicNotesComponent } from './angular-notes/dynamic-notes.component';
 import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.component';
 import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.component';
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
+import { AngularNotesSomeMoreComponent } from './angular-notes/angular-notes-somemore.component';
 
 import { ReactNotesComponent } from './react-notes/react-notes.component';
 
-/*import { ProbabilityNotesComponent } from './math-notes/probability-notes.component';*/
-import { CSharpModule } from './csharp/csharp.module';
+/*import { CSharpModule } from './csharp/csharp.module';
 import { JavascriptModule } from './javascript/javascript.module';
 import { NodeModule } from './node/node.module';
 import { KidsMathModule } from './math-kids/kidsmath.module';
-
+*/
 import { ReadBackComponent } from './other-fun/read-back.component';
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
-/*import {MapItComponent } from './other-fun/map-it.component';*/
 
 import { ForCanActivate } from './shared/forCanActivate.service';
 import { ForCanDeActivate } from './shared/forCanActivate.service';
@@ -47,27 +46,13 @@ const routes: Routes = [
   { path: 'angular-notes-auth', component: AngularNotesAuthComponent, pathMatch: 'full' },  
   { path: 'angular-notes-dynamic', component: AngularNotesDynamicComponent, pathMatch: 'full' },  
   { path: 'angular-notes-modules', component: AngularNotesModulesComponent, pathMatch: 'full' },  
+  { path: 'angular-notes-somemore', component: AngularNotesSomeMoreComponent, pathMatch: 'full' },  
 
   { path: 'react-notes', component: ReactNotesComponent, pathMatch: 'full' },  
 
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
-  { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },
-
-  /*
-  { path: 'doubles', component: DoublesComponent, pathMatch: 'full' }, //kids math
-  { path: 'number-chart', component: NumberChartComponent, pathMatch: 'full' }, //kids math
-  { path: 'count-by', component: CountByComponent, pathMatch: 'full' }, //kids math
-  { path: 'subtract-to-10', component: SubtractTo10Component, pathMatch: 'full' }, //kids math
-  { path: 'concept', component: ConceptComponent, pathMatch: 'full' }, //kids math
-  { path: 'arrays', component: ArraysComponent, pathMatch: 'full' }, //kids math
-  { path: 'add-splitting', component:AddSplittingComponent, pathMatch: 'full' }, //kids math
-  { path: 'balance-equation', component:BalanceEquationComponent, pathMatch: 'full' }, //kids math
-  { path: 'carry1', component:Carry1Component, pathMatch: 'full' }, //kids math
-  { path: 'subtallies', component:SubtalliesComponent, pathMatch: 'full' }, //kids math
-  { path: 'sub-count-up', component:SubCountUpComponent, pathMatch: 'full' }, //kids math
-  { path: 'plus-minus', component:PlusMinusComponent, pathMatch: 'full' }, //kids math
-*/
+  { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },  
 
   { path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:{message:"I AM THE MESSAGE FROM not-found!!!!"}},
   

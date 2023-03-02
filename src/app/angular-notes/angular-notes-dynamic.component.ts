@@ -1,7 +1,5 @@
 //import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, ComponentFactoryResolver, OnDestroy } from '@angular/core';
-import { FormControl, NgForm } from '@angular/forms';
-import {FormGroup} from '@angular/forms';
 import {HeadingSubTopicDirective, PlaceholderDirective} from '../shared/directives';
 import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
