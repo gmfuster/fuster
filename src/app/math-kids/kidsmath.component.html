@@ -1,7 +1,6 @@
-<div class="DivsByRow" style="padding:1.5vw;">
+<div class="DivsByRow" style="padding-left:1.5vw; padding-right: 1.5vw; padding-top: 1vh;;">
 
     <div *ngIf="currentActivity === myActivityEnum.Menu" >
-
         <div class="markClassCardWholeBlue">Pre k - 1st</div>    
         <div class="markClassCardContentBlue">     
           <div style="position:relative;">
@@ -58,7 +57,7 @@
         </div>     
     </div>  
 
-    <button  *ngIf="currentActivity !== myActivityEnum.Menu" 
+    <button  *ngIf="currentActivity !== myActivityEnum.Menu" style="padding:0%"
         (click)="onActivityClick(myActivityEnum.Menu)">Back to Activities</button>
     <concept *ngIf="currentActivity === myActivityEnum.Concept"></concept>
     <arrays *ngIf="currentActivity === myActivityEnum.Arrays"></arrays>   

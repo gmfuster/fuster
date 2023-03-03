@@ -1,11 +1,12 @@
 
 
 <div>        
-  <div  class="PaddedContents" style="text-align: center; font-size: 2vw;" >
-     <button (click)="getSubtraction()">Get Subtraction</button>&nbsp;
-      <div class="forNumberDiv">{{number1}}</div>-<div class="forNumberDiv">{{number2}}</div>=<div [ngStyle]="{'visibility':isResultVisible}" class="forNumberDiv">{{result}}</div>
-      &nbsp;<button (click)="showResult()">Show Result</button>
-      <br/><br/>
+  <div  class="PaddedContents" style="text-align: center; " >
+     <button (click)="getSubtraction()" style="font-size: 1vw;">Get Subtraction</button>&nbsp;
+      <div class="forNumberDivSmall">{{number1}}</div>-<div class="forNumberDivSmall">{{number2}}</div>=<div [ngStyle]="{'visibility':isResultVisible}" 
+      class="forNumberDivSmall">{{result}}</div>
+      &nbsp;<button (click)="showResult()" style="font-size: 1vw;">Show Result</button>
+      
 
       <div class="divsByRowCenter">
 

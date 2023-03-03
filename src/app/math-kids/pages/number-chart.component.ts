@@ -29,9 +29,9 @@ export class NumberChartComponent implements OnInit, OnDestroy  {
     table.style.border = borderST
     table.style.textAlign = "center";
     table.style.margin = "auto";                
-    table.style.fontSize = "4vh";
-    table.style.width = "60vw";
-    table.style.height = "60vh";
+    table.style.fontSize = "3vh";
+    table.style.width = "50vw";
+    table.style.height = "50vh";
     if (divForNumberChart === null){
       return;
     }
