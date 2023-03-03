@@ -151,9 +151,7 @@ body pre samp{
   text-decoration: underline solid .5vh;
   padding:8px;  
 }
-.TopMarginToDealWithNavBarImg {
-  margin-top: 6vh;
-}
+
 .PaddedContents {  
   box-sizing: border-box;    
   overflow-x: hidden;
@@ -190,11 +188,7 @@ body pre samp{
     box-sizing: border-box;
     font-weight: bold;
   }
-  .markClassCardWholePink {   
-    border: 6px deeppink solid;    
-    text-align: center;
-    box-sizing: border-box;
-  }
+
   
   a:link {
     color:lightyellow;
