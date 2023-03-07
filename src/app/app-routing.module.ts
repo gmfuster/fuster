@@ -15,11 +15,6 @@ import { AngularNotesSomeMoreComponent } from './angular-notes/angular-notes-som
 
 import { ReactNotesComponent } from './react-notes/react-notes.component';
 
-/*import { CSharpModule } from './csharp/csharp.module';
-import { JavascriptModule } from './javascript/javascript.module';
-import { NodeModule } from './node/node.module';
-import { KidsMathModule } from './math-kids/kidsmath.module';
-*/
 import { ReadBackComponent } from './other-fun/read-back.component';
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
 
@@ -35,6 +30,7 @@ const routes: Routes = [
   {path: 'node', loadChildren: () => import('./node/node.module').then(m => m.NodeModule)},
   {path: 'sql', loadChildren: () => import('./sql/sql.module').then(m => m.SQLModule)},
   {path: 'kidsmath', loadChildren: () => import('./math-kids/kidsmath.module').then(m => m.KidsMathModule)},
+  {path: 'git', loadChildren: () => import('./git-notes/git.module').then(m => m.GitModule)},
 
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
