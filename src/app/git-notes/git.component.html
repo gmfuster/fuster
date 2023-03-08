@@ -75,6 +75,48 @@
         <li>
             <b>git commit -m "my message"</b> 
         </li>
+        <li>
+            <b>git log</b>  - see commits so far
+        </li>
+        <li>
+            <b>git commit --amend</b>  - add changes to previous commit, opens prev commit msg (configure for your editor if needed)
+        </li>
+        <li>
+            <b>git log --oneline</b>  - commits in just one line
+        </li>
+        <li>
+            <b>git branch</b>  - see your branches (* for current one)
+        </li>
+        <li>
+            <b>git branch -v</b>  - same but more info
+        </li>
+        <li>
+            <b>git branch someBranchName</b>  - create branch, but stay current where you were current
+        </li>
+        <li>
+            <b>git switch someBranchName</b>  - now current is that branch (HEAD points there now)
+        </li>
+        <li>
+            <b>git switch -c someBranchName</b>  - create branch and go to it
+        </li>
+        <li>
+            <b>git config core.editor notepad</b> 
+        </li>
+        <li>
+            <b>git config --global core.editor "code --wait"</b> 
+        </li>
+        <li>
+            <b>git start someFileName.txt</b> - open the file in the version the current branch has of it.
+        </li>
+        <li>
+            <b>git branch -d branchToDelete</b> Not current branch, must be fully merged
+        </li>
+        <li>
+            <b>git branch -D branchToDelete</b> doesn't have to be fully merged
+        </li>
+        <li>
+            <b>git branch -m newNameForBranch</b> Changed the current branch's name
+        </li>
     </ul>
     
 </div>
