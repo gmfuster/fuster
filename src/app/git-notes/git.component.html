@@ -117,6 +117,90 @@
         <li>
             <b>git branch -m newNameForBranch</b> Changed the current branch's name
         </li>
+        <li>
+            <b>git merge TheBranchYouWantToMerge</b> merge that branch to the current branch, where you type that.
+        </li>
+        <li>
+            <b>git diff</b> differences between staging area and working dir, any number of files.
+        </li>
+        <li>
+            <b>git diff HEAD</b> changes in working dir since last commit (staged or not).
+        </li>
+        <li>
+            <b>git diff --staged</b> Show staged changes (diff between last commit and staging area)
+        </li>
+        <li>
+            <b>git diff --staged somefilename.txt</b> also with the other options, can choose for what file.
+        </li>
+        <li>
+            <b>git diff branch1 branch2</b> can also do git diff branch1..branch2 to compare branches, all files. Order matters.
+        </li>
+        <li>
+            <b>git diff XXXXX..YYYYY</b> XXXXX and YYYYY  being some commit numbers that you found out with git log.
+        </li>
+        <li>
+            <b>git stash</b> stash uncommitted so they don't follow you to another branch when you switch
+        </li>
+        <li>
+            <b>git stash save</b> same thing
+        </li>
+        <li>
+            <b>git stash pop</b> remove most recent stash and put it back in working dir or staging area in branch 
+        </li>
+        <li>
+            <b>git stash apply</b> apply from stach but the stach is still there, not removed as with pop (if you want to reapply to other branches)
+        </li>
+        <li>
+            <b>git stash -u</b> include untracked files
+        </li>
+        <li>
+            <b>git stash list</b> 
+        </li>
+        <li>
+            <b>git stash apply stash@&lbrace;2&rbrace;</b> spefic stash, see with the list.
+        </li>
+        <li>
+            <b>git stash drop stash@&lbrace;2&rbrace;</b> 
+        </li>
+        <li>
+            <b>git stash clear</b> 
+        </li>
+        <li>
+            <b>git checkout specificCommtHash</b> -  view that previous commit.  HEAD points to the specific commit, not the branch
+        </li>
+        <li>
+            <b>git switch someBranchName</b> - HEAD back pointing to the branch
+        </li>
+        <li>
+            <b>git checkout specificCommtHash  git switch -c newbranch</b> from commit in the past, create a new branch, from that point.
+        </li>
+        <li>
+            <b>git checkout HEAD~2</b> - go to commits in the past
+        </li>
+        <li>
+            <b>git checkout HEAD somefilename</b> - discard those changes, back to when we last committed. Be mindful of where HEAD is pointing to.
+        </li>
+        <li>
+            <b>git checkout -- somefilename</b> - as above
+        </li>
+        <li>
+            <b>git restore somefilename</b> - as above
+        </li>
+        <li>
+            <b>git restore --source HEAD~2 app.js</b> - restore app.js to its state 2 commits before the one where HEAD is pointing now.
+        </li>
+        <li>
+            <b>git restore --staged someFileName</b> - remove from staging area
+        </li>
+        <li>
+            <b>git reset someCommitHashTOGOBACKTO</b> - undo commits and go back to that commit.
+        </li>
+        <li>
+            <b>git reset --hard HEAD~2</b> - undo commits and file changes to that point (instead of HEAD~2, can also give the someCommitHashTOGOBACKTO)
+        </li>
+        <li>
+            <b>git revert someCommitHashIWantTOGetRidOf</b> - undo commits by committing a change that undoes to changes.
+        </li>
     </ul>
     
 </div>
