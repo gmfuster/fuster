@@ -219,6 +219,14 @@ body pre samp{
   background: skyblue;  
   margin-left: 3vw;
   margin-right: 3vw;
+  opacity: 1;
+}
+.hrClass {  
+  height: 10px;
+  border-color: skyblue;    
+  background-color: skyblue;
+  color:skyblue;
+  opacity: 1;
 }
 .radio-toolbar {
   margin: 10px;

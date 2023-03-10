@@ -1,7 +1,10 @@
 <div class="PaddedContentsTopics">
     
     Just some Git commands and maybe some info.
-    <hr/>
+    <hr class="hrClass"/>
+    <strong>GIT (GitHub following this one)</strong>
+    <hr class="hrClass"/>
+        
     <ul style="list-style-type:square;">
         <li>
             <b>git config --global user.name </b> - check your username
@@ -201,8 +204,92 @@
         <li>
             <b>git revert someCommitHashIWantTOGetRidOf</b> - undo commits by committing a change that undoes to changes.
         </li>
+        <li>
+            <b>git tag tagname</b> label to a moment in time, will put it in the HEAD
+        </li>
+        <li>
+            <b>git tag -a tagname</b>more detailed tag
+        </li>
+        <li>
+            <b>git tag -a tagname commithash</b>
+        </li>
+        <li>
+            <b>git tag -d tagname</b> delete
+        </li>
+        <li>
+            <b>git push --tags</b> push all tags
+        </li>
+        <li>
+            <b>git tag</b> see existing tags
+        </li>
+        <li>
+            <b>git tag -l "*beta*"</b> tags that have beta in the name
+        </li>
+        <li>
+            <b>git checkout 15.3.1</b> check particular tag
+        </li>
+        <li>
+            <b>git diff v15 v16</b> 
+        </li>
+        <li>
+            <b>git tag -f tagnamethatwearealradyusing</b> use -f to be able to have a duplicate tag
+        </li>
     </ul>
-    
+    <hr class="hrClass"/>
+    GitHub or similar
+    <hr class="hrClass"/>
+    <ul>
+        <li>
+            <b>git clone someurl</b> Don't do this inside an existing repo, it will create the repo in the folder where you are
+        </li> 
+        <li>
+            <b>git remote</b> check if local repo is already connected to github
+        </li> 
+        <li>
+            <b>git remote -v</b> same but more details
+        </li> 
+        <li>
+            <b>git remote add origin someurl</b> to establish the connection, origin can be another name, but this is the standard.
+        </li> 
+        <li>
+            <b>git remote rename oldname newname</b>
+        </li> 
+        <li>
+            <b>git remote remove thename</b>
+        </li> 
+        <li>
+            <b>git push originOrWhateverRemoteName masterOrWhateverBranchNameWeSendUp</b> On GitHub, it will go to the same branch name that you use in the command.
+        </li>
+        <li>
+            <b>git push origin myLocalBranch: toThisRemoteBranch</b> branches with different names in local and remote.
+        </li>
+        <li>
+            <b>git push -u origin myBranch</b> configure upstream so doing "git push" already knows what to do
+        </li>
+        <li>
+            <b>git branch -r</b> Check what the branches are in remote (origin)
+        </li>
+        <li>
+            <b>git checkout origin/master</b> check out that branch, master or another one , how was it last time we communicated with it.
+        </li>
+        <li>
+            <b>git switch branchNameInRemote</b> Get a connection to that other branch in remote, and name it the same locally.
+        </li>
+        <li>
+            <b>git fetch origin</b> all branches (fetch so git status knows if you are behind or ahead on commits)
+        </li>
+        <li>
+            <b>git fetch origin remotebranch</b> just that branch from remote. Origin/master will have new changes, my master branch (local) will not.
+        </li>
+        <li>
+            <b>git pull origin remotebranch</b> pull from that to the branch where you are when you do it.
+        </li>
+        <li>
+            <b>git pull</b> short way to get the latest from the equivalent branch in remote, you are already on that branch locally.
+        </li>
+
+
+    </ul>
 </div>
 
 
