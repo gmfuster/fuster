@@ -16,6 +16,7 @@ import { SubtalliesComponent } from './pages/subtallies.component';
 import { SubCountUpComponent } from './pages/sub-count-up.component';
 import { PlusMinusComponent } from './pages//plus-minus.component';
 import { ConceptComponent } from './pages//concept.component';
+import { ClockComponent } from './pages//clock.component';
 
 import { SharedModule } from "../shared/shared.module";
 //import { RouteReuseStrategy } from '@angular/router';
@@ -35,7 +36,8 @@ import { SharedModule } from "../shared/shared.module";
     SubtalliesComponent,
     SubCountUpComponent,
     PlusMinusComponent,
-    ConceptComponent
+    ConceptComponent,
+    ClockComponent
   ],
   imports: [
     CommonModule,

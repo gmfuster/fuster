@@ -49,6 +49,7 @@
                     <span style="color:darkblue"><u><em>Other</em></u></span><br/>
                     <button  (click)="onActivityClick(myActivityEnum.BalanceEquation)">Balance Equation</button>                                                              
                     <button  (click)="onActivityClick(myActivityEnum.PlusMinus)">Add or Subtract</button>                                                                             
+                    <button  (click)="onActivityClick(myActivityEnum.Clock)">Clock</button>                                                                             
                 </div>            
             </div>
             
@@ -70,6 +71,7 @@
     <sub-count-up *ngIf="currentActivity === myActivityEnum.SubtractCountUp"></sub-count-up>   
     <balance-equation *ngIf="currentActivity === myActivityEnum.BalanceEquation"></balance-equation>   
     <plus-minus *ngIf="currentActivity === myActivityEnum.PlusMinus"></plus-minus>   
+    <clock *ngIf="currentActivity === myActivityEnum.Clock"></clock>   
     
     
 </div>

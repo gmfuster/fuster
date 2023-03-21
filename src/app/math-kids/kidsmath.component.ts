@@ -13,7 +13,8 @@ enum ActivityEnum {
   SubtractCountUp,
   BalanceEquation,
   PlusMinus,
-  Menu
+  Menu,
+  Clock
 }
 
 @Component({

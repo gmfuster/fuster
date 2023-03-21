@@ -1,0 +1,29 @@
+
+<div>        
+  <div  class="divsByCol" style="margin-left:5px; text-align: left; font-size: 2vw;" >
+
+    
+
+    <div class="divsByRow" style="border: deepskyblue solid 3px; width:80vw; margin:auto; height:70vh;" >
+      <div>         
+         <canvas #canvas id="canvas"  style="border:2px hotpink;" height="400" width="400">
+         </canvas>
+      </div>
+
+      <div class="divsByCol" style=" font-size: 6vw;">
+         <div style="margin:10px;" class="divsByRow">
+            <input type="number" [(ngModel)]="currentHour" min="1" max="12" name="theHour"/>
+            <input type="number" [(ngModel)]="currentMinute" min="0" max="59" name="theHour"/>
+          </div>
+          <button  style=" font-size: 5vw;" (click)="showTheTime()">Show it!</button>
+      </div>
+      
+     
+    </div>
+    
+        
+        
+  </div>
+
+</div> 
+ 
