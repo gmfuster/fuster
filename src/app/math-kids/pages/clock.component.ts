@@ -24,8 +24,7 @@ export class ClockComponent implements OnInit, OnDestroy  {
     
     //this.vhToPixel = ((50 * window.innerHeight)/100) ;    
     this.ctx = this.myCanvas.nativeElement.getContext("2d");            
-    this.radius = this.myCanvas.nativeElement.height / 2;    
-    console.log(this.radius);
+    this.radius = this.myCanvas.nativeElement.height / 2;        
     this.ctx.translate(this.radius, this.radius);    
     this.radius = this.radius * 0.90
     //setInterval(this.drawClock, 1000);
