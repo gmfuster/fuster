@@ -117,9 +117,9 @@
         <p class="HeadingSubTopic" id="LittleThings" HeadingSubTopicDir>Some little things</p>
         <pre>
             <code>
-                int i = 10_123;
+                int i = <b>10_123;</b>
                 Console.WriteLine(i); //prints number 10123
-                Console.WriteLine( $"Number is &lbrace;i:C&rbrace;");//prints $10,123.00
+                Console.WriteLine<b>( $"Number is &lbrace;i:C&rbrace;")</b>;//prints $10,123.00
 
                 checked&lbrace;
                     //code that may result in an overflow, use the checked so we know if this happens, instead of it being ignored.
@@ -971,6 +971,67 @@
         </pre>
         Note: I think something is happening in this frame, if you take it and compile it in dotnetfiddle.net with the latest compiler it works.<br/>
         <iframe width="100%" height="475" src="https://dotnetfiddle.net/Widget/OBBNcr" frameborder="0"></iframe>
+
+        
+        <p class="HeadingSubTopic" id="InterfacesVSAbstract" HeadingSubTopicDir>Interfaces vs Abstract classes</p>
+
+        An interface contains definitions for a group of related functionalities that a non-abstract class or a struct must implement. 
+        Beginning with C# 8.0, an interface may define a default implementation for members. 
+        An interface may not declare instance data such as fields, auto-implemented properties, or property-like events.<br/>
+        below, the class implements MyInterface and implements the 2 methods the interface has.
+        <pre>
+            <code>
+                public class MyClass : MyInterface
+                &lbrace;
+                    public void SayGoodBye()
+                    &lbrace;
+                        Console.WriteLine("Bye!");
+                    &rbrace;
+                    public void SayHello()
+                    &lbrace;
+                        Console.WriteLine("Hello!");
+                    &rbrace;
+                &rbrace;
+                public static void UseMyInterface()
+                &lbrace;
+                    MyClass myc = new MyClass();
+                    myc.SayGoodBye();
+                &rbrace;
+            </code>
+        </pre>
+        Abstract classes cannot be implemented. Abstract classes can contain abstract methods. They can be used as a base class for other classes.
+        <br/>
+        Notice the difference with the abstract class.
+        <pre>
+            <code>
+                public abstract class MyAbstract
+                &lbrace;
+                    public abstract void SayHello();
+                    public abstract void SayBye();
+                &rbrace;
+
+                public class MyClassWithAbstract : MyAbstract
+                &lbrace;
+                    public <b>override</b> void SayHello()
+                    &lbrace;
+                        Console.WriteLine("hello");
+                    &rbrace;
+                    public override void SayBye()
+                    &lbrace;
+                        Console.WriteLine("bye");
+                    &rbrace;
+                &rbrace;
+
+                public static void UseMyClassAbstract()
+                &lbrace;
+                    MyClassWithAbstract abs = new MyClassWithAbstract();
+                    abs.SayHello();
+                &rbrace;
+            </code>
+        </pre>
+        Not all the methods in the abstract class have to be abstract.  For the ones that are not abstract, you can call them like you would any base class.<br/>
+        For a regular base class, your base class can have methods that can be overriden (marked with virtual) and methods that cannot be overriden.
+        You cannot override the methods of your base class that are not marked virtual.
 
         <p class="HeadingSubTopic" id="Other" HeadingSubTopicDir>Other</p>
 
