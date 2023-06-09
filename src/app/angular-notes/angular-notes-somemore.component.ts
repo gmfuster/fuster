@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, ComponentFactoryResolver, OnDestroy } from '@angular/core';
-import {HeadingSubTopicDirective} from '../shared/directives';
-import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
+import {HeadingSubTopicDir} from '../shared/directives';
+import {TopLinksComponent} from  '../shared/top-links.component';
 
 @Component({
   selector: 'angular-notes-somemore',
@@ -11,10 +11,10 @@ import {CommonFuncs} from '../shared/commonFuncs.service'
 })
 
 export class AngularNotesSomeMoreComponent implements OnInit {
-@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
-myHeadings : string[] = [];
-myName : string = "angular-notes-somemore";
-@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+  @ViewChildren(HeadingSubTopicDir, { read: ElementRef }) headings!:QueryList<any>;
+  myHeadings : string[] = [];
+  myName : string = "angular";
+  @ViewChild(TopLinksComponent, {static : true}) child! : TopLinksComponent  ;   
 
   constructor(private commonFuncs:CommonFuncs, private componentFactoryResolver : ComponentFactoryResolver){    
   }

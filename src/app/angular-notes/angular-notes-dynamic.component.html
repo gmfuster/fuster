@@ -1,13 +1,16 @@
 
 <div class="PaddedContents">
   
-  <div class="leftLinks" #HeadingsContainer>      
+  <!--<div class="leftLinks" #HeadingsContainer>      
     <left-links ></left-links>      
-  </div> 
-
-  <div class="PaddedContents PaddedContentsTopics">
+  </div> -->
+  <div class="TopLinks" #HeadingsContainer>      
+    <top-links ></top-links>      
+  </div>  
+  <br/>
+ 
     
-    <p class="HeadingSubTopic" id="General">General</p>   
+    <p class="HeadingSubTopic" id="General" HeadingSubTopicDir>General</p>   
     For starters, you can have a component to use as a popup window.<br/>
     For now just clicking on this button will make something come up by setting some variable and using an <b>*ngIf</b>.  With css, set the position to be fixed 
     (for the component that will show up.  Use the ngIf in the component itself or a wrapper element). <br/>
@@ -27,7 +30,7 @@
       </code>      
     </pre>
 
-    <p class="HeadingSubTopic" id="With Code">Load Component with Code</p>   
+    <p class="HeadingSubTopic" id="With Code" HeadingSubTopicDir>Load Component with Code</p>   
     With the next button I'll show it programmatically.  Importing and creating the component in the code as a regular TypeScript object will not work.  We need to 
     use Angular's component factory.  In your constructor you need to inject <b>private componentFactoryResolver : ComponentFactoryResolver</b><br/>
     We also need to know where to put it, and for that we can have a placeholder directive.
@@ -96,5 +99,5 @@
       </code>
     </pre>
 
-  </div>
+
 </div> 

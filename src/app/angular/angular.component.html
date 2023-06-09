@@ -1,0 +1,27 @@
+<div class="DivsByRow">
+    <div class="leftFixedBox">        
+        <button class="areasButton" (click)="setVisibleTo('angular-notes')">Basic Or Short</button>
+        <button class="areasButton" (click)="setVisibleTo('angular-notes-svc-routing')">Services & Routing</button>
+        <button class="areasButton" (click)="setVisibleTo('angular-notes-forms')">Forms</button>
+        <button class="areasButton" (click)="setVisibleTo('angular-notes-http')">HTTP</button>
+        <button class="areasButton" (click)="setVisibleTo('angular-notes-auth')">Authorization</button>
+        <button class="areasButton" (click)="setVisibleTo('angular-notes-dynamic')">Dynamic Components</button>            
+        <button class="areasButton" (click)="setVisibleTo('angular-notes-modules')">Modules</button>
+        <button class="areasButton" (click)="setVisibleTo('angular-notes-somemore')">Some More Examples</button>                              
+    </div>
+    <div class="contentsMoveRight">
+        
+        <angular-notes *ngIf="visibleIs === 'angular-notes'"></angular-notes>
+        <angular-notes-svc-routing *ngIf="visibleIs === 'angular-notes-svc-routing'"></angular-notes-svc-routing>
+        <angular-notes-forms *ngIf="visibleIs === 'angular-notes-forms'"></angular-notes-forms>
+        <angular-notes-http *ngIf="visibleIs === 'angular-notes-http'"></angular-notes-http>
+        <angular-notes-auth *ngIf="visibleIs === 'angular-notes-auth'"></angular-notes-auth>
+        <angular-notes-dynamic *ngIf="visibleIs === 'angular-notes-dynamic'"></angular-notes-dynamic>
+        <angular-notes-modules *ngIf="visibleIs === 'angular-notes-modules'"></angular-notes-modules>
+        <angular-notes-somemore *ngIf="visibleIs === 'angular-notes-somemore'"></angular-notes-somemore>        
+        
+    </div>
+    
+</div>
+
+

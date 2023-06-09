@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
+//import { ReactiveFormsModule, FormsModule  } from '@angular/forms';
 import {BsDropdownModule} from "ngx-bootstrap/dropdown";
 import { HttpClientModule } from '@angular/common/http';
 
@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { LandingDescriptionsComponent } from './landing-descriptions/landing-descriptions.component';
 
+/*
 import { AngularNotesComponent } from './angular-notes/angular-notes.component';
 import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-svc-routing.component';
 import { AngularNotesFormsComponent } from './angular-notes/angular-notes-forms.component';
@@ -23,10 +24,11 @@ import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.co
 import { AngularNotesDynamicComponent } from './angular-notes/angular-notes-dynamic.component';
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 import { AngularNotesSomeMoreComponent } from './angular-notes/angular-notes-somemore.component';
+*/
 
-import { ReactNotesComponent } from './react-notes/react-notes.component';
+//import { ReactNotesComponent } from './react-notes/react-notes.component';
 
-import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
+/*import { SomeChildComponentComponent } from './some-child-component/some-child-component.component';
 import { SomeDirectiveDirective } from './some-directive-directive/some-directive-directive.directive';
 import { SomeDirectiveDirective2 } from './some-directive-directive/some-directive-directive.directive';
 import { SomeDirectiveDirective3 } from './some-directive-directive/some-directive-directive.directive';
@@ -34,7 +36,7 @@ import { SomeDirectiveDirective4 } from './some-directive-directive/some-directi
 import { SomeDirectiveDirective5 } from './some-directive-directive/some-directive-directive.directive';
 import { appSomeDirectiveDirectiveSTR } from './some-directive-directive/some-directive-directive.directive';
 import { LeftLinksComponent } from './shared/left-links.component';
-
+*/
 import { SharedModule } from "./shared/shared.module";
 
 import { DropdownDirective } from './shared/dropdown-directive';
@@ -43,22 +45,22 @@ import { HeadingSubTopicDirective } from './shared/directives';
 import { OtherServices } from './shared/forexamples.service';
 import { ForCanActivate } from './shared/forCanActivate.service';
 import { ForCanDeActivate } from './shared/forCanActivate.service';
-import { SomePopupComponent } from './shared/some-popup.component';
+
 
 import { NotFoundComponent } from './other-fun/not-found.component';
 
 import { ReadBackComponent } from './other-fun/read-back.component';
 /*import { MapItComponent } from './other-fun/map-it.component';*/
 
-import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
-import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
+//import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
+//import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
 
 @NgModule({
   declarations: [    
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    AngularNotesComponent,
+    /*AngularNotesComponent,
     AngularNotesSvcRoutingComponent,
     AngularNotesFormsComponent,
     AngularNotesHttpComponent,
@@ -67,36 +69,36 @@ import { MyOwnPipeParamsPipe } from './angular-notes/angular-notes.component';
     AngularNotesModulesComponent,    
     DynamicNotesComponent,
     AngularNotesSomeMoreComponent,
-
+*/
     LandingDescriptionsComponent,
     FooterComponent,
-    SomeChildComponentComponent,
+    /*SomeChildComponentComponent,
     SomeDirectiveDirective,
     SomeDirectiveDirective2,
     SomeDirectiveDirective3,
     SomeDirectiveDirective4,
-    SomeDirectiveDirective5,
+    SomeDirectiveDirective5,*/
     PlaceholderDirective,
-    SomePopupComponent,
-    appSomeDirectiveDirectiveSTR,
+    //SomePopupComponent,
+    //appSomeDirectiveDirectiveSTR,
     DropdownDirective,
     ReadBackComponent,    
     NotFoundComponent,        
 
-    MyOwnPipePipe,
-    MyOwnPipeParamsPipe,
-    LeftLinksComponent,
-    HeadingSubTopicDirective   ,
+    //MyOwnPipePipe,
+    //MyOwnPipeParamsPipe,
+    //LeftLinksComponent,
+    HeadingSubTopicDirective 
     
-    ReactNotesComponent
+    //ReactNotesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
-    FormsModule,
-    ReactiveFormsModule,
+    //FormsModule,
+    //ReactiveFormsModule,
     BrowserAnimationsModule,   
     SharedModule ,
     BsDropdownModule.forRoot()

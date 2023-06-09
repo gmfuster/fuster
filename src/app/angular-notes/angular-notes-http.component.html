@@ -1,13 +1,16 @@
 
 <div class="PaddedContents ">
   
-  <div class="leftLinks" #HeadingsContainer>      
+  <!--<div class="leftLinks" #HeadingsContainer>      
     <left-links ></left-links>      
-  </div> 
+  </div> -->
 
-  <div class="PaddedContents PaddedContentsTopics">
+  <div class="TopLinks" #HeadingsContainer>      
+    <top-links ></top-links>      
+  </div>  
+  <br/>
 
-    <p class="HeadingSubTopic" id="Get-Post-Delete">Get  Post Delete requests</p>   
+    <p class="HeadingSubTopic" id="Get-Post-Delete" HeadingSubTopicDir>Get  Post Delete requests</p>   
 
     Send the requests to a server (duh). Usually get data back as JSON.  Always hard to remember, GET, <b>POST, PUT,</b> DELETE.
     <p style="border: lightyellow solid 5px; padding:3px; background-color: lightpink; color: navy;">The PUT method replaces an existing resource with a new set of values.</p>
@@ -112,7 +115,7 @@
       </pre>
       A delete request will be like  this.http.<b>delete</b>("http://someaddresshere/sendADelete").  You can also subscribe to the delete.<br/>
 
-      <p class="HeadingSubTopic" id="More-Requests">More on requests</p>  
+      <p class="HeadingSubTopic" id="More-Requests" HeadingSubTopicDir>More on requests</p>  
       You will need to have some variable that indicates whether you are loading or not, just so things are not displayed when they should not or something similar.
       May also want to show a loading image when things are being loading.<br/><br/>
       Usually you will have the function to make HTTP calls in a service that you can use in the component.<br/>
@@ -143,7 +146,7 @@
         </code>
       </pre>
 
-      <p class="HeadingSubTopic" id="Errors">Errors</p>  
+      <p class="HeadingSubTopic" id="Errors" HeadingSubTopicDir>Errors</p>  
 
       It is a good idea to have an error interceptor. 
       <a href="https://medium.com/nerd-for-tech/angular-interceptors-for-errors-and-headers-a35372f4304b" target="_blank">Medium Article</a><br/>
@@ -222,7 +225,7 @@
         </code>
       </pre>
 
-      <p class="HeadingSubTopic" id="Requests-Details">Requests with more Details</p>  
+      <p class="HeadingSubTopic" id="Requests-Details" HeadingSubTopicDir>Requests with more Details</p>  
       <p class="HeadingSubTopic2">Headers</p>  
       Angular also has a HttpHeaders that can be imported from angular/common/http.<br/>
       <pre>
@@ -331,6 +334,5 @@
         </code>
       </pre>
       You can create multiple interceptors by just adding more interceptor objects to your providers array (app.module), but keep in mind that 
-      the order matters.
-  </div>
+      the order matters.  
 </div> 

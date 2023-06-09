@@ -1,10 +1,11 @@
 //import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList, ComponentFactoryResolver, OnDestroy } from '@angular/core';
-import {HeadingSubTopicDirective, PlaceholderDirective} from '../shared/directives';
-import {LeftLinksComponent} from  '../shared/left-links.component';
+import {PlaceholderDirective} from '../shared/directives';
 import {CommonFuncs} from '../shared/commonFuncs.service'
 import { SomePopupComponent } from '../shared/some-popup.component';
 import { Subscription } from 'rxjs';
+import {HeadingSubTopicDir} from '../shared/directives';
+import {TopLinksComponent} from  '../shared/top-links.component';
 
 @Component({
   selector: 'angular-notes-dynamic',
@@ -14,10 +15,10 @@ import { Subscription } from 'rxjs';
 })
 
 export class AngularNotesDynamicComponent implements OnInit, OnDestroy {
-@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
-myHeadings : string[] = [];
-myName : string = "angular-notes-dynamic";
-@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+  @ViewChildren(HeadingSubTopicDir, { read: ElementRef }) headings!:QueryList<any>;
+  myHeadings : string[] = [];
+  myName : string = "angular";
+  @ViewChild(TopLinksComponent, {static : true}) child! : TopLinksComponent  ;   
 @ViewChild(PlaceholderDirective, {static : false}) popup! : PlaceholderDirective;
 showPopup : boolean = false;
 private closeSubs : Subscription = new Subscription();

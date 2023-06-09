@@ -1,10 +1,13 @@
 <div class="PaddedContents">
 
-    <div class="leftLinks" #HeadingsContainer>      
+    <!--<div class="leftLinks" #HeadingsContainer>      
         <left-links ></left-links>      
-      </div>    
+      </div>    -->
 
-    <div class="PaddedContents PaddedContentsTopics">
+      <div class="TopLinks" #HeadingsContainer>      
+        <top-links ></top-links>      
+      </div>  
+      <br/>
 
         <br/>
         <h3 class="CenterMe">There is no @Service like there is @Component and @Directive</h3>
@@ -21,7 +24,7 @@
         <h2 class="CenterMe" >Services</h2>
         <hr class="hrHeaderClass"/>
         
-        <p class="HeadingSubTopic" id="Service-Function">Call Function in Service</p>                                 
+        <p class="HeadingSubTopic" id="Service-Function" HeadingSubTopicDir>Call Function in Service</p>                                 
 
         I have a service MathServices that has a getRandom1ToN function.  Click the button to call that service function and show the number we get.
         <button (click)="onClickMeClicked()">Click me</button><br/>
@@ -45,7 +48,7 @@
            </code>
        </pre>
         
-        <p class="HeadingSubTopic" id="Function-Service-Injectable">Call Function in Service with @Injectable(&lbrace;  providedIn: 'root' &rbrace;) </p>
+        <p class="HeadingSubTopic" id="Function-Service-Injectable" HeadingSubTopicDir>Call Function in Service with @Injectable(&lbrace;  providedIn: 'root' &rbrace;) </p>
         <code>Injectable(&lbrace;providedIn: 'root' &rbrace;) before export class StringServices -- in service ts</code>   <br/>
         <code>In the svc, set function as public: public getAString() </code><br/>        
         <code>in ts using svc:  constructor (private mathServices:MathServices, private stringServices:StringServices)</code><br/>        
@@ -56,7 +59,7 @@
 
         This offers an advantage: Services can be lazy loaded by Angular when needed.  Better performance.
         
-        <p class="HeadingSubTopic" id="Function-Service-NgModule">Call Function in Service @NgModule</p>                    
+        <p class="HeadingSubTopic" id="Function-Service-NgModule" HeadingSubTopicDir>Call Function in Service @NgModule</p>                    
                         
         Instead of on each component, import in the app module.  No need to add to providers in component.
         
@@ -72,7 +75,7 @@
         </pre>
 
         
-        <p class="HeadingSubTopic" id="Emmits">Call method that emmits event and listen to it</p>        
+        <p class="HeadingSubTopic" id="Emmits" HeadingSubTopicDir>Call method that emmits event and listen to it</p>        
                         
         Clicking the button will call a service method that will return an event.  There will be code listening to that event from the service and it will set 
         the span with date and time.<br/>
@@ -109,7 +112,7 @@
             <a  [routerLink]='["/angular-notes-svc-routing"]' fragment="services" >Jump To Services </a>
         </h3>
 
-        <p class="HeadingSubTopic" id="Routing-General">Routing General</p>  
+        <p class="HeadingSubTopic" id="Routing-General" HeadingSubTopicDir>Routing General</p>  
 
         When you create an Angular app with VSC, it will create the initial routing for you:<br/>
         app.module.ts will have: <code ngNonBindable>import &lbrace; AppRoutingModule &rbrace; from './app-routing.module';</code><br/>
@@ -148,7 +151,7 @@
         can pass this as a second parameter to navigate <code>&lbrace;relativeTo:this.route&rbrace;</code>. This.route will contain where we are at the time.
         <br/><br/>       
         
-        <p class="HeadingSubTopic" id="Dynamic-Paths">dynamic Paths</p>  
+        <p class="HeadingSubTopic" id="Dynamic-Paths" HeadingSubTopicDir>dynamic Paths</p>  
         <code>this.router.navigate(["/dynamic-notes/" + sendId]);  </code>
         <code>import &lbrace; ActivatedRoute, Router &rbrace; from '@angular/router';</code><br/>
         <code>constructor(private route:ActivatedRoute)</code><br/>
@@ -168,7 +171,7 @@
         </code>
         <br/><br/>
 
-         <p class="HeadingSubTopic" id="Dynamic-Middle">dynamic Paths with dynamic part in the middle</p>  
+         <p class="HeadingSubTopic" id="Dynamic-Middle" HeadingSubTopicDir>dynamic Paths with dynamic part in the middle</p>  
          You could add something else after the dynamic element of the path, something like this: <code>... path: 'dynamic-notes/:id/<b>edit</b>', ...</code>
          The link could be something like <code>[routerLink]='["/dynamic-notes",5, "edit" ]'</code><br/>
         
@@ -185,7 +188,7 @@
         
          <br/>
        
-         <p class="HeadingSubTopic" id="Nested-Routes">Nested Routing</p>  
+         <p class="HeadingSubTopic" id="Nested-Routes" HeadingSubTopicDir>Nested Routing</p>  
 
          I you end up with different routes that have the same at the beginning of the path, you may be better of changing them to have a main path, and 
          then children paths (routes) under it. For example, if you have paths:<br/>         
@@ -210,13 +213,13 @@
         If we are using the queryParams from the parent in the navigation, we will lose them when we navigate.  To preserve them, do this :
         <code>this.router.navigate(['edit'], &lbrace;relativeTo: this.route, <b>queryParamsHandling: 'preserved' </b>&rbrace; ) </code>
   
-         <p class="HeadingSubTopic" id="Redirect">Redirect</p>  
+         <p class="HeadingSubTopic" id="Redirect" HeadingSubTopicDir>Redirect</p>  
          You can redirect from one path to another one with something like &lbrace;path:'somepath or **', <b>redirectTo</b>:'some other path'&rbrace;
          The ** means any unknown route, and it should be the last entry under the routes array.  With redirect, use the pathMatch:'full'<br/>
 
         <br/><br/>
        
-        <p class="HeadingSubTopic" id="CanActivate-CanActivateChild">CanActivate and CanActivateChild</p>  
+        <p class="HeadingSubTopic" id="CanActivate-CanActivateChild" HeadingSubTopicDir>CanActivate and CanActivateChild</p>  
         We can create a service and have it implement CanActivate.  The CanActivate will apply to whatever route we use it in and its children.<br/>
         We could have this route that uses the service to see if we can go to that route:<br/>
         <code>path: 'angular-notes-noactivate', component: ..., <b>canActivate:[ForCanActivate]</b>, pathMatch: 'full'</code><br/>
@@ -250,7 +253,7 @@
 
         On the route, now it would be <code>path: 'angular-notes-noactivate', component: ..., <b>canActivateChid:[ForCanActivate]</b></code>
          
-        <p class="HeadingSubTopic" id="CanDeactivate">CanDeactivate</p>   
+        <p class="HeadingSubTopic" id="CanDeactivate" HeadingSubTopicDir>CanDeactivate</p>   
         I am using the same path I used for the noactivate, but, to test the deactivate it has to be activated so I have to change the canActivate to return 
         true instead of false.<br/>
         In the service file, same one I used before, now we are doing this:<br/>
@@ -301,7 +304,7 @@
 
         <img width="100%" src="assets\images\angular\candeactivate.png" alt="can deactivate" /><br/><br/>        
     
-        <p class="HeadingSubTopic" id="NotFound">Pass Static Data to not-found</p>   
+        <p class="HeadingSubTopic" id="NotFound" HeadingSubTopicDir>Pass Static Data to not-found</p>   
         This doesn't have to be for a not found page but using that to show it.  We have the ** to catch a route that doesn't exist, and we reroute it 
         to the not found page with this. Notice the data part of it, because that will be send to the ts file for that page.
         <pre>
@@ -325,7 +328,7 @@
             </code>
         </pre>
        
-        <p class="HeadingSubTopic" id="Resolve-Dynamic-Data">Resolve Dynamic Data</p>   
+        <p class="HeadingSubTopic" id="Resolve-Dynamic-Data" HeadingSubTopicDir>Resolve Dynamic Data</p>   
         This is for when we need to get the data before to route somewhere.  We should create a new file, such as server-recolver.service.ts.  It should be 
         similar to:
         <pre>
@@ -366,6 +369,5 @@
             </code>
         </pre>
         <br/>
-        <br/>
-    </div>  
+        <br/>    
 </div>

@@ -1,13 +1,16 @@
 
 <div class="PaddedContents">
   
-  <div class="leftLinks" #HeadingsContainer>      
+  <!--<div class="leftLinks" #HeadingsContainer>      
     <left-links ></left-links>      
-  </div> 
+  </div> -->
 
-  <div class="PaddedContents PaddedContentsTopics">
+  <div class="TopLinks" #HeadingsContainer>      
+    <top-links ></top-links>      
+  </div>  
+  <br/>
 
-    <p class="HeadingSubTopic" id="General">General</p>   
+    <p class="HeadingSubTopic" id="General" HeadingSubTopicDir>General</p>   
     We use modules to bundle things together, usually things that are related.  The app.module is a module, and you need to at least have that one.
     Angular also provides some modules for us, like the FormsModule.  Extra modules you create will need to be included under the "imports" section in your app.module. 
     THe bootstrap section defines what components are available in the index file (usually just the app-root component).  <br/>
@@ -66,7 +69,7 @@
     Don't forget to import this additional routes module to your additions module that goes with it.
 
 
-    <p class="HeadingSubTopic" id="Shared">Shared Modules</p>   
+    <p class="HeadingSubTopic" id="Shared" HeadingSubTopicDir>Shared Modules</p>   
     You could have modules that have the same components etc with just a few differences.  You would want to put those common things in one shared module.<br/>
     A shared module would look something like this:
     <pre>
@@ -91,7 +94,7 @@
     You can have duplicate imports in different modules (like two modules importing the same thing), but you cannot have the same declarations in 2 different modules. 
     What you do instead is declare it only in one, and export it so it can be accessed by other modules.
 
-    <p class="HeadingSubTopic" id="Lazy-Loading">Lazy Loading</p>  
+    <p class="HeadingSubTopic" id="Lazy-Loading" HeadingSubTopicDir>Lazy Loading</p>  
     More on <a href="https://medium.com/nerd-for-tech/lazy-loading-modules-in-angular-c3cfca72d21e" target="_blank">Medium</a><br/>
     Without lazy loading, whenever we load a page, we load everything, not only what is needed for that area.  For lazy loading, it helps that your modules bring their own routes.
     Example of how you would indicate that a particular module should only be loaded when that particular route happens.
@@ -111,7 +114,7 @@
     In your router options ( const routerOptions :ExtraOptions =...) you can also include a preLoadingStrategy: PreloadAllModules.  This will still use lazy loading 
     but it will load them ASAP (which will not make the first page take longer).
 
-    <p class="HeadingSubTopic" id="Services">Services</p>   
+    <p class="HeadingSubTopic" id="Services" HeadingSubTopicDir>Services</p>   
     Services can be provided:<br/>          
     <u>AppModule:</u><br/>
     available everywhere<br/>
@@ -123,6 +126,5 @@
     <u>Modules:</u><br/>
     available everywhere if eager-loaded (not recommended)<br/>
     available only in the module (own instance if service also in AppModule)<br/>
-    
-  </div>
+      
 </div> 

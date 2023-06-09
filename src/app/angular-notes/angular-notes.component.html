@@ -1,16 +1,19 @@
 
 <div class="PaddedContents">
   
-  <div class="leftLinks" #HeadingsContainer>      
+  <!--<div class="leftLinks" #HeadingsContainer>      
     <left-links ></left-links>      
-  </div>     
-  <div class="PaddedContents PaddedContentsTopics">
+  </div>     -->
+  <div class="TopLinks" #HeadingsContainer>      
+    <top-links ></top-links>      
+  </div>  
+  <br/>
     <h4 class="CenterMe">When adding new components, remember you may have to restart for them to be found.</h4>
     <h3 class="CenterMe"> <a href="https://medium.com/nerd-for-tech/angular-vs-react-compare-the-very-basics-776fd96fec23"
       target="_new">Check out Angular vs React - basics</a></h3>  
     <h3 class="CenterMe">Input fields, in general, take only numbers. </h3>
     
-    <p class="HeadingSubTopic" id="String-Interpolation">String Interpolation</p>       
+    <p class="HeadingSubTopic" id="String-Interpolation" HeadingSubTopicDir>String Interpolation</p>       
     Type something in the <input #theInput type="number" /> and send it with the button that has the (click).
      <button (click)="onClickButton1(theInput.value)">send it</button>. If you are setting someVariable in your code, you can use it with the curly brackets.<br />
     <mark>{{theVariable}}</mark>
@@ -24,7 +27,7 @@
       </code>
     </pre>    
     
-    <p class="HeadingSubTopic" id="Property-Binding">Property Binding</p>   
+    <p class="HeadingSubTopic" id="Property-Binding" HeadingSubTopicDir>Property Binding</p>   
     Use the syntax as <b>[] for the html attributes and use quotes to use a variable</b> for the attributes. 
     Use no quotes assigned to the attribute to <b>hardcode</b> the value.  
     Click the button to switch between true and false and enable or disable the second button (which does nothing).<br/>
@@ -39,7 +42,7 @@
       </code>
     </pre>
     
-    <p class="HeadingSubTopic" id="2-Way-Binding">2-way Binding</p>    
+    <p class="HeadingSubTopic" id="2-Way-Binding" HeadingSubTopicDir>2-way Binding</p>    
     Use ngModel in the input field.  It will update the <b>variable right away</b> and from the ts code, which we link to the same variable for the display too, 
     it will update right away.  Click the button to update the variable to something different.
     <input type="number" [(ngModel)]="theVariable"/><br/><br/>
@@ -52,7 +55,7 @@
       </code>
     </pre>
   
-    <p class="HeadingSubTopic" id="Wait!">Wait a minute!!</p>
+    <p class="HeadingSubTopic" id="Wait!" HeadingSubTopicDir>Wait a minute!!</p>
     What is with the [] or no [] or the () and the []?
     <br/>
     When we are using [] in the property (style.color below has it missing) we are binding to a variable in the ts file.  Since we don't have it in the following
@@ -83,7 +86,7 @@
     disabled=theBoolVar2<input type="number" disabled=theBoolVar2/><br/>
     disabled="theBoolVar2"<input type="number" disabled="theBoolVar2"/><br/>
     
-    <p class="HeadingSubTopic" id="ngIf">Angular Directive - ngIf</p>  
+    <p class="HeadingSubTopic" id="ngIf" HeadingSubTopicDir>Angular Directive - ngIf</p>  
     The marked test below will show depending on a boolean variable on the ts file.  Change the value with the button. You can also use an expression.<br/>
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
     <mark *ngIf="theBoolVar">I go on and off</mark><br/><br/>
@@ -107,7 +110,7 @@
       </code>
     </pre>
     
-    <p class="HeadingSubTopic" id="ngStyle">Angular Directive - ngStyle</p>   
+    <p class="HeadingSubTopic" id="ngStyle" HeadingSubTopicDir>Angular Directive - ngStyle</p>   
     Click the button to get a random background color by changing theColor property. Could also have a method instead
     of theColor in the span element.  <button (click)="onRandomColor()">Random Color</button><br/>
     span element: <span [ngStyle]="{backgroundColor:theColor}">Hello!</span><br/>
@@ -117,7 +120,7 @@
       </code>
     </pre>
     
-    <p class="HeadingSubTopic" id="ngClass">Angular Directive - ngClass</p>      
+    <p class="HeadingSubTopic" id="ngClass" HeadingSubTopicDir>Angular Directive - ngClass</p>      
     Similar to the examples above, set ngClass to a class (redClass) to set the font to red based on the boolean value (when true). The redClass is in the css file.<br/>
     <button (click)="onSwitchTheBoolVar()">Switch Boolean</button><br/><br/>
     <span [ngClass]="{redClass: theBoolVar}">I'll be red when TheBoolVar is true</span>
@@ -127,7 +130,7 @@
       </code>
     </pre>    
 
-    <p class="HeadingSubTopic" id="ngFor">Angular Directive - ngFor</p> 
+    <p class="HeadingSubTopic" id="ngFor" HeadingSubTopicDir>Angular Directive - ngFor</p> 
     Enter a number from 1 to 5 (you can enter more too) and the code will show that many lines.<br/>  
     You can also add let i = index in the ngFor to get the index of the iteration.<br/>    
     <input type="number" (keydown)="onValueChanged($event)" (input)="onValueChangedArrows($event)" [(ngModel)]="theArraySize"/><br/><br/>
@@ -141,7 +144,7 @@
       </code>
     </pre>
     
-    <p class="HeadingSubTopic" id="ngSwitch">Angular Directive - ngSwitch</p>    
+    <p class="HeadingSubTopic" id="ngSwitch" HeadingSubTopicDir>Angular Directive - ngSwitch</p>    
     The random color button returns aqua, red, pink, yellow, green, and gray.  Have a switch for the theColor variable for each of those.<br/>
     Notice the single quotes inside the "" on the case elements.  If numbers, don't include the single quotes.  The color is not changing, but the word will change 
     to match the theColor value.<br/>
@@ -165,7 +168,7 @@
       </code>
     </pre>
     
-    <p class="HeadingSubTopic" id="Data-From-Parent">Get Data from Parent Component</p>    
+    <p class="HeadingSubTopic" id="Data-From-Parent" HeadingSubTopicDir>Get Data from Parent Component</p>    
     In this angular-notes component we have a theColor variable used above (in this parent).  In this html file we have a child component.    
     (Disregard the button in the child component, it is not being listened to in this code).<br/>
     <button (click)="onRandomColor()">Random Color (in parent html)</button><br/><br/>
@@ -185,7 +188,7 @@
       </code>
     </pre>
     
-    <p class="HeadingSubTopic" id= "NotifyParent">Tell Parent of Change in Child</p>
+    <p class="HeadingSubTopic" id= "NotifyParent" HeadingSubTopicDir>Tell Parent of Change in Child</p>
       
     The parent (this angular notes component) will be listening to events of the child component (some-child-component).<br/>
     When adding EventEmitter, check your import statements.  Make sure it is imported from angular/core.<br/>
@@ -212,7 +215,7 @@
     </pre>    
 
     <div id="viewchild" ></div><br/>
-    <p class="HeadingSubTopic" id="ViewChild">ViewChild</p>
+    <p class="HeadingSubTopic" id="ViewChild" HeadingSubTopicDir>ViewChild</p>
     This concept has too much to be included here, so instead, check out my article on Medium 
     <a href="https://medium.com/nerd-for-tech/angular-viewchild-for-component-dom-element-element-of-component-and-directive-c23328ee1525"
     target="_new">Angular — ViewChild for component, DOM element, element of component, and directive</a><br/>
@@ -223,7 +226,7 @@
     <img width="100%" src="assets\images\misc\viewchild3.png" alt="viewchild3 content elements" /><br/><br/>
     <img width="100%" src="assets\images\misc\viewchild4.png" alt="viewchild4 content elements" /><br/><br/>
     
-    <p class="HeadingSubTopic" id="ng-Content">ng-Content</p>    
+    <p class="HeadingSubTopic" id="ng-Content" HeadingSubTopicDir>ng-Content</p>    
     I am going to have some ng-content elements in the some-child-component component.  Then I'll use that component here in the angular-notes component.
     Each ng-content in the child will display a different way and it will choose what to put in that container based on some element, class, and id.
     <b>(ng-content cannot have content besides what's passed to it)</b>.<br/>
@@ -247,7 +250,7 @@
       </code>
     </pre>
    
-    <p class="HeadingSubTopic" id="ContentChild">ContentChild for ng-Content (can't use ViewChild)</p>
+    <p class="HeadingSubTopic" id="ContentChild" HeadingSubTopicDir>ContentChild for ng-Content (can't use ViewChild)</p>
   
     You can't use ViewChild for content in an ng-content.  For that you need ContentChild. It returns the first element matching the selector.  
     If the content DOM changes, and a new child matches the selector, the property will be updated.  <b><u>Use ContentChild
@@ -279,7 +282,7 @@
       </code>
     </pre>
 
-    <p class="HeadingSubTopic" id="Custom-Directives">Angular Directives and Your Own</p>    
+    <p class="HeadingSubTopic" id="Custom-Directives" HeadingSubTopicDir>Angular Directives and Your Own</p>    
     Angular directives are cool but we can also create our own.  I'm going to use a component directive some-directive-directive.
     <b><u>The ts file for this directive is not a @Component but a @Directive.</u></b> <strong> Not using renderer in this example </strong>, will use it later for the same thing.
     Remember to include the directive in the app.module.ts so it can be used.  I'll be using that directive in a p element here.  Like for components,
@@ -314,7 +317,7 @@
       </code>
     </pre>
     
-    <p class="HeadingSubTopic" id="Renderer">Renderer</p>  
+    <p class="HeadingSubTopic" id="Renderer" HeadingSubTopicDir>Renderer</p>  
     Similar to the above one, but will get a directive 3 that will use renderer to access the style.  Don't forget to include the new directive in the app.module.  I keep 
     doing that. <br/>
     <p appSomeDirectiveDirective3>Some p element using the SomeDirectiveDirective3 with renderer2. </p>
@@ -327,7 +330,7 @@
       </code>
     </pre>
 
-    <p class="HeadingSubTopic" id="HostBinding">HostBinding to change the directive style</p>    
+    <p class="HeadingSubTopic" id="HostBinding" HeadingSubTopicDir>HostBinding to change the directive style</p>    
     Going to use a 4th directive to make use of HostBinding to set the background.<br/>
     <p appSomeDirectiveDirective4>Some p element using the SomeDirectiveDirective4 with HostBinding. </p>
     <pre>
@@ -335,7 +338,7 @@
       on ngOnInit: this.backColor = 'lightblue';
     </pre>
     
-    <p class="HeadingSubTopic" id="HostListener">HostListener for Directive</p>  
+    <p class="HeadingSubTopic" id="HostListener" HeadingSubTopicDir>HostListener for Directive</p>  
     Using the paragraph with a 5th directive now, which will listen to the mouse events and change the color that way. Move the cursor on and off the p.<br/>
     <p appSomeDirectiveDirective5>Some p element using the SomeDirectiveDirective5 with HostBinding. The code is in the directive itself.</p>
     <pre>
@@ -346,7 +349,7 @@
       </code>
     </pre>
 
-    <p class="HeadingSubTopic" id="Custom-Structural-Directive">Your Own Structural Directive</p>  
+    <p class="HeadingSubTopic" id="Custom-Structural-Directive" HeadingSubTopicDir>Your Own Structural Directive</p>  
     A structural directive is one that changes the structure of the DOM (like ngIf, ngFor, and we use them with *).
     <strong>TemplateRef</strong>: It represents an embedded template that can be used to instantiate embedded views.  
     <strong>ViewContainerRef:</strong> It represents a container where one or more views can be attached.<br/><br/>
@@ -368,7 +371,7 @@
     <br/>
     <br/>
    
-    <p class="HeadingSubTopic" id="Observables">Observables</p>
+    <p class="HeadingSubTopic" id="Observables" HeadingSubTopicDir>Observables</p>
 
     More on <a href="https://medium.com/nerd-for-tech/promises-observables-subjects-behaviorsubjects-replaysubjects-326aa3716ace" target="_blank">Medium</a><br/>
     An Observable is a data source.  We can use it importing the RxJS package.  Your code can be the observer to this observable.  There 
@@ -451,7 +454,7 @@
     target="_new">
     rxjs subjects</a>
     
-    <p class="HeadingSubTopic" id="Pipes">Pipes</p>
+    <p class="HeadingSubTopic" id="Pipes" HeadingSubTopicDir>Pipes</p>
 
     A pipe transforms the output display, not the data, so it is part of the html. See some strings changed with the pipes<br/>
     Using <span ngNonBindable> <b>&lbrace;&lbrace;someVariables | uppercase &rbrace;&rbrace; </b>(and similar for other pipes) </span> <br/>
@@ -542,7 +545,7 @@
     If you have a variable that will be loaded asynchronously, use the async pipe with it and it will show the data in it (instead of [object] or whatever) 
     once it's loaded<br/><br/>
 
-    <div class = "HeadingSubTopic" id="Animations">Animations</div>
+    <div class = "HeadingSubTopic" id="Animations" HeadingSubTopicDir>Animations</div>
 
     We can make animations with Angular, similar to the transforms and keyframes that we have with css.<br/>
     This div element will have some animations.  You don't have to include everything in the animation, I'm just giving an example with a few things for reference.
@@ -617,7 +620,7 @@
     </pre>
     <br/>
     
-    <div class = "HeadingSubTopic" id="MISCELLANEOUS">MISCELLANEOUS</div>
+    <div class = "HeadingSubTopic" id="MISCELLANEOUS" HeadingSubTopicDir>MISCELLANEOUS</div>
 
     To have the app screen scroll sometimes, but not others because you want them locked, have 2 classes with one having overflow set to auto and 
     the other one to hidden.  Then, on the pages where you want it locked, do this.
@@ -659,6 +662,5 @@
     
     If you are getting an error with the NODE version, try <b>export NODE_OPTIONS=--openssl-legacy-provider</b>.  
     Or SET NODE_OPTIONS=--openssl-legacy-provider as part of the "start" in your package.json file.
-
-  </div>
+  
 </div> 

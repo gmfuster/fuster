@@ -2,9 +2,9 @@
 import { Component, OnInit, ViewChild, ElementRef, ViewChildren, QueryList } from '@angular/core';
 import { UntypedFormControl, NgForm } from '@angular/forms';
 import {UntypedFormGroup} from '@angular/forms';
-import {HeadingSubTopicDirective} from '../shared/directives';
-import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
+import {HeadingSubTopicDir} from '../shared/directives';
+import {TopLinksComponent} from  '../shared/top-links.component';
 
 @Component({
   selector: 'angular-notes-forms',
@@ -18,10 +18,10 @@ export class AngularNotesFormsComponent implements OnInit {
 @ViewChild('f4') myFormSecond : NgForm | undefined;
 @ViewChild('f6') myFormSix : NgForm | undefined;
 @ViewChild('InputButtonGroup') myFormGroup : NgForm | undefined;
-@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
-myHeadings : string[] = [];
-myName : string = "angular-notes-forms";
-@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+@ViewChildren(HeadingSubTopicDir, { read: ElementRef }) headings!:QueryList<any>;
+  myHeadings : string[] = [];
+  myName : string = "angular";
+  @ViewChild(TopLinksComponent, {static : true}) child! : TopLinksComponent  ;   
 optionR : string = "1";
 myReactiveForm: UntypedFormGroup ; //do not just assign something here, do it in the ngOnInit.
 

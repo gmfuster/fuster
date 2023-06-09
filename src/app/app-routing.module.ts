@@ -31,7 +31,9 @@ const routes: Routes = [
   {path: 'sql', loadChildren: () => import('./sql/sql.module').then(m => m.SQLModule)},
   {path: 'kidsmath', loadChildren: () => import('./math-kids/kidsmath.module').then(m => m.KidsMathModule)},
   {path: 'git', loadChildren: () => import('./git-notes/git.module').then(m => m.GitModule)},
+  {path: 'angular', loadChildren: () => import('./angular/angular.module').then(m => m.AngularModule)},
 
+  /*
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes', component: AngularNotesComponent, pathMatch: 'full' },
   { path: 'angular-notes-svc-routing', component: AngularNotesSvcRoutingComponent, pathMatch: 'full' },  
@@ -43,9 +45,9 @@ const routes: Routes = [
   { path: 'angular-notes-dynamic', component: AngularNotesDynamicComponent, pathMatch: 'full' },  
   { path: 'angular-notes-modules', component: AngularNotesModulesComponent, pathMatch: 'full' },  
   { path: 'angular-notes-somemore', component: AngularNotesSomeMoreComponent, pathMatch: 'full' },  
+*/
 
   { path: 'react-notes', component: ReactNotesComponent, pathMatch: 'full' },  
-
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },  

@@ -74,7 +74,7 @@ body button {
   border-width:1px;
   border-radius: 10px;
   margin: 2px;
-  font-size: 1.7vw;
+  font-size: 1.5vw;
   box-sizing: border-box;
   cursor: pointer;
 }
@@ -86,8 +86,19 @@ body button:disabled {
   box-sizing: border-box;
   position:fixed;
   left:5px; 
-  width:14vw; 
-  overflow:auto;       
+  width:16vw; 
+  overflow:auto;     
+  font-size: 1.2vw;  
+}
+.areasButton{  
+  color:deepskyblue;  
+  box-sizing: border-box;
+  display:block;    
+  margin:5px;
+  border-left: 0px;
+  border-right: 0px;
+  width: 14vw;
+  border-radius: 0px;
 }
 
 .contentsMoveRight{
@@ -282,12 +293,6 @@ body pre samp{
   font-size: 1.5vw;
 }
 
-.areasButton{  
-  color:deepskyblue;
-  border-radius: 5%;
-  display:block;    
-  margin:5px;
-}
 
  
 

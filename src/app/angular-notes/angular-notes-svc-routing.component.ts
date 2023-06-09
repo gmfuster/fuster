@@ -2,9 +2,9 @@ import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList } fro
 import { MathServices, OtherServices, StringServices } from '../shared/forexamples.service';
 import { Injectable } from "@angular/core";
 import { Router } from '@angular/router';
-import {HeadingSubTopicDirective} from '../shared/directives';
-import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
+import {HeadingSubTopicDir} from '../shared/directives';
+import {TopLinksComponent} from  '../shared/top-links.component';
 
 @Component({
   selector: 'angular-notes-svc-routing',
@@ -15,10 +15,10 @@ import {CommonFuncs} from '../shared/commonFuncs.service'
 
 @Injectable()
 export class AngularNotesSvcRoutingComponent implements OnInit {
-@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
-myHeadings : string[] = [];
-myName : string = "angular-notes-svc-routing";
-@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+    @ViewChildren(HeadingSubTopicDir, { read: ElementRef }) headings!:QueryList<any>;
+    myHeadings : string[] = [];
+    myName : string = "angular";
+    @ViewChild(TopLinksComponent, {static : true}) child! : TopLinksComponent  ;  
 
     somethingHappenedText:string = "";
 

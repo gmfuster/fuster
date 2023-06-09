@@ -1,8 +1,8 @@
 import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {HeadingSubTopicDirective} from '../shared/directives';
-import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
+import {HeadingSubTopicDir} from '../shared/directives';
+import {TopLinksComponent} from  '../shared/top-links.component';
 
 
 interface ForSend{
@@ -17,10 +17,10 @@ interface ForSend{
 })
 
 export class AngularNotesHttpComponent implements OnInit {
-  @ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
+  @ViewChildren(HeadingSubTopicDir, { read: ElementRef }) headings!:QueryList<any>;
   myHeadings : string[] = [];
-  myName : string = "angular-notes-http";
-  @ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+  myName : string = "angular";
+  @ViewChild(TopLinksComponent, {static : true}) child! : TopLinksComponent  ;   
 
   constructor(private http : HttpClient, private commonFuncs:CommonFuncs){
   }

@@ -1,21 +1,25 @@
 
 <div class="PaddedContents">
   
-  <div class="leftLinks" #HeadingsContainer>      
+  <!--<div class="leftLinks" #HeadingsContainer>      
     <left-links ></left-links>      
-  </div> 
+  </div> -->
 
-  <div class="PaddedContents PaddedContentsTopics">
+  <!--<div class="PaddedContents PaddedContentsTopics">-->
 
-    
-    <p class="HeadingSubTopic" id="General">General</p>   
+    <div class="TopLinks" #HeadingsContainer>      
+      <top-links ></top-links>      
+    </div>  
+    <br/>
+
+    <p class="HeadingSubTopic" id="General" HeadingSubTopicDir>General</p>   
     No validation in the browser! :-)
     <br/>
     We use REST with Angular so we will not have sessions here.  It will be stateless.  Instead, the server sends an ENCODED token to the client.  Only the server 
     can validate incoming tokens for validation.  You can see how an API for this could look like by googling Firebase API authentication or something like that.  You can 
     have your own API for it.  Anyway, whatever it is you are using will be somehow similar, and the process will be the same.<br/>
 
-    <p class="HeadingSubTopic" id="Requests-Auth">Send Auth Requests</p> 
+    <p class="HeadingSubTopic" id="Requests-Auth" HeadingSubTopicDir>Send Auth Requests</p> 
     One request to the one by Firebase would be like this.  You can have this in a method and return it (it's an observable) so somebody can listen to it. (this is for 
     signup of Firebase)
     <pre>
@@ -56,7 +60,7 @@
         );
       </code>
     </pre>    
-    <p class="HeadingSubTopic" id="Get-Response">Get the Response</p> 
+    <p class="HeadingSubTopic" id="Get-Response" HeadingSubTopicDir>Get the Response</p> 
     Once we get the response from the API, we can set up a user to have the data, including the token that we got.  Something like this if we are returning the observable from the 
     method http call.
     <pre>
@@ -74,7 +78,7 @@
             &rbrace;));
       </code>
     </pre>
-    <p class="HeadingSubTopic" id="Using-User">Using the user for show/hide/enable/disable</p> 
+    <p class="HeadingSubTopic" id="Using-User" HeadingSubTopicDir>Using the user for show/hide/enable/disable</p> 
     Once you have the user, you can redirect the user.
     If the user was successfull, you can send the user to wherever with <b>this.router.navigate(['/whereverUserShouldGo])</b><br/>
     After this we should also disable whatever the user should not have access too (like the login if we are already logged in, or whatever if the 
@@ -84,7 +88,7 @@
     You should subscribe to the user subject wherever you need it so you are aware of changes.<br/>
     Show or hide (or disable) elements on your html based on what you get from the user, and what values you set from that.
 
-    <p class="HeadingSubTopic" id="Send-Token">Sending Token with New Requests</p> 
+    <p class="HeadingSubTopic" id="Send-Token" HeadingSubTopicDir>Sending Token with New Requests</p> 
     You need to get the token from your code (whether you have it in a service or whatever).  You can have this token stored somewhere accessible when the user 
     changes, or you could also have this type of Subject instead of the regular Subject <b>user = new BehaviorSubject&lt;User&gt;(null);</b>
     With this one, even if some code has subscribed after the user has changed, it can still access the last (most current) value, even if it was set before the code started listening.
@@ -104,7 +108,7 @@
     You will now have to pass the token however the API you are using requires it.  If you have to pass the token in multiple places, you can move that code 
     to an <b>interceptor</b> (check out Angular Http notes for more on this).<br/>
 
-    <p class="HeadingSubTopic" id="Auto-Login-Logout">Auto Login/Logout</p> 
+    <p class="HeadingSubTopic" id="Auto-Login-Logout" HeadingSubTopicDir>Auto Login/Logout</p> 
     On refresh, Angular resets everything.  We can store the value in cookies or in the browser's local storage.  To store locally you can do something like This
     <b>localStorage.SetItem('userData', JSON.stringify(user));</b><br/>
     To get it back just <b>JSON.Parse(localStorage.getItem('userData'))</b><br/>
@@ -114,15 +118,14 @@
     logout (the setTimeout set to those milliseconds when the token will expire).  You can set the timeout to some variable so you can clear it with 
     ClearTimeout(yourvariable) if the user logs out manually.
 
-    <p class="HeadingSubTopic" id="Path Guards">Path Guards</p> 
+    <p class="HeadingSubTopic" id="Path Guards" HeadingSubTopicDir>Path Guards</p> 
     Besides disabling buttons , don't forget to set the canActivate in the routes so the user cannot access something by typing the URL directly.
     In your canActivate function to use in the paths, you can returns true or false, or you could also redirect (by returning URLTree) in case they are not 
     logged in (<b>return this.router.createUrlTree(['yourLoginPageOrWhatever']);</b>).
 
-    <p class="HeadingSubTopic" id="More">More little things</p> 
+    <p class="HeadingSubTopic" id="More" HeadingSubTopicDir>More little things</p> 
     To log out, you can just do this.user.next(null) in your logout function in your service.
 
-</div>
 
   
 </div> 

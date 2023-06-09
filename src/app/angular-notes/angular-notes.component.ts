@@ -1,10 +1,10 @@
 import { Component, OnInit, PipeTransform ,Pipe, ElementRef, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ForCanDeActivate } from '../shared/forCanActivate.service';
-import {HeadingSubTopicDirective} from '../shared/directives';
-import {LeftLinksComponent} from  '../shared/left-links.component';
 import {CommonFuncs} from '../shared/commonFuncs.service'
 import { trigger, state, style, animate, transition } from '@angular/animations';
+import {HeadingSubTopicDir} from '../shared/directives';
+import {TopLinksComponent} from  '../shared/top-links.component';
 
 @Component({
   selector: 'angular-notes',
@@ -33,10 +33,10 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
     })
 
 export class AngularNotesComponent implements OnInit, ForCanDeActivate {
-@ViewChildren(HeadingSubTopicDirective, { read: ElementRef }) headings!:QueryList<any>;
-myHeadings : string[] = [];
-myName : string = "angular-notes";
-@ViewChild(LeftLinksComponent, {static : true}) child! : LeftLinksComponent  ;
+  @ViewChildren(HeadingSubTopicDir, { read: ElementRef }) headings!:QueryList<any>;
+  myHeadings : string[] = [];
+  myName : string = "angular";
+  @ViewChild(TopLinksComponent, {static : true}) child! : TopLinksComponent  ;  
   theState : string = "default";
 
   theVariable :string =  "" ;
