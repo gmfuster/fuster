@@ -13,7 +13,7 @@ export class LandingDescriptionsComponent {
   articlesDone:boolean = false;
   welcomearr:string = "Not for phone screens";
   scrolldownarr:string =  "Scroll down for random stuff";
-  articlesArr:string  = "Articles have more detail";
+  articlesArr:string  = "Some articles on Medium";
 
   doSetTimeout(i:number, s:string, option:string) {
     setTimeout(() => {   

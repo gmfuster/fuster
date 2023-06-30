@@ -1,0 +1,237 @@
+<div class="PaddedContents ">
+    
+<div >
+    <div class="TopLinks" #HeadingsContainer>      
+        <top-links ></top-links>      
+      </div>  
+      <br/>
+              
+
+    
+    <p class="HeadingSubTopic" id="General" HeadingSubTopicDir>General</p>
+    
+    ASP.NET Core SignalR is an open-source library that simplifies adding real-time web functionality to apps.  The server can push content to the client.
+    SignalR uses hubs to communicate between clients and servers. A hub is a high-level pipeline that allows a client and server to call methods on each other. 
+    Remote procedure calls = RPCs.<br/>
+    SignalR supports the following techniques, or transports, for handling real-time communication:<br/>
+    <ul>
+        <li>WebSockets</li>
+        <li>Server-Sent Event</li>
+        <li>Long Polling</li>
+    </ul>
+    WebSockets is preferred over Server-Sent Events, and Server-Sent Events is preferred over Long Polling.<br/>
+    The SignalR Protocol is a protocol for a two-way RPC over any message-based transport. 
+    Either party in the connection can invoke procedures on the other party, and procedures can return zero or more results or an error.  It can use JSON, 
+    or MessagePack which is a binary protocol.  Messages can be sent to single points or to groups.
+    <br/>
+    The client is responsible for establishing a connection to the server's endpoint through a HubConnection object. For .Net, this is 
+    Microsoft.AspNetCore.SignalR.Client.HubConnection.<br/>
+    When a hub connection instance is started successfully, messages flow freely in both directions.<br/>
+
+    A Hub is exposed through a route. For example, the https://www.something.com/hubs/orders 
+    route could be used to represent an OrdersHub implementation. Through the various hub APIs, authors can define methods and events.  For the Hub classes,
+    you can inherit from Hub or Hub&lt;T&gt;.<br/>
+    <pre>
+        <code>
+            using Microsoft.AspNetCore.SignalR;
+            using System;
+            using System.Threading.Tasks;
+            using SomePlaceYouHave.SomeModelsYouHave;
+
+            namespace ExampleServer.Hubs;
+
+            public class NotificationHub : Hub
+            &lbrace;
+                public Task NotifyAll(Notification notification) =&gt; //Notification is some type you have created
+                    Clients.All.SendAsync("NotificationReceived", notification); //fired NotificationReceived
+            &rbrace;
+        </code>
+    </pre>
+    You fire events from either a Hub or IHubContext instance (in the case of IHubContext, only from sender to client)<br/>
+    Methods are not required to fire events, but they often do.  An event can be subscribed to by name from a client.
+    Clients can indirectly trigger events when they call hub methods that fire events as a result of their invocation.<br/>
+    The HubConnection class is a SignalR client concept, which represents the client's connection to the server Hub.
+    It's defined within the Microsoft.AspNetCore.SignalR.Client namespace, and it's part of the Microsoft.AspNetCore.SignalR.Client NuGet package.
+    <br/>
+    Taken from MS learn:
+    <pre>
+        <code>
+            using Microsoft.AspNetCore.SignalR.Client;
+            using System;
+            using System.Threading.Tasks;
+            using RealTime.Models;
+
+            namespace ExampleClient;
+
+            public sealed class Consumer : IAsyncDisposable
+            &lbrace;
+                private readonly string HostDomain = Environment.GetEnvironmentVariable("HOST_DOMAIN");
+    
+                private HubConnection _hubConnection;
+
+                public Consumer()
+                &lbrace;
+                    _hubConnection = new HubConnectionBuilder()
+                        .WithUrl(new Uri($"&lbrace;HostDomain&rbrace;/hub/notifications"))
+                        .WithAutomaticReconnect()
+                        .Build();
+                &rbrace;
+
+                public Task StartNotificationConnectionAsync() =&gt; _hubConnection.StartAsync();
+
+                public async ValueTask DisposeAsync()
+                &lbrace;
+                    if (_hubConnection is not null)
+                    &lbrace;
+                        await _hubConnection.DisposeAsync();
+                        _hubConnection = null;
+                    &rbrace;
+                &rbrace;
+            &rbrace;
+        </code>
+    </pre>
+
+    <p class="HeadingSubTopic" id="Example" HeadingSubTopicDir>Example</p>
+
+    Just some code to serve as example<br/>
+    <pre>
+        <code>
+            using API.Extensions;
+            using Microsoft.AspNetCore.Authorization;
+            using Microsoft.AspNetCore.SignalR;
+
+            namespace API.SignalR
+            &lbrace;
+            [Authorize]
+            public class PresenceHub : Hub
+            &lbrace;
+                private readonly PresenceTracker _tracker;
+                public PresenceHub(PresenceTracker tracker)
+                &lbrace;
+                    _tracker = tracker;
+                &rbrace;
+
+                //if the user is connected, send a signal to the other users that it is connected  
+                //Also send info to the caller on what users are connected              
+                public override async Task OnConnectedAsync()
+                &lbrace;
+                    var isOnline = await _tracker.UserConnected(Context.User.GetUsername(), Context.ConnectionId);
+                    if (isOnline)
+                        await Clients.Others.SendAsync("UserIsOnline", Context.User.GetUsername());
+
+                    var currentUsers = await _tracker.GetOnlineUsers();
+                    await Clients.Caller.SendAsync("GetOnlineUsers", currentUsers);
+                &rbrace;
+
+                //similar for disconnect
+                public override async Task OnDisconnectedAsync(Exception exception)
+                &lbrace;
+                    var isOffline = await _tracker.UserDisconnected(Context.User.GetUsername(), Context.ConnectionId);
+
+                    if (isOffline)
+                        await Clients.Others.SendAsync("UserIsOffline", Context.User.GetUsername());
+
+                    await base.OnDisconnectedAsync(exception);
+                &rbrace;
+            &rbrace;
+        &rbrace;
+        </code>
+    </pre>
+    You need to add signalR to your services: <b>services.AddSignalR();</b>  Also on your program.cs:
+    <pre>
+        <code>
+            app.MapControllers();
+            app.MapHub&lt;PresenceHub&gt;("hubs/presence");
+            app.MapHub&lt;MessageHub&gt;("hubs/message");//coming later
+        </code>
+    </pre>
+
+    To use the above, we are using authentication in SignalR.
+
+    <pre>
+        <code>
+            options.Events = new JwtBearerEvents
+            &lbrace;
+                OnMessageReceived = context => 
+                &lbrace;
+                    var accessToken = context.Request.Query["access_token"];
+
+                    var path = context.HttpContext.Request.Path;
+                    if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hubs"))
+                    &lbrace;
+                        context.Token = accessToken;
+                    &rbrace;
+                        return Task.CompletedTask;
+                    &rbrace;;
+                &rbrace;);
+        </code>
+    </pre>
+    You may need to add allowCredentials to CORS if you are using it:
+    <pre>
+        <code>
+            app.UseCors(builder =&gt; builder
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            <b>.AllowCredentials()</b>
+            .WithOrigins("https://localhost:4200"));
+        </code>
+    </pre>
+
+    So the service is ready to send information, how is the client going to get it?
+    <br/>
+
+    On the environmnet.ts, add the hub url:
+    <pre>
+        <code>
+            export const environment = &lbrace;
+                production: false,
+                apiUrl: 'https://localhost:5001/api/',
+                hubUrl: 'https://localhost:5001/hubs/'
+            &rbrace;;
+        </code>
+    </pre>
+    You can have a service that will be making the connections 
+    <pre>
+        <code>
+            hubUrl = environment.hubUrl;
+            ... 
+             private hubConnection?: HubConnecti
+             ... 
+             createHubConnection(user: User) &lbrace;
+                 this.hubConnection = new HubConnectionBuilder()
+                .withUrl(this.hubUrl + 'presence', &lbrace;
+                    accessTokenFactory: () =&gt; user.token,
+                    transport: HttpTransportType.WebSockets
+                *rbrace)
+                .withAutomaticReconnect()
+                .build();
+            ... 
+            this.hubConnection.start().catch(error =&gt;> console.log(error));
+            ... 
+            this.hubConnection.on('UserIsOnline', ... 
+            ... 
+            this.hubConnection.on('UserIsOffline',  ... 
+            this.hubConnection.on('GetOnlineUsers', ... 
+            this.hubConnection.on('NewMessageReceived', ...
+            ... 
+            this.hubConnection?.stop()... 
+            .... 
+            in another service 
+            this.presenceService.createHubConnection(user);... 
+            this.presenceService.stopHubConnection();
+        </code>
+    </pre>
+    For messages 
+    <pre>
+        <code>
+            public class MessageHub : Hub ... 
+            private readonly IHubContext&lt;PresenceHub&gt; _presenceHub;
+            ... 
+            await Clients.Caller.SendAsync("ReceiveMessageThread", messages); 
+            .... 
+            throw new HubException("Failed some error");
+        </code>
+    </pre>
+
+    
+</div>
