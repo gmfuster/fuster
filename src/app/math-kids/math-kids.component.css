@@ -85,3 +85,21 @@
     100% { top:100%}
 }
 
+button{
+    width:100%;
+    color: deeppink;    
+    background-color: darkblue;
+    font-weight: bold;
+}
+
+.letfKidsButton{
+    color:deepskyblue;  
+    box-sizing: border-box;
+    display:block;    
+    margin:5px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 14vw;
+    border-radius: 0px;
+    background-color:transparent;
+}

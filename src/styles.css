@@ -89,6 +89,7 @@ body button:disabled {
   width:16vw; 
   overflow:auto;     
   font-size: 1.2vw;  
+  height: 85vh;
 }
 .areasButton{  
   color:deepskyblue;  

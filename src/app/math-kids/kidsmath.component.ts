@@ -20,26 +20,30 @@ enum ActivityEnum {
 @Component({
   selector: 'app-kidsmath',
   templateUrl: './kidsmath.component.html',
-  styleUrls: ['./kidsmath.component.css']
+  styleUrls: ['./math-kids.component.css']
 })
 
 
 export class KidsMathComponent implements OnInit {
-currentActivity:ActivityEnum = ActivityEnum.Menu;
-myActivityEnum: typeof ActivityEnum = ActivityEnum;
+//currentActivity:ActivityEnum = ActivityEnum.Menu;
+//myActivityEnum: typeof ActivityEnum = ActivityEnum;
 visibleIs:string ="";
 
-
-  constructor(private router:Router) { }
+  //constructor(private router:Router) { }
+  constructor() { }
 
   ngOnInit(): void {    
   }
 
+  /*
   onActivityClick(enumVal:any){
     this.currentActivity = enumVal;    
   }
+
+ */
+
   setVisibleTo(value:string){
-    //this.visibleIs = value;
+    this.visibleIs = value;
     window.scroll(0,0);
   }
 

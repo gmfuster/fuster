@@ -1,3 +1,42 @@
+
+<div class="DivsByRow">
+    <div class="leftFixedBox" >                 
+        <button class="letfKidsButton"><a href="https://gmfuster.github.io/Bonico/#/" target="_blank" >K & 1st Gr.</a></button>        
+        <button class="letfKidsButton" (click)="setVisibleTo('concept')">Addition Concepts</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('arrays')">Arrays</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('AddSplitting')">Add Splitting</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('Carry1')">Carry 1</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('Countby')">Count by</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('NumberChart')">Number Chart</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('SubtractTo10')">Subtract To 10</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('SubtractWithTallies')">Subtract With Tallies</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('SubtractCountUp')">Subtract Count Up</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('BalanceEquation')">Balance Equation</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('PlusMinus')">Balance Equation</button>
+        <button class="letfKidsButton" (click)="setVisibleTo('Clock')">Clock</button>                
+    </div>
+
+    <div class="contentsMoveRight">
+        
+        <concept *ngIf="visibleIs === 'concept'"></concept>
+        <arrays *ngIf="visibleIs === 'arrays'"></arrays>
+        <carry1 *ngIf="visibleIs === 'Carry1'"></carry1>
+        <count-by *ngIf="visibleIs === 'Countby'"></count-by>
+        <number-chart *ngIf="visibleIs === 'NumberChart'"></number-chart>
+        <subtract-to-10 *ngIf="visibleIs === 'SubtractTo10'"></subtract-to-10>
+        <subtallies *ngIf="visibleIs === 'SubtractWithTallies'"></subtallies>
+        <sub-count-up *ngIf="visibleIs === 'SubtractCountUp'"></sub-count-up>
+        <balance-equation *ngIf="visibleIs === 'BalanceEquation'"></balance-equation>
+        <plus-minus *ngIf="visibleIs === 'PlusMinus'"></plus-minus>
+        <clock *ngIf="visibleIs === 'Clock'"></clock>
+    </div>
+    
+</div>
+
+
+
+
+<!--
 <div class="DivsByRow" style="padding-left:1.5vw; padding-right: 1.5vw; padding-top: 1vh;;">
 
     <div *ngIf="currentActivity === myActivityEnum.Menu" >
@@ -21,9 +60,9 @@
 
                 <div  style="flex:1; border: white 2px solid; padding:5px; margin-right:6px; ">              
                     <span style="color:darkblue"><u><em>Adding</em></u></span><br/>                    
-                    <!--<a [routerLink]='["/concept"]'  style="color:white; ">
+                    <a [routerLink]='["/concept"]'  style="color:white; ">
                         Adding Concept
-                    </a><br/>-->
+                    </a><br/>
                     <button  (click)="onActivityClick(myActivityEnum.Concept)">Concept</button>                               
                     <button  (click)="onActivityClick(myActivityEnum.Arrays)">Arrays</button>
                     <button  (click)="onActivityClick(myActivityEnum.AddSplitting)">Add Splitting Numbers</button>  
@@ -76,4 +115,4 @@
     
 </div>
 
-
+-->

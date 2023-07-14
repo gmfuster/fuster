@@ -1,26 +1,26 @@
 <div class="DivsByRow">
     <div class="leftFixedBox">
-        <button class="areasButton" (click)="setVisibleTo('csharp-articles')" style="font-size: .9vw; background-color: salmon;color: navy;">Articles</button>
+       <!-- <button class="areasButton" (click)="setVisibleTo('csharp-articles')" style="font-size: .9vw; background-color: salmon;color: navy;">Articles</button>
         <button class="areasButton" (click)="setVisibleTo('csharp-basics')">Basics</button>
         <button class="areasButton" (click)="setVisibleTo('csharp-delegatesetc')">Delegates</button>
         <button class="areasButton" (click)="setVisibleTo('csharp-interfaces')">Interfaces</button>
         <button class="areasButton" (click)="setVisibleTo('csharp-threading')">Threading</button>
-        <button class="areasButton" (click)="setVisibleTo('csharp-linq')">Linq</button>            
+        <button class="areasButton" (click)="setVisibleTo('csharp-linq')">Linq</button> -->           
         <button class="areasButton" (click)="setVisibleTo('csharp-mvc')">MVC-ASPNET Core</button>
-        <button class="areasButton" (click)="setVisibleTo('csharp-ef')">EF</button>                    
-        <button class="areasButton" (click)="setVisibleTo('csharp-graphql')">GraphQL</button>
+        <!--<button class="areasButton" (click)="setVisibleTo('csharp-ef')">EF</button>  
+        <button class="areasButton" (click)="setVisibleTo('csharp-graphql')">GraphQL</button>-->
     </div>
     <div class="contentsMoveRight">
         
-        <csharp-articles *ngIf="visibleIs === 'csharp-articles'"></csharp-articles>
-        <csharp-basics *ngIf="visibleIs === 'csharp-basics'"></csharp-basics>
-        <csharp-delegatesetc *ngIf="visibleIs === 'csharp-delegatesetc'"></csharp-delegatesetc>
-        <csharp-ef *ngIf="visibleIs === 'csharp-ef'"></csharp-ef>
-        <csharp-interfaces *ngIf="visibleIs === 'csharp-interfaces'"></csharp-interfaces>
-        <csharp-linq *ngIf="visibleIs === 'csharp-linq'"></csharp-linq>
+    <!--    <csharp-articles *ngIf="visibleIs === 'csharp-articles'"></csharp-articles>
+        <csharp-basics *ngIf="visibleIs === 'csharp-basics'"></csharp-basics> 
+        <csharp-delegatesetc *ngIf="visibleIs === 'csharp-delegatesetc'"></csharp-delegatesetc>-->
+       <!-- <csharp-ef *ngIf="visibleIs === 'csharp-ef'"></csharp-ef>-->
+        <!--<csharp-interfaces *ngIf="visibleIs === 'csharp-interfaces'"></csharp-interfaces>
+        <csharp-linq *ngIf="visibleIs === 'csharp-linq'"></csharp-linq>-->
         <csharp-mvc *ngIf="visibleIs === 'csharp-mvc'"></csharp-mvc>
-        <csharp-threading *ngIf="visibleIs === 'csharp-threading'"></csharp-threading>
-        <csharp-graphql *ngIf="visibleIs === 'csharp-graphql'"></csharp-graphql>
+        <!--<csharp-threading *ngIf="visibleIs === 'csharp-threading'"></csharp-threading>-->
+        <!--<csharp-graphql *ngIf="visibleIs === 'csharp-graphql'"></csharp-graphql>-->
         
     </div>
     
