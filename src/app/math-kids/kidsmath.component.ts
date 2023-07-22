@@ -25,8 +25,8 @@ enum ActivityEnum {
 
 
 export class KidsMathComponent implements OnInit {
-//currentActivity:ActivityEnum = ActivityEnum.Menu;
-//myActivityEnum: typeof ActivityEnum = ActivityEnum;
+currentActivity:ActivityEnum = ActivityEnum.Menu;
+myActivityEnum: typeof ActivityEnum = ActivityEnum;
 visibleIs:string ="";
 
   //constructor(private router:Router) { }
@@ -35,12 +35,10 @@ visibleIs:string ="";
   ngOnInit(): void {    
   }
 
-  /*
+  
   onActivityClick(enumVal:any){
     this.currentActivity = enumVal;    
   }
-
- */
 
   setVisibleTo(value:string){
     this.visibleIs = value;

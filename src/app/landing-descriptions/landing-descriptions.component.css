@@ -28,3 +28,18 @@
 }
 
 
+.mainImageAnimation {
+  animation-duration: 2s;
+  animation-name: mainImageAnimation;  
+}
+
+@keyframes mainImageAnimation {
+  0% {    
+    width:0%;
+    height:0%  
+  }
+  100% {    
+    width:45%;
+    height:45%
+  }  
+}

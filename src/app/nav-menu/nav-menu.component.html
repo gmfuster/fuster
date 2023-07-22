@@ -1,17 +1,45 @@
 <nav  class="navbar navbar-default navbar-expand navbar-dark fixed-top"><!--navbar-toggleable-xl-->
-  <div class="container-fluid" style="color:lightyellow; background-color: teal; border:2px lightyellow solid">
+  <div class="container-fluid" style="color:lightyellow; background-color: deepskyblue; border:2px lightyellow solid">
       
       <a  class="navbar-brand nohover"  routerLink="/" >
         <img style="background-color:white; cursor: pointer; width:45px; height:45px; border-radius: 25%;"  src="assets\images\jandmlaughingblue.svg" alt="Home" />           
       </a>   
 
         <ul class="navbar-nav">   
-          
+                  
+          <li class="nav-item"> 
+            <div class="dropdown" style="margin-right:4px;"dropdown>
+              <a class="nav-link dropdown-toggle text-decoration-none nohover" style="color:lightyellow; cursor: pointer;"  dropdownToggle>Not Kids</a>
+                <div class="dropdown-menu" style="background-color: deepskyblue; color:white;" *dropdownMenu>
+                  <a class="dropdown-item nohover" [routerLink]='["/angular"]'  >Angular</a>                                      
+                </div>
+            </div>      
+          </li>    
+
+          <li class="nav-item"> 
+            <div class="dropdown" style="margin-right:4px;"dropdown>
+              <a class="nav-link dropdown-toggle text-decoration-none nohover" style="color:lightyellow; cursor: pointer;"  dropdownToggle>Kids Math</a>
+                <div class="dropdown-menu" style="background-color: deepskyblue; color:white;" *dropdownMenu>
+                  <a class="dropdown-item nohover" [routerLink]='["/kidsmath"]'  >2nd Grade</a>                                      
+                </div>
+            </div>      
+          </li>    
+        </ul>
+
+        <ul class="navbar-nav"  >        
+          <li (click)="scrollUp()"  style="background-color: hotpink; margin: 2px; color:navy; border-radius: 25%;">    
+            <a class="nav-link nohover" >         
+              <span style="color:navy; cursor: pointer;">&uparrow;</span>
+            </a>
+          </li> 
+        </ul>   
+          <!--
           <li class="nav-item">    
             <a class="nav-link nohover" [routerLink]='["/angular"]' >         
               <span style="cursor: pointer;margin-right:4px; text-decoration: underline;">Angular</span> 
             </a>              
           </li> 
+          -->
 
           <!--
           <li class="nav-item"> 
@@ -49,8 +77,6 @@
               </a>
             </li> 
             
-            
-
               <li class="nav-item"> 
                 <div class="dropdown" style="margin-right:4px;"dropdown>
                   <a class="nav-link dropdown-toggle text-decoration-none nohover" style="color:lightyellow; cursor: pointer;"  dropdownToggle>More</a>
@@ -63,14 +89,17 @@
               </li>    
             -->
               
+            
 
+            <!--
               <li class="nav-item">    
                 <a class="nav-link nohover" [routerLink]='["/kidsmath"]' >         
                   <span style="text-decoration:underline; padding:4px; border-radius: 10%;; cursor: pointer;">Kids Math k-2</span> 
                 </a>
               </li> 
+              -->
               
-        </ul>
+    
 
         <!--<div class="dropdown" dropdown >
           <a class="dropdown-toggle text-decoration-none nohover" style="color:lightyellow; cursor: pointer;" dropdownToggle>Angular</a>
@@ -87,13 +116,7 @@
 
                                        
 
-      <ul class="navbar-nav"  >        
-        <li (click)="scrollUp()"  style="background-color: hotpink; margin: 2px; color:navy; border-radius: 25%;">    
-          <a class="nav-link nohover" >         
-            <span style="color:navy; cursor: pointer;">&uparrow;</span>
-          </a>
-        </li> 
-      </ul>   
+     
 
   </div>  
 </nav>
