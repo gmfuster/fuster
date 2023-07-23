@@ -25,12 +25,13 @@ import {NotFoundComponent} from './other-fun/not-found.component';
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
 
-  {path: 'csharp', loadChildren: () => import('./csharp/csharp.module').then(m => m.CSharpModule)},
-  {path: 'javascript', loadChildren: () => import('./javascript/javascript.module').then(m => m.JavascriptModule)},
-  {path: 'node', loadChildren: () => import('./node/node.module').then(m => m.NodeModule)},
-  {path: 'sql', loadChildren: () => import('./sql/sql.module').then(m => m.SQLModule)},
+  //{path: 'csharp', loadChildren: () => import('./csharp/csharp.module').then(m => m.CSharpModule)},
+  //{path: 'javascript', loadChildren: () => import('./javascript/javascript.module').then(m => m.JavascriptModule)},
+  //{path: 'node', loadChildren: () => import('./node/node.module').then(m => m.NodeModule)},
+ // {path: 'sql', loadChildren: () => import('./sql/sql.module').then(m => m.SQLModule)},
   {path: 'kidsmath', loadChildren: () => import('./math-kids/kidsmath.module').then(m => m.KidsMathModule)},
-  {path: 'git', loadChildren: () => import('./git-notes/git.module').then(m => m.GitModule)},
+  {path: 'kidsmath3', loadChildren: () => import('./math-kids3/kidsmath3.module').then(m => m.KidsMath3Module)},
+  //{path: 'git', loadChildren: () => import('./git-notes/git.module').then(m => m.GitModule)},
   {path: 'angular', loadChildren: () => import('./angular/angular.module').then(m => m.AngularModule)},
 
   /*
