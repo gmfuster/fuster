@@ -4,15 +4,17 @@ import { CommonFuncs } from '../../shared/commonFuncs.service';
 @Component({
   selector: 'tables',
   templateUrl: './tables.component.html',
-  styleUrls: ['../math-kids.component.css'],
+  styleUrls: ['../../math-kids/math-kids.component.css'],
   providers:[CommonFuncs]
 })
 
 export class TablesComponent implements OnInit, OnDestroy  {
- number1:number = 0;
- number2:number =0;
- splitUptheNumber:string = "?";
-  
+ numberForAllTables:number = 0;
+ numberTable:number =0;
+ arrayOfCheckedTables:number[] = []
+ selectSomeTables:string = "Select Some Tables"
+ numberOfCorrectOnes = 0;
+ myGuess!:number;
 
   constructor (private renderer: Renderer2, private commonFuncs:CommonFuncs){      
     this.renderer.addClass(document.body, 'mainBodyScrollingBlocked');  
@@ -23,28 +25,39 @@ export class TablesComponent implements OnInit, OnDestroy  {
     window.scroll(0,0);       
   }  
   
-  getAnAddition(){
-    this.number1 = this.commonFuncs.getRandom1ToN(50);
-    this.number2 = this.commonFuncs.getRandom1ToN(50);
-    this.splitUptheNumber = "?";
+  sendTimes(){
+    let found = false;
+
+    if(this.arrayOfCheckedTables.length === 0){      
+      return;
+    }
+    this.numberForAllTables = this.commonFuncs.getRandom0ToN(11);
+    let takeTable = this.commonFuncs.getRandom0ToN(this.arrayOfCheckedTables.length-1)
+    this.numberTable = this.arrayOfCheckedTables[takeTable];
   }
 
-  seeTheResult(){
-    var numberOfTens = Math.floor(this.number2 /10);
-    var numberOfOnes = this.number2%10;
-    this.splitUptheNumber = this.number1.toString() + " ";
-    if (numberOfTens > 0 ){      
-      for (let i = 1; i<= numberOfTens; i++ ){
-        this.splitUptheNumber += " + 10";
-      }
+  onTableCheckboxChanged(event:any, i:number){
+    if (event.target.checked)
+    {
+      this.arrayOfCheckedTables.push(i);
     }
-    if (numberOfOnes > 0 ){      
-      for (let i = 1; i<= numberOfOnes; i++ ){
-        this.splitUptheNumber += " + 1";
+    else{
+      let index = this.arrayOfCheckedTables.indexOf(i);
+      if (index !=null && index != undefined){
+        if (index > -1) { 
+          this.arrayOfCheckedTables.splice(index, 1); 
+        }
       }
     }
   }
 
+  onCheck(){
+    if (this.myGuess === (this.numberForAllTables * this.numberTable)){
+      this.numberOfCorrectOnes++;
+    }else{
+      this.numberOfCorrectOnes--;
+    }
+  }
   ngOnDestroy(): void {
     this.renderer.removeClass(document.body, 'mainBodyScrollingBlocked');
     this.renderer.addClass(document.body, 'mainBodyScrolling');  

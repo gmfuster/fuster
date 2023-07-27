@@ -3,8 +3,79 @@
 <div>        
   <div  class="PaddedContents" style="text-align: center; font-size: 2.5vw;" >
      
-    coming soon
+    <div style="border: 3px solid deepskyblue; height: 75vh;" class="divsByRow">      
+      <div style="width:40%; border:3px solid deeppink; height:90%" class="divsByRow">
+        <div style="border:2px deepskyblue solid; width:80px; height:60px;">     
+          <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event, 0)" />                
+          <label for="0"> 0</label>
+      </div>
+      <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+        <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,1)" />                
+        <label for="1">1</label>
+      </div>
+      <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+        <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,2)" />                
+        <label for="2">2</label>
+        </div>
+      <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+        <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,3)" />                
+        <label for="3">3</label>
+        </div>
+      <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+        <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,4)" />                
+        <label for="4">4</label>
+        </div>  
+      <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+        <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,5)" />                
+        <label for="5">5</label>
+        </div>  
+        <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+          <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,6)" />                
+        <label for="6">6</label>
+        </div>  
+        <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+          <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,7)" />                
+        <label for="7">7</label>
+        </div>
+        <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+          <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,8)" />                
+        <label for="8">8</label>
+              </div>  
+        <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+          <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,9)" />                
+        <label for="9">9</label>
+        </div>  
+        <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+          <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,10)" />                
+        <label for="10">10</label>
+        </div>  
+        <div style="border:2px deepskyblue solid; width:80px; height:60px;">
+          <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event,11)" />                
+        <label for="11">11</label>
+        </div>     
+        <br/><br/>
+        <span *ngIf="arrayOfCheckedTables.length < 1" style="margin:5px; border:solid 2px deepskyblue; border-radius:10%; background-color: deeppink;">{{selectSomeTables}}</span>               
+    </div>
 
+    <div style="width:60%; border:3px solid deeppink; height:90%">
+      <button (click) = "sendTimes()">Go </button><br/>
+      <span style="display:inline-block; width:75px; border:3px solid deepskyblue; padding:0 15px 0 15px">{{numberForAllTables}}</span> 
+      <span style="color:deepskyblue;padding:0 15px 0 15px">X</span> 
+      <span style="display:inline-block; width:75px;border:3px solid deepskyblue; padding:15px; padding:0 15px 0 15px">{{numberTable}}</span>
+      <br/>      
+      <hr class="hrClass"/>
+      <br/>
+      <div class="divsByRow CenterMyContent">
+        <input class="CheckboxNumbers" type="number" style="width:75px; height:75px; display:inline-block" [(ngModel)]="myGuess"/>
+        <button style="width:150px;" (click)="onCheck()">Check</button>
+        <label class="CheckboxNumbers" style="width:75px; height:75px; display:inline-block; background-color: hotpink;">{{numberOfCorrectOnes}}</label>
+      </div>
+      
+      
+    </div>
+
+    
+  
   </div>                  
 </div> 
  

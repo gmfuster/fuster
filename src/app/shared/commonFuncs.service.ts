@@ -23,6 +23,9 @@ export class CommonFuncs{
     public getRandom1ToN(n:number) {
         return Math.floor(Math.random() * n) + 1
     }  
+    public getRandom0ToN(n:number) {
+        return Math.floor(Math.random() * n) 
+    }  
 
        
 }
