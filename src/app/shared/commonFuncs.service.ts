@@ -22,7 +22,8 @@ export class CommonFuncs{
 
     public getRandom1ToN(n:number) {
         return Math.floor(Math.random() * n) + 1
-    }  
+    } 
+    //if you want 0 to 10, enter 11 
     public getRandom0ToN(n:number) {
         return Math.floor(Math.random() * n) 
     }  

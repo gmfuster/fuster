@@ -4,7 +4,7 @@
   <div  class="PaddedContents" style="text-align: center; font-size: 2.5vw;" >
      
     <div style="border: 3px solid deepskyblue; height: 75vh;" class="divsByRow">      
-      <div style="width:40%; border:3px solid deeppink; height:90%" class="divsByRow">
+      <div style="width:40%; border-right:solid deeppink 5px;  height:90%" class="divsByRow">
         <div style="border:2px deepskyblue solid; width:80px; height:60px;">     
           <input class="CheckboxNumbers" type="checkbox"  (change)="onTableCheckboxChanged($event, 0)" />                
           <label for="0"> 0</label>
@@ -54,10 +54,12 @@
         <label for="11">11</label>
         </div>     
         <br/><br/>
-        <span *ngIf="arrayOfCheckedTables.length < 1" style="margin:5px; border:solid 2px deepskyblue; border-radius:10%; background-color: deeppink;">{{selectSomeTables}}</span>               
+        <span *ngIf="arrayOfCheckedTables.length < 1" style="margin:5px;  background-color: deeppink;">
+          <span style="font-size:30px;">&uarr;&uarr; {{selectSomeTables}} &uarr;&uarr; </span>
+        </span>               
     </div>
 
-    <div style="width:60%; border:3px solid deeppink; height:90%">
+    <div style="width:56%;  height:90%; margin-left: 2%;" >
       <button (click) = "sendTimes()">Go </button><br/>
       <span style="display:inline-block; width:75px; border:3px solid deepskyblue; padding:0 15px 0 15px">{{numberForAllTables}}</span> 
       <span style="color:deepskyblue;padding:0 15px 0 15px">X</span> 
@@ -66,11 +68,25 @@
       <hr class="hrClass"/>
       <br/>
       <div class="divsByRow CenterMyContent">
-        <input class="CheckboxNumbers" type="number" style="width:75px; height:75px; display:inline-block" [(ngModel)]="myGuess"/>
+        <!--<input class="CheckboxNumbers" type="number" style="width:75px; height:75px; display:inline-block" [(ngModel)]="myGuess" enable="false"/>-->
+        <label class="CheckboxNumbers" type="number" style="width:75px; height:75px; display:inline-block; border:3px deeppink solid">{{myGuess}}</label>  
         <button style="width:150px;" (click)="onCheck()">Check</button>
-        <label class="CheckboxNumbers" style="width:75px; height:75px; display:inline-block; background-color: hotpink;">{{numberOfCorrectOnes}}</label>
+        <label class="CheckboxNumbers" style="width:75px; height:75px; display:inline-block; background-color: green;">{{numberOfCorrectOnes}}</label>
       </div>
-      
+      <br/>
+      <div class="divsByRow">
+        <button style="width:10vw; background-color:deepskyblue; color:white" (click)="addDigit(null)">Reset</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(0)">0</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(1)">1</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(2)">2</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(3)">3</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(4)">4</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(5)">5</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(6)">6</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(7)">7</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(8)">8</button>
+        <button style="width:5vw; background-color:deeppink; color:white" (click)="addDigit(9)">9</button>
+      </div>
       
     </div>
 

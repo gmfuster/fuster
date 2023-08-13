@@ -14,7 +14,7 @@ export class TablesComponent implements OnInit, OnDestroy  {
  arrayOfCheckedTables:number[] = []
  selectSomeTables:string = "Select Some Tables"
  numberOfCorrectOnes = 0;
- myGuess!:number;
+ myGuess!:number | null;
 
   constructor (private renderer: Renderer2, private commonFuncs:CommonFuncs){      
     this.renderer.addClass(document.body, 'mainBodyScrollingBlocked');  
@@ -32,8 +32,9 @@ export class TablesComponent implements OnInit, OnDestroy  {
       return;
     }
     this.numberForAllTables = this.commonFuncs.getRandom0ToN(11);
-    let takeTable = this.commonFuncs.getRandom0ToN(this.arrayOfCheckedTables.length-1)
+    let takeTable = this.commonFuncs.getRandom0ToN(this.arrayOfCheckedTables.length)
     this.numberTable = this.arrayOfCheckedTables[takeTable];
+    this.myGuess = null;
   }
 
   onTableCheckboxChanged(event:any, i:number){
@@ -57,6 +58,16 @@ export class TablesComponent implements OnInit, OnDestroy  {
     }else{
       this.numberOfCorrectOnes--;
     }
+  }
+
+  addDigit(x: number | null){
+    if (this.myGuess !== null && x !== null ){
+      this.myGuess = this.myGuess * 10 + x;
+    }
+    else{
+      this.myGuess = x;
+    }
+    
   }
   ngOnDestroy(): void {
     this.renderer.removeClass(document.body, 'mainBodyScrollingBlocked');
