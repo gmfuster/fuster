@@ -1,20 +1,21 @@
 <div>        
   <div  class="PaddedContents" style="text-align: center; font-size: 2.5vw;" >   
+
    <span style="font-size: 1.5vw; background-color: aqua; color:navy; ">Remember that the 5 will round up, not down, so 4.5 will round up to 5, not down to 4</span>  
    <div style="display:flex; flex-direction:row; justify-content:center; ">
-      <div class="radio-toolbar" style="width:40vw">  
+      <div class="radio-toolbar" style="width:60vw;">  
         <input class="doubleButtonsLike" type="radio" id="by10s" name="roundby" value="by10s" (click)="roundBy(10)" [checked]="roundingBy===10"/>
-        <label for="by10s">By 10s</label>                
+        <label  style="font-size: 1.8vw;" for="by10s">By 10s(12<span style="color:navy;">34</span>)</label>                
         <input class="doubleButtonsLike" type="radio" id="by100s" name="roundby" value="by100s" (click)="roundBy(100)" [checked]="roundingBy===100"/>
-        <label for="by100s">By 100s</label>  
+        <label style="font-size: 1.8vw;" for="by100s">By 100s(1<span style="color:navy;">234</span>)</label>  
         <input class="doubleButtonsLike" type="radio" id="by1000s" name="roundby" value="by1000s" (click)="roundBy(1000)" [checked]="roundingBy===1000"/>
-        <label for="by1000s">By 1000s</label>  
+        <label style="font-size: 1.8vw;" for="by1000s">By 1000s(<span style="color:navy;">1234</span>)</label>  
       </div>           
-      <button class="doubleButtonsLike"  (click)="onGetNumberClicked()" style="width:20vw; margin-top:15px">Get Number</button>                    
+      <button class="doubleButtonsLike"  (click)="onGetNumberClicked()" style="width:18vw; margin-top:15px">Get Number</button>                    
       <span style="width:90px; margin-top:15px; font-size:3;text-align: center;">&nbsp;{{numberToRound}}</span>            
-</div>       
-
-    
+    </div>       
+    <br/>
+    <canvas #myCanvas style="height:55vh; width:80vw; border:4px solid deepskyblue; padding:10px;"></canvas>
   
   </div>                  
 </div> 
