@@ -5,6 +5,7 @@ import { KidsMath3RoutingModule } from './kidsmath3-routing.module';
 import { KidsMath3Component } from './kidsmath3.component';
 
 import { TablesComponent } from './pages/tables.component';
+import { RoundingComponent } from './pages/rounding.component';
 
 import { SharedModule } from "../shared/shared.module";
 
@@ -12,7 +13,8 @@ import { SharedModule } from "../shared/shared.module";
 @NgModule({
   declarations: [
     KidsMath3Component,
-    TablesComponent
+    TablesComponent,
+    RoundingComponent
   ],
   imports: [
     CommonModule,

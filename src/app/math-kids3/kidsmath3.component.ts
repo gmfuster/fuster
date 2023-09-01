@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 enum ActivityEnum {
   Menu,
-  Tables
+  Tables,
+  Rounding
 }
 
 @Component({

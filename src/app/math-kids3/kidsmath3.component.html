@@ -16,7 +16,8 @@
 
 
                         <div style="flex:1; border: salmon 2px solid; padding:5px; margin-right:6px;">
-                            <span style="color:darkblue"><u><em>Other</em></u></span><br/>                                                                                                
+                            <span style="color:darkblue"><u><em>Other</em></u></span><br/>                                                                     
+                            <button  (click)="onActivityClick(myActivityEnum.Rounding)">Rounding</button>                                  
                         </div>            
                     </div>            
                 </div>        
@@ -25,8 +26,9 @@
     </div>  
 
     <button  *ngIf="currentActivity !== myActivityEnum.Menu" style="padding:0% ; background-color: deeppink; color: aliceblue;"
-        (click)="onActivityClick(myActivityEnum.Menu)">Back to Activities</button><br/><br/>
+        (click)="onActivityClick(myActivityEnum.Menu)">Back to Activities</button><br/>
     <tables *ngIf="currentActivity === myActivityEnum.Tables"></tables>        
+    <rounding *ngIf="currentActivity === myActivityEnum.Rounding"></rounding>   
     
 </div>
 
