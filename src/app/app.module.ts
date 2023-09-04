@@ -50,6 +50,7 @@ import { ForCanDeActivate } from './shared/forCanActivate.service';
 import { NotFoundComponent } from './other-fun/not-found.component';
 
 import { ReadBackComponent } from './other-fun/read-back.component';
+import { WhyComponent } from './other-fun/why.component';
 /*import { MapItComponent } from './other-fun/map-it.component';*/
 
 //import { MyOwnPipePipe } from './angular-notes/angular-notes.component';
@@ -88,7 +89,8 @@ import { ReadBackComponent } from './other-fun/read-back.component';
     //MyOwnPipePipe,
     //MyOwnPipeParamsPipe,
     //LeftLinksComponent,
-    HeadingSubTopicDirective 
+    HeadingSubTopicDirective ,
+    WhyComponent
     
     //ReactNotesComponent
   ],

@@ -17,6 +17,7 @@ import { ReactNotesComponent } from './react-notes/react-notes.component';
 
 import { ReadBackComponent } from './other-fun/read-back.component';
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
+import {WhyComponent } from './other-fun/why.component';
 
 import { ForCanActivate } from './shared/forCanActivate.service';
 import { ForCanDeActivate } from './shared/forCanActivate.service';
@@ -52,6 +53,7 @@ const routes: Routes = [
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },  
+  { path: 'why', component: WhyComponent, pathMatch: 'full' },  
 
   { path: 'not-found', component:NotFoundComponent, pathMatch:'full', data:{message:"I AM THE MESSAGE FROM not-found!!!!"}},
   
@@ -66,3 +68,4 @@ const routerOptions :ExtraOptions ={ anchorScrolling:"enabled", scrollPositionRe
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
