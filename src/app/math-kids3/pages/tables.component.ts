@@ -12,8 +12,9 @@ export class TablesComponent implements OnInit, OnDestroy  {
  numberForAllTables:number = 0;
  numberTable:number =0;
  arrayOfCheckedTables:number[] = []
- selectSomeTables:string = "Select Some Tables"
+ selectSomeTables:string = "Select Some Tables, then click Go ->"
  numberOfCorrectOnes = 0;
+ result!:number | null;
  myGuess!:number | null;
 
   constructor (private renderer: Renderer2, private commonFuncs:CommonFuncs){      
@@ -53,11 +54,14 @@ export class TablesComponent implements OnInit, OnDestroy  {
   }
 
   onCheck(){
+    this.result = this.numberForAllTables * this.numberTable;
+    /*
     if (this.myGuess === (this.numberForAllTables * this.numberTable)){
       this.numberOfCorrectOnes++;
     }else{
       this.numberOfCorrectOnes--;
     }
+    */
   }
 
   addDigit(x: number | null){

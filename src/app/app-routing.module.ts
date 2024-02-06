@@ -13,14 +13,14 @@ import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.co
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 import { AngularNotesSomeMoreComponent } from './angular-notes/angular-notes-somemore.component';
 
-import { ReactNotesComponent } from './react-notes/react-notes.component';
+//import { ReactNotesComponent } from './react-notes/react-notes.component';
 
 import { ReadBackComponent } from './other-fun/read-back.component';
 import {MemoryCardsComponent } from './other-fun/memory-cards.component';
 import {WhyComponent } from './other-fun/why.component';
 
-import { ForCanActivate } from './shared/forCanActivate.service';
-import { ForCanDeActivate } from './shared/forCanActivate.service';
+//import { ForCanActivate } from './shared/forCanActivate.service';
+//import { ForCanDeActivate } from './shared/forCanActivate.service';
 import {NotFoundComponent} from './other-fun/not-found.component';
 
 const routes: Routes = [
@@ -49,7 +49,7 @@ const routes: Routes = [
   { path: 'angular-notes-somemore', component: AngularNotesSomeMoreComponent, pathMatch: 'full' },  
 */
 
-  { path: 'react-notes', component: ReactNotesComponent, pathMatch: 'full' },  
+ // { path: 'react-notes', component: ReactNotesComponent, pathMatch: 'full' },  
 
   { path: 'read-back', component: ReadBackComponent, pathMatch: 'full' },
   { path: 'memory-cards', component: MemoryCardsComponent, pathMatch: 'full' },  
