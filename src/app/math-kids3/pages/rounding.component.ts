@@ -12,8 +12,8 @@ export class RoundingComponent implements OnInit, OnDestroy  {
   roundingBy :number = 10;
   numberToRound: number = 0;
   numberToRoundAsChars: number[] = [];
-  topNumber:number=0;
-  bottomNumber:number= 0;
+  topNumber!:number | null;
+  bottomNumber!:number | null;
   @ViewChild ("myCanvas", {static:true, read:ElementRef}) myCanvas! : ElementRef;    
   
   constructor (private renderer: Renderer2, private commonFuncs:CommonFuncs){      
@@ -44,15 +44,20 @@ export class RoundingComponent implements OnInit, OnDestroy  {
     ctx.stroke();         
   }
 
-  onGetNumberClicked(){
+  onGetNumberClick(){
     this.numberToRound = this.commonFuncs.getRandom1ToN(1999);
     this.numberToRoundAsChars = [];
-    this.numberToRoundAsChars = this.numberToRound.toString(10).replace(/\D/g, '0').split('').map(Number);
-    this.showCanvas();
+    this.numberToRoundAsChars = this.numberToRound.toString(10).replace(/\D/g, '0').split('').map(Number);   
+  }
+
+  onCheckNumberClick(){
+    this.showCanvas();    
     this.showTheNumbers();
   }
 
   showTheNumbers(){
+
+    /*
     let auxNum = 0;
 
     if (this.roundingBy === 10){
@@ -96,14 +101,28 @@ export class RoundingComponent implements OnInit, OnDestroy  {
         this.bottomNumber = auxNum *1000;                
       }
     }
+    */    
+
+    let roundedNumber = Math.round(this.numberToRound / this.roundingBy) * this.roundingBy;
+
+    if (roundedNumber >= this.numberToRound){
+      this.topNumber = roundedNumber;
+      this.bottomNumber = null;
+    }else{
+      this.bottomNumber = roundedNumber;
+      this.topNumber = null;
+    }
 
     let ctx = this.myCanvas.nativeElement.getContext("2d");
-    ctx.font = "12px consolas";    
-    ctx.fillStyle = "deeppink"; 
-    ctx.fillText(this.topNumber, this.myCanvas.nativeElement.width/2 + 10 , 10); 
-    ctx.fillStyle = "deepskyblue"; 
-    ctx.fillText(this.bottomNumber, this.myCanvas.nativeElement.width/2 + 10 , this.myCanvas.nativeElement.height - 10);     
-
+    ctx.font = "40px consolas";   
+    if (this.topNumber != null) {
+      ctx.fillStyle = "deeppink"; 
+      ctx.fillText(this.topNumber, this.myCanvas.nativeElement.width/2 + 10 , 40); 
+    }else{
+      ctx.fillStyle = "deepskyblue"; 
+      ctx.fillText(this.bottomNumber, this.myCanvas.nativeElement.width/2 + 10 , this.myCanvas.nativeElement.height - 10);   
+    }
+      
   }
 
   roundBy(num:number){

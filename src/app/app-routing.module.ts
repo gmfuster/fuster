@@ -23,8 +23,16 @@ import {WhyComponent } from './other-fun/why.component';
 //import { ForCanDeActivate } from './shared/forCanActivate.service';
 import {NotFoundComponent} from './other-fun/not-found.component';
 
+//prefer to have the components on their own and not in a module
+import {TablesComponent} from './math-kids3/pages/tables.component';
+import {RoundingComponent} from './math-kids3/pages/rounding.component'
+
+
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+
+  { path: 'tables', component: TablesComponent, pathMatch: 'full' },
+  { path: 'rounding', component: RoundingComponent, pathMatch: 'full' },
 
   //{path: 'csharp', loadChildren: () => import('./csharp/csharp.module').then(m => m.CSharpModule)},
   //{path: 'javascript', loadChildren: () => import('./javascript/javascript.module').then(m => m.JavascriptModule)},
