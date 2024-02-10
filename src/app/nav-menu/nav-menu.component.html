@@ -2,9 +2,9 @@
   <div class="container-fluid" style="color:lightyellow; background-color: deepskyblue; border:2px lightyellow solid">
       
       <a  class="navbar-brand nohover"  routerLink="/" >
-        <img style="background-color:white; cursor: pointer; width:45px; height:45px; border-radius: 25%;"  src="assets\images\jandmlaughingblue.svg" alt="Home" />           
-      </a>   
-
+        <img style="background-color:white; cursor: pointer; width:45px; height:45px; border-radius: 25%;"  src="assets\images\jandmlaughingblue.svg" alt="Home" />             
+      </a>         
+      
         <ul class="navbar-nav">   
                   
           <!--<li class="nav-item"> 
@@ -14,23 +14,38 @@
                   <a class="dropdown-item nohover" [routerLink]='["/angular"]'  >Angular</a>                                      
                 </div>
             </div>      
-          </li>    -->
-          <li class="nav-item">    
-            <a class="nav-link nohover" [routerLink]='["/why"]' >         
-              <span style="cursor: pointer;margin-right:4px; text-decoration: underline;">Just Curious</span> 
-            </a>              
-          </li> 
+          </li>    -->                  
 
           <li class="nav-item"> 
             <div class="dropdown" style="margin-right:4px;"dropdown>
-              <a class="nav-link dropdown-toggle text-decoration-none nohover" style="color:navy; cursor: pointer; font-weight:bold ;"  dropdownToggle>Kids Math</a>
+              <a class="nav-link dropdown-toggle text-decoration-none nohover" style="color:navy; cursor: pointer; font-weight:bold ;"  dropdownToggle>Just Curious</a>
                 <div class="dropdown-menu" style="background-color: deepskyblue; color:white;" *dropdownMenu>
-                  <a class="dropdown-item nohover" [routerLink]='["/kidsmath"]'  >2nd Grade</a>                                      
-                  <a class="dropdown-item nohover" [routerLink]='["/kidsmath3"]'  >3rd Grade</a>      
+                  <a class="dropdown-item nohover" [routerLink]='["/why"]'  >WHY/WHEN/HOW/WHAT</a>                                                        
                 </div>
             </div>      
           </li>  
-          
+
+          <li class="nav-item"> 
+            <div class="dropdown" style="margin-right:4px;"dropdown>
+              <a class="nav-link dropdown-toggle text-decoration-none nohover" style="color:navy; cursor: pointer; font-weight:bold ;"  dropdownToggle>Math 2nd</a>
+                <div class="dropdown-menu" style="background-color: deepskyblue; color:white;" *dropdownMenu>
+                  <a class="dropdown-item nohover" [routerLink]='["/concept"]'  >Addition Concept</a>                                      
+                  <a class="dropdown-item nohover" [routerLink]='["/arrays"]'  >Arrays</a>      
+                  <a class="dropdown-item nohover" [routerLink]='["/balanceEquation"]'  >Balance an Equation</a>      
+                  <a class="dropdown-item nohover" [routerLink]='["/carry1"]'  >Carry 1</a>      
+                  <a class="dropdown-item nohover" [routerLink]='["/clock"]'  >Practice Telling Time</a>      
+                  <a class="dropdown-item nohover" [routerLink]='["/addSplitting"]'  >Add by Splitting</a>     
+                  <a class="dropdown-item nohover" [routerLink]='["/countBy"]'  >Count by 1s, 5s, 10s</a>   
+                  <a class="dropdown-item nohover" [routerLink]='["/doubles"]'  >Practice Your Doubles</a>   
+                  <a class="dropdown-item nohover" [routerLink]='["/number-chart"]'  >Number Chart</a>   
+                  <a class="dropdown-item nohover" [routerLink]='["/plus-minus"]'  >Should you Add or Delete</a>   
+                  <a class="dropdown-item nohover" [routerLink]='["/sub-count-up"]'  >Subtract Counting Up</a>  
+                  <!--<a class="dropdown-item nohover" [routerLink]='["/subtallies"]'  >Subtract With Tallies</a>  -->
+                  <a class="dropdown-item nohover" [routerLink]='["/subtract-to-10"]'  >Subtract to 10</a>  
+                </div>
+            </div>         
+          </li>  
+                 
           <li class="nav-item"> 
             <div class="dropdown" style="margin-right:4px;"dropdown>
               <a class="nav-link dropdown-toggle text-decoration-none nohover" style="color:navy; cursor: pointer; font-weight:bold ;"  dropdownToggle>Math 3rd</a>
@@ -41,11 +56,14 @@
             </div>      
           </li>  
 
+          <a href="https://www.youtube.com/channel/UCRzxDsd0WvJza0BxaIRiQnA?sub_confirmation=1" target="_new">
+            <img style="margin-top:3px;  background-color:transparent; cursor: pointer; width:5vw; height:3vw;"  src="assets\images\youtube_social_icon_red.png" alt="Home" />       
+          </a>  
         </ul>
 
         <div class="divsByRow">                        
           <ul class="navbar-nav"  >        
-            <li (click)="scrollUp()"  style="background-color: hotpink; margin: 2px; color:navy; border-radius: 25%;">    
+            <li (click)="scrollUp()"  style="background-color: hotpink; margin: 2px; color:navy; ">    
               <a class="nav-link nohover" >         
                 <span style="color:navy; cursor: pointer;">&uparrow;</span>
               </a>

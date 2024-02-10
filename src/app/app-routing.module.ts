@@ -3,7 +3,7 @@ import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { HomeComponent } from './home/home.component';
-import { AngularNotesComponent } from './angular-notes/angular-notes.component';
+/*import { AngularNotesComponent } from './angular-notes/angular-notes.component';
 import { AngularNotesSvcRoutingComponent } from './angular-notes/angular-notes-svc-routing.component';
 import { AngularNotesFormsComponent } from './angular-notes/angular-notes-forms.component';
 import { AngularNotesDynamicComponent } from './angular-notes/angular-notes-dynamic.component';
@@ -12,7 +12,7 @@ import { AngularNotesHttpComponent } from './angular-notes/angular-notes-http.co
 import { AngularNotesAuthComponent } from './angular-notes/angular-notes-auth.component';
 import { AngularNotesModulesComponent } from './angular-notes/angular-notes-modules.component';
 import { AngularNotesSomeMoreComponent } from './angular-notes/angular-notes-somemore.component';
-
+*/
 //import { ReactNotesComponent } from './react-notes/react-notes.component';
 
 import { ReadBackComponent } from './other-fun/read-back.component';
@@ -23,6 +23,20 @@ import {WhyComponent } from './other-fun/why.component';
 //import { ForCanDeActivate } from './shared/forCanActivate.service';
 import {NotFoundComponent} from './other-fun/not-found.component';
 
+import {AddSplittingComponent} from './math-kids/pages/add-splitting.component';
+import {ArraysComponent} from './math-kids/pages/arrays.component';
+import {BalanceEquationComponent} from './math-kids/pages/balance-equation.component';
+import {Carry1Component} from './math-kids/pages/carry1.component';
+import {ClockComponent} from './math-kids/pages/clock.component';
+import {ConceptComponent} from './math-kids/pages/concept.component';
+import {CountByComponent} from './math-kids/pages/count-by.component';
+import {DoublesComponent} from './math-kids/pages/doubles.component';
+import {NumberChartComponent} from './math-kids/pages/number-chart.component';
+import {PlusMinusComponent} from './math-kids/pages/plus-minus.component';
+import {SubCountUpComponent} from './math-kids/pages/sub-count-up.component';
+//import {SubtalliesComponent} from './math-kids/pages/subtallies.component';
+import {SubtractTo10Component} from './math-kids/pages/subtract-to-10.component';
+
 //prefer to have the components on their own and not in a module
 import {TablesComponent} from './math-kids3/pages/tables.component';
 import {RoundingComponent} from './math-kids3/pages/rounding.component'
@@ -30,6 +44,20 @@ import {RoundingComponent} from './math-kids3/pages/rounding.component'
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
+
+  { path: 'addSplitting', component: AddSplittingComponent, pathMatch: 'full' },
+  { path: 'arrays', component: ArraysComponent, pathMatch: 'full' },
+  { path: 'balanceEquation', component: BalanceEquationComponent, pathMatch: 'full' },
+  { path: 'carry1', component: Carry1Component, pathMatch: 'full' },
+  { path: 'clock', component: ClockComponent, pathMatch: 'full' },
+  { path: 'concept', component: ConceptComponent, pathMatch: 'full' },
+  { path: 'countBy', component: CountByComponent, pathMatch: 'full' },
+  { path: 'doubles', component: DoublesComponent, pathMatch: 'full' },
+  { path: 'number-chart', component: NumberChartComponent, pathMatch: 'full' },
+  { path: 'plus-minus', component: PlusMinusComponent, pathMatch: 'full' },
+  { path: 'sub-count-up', component: SubCountUpComponent, pathMatch: 'full' },
+ // { path: 'subtallies', component: SubtalliesComponent, pathMatch: 'full' },
+  { path: 'subtract-to-10', component: SubtractTo10Component, pathMatch: 'full' },
 
   { path: 'tables', component: TablesComponent, pathMatch: 'full' },
   { path: 'rounding', component: RoundingComponent, pathMatch: 'full' },
