@@ -1,0 +1,35 @@
+
+<div class="DivsByRow" style="padding-left:1.5vw; padding-right: 1.5vw; padding-top: 1vh;;">
+
+    <div *ngIf="currentActivity === myActivityEnum.Menu" >       
+        
+        <div class="markClassCardWholeBlue">Kids Math (3rd)</div>    
+        <div class="markClassCardContentBlue">     
+            <div style="position:relative;">
+                <div style="background:teal; margin:0.5vw; padding:5px; border:5px double skyblue; ">
+                    <div style="display:flex; flex-direction:row; justify-content:flex-start; font-size:3vw;">
+
+                        <div  style="flex:1; border: white 2px solid; padding:5px; margin-right:6px; ">              
+                            <span style="color:darkblue"><u><em>Multiplying</em></u></span><br/>                                        
+                            <button  (click)="onActivityClick(myActivityEnum.Tables)">Tables</button>                                                           
+                        </div>
+
+
+                        <div style="flex:1; border: salmon 2px solid; padding:5px; margin-right:6px;">
+                            <span style="color:darkblue"><u><em>Other</em></u></span><br/>                                                                     
+                            <button  (click)="onActivityClick(myActivityEnum.Rounding)">Rounding</button>                                  
+                        </div>            
+                    </div>            
+                </div>        
+            </div>          
+        </div>     
+    </div>  
+
+    <button  *ngIf="currentActivity !== myActivityEnum.Menu" style="padding:0% ; background-color: deeppink; color: aliceblue;"
+        (click)="onActivityClick(myActivityEnum.Menu)">Back to Activities</button><br/>
+    <tables *ngIf="currentActivity === myActivityEnum.Tables"></tables>        
+    <rounding *ngIf="currentActivity === myActivityEnum.Rounding"></rounding>   
+    
+</div>
+
+

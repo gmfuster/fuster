@@ -40,6 +40,7 @@ import {SubtractTo10Component} from './math-kids/pages/subtract-to-10.component'
 //prefer to have the components on their own and not in a module
 import {TablesComponent} from './math-kids3/pages/tables.component';
 import {RoundingComponent} from './math-kids3/pages/rounding.component'
+import {TwoStepProblemComponent} from './math-kids3/pages/2StepProblem.component'
 
 
 const routes: Routes = [
@@ -61,6 +62,7 @@ const routes: Routes = [
 
   { path: 'tables', component: TablesComponent, pathMatch: 'full' },
   { path: 'rounding', component: RoundingComponent, pathMatch: 'full' },
+  { path: '2StepProblem', component: TwoStepProblemComponent, pathMatch: 'full' },
 
   //{path: 'csharp', loadChildren: () => import('./csharp/csharp.module').then(m => m.CSharpModule)},
   //{path: 'javascript', loadChildren: () => import('./javascript/javascript.module').then(m => m.JavascriptModule)},
