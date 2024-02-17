@@ -62,7 +62,7 @@ const routes: Routes = [
 
   { path: 'tables', component: TablesComponent, pathMatch: 'full' },
   { path: 'rounding', component: RoundingComponent, pathMatch: 'full' },
-  { path: '2StepProblem', component: TwoStepProblemComponent, pathMatch: 'full' },
+  //{ path: '2StepProblem', component: TwoStepProblemComponent, pathMatch: 'full' },
 
   //{path: 'csharp', loadChildren: () => import('./csharp/csharp.module').then(m => m.CSharpModule)},
   //{path: 'javascript', loadChildren: () => import('./javascript/javascript.module').then(m => m.JavascriptModule)},
