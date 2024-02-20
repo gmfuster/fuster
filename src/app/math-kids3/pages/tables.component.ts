@@ -36,6 +36,7 @@ export class TablesComponent implements OnInit, OnDestroy  {
     let takeTable = this.commonFuncs.getRandom0ToN(this.arrayOfCheckedTables.length)
     this.numberTable = this.arrayOfCheckedTables[takeTable];
     this.myGuess = null;
+    this.result = null;
   }
 
   onTableCheckboxChanged(event:any, i:number){
